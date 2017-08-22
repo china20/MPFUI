@@ -1,0 +1,35 @@
+﻿<?xml encoding="UTF-8" ?>
+<Window Width="350" Height="179" Opacity="1" RoundSize="5" Author="汪荣(QQ:386666951)" 
+        Name="EncryWindow" Title="导出资源" ResizeBox="False" >
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="36" Background="#3D3D3D">
+            <CloseButton DockPanel.Dock="Right" Width="26" Height="12" />
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       FontSize="13" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <StackPanel Margin="2,36,5,5" TextElement.Foreground="White">
+            <DockPanel Margin="0,12,0,0" >
+                <TextBlock Text=" 资源密码 " Foreground="White" Width="60" VerticalAlignment="Center" />
+                <PasswordBox Name="Pwd" IsFocused="True"  Height="20" Margin="0,0,36,0" VerticalAlignment="Center" />
+            </DockPanel>
+
+            <DockPanel Margin="0,16,0,26" >
+                <TextBlock Text=" 导出文件 " Foreground="White" Width="60" VerticalAlignment="Center" />
+                <Button Name="OpenEncryFile" DockPanel.Dock="Right" Content="..." Padding="7,2,7,2" VerticalAlignment="Center" />
+                <TextBox Name="EncryFile" Height="20" Margin="0,0,4,0" VerticalAlignment="Center"/>
+            </DockPanel>
+
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                <Button Name="Cancel" Content="取消" Padding="16,6,16,6" Margin="0,0,18,0"/>
+                <Button Name="EncryBtn" Content="导出" Padding="16,6,16,6" Margin="16,0,18,0"/>
+            </StackPanel>
+            
+        </StackPanel>
+ 
+    </Grid>
+</Window>
+

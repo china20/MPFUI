@@ -1,0 +1,122 @@
+﻿<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5"  ResizeMode="CanResize" Topmost="False" 
+        Title="资源编辑" Width="800" Height="438" MinWidth="600" MinHeight="380" ResizeBox="True" Background="#FF3D3D3D" Foreground="White" >
+    <Window.Resources>
+        <sys:String x:Key="RES">RES</sys:String>
+        <ImageBrush x:Key="return_off" Source="/mpfuid;/resource/uidesign/images/icon/return_off_16x16.png" Stretch="None" />
+        <ImageBrush x:Key="return_on" Source="/mpfuid;/resource/uidesign/images/icon/return_on_16x16.png" Stretch="None" />
+
+        <Style TargetType="Button" x:Key="ReturnBtnStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel Orientation="Horizontal" Background="{TemplateBinding Background}">
+                            <TextBlock Text="{TemplateBinding Content}" Margin="2,0,5,0" VerticalAlignment="Center" />
+                            <Rectangle Name="rt" DockPanel.Dock="Right" Fill="{return_off}" Width="16" Height="16" VerticalAlignment="Center" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" TargetName="rt" Value="{return_on}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel Name="ThemeCap" DockPanel.Dock="Top" VerticalAlignment="Top" Height="36" Background="#3D3D3D">
+            <Image Source="{app_icon}" VerticalAlignment="Center" Width="20" Height="20" Margin="2,4,4,3" />
+            <StackPanel VerticalAlignment="Top" Height="36" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <StackPanel Visibility="{Binding Path=Visibility,ElementName=TemplatePanel}" Orientation="Horizontal" DockPanel.Dock="Top" Height="32" Background="#444444" >
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" />
+            <Grid Name="CtrlToolbar" VerticalAlignment="Center" />
+        </StackPanel>
+        
+        <!--除去标题栏部分-->
+        <EditRootPanel Margin="0" Name="editRootPanel" >
+            <!--资源编辑界面-->
+            <Grid Margin="1" Name="ResPanel" Background="#353535" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <DockPanel Width="220" Background="#333333" >
+					<Button Name="MainWindow_Return" DockPanel.Dock="Top" Cursor="Hand" Content="返回主界面" Style="{ReturnBtnStyle}" Foreground="Green" Height="26" VerticalAlignment="Top" />
+                    <TextBlock Name="ResTip" Height="0" />
+                    <ListBox Name="ResList" BorderThickness="0" ItemTemplate="{StaticResource CommonItemTemplate}" />
+                </DockPanel>
+                <GridSplitter Width="1" Grid.Column="1" Cursor="Splith" />
+                <DockPanel Grid.Column="2" >
+                    <Grid Background="#4B4B4B" >
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0,2,0" >
+                            <Button Name="AddResBtn" Content="Add" Margin="0,0,0,8" ToolTip1="增加资源" />
+                            <Button Name="DelResBtn" Content="Del" Margin="0,0,0,8" ToolTip1="删除资源" />
+                            <Button Name="UpResBtn" Content="Up" Margin="0,0,0,8" ToolTip1="上移资源" />
+                            <Button Name="DownResBtn" Content="Down" ToolTip1="下移资源" />
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Name="EditArea" Background="#444444" >
+                        <DockPanel VerticalAlignment="Top" Margin="8,8,0,0">
+                            <TextBlock Text="x:Key: " Width="60" HorizontalAlignment="Left"
+                                          TextAlignment="Right" Foreground="White" VerticalAlignment="Center" />
+                            <DockPanel Orientation="Horizontal" Margin="2,1,6,1" >
+                                <Button Name="OkBtn" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right"
+                                        Content="确定" Width="60" Margin="0,1,8,1" Visibility="Hidden"  />
+                                <TextBox Name="xKey" Margin="0,1,12,1" Height="20" VerticalAlignment="Center" />
+                            </DockPanel>
+                        </DockPanel>
+                        <DockPanel VerticalAlignment="Top" Margin="0,8,0,0">
+                            <Grid DockPanel.Dock="Top" Margin="0,12,0,6" Height="1" Background="#333333" />
+                            <TextBlock DockPanel.Dock="Top" Margin="70,1,85,4" FontSize="9" Foreground="#888888" Text="请编辑资源..." />
+                            <StackPanel Margin="70,1,85,1">
+                                <StringEditor Name="String_Res" Tag="{RES}" Visibility="Collapsed" MaxLines="10" TextWrapping="Wrap" Height="60" Margin="0,0,66,0" />
+                                <IntegerEditor Name="Integer_Res" Tag="{RES}" Height="20" Margin="0,0,66,0" Visibility="Collapsed" />
+                                <FloatEditor Name="Float_Res" Tag="{RES}" Height="20" Visibility="Collapsed" Margin="0,0,66,0" />
+                                <SizeEditor Name="Size_Res" Tag="{RES}" Visibility="Collapsed" />
+                                <BooleanEditor Name="Boolean_Res" Tag="{RES}" Visibility="Collapsed" />
+                                <fSizeEditor Name="fSize_Res" Tag="{RES}" Visibility="Collapsed" />
+                                <PointEditor Name="Point_Res" Tag="{RES}" Visibility="Collapsed" />
+                                <fPointEditor Name="fPoint_Res" Tag="{RES}" Visibility="Collapsed" />
+                                <RectEditor Name="Rect_Res" Tag="{RES}" Height="200" Visibility="Collapsed" />
+                                <fRectEditor Name="fRect_Res" Tag="{RES}" Height="200" Visibility="Collapsed" />
+								
+								<ImageSourceEditor Name="ImageSource_Res" Tag="{RES}" Height="32" Visibility="Collapsed" />
+
+                                <ImageBrushEditor Name="ImageBrush_Res" Tag="{RES}" Visibility="Collapsed" />
+                                <SolidColorBrushEditor Tag="{RES}" Name="SolidColorBrush_Res" Visibility="Collapsed" />
+                                <LinearGradientBrushEditor Tag="{RES}" Name="LinearGradientBrush_Res" Visibility="Collapsed" />
+
+                                <StyleEditor Name="StyleNode_Res" Tag="{RES}" Visibility="Collapsed" />
+                                <TemplateEditor Name="Template_Res" Tag="{RES}" Visibility="Collapsed" />
+                            </StackPanel>
+                        </DockPanel>
+                    </StackPanel>
+                </DockPanel>
+            </Grid>
+
+            <!--Trigger编辑界面-->
+            <Grid Name="StyleTriggersPanel" Visibility="Collapsed" />
+            <!--Trigger编辑界面-->
+            <Grid Name="TemplateTriggersPanel" Visibility="Collapsed" />
+            
+            <!--样式属性编辑界面-->
+            <Grid Name="StylePropertyPanel" Visibility="Collapsed" />
+            <!--模版属性编辑界面-->
+            <Grid Name="TemplatePropertyPanel" Visibility="Collapsed" />
+
+            <!--模版编辑界面-->
+            <Grid Name="TemplatePanel" Visibility="Collapsed" />
+            
+        </EditRootPanel>
+    </DockPanel>
+</Window>

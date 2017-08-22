@@ -1,0 +1,123 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="startWindow" Author="汪荣(QQ:386666951)" RoundSize="5" Icon="{app_icon}"
+        Title="打开工程" Width="308" Height="472" Foreground="White" Background="#FF3D3D3D" >
+    <Window.Resources>
+        <MergedDictionaries >
+        </MergedDictionaries>
+
+        <ImageBrush x:Key="open_sln_h" Source="/mpfuid;/resource/uidesign/images/toolbar/open_sln_h.png" Stretch="None" />
+        <ImageBrush x:Key="open_sln_n" Source="/mpfuid;/resource/uidesign/images/toolbar/open_sln_n.png" Stretch="None" />
+
+        <!--带有图标的按钮风格-->
+        <Style TargetType="Button" x:Key="OpenButtonStyle">
+            <Setter Property="MinHeight" Value="42" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <DockPanel Background="{TemplateBinding Background}">
+                            <Rectangle Name="Rt" Fill="{open_sln_n}" Width="24" Height="24" VerticalAlignment="Center" />
+                            <ContentPresenter Margin="8,0,0,0" VerticalAlignment="Center" />
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" TargetName="Rt" Value="{open_sln_h}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#888888" />
+                </Trigger>
+                
+            </Style.Triggers>
+        </Style>
+
+        <!--带有图标的按钮风格-->
+        <Style TargetType="CheckBox" x:Key="OpenCheckBoxStyle">
+            <Setter Property="MinHeight" Value="42" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <DockPanel Background="{TemplateBinding Background}">
+                            <Rectangle Name="Rt" Fill="{open_sln_n}" Width="24" Height="24" VerticalAlignment="Center" />
+                            <ContentPresenter Margin="8,0,0,0" VerticalAlignment="Center" />
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" TargetName="Rt" Value="{StaticResource open_sln_h}" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Fill" TargetName="Rt" Value="{StaticResource open_sln_h}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#888888" />
+                </Trigger>
+                
+            </Style.Triggers>
+        </Style>
+        
+    </Window.Resources>
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="36" Background="#3D3D3D">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="0,86,0,0">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" MinHeight="50">
+                
+            </StackPanel>
+
+            <DockPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Height="32">                
+                <Button Name="CloseBtn" Content="关闭" DockPanel.Dock="Right" Margin="4" Width="80" />
+                <TextBlock />
+            </DockPanel>
+            <StackPanel>
+                <StackPanel MinHeight="20" >
+                    
+                </StackPanel>
+                <StackPanel >
+                    <CheckBox Name="NewProject" Style="{OpenCheckBoxStyle}" Content="新建项目" />
+                    <StackPanel Name="NewPrj_Panel" Visibility="{Binding Path=IsChecked, ElementName=NewProject, Converter=BToV}" >
+                        <DockPanel Margin="16,6,8,0">
+                            <TextBlock Text="名称 " VerticalAlignment="Center" />
+                            <TextBox Name="PrjName" VerticalAlignment="Center" Height="22" Margin="0,0,8,0" />
+                        </DockPanel>
+                        <DockPanel Margin="16,5,8,0">
+                            <TextBlock Text="目录 " VerticalAlignment="Center" />
+                            <Button Name="OpenDir" HorizontalContentAlignment1="Left" Content="打开目录" DockPanel.Dock="Right" Margin="4,0,8,0" />
+                            <TextBox Name="PrjPath" IsReadOnly="True" VerticalAlignment="Center" Height="22" />
+                        </DockPanel>
+
+                        <DockPanel Margin="16,12,8,6">
+                            <Button Name="NewPrjOk" Content="  确定  " DockPanel.Dock="Right" Margin="4,0,8,0" />
+                            <TextBlock Height="22" />
+                        </DockPanel>
+                        
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Name="OpenProject" Style="{OpenButtonStyle}" Content="打开项目" />
+                        <ListBox Name="RecentlyPrjs" MinHeight="120">
+                            
+                        </ListBox>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

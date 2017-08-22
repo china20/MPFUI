@@ -1,0 +1,10 @@
+<?xml encoding="utf-8" ?>
+<Window Name="userWindow" Style="{ChildWindow}" Location="20,80" Width="260" Height="26" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <DockPanel VerticalAlignment="Center" >
+        <TextBlock Text="密  码：" />
+        <PasswordBox Text="" Height="20" />
+    </DockPanel>
+</Window>

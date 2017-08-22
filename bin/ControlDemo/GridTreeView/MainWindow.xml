@@ -1,0 +1,66 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="Window演示" RoundSize="0" ResizeMode="CanResize"
+        Width="500" Height="300" MinWidth="300" MinHeight="200" >
+    <Window.Resources>
+        <DataTemplate x:Key="OranizeTemp">
+            <StackPanel Orientation="Horizontal" Visibility="{Binding Path=ShowOra}" >
+                <CheckBox Content="Check" IsChecked="{Binding Path=Expanded, Mode=TwoWay}" />
+                <TextBlock Text="{Binding Path=Oranize}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DepTemp">
+            <StackPanel Orientation="Horizontal" Visibility="{Binding Path=ShowDep}" >
+                <CheckBox Content="Check" IsChecked="{Binding Path=Expanded, Mode=TwoWay}" />
+                <TextBlock Text="{Binding Path=Dep}" />
+            </StackPanel>
+        </DataTemplate>
+        
+        <Style TargetType="ListViewItem" >
+            <Setter Property="Background" Value="{DynamicResource itemBk}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource contentbk}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource lvbt}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Visibility" Value="{Binding Path=ShowItem}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" >
+                            <GridViewRowPresenter MinHeight="24" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True" >
+                    <Setter Property="Background" Value="SkyBlue" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                       FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="5,32,5,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <ListView Name="lvTree" Margin="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" BorderThickness="1" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="100" CellTemplate="{OranizeTemp}" Header="组织" />
+                        <GridViewColumn Width="150" CellTemplate="{DepTemp}" Header="部门" />
+                        <GridViewColumn Width="60" Header="人员" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Width="280" Header="地址" DisplayMemberBinding="{Binding Path=Addr}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>

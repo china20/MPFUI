@@ -1,0 +1,6 @@
+<?xml encoding="utf-8" ?>
+<ComboBox Margin="20" Width="260" Height="25" Text="编辑框" HorizontalAlignment="Center" VerticalAlignment="Center" >
+    <ComboBoxItem Content="386666951" />
+    <ComboBoxItem Content="869965216" />
+    <ComboBoxItem Content="556098128" />
+</ComboBox>

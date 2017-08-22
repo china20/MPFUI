@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <!-- SystemCloseButton资源定义 -->
+    <ImageBrush x:Key="sysbtn_close_normal" ImageSource="ControlDemo/Theme/images/system/close_n.png" Stretch="None" />
+    <ImageBrush x:Key="sysbtn_close_hover" ImageSource="ControlDemo/Theme/images/system/close_h.png" Stretch="None" />
+    <ImageBrush x:Key="sysbtn_close_down" ImageSource="ControlDemo/Theme/images/system/close_n.png" Stretch="None" />
+
+    <!-- SystemMaxButton资源定义 -->
+    <ImageBrush x:Key="sysbtn_max_normal" ImageSource="ControlDemo/Theme/images/system/max_n.png" Stretch="None" />
+    <ImageBrush x:Key="sysbtn_max_hover" ImageSource="ControlDemo/Theme/images/system/max_h.png" Stretch="None" />
+
+    <!-- SystemRestoreButton资源定义 -->
+    <ImageBrush x:Key="sysbtn_restore_normal" ImageSource="ControlDemo/Theme/images/system/restore_n.png" Stretch="None" />
+    <ImageBrush x:Key="sysbtn_restore_hover" ImageSource="ControlDemo/Theme/images/system/restore_h.png" Stretch="None" />
+
+    <!-- SystemMinButton资源定义 -->
+    <ImageBrush x:Key="sysbtn_min_normal" ImageSource="ControlDemo/Theme/images/system/min_n.png" Stretch="None" />
+    <ImageBrush x:Key="sysbtn_min_hover" ImageSource="ControlDemo/Theme/images/system/min_h.png" Stretch="None" />
+	<ImageBrush x:Key="sysbtn_min_down" ImageSource="ControlDemo/Theme/images/system/min_n.png" Stretch="None" />
+
+    <Style TargetType="CloseButton">
+        <Setter Property="ToolTip" Value="关闭"/>
+        <Setter Property="Background" Value="{DynamicResource sysbtn_close_normal}" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="CloseButton">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysbtn_close_down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysbtn_close_hover}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="MinimizeButton">
+        <Setter Property="ToolTip" Value="最小化" />
+        <Setter Property="Background" Value="{DynamicResource sysbtn_min_normal}" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="MinimizeButton">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysbtn_min_down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysbtn_min_hover}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="MaximizeButton">
+        <Setter Property="Background" Value="{DynamicResource sysbtn_max_normal}" />
+        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="MaximizeButton">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="ToolTip" Value="向下还原" />
+                <Setter Property="Background" Value="{DynamicResource sysbtn_restore_hover}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsPressed" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource sysbtn_restore_down}" />
+            </MultiTrigger>
+            <Trigger Property="WindowState" Value="Maximized" >
+                <Setter Property="Background" Value="{DynamicResource sysbtn_restore_normal}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysbtn_max_down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysbtn_max_hover}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

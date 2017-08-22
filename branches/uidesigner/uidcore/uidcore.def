@@ -1,0 +1,6 @@
+LIBRARY uidcore.dll 
+
+EXPORTS 
+
+	InitUIDCore @ 1
+

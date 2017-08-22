@@ -1,0 +1,43 @@
+<?xml encoding="utf-8" ?>
+<!--RadioButton模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="RadioButtonTemplate" TargetType="RadioButton">
+        <DockPanel Orientation="Horizontal" >
+            <Grid Height="13" Width="13" VerticalAlignment="Center" >
+                <Ellipse Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" />
+                <Ellipse Name="CheckIcon" Fill="{TemplateBinding Background}" Margin="3" StrokeThickness="0" />
+            </Grid>
+            <ContentPresenter VerticalAlignment="Center" />
+        </DockPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Visibility" TargetName="CheckIcon" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Visibility" TargetName="CheckIcon" Value="Hidden" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--单选按钮-->
+    <Style TargetType="RadioButton">
+        <Setter Property="BorderBrush" Value="Blue" />
+        <Setter Property="Background" Value="Blue" />
+        <Setter Property="Template" Value="{StaticResource RadioButtonTemplate}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding}" Text="{TemplateBinding Content}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="LightGreen" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

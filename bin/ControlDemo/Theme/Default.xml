@@ -1,0 +1,125 @@
+﻿<ResourceDictionary>
+
+    <SolidColorBrush x:Key="BodyBrush" Color="#595959"/>
+    <sys:Int32 x:Key="TitileHei">38</sys:Int32>
+
+    <Style TargetType="CaretElement">
+        <Setter Property="Background" Value="White" />
+    </Style>
+
+    <Style TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--引用控件资源样式-->
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/Menu.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/InfoBox.xml" />
+        
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/Calendar.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/Window.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/SysButton.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/Button.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/CheckBox.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/RadioButton.xml" />
+
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/ScrollBar.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/ScrollViewer.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/TextBox.xml" />
+
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/PasswordBox.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/RichTextBox.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/ComboBox.xml" />
+
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/Expander.xml" />
+        
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/TabControl.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/TreeView.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/ListBox.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/ListView.xml" />
+        <ResourceDictionary Source="ControlDemo/Theme/ControlStyle/DatePicker.xml" />
+        
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--模版定义-->
+    <ControlTemplate x:Key="PopupTemplate" TargetType="Popup">
+        <Border Name="Bd" Background="{TemplateBinding}">
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ToolTipTemplate" TargetType="ToolTip">
+        <Border Name="Bd" Padding="{TemplateBinding}" Background="{TemplateBinding}" BorderBrush="{TemplateBinding}" BorderThickness="{TemplateBinding}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="ContentControlTemplate" TargetType="ContentControl">
+        <Border Background1="WhiteSmoke">
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <!--样式定义-->
+
+    <!--焦点演示定义-->
+    <Style x:Key="FocusVisualAdorner" TargetType="Control">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Control">
+                    <Rectangle StrokeThickness="2" StrokeDashArray="3,1" Stroke="#FF999999" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="Window" x:Key="ChildWindow" >
+        <Setter Property="CanMoving" Value="False" />
+        <Setter Property="CaptionHeight" Value="0" />
+        <Setter Property="Padding" Value="2,0,5,0" />
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Window">
+                    <Border Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ToolTip控件样式定义 -->
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="BorderBrush" Value="#666666"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Template" Value="{ToolTipTemplate}" />
+    </Style>
+    
+    <Style TargetType="GroupItem">
+        <Setter Property="BorderBrush" Value="#595959"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupItem">
+                    <Expander IsExpanded="{Binding Path=IsExpander,Mode=TwoWay}" Header="{TemplateBinding Content}">
+                        <ItemsPresenter Name="ItemsPresenter" />
+                    </Expander>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

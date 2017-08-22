@@ -1,0 +1,10 @@
+<?xml encoding="utf-8" ?>
+<StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" >
+    <ProgressBar Value="20" Width="260" Height="12" />
+    <ProgressBar Value="10" Width="260" Height="16" Margin="0,10,0,5" Background="Yellow" />
+    <ProgressBar Name="ProgressBar03" Value="50" MinValue="0" MaxValue="100" Width="260" Height="16" 
+                 Margin="0,5,0,5" Foreground="DarkBlue" Background="MediumSpringGreen" />
+
+    <Button Name="SetPosBtn" Margin="0,5,0,5" Content="设置位置" />
+</StackPanel>
+

@@ -1,0 +1,8 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" >
+    <Button Content="简单按钮" Margin="0,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    <TextBlock Text="文本控件" Margin="120,5,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    <TextBox Content="文本编辑框" Width="150" Height="22" Margin="10,55,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    <ProgressBar Value="20" Width="100" Height="12" Margin="30,150,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    <PasswordBox Password="密码控件" Width="80" Height="22" Margin="15,180,5,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+</Grid>

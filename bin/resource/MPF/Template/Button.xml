@@ -1,0 +1,57 @@
+<?xml encoding="utf-8" ?>
+<!--Button模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}"
+                BorderBrush="{TemplateBinding}" Padding="{TemplateBinding}" CornerRadius="{TemplateBinding Border.CornerRadius}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <!--按钮-->
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="{btn_n}" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template" Value="{StaticResource ButtonTemplate}" />
+
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock FontSize="{TemplateBinding}" HorizontalAlignment="Center" Foreground="{TemplateBinding}" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsPressed" Value="True" />
+                    <Condition Property="IsFocused" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{btn_focus_d}" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsFocused" Value="True" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{btn_focus_h}" />
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="False" >
+                <Setter Property="Background" Value="Yellow" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True" >
+                <Setter Property="Background" Value="{btn_focus_n}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{btn_d}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{btn_h}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

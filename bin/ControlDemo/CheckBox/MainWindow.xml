@@ -1,0 +1,49 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="CheckBox演示" RoundSize="0" ResizeMode1="CanResize"
+        Opacity="0.8" Width="580" Height="400" MinWidth="300" MinHeight="300" >
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <StackPanel Margin="5" Background="#595959" >
+                <Button Name="OpenPop" Content="弹窗测试" Margin="0,4,0,10" HorizontalAlignment="Left" />
+
+                <CheckBox IsThreeState="True" Content="三态CheckBox演示" IsChecked="{x:Null}" Margin="4" />
+
+                <TextBlock Text="普通CheckBox演示： " Margin="4,8,0,4" />
+                <WrapPanel >
+                    <CheckBox Content="北京" Margin="4" IsChecked="{Binding Path=Checked1,Mode=TwoWay}" />
+                    <CheckBox Content="上海" Margin="4" IsChecked="{Binding Path=Checked2,Mode=TwoWay}" />
+                    <CheckBox Content="深圳" Margin="4" IsChecked="{Binding Path=Checked3,Mode=TwoWay}" />
+                </WrapPanel>
+
+                <WrapPanel Margin="0,8,0,8">
+                    <RadioButton Content="北京" Margin="4" IsChecked="True" />
+                    <RadioButton Content="上海" Margin="4" />
+                    <RadioButton Content="深圳" Margin="4" />
+                </WrapPanel>
+
+                <TextBlock Text="RadioButton分组演示： "  Margin="4,8,0,4" />
+                <WrapPanel >
+                    <RadioButton GroupName="Grp1" Content="北京" Margin="4" IsChecked="True" />
+                    <RadioButton GroupName="Grp1" Content="上海" Margin="4" />
+                    <RadioButton GroupName="Grp1" Content="深圳" Margin="4" />
+                </WrapPanel>
+
+                <WrapPanel >
+                    <RadioButton GroupName="Grp2" Content="C++语言" Margin="4" IsChecked="True" />
+                    <RadioButton GroupName="Grp2" Content="JAVA" Margin="4" />
+                    <RadioButton GroupName="Grp2" Content="Ojbect C" Margin="4" />
+                </WrapPanel>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,15 @@
+<?xml encoding="utf-8" ?>
+<StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel.Resources>
+        <Bitmap x:Key="phone01" Source="resource/Sharpui/Icons/phone01.png" />
+    </StackPanel.Resources>
+    <RepeatButton Content="普通重复按钮"  />
+    <TextBlock Name="RepeatText" Margin="2" FontSize="16" Foreground="Green" Text="0" />
+    <RepeatButton Name="RepeatBtn" ToolTip="请按住我一秒" VerticalAlignment="Center" HorizontalAlignment="Left" >
+        <StackPanel Orientation="Horizontal" >
+            <Image Source="{phone01}" Width="18" Height="18" />
+            <TextBlock Text="从手机发送"/>
+        </StackPanel>
+    </RepeatButton>
+</StackPanel>
+

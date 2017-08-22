@@ -1,0 +1,17 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" >
+    <Grid.Resources>
+        <Bitmap x:Key="1" Source="resource/MPF/App/1.jpg" />
+        <Bitmap x:Key="2" Source="resource/MPF/App/2.jpg" />
+        <Bitmap x:Key="3" Source="resource/MPF/App/3.jpg" />
+        <Bitmap x:Key="5" Source="resource/MPF/App/5.jpg" />
+        <Bitmap x:Key="6" Source="resource/MPF/App/6.jpg" />
+    </Grid.Resources>
+    <Image Source="{1}" Width="126" Height="99" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    <Image Source="{2}" Width="126" Height="108" Margin="130,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    <Image Source="{3}" Width="126" Height="114" Margin="260,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+    <Image Source="{5}" Width="224" Height="180" Margin="0,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+    <Image Source="{6}" Width="200" Height="120" Margin="230,125,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+</Grid>

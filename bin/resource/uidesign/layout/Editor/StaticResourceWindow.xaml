@@ -1,0 +1,47 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5"
+        Title="静态资源" Width="620" Foreground="White" Height="350" Background="#FF3D3D3D" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel DockPanel.Dock="Top" Height="36" Background="#3D3D3D" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                       FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="36" FlowDirection="RightToLeft" >
+            <Button Name="CancelBtn" Content="取消" Margin="0,0,16,0" Padding="0,4,0,4" Width="60" VerticalAlignment="Center" />
+            <Button Name="OkBtn" Content="确定" Margin="0,0,16,0" Padding="0,4,0,4" Width="60" VerticalAlignment="Center" />
+        </StackPanel>
+        <DockPanel Background="#353535" >
+            <ListBox Name="propList" Width="220" />
+            <Grid Name="" >
+                <StackPanel Margin="8">
+                    <StringEditor Name="OString_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" MaxLines="10" TextWrapping="Wrap" Height="60" Margin="0,0,66,0" />
+                    <IntegerEditor Name="Integer_Res" Tag="{RES}" IsEnabled="False" Height="20" Margin="0,0,66,0" Visibility="Collapsed" />
+                    <FloatEditor Name="OFloat_Res" Tag="{RES}" IsEnabled="False" Height="20" Visibility="Collapsed" Margin="0,0,66,0" />
+                    <SizeEditor Name="OSize_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    <BooleanEditor Name="Boolean_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    <fSizeEditor Name="OfSize_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    <PointEditor Name="OPoint_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    <fPointEditor Name="OfPoint_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    <RectEditor Name="ORect_Res" Tag="{RES}" Height="200" IsEnabled="False" Visibility="Collapsed" />
+                    <fRectEditor Name="OfRect_Res" Tag="{RES}" Height="200" IsEnabled="False" Visibility="Collapsed" />
+
+                    <SolidColorBrushEditor Tag="{RES}" Name="SolidColorBrush_Res" IsEnabled="False" Visibility="Collapsed" />
+                    <LinearGradientBrushEditor Tag="{RES}" Name="LinearGradientBrush_Res" IsEnabled="False" Visibility="Collapsed" />
+                    <StyleEditor Name="StyleNode_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    <ImageBrushEditor Name="ImageBrush_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+
+                    <StyleEditor Name="StyleNode_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    <TemplateEditor Name="Template_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>

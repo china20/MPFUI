@@ -1,0 +1,34 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="ComboBox演示" RoundSize="0" ResizeMode1="CanResize"
+        Width="580" Height="400" MinWidth="300" MinHeight="300" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <StackPanel Margin="5,5,5,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <ComboBox Name="myCmb" IsEditable="True" Margin="2" Width="160" Height="26" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <ComboBoxItem Content="OnlyRead" />
+                    <ComboBoxItem Content="Sharpui" />
+                </ComboBox>
+                <ComboBox Name="myCmbBind" IsEditable="True" Margin="2" Width="160" Height="26" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <ComboBox Name="myCmbOnlyRead" MaxDropDownHeight="100" IsEditable="False" Margin="2" Width="160" Height="26" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <ComboBoxItem Content="OnlyRead" IsSelected="True" />
+                    <ComboBoxItem Content="Sharpui" />
+                </ComboBox>
+
+                <Button Name="SwitchBtn" Content="交互数据" Margin="5,10,5,5" />
+                <TextBlock Name="txtChanged" Text="演示组合框文本变化事件" Margin="5,16,5,5" Background="#888888" Foreground="Green" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

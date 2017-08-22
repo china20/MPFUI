@@ -1,0 +1,143 @@
+<?xml encoding="utf-8" ?>
+<!--ToolTip模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ImageBrush x:Key="calendar_arrow_left_hot" Source="resource/Sharpui/Template/Calendar/arrow_left_hot.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="calendar_arrow_left_normal" Source="resource/Sharpui/Template/Calendar/arrow_left_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="calendar_arrow_right_hot" Source="resource/Sharpui/Template/Calendar/arrow_right_hot.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="calendar_arrow_right_normal" Source="resource/Sharpui/Template/Calendar/arrow_right_normal.png" Stretch="Uniform"/>
+    
+    <!-- PART_HeaderButton控件样式定义 -->
+    <Style x:Key="HeaderButtonStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock Name="Cnt" Foreground="{TemplateBinding}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- PART_PreviousButton控件样式定义 -->
+    <Style x:Key="PreviousButtonStyle" TargetType="Button">
+        <Setter1 Property="Template" Vallue="{ButtonTemplate}" />
+        <Setter Property="Background" Value="{calendar_arrow_left_normal}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding}" Width="6" Height="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{calendar_arrow_left_hot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- PART_NextButtonStyle控件样式定义 -->
+    <Style x:Key="NextButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{calendar_arrow_right_normal}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding}" Width="6" Height="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{calendar_arrow_right_hot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <ControlTemplate x:Key="CalendarTemplate" TargetType="Calendar">
+        <Border Name="Bd" Background="{TemplateBinding}" BorderBrush="{TemplateBinding}" BorderThickness="{TemplateBinding}" >
+            <Grid MinWidth="200" MinHeight="200">
+                <DockPanel Height="30" VerticalAlignment="Top" Background="#DDDDDD" >
+                    <Button Name="PART_PreviousButton" Style="{PreviousButtonStyle}" Margin="8,0,0,0" />
+                    <Button Name="PART_NextButton" Style="{NextButtonStyle}"  DockPanel.Dock="Right" Margin="0,0,8,0"/>
+                    <Grid>
+                        <Button Name="PART_HeaderButton" HorizontalAlignment="Center" Style="{HeaderButtonStyle}" />
+                    </Grid>
+                </DockPanel>
+                <UniformGrid Name="PART_MonthView" Margin="0,30,0,0" />
+                <UniformGrid Name="PART_YearView" Margin="0,30,0,0" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <!-- CalendarButton控件样式定义 -->
+    <Style TargetType="CalendarButton">
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CalendarButton">
+                    <Border Name="Bd" Padding="{TemplateBinding}" Background="{TemplateBinding}" BorderBrush="{TemplateBinding}" BorderThickness="{TemplateBinding}" >
+                        <TextBlock Name="Cnt" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Green" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- CalendarDayButton控件样式定义 -->
+    <Style TargetType="CalendarDayButton">
+        <Setter Property="BorderBrush" Value="#888888"/>
+        <Setter Property="Padding" Value="8,5,8,5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CalendarDayButton">
+                    <Grid>
+                        <Ellipse Fill="{TemplateBinding Background}" />
+                        <TextBlock Name="Cnt" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+                    </Grid>
+                    <!--Border Name="Bd" Padding="{TemplateBinding}" CornerRadius="12" Background="{TemplateBinding}" BorderBrush="{TemplateBinding}" BorderThickness="{TemplateBinding}" >
+                        <TextBlock Name="Cnt" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+                    </Border-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsInactive" Value="True">
+                            <Setter Property="Foreground" TargetName="Cnt" Value="#AAAAAA" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsToday" Value="True">
+                <Setter Property="Background" Value="SkyBlue" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Red" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Green" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Calendar控件样式定义 -->
+    <Style TargetType="Calendar">
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="BorderBrush" Value="#888888"/>
+        <Setter Property="BorderThickness" Value="1" />
+
+        <Setter Property="CalendarButtonStyle" Value="{CalendarButton}" />
+        <Setter Property="CalendarDayButtonStyle" Value="{CalendarDayButton}" />
+        
+        <Setter Property="Template" Value="{CalendarTemplate}" />
+    </Style>
+    
+</ResourceDictionary>

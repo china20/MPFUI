@@ -1,0 +1,228 @@
+﻿<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="ListBox使用演示" RoundSize="0" ResizeMode="CanResize"
+        Width="680" Height="500" MinWidth="300" MinHeight="300" >
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <TabControl Margin="5" >
+                <TabItem Header="控件演示" IsSelected="True" >
+                    <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid DockPanel.Dock="Bottom" Margin="0,8,0,8" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Grid.Column="0" Fill="Red" Height="1"/>
+                            <TextBlock Grid.Column="1" Text="演示多线程刷新ListBox" Foreground="White" Margin="2,0,2,0" />
+                            <Rectangle Grid.Column="2" Fill="Red" Height="1"   />
+                        </Grid>
+
+                        <DockPanel DockPanel.Dock="Top">
+                            <Button Name="stopBtn" Content="开始刷新" Margin="4" />
+                            <Button Name="delBtn" Content="删除选择" Margin="4" />
+                            <DockPanel>
+                                <RadioButton Name="rSingle" IsChecked="True" Content="Single" Margin="4" />
+                                <RadioButton Name="rMultiple" Content="Multiple" Margin="4" />
+                                <RadioButton Name="rExtended" Content="Extended" Margin="4" />
+                            </DockPanel>
+                        </DockPanel>
+                        <Button Name="resetBtn" Click="OnResetButtonClick" DockPanel.Dock="Top" Content="清除数据(多线程自动同步)" Margin="0,0,0,6" MinHeight="32" />
+                        <ListBox Name="listBox" >
+                        </ListBox>
+                    </DockPanel>
+                </TabItem>
+
+                <TabItem Header="使用说明" >
+                    <ScrollViewer Background="White" HorizontalScrollBarVisibility="Disabled" >
+                        <StackPanel Margin="5">
+                            <TextBlock TextWrapping="Wrap" >
+                                <Span >
+                                    <Run Text="属性" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="SelectionMode: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="列表项选中模式：Single、Multiple、Extended" />
+                                    <LineBreak />
+                                </Span>
+    
+                                <LineBreak />
+
+                                <Span >
+                                    <Run Text="方法" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+
+                                    <Run Text="1. SelectAll: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      选中所有子项" />
+                                    <LineBreak />
+                                    <LineBreak />
+
+                                    <Run Text="2. UnselectAll: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      取消所有子项选择" />
+                                    <LineBreak />
+                                    <LineBreak />                                    
+                                </Span>
+                            </TextBlock>
+
+                            <TextBlock Margin="0,8,0,0" TextWrapping="Wrap" >
+                                <Span >
+                                    <Run Text="基类（Selector）" Foreground="Red" FontSize="15" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="属性" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="IsSelected: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="列表项是否选中，依赖属性。" />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="SelectedIndex: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="当前选中项索引（从0开始），多项选择时指向最后一个项的索引。" />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="SelectedItem: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="当前选中项。" />
+                                    <LineBreak />
+                                </Span>
+
+                                <LineBreak />
+
+                                <Span >
+                                    <Run Text="事件" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="Selected: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="项选中触发，路由事件RoutedEvent" />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="Unselected: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="项取消选中触发，路由事件RoutedEvent" />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="SelectionChanged: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="选中项发生变化触发，路由事件RoutedEvent" />
+                                    <LineBreak />
+                                </Span>
+
+                                <LineBreak />
+
+                                <Span >
+                                    <Run Text="方法" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span>
+                                    <Run Text="1. GetSelectedIndex: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      获取当前选中项索引（参考SelectedIndex属性说明）" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span>
+                                    <Run Text="2. SetSelectedIndex: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="参数：" />
+                                    <LineBreak />
+                                    <Run Text="      itemIndex：类型：int；项索引" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      设置当前选中项索引" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span>
+                                    <Run Text="3. GetSelectedItem: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      获取当前选中项（参考SelectedItem属性说明）" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span>
+                                    <Run Text="4. SetSelectedItem: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="参数：" />
+                                    <LineBreak />
+                                    <Run Text="      item：类型：Object；项对象" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      设置当前选中项" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span>
+                                    <Run Text="5. GetSelectedItems: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="参数：" />
+                                    <LineBreak />
+                                    <Run Text="      selItems：类型：OAutoColl；项集合" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      获取当前选中项列表集合" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+
+                            </TextBlock>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="常见问题" >
+                    <ScrollViewer Background="White">
+                        <StackPanel Margin="5">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

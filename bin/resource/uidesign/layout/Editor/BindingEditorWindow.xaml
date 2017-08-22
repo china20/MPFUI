@@ -1,0 +1,83 @@
+﻿<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" Width="550" Height="360"
+        Title="Binding编辑" ResizeBox="True" Background="#FF3D3D3D" Foreground="White" >
+    <Window.Resources>
+       
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel DockPanel.Dock="Top" Height="36" Background="#3D3D3D" Name="capPanel" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="1" >
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#444444" MinHeight="26" >
+                <RadioButton Name="Binding" Content="Binding" GroupName="Binding_Grp" Margin="4" />
+                <RadioButton Name="TemplateBinding" Content="TemplateBinding" GroupName="Binding_Grp" Margin="4" />
+                <RadioButton Name="StaticResource" Content="StaticResource" GroupName="Binding_Grp" IsChecked="True" Margin="4" />
+                <RadioButton Name="DynamicResource" Content="DynamicResource" GroupName="Binding_Grp" Margin="4" />
+            </StackPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="4,6,4,2" >
+                <TextBlock Text="当前属性 " VerticalAlignment="Center" />
+                <TextBox Name="OriProperty" IsReadOnly="True" Height="22" Margin="2,2,8,8" VerticalAlignment="Center" />
+            </DockPanel>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="36" FlowDirection="RightToLeft" >
+                <Button Name="CancelBtn" Content="取消" Margin="0,0,16,0" Padding="0,4,0,4" Width="60" VerticalAlignment="Center" />
+                <Button Name="OkBtn" Content="确定" Margin="0,0,16,0" Padding="0,4,0,4" Width="60" VerticalAlignment="Center" />
+            </StackPanel>
+            
+            <Grid Background="#383838" Margin="4" >
+                <StackPanel Name="BindingPanel" Margin="8" Visibility="{Binding Path=IsChecked, ElementName=Binding, Converter=BToV}" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Mode " />
+                        <RadioButton Name="OneTime" Content="OneTime" Margin="2" />
+                        <RadioButton Name="OneWay" Content="OneWay" Margin="2" IsChecked="True" />
+                        <RadioButton Name="TwoWay" Content="TwoWay" Margin="2" />
+                        <RadioButton Name="OneWayToSource" Content="OneWayToSource" Margin="2" />
+                    </StackPanel>
+                    <DockPanel Margin="0,10,5,0">
+                        <TextBlock Text="Path " />
+                        <TextBox Name="BindingPath" Height="22" VerticalAlignment="Top" />
+                    </DockPanel>
+                </StackPanel>
+                <DockPanel Name="TemplateBindingPanel" Margin="8" Visibility="{Binding Path=IsChecked, ElementName=TemplateBinding, Converter=BToV}" >
+                    <TextBlock Name="SelBindingProp" Text="{Binding }" DockPanel.Dock="Top" />
+                    <ListBox Name="templateList" />
+                </DockPanel>
+                <DockPanel Name="StaticResourcePanel" Background="#353535" Visibility="{Binding Path=IsChecked, ElementName=StaticResource, Converter=BToV}" >
+                    <ListBox Name="propList" Margin="0,0,8,0" Width="280" />
+                    <StackPanel Margin="2,8,8,8" Name="propPanel" >
+                        <StringEditor Name="OString_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" MaxLines="10" TextWrapping="Wrap" Height="60" Margin="0,0,66,0" />
+                        <IntegerEditor Name="Integer_Res" Tag="{RES}" IsEnabled="False" Height="20" Margin="0,0,66,0" Visibility="Collapsed" />
+                        <FloatEditor Name="OFloat_Res" Tag="{RES}" IsEnabled="False" Height="20" Visibility="Collapsed" Margin="0,0,66,0" />
+                        <SizeEditor Name="OSize_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                        <BooleanEditor Name="Boolean_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                        <fSizeEditor Name="OfSize_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                        <PointEditor Name="OPoint_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                        <fPointEditor Name="OfPoint_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                        <RectEditor Name="ORect_Res" Tag="{RES}" Height="200" IsEnabled="False" Visibility="Collapsed" />
+                        <fRectEditor Name="OfRect_Res" Tag="{RES}" Height="200" IsEnabled="False" Visibility="Collapsed" />
+
+                        <SolidColorBrushEditor Tag="{RES}" Name="SolidColorBrush_Res" IsEnabled="False" Visibility="Collapsed" />
+                        <LinearGradientBrushEditor Tag="{RES}" Name="LinearGradientBrush_Res" IsEnabled="False" Visibility="Collapsed" />
+                        <StyleEditor Name="StyleNode_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                        <ImageBrushEditor Name="ImageBrush_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+
+                        <StyleEditor Name="StyleNode_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                        <TemplateEditor Name="Template_Res" Tag="{RES}" IsEnabled="False" Visibility="Collapsed" />
+                    </StackPanel>
+                </DockPanel>
+                <DockPanel Name="DynamicResource" Margin="8" Visibility="{Binding Path=IsChecked, ElementName=DynamicResource, Converter=BToV}" >
+                    <TextBlock Text="资源名称 " />
+                    <TextBox Name="DynamicResource_TextBox" Height="22" VerticalAlignment="Top" />
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>

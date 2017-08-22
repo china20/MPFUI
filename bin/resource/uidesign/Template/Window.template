@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Name="window" Title="Window" Width="680" Height="420" RoundSize="5" >
+    <Grid Background="{DynamicResource sysWindowClientBrush}">
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="32" Background="{DynamicResource sysWindowCaptionBrush}">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+    </Grid>
+</Window>

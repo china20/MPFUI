@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" 
+        Title="控件资源库" Width="320" Height="320" ResizeBox="True" Foreground="White" Background="#FF3D3D3D" >
+    <Window.Resources>  
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel DockPanel.Dock="Top" Height="36" Visibility="Collapsed" Background="#3D3D3D" Name="capPanel" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid >
+            <Grid.Resources>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="80*" />
+            </Grid.ColumnDefinitions>
+            <TreeView Name="CtrlsType" MinWidth="100" >
+                <TreeViewItem Header="控件" IsExpanded="True" >
+                    <TreeViewItem Header="全部" Name="All" IsSelected="True" />
+                    <TreeViewItem Header="控件部件" Name="Controls" />
+                    <TreeViewItem Header="面板" Name="Panels" />
+                    <TreeViewItem Header="形状" Name="Shapes" />
+                </TreeViewItem>
+                <TreeViewItem Header="样式" />
+            </TreeView>
+            <GridSplitter Width="4" Grid.Column="1" Cursor="Splith" />
+            <ListBox Name="Controls" Grid.Column="2" />
+        </Grid>
+    </DockPanel>
+    
+</Window>

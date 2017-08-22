@@ -1,0 +1,1202 @@
+﻿<Application StartupUri="/mpfuid;/resource/uidesign/layout/MainWindow.xaml" Author="汪荣(QQ:386666951)" >
+    <Application.Resources>
+        <ResourceDictionary >
+            <sys:String x:Key="RES">RES</sys:String>
+            <Cursor x:Key="addcursor" Source="/mpfuid;/resource/uidesign/images/cursor/addcursor.cur" />
+			<Cursor x:Key="pickcursor" Source="/mpfuid;/resource/uidesign/images/cursor/addcursor.cur" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/mpfuid;/resource/uidesign/theme/Default.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Bitmap x:Key="app_icon" Source="/mpfuid;/resource/uidesign/images/app.png" />
+
+            <ImageBrush x:Key="drag_move" Source="/mpfuid;/resource/uidesign/images/icon/move.png" Stretch="None" />
+
+            <ImageBrush x:Key="Window_s" Source="/mpfuid;/resource/uidesign/images/element/Window_s.png" Stretch="None" />
+            <ImageBrush x:Key="CheckButton_s" Source="/mpfuid;/resource/uidesign/images/element/CheckButton_s.png" Stretch="None" />
+            <ImageBrush x:Key="StackPanel_s" Source="/mpfuid;/resource/uidesign/images/element/StackPanel_s.png" Stretch="None" />
+            <ImageBrush x:Key="TextBlock_s" Source="/mpfuid;/resource/uidesign/images/element/TextBlock_s.png" Stretch="None" />
+            <ImageBrush x:Key="Element_s" Source="/mpfuid;/resource/uidesign/images/element/Element_s.png" Stretch="None" />
+            <ImageBrush x:Key="Button_s" Source="/mpfuid;/resource/uidesign/images/element/Button_s.png" Stretch="None" />
+            <ImageBrush x:Key="RadioButton_s" Source="/mpfuid;/resource/uidesign/images/element/RadioButton_s.png" Stretch="None" />
+            <ImageBrush x:Key="TreeView_s" Source="/mpfuid;/resource/uidesign/images/element/TreeView_s.png" Stretch="None" />
+            <ImageBrush x:Key="Image_s" Source="/mpfuid;/resource/uidesign/images/element/Image_s.png" Stretch="None" />
+            <ImageBrush x:Key="Grid_s" Source="/mpfuid;/resource/uidesign/images/element/Grid_s.png" Stretch="None" />
+            <ImageBrush x:Key="ListBox_s" Source="/mpfuid;/resource/uidesign/images/element/ListBox_s.png" Stretch="None" />
+            <ImageBrush x:Key="ComboBox_s" Source="/mpfuid;/resource/uidesign/images/element/ComboBox_s.png" Stretch="None" />
+
+            <ImageBrush x:Key="h_left_align_n" Source="/mpfuid;/resource/uidesign/images/format/h_left_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="h_left_align_h" Source="/mpfuid;/resource/uidesign/images/format/h_left_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="h_right_align_n" Source="/mpfuid;/resource/uidesign/images/format/h_right_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="h_right_align_h" Source="/mpfuid;/resource/uidesign/images/format/h_right_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="h_center_align_n" Source="/mpfuid;/resource/uidesign/images/format/h_center_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="h_center_align_h" Source="/mpfuid;/resource/uidesign/images/format/h_center_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="h_stretch_align_n" Source="/mpfuid;/resource/uidesign/images/format/h_stretch_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="h_stretch_align_h" Source="/mpfuid;/resource/uidesign/images/format/h_stretch_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="v_top_align_n" Source="/mpfuid;/resource/uidesign/images/format/v_top_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="v_top_align_h" Source="/mpfuid;/resource/uidesign/images/format/v_top_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="v_bottom_align_n" Source="/mpfuid;/resource/uidesign/images/format/v_bottom_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="v_bottom_align_h" Source="/mpfuid;/resource/uidesign/images/format/v_bottom_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="v_center_align_n" Source="/mpfuid;/resource/uidesign/images/format/v_center_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="v_center_align_h" Source="/mpfuid;/resource/uidesign/images/format/v_center_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="v_stretch_align_n" Source="/mpfuid;/resource/uidesign/images/format/v_stretch_align_n.png" Stretch="None" />
+            <ImageBrush x:Key="v_stretch_align_h" Source="/mpfuid;/resource/uidesign/images/format/v_stretch_align_h.png" Stretch="None" />
+
+            <ImageBrush x:Key="r_left" Source="/mpfuid;/resource/uidesign/images/format/left_12x12.png" Stretch="Uniform" />
+            <ImageBrush x:Key="r_right" Source="/mpfuid;/resource/uidesign/images/format/right_12x12.png" Stretch="Uniform" />
+            <ImageBrush x:Key="r_up" Source="/mpfuid;/resource/uidesign/images/format/up_12x12.png" Stretch="Uniform" />
+            <ImageBrush x:Key="r_down" Source="/mpfuid;/resource/uidesign/images/format/down_12x12.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="content_bk" Source="/mpfuid;/resource/uidesign/images/toolbar/toolbarsel_bk.png" Viewcorner="4" Stretch="Fill" />
+
+            <ImageBrush x:Key="RadioButton_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/RadioButton_on_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="ComboBox_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ComboBox_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ComboBox_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ComboBox_off_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="Button_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Button_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Button_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Button_off_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="ambientLight_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ambientLight_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ambientLight_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ambientLight_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="CheckBox_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/CheckBox_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="CheckBox_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/CheckBox_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Menu_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Menu_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ListBox_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ListBox_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Label_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Label_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Label_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Label_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ListBox_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ListBox_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ListView_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ListView_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ListView_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ListView_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Menu_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Menu_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ProgressBar_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ProgressBar_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Grid_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Panel_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Grid_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Panel_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ProgressBar_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ProgressBar_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="RadioButton_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/RadioButton_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="StackLayout_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/StackLayout_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Slider_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Slider_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ScrollBar_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ScrollBar_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="ScrollBar_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/ScrollBar_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Slider_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Slider_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="StackLayout_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/StackLayout_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="StackPanel_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/StackPanel_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="StackPanel_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/StackPanel_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="TextBlock_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/TextBlock_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="TextBlock_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/TextBlock_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="TextBox_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/TextBox_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="TextBox_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/TextBox_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="TreeView_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/TreeView_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="TreeView_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/TreeView_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Preview_n" Source="/mpfuid;/resource/uidesign/images/toolbar/Preview_n.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Preview_h" Source="/mpfuid;/resource/uidesign/images/toolbar/Preview_h.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="Expander_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Expander_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Expander_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Expander_off_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="DatePicker_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/DatePicker_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="DatePicker_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/DatePicker_off_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="RepeatButton_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/RepeatButton_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="RepeatButton_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/RepeatButton_off_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="Element_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Element_on_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="Element_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/Element_off_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="tool_moreExpander_off_20x20" Source="/mpfuid;/resource/uidesign/images/toolbar/tool_moreExpander_off_20x20.png" Stretch="Uniform" />
+            <ImageBrush x:Key="tool_moreExpander_on_20x20" Source="/mpfuid;/resource/uidesign/images/toolbar/tool_moreExpander_on_20x20.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="tool_pan_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/tool_pan_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="tool_pan_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/tool_pan_on_24x24.png" Stretch="Uniform" />
+
+            <ImageBrush x:Key="tool_selection_off_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/tool_selection_off_24x24.png" Stretch="Uniform" />
+            <ImageBrush x:Key="tool_selection_on_24x24" Source="/mpfuid;/resource/uidesign/images/toolbar/tool_selection_on_24x24.png" Stretch="Uniform" />
+
+            <!--ElementTree的项模版样式定义-->
+            <DataTemplate x:Key="ElemItemTemplate" >
+                <DockPanel>
+                    <Rectangle Width="16" Height="16" VerticalAlignment="Center" Fill="{Binding Path=ElementIcon}" />
+                    <TextBlock Name="UserIdGroup" Margin="2,0,8,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=DisplayName }" />
+                </DockPanel>
+            </DataTemplate>
+
+            <!--项目视图树的项模版样式定义-->
+            <DataTemplate x:Key="RootItemTemplate" >
+                <TextBlock Margin="2,0,8,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=DisplayName }" />
+            </DataTemplate>
+
+            <!--公共树的项模版样式定义-->
+            <DataTemplate x:Key="CommonItemTemplate" >
+                <TextBlock Margin="2,0,8,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=DisplayName }" />
+            </DataTemplate>
+            
+            <Style TargetType="Button" x:Key="UnlockExpresionStyle">
+                <Setter Property="Width" Value="11" />
+                <Setter Property="Height" Value="17" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Width="7" Height="7" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Stroke="#333333" Fill="#595959" StrokeThickness="1" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="#AAAAAA" />
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#AAAAAA" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            <!--带有图标的按钮风格-->
+            <Style TargetType="RadioButton" x:Key="IconRadioButtonStyle">
+                <Setter Property="Width" Value="32" />
+                <Setter Property="Height" Value="32" />
+
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}" >
+                                <Rectangle Name="Icon" Fill="{TemplateBinding Tag}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Fill" TargetName="Icon" Value="{TemplateBinding Tag1}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{content_bk}" />
+                    </Trigger>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="Background" Value="{content_bk}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!--带有图标的按钮风格-->
+            <Style TargetType="Button" x:Key="IconButtonStyle">
+                <Setter Property="Width" Value="32" />
+                <Setter Property="Height" Value="32" />
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" >
+                                <Rectangle Name="Icon" Fill="{TemplateBinding Tag}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Fill" TargetName="Icon" Value="{TemplateBinding Tag1}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="{content_bk}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="ColorButton">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ColorButton">
+                            <Border Background="{TemplateBinding Color}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style x:Key="ColorSliderThumb" TargetType="Thumb">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Thumb">
+                            <Path Fill="Black" Data="M0,0 L8,4 L0,8Z M20,0 L20,8 L12,4Z" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ColorSlider">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ColorSlider">
+                            <Thumb Name="PART_Thumb" Cursor="Hand" Style="{ColorSliderThumb}" Width="20" Height="8" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="BrushElement" >
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="BrushElement">
+                            <DockPanel Name="Bd" Orientation="Horizontal" >
+                                <Grid Width="100" >
+                                    <ContentPresenter Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                </Grid>
+                                <Border BorderBrush="#353535" Background="{TemplateBinding Background}" BorderThickness="1" Margin="0,0,16,0" Height="18" VerticalAlignment="Center" />
+                            </DockPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" TargetName="Bd" Value="#BDBDBD" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="Bd" Value="#666666" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="BrushSetterEditor">
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="BrushSetterEditor">
+                            <BrushElement Name="PART_BrushElement" GroupName="BrushSetter_G" Content="{TemplateBinding Content}" Background="{TemplateBinding Background}" /> 
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+			
+			<Style TargetType="ColorPickerBox">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ColorPickerBox">
+                            <Rectangle Fill="Green" /> 
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ColorPicker">
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ColorPicker">
+                            <DockPanel >
+								<DockPanel DockPanel.Dock="Bottom" Margin="0,0,0,2">
+									<DockPanel Width="108" DockPanel.Dock="Right" >
+										<ColorPickerBox Width="20" Height="20" Name="PART_PickColor" Cursor="Hand" >
+										</ColorPickerBox>
+										
+										<DockPanel  Margin="8,0,0,0">
+											<TextBlock Text="#" VerticalAlignment="Center" />
+											<TextBox Name="PART_HexColor" Height="18" Margin="4,0,8,0" />
+										</DockPanel>
+									</DockPanel>
+                                    <UniformGrid DockPanel.Dock="Bottom" Margin="0,0,0,2" Height="22" Columns="3" >
+                                        <ColorButton Name="PART_Init" Margin="0,0,1,0" Color="{TemplateBinding InitColor}" />
+                                        <ColorButton Name="PART_Last" Margin="0,0,1,0" Color="{TemplateBinding LastColor}" />
+                                        <ColorButton Name="PART_Curr" Color="{TemplateBinding Color}" />
+                                    </UniformGrid>
+                                </DockPanel>
+                                <StackPanel Margin="8,0,0,0" Width="80" DockPanel.Dock="Right">
+                                    <DockPanel>
+                                        <TextBlock Text="R" VerticalAlignment="Center" />
+                                        <ColorChannel Name="PART_R" Height="18" Margin="4,0,8,0" />
+                                    </DockPanel>
+                                    <DockPanel Margin="0,4,0,4">
+                                        <TextBlock Text="G" VerticalAlignment="Center" />
+                                        <ColorChannel Name="PART_G" Height="18" Margin="4,0,8,0" />
+                                    </DockPanel>
+                                    <DockPanel>
+                                        <TextBlock Text="B" VerticalAlignment="Center" />
+                                        <ColorChannel Name="PART_B" Height="18" Margin="4,0,8,0" />
+                                    </DockPanel>
+                                    <DockPanel Margin="0,4,0,4">
+                                        <TextBlock Text="A" VerticalAlignment="Center" />
+                                        <ColorChannel Name="PART_A" Height="18" Margin="4,0,8,0" />
+                                    </DockPanel>
+                                </StackPanel>
+                                     
+								<DockPanel>
+                                    <ColorSlider Name="PART_ColorSlider" DockPanel.Dock="Right" Width="20" />
+                                    <ColorSelector Name="PART_Selector" Margin="0,0,1,0" />
+                                </DockPanel>								
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="RectEditor">
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RectEditor">
+                            <StackPanel ClipToBounds="True" >
+                                <StackPanel Orientation="Horizontal" >
+                                    <Rectangle Fill="{r_left}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Left"/>
+                                    <IntegerControl Name="PART_Left" Width="35" Margin="2,0,8,0"/>
+                                    <Rectangle Fill="{r_right}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Right"/>
+                                    <IntegerControl Name="PART_Right" Width="35" Margin="2,0,8,0"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,2,0,0" Orientation="Horizontal" >
+                                    <Rectangle Fill="{r_up}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Top"/>
+                                    <IntegerControl Name="PART_Top" Width="35" Margin="2,0,8,0"/>
+                                    <Rectangle Fill="{r_down}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Bottom" />
+                                    <IntegerControl Name="PART_Bottom" Width="35" Margin="2,0,8,0" />
+                                </StackPanel>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="fRectEditor">
+                <Setter Property="Template" >
+                    <Setter.Value>
+                        <ControlTemplate TargetType="fRectEditor">
+                            <StackPanel ClipToBounds="True" >
+                                <StackPanel Orientation="Horizontal" >
+                                    <Rectangle Fill="{r_left}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Left"/>
+                                    <FloatControl Name="PART_Left" Width="38" Margin="2,0,8,0"/>
+                                    <Rectangle Fill="{r_right}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Right"/>
+                                    <FloatControl Name="PART_Right" Width="38" Margin="2,0,8,0"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,2,0,0" Orientation="Horizontal" >
+                                    <Rectangle Fill="{r_up}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Top"/>
+                                    <FloatControl Name="PART_Top" Width="38" Margin="2,0,8,0"/>
+                                    <Rectangle Fill="{r_down}" Width="12" Height="12" VerticalAlignment="Center" ToolTip="Bottom" />
+                                    <FloatControl Name="PART_Bottom" Width="38" Margin="2,0,8,0" />
+                                </StackPanel>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+			<Style TargetType="ImageSourceEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ImageSourceEditor">
+                            <Border Background="#333333" CornerRadius="5" >
+                                <DockPanel>
+                                    <Button Name="PART_EditSource" FontSize="9" Content="打开" Width="32" DockPanel.Dock="Right" />
+                                    <Grid Margin="2">
+                                        <TextBox Name="PART_Source" IsReadOnly="True" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    </Grid>
+                                </DockPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="IntegerEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="IntegerEditor">
+                            <IntegerControl Name="PART_TextBox" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="PosIntegerEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="PosIntegerEditor">
+                            <PosIntegerControl Name="PART_TextBox" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="WidthEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="WidthEditor">
+                            <WidthControl Name="PART_TextBox" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="BooleanEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="BooleanEditor">
+                            <CheckBox Name="PART_CheckBox" Content="False" />
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True" >
+                                    <Setter Property="Content" Value="True" TargetName="PART_CheckBox" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style TargetType="FloatEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="FloatEditor">
+                            <FloatControl Name="PART_TextBox" Text="0" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="PosFloatEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="PosFloatEditor">
+                            <PosFloatControl Name="PART_TextBox" Text="0" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="RatioEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RatioEditor">
+                            <RatioControl Name="PART_TextBox" Text="1" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="TextBoxRange" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBoxRange">
+                            <Border BorderBrush="#353535" Background="#333333" CornerRadius="5" BorderThickness="1">
+                                <Grid Name="PART_Indicator" Cursor="Hand" >
+                                    <TextBox Name="PART_TextBox" Style="{StaticResource RangeTextBox}" Visibility="Hidden" />
+                                    <Rectangle Fill="#555555" Name="PART_SelectionRange" HorizontalAlignment="Left" />
+                                    <TextBlock Text="{Binding Path=Text,ElementName=PART_TextBox}" 
+                                               Visibility="{Binding Path=Visibility,ElementName=PART_SelectionRange}"
+                                               TextAlignment="Center" VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="TextBoxRangeEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBoxRangeEditor">
+                            <TextBoxRange Name="PART_TextBoxRange" Maximum="1" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="PointEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="PointEditor">
+                            <StackPanel Orientation="Horizontal" Height="20">
+                                <IntegerControl Name="PART_x" Width="60" />
+                                <IntegerControl Name="PART_y" Width="60" Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style TargetType="fPointEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="fPointEditor">
+                            <StackPanel Orientation="Horizontal" Height="20">
+                                <FloatControl Name="PART_x" Width="60" />
+                                <FloatControl Name="PART_y" Width="60" Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="SizeEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="SizeEditor">
+                            <StackPanel Orientation="Horizontal" Height="20">
+                                <IntegerControl Name="PART_cx" Width="60" />
+                                <IntegerControl Name="PART_cy" Width="60" Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="fSizeEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="fSizeEditor">
+                            <StackPanel Orientation="Horizontal" Height="20">
+                                <FloatControl Name="PART_cx" Width="60" />
+                                <FloatControl Name="PART_cy" Width="60" Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style TargetType="StyleEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="StyleEditor">
+                            <StackPanel>
+                                <StringControl Name="PART_TextBox" IsReadOnly="True" />
+                                <ListBox Name="PART_TypeList"  Visibility="Collapsed" Height="200" Margin="0,2,0,0" >
+                                    <ListBox.ItemPanel>
+                                        <WrapPanel />
+                                    </ListBox.ItemPanel>
+                                </ListBox>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="TemplateEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TemplateEditor">
+                            <StackPanel>
+                                <StringControl Name="PART_TextBox" IsReadOnly="True" />
+                                <ListBox Name="PART_TypeList" Visibility="Collapsed" Height="200" Margin="0,2,0,0" >
+                                    <ListBox.ItemPanel>
+                                        <WrapPanel />
+                                    </ListBox.ItemPanel>
+                                </ListBox>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="BrushEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="BrushEditor">
+                            <ColorPicker Name="PART_TextBox" Height="200" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="StringEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="StringEditor">
+                            <StringControl Name="PART_TextBox" MaxLines="{TemplateBinding MaxLines}" TextWrapping="{TemplateBinding TextWrapping}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--纯色画刷-->
+            <Style TargetType="SolidColorBrushEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="SolidColorBrushEditor" >
+                            <ColorPicker Name="PART_ColorPicker" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>                    
+
+            <!--线性渐变画刷-->
+            <Style TargetType="LinearGradientBrushEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="LinearGradientBrushEditor" >
+                            <StackPanel >
+                                <ColorPicker Name="PART_ColorPicker" />
+                                <GradientStop Name="PART_GradientStop" Height="28" Margin="0,5,0,5" />
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Start: " Width="60" TextAlignment="Right" />
+                                        <fPointEditor Name="PART_Start" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2,0,2">
+                                        <TextBlock Text="End: " Width="60" TextAlignment="Right" />
+                                        <fPointEditor Name="PART_End" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <!--径向渐变画刷-->
+            <Style TargetType="RadialGradientBrushEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadialGradientBrushEditor" >
+                            <StackPanel >
+                                <ColorPicker Name="PART_ColorPicker" />
+                                <GradientStop Name="PART_GradientStop" Height="28" Margin="0,5,0,5" />
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Origin: " Width="60" TextAlignment="Right" />
+                                        <fPointEditor Name="PART_Origin" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,2,0,2">
+                                        <TextBlock Text="RadiusX: " Width="60" TextAlignment="Right" />
+                                        <FloatControl Name="PART_RadiusX" Width="50" Height="20" />
+                                        <TextBlock Text="RadiusY: " Width="60" TextAlignment="Right" />
+                                        <FloatControl Name="PART_RadiusY" Width="50" Height="20" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--图像画刷-->
+            <Style TargetType="ImageBrushEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ImageBrushEditor" >
+                            <DockPanel Margin="1,0,2,8">
+                                <Button Name="ImageShowBtn" MinWidth="80" Margin="2,2,5,2" Cursor="Hand" Style="{x:Null}" >
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <DImageGrid>
+                                                <Border Background="{TemplateBinding Background}" Margin="6" BorderThickness="1" />
+                                            </DImageGrid>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="TitleMode" />
+                                        <ComboBox Name="cmbTileMode" Height="20" >
+                                            <ComboBoxItem Content="None" IsSelected="True" />
+                                            <ComboBoxItem Content="FlipX" />
+                                            <ComboBoxItem Content="FlipY" />
+                                            <ComboBoxItem Content="FlipXY" />
+                                            <ComboBoxItem Content="Tile" />
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="Stretch" />
+                                        <ComboBox Name="cmbStretch" Height="20" >
+                                            <ComboBoxItem Content="None" />
+                                            <ComboBoxItem Content="Fill" IsSelected="True" />
+                                            <ComboBoxItem Content="Uniform" />
+                                            <ComboBoxItem Content="UniformToFill" />
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="ImageSource" />
+                                        <DockPanel Orientation="Horizontal">
+                                            <Button Name="selImgBtn" DockPanel.Dock="Right" Height="20" Margin="5,0,2,0" Width="32" >
+												<TextBlock Text="..." MinWidth="Auto" HorizontalAlignment="Center" />
+											</Button>
+                                            <TextBox  Name="cmbImageSource" Height="20" IsEditable="False" IsReadOnly="True" />
+                                        </DockPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="SizeSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="SizeSetterEditor">
+                            <SizeEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <!--属性编辑样式定义-->
+            <Style TargetType="RectSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RectSetterEditor">
+                            <RectEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="fRectSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="fRectSetterEditor">
+                            <fRectEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ChoiceSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ChoiceSetterEditor">
+                            <ComboBox Name="PART_ComboBox" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="CheckSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckSetterEditor">
+                            <CheckBox Name="PART_CheckBox" Content="{TemplateBinding Content}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--多选按钮-->
+            <Style TargetType="CheckBox" x:Key="ResCheckBox" >
+                <Setter Property="BorderBrush" Value="#BDBDBD" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Content" Value="当前选择值为:False" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <DockPanel Orientation="Horizontal" >
+                                <Border Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                        Width="13" Height="13" Margin="0,0,5,0" VerticalAlignment="Center">
+                                    <Path Name="CheckIcon" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,2 L0,4.8 L2.5,7.4 L7.1,2.8 L7.1,0 L2.5,4.6 Z" />
+                                </Border>
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            </DockPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Visibility" TargetName="CheckIcon" Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Visibility" TargetName="CheckIcon" Value="Hidden" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate TargetType="CheckBox">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" />
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True" >
+                        <Setter Property="BorderBrush" Value="LightGreen" />
+                    </Trigger>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="Content" Value="当前选择值为:True" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            <Style TargetType="CheckSetterEditor" x:Key="ResCheckSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckSetterEditor">
+                            <CheckBox Name="PART_CheckBox" Style="{ResCheckBox}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="WidthSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="WidthSetterEditor">
+                            <WidthEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="StringSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="StringSetterEditor">
+                            <StringEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="NumericSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="NumericSetterEditor">
+                            <IntegerEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="PosNumericSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="PosNumericSetterEditor">
+                            <PosIntegerEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="FloatSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="FloatSetterEditor">
+                            <FloatEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="PosFloatSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="PosFloatSetterEditor">
+                            <PosFloatEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="RatioSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RatioSetterEditor">
+                            <RatioEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="TextBoxRangeSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBoxRangeSetterEditor">
+                            <TextBoxRangeEditor Name="PART_Editor" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ExtensionSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ExtensionSetterEditor">
+                            <TextBox Name="PART_TextBox" IsReadOnly="True" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            <Style TargetType="STSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="STSetterEditor">
+                            <Border Background="#333333" CornerRadius="5" >
+                                <DockPanel>
+                                    <Button Name="PART_EditStyle" FontSize="9" Width="32" DockPanel.Dock="Right" >
+										<TextBlock Text="编辑" MinWidth="32" />
+									</Button>
+                                    <Grid Margin="2" ClipToBounds="True" >
+                                        <TextBlock Name="PART_BindingInfo" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    </Grid>
+                                </DockPanel>
+                            </Border>                            
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="SourceSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="SourceSetterEditor">
+                            <Border Background="#333333" CornerRadius="5" >
+                                <DockPanel>
+                                    <Button Name="PART_EditStyle" FontSize="9" Width="32" DockPanel.Dock="Right" >
+										<TextBlock Text="打开" MinWidth="32" />
+									</Button>
+                                    <Grid Margin="2">
+                                        <TextBox Name="PART_BindingInfo" IsReadOnly="True" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    </Grid>
+                                </DockPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="LeftAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#525252" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}" >
+                                <Rectangle Name="Icon" Fill="{DynamicResource h_left_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource h_left_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#BDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="RightAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#525252" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Name="Icon" Fill="{DynamicResource h_right_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource h_right_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#BDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="HCenterAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#525252" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Name="Icon" Fill="{DynamicResource h_center_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource h_center_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#BDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="HStretchAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#525252" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Name="Icon" Fill="{DynamicResource h_stretch_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource h_stretch_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#BDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="TopAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#525252" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Name="Icon" Fill="{DynamicResource v_top_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource v_top_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#BDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="BottomAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#525252" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Name="Icon" Fill="{DynamicResource v_bottom_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource v_bottom_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#BDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="VCenterAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#595959" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Name="Icon" Fill="{DynamicResource v_center_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource v_center_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#BDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="VStretchAlignStyle" >
+                <Setter Property="Width" Value="20" />
+                <Setter Property="Height" Value="20" />
+                <Setter Property="Background" Value="#525252" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Background="{TemplateBinding Background}">
+                                <Rectangle Name="Icon" Fill="{DynamicResource v_stretch_align_n}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" >
+                                    <Setter Property="Fill" TargetName="Icon" Value="{DynamicResource v_stretch_align_h}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" >
+                        <Setter Property="Background" Value="#FFBDBDBD" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="AlignVertSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="AlignVertSetterEditor">
+                            <StackPanel Orientation="Horizontal" Name="VerticalAlignment" Background="#333333" >
+                                <RadioButton Name="Top" Margin="1" Style="{DynamicResource TopAlignStyle}" ToolTip="Top" GroupName="{TemplateBinding GroupName}" />
+                                <RadioButton Name="Center" Margin="0,1,1,1" Style="{DynamicResource VCenterAlignStyle}" ToolTip="Center" GroupName="{TemplateBinding GroupName}" />
+                                <RadioButton Name="Bottom" Margin="0,1,1,1" Style="{DynamicResource BottomAlignStyle}" ToolTip="Bottom" GroupName="{TemplateBinding GroupName}" />
+                                <RadioButton Name="Stretch" Margin="0,1,1,1" Style="{DynamicResource VStretchAlignStyle}" ToolTip="Stretch" GroupName="{TemplateBinding GroupName}" IsChecked="True" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="AlignHoriSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="AlignHoriSetterEditor">
+                            <StackPanel Orientation="Horizontal" Name="VerticalAlignment" Background="#333333" >
+                                <RadioButton Name="Left" Margin="1" Style="{DynamicResource LeftAlignStyle}" ToolTip="Left" GroupName="{TemplateBinding GroupName}" />
+                                <RadioButton Name="Center" Margin="0,1,1,1" Style="{DynamicResource VCenterAlignStyle}" ToolTip="Center" GroupName="{TemplateBinding GroupName}" />
+                                <RadioButton Name="Right" Margin="0,1,1,1" Style="{DynamicResource RightAlignStyle}" ToolTip="Right" GroupName="{TemplateBinding GroupName}" />
+                                <RadioButton Name="Stretch" Margin="0,1,1,1" Style="{DynamicResource VStretchAlignStyle}" ToolTip="Stretch" GroupName="{TemplateBinding GroupName}" IsChecked="True" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ButtonSetterEditor" >
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ButtonSetterEditor">
+                            <Button Name="PART_Button" HorizontalAlignment="Right" Content="{TemplateBinding Content}" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+        </ResourceDictionary>
+        
+    </Application.Resources>
+</Application>

@@ -1,0 +1,49 @@
+<?xml encoding="utf-8" ?>
+<!--MaximizeButton模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="MaximizeButtonTemplate" TargetType="MaximizeButton">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+            <ContentPresenter ToolTip="{TemplateBinding}" />
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="MaximizeButton">
+        <Setter Property="Background" Value="{sysbtn_max_normal}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="Template" Value="{MaximizeButtonTemplate}"/>
+
+        <Style.Triggers>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="ToolTip" Value="向下还原" />
+                <Setter Property="Background" Value="{sysbtn_restore_hover}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsPressed" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{sysbtn_restore_down}" />
+            </MultiTrigger>
+
+            <Trigger Property="WindowState" Value="Maximized" >
+                <Setter Property="Background" Value="{sysbtn_restore_normal}" />
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_max_down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_max_hover}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

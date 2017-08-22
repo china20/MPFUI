@@ -1,0 +1,73 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="ctrlWindow" Author="汪荣(QQ:386666951)" >
+    <Window.Resources>
+
+        <String x:Key="MoreType" Value="Button" />
+        
+        <ImageBrush x:Key="return_off_16x16" Source="/mpfuid;/resource/uidesign/images/icon/return_off_16x16.png" />
+        <ImageBrush x:Key="return_on_16x16" Source="/mpfuid;/resource/uidesign/images/icon/return_on_16x16.png" />
+        
+        <Style TargetType="Window" >
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="MoreExpanderButtonStyle">
+            <Setter Property="Width" Value="32" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Background" Value="#222222" />
+            
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" >
+                            <Rectangle Name="Icon" Fill="{tool_moreExpander_off_20x20}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Fill" TargetName="Icon" Value="{tool_moreExpander_on_20x20}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+ 
+    </Window.Resources>
+
+    <!--主面板-->
+    <StackPanel Orientation="Horizontal" >
+
+        <RadioButton Name="MoveArrow" GroupName="ToolbarGrp" ToolTip="Move" Style="{DynamicResource IconRadioButtonStyle}" Tag="{tool_pan_off_24x24}" Tag1="{tool_pan_on_24x24}" />
+        <RadioButton Name="SelectArrow" IsChecked="True" ToolTip="Select" GroupName="ToolbarGrp" Style="{IconRadioButtonStyle}" Tag="{tool_selection_off_24x24}" Tag1="{tool_selection_on_24x24}" />
+
+        <RadioButton Name="Button" GroupName="ToolbarGrp" ToolTip="Button" Style="{DynamicResource IconRadioButtonStyle}" Tag="{Button_off_24x24}" Tag1="{Button_on_24x24}" />
+        <RadioButton Name="ComboBox" GroupName="ToolbarGrp" ToolTip="ComboBox" Style="{DynamicResource IconRadioButtonStyle}" Tag="{ComboBox_off_24x24}" Tag1="{ComboBox_on_24x24}" />
+        <RadioButton Name="TextBlock" GroupName="ToolbarGrp" ToolTip="TextBlock" Style="{DynamicResource IconRadioButtonStyle}" Tag="{TextBlock_off_24x24}" Tag1="{TextBlock_on_24x24}" />
+        <RadioButton Name="TextBox" GroupName="ToolbarGrp" ToolTip="TextBox" Style="{DynamicResource IconRadioButtonStyle}" Tag="{TextBox_off_24x24}" Tag1="{TextBox_on_24x24}" />
+        <RadioButton Name="RadioButton" GroupName="ToolbarGrp" ToolTip="RadioButton" Style="{DynamicResource IconRadioButtonStyle}" Tag="{RadioButton_off_24x24}" Tag1="{RadioButton_on_24x24}" />
+        <RadioButton Name="RepeatButton" GroupName="ToolbarGrp" ToolTip="RepeatButton" Style="{DynamicResource IconRadioButtonStyle}" Tag="{RepeatButton_off_24x24}" Tag1="{RepeatButton_on_24x24}" />
+
+        <RadioButton Name="CheckBox" GroupName="ToolbarGrp" ToolTip="CheckBox" Style="{DynamicResource IconRadioButtonStyle}" Tag="{CheckBox_off_24x24}" Tag1="{CheckBox_on_24x24}" />
+        <RadioButton Name="DatePicker" GroupName="ToolbarGrp" ToolTip="DatePicker" Style="{DynamicResource IconRadioButtonStyle}" Tag="{DatePicker_off_24x24}" Tag1="{DatePicker_on_24x24}" />
+        <RadioButton Name="Expander" GroupName="ToolbarGrp" ToolTip="Expander" Style="{DynamicResource IconRadioButtonStyle}" Tag="{Expander_off_24x24}" Tag1="{Expander_on_24x24}" />
+
+        <RadioButton Name="ListView" GroupName="ToolbarGrp" ToolTip="ListView" Style="{DynamicResource IconRadioButtonStyle}" Tag="{ListView_off_24x24}" Tag1="{ListView_on_24x24}" />
+        <RadioButton Name="ListBox" GroupName="ToolbarGrp" ToolTip="ListBox" Style="{DynamicResource IconRadioButtonStyle}" Tag="{ListBox_off_24x24}" Tag1="{ListBox_on_24x24}" />
+        <RadioButton Name="TreeView" GroupName="ToolbarGrp" ToolTip="TreeView" Style="{DynamicResource IconRadioButtonStyle}" Tag="{TreeView_off_24x24}" Tag1="{TreeView_on_24x24}" />
+
+        <RadioButton Name="Grid" GroupName="ToolbarGrp" ToolTip="Grid" Style="{DynamicResource IconRadioButtonStyle}" Tag="{Grid_off_24x24}" Tag1="{Grid_on_24x24}" />
+        <RadioButton Name="StackPanel" GroupName="ToolbarGrp" ToolTip="StackPanel" Style="{DynamicResource IconRadioButtonStyle}" Tag="{StackPanel_off_24x24}" Tag1="{StackPanel_on_24x24}" />
+        <RadioButton Name="DockPanel" GroupName="ToolbarGrp" ToolTip="DockPanel" Style="{DynamicResource IconRadioButtonStyle}" Tag="{StackLayout_off_24x24}" Tag1="{StackLayout_on_24x24}" />
+
+        <Button Name="MoreExpander" Style="{MoreExpanderButtonStyle}" ToolTip="MoreExpander" />
+
+        <RadioButton Name="MoreElement" GroupName="ToolbarGrp" Tag3="{DynamicResource MoreType}" ToolTip="Button" Style="{IconRadioButtonStyle}" Tag="{Button_off_24x24}" Tag1="{Button_on_24x24}" />
+
+    </StackPanel>
+</Window>

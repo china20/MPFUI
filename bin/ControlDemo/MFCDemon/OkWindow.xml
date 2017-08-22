@@ -1,0 +1,8 @@
+<?xml encoding="utf-8" ?>
+<Window Name="okWindow" Location="150,130" CanMoving="False" WindowStyle="None" Width="90" Height="28" >
+    <Window.Resources>
+    </Window.Resources>
+    <Grid Margin="0" Name="RootGrid" >
+        <Button Name="OkBtn" Content="登录" />
+    </Grid>
+</Window>

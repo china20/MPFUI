@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!--定义默认的皮肤样式-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Author="汪荣(QQ:386666951)" >
+    <!--定义系统需要的资源-->
+	
+	<!--Window皮肤资源定义-->
+	<SolidColorBrush x:Key="windowCaption" Color="#FF008CEE" />
+	<SolidColorBrush x:Key="windowBk" Color="#FFFFFF" />
+	<SolidColorBrush x:Key="windowBorder" Color="#FF008CEE" />
+	<SolidColorBrush x:Key="windowClient" Color="#FFFAFAFC" />
+	
+	<SolidColorBrush x:Key="textDisabled" Color="#888888" />
+
+    <!--窗口样式定义-->
+    <Style TargetType="Window" >
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{DynamicResource windowBk}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource windowBorder}" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Window">
+                    <Border CornerRadius="3"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <AdornerDecorator>
+                            <ContentPresenter />
+                        </AdornerDecorator>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,6 @@
+<?xml encoding="utf-8" ?>
+<Application StartupUri="ControlDemo/GroupItem/MainWindow.xml" Author="QQ:386666951)" >
+    <Application.Resources >
+        <ResourceDictionary Source="ControlDemo/Theme/default.xml" />
+    </Application.Resources>
+</Application>

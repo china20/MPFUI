@@ -1,0 +1,24 @@
+<?xml encoding="utf-8" ?>
+<TreeView Margin="20" >
+    <TreeViewItem Header="Desktop" IsExpanded="True">
+        <TreeViewItem Header="User" />
+        <TreeViewItem Header="Public" >
+            <TreeViewItem Header="Favorites" />
+            <TreeViewItem Header="Public Downloads" />
+            <TreeViewItem Header="Public Music" />
+            <TreeViewItem Header="Public Pictures" />
+            <TreeViewItem Header="Public Videos" />
+        </TreeViewItem>
+        <TreeViewItem Header="Computer" IsExpanded="True" >
+            <TreeViewItem Header="Local Disk (C:)" >
+                <TreeViewItem Header="Windows" />
+                <TreeViewItem Header="Users" />
+                <TreeViewItem Header="Program Files" />
+            </TreeViewItem>
+            <TreeViewItem Header="Dvd Drive (D:)" />
+        </TreeViewItem>
+        <TreeViewItem Header="Network" />
+        <TreeViewItem Header="Control Panel" />
+        <TreeViewItem Header="Recyle Bin" />
+    </TreeViewItem>
+</TreeView>

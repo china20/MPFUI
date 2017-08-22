@@ -1,0 +1,35 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" 
+        Title="模版资源" Width="400" Foreground="White" Height="320" ResizeBox="True" Background="#FF3D3D3D" >
+    <Window.Resources>  
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel DockPanel.Dock="Top" Height="36" Background="#3D3D3D" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="36" FlowDirection="RightToLeft" >
+            <Button Name="CancelBtn" Content="取消" Margin="0,0,16,0" Padding="0,4,0,4" Width="60" VerticalAlignment="Center" />
+            <Button Name="OkBtn" Content="确定" Margin="0,0,16,0" Padding="0,4,0,4" Width="60" VerticalAlignment="Center" />
+        </StackPanel>
+        
+        <DockPanel Margin="5,6,8,5">
+            <DockPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="22" Margin="0,0,0,8">
+                <TextBlock Text="目标属性：" Width="60" />
+                <TextBox Name="targetProp" Foreground="Green" IsReadOnly="True" />
+            </DockPanel>
+            <DockPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="22" Margin="0,0,0,8">
+                <TextBlock Text="绑定属性：" Width="60" />
+                <TextBox Name="bindProp" IsReadOnly="True" />
+            </DockPanel>
+            <ListBox Name="propList" Margin="60,0,0,0" />
+        </DockPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,141 @@
+<?xml encoding="utf-8" ?>
+<!--Menu模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <Style TargetType="ContextMenu">
+        <Setter Property="Background" Value="#9900EEEE"/>
+        <Setter Property="BorderBrush" Value="#8800FF00"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="SubmenuOffset" Value="-2,-2"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <ItemsPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Menu">
+        <Setter Property="Background" Value="#9900EEEE"/>
+        <Setter Property="BorderBrush" Value="#8800FF00"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="SubmenuOffset" Value="-2,-2"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Menu">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <ItemsPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate TargetType="ItemsPresenter" >
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate >
+                    <TextBlock Name="nameTxt" VerticalAlignment="Center"  Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--菜单子项样式定义-->
+    <Style TargetType="MenuItem">
+        <Setter Property="Background" Value="LightGreen"/>
+        <Setter Property="Foreground" Value="Blue"/>
+        <Setter Property="SubmenuOffset" Value="-2,-5"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Grid>
+                        <Border Name="Bd" DockPanel.Dock="Top" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <DockPanel>
+                                <Image Name="Icon" Stretch="None" Margin="0,0,8,0" Source="{TemplateBinding Icon}" Width="16" VerticalAlignment="Center"/>
+                                <Image1 DockPanel.Dock="Right" Stretch="None" Name="SubArrow" Source="{menu_arrow}" Margin="8,0,4,0" VerticalAlignment="Center" />
+                                <Path DockPanel.Dock="Right" Name="SubArrow" Margin="8,0,4,0" VerticalAlignment="Center" Data="M 0,0 L 4,4 L 0,8 Z" />
+                                <Path1 Name="GlyphPanel" Margin="8,0,4,0" VerticalAlignment="Center" Data="M0,2 L0,4.8 L2.5,7.4 L7.1,2.8 L7.1,0 L2.5,4.6 Z" />
+                                <ContentPresenter Name="PART_Header" MinHeight="16" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+                        <Popup Name="PART_Popup" AllowsTransparency="True" HorizontalOffset="-2" Focusable="False" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                            <Border Name="DropDownBorder" BorderBrush="Red" Padding="5" Background="{menubk}">
+                                <ScrollViewer Name="DropDownScrollViewer">
+                                    <ItemsPresenter Name="ItemsPresenter" />
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="Role" Value="SubmenuHeader" >
+                            <Setter Property="Padding" Value="3" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Visible" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Hidden" />
+                        </Trigger>
+                        <Trigger Property="Role" Value="SubmenuItem" >
+                            <Setter Property="Padding" Value="3" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="Role" Value="TopLevelHeader" >
+                            <Setter Property="Padding" Value="5" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Role" Value="TopLevelItem" >
+                            <Setter Property="Padding" Value="3" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate TargetType="ItemsPresenter" >
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate >
+                    <TextBlock Name="nameTxt" VerticalAlignment="Center"  Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsSubmenuOpen" Value="True" >
+                <Setter Property="Background" Value="Green" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="Blue" />
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+    
+</ResourceDictionary>

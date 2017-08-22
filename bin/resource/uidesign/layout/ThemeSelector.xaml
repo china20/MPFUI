@@ -1,0 +1,27 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" 
+        Title="主题选择" Width="800" Height="450" ResizeBox="True" MinWidth="400" MinHeight="200" 
+        Background="#FF3D3D3D" >
+    <Window.Resources>  
+    </Window.Resources>
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="36" Background="#3D3D3D">
+            <StackPanel VerticalAlignment="Top" Height="36" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" Focusable="False" Width="26" Height="12" />
+                <MaximizeButton Focusable="False" Width="26" Height="12" />
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="2,36,5,5">
+            <TreeView Name="ImageTree">
+            </TreeView>
+            <Image Name="ImageView" Margin="2,0,2,0" />
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,412 @@
+﻿<!--定义默认的皮肤样式-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ImageBrush x:Key="Tooltip_bkg" Source="resource/MPF/ToolTip/tooltip_bkg.png" ViewCorner="5" />
+    
+    <ImageBrush x:Key="sysbtn_min_normal" Source="resource/MPF/SysButton/sysbtn_min_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_min_hover" Source="resource/MPF/SysButton/sysbtn_min_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_min_down" Source="resource/MPF/SysButton/sysbtn_min_down.png" Stretch="Uniform"/>
+
+    <ImageBrush x:Key="sysbtn_close_normal" Source="resource/MPF/SysButton/sysbtn_close_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_close_hover" Source="resource/MPF/SysButton/sysbtn_close_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_close_down" Source="resource/MPF/SysButton/sysbtn_close_down.png" Stretch="Uniform"/>
+
+    <ImageBrush x:Key="sysbtn_restore_normal" Source="resource/MPF/SysButton/sysbtn_restore_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_restore_hover" Source="resource/MPF/SysButton/sysbtn_restore_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_restore_down" Source="resource/MPF/SysButton/sysbtn_restore_down.png" Stretch="Uniform"/>
+
+    <ImageBrush x:Key="sysbtn_max_normal" Source="resource/MPF/SysButton/sysbtn_max_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_max_hover" Source="resource/MPF/SysButton/sysbtn_max_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_max_down" Source="resource/MPF/SysButton/sysbtn_max_down.png" Stretch="Uniform"/>
+
+    <LinearGradientBrush x:Key="ButtonBorderRes" StartPoint="0,0" EndPoint="0,1" >
+        <GradientStop Offset="0.0" Color="#A3AEB9" />
+        <GradientStop Offset="0.375" Color="#8399A9" />
+        <GradientStop Offset="0.375" Color="#718597" />
+        <GradientStop Offset="1.0" Color="#617584" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonRes" StartPoint="0.7,0" EndPoint="0.7,1" >
+        <GradientStop Offset="0.0" Color="#FFFFFFFF" />
+        <GradientStop Offset="0.375" Color="#F9FFFFFF" />
+        <GradientStop Offset="0.625" Color="#E5FFFFFF" />
+        <GradientStop Offset="1.0" Color="#C6FFFFFF" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonRes_Hot" StartPoint="0.5,0" EndPoint="0.5,1" >
+        <GradientStop Offset="0.0" Color="Green" />
+        <GradientStop Offset="0.5" Color="Blue" />
+        <GradientStop Offset="1.0" Color="White" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonRes_Down" StartPoint="0.5,0" EndPoint="0.5,1" >
+        <GradientStop Offset="0.0" Color="WhiteSmoke" />
+        <GradientStop Offset="0.5" Color="Blue" />
+        <GradientStop Offset="1.0" Color="Green" />
+    </LinearGradientBrush>
+
+    <ControlTemplate x:Key="ContentControlTemplate" TargetType="ContentControl">
+        <ContentPresenter />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="CloseButtonTemplate" TargetType="CloseButton">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+            <ContentPresenter ToolTip="{TemplateBinding}" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MinimizeButtonTemplate" TargetType="MinimizeButton">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+            <ContentPresenter ToolTip="{TemplateBinding}" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MaximizeButtonTemplate" TargetType="MaximizeButton">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+            <ContentPresenter ToolTip="{TemplateBinding}" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ToggleButtonTemplate" TargetType="ToggleButton">
+        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="RepeatButtonTemplate" TargetType="RepeatButton">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}"
+                BorderBrush="{TemplateBinding}" Padding="{TemplateBinding}" CornerRadius="{TemplateBinding Border.CornerRadius}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="RadioButtonTemplate" TargetType="RadioButton">
+        <DockPanel Orientation="Horizontal" >
+            <Grid Height="13" Width="13" VerticalAlignment="Center" >
+                <Ellipse Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" />
+                <Ellipse Name="CheckIcon" Fill="{TemplateBinding Background}" Margin="3" StrokeThickness="0" />
+            </Grid>
+            <ContentPresenter VerticalAlignment="Center" />
+        </DockPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Visibility" TargetName="CheckIcon" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Visibility" TargetName="CheckIcon" Value="Hidden" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ComboBoxItemTemplate" TargetType="ComboBoxItem">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}" >
+            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Content="{TemplateBinding}" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PopupTemplate" TargetType="Popup">
+        <Border Name="Bd" Background="{TemplateBinding}">
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ToolTipTemplate" TargetType="ToolTip">
+        <Border Name="Bd" Padding="{TemplateBinding}" Background="{TemplateBinding}" BorderBrush="{TemplateBinding}" BorderThickness="{TemplateBinding}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="WindowTemplate" TargetType="Window">
+        <Border Background="{TemplateBinding}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <Style x:Key="ComboBoxTransparentButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Path Data="M 0 0 L 9 0 L 4.5 6 Z" Fill="Black" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ComboBoxTemplate" TargetType="ComboBox">
+        <Grid>
+            <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+                <DockPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <ToggleButton Name="PART_Down" Width="18" DockPanel.Dock="Right" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxTransparentButtonStyle}" />
+                    <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" Content="{TemplateBinding SelectionBoxItem}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <TextBox Name="PART_TextBox" Visibility="{Binding Path=TemplatedParent.IsEditable,Converter=BToV}" Margin="2" />
+                </DockPanel>
+            </Border>
+            <Popup Name="PART_Popup" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom">
+                <Border Name="DropDownBorder" BorderBrush="Blue" BorderThickness="1" Background="White">
+                    <ScrollViewer Name="DropDownScrollViewer">
+                        <ItemsPresenter Name="ItemsPresenter" />
+                    </ScrollViewer>
+                </Border>
+            </Popup>
+        </Grid>
+    </ControlTemplate>
+    
+    <!-- ToolTip控件样式定义 -->
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Template" Value="{ToolTipTemplate}" />
+    </Style>
+
+    <Style x:Key="FocusVisualAdorner" TargetType="Control">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Control">
+                    <Rectangle StrokeThickness="1" StrokeDashArray="2,1" Stroke="#FF999999" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- 默认Window样式定义 -->
+
+    <!--按钮-->
+    <Style TargetType="Button">
+        <Setter Property="BorderBrush" Value="{ButtonBorderRes}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{ButtonRes}" />
+        <Setter Property="Padding" Value="8,3,8,3" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}"
+                            BorderBrush="{TemplateBinding}" Padding="{TemplateBinding}" >
+                        <ContentPresenter HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{ButtonRes_Down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{ButtonRes_Hot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--按钮-->
+    <Style TargetType="RepeatButton">
+        <Setter Property="BorderBrush" Value="{ButtonBorderRes}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{ButtonRes}" />
+        <Setter Property="Margin" Value="4,2,4,2" />
+        <Setter Property="Padding" Value="8,3,8,3" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template" Value="{RepeatButtonTemplate}" />
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{ButtonRes_Down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{ButtonRes_Hot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--多选按钮-->
+    <ControlTemplate x:Key="CheckBoxTemplate" TargetType="CheckBox">
+        <DockPanel Orientation="Horizontal" Background="{TemplateBinding}" >
+            <Border Name="Bd" BorderBrush="{TemplateBinding}" BorderThickness="{TemplateBinding}" Width="13" Height="13" Margin="0,0,2,0" VerticalAlignment="Center">
+                <Path Name="CheckIcon" HorizontalAlignment="Center" Fill="Red" VerticalAlignment="Center" Data="M0,2 L0,4.8 L2.5,7.4 L7.1,2.8 L7.1,0 L2.5,4.6 Z" />
+            </Border>
+            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+        </DockPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Visibility" TargetName="CheckIcon" Value="Visible" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Visibility" TargetName="CheckIcon" Value="Hidden" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <Style TargetType="CheckBox">
+        <Setter Property="BorderBrush" Value="Blue" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Template" Value="{StaticResource CheckBoxTemplate}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock VerticalAlignment="Center" Foreground="{TemplateBinding}" Text="{TemplateBinding Content}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="BorderBrush" Value="LightGreen" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--单选按钮-->
+    <Style TargetType="RadioButton">
+        <Setter Property="BorderBrush" Value="Blue" />
+        <Setter Property="Background" Value="Blue" />
+        <Setter Property="Template" Value="{StaticResource RadioButtonTemplate}"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding}" Text="{TemplateBinding Content}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="LightGreen" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="CloseButton">
+        <Setter Property="Background" Value="{sysbtn_close_normal}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Template" Value="{CloseButtonTemplate}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_close_down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_close_hover}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="MinimizeButton">
+        <Setter Property="Background" Value="{sysbtn_min_normal}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Template" Value="{MinimizeButtonTemplate}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_min_down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_min_hover}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="MaximizeButton">
+        <Setter Property="Background" Value="{sysbtn_max_normal}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="Template" Value="{MaximizeButtonTemplate}"/>
+
+        <Style.Triggers>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="ToolTip" Value="向下还原" />
+                <Setter Property="Background" Value="{sysbtn_restore_hover}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsPressed" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{sysbtn_restore_down}" />
+            </MultiTrigger>
+
+            <Trigger Property="WindowState" Value="Maximized" >
+                <Setter Property="Background" Value="{sysbtn_restore_normal}" />
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_max_down}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{sysbtn_max_hover}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ProgressBar">
+        <Setter Property="Background" Value="SkyBlue" />
+        <Setter Property="Foreground" Value="Green" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Border Name="PART_Track" Background="{TemplateBinding}" BorderThickness="{TemplateBinding}"
+                            BorderBrush="{TemplateBinding}" Padding="{TemplateBinding}" >
+                        <Rectangle Fill="{TemplateBinding Foreground}" Name="PART_Indicator" HorizontalAlignment="Left" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ComboBoxItem">
+        <Setter Property1="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="MinHeight" Value="18" />
+        <Setter Property="Template" Value="{ComboBoxItemTemplate}" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="Blue" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BorderBrush" Value="Blue" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template" Value="{ComboBoxTemplate}" />
+        
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate TargetType="ItemsPresenter" >
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter1 Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate >
+                    <TextBlock Name="nameTxt" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter1>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="WhiteSmoke" />
+            </Trigger>
+            <Trigger Property="IsDropDownOpen" Value="True" >
+                <Setter Property="Background" Value="WhiteSmoke" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

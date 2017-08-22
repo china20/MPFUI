@@ -1,0 +1,21 @@
+﻿<?xml encoding="utf-8" ?>
+<Window Name="window" Title="线程窗口" RoundSize="0" ResizeMode="CanResize"
+        Width="300" Height="300" MinWidth="300" MinHeight="300" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" Background="#660000FF">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="5,38,3,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TextBlock Text="来自于多线程调用显示的窗口" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </Grid>
+</Window>

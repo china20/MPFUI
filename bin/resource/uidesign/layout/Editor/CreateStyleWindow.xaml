@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5,5" Title="编辑样式资源" Width="280" Height="196" 
+    ResizeBox="True" TextElement.Foreground="White" Background="#3D3D3D" >
+    <DockPanel Background="#3D3D3D" LastChildFill="True" >
+        <DockPanel DockPanel.Dock="Top" Height="36" Visibility="Visible" Background="#3D3D3D" Name="capPanel" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Path=Title,Mode=OneWay,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                TextElement.FontSize="14" TextElement.Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center" />
+        </DockPanel>
+        
+        <DockPanel Background="#595959">
+            <StackPanel DockPanel.Dock="Top" Margin="5,16,5,8" >
+                <RadioButton Content="空白" DockPanel.Dock="Top" Margin="0,0,0,16" Name="fromBlank" />
+                <RadioButton Content="从副本" DockPanel.Dock="Top" Name="fromBackup" />
+            </StackPanel>
+            <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" 
+                DockPanel.Dock="Bottom" >
+                <Button Content="确定" Width="61" Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="119,50,0,0" 
+                Name="okBtn" Click="OnOkButtonClick" />
+                <Button Content="取消" Width="61" Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="199,50,0,0" 
+                Name="cancelBtn" Click="OnCancelButtonClick" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,125 @@
+﻿<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5"  ResizeMode="CanResize"
+        Title="属性编辑" ResizeBox="True" Background="#FF3D3D3D" Foreground="White" >
+    <Window.Resources>
+        <Style TargetType="BrushSetterEditor" >
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="BrushSetterEditor">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="#222222" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="BrushResSetterEditor" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="BrushResSetterEditor">
+                            <BrushEditorPanel Name="BrushEditor" Background="#444444">
+                                <StackPanel Orientation="Vertical" Name="BrushSetters" DockPanel.Dock="Top" >
+                                    <Grid>
+                                        <BrushSetterEditor Name="PART_BrushSetterEditor" Height="50" VerticalAlignment="Center" />
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Background="#424242" Height="26" >
+                                    <RadioButton Name="SolidColorBrush_R" Content="纯色" IsChecked="True" />
+                                    <RadioButton Name="LinearGradientBrush_R" Content="线性" />
+                                    <RadioButton Name="RadialGradientBrush_R" Content="径向" />
+                                    <RadioButton Name="ImageBrush_R" Content="图像" />
+                                    <RadioButton Name="ResBrush_R" Content="资源" />
+                                </StackPanel>
+                                <Grid VerticalAlignment="Top" Margin1="16,38,0,8" >
+                                    <!--纯色画刷-->
+                                    <SolidColorBrushSetterEditor Name="SolidColorBrush_N" Margin1="16,38,0,8" MinWidth="180" MinHeight="80"
+                                          VerticalAlignment="Top" Visibility="{Binding Path=IsChecked, ElementName=SolidColorBrush_R, Converter=BToV}">
+                                    </SolidColorBrushSetterEditor>
+                                    <!--线性渐变画刷-->
+                                    <LinearGradientBrushSetterEditor Name="LinearGradientBrush_N" Margin1="16,38,0,8" MinWidth="180" MinHeight="80"
+                                          VerticalAlignment="Top" Visibility="{Binding Path=IsChecked, ElementName=LinearGradientBrush_R, Converter=BToV}" />
+                                    <!--径向渐变画刷-->
+                                    <RadialGradientBrushSetterEditor Name="RadialGradientBrush_N" Margin1="16,38,0,8" MinWidth="180" MinHeight="80"
+                                          VerticalAlignment="Top" Visibility="{Binding Path=IsChecked, ElementName=RadialGradientBrush_R, Converter=BToV}" />
+                                    <!--图像画刷-->
+                                    <ImageBrushSetterEditor Name="ImageBrush_N" Margin1="16,38,5,8" MinWidth="180" MinHeight="80"
+                                          VerticalAlignment="Top" Visibility="{Binding Path=IsChecked, ElementName=ImageBrush_R, Converter=BToV}" />
+                                </Grid>
+                            </BrushEditorPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background1="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel DockPanel.Dock="Top" Height="36" Visibility="Collapsed" Background="#3D3D3D" Name="capPanel" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="1" >
+            <DockPanel Width="220" Background="#333333" >
+                <Button Name="PropertyPanel_Return" DockPanel.Dock="Top" Cursor="Hand" Content="返回资源" Style="{ReturnBtnStyle}" Foreground="Green" Height="26" VerticalAlignment="Top" />
+                <Grid Height="26" DockPanel.Dock="Top" Background="#222222" >
+                    <TextBlock Margin="2,0,0,0" Text="属性列表" Foreground="White" VerticalAlignment="Center" />
+                </Grid>
+                <TreeView Name="SettersTree" BorderThickness="0" />
+            </DockPanel>
+            <Grid Background="#4B4B4B" Margin="0" >
+                <StackPanel VerticalAlignment="Center" >
+                    <Button Name="AddPropBtn" Content="Add" ToolTip="增加属性" Margin="2,4,2,4" />
+                    <Button Name="DelPropBtn" Content="Del" ToolTip="删除属性" Margin="2,4,2,4" />
+                    <Button Name="UpPropBtn" Content="Up" ToolTip="上移属性" Margin="2,4,2,4" />
+                    <Button Name="DownPropBtn" Content="Down" ToolTip="下移属性" Margin="2,4,2,4" />
+                </StackPanel>
+            </Grid>
+            <StackPanel Name="EditArea" Background="#444444" >
+                <StackPanel VerticalAlignment="Top" Margin="8,8,0,0">
+                    <DockPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="属性名称: " Width="80" HorizontalAlignment="Left"
+                                      TextAlignment="Right" Foreground="White" VerticalAlignment="Center" />
+                        <TextBox Name="propName" IsReadOnly="True" Margin="2,1,88,1" Height="20" VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="0,5,0,0">
+                        <TextBlock Text="所属控件: " Width="80" HorizontalAlignment="Left"
+                                      TextAlignment="Right" Foreground="White" VerticalAlignment="Center" />
+                        <TextBox Name="targetType" IsReadOnly="True" Margin="2,1,88,1" Height="20" VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Name="targetNamePanel" DockPanel.Dock="Top" Margin="0,5,0,0">
+                        <TextBlock Text="TargetName: " Width="80" HorizontalAlignment="Left"
+                                      TextAlignment="Right" Foreground="White" VerticalAlignment="Center" />
+                        <ComboBox Name="targetName" IsReadOnly="True" Margin="2,1,88,1" Height="20" VerticalAlignment="Center" />
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Top" Margin="2">
+                    <Grid DockPanel.Dock="Top" Margin="0,12,0,16" Height="1" Background="#333333" />
+                    <StackPanel Margin="70,1,85,1">
+                        <StringSetterEditor Name="String_Prop" Visibility="Collapsed" MaxLines="10" TextWrapping="Wrap" Height="60" Margin="0,0,66,0" />
+                        <NumericSetterEditor Name="Integer_Prop" Height="20" Margin="0,0,66,0" Visibility="Collapsed" />
+                        <FloatSetterEditor Name="Float_Prop" Height="20" Visibility="Collapsed" Margin="0,0,66,0" />
+                        <ChoiceSetterEditor Name="ComboBox_Prop" Height="22" Visibility="Collapsed" />
+                        <CursorSetterEditor Name="Cursor_Prop" Height="22" Visibility="Collapsed" />
+
+                        <RatioSetterEditor Name="Ratio_Prop" Visibility="Collapsed" />
+
+                        <AlignVertSetterEditor Name="AlignVert_Prop" Visibility="Collapsed" />
+                        <AlignHoriSetterEditor Name="AlignHori_Prop" Visibility="Collapsed" />
+
+                        <RectSetterEditor Name="Rect_Prop" Height="200" Visibility="Collapsed" />
+                        <CheckSetterEditor Name="Boolean_Prop" Style="{ResCheckSetterEditor}" Height="20" Visibility="Collapsed" />
+                        <fRectSetterEditor Name="fRect_Prop" Visibility="Collapsed" />
+                        <WidthSetterEditor Name="Width_Prop" Visibility="Collapsed" />
+                        <BrushResSetterEditor Name="Brush_Prop" Visibility="Collapsed" />
+                        <ControlTemplateSetterEditor Name="Template_Prop" Tag="{RES}" Visibility="Collapsed" />
+                        <DataTemplateSetterEditor Name="DataTemplate_Prop" Tag="{RES}" Visibility="Collapsed" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </DockPanel>
+</Window>

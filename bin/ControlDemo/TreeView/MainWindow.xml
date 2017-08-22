@@ -1,0 +1,62 @@
+﻿<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="TreeView演示" RoundSize="0" ResizeMode="CanResize"
+        Width="300" Height="400" MinWidth="300" MinHeight="400" Background1="#FF3D3D3D" >
+    <Window.Resources>
+        <DataTemplate x:Key="TreeItemHeaderTemp">
+            <DockPanel Control.Foreground="Black" >
+                <CheckBox Foreground="White"  Content="Header" IsChecked="{Binding Path=IsChecked}" />
+                <TextBlock Text="{Binding}" Margin="6,0,0,0" VerticalAlignment="Center" />
+            </DockPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <DockPanel Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <DockPanel Margin="5" DockPanel.Dock="Top" VerticalAlignment="Top" Height="26">
+                <RadioButton Name="setBtn" Content="直接配置" IsChecked="True" Margin="0,0,8,0" />
+                <RadioButton Name="bindBtn" Content="数据绑定" />
+            </DockPanel>
+
+            <Grid DockPanel.Dock="Top" Margin="5" >
+                <TextBlock VerticalAlignment="Top" Visibility="{Binding Path=Visibility,ElementName=treeView}" Text="{Binding Path=SelectedItem,ElementName=treeView}" />
+                <TextBlock VerticalAlignment="Top" Visibility="{Binding Path=Visibility,ElementName=bindTree}" Text="{Binding Path=SelectedItem,ElementName=bindTree}" />
+            </Grid>
+
+            <Grid Margin="5" Background="#444444" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TreeView Name="bindTree" ItemTemplate="{TreeItemHeaderTemp}" Visibility="{Binding Path=IsChecked, ElementName=bindBtn, Converter=BToV}" />
+                <TreeView Name="treeView" Visibility="{Binding Path=IsChecked, ElementName=setBtn, Converter=BToV}" >
+                    <TreeViewItem Header="Desktop" IsExpanded="True">
+                        <TreeViewItem Header="User" />
+                        <TreeViewItem Header="Public" IsExpanded="True" >
+                            <TreeViewItem Header="Favorites" />
+                            <TreeViewItem Header="Public Downloads" />
+                            <TreeViewItem Header="Public Music" />
+                            <TreeViewItem Header="Public Pictures" />
+                            <TreeViewItem Header="Public Videos" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Computer" IsExpanded="True" >
+                            <TreeViewItem Header="Local Disk (C:)" IsExpanded="True" >
+                                <TreeViewItem Header="Windows" />
+                                <TreeViewItem Header="Users" />
+                                <TreeViewItem Header="Program Files" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Dvd Drive (D:)" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Network" />
+                        <TreeViewItem Header="Control Panel" />
+                        <TreeViewItem Header="Recyle Bin" />
+                    </TreeViewItem>
+                </TreeView>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

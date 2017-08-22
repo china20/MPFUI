@@ -1,0 +1,61 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="TextBlock演示" RoundSize="0" ResizeMode1="CanResize"
+        Width="580" Height="400" MinWidth="300" MinHeight="300" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <StackPanel Margin="5" Control.Foreground="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
+                    <TextBlock Name="Info" FontStyle="Italic" TextDecorations="StrikeThrough" Foreground="Gray" Text="普通文本" LineSpacing="5" />
+                </StackPanel>
+                <TextBlock Name="Info" Foreground="Red" TextWrapping="NoWrap" LineSpacing="6" >
+                    <Run Text="复合文本" FontWeight="ExtraBold" Foreground="Green" />
+                    <InlineUIContainer>
+                        <Grid Height="12" >
+                            <Rectangle Fill="Blue" Height="1" Width="230" VerticalAlignment="Center" />
+                        </Grid>
+                    </InlineUIContainer>
+                </TextBlock>
+                <TextBlock Name="myBlk" TextWrapping="Wrap" Background="WhiteSmoke" LineSpacing="8">
+                    <Span>
+                        <Run Text="我" FontStyle="Oblique" Foreground="Red" FontSize="20" FontWeight="ExtraBold" />
+                        <Run TextDecorations="StrikeThrough" Text="，走过冬的严寒，踏着一路积雪，赏了满目雪景。曾沉醉在冰冷的雪域小城" />
+                        <Run Text="，纵情漫步在林海雪原，喜欢那清冷的气息，" />
+                        <Run Text="净化" FontSize="16" Foreground="Green" FontWeight="ExtraBold" />
+                        <Run Text="我的心神。" />
+                        <Run Text="喜欢凛冽的寒风，吹醒我沉迷的意念。冬，是春的储藏，寒是暖的等候。洁白的绒雪下，" />
+                        <Run Text="呵护" FontSize="15" Foreground="Blue" FontWeight="ExtraBold"/>
+                        <Run Text="的是满怀热度的沃土。" />
+                        <LineBreak />
+                        <LineBreak />
+                        <Hyperlink Foreground="Blue" Name="txtLink" >
+                            <Run Text="晨风文学网" />
+                        </Hyperlink>
+                    </Span>
+                </TextBlock>
+
+                <Grid Background="#FF888888" Opacity="0.5" >
+                    <Grid Background="#0000FF00">
+                        <TextBlock Name="MyTxtBlock" FontSize="15" TextWrapping="Wrap" Text="侧似乎" />
+                    </Grid>
+                </Grid>
+
+                <!--这个用来演示使用代码完成-->
+                <Grid1 Background="#888888" Opacity="0.5">
+                    <TextBlock Name="MyTxtBlock" FontSize="15" TextWrapping="Wrap" LineSpacing="5" />
+                </Grid1>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

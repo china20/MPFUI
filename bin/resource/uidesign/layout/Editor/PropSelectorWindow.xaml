@@ -1,0 +1,16 @@
+﻿<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" 
+        Title="请选择属性" Width="220" Height="320" ResizeBox="True" Foreground="White" Background="#FF3D3D3D" >
+    <Window.Resources>  
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background="#3D3D3D" >
+        <TextBox Name="targetType" DockPanel.Dock="Top" Margin="5,5,5,1" Height="22" />
+        <ComboBox Name="targetName" DockPanel.Dock="Top" Height="22" Margin="5,2,5,0" VerticalAlignment="Top" />
+        <!--除去标题栏部分-->
+        <DockPanel Margin="5,3,5,5">
+            <ListBox Name="propList" />
+        </DockPanel>
+    </DockPanel>
+</Window>

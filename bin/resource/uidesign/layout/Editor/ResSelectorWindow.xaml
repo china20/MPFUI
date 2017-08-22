@@ -1,0 +1,16 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" 
+        Title="请选择资源类型" Width="400" Foreground="White" Height="320" ResizeBox="True" Background="#FF3D3D3D" >
+    <Window.Resources>  
+    </Window.Resources>
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--除去标题栏部分-->
+        <UniformGrid Name="gridPanel" Margin="5,5,5,5" Columns="1" Rows="1" >
+            <ListBox Name="resList" />
+            <ListBox Name="ctrlList" Visibility="Callapsed" />
+        </UniformGrid>
+		<CheckBox Name="fromType" Visibility="Hidden" Content="从模板创建" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,6,8,8" />
+    </Grid>
+</Window>

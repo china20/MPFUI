@@ -1,0 +1,69 @@
+﻿<?xml encoding="UTF-8" ?>
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Name="window" Title="Window" Width="300" Height="300" Background="Beige">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" MinWidth="400" MaxWidth="800"/>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <ListBox Grid.Column="0" Name="MyList" 
+                 Style="{StaticResource ListBoxDemo}" 
+                 ItemContainerStyle="{StaticResource FetchItem}" 
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+        <GridSplitter Grid.Column="1" Width="5" Cursor="Splith" Background="White" />
+
+        <StackPanel Grid.Column="2" Name="CenterInfo">
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <TextBlock Width="100"  Text="类型" />
+                <ProgressBar Style="{StaticResource DemoProgress}"  Value="{Binding Percent}" MinValue="0" MaxValue="100" Width="80" Height="75" Margin="0,5,0,5" Foreground="DarkBlue" Background="MediumSpringGreen" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <TextBlock Width="100"  Text="Info1" />
+                <TextBlock Text="{Binding Info1}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <TextBlock Width="100"  Text="Info2" />
+                <TextBlock Text="{Binding Info2}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <TextBlock Width="100"  Text="Info3" />
+                <TextBlock Text="{Binding Info3}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <TextBlock Width="100"  Text="EventStr" />
+                <TextBlock Text="{Binding EventStr}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <TextBlock Width="100"  Text="EventMore" />
+                <TextBlock Text="{Binding EventMore}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                <TextBlock Width="100"  Text="ErrStr" />
+                <TextBlock Text="{Binding ErrStr}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+				<TextBlock Width="100"  Text="类型" />
+				<TextBlock Width="100"  Text="{Binding OwnerType}" />
+			</StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+				<TextBlock Width="100" Text="姓名" />
+				<TextBlock Text="{Binding OwnerName}"/>
+			</StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+				<TextBlock Width="100" Text="号码" />
+				<TextBlock Text="{Binding OwnerNum}"/>
+			</StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+				<TextBlock Width="100" Text="手机" />
+				<TextBlock Text="{Binding OwnerPhone}"/>
+			</StackPanel>
+            <!--<HwndHost Name="host1" Width="100" Visibility="Visible"  Height="30" Background="LimeGreen"/>-->
+            <HwndHostButton ID="20001" Content="按钮" Width="100" Height="30" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,32 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" ResizeMode="CanResize"
+        Title="图像选择" Width="600" Height="369" MinWidth="600" MinHeight="369" ResizeBox="True" Background="#FF3D3D3D" >
+    <Window.Resources>
+        <ImageBrush x:Key="ShowBrush" Source="" Stretch="None" />
+    </Window.Resources>
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="36" Background="#3D3D3D">
+            <StackPanel VerticalAlignment="Top" Height="36" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="2,36,5,38">
+            <ImageTreeView Name="ImgsTree" Width="200" BorderThickness="0" Background="#595959" >
+            </ImageTreeView>
+            <Grid Name="ImgShowBk" >
+                <Rectangle Name="ImgShow" Fill="{ShowBrush}" />
+            </Grid>
+        </DockPanel>
+        <DockPanel Margin="2,8,5,3" VerticalAlignment="Bottom" Height="32">
+            <Button Name="Cancel" Foreground="White" Content="取消" DockPanel.Dock="Right" MinWidth="60" Padding="0,3,0,3" Margin="5,4,8,2" />
+            <Button Name="Ok" Foreground="White" Content="确定" DockPanel.Dock="Right" MinWidth="60" Padding="0,3,0,3" Margin="5,4,10,2" />
+            <TextBlock Name="ImgPath" Margin="5,0,6,0" FontSize="12" Foreground="Red" VerticalAlignment="Center" />
+        </DockPanel>
+    </Grid>
+</Window>

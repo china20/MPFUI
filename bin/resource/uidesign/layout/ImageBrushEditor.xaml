@@ -1,0 +1,44 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" Title="图像刷编辑" 
+        Width="620" Height="520" ResizeBox="True" Background="#FF3D3D3D" Foreground="White" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" Background="#3D3D3D">
+            <CloseButton Width="28" Height="12" VerticalAlignment="Center" DockPanel.Dock="Right"  />
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="2,26,2,8">
+            <StackPanel DockPanel.Dock="Bottom" Margin="5,0,0,0" >
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Viewbox " />
+                            <fRectEditor Name="viewBox" />
+                        </StackPanel>
+                        <CheckBox Name="absoluteCheck" Content="按百分比" Margin="50,6,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="16,0,0,0">
+                        <TextBlock Text="ViewCorner " />
+                        <fRectEditor Name="viewCorner" />
+                    </StackPanel>
+                    <DImageGrid ClipToBounds="True"  Margin="28,0,0,6" Width="80" Height="50">
+                        <Rectangle Name="imgPreview" Fill="Green" Margin="5" />
+                    </DImageGrid>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,0,32,0" >
+                    <Button Name="cancelBtn" Content="取消" Padding="8,3,8,3" />
+                    <Button Name="okBtn" Content="确定" Padding="8,3,8,3" Margin="8,0,16,0" />
+                </StackPanel>
+            </StackPanel>
+            
+            <ImageEditPanel Name="ImgEditor" Margin="4,6,4,16" />
+        </DockPanel>
+    </Grid>
+</Window>

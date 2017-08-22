@@ -1,0 +1,61 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="10" Background="LightBlue" >
+    <Grid.Resources>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="80*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="20*" />
+    </Grid.ColumnDefinitions>
+    <Grid Margin="10" Background="SkyBlue" >
+        <Grid.Resources>
+            <Style TargetType="Control" x:Key="PreviewStyle">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Control">
+                            <Rectangle Fill="#BB888888" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="GridSplitter" >
+                <Setter Property="ShowsPreview" Value="True" />
+                <Setter Property="PreviewStyle" Value="{StaticResource PreviewStyle}" />
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="70*" />
+        </Grid.ColumnDefinitions>
+        <Grid Background="Green" Grid.Row="0" Grid.Column="0" MinWidth="10">
+            <TextBlock Text="左边面板" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <GridSplitter Width="5" Grid.Column="1" ShowsPreview="{Binding Path=IsChecked,ElementName=lcf}" Cursor="Splith" Background="Grey" />
+        <Grid Grid.Row="0" Grid.Column="2" Background="Red" MinWidth="100" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="70*" />
+            </Grid.RowDefinitions>
+            <Grid Background="Yellow" Grid.Row="0" Grid.Column="0" MinHeight="10" >
+                <TextBlock Text="右上面板" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+            <GridSplitter Height="5" Grid.Row="1" Cursor="Splitv" ShowsPreview="{Binding Path=IsChecked,ElementName=lcf}" />
+            <Grid Background="White" Grid.Row="2" Grid.Column="0" MinHeight="10" >
+                <TextBlock Text="右下面板" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </Grid>
+    </Grid>
+    <GridSplitter Width="4" Grid.Column="1" Cursor="Splith" >
+        <GridSplitter.Template>
+            <ControlTemplate TargetType="GridSplitter">
+                <Rectangle Fill="SkyBlue" />
+            </ControlTemplate>
+        </GridSplitter.Template>
+    </GridSplitter>
+    <StackPanel Grid.Row="0" Grid.Column="2" MinWidth="20" Background="WhiteSmoke" Margin="5" >
+        <CheckBox Name="lcf" Content="ShowsPreview" Margin="5" IsChecked="True" />
+    </StackPanel>
+</Grid>
+

@@ -1,0 +1,27 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" 
+        Title="增加名称" Width="280" Height="100" ResizeBox="True" Background="#FF3D3D3D" >
+    <Window.Resources>  
+    </Window.Resources>
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="36" Background="#3D3D3D">
+            <CloseButton DockPanel.Dock="Right" Width="26" Height="12" />
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                       FontSize="13" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="2,36,5,5" TextElement.Foreground="White">
+            <DockPanel DockPanel.Dock="Top">
+                <TextBlock Name="txtName" Text="名称 " VerticalAlignment="Center" />
+                <TextBox Name="txtVal" Height="22" VerticalAlignment="Center" IsFocused="True" />
+            </DockPanel>
+            <Grid>
+                <Button Name="OkBtn" Width="60" Margin="0,8,8,4" HorizontalAlignment="Right" Content="确定" />
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

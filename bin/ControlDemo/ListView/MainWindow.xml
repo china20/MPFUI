@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="ListView演示" RoundSize="0" ResizeMode="CanResize"
+        Width="690" Height="400" MinWidth="300" MinHeight="300">
+    <Window.Resources>
+        <Style x:Key="TestViewStyle" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="手机号码 " />
+                                <ComboBox Name="x123" MinHeight="20" MinWidth="200" SelectionBoxItem="{Binding Path=SelTel,Mode=TwoWay}" ItemsSource="{Binding Path=Tel}" />
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <Grid Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
+                    <TextBlock Text="CenterX: " VerticalAlignment="Center" />
+                    <TextBox Name="CenterX" Text="270" Width="50" Height="20" />
+                    <TextBlock Text="CenterY: " VerticalAlignment="Center" />
+                    <TextBox Name="CenterY" Text="250" Width="50" Height="20" />
+
+                    <TextBlock Text="RadiusX: " VerticalAlignment="Center" Margin="20,0,0,0" />
+                    <TextBox Name="RadiusX" Text="200" Width="50" Height="20" ToolTip="小于0取消裁剪" />
+                    <TextBlock Text="RadiusY: " VerticalAlignment="Center" />
+                    <TextBox Name="RadiusY" Text="200" Width="50" Height="20" ToolTip="小于0取消裁剪" />
+
+                    <Button Name="ClipList" Content="裁剪列表" Margin="10,0,0,0" />
+                    <Button Name="ResetList" Click="OnResetListButtonClick" Content="插入列表项" Margin="10,0,0,0" />
+                    <Button Name="ResetList" Click="OnDeleteListButtonClick" Content="删除列表项" Margin="10,0,0,0" />
+                </StackPanel>
+
+                <ListView Name="ListView" Margin="10,38,10,10" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" BorderThickness="1" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="60" Header="序号" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <CheckBox Width="16" Height="16" IsChecked="{Binding Path=Checked}" />
+                                            <TextBlock Text="{Binding Path=Number}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="80" Header="姓名" DisplayMemberBinding="{Binding Path=Name}"/>
+                            <GridViewColumn Width="100" Header="性别" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" ToolTip1="演示单元项模版">
+                                            <Button Content="Btn" ToolTip="{Binding Path=TipMsg}" />
+                                            <TextBlock Text="{Binding Path=Sexy}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="120" Header="电话号码" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox MinHeight="20" SelectionBoxItem="{Binding Path=SelTel,Mode=TwoWay}" ItemsSource="{Binding Path=Tel}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="220" Header="地址" DisplayMemberBinding="{Binding Path=Addr,Mode=TwoWay}"/>
+                        </GridView>
+                    </ListView.View>
+
+                    <ListViewItem Content="这里演示对单独的列表项设置模版" Height="32" Foreground="Red" >
+                        <ListViewItem.Template>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </ListViewItem.Template>
+                    </ListViewItem>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

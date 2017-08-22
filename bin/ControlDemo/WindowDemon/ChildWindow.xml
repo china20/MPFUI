@@ -1,0 +1,21 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" Title="子窗口演示" Width="600" Height="400" MinWidth="300" MinHeight="400" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" Background="#660000FF">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <StackPanel Margin="5,32,5,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <Button Name="OpenWnd" Content="打开窗口" MinHeight="32" />
+        </StackPanel>
+    </Grid>
+</Window>

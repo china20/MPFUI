@@ -1,0 +1,7 @@
+﻿<TabControl Name="tab1" Background="#CCFFFFFF" Margin="0" Width="200" Height="100" Average="False" >
+    <TabItem Header="tab1" Height="22" Width="60"  Margin="0" Padding="5,0" >
+    </TabItem>
+    <TabItem Header="tab2" Height="22" Width="60"  Margin="0" Padding="5,0" >
+    </TabItem>
+
+</TabControl>

@@ -1,0 +1,33 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="10" >
+    <Grid.Resources>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="70*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="30*" />
+    </Grid.ColumnDefinitions>
+    <StackPanel Margin="0" Background="LightBlue" Orientation="{Binding Path=SelectionBoxItem,ElementName=ori,Converter=OrientationCvt}" >
+        <Button Content="Button" MinWidth="100" />
+        <Button Content="ListBox" />
+        <Button Content="ListView" />
+        <Button Content="StackPanel" />
+        <TextBox Text="LastFill" MaxLines="0" MinWidth="120" MinHeight="20" />
+    </StackPanel>
+    <GridSplitter Width="4" Grid.Column="1" Cursor="Splith" >
+        <GridSplitter.Template>
+            <ControlTemplate TargetType="GridSplitter">
+                <Rectangle Fill="SkyBlue" />
+            </ControlTemplate>
+        </GridSplitter.Template>
+    </GridSplitter>
+    <StackPanel Grid.Row="0" Grid.Column="2" MinWidth="20" Background="WhiteSmoke" >
+        <DockPanel >
+            <TextBlock Text="Orientation: " Margin="5,0,0,0" VerticalAlignment="Center" />
+            <ComboBox Name="ori" Height="20" Margin="5" VerticalAlignment="Center" >
+                <ComboBoxItem Content="Vertical" IsSelected="True" />
+                <ComboBoxItem Content="Horizontal" />
+            </ComboBox>
+        </DockPanel>
+    </StackPanel>
+</Grid>

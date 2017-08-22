@@ -1,0 +1,42 @@
+<?xml encoding="utf-8" ?>
+<!--TreeView模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ImageBrush x:Key="calendar_button" Source="resource/Sharpui/Calendar/calendar.png" Stretch="Uniform"/>
+
+    <ControlTemplate x:Key="DatePickerTemplate" TargetType="DatePicker">
+        <Grid>
+            <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+                <DockPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <ToggleButton Name="PART_Button" Background="{calendar_button}" Width="20" DockPanel.Dock="Right" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" Content="{TemplateBinding SelectionBoxItem}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <TextBox Name="PART_TextBox" FontSize="10" Foreground="Black" BorderThickness="0" IsReadOnly="True" Visibility="{Binding Path=TemplatedParent.IsEditable,Converter=BToV}" Margin="2" />
+                </DockPanel>
+            </Border>
+            <Popup Name="PART_Popup" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom">
+            </Popup>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="DatePicker">
+        <Setter Property="Background" Value="#CCEEEEEE" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BorderBrush" Value="SkyBlue" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template" Value="{DatePickerTemplate}" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="#CC88EEEE" />
+            </Trigger>
+            <Trigger Property="IsDropDownOpen" Value="True" >
+                <Setter Property="Background" Value="#CC88EEEE" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

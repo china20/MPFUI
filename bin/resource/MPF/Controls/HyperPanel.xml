@@ -1,0 +1,9 @@
+<?xml encoding="utf-8" ?>
+<HyperPanel Margin="20" VerticalAlignment="Center" >
+    <Button Content="Button1" Width="80" Height="38" />
+    <Button Content="Button2" Width="80" Height="38" />
+    <Button Content="Button3" Width="80" Height="38" />
+    <Button Content="Button4" Width="80" Height="38" />
+    <Button Content="Button5" Width="80" Height="38" />
+</HyperPanel>
+

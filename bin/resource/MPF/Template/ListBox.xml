@@ -1,0 +1,53 @@
+<?xml encoding="utf-8" ?>
+<!--ListBox模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="ListBoxItemTemplate" TargetType="ListBoxItem">
+        <Border Background="{TemplateBinding}" 
+                BorderThickness="{TemplateBinding}" 
+                BorderBrush="{TemplateBinding}" >
+            <ContentPresenter VerticalAlignment="Center" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ListBoxTemplate" TargetType="ListBox">
+        <Border Name="Bd" Background="{TemplateBinding}" 
+                BorderThickness="{TemplateBinding}"
+                BorderBrush="{TemplateBinding}" Padding="2" >
+            <ScrollViewer Focusable="False" 
+                          Padding="{TemplateBinding Padding}" 
+                          HorizontalScrollBarVisibility="Disabled" 
+                          VerticalScrollBarVisibility="Auto">
+                <ItemsPresenter />
+            </ScrollViewer>
+        </Border>
+    </ControlTemplate>
+
+    <!--数据模版，根据业务自行定制-->
+    <DataTemplate x:Key="ListBoxDataTemplate" >
+        <TextBlock Text="{Binding}" VerticalAlignment="Center" />
+    </DataTemplate>
+    
+    <!--ListBoxItem样式-->
+    <Style TargetType="ListBoxItem">
+        <Setter Property="MinHeight" Value="22" />
+        <Setter Property="Template" Value="{ListBoxItemTemplate}" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="SkyBlue" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="#D7D7D7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ListBox">
+        <Setter Property="BorderBrush" Value="#949494"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template" Value="{ListBoxTemplate}" />
+    </Style>
+    
+</ResourceDictionary>

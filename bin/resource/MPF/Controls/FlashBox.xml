@@ -1,0 +1,5 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="20" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" >
+    <FlashBox Name="Flash02" Play="True" Margin="-80,-50,0,0" Width="720" Height="342" 
+              Source="resource/MPF/swf/sun.swf" HorizontalAlignment="Left" VerticalAlignment="Top" />
+</Grid>

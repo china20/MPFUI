@@ -1,0 +1,221 @@
+<?xml encoding="utf-8" ?>
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <SolidColorBrush x:Key="ScrollBarBk" Color="#3D3D3D" />
+    <SolidColorBrush x:Key="ScrollBarOverBk" Color="#3D3D3D" />
+
+    <SolidColorBrush x:Key="ScrollBarBtnBk" Color="#808080" />
+    <SolidColorBrush x:Key="ScrollBarPageBtnBk" Color="#888866FF" />
+    <SolidColorBrush x:Key="ScrollBarDragBtnBk" Color="#E5E5E5" />
+    <SolidColorBrush x:Key="ScrollBarOverBtnBk" Color="#CCCCCC" />
+
+    <Style x:Key="ScrollBarUpButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBtnBk}" />
+        <Setter Property="Width" Value="7" />
+        <Setter Property="Height" Value="14" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 0 9 L 7 9 L 3.5 2 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarDownButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBtnBk}" />
+        <Setter Property="Width" Value="7" />
+        <Setter Property="Height" Value="14" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 0 4 L 7 4 L 3.5 11 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarLeftButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBtnBk}" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Height" Value="7" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 9 0 L 9 7 L 2 3.5 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarRightButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBtnBk}" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Height" Value="7" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 4 0 L 4 7 L 11 3.5 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HorizontalScrollBarPageButton1" TargetType="RepeatButton">
+        <Setter1 Property="Background" Value="{DynamicResource ScrollBarPageBtnBk}" />
+        <Setter Property="Template" Value="{VertPageButton}" />
+    </Style>
+
+    <Style x:Key="HorizontalScrollBarPageButton2" TargetType="RepeatButton">
+        <Setter1 Property="Background" Value="{DynamicResource ScrollBarPageBtnBk}" />
+        <Setter Property="Template" Value="{VertPageButton}" />
+    </Style>
+
+    <Style x:Key="VerticalScrollBarPageButton1" TargetType="RepeatButton">
+        <Setter1 Property="Background" Value="{DynamicResource ScrollBarPageBtnBk}" />
+        <Setter Property="Template" Value="{VertPageButton}" />
+    </Style>
+
+    <Style x:Key="VerticalScrollBarPageButton2" TargetType="RepeatButton">
+        <Setter1 Property="Background" Value="{DynamicResource ScrollBarPageBtnBk}" />
+        <Setter Property="Template" Value="{VertPageButton}" />
+    </Style>
+
+    <Style x:Key="HorizontalScrollBarThumb" TargetType="Thumb">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBtnBk}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Rectangle Fill="{TemplateBinding Background}" RadiusX="3.5" RadiusY="3.5" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ScrollBarDragBtnBk}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ScrollBarOverBtnBk}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="VerticalScrollBarThumb" TargetType="Thumb">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBtnBk}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Rectangle Fill="{TemplateBinding Background}" RadiusX="3.5" RadiusY="3.5" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ScrollBarDragBtnBk}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ScrollBarOverBtnBk}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ScrollVerticalPageButtonTemplate" TargetType="RepeatButton">
+        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ScrollHorizontalPageButtonTemplate" TargetType="RepeatButton">
+        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ComboBoxItemTemplate" TargetType="ComboBoxItem">
+        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" >
+            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Content="{TemplateBinding Content}" />
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="VerticalScrollBarTemplate" TargetType="ScrollBar">
+        <Border Background="{TemplateBinding Background}" >
+            <Grid HorizontalAlignment="Center" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="12"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="Auto" MaxHeight="12"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <RepeatButton Name="PART_Up" HorizontalAlignment="Center" Visibility="Visible" Grid.Row="0" Command="{ScrollBar.LineUpCommand}" Style="{ScrollBarUpButton}" />
+                <Track Name="PART_Track" IsDirectionReversed="True" Grid.Row="1" Orientation="{TemplateBinding Orientation}"
+                       Visibility="Visible" Minimum="{TemplateBinding Minimum}" Maximum="{TemplateBinding Maximum}"
+                       Value="{TemplateBinding Value}" ViewportSize="{TemplateBinding ViewportSize}" >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Command="{ScrollBar.PageLeftCommand}" Style="{VerticalScrollBarPageButton1}"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Command="{ScrollBar.PageRightCommand}" Style="{VerticalScrollBarPageButton2}"/>
+                    </Track.IncreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource VerticalScrollBarThumb}" MinHeight="30" ScrollChrome.ScrollGlyph="HorizontalGripper"/>
+                    </Track.Thumb>
+                </Track>
+                <RepeatButton Name="PART_Down" HorizontalAlignment="Center" Visibility="Visible" Grid.Row="2" Command="{ScrollBar.LineDownCommand}" Style="{ScrollBarDownButton}" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="HorizontalScrollBarTemplate" TargetType="ScrollBar">
+        <Border Background="{TemplateBinding Background}" >
+            <Grid VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="12" Width="Auto" />
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition MinWidth="12" Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <RepeatButton VerticalAlignment="Center" Command="{ScrollBar.LineLeftCommand}" Style="{ScrollBarLeftButton}" />
+                <Track Name="PART_Track" Grid.Column="1" Orientation="{TemplateBinding Orientation}"
+                       Minimum="{TemplateBinding Minimum}" Maximum="{TemplateBinding Maximum}"
+                       Value="{TemplateBinding Value}" ViewportSize="{TemplateBinding ViewportSize}" >
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Command="{ScrollBar.PageLeftCommand}" Style="{HorizontalScrollBarPageButton1}"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Command="{ScrollBar.PageRightCommand}" Style="{HorizontalScrollBarPageButton2}"/>
+                    </Track.IncreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{DynamicResource HorizontalScrollBarThumb}" MinWidth="30" />
+                    </Track.Thumb>
+                </Track>
+                <RepeatButton Grid.Column="2" VerticalAlignment="Center" Command="{ScrollBar.LineRightCommand}" Style="{ScrollBarRightButton}" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="{DynamicResource ScrollBarBk}" />
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical" >
+                <Setter Property="Width" Value="15" />
+                <Setter Property="Template" Value="{DynamicResource VerticalScrollBarTemplate}" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Horizontal" >
+                <Setter Property="Height" Value="15" />
+                <Setter Property="Template" Value="{DynamicResource HorizontalScrollBarTemplate}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ScrollBarOverBk}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

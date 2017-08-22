@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary>
+    <Style TargetType="ListBox" x:Key="UIDemo">
+        <Setter Property="BorderBrush" Value="Red" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Border Name="Bd" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" Padding="0" >
+                        <ScrollViewer Focusable="False" Padding="{TemplateBinding Padding}" HorizontalScrollBarVisibility="Disabled" 
+                            VerticalScrollBarVisibility="Auto" >
+                            <ItemsPresenter/>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate TargetType="ListBox">
+                    <TextBlock Text="{Binding }" VerticalAlignment="Center" Margin="2" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Button" x:Key="ItemButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border Name="bd" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="0" 
+                            BorderBrush="Blue" CornerRadius="1,1,1,1" ToolTip="{TemplateBinding Content}" Background="{TemplateBinding Tag1}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="bd" Value="{TemplateBinding Tag2}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="bd" Value="{TemplateBinding Tag3}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ImageSource x:Key="LogoSamsung" Source="/UIDemo;/images/Logo/Samsung.png" />
+    <ImageSource x:Key="LogoApple" Source="/UIDemo;/images/Logo/Apple.png" />
+    <ImageSource x:Key="LogoHuawei" Source="/UIDemo;/images/Logo/Huawei.png" />
+    <ImageSource x:Key="LogoBlank" Source="/UIDemo;/images/Logo/LogoBlank.png" />
+    <ImageBrush x:Key="Platform1" ImageSource="" TileMode="FlipXY" />
+    <ImageBrush x:Key="Platform2" ImageSource="" TileMode="FlipXY" />
+    <ImageBrush x:Key="Platform3" ImageSource="" TileMode="FlipXY" />
+    <ImageBrush x:Key="Platform4" ImageSource="" TileMode="FlipXY" />
+    <Style TargetType="ListBoxItem" x:Key="FetchItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Name="bd" BorderThickness="1" BorderBrush="#595959" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" >
+                                <Image Margin="5" Width="100" Height="68" Source="{Binding Path=Info1,Mode=OneWay}" />
+                                <TextBlock Text="{Binding Path=Info1,Mode=OneWay}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Path=Info2,Mode=OneWay}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <DockPanel Grid.Row="1" >
+                                <StackPanel DockPanel.Dock="Right" Orientation="Vertical" >
+                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                        <Button ID="10001" Content="正常任务" Margin="5,2,2,2" Width="50" Height="30" />
+                                        <Button ID="10002" Content="弹出提示" Margin="5,2,2,2" Width="50" Height="30" />
+                                        <Button ID="10003" Content="出现错误" Margin="5,2,2,2" Width="50" Height="30" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                        <TextBlock Margin="5,2,2,2" Text="{Binding Path=TaskType,Mode=OneWay}" />
+                                        <ProgressBar Style="{StaticResource DemoProgress}" Value="{Binding Path=Percent,Mode=OneWay}" Width="50" 
+                                            Height="40" Margin="0,5" Foreground="DarkBlue" Background="MediumSpringGreen" />
+                                        <Button Name="Cancel" Content="取消" Margin="5,2,2,2" Width="60" Height="30" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                        <Button Name="Reset" Content="重置" Margin="5,2,2,2" Width="60" Height="30" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                        <TextBlock Text="{Binding Path=ErrStr,Mode=OneWay}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <Button Name="Return" Content="返回" Margin="5,2,2,2" Width="60" Height="30" HorizontalAlignment="Left" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" >
+                                    <Border ToolTip="{Binding Path=Info3,Mode=OneWay}" Margin="0,2,5,2" Width="50" Height="34" Background="{Binding Path=Info3,Mode=OneWay}" />
+                                </StackPanel>
+                            </DockPanel>
+                            <StackPanel Grid.Row="2" Orientation="Vertical" >
+                                <StackPanel Orientation="Vertical" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                        <TextBlock Text="EventType" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=EventStr,Mode=OneWay}" Margin="0,0,10,0" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                        <TextBlock Text="ErrorCode" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=ErrStr,Mode=OneWay}" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                                        <TextBlock Text="EventMore" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=EventMore,Mode=OneWay}" Margin="0,0,10,0" HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                    <TextBlock Text="{Binding Path=EventStr,Mode=OneWay}" Margin="0,0,10,0" HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center" />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                        <Button Name="WaitingMsgOK" Content="确认" Width="50" Height="30" Margin="0,5,5,5" />
+                                        <Button Name="WaitingMsgCancel" Content="取消" Width="50" Height="30" Margin="0,5,5,5" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                    <TextBlock Text="输入用户信息" />
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="类型" />
+                                        <RadioButton Content="类型1" IsChecked="{Binding Path=OwnerType,Mode=OneWay,Convertor=BCPhOwnerType}" />
+                                        <RadioButton Content="类型2" IsChecked="{Binding Path=OwnerType,Mode=OneWay,Convertor=BCPhOwnerType}" />
+                                        <RadioButton Content="类型3" IsChecked="{Binding Path=OwnerType,Mode=OneWay,Convertor=BCPhOwnerType}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="姓名" />
+                                        <TextBox Width="300" Text="{Binding Path=OwnerName,Mode=OneWay}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="号码" />
+                                        <TextBox Width="300" Text="{Binding Path=OwnerNum,Mode=OneWay}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="手机" />
+                                        <TextBox Width="300" Text="{Binding Path=OwnerPhone,Mode=OneWay}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <Button Name="UserInfo_OK" Content="确认" Width="50" Height="30" Margin="225,5,5,5" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Visibility="{Binding Path=TaskState,Mode=OneWay}" >
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="类型" />
+                                        <TextBlock Width="100" Text="{Binding Path=OwnerType,Mode=OneWay}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="姓名" />
+                                        <TextBlock Text="{Binding Path=OwnerName,Mode=OneWay}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="号码" />
+                                        <TextBlock Text="{Binding Path=OwnerNum,Mode=OneWay}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Width="100" Text="手机" />
+                                        <TextBlock Text="{Binding Path=OwnerPhone,Mode=OneWay}" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" TargetName="bd" Value="Green" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

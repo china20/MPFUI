@@ -1,0 +1,194 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="Button演示"
+        Width="580" Height="400" MinWidth="380" MinHeight="300" >
+    <Window.Resources>
+        <SolidColorBrush x:Key="FontColor" Color="White" />
+        <ImageBrush x:Key="BtnIcon" ImageSource="ControlDemo/Button/images/QQIcon.png" Stretch="None" />
+        <DataTemplate x:Key="BtnDataTemp" >
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="{Binding }" />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="30">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <TabControl Margin="5" >
+                <TabItem Header="控件演示" IsSelected="True" >
+                    <StackPanel Margin="5" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+						<StackPanel.LayoutTransform>
+                            <RotateTransform Angle="45"/>
+                        </StackPanel.LayoutTransform>
+                        <TextBlock1 Name="Info" Foreground="Red" FontWeight="ExtraBold" Text="下面演示Button的绑定等各种用法" Height="30" />
+                        <Button Name="NorBtn" Content="普通按钮" Height="28" Margin="0,2,0,2" >
+							<Button.LayoutTransform>
+								<RotateTransform Angle="45"/>
+							</Button.LayoutTransform>
+						</Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Height="28" Margin="0,2,0,2">
+                                <StackPanel Orientation="Horizontal" Height="24" VerticalAlignment="Center" >
+                                    <TextBlock Text="输入："  VerticalAlignment="Center" />
+                                    <TextBox  Width="150" />
+                                </StackPanel>
+                            </Button>
+                            <Button Content="圆" ToolTip="圆形按钮" Height="28" Width="28" Margin="8,0,0,0">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Padding="{TemplateBinding Padding}">
+                                            <Grid>
+                                                <Ellipse Fill="{TemplateBinding Background}" />
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Content="图标按钮" Height="28" Margin="8,0,0,0">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="5" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                                BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
+                                            <DockPanel >
+                                                <Rectangle Margin="2,0,0,0" Fill="{StaticResource BtnIcon}" Width="20" Height="20" VerticalAlignment="Center" />
+                                                <ContentPresenter Margin="6,2,16,2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            </DockPanel>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+
+                        <DockPanel Margin="2,8,2,0">
+                            <TextBlock VerticalAlignment="Center" Foreground="{DynamicResource FontColor}" Text="按钮绑定演示" />
+                            <Button Name="BindBtn" BorderThickness="2" Height="28" Margin="8,0,0,2" />
+                        </DockPanel>
+                        <Grid Height="60" >
+                            <TextBlock TextWrapping="Wrap" Foreground="White" VerticalAlignment="Center" LineSpacing="6" >
+                                <Run Text="下面按钮的" />
+                                <Run Text="Content" Foreground="Red" FontSize="13" />
+                                <Run Text="已经绑定到编辑框" />
+                                <Run Text="Text" Foreground="Red" FontSize="13" />
+                                <Run Text="属性，在编辑框输入一些字符试试"  />
+                            </TextBlock>
+                        </Grid>
+                        
+                        <Button Margin="0,6,0,0" Content="{Binding Path=Text,ElementName=txtName}" Foreground="Red" FontSize="14" Height="30"/>
+
+                        <TextBox Name="txtName" Margin="0,6,0,0" Height="22" Text="请输入..." />
+
+                        <HyperPanel Margin="0,16,0,0">
+                            <Button Content="Button1" Width="80" Height="38" />
+                            <Button Content="Button2" Width="80" Height="38" />
+                            <Grid Width="100" Height="38" Background="Green">
+                                <TextBlock Foreground="White" Text="TextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                            <Button Content="Button3" Width="80" Height="38" />
+                            <Button Content="Button4" Width="80" Height="38" />
+                        </HyperPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="使用说明" >
+                    <ScrollViewer Background="White" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="5">
+                            <TextBlock TextWrapping="Wrap" >
+                                <Span >
+                                    <Run Text="属性" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="方法" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                </Span>
+                            </TextBlock>
+                            <TextBlock Margin="0,16,0,0" TextWrapping="Wrap" >
+                                <Span >
+                                    <Run Text="基类（ButtonBase）" Foreground="Red" FontSize="15" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="属性" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="IsPressed: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="按钮压下触发，按下为True，否则False，类型：Boolean。" />
+                                    <LineBreak />
+                                </Span>
+
+                                <LineBreak />
+                                
+                                <Span >
+                                    <Run Text="事件" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span >
+                                    <Run Text="Click: " Foreground="Blue" FontSize="12" />
+                                    <Run Text="点击按钮触发，路由事件RoutedEvent" />
+                                    <LineBreak />
+                                </Span>
+
+                                <LineBreak />
+                                
+                                <Span >
+                                    <Run Text="方法" FontSize="13" FontWeight="ExtraBold" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span>
+                                    <Run Text="1. AddClick: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="参数：" />
+                                    <LineBreak />
+                                    <Run Text="      handler：类型：ClickEventHandler；处理对象" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      增加按钮点击响应事件" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                                <Span>
+                                    <Run Text="2. RemoveClick: " Foreground="Blue" FontSize="12" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="参数：" />
+                                    <LineBreak />
+                                    <Run Text="      handler：类型：ClickEventHandler；处理对象" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                    <Run Text="说明：" />
+                                    <LineBreak />
+                                    <Run Text="      移除按钮点击响应事件" />
+                                    <LineBreak />
+                                    <LineBreak />
+                                </Span>
+                            </TextBlock>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="常见问题" >
+                    <ScrollViewer Background="White">
+                        <StackPanel Margin="5">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

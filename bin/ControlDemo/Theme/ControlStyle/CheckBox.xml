@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <SolidColorBrush x:Key="checkbox_bk_normal" Color="#FF999999" />
+    <SolidColorBrush x:Key="checkbox_bk_hot" Color="White" />
+    <SolidColorBrush x:Key="checkbox_fill" Color="White" />
+    <SolidColorBrush x:Key="checkbox_fg" Color="White" />
+    
+    <!--多选按钮-->
+    <Style TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource checkbox_fg}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource checkbox_bk_normal}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <DockPanel Orientation="Horizontal" >
+                        <Border Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+                                Width="12" Height="12" Margin="0,0,5,0" VerticalAlignment="Center">
+                            <Path Name="CheckIcon" Fill="{DynamicResource checkbox_fill}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,2 L0,4.8 L2.5,7.4 L7.1,2.8 L7.1,0 L2.5,4.6 Z" />
+                        </Border>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="CheckIcon" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Visibility" TargetName="CheckIcon" Value="Hidden" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               Foreground="{TemplateBinding Foreground}" 
+                               Text="{TemplateBinding Content}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="BorderBrush" Value="{DynamicResource checkbox_bk_hot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

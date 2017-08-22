@@ -1,0 +1,26 @@
+<?xml encoding="utf-8" ?>
+<!--CloseButton模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="CloseButtonTemplate" TargetType="CloseButton">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+            <ContentPresenter ToolTip="{TemplateBinding}" />
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="CloseButton">
+        <Setter Property="Background" Value="{CloseBtn_n}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Template" Value="{CloseButtonTemplate}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{CloseBtn_d}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{CloseBtn_h}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

@@ -1,0 +1,57 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5" 
+        Title="自定义表达式" Width="550" Height="300" ResizeBox="True" Background="#FF3D3D3D" >
+    <Window.Resources>  
+    </Window.Resources>
+
+    <!--主面板-->
+    <Grid Background="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="36" Background="#3D3D3D">
+            <CloseButton DockPanel.Dock="Right" Width="26" Height="12" />
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                       FontSize="13" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <DockPanel Margin="5,36,5,5" TextElement.Foreground="White">
+            <DockPanel DockPanel.Dock="Top">
+                <TextBlock Name="txtName" Text="表达式 " VerticalAlignment="Center" />
+                <TextBox Name="txtVal" Height="22" VerticalAlignment="Center" IsFocused="True" />
+            </DockPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="2,6,2,6">
+                <RadioButton Name="rBinding" IsChecked="True" Content="Binding" Margin="4" />
+                <RadioButton Name="rTemplateBinding" Content="TemplateBinding" Margin="4" />
+                <RadioButton Name="rStatic" Content="StaticResource" Margin="4" />
+                <RadioButton Name="rDynamic" Content="DynamicResource" Margin="4" />
+            </StackPanel>
+            <Grid DockPanel.Dock="Bottom" Height="38" >
+                <Button Click="OnOkButtonClick" Width="68" Margin="0,8,8,4" HorizontalAlignment="Right" Content="确定" />
+            </Grid>
+            <Border Margin="2" BorderThickness="1" BorderBrush="#444444" >
+                <Grid>
+                    <TextBox Name="txtBinding" BorderThickness="0" MaxLines="0" TextWrapping="Wrap" 
+                             FontSize="12" Foreground="Gray" IsReadOnly="True" IsReadOnlyCaretVisible="False" 
+                             Visibility="{Binding Path=IsChecked, ElementName=rBinding, Converter=BToV}" 
+                             Text="{Binding Path=xxx} {Binding Path=xxx, ElementName=xxx, Converter=xxx} {Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}} " />
+
+                    <TextBox Name="txtTemplateBinding" BorderThickness="0" MaxLines="0" TextWrapping="Wrap"
+                             FontSize="12" Foreground="Gray" IsReadOnly="True" Text="{TemplateBinding xxx} "
+                             IsReadOnlyCaretVisible="False" 
+                             Visibility="{Binding Path=IsChecked, ElementName=rTemplateBinding, Converter=BToV}" />
+
+                    <TextBox Name="txtStatic" BorderThickness="0" MaxLines="0" TextWrapping="Wrap"
+                             FontSize="12" Foreground="Gray" IsReadOnly="True" Text="{StaticResource xxx} "
+                             IsReadOnlyCaretVisible="False" 
+                             Visibility="{Binding Path=IsChecked, ElementName=rStatic, Converter=BToV}" />
+
+                    <TextBox Name="txtDynamic" BorderThickness="0" MaxLines="0" TextWrapping="Wrap"
+                             FontSize="12" Foreground="Gray" IsReadOnly="True" Text="{DynamicResource xxx} "
+                             IsReadOnlyCaretVisible="False" 
+                             Visibility="{Binding Path=IsChecked, ElementName=rDynamic, Converter=BToV}" />
+                </Grid>
+            </Border>
+
+        </DockPanel>
+    </Grid>
+</Window>

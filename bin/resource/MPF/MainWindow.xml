@@ -1,0 +1,342 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="MPF控件库演示中心" Round="5" ResizeMode="CanResize"
+        WindowStyle="CanMaximize" Width="800" Height="450" MinWidth="800" MinHeight="450" Opacity1="0.8" >
+    <Window.Resources>
+        <Bitmap x:Key="button_off_24x24" Source="resource/MPF/Images/button_off_24x24.png" />
+        <Bitmap x:Key="listBox_off_24x24" Source="resource/MPF/Images/listBox_off_24x24.png" />
+        <Bitmap x:Key="listView_off_24x24" Source="resource/MPF/Images/listView_off_24x24.png" />
+        <Bitmap x:Key="treeView_off_24x24" Source="resource/MPF/Images/treeView_off_24x24.png" />
+        <Bitmap x:Key="repeatbutton_off_24x24" Source="resource/MPF/Images/repeatbutton_off_24x24.png" />
+        <Bitmap x:Key="checkBox_off_24x24" Source="resource/MPF/Images/checkBox_off_24x24.png" />
+        <Bitmap x:Key="radioButton_off_24x24" Source="resource/MPF/Images/radioButton_off_24x24.png" />
+        <Bitmap x:Key="textBlock_off_24x24" Source="resource/MPF/Images/textBlock_off_24x24.png" />
+        <Bitmap x:Key="textBox_off_24x24" Source="resource/MPF/Images/textBox_off_24x24.png" />
+        <Bitmap x:Key="comboBox_off_24x24" Source="resource/MPF/Images/comboBox_off_24x24.png" />
+        <Bitmap x:Key="progressBar_off_24x24" Source="resource/MPF/Images/progressBar_off_24x24.png" />
+        <Bitmap x:Key="slider_off_24x24" Source="resource/MPF/Images/slider_off_24x24.png" />
+        <Bitmap x:Key="datePicker_off_24x24" Source="resource/MPF/Images/datePicker_off_24x24.png" />
+        <Bitmap x:Key="stackPanel_off_24x24" Source="resource/MPF/Images/stackPanel_off_24x24.png" />
+        <Bitmap x:Key="expander_off_24x24" Source="resource/MPF/Images/expander_off_24x24.png" />
+        <Bitmap x:Key="image_off_24x24" Source="resource/MPF/Images/image_off_24x24.png" />
+        <Bitmap x:Key="element_off_24x24" Source="resource/MPF/Images/element_off_24x24.png" />
+        <Bitmap x:Key="menu_off_24x24" Source="resource/MPF/Images/menu_off_24x24.png" />
+        <Bitmap x:Key="hyperlinkButton_off_24x24" Source="resource/MPF/Images/hyperlinkButton_off_24x24.png" />
+        <Bitmap x:Key="grid_off_24x24" Source="resource/MPF/Images/grid_off_24x24.png" />
+        <Bitmap x:Key="scrollBar_off_24x24" Source="resource/MPF/Images/scrollBar_off_24x24.png" />
+           
+        <Bitmap x:Key="QQBtn" Source="resource/MPF/App/QQBtn.png" />
+        <Bitmap x:Key="Suidemon" Source="resource/MPF/App/Suidemon.png" />
+        
+        <!-- ToolTip控件样式定义 -->
+        <Style TargetType="ToolTip">
+            <Setter Property="Background" Value="{Tooltip_bkg}" />
+            <Setter Property="Padding" Value="5,3,5,6" />
+            <Setter Property="Template" Value="{ToolTipTemplate}" />
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="#990000FF" />
+        </Style>
+
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="#7F8B8E" />
+            <Setter1 Property="Background" Value="{DynamicResource mainbk}" />
+            <Setter Property="Height" Value="310" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="#00FF88" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <Border Background="{TemplateBinding}" 
+                                BorderBrush="{TemplateBinding}"
+                                BorderThickness="{TemplateBinding}" Padding="0" >
+							<AdornerDecorator>
+								<ContentPresenter />
+							</AdornerDecorator>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger1 Property="IsMouseOver" Value="True" >
+                    <Setter Property="Background" Value="#88008866" />
+                    <Setter Property="BorderBrush" Value="#889966" />
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger1>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid >
+        <DockPanel Height="50" VerticalAlignment="Top"  >
+            <CloseButton DockPanel.Dock="Right" ToolTip="" VerticalAlignment="Top" Width="30" Height="27" />
+            <MinimizeButton DockPanel.Dock="Right" ToolTip="" VerticalAlignment="Top"  Width="30" Height="27" />
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                       Foreground="White" FontSize="18" Margin="6,6,0,0"/>
+        </DockPanel>
+
+        <Grid Margin="0,50,0,0" Width="795" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center"  >
+            <!--上面主页和控件按钮-->
+            <DockPanel VerticalAlignment="Top" Height="38" Background="#273236" LastChildFill="True" >
+                <Button Name="HomeBtn" Content="主页" Margin="5,0,8,0" VerticalAlignment="Center" />
+                <Button Name="CtrlBtn" Content="控件演示" VerticalAlignment="Center" />
+                <TextBlock Margin="16,0,0,0" VerticalAlignment="Center" FontSize="13" Foreground="WhiteSmoke" FontWeight1="ExtraBold" Text="欢迎使用MPF，如需购买技术支持服务，请联系QQ:386666951" />
+            </DockPanel>
+            <Grid Margin="0,38,0,2" Background="#CCD1D2" ClipToBounds="True" >
+                <DockPanel LastChildFill="False" >
+                    <StackPanel Name="DemonPanel" Margin="0,0,2,0" Background="#EEEEEE" HorizontalAlignment="Left" Width="183" >
+                        <TextBlock Text="演示程序" Margin="8,5,5,5" />
+                        <ListBox Name="AppList" BorderThickness="0" Background="#EEEEEE" >
+                            <ListBox.Resources>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Margin" Value="0" />
+                                    <Setter Property="Height" Value="50" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}" >
+                                                    <ContentPresenter Content="{TemplateBinding}" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True" >
+                                            <Setter Property="Background" Value="#0C5C81" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True" >
+                                            <Setter Property="Background" Value="#D7D7D7" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListBox.Resources>
+                            <ListBoxItem Width="200" Name="QQProtect" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{QQBtn}" Margin="6" Width="24" Height="24" VerticalAlignment="Center" />
+                                    <TextBlock Text="QQDemon" Margin="2,-2,0,0" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Width="200" Name="suidemon" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Suidemon}" Margin="6" Width="24" Height="24" VerticalAlignment="Center" />
+                                    <TextBlock Text="SuiDemon" Margin="2,-2,0,0" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                    <Grid Margin="0,0,0,0" Height="360" >
+                        <!--控件区域-->
+                        <ListBox Name="CtrlPanel" Background="#EEEEEE" BorderThickness="0" Width="610" HorizontalAlignment="Left" >
+                            <ListBox.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="2,-2,0,0" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Margin" Value="6" />
+                                    <Setter Property="Width" Value="24" />
+                                    <Setter Property="Height" Value="24" />
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                            </ListBox.Resources>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate TargetType="ItemsPresenter">
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            
+                            <ListBoxItem Name="Button" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{button_off_24x24}" />
+                                    <TextBlock Text="Button" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="ListBox" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{listBox_off_24x24}" />
+                                    <TextBlock Text="ListBox" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Name="ListView" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{listView_off_24x24}" />
+                                    <TextBlock Text="ListView" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Name="TreeView" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{treeView_off_24x24}" />
+                                    <TextBlock Text="TreeView" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="RepeatButton" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{repeatbutton_off_24x24}" />
+                                    <TextBlock Text="RepeatButton" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="CheckBox" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{checkBox_off_24x24}" />
+                                    <TextBlock Text="CheckBox" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem Name="RadioButton" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{radioButton_off_24x24}" />
+                                    <TextBlock Text="RadioButton" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="ComboBox" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{comboBox_off_24x24}" />
+                                    <TextBlock Text="ComboBox" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="TextBlock" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{textBlock_off_24x24}" />
+                                    <TextBlock Text="TextBlock" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="TextBox" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{textBox_off_24x24}" />
+                                    <TextBlock Text="TextBox" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="ProgressBar" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{progressBar_off_24x24}" />
+                                    <TextBlock Text="ProgressBar " />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="ScrollBar" Width="148" IsEnable="False" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{scrollBar_off_24x24}" />
+                                    <TextBlock Text="ScrollBar" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="Slider" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{slider_off_24x24}" />
+                                    <TextBlock Text="Slider" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="DatePicker" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{datePicker_off_24x24}" />
+                                    <TextBlock Text="DatePicker" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="Calendar" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{datePicker_off_24x24}" />
+                                    <TextBlock Text="Calendar " />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="Expander" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{expander_off_24x24}" />
+                                    <TextBlock Text="Expander" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="Image" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{image_off_24x24}" />
+                                    <TextBlock Text="Image" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="FlashBox" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{element_off_24x24}" />
+                                    <TextBlock Text="FlashBox " />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="Menu" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{menu_off_24x24}" />
+                                    <TextBlock Text="Menu" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="PasswordBox" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{hyperlinkButton_off_24x24}" />
+                                    <TextBlock Text="PasswordBox" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="GridSplitter" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{element_off_24x24}" />
+                                    <TextBlock Text="GridSplitter" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="Grid" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{grid_off_24x24}" />
+                                    <TextBlock Text="Grid " />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="UniformGrid" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{grid_off_24x24}" />
+                                    <TextBlock Text="UniformGrid " />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="StackPanel" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{stackPanel_off_24x24}" />
+                                    <TextBlock Text="StackPanel" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="DockPanel" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{grid_off_24x24}" />
+                                    <TextBlock Text="DockPanel" />
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem Name="WrapPanel" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{grid_off_24x24}" />
+                                    <TextBlock Text="WrapPanel" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            
+                            <ListBoxItem Name="HyperPanel" Width="148" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{grid_off_24x24}" />
+                                    <TextBlock Text="HyperPanel" />
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                        <!--控件演示区域-->
+                        <Grid Name="CtrlArea" Background="WhiteSmoke" Visibility="Collapsed" Margin="152,0,0,0" Width="642" HorizontalAlignment="Left" >
+                        </Grid>
+                    </Grid>
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

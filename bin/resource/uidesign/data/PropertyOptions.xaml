@@ -1,0 +1,160 @@
+<?xml encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Author="汪荣(QQ:386666951)" >
+	<Dictionary x:Key="propOptions">
+		<Array x:Key="Orientation">
+			<sys:String>Horizontal</sys:String>
+			<sys:String>Vertical</sys:String>
+		</Array>
+		<Array x:Key="Dock">
+			<sys:String>Left</sys:String>
+			<sys:String>Top</sys:String>
+			<sys:String>Right</sys:String>
+			<sys:String>Bottom</sys:String>
+		</Array>
+		<Array x:Key="TabStripPlacement">
+			<sys:String>Left</sys:String>
+			<sys:String>Top</sys:String>
+			<sys:String>Right</sys:String>
+			<sys:String>Bottom</sys:String>
+		</Array>
+		<Array x:Key="VerticalAlignment">
+			<sys:String>Top</sys:String>
+			<sys:String>Bottom</sys:String>
+			<sys:String>Center</sys:String>
+			<sys:String>Stretch</sys:String>
+		</Array>
+		<Array x:Key="HorizontalAlignment">
+			<sys:String>Left</sys:String>
+			<sys:String>Right</sys:String>
+			<sys:String>Center</sys:String>
+			<sys:String>Stretch</sys:String>
+		</Array>
+		<Array x:Key="SizeToContent">
+			<sys:String>Manual</sys:String>
+			<sys:String>Width</sys:String>
+			<sys:String>Height</sys:String>
+			<sys:String>WidthAndHeight</sys:String>
+		</Array>
+		<Array x:Key="VerticalContentAlignment">
+			<sys:String>Top</sys:String>
+			<sys:String>Bottom</sys:String>
+			<sys:String>Center</sys:String>
+			<sys:String>Stretch</sys:String>
+		</Array>
+		<Array x:Key="HorizontalContentAlignment">
+			<sys:String>Left</sys:String>
+			<sys:String>Right</sys:String>
+			<sys:String>Center</sys:String>
+			<sys:String>Stretch</sys:String>
+		</Array>
+		<Array x:Key="Visibility">
+			<sys:String>Visible</sys:String>
+			<sys:String>Hidden</sys:String>
+			<sys:String>Collapsed</sys:String>
+		</Array>
+		<Array x:Key="TabArrangeMode">
+			<sys:String>Multiple</sys:String>
+			<sys:String>Single</sys:String>
+			<sys:String>Menu</sys:String>
+		</Array>
+		<Array x:Key="WindowState">
+			<sys:String>Normal</sys:String>
+			<sys:String>Minimized</sys:String>
+			<sys:String>Maximized</sys:String>
+		</Array>
+		<Array x:Key="WindowStyle">
+			<sys:String>None</sys:String>
+			<sys:String>SingleBorderWindow</sys:String>
+			<sys:String>ThreeDBorderWindow</sys:String>
+			<sys:String>ToolWindow</sys:String>
+		</Array>
+		<Array x:Key="ResizeMode">
+			<sys:String>NoResize</sys:String>
+			<sys:String>CanMinimize</sys:String>
+			<sys:String>CanResize</sys:String>
+			<sys:String>CanResizeWithGrip</sys:String>
+		</Array>
+		<Array x:Key="Placement">
+			<sys:String>Left</sys:String>
+			<sys:String>Top</sys:String>
+			<sys:String>Right</sys:String>
+			<sys:String>Bottom</sys:String>
+			<sys:String>Center</sys:String>
+			<sys:String>Mouse</sys:String>
+			<sys:String>MousePoint</sys:String>
+			<sys:String>Custom</sys:String>
+		</Array>
+		<Array x:Key="TextAlignment">
+			<sys:String>Left</sys:String>
+			<sys:String>Right</sys:String>
+			<sys:String>Center</sys:String>
+			<sys:String>Justify</sys:String>
+		</Array>
+		<Array x:Key="TextWrapping">
+			<sys:String>NoWrap</sys:String>
+			<sys:String>Wrap</sys:String>
+			<sys:String>WrapWithOverflow</sys:String>
+		</Array>
+		<Array x:Key="Role">
+			<sys:String>TopLevelItem</sys:String>
+			<sys:String>TopLevelHeader</sys:String>
+			<sys:String>SubmenuItem</sys:String>
+			<sys:String>SubmenuHeader</sys:String>
+		</Array>
+		<Array x:Key="ExpandDirection">
+			<sys:String>Left</sys:String>
+			<sys:String>Right</sys:String>
+			<sys:String>Up</sys:String>
+			<sys:String>Down</sys:String>
+		</Array>
+		<Array x:Key="Stretch">
+			<sys:String>None</sys:String>
+			<sys:String>Fill</sys:String>
+			<sys:String>Uniform</sys:String>
+			<sys:String>UniformToFill</sys:String>
+		</Array>
+		<Array x:Key="StretchDirection">
+			<sys:String>UpOnly</sys:String>
+			<sys:String>DownOnly</sys:String>
+			<sys:String>Both</sys:String>
+		</Array>
+		<Array x:Key="FontWeight">
+			<sys:String>#Black:900</sys:String>
+			<sys:String>#Bold:700</sys:String>
+			<sys:String>#Light:300</sys:String>
+			<sys:String>#Medium:500</sys:String>
+			<sys:String>#Normal:400</sys:String>
+			<sys:String>#Thin:100</sys:String>
+			<sys:String>#SemiBold:600</sys:String>
+			<sys:String>#ExtraBold:800</sys:String>
+			<sys:String>#ExtraBlack:950</sys:String>
+			<sys:String>#ExtraLight:200</sys:String>
+		</Array>
+		<Array x:Key="FontStyle">
+			<sys:String>#Italic:4</sys:String>
+			<sys:String>#Normal:1</sys:String>
+		</Array>
+		<Array x:Key="HitTestFilterAction">
+			<sys:String>Continue</sys:String>
+			<sys:String>Stop</sys:String>
+			<sys:String>ContinueSkipSelf</sys:String>
+			<sys:String>ContinueSkipChildren</sys:String>
+			<sys:String>ContinueSkipSelfAndChildren</sys:String>
+		</Array>
+		<Array x:Key="HorizontalScrollBarVisibility">
+			<sys:String>Disabled</sys:String>
+			<sys:String>Auto</sys:String>
+			<sys:String>Hidden</sys:String>
+			<sys:String>Visible</sys:String>
+			<sys:String>Collapsed</sys:String>
+		</Array>
+		<Array x:Key="VerticalScrollBarVisibility">
+			<sys:String>Disabled</sys:String>
+			<sys:String>Auto</sys:String>
+			<sys:String>Hidden</sys:String>
+			<sys:String>Visible</sys:String>
+			<sys:String>Collapsed</sys:String>
+		</Array>
+	</Dictionary>
+</ResourceDictionary>

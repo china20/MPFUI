@@ -1,0 +1,9 @@
+<?xml encoding="utf-8" ?>
+<UniformGrid Margin="20" Columns="2" Rows="3">
+    <Button Content="简单按钮" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    <Button Content="按钮" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    <Button Content="简单按钮" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    <Button Content="按钮" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    <Button Content="简单按钮" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    <Button Content="按钮" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+</UniformGrid>

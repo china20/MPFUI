@@ -1,0 +1,83 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="TabControl演示" RoundSize="0" ResizeMode="CanResize"
+        Width="600" Height="400" MinWidth="300" MinHeight="400" >
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" Background="#660000FF">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                       FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="5,32,5,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <TabControl >
+                <TabItem Header="TabItem1" >
+                    <TreeView Name="treeView" >
+                        <TreeViewItem Header="Desktop" IsExpanded="True">
+                            <TreeViewItem Header="User" />
+                            <TreeViewItem Header="Public" IsExpanded="True" >
+                                <TreeViewItem Header="Favorites" />
+                                <TreeViewItem Header="Public Downloads" />
+                                <TreeViewItem Header="Public Music" />
+                                <TreeViewItem Header="Public Pictures" />
+                                <TreeViewItem Header="Public Videos" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Computer" IsExpanded="True" >
+                                <TreeViewItem Header="Local Disk (C:)" IsExpanded="True" >
+                                    <TreeViewItem Header="Windows" />
+                                    <TreeViewItem Header="Users" />
+                                    <TreeViewItem Header="Program Files" />
+                                </TreeViewItem>
+                                <TreeViewItem Header="Dvd Drive (D:)" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Network" />
+                            <TreeViewItem Header="Control Panel" />
+                            <TreeViewItem Header="Recyle Bin" />
+                        </TreeViewItem>
+                    </TreeView>
+                </TabItem>
+                <TabItem Header="TabItem2">
+                    <Grid Background="#FFE5E5E0">
+                        <TextBlock Text="TabItem2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="TabItem3" Foreground="Green" FontWeight="ExtraBold" >
+                    <Grid Background="#FFE5E555">
+                        <TextBlock Text="TabItem3" FontSize="17" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="TabItem4">
+                    <Grid Background="#FFE5E550">
+                        <TextBlock Text="TabItem4" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="TabItem5">
+                    <Grid Background="#FFE5E590">
+                        <TextBlock Text="TabItem5" FontSize="19" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="TabItem6">
+                    <Grid Background="#FFE5E565">
+                        <TextBlock Text="TabItem6" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="TabItem7">
+                    <Grid Background="#FFE5E525">
+                        <TextBlock Text="TabItem7" FontSize="21" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="TabItem8">
+                    <Grid Background="#FFE5E5B5">
+                        <TextBlock Text="TabItem8" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

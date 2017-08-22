@@ -1,0 +1,20 @@
+<?xml encoding="utf-8" ?>
+<Menu Margin="20" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" >
+    <MenuItem Header="File" >
+        <MenuItem Header="关于查找" Icon="{MenuIcon}" />
+        <MenuItem Header="视图" >
+            <MenuItem Header="输出" />
+            <MenuItem Header="查找结果" >
+                <MenuItem Header="结果1" />
+                <MenuItem Header="结果2" />
+            </MenuItem>
+        </MenuItem>
+        <MenuItem Header="关于" />
+        <MenuItem Header="工具条" >
+            <MenuItem Header="调试" />
+        </MenuItem>
+    </MenuItem>
+    <MenuItem Header="帮助" >
+        <MenuItem Header="退出" />
+    </MenuItem>
+</Menu>

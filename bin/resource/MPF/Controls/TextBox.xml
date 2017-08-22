@@ -1,0 +1,3 @@
+<?xml encoding="utf-8" ?>
+<TextBox Margin="20" Width="260" Height="22" Text="编辑框"
+         HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Top" />

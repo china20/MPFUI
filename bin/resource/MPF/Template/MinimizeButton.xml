@@ -1,0 +1,26 @@
+<?xml encoding="utf-8" ?>
+<!--MinimizeButton模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="MinimizeButtonTemplate" TargetType="MinimizeButton">
+        <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+            <ContentPresenter ToolTip="{TemplateBinding}" />
+        </Border>
+    </ControlTemplate>
+
+    <Style TargetType="MinimizeButton">
+        <Setter Property="Background" Value="{MinimizeBtn_n}" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Template" Value="{MinimizeButtonTemplate}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{MinimizeBtn_d}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{MinimizeBtn_h}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

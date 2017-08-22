@@ -1,0 +1,64 @@
+﻿<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="ListBox演示" RoundSize="0" ResizeMode="CanResize"
+        Width="380" Height="500" MinWidth="300" MinHeight="300" >
+    <Window.Resources>
+        <Style TargetType="ListBox">
+            <Setter Property="BorderBrush" Value="#595959"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template" Value="{ListBoxTemplate}" />
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate TargetType="ListBox">
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate >
+                        <TextBlock Text="{Binding Path=Name,Mode=TwoWay}" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" Background="#660000FF">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <DockPanel Margin="5,38,3,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid DockPanel.Dock="Bottom" Margin="0,8,0,8" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Rectangle Grid.Column="0"  Fill="Red" Height="1"/>
+                <TextBlock Grid.Column="1"  Text="多线程方法调用" FontSize ="10" Foreground="#00A0E9" FontWeight="ExtraBold" HorizontalAlignment = "Center" VerticalAlignment="Center"  />
+                <Rectangle Grid.Column="2"  Fill="Red" Height="1"   />
+            </Grid>
+
+            <WrapPanel Orientation="Horizontal" DockPanel.Dock="Top" >
+                <Button Name="resetBtn" Content="Handler调用" Margin="0,0,0,6" MinHeight="32" />
+                <Button Name="visibilityBtn" Content="SetVisibility" Margin="0,0,0,6" MinHeight="32" />
+                <Button Name="showBtn" Content="Show" Margin="0,0,0,6" MinHeight="32" />
+                <Button Name="showDialogBtn" Content="ShowDialog" Margin="0,0,0,6" MinHeight="32" />
+                <Button Name="notifyChangedBtn" Content="NotifyChanged" Margin="0,0,0,6" MinHeight="32" />
+            </WrapPanel>
+            <ListBox Name="listBox" >
+                <String Value="test" />
+            </ListBox>
+
+        </DockPanel>
+    </Grid>
+</Window>

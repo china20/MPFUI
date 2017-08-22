@@ -1,0 +1,8 @@
+<?xml encoding="utf-8" ?>
+<StackPanel Margin="20" HorizontalAlignment="Center" Opacity1="0.5" VerticalAlignment="Center" >
+    <TextBlock Height="100" TextWrapping="Wrap" LineSpacing="8" >
+        <Run Text="欢迎使用MPF界面库，个人免费使用，欢迎企业购买授权！" />
+        <LineBreak />
+        <Run Text="如需购买技术支持服务，请联系QQ:386666951" Foreground="Red" FontSize="14" FontWeight="ExtraBold"  />
+    </TextBlock>
+</StackPanel>

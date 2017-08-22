@@ -1,0 +1,19 @@
+<?xml encoding="utf-8" ?>
+<ListView Name="ListView" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+          Margin="20" BorderThickness="1" >
+    <ListView.View>
+        <GridView>
+            <GridViewColumn Width="60" Header="序号" >
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Number}" HorizontalAlignment="Center" Foreground="Red" />    
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="100" Header="姓名" DisplayMemberBinding="{Binding Path=Name}"/>
+            <GridViewColumn Width="50" Header="性别" DisplayMemberBinding="{Binding Path=Sexy}"/>
+            <GridViewColumn Width="120" Header="电话" DisplayMemberBinding="{Binding Path=Tel}"/>
+            <GridViewColumn Width="280" Header="地址" DisplayMemberBinding="{Binding Path=Addr,Mode=TwoWay}"/>
+        </GridView>
+    </ListView.View>
+</ListView>

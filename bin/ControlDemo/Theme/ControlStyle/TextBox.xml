@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary>
+
+    <SolidColorBrush x:Key="TextBoxBk" Color="#333333" />
+    <SolidColorBrush x:Key="TextBoxBorderBk" Color="#353535" />
+    <SolidColorBrush x:Key="TextBoxSelBk" Color="Green" />
+    <SolidColorBrush x:Key="TextBoxFocusBk" Color="#555555" />
+    <SolidColorBrush x:Key="TextBoxNorSelBk" Color="SkyBlue" />
+    <SolidColorBrush x:Key="TextBoxNorSelTextBk" Color="Gray" />
+
+    <Style TargetType="TextBox">
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextBoxSelBk}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBk}" />
+        <Setter Property="Background" Value="{DynamicResource TextBoxBk}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                        <ScrollViewer Name="PART_ContentHost" VerticalAlignment="Stretch" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="MaxLines" Value="1">
+                            <Setter Property="VerticalAlignment" TargetName="PART_ContentHost" Value="Center" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
+
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource TextBoxFocusBk}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="SelectionTextBrush" Value="{DynamicResource TextBoxNorSelTextBk}" />
+                <Setter Property="SelectionBrush" Value="{DynamicResource TextBoxNorSelBk}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Name="window" Title="VS工程向导" Width="474" Height="295" RoundSize="5,5" Background="{DynamicResource MainWndBk}" 
+    Foreground="White" >
+    <Grid>
+        <DockPanel VerticalAlignment="Top" Height="32" Background="#3D3D3D" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Path=Title,Mode=OneWay,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center" />
+        </DockPanel>
+        <TextBlock Text="工程名称" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Margin="5,49,0,0" />
+        <TextBlock Text="工程路径" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Margin="5,86,0,0" />
+        <TextBox Text="" Width="331" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,46,0,0" 
+            Name="PrjName" />
+        <TextBox Text="" Width="331" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,86,0,0" 
+            Name="PrjDir" />
+        <Button Content="..." Width="41" Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="411,86,0,0" 
+            Name="OpenPrjDirBtn" Click="OnOpenDirButtonClick" />
+        <Button Content="确定" Width="70" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,250,0,0" 
+            Name="OkBtn" Click="OnButtonClick" />
+        <Button Content="取消" Width="70" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="362,250,0,0" 
+            Name="CancelBtn" Click="OnButtonClick" />
+        <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="59,149,0,0" Width="384" Height="42" >
+            <RadioButton Name="8.0" Content="2005" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="12,0,0,0" Click="OnVSButtonClick" />
+            <RadioButton Name="9.0" Content="2008" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="16,0,0,0" Click="OnVSButtonClick" IsChecked="True" />
+            <RadioButton Name="10.0" Content="2010" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="16,0,0,0" Click="OnVSButtonClick" />
+            <RadioButton Name="12.0" Content="2013" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="16,0,0,0" Click="OnVSButtonClick" />
+            <RadioButton Name="14.0" Content="2015" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                Margin="16,0,0,0" Click="OnVSButtonClick" />
+        </WrapPanel>
+        <TextBlock Text="工程类型" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Margin="5,124,0,0" />
+        <CheckBox Content="完成后打开工程" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Name="IsOpenSln" Margin="70,205,0,0" IsChecked="True" />
+        <CheckBox Content="完成后打开工程目录" Width="Auto" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            Name="IsOpenDir" Margin="193,205,0,0" IsChecked="True" />
+    </Grid>
+</Window>

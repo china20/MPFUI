@@ -1,0 +1,6 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="20" >
+    <ScrollBar Height="200" Margin="-160,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    <ScrollBar Width="150" Margin="80,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+</Grid>
+

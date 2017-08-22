@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window Name="window" Title="编辑Grid行列信息" Foreground="White" Width="620" Height="343" RoundSize="5,5" Background="#FF3D3D3D" >
+    <Window.Resources>
+        <Style TargetType="GridStarControl">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridStarControl">
+                        <DockPanel>
+                            <ComboBox Name="PART_ComboBox" DockPanel.Dock="Right" Width="80" >
+                                <ComboBoxItem Content="Auto" />
+                                <ComboBoxItem Content="Pixel" />
+                                <ComboBoxItem Content="Star" />
+                            </ComboBox>
+                            <GridFloatControl Name="PART_TextBox" Margin="0,0,5,0" />
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel VerticalAlignment="Top" Height="36" >
+            <StackPanel VerticalAlignment="Top" Height="36" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Path=Title,Mode=OneWay,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center" />
+        </DockPanel>
+        <UniformGrid Columns="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,36,5,5" Background="#FF555555" >
+            <DockPanel Margin="0,0,0,2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <ListView Name="columnList" Width="250" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF444444"  
+                    Margin="0" SelectionChanged="OnColumnListViewItemChanged" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="100" Header="Width" DisplayMemberBinding="{Binding Path=Size}"/>
+                            <GridViewColumn Width="60" Header="MinWidth" DisplayMemberBinding="{Binding Path=MinSize}"/>
+                            <GridViewColumn Width="60" Header="MaxWidth" DisplayMemberBinding="{Binding Path=MaxSize}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <DockPanel Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" >
+                    <DockPanel Width="Auto" Height="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" 
+                        Dock="Top" >
+                        <TextBlock Text="Width:" Width="68" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Margin="8,0,0,0" />
+                        <GridStarControl Name="columnWidth" Margin="2,0,0,0" Height="22" />
+                    </DockPanel>
+                    <DockPanel Width="Auto" Height="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" 
+                        Dock="Top" >
+                        <TextBlock Text="MinWidth:" Width="68" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Margin="8,0,0,0" />
+                        <GridWidthControl Name="columnMinWidth" Height="22" />
+                    </DockPanel>
+                    <DockPanel Width="Auto" Height="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" 
+                        Dock="Top" >
+                        <TextBlock Text="MaxWidth:" Width="68" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Margin="8,0,0,0" />
+                        <GridWidthControl Name="columnMaxWidth" Height="22" />
+                    </DockPanel>
+                    <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" >
+                        <Button Name="delColumn" Click="OnRemoveGridColumn" Content="删除列" Width="64" Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="92,18,0,0" />
+                        <Button Name="addColumn" Click="OnAddGridColumn" Content="增加列" Width="73" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="189,18,0,0" />
+                    </Grid>
+                </DockPanel>
+            </DockPanel>
+            <DockPanel Margin="0,2,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <ListView Name="rowList" Width="250" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#FF444444"  
+                    Margin="0" SelectionChanged="OnRowListViewItemChanged" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="100" Header="Height" DisplayMemberBinding="{Binding Path=Size}"/>
+                            <GridViewColumn Width="60" Header="MinHeight" DisplayMemberBinding="{Binding Path=MinSize}"/>
+                            <GridViewColumn Width="60" Header="MaxHeight" DisplayMemberBinding="{Binding Path=MaxSize}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <DockPanel Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" >
+                    <DockPanel Width="Auto" Height="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" 
+                        Dock="Top" >
+                        <TextBlock Text="Height:" Width="68" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Margin="8,0,0,0" />
+                        <GridStarControl Name="rowHeight" Margin="2,0,0,0" Height="22" />
+                    </DockPanel>
+                    <DockPanel Width="Auto" Height="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" 
+                        Dock="Top" >
+                        <TextBlock Text="MinHeight:" Width="68" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Margin="8,0,0,0" />
+                        <GridWidthControl Name="rowMinHeight" Height="22" />
+                    </DockPanel>
+                    <DockPanel Width="Auto" Height="32" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" 
+                        Dock="Top" >
+                        <TextBlock Text="MaxHeight:" Width="68" Height="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Margin="8,0,0,0" />
+                        <GridWidthControl Name="rowMaxHeight" Height="22" />
+                    </DockPanel>
+                    <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,6" >
+                        <Button Name="delRow" Click="OnRemoveGridRow" Content="删除行" Width="64" Height="21" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="92,18,0,6" />
+                        <Button Name="addRow" Click="OnAddGridRow" Content="增加行" Width="73" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="189,18,0,6" />
+                    </Grid>
+                </DockPanel>
+            </DockPanel>
+        </UniformGrid>
+    </Grid>
+</Window>

@@ -1,0 +1,61 @@
+<?xml encoding="utf-8" ?>
+<!--TreeView模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="ComboBoxTemplate" TargetType="ComboBox">
+        <Grid>
+            <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}" BorderBrush="{TemplateBinding}">
+                <DockPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <ToggleButton Name="PART_Down" Width="18" DockPanel.Dock="Right" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxTransparentButtonStyle}" />
+                    <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" Content="{TemplateBinding SelectionBoxItem}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <TextElement Name="Part_TextBox" Visibility="{Binding Path=TemplatedParent.IsEditable,Converter=BToV}" Margin="2" />
+                </DockPanel>
+            </Border>
+            <Popup Name="PART_Popup" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom">
+                <Border Name="DropDownBorder" BorderBrush="#CDCDCD" BorderThickness="1" Background="White">
+                    <ScrollViewer Name="DropDownScrollViewer">
+                        <ItemsPresenter Name="ItemsPresenter" />
+                    </ScrollViewer>
+                </Border>
+            </Popup>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Background" Value="#CCEEEEEE" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BorderBrush" Value="SkyBlue" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template" Value="{ComboBoxTemplate}" />
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate TargetType="ItemsPresenter" >
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter1 Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate >
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter1>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="#CC88EEEE" />
+            </Trigger>
+            <Trigger Property="IsDropDownOpen" Value="True" >
+                <Setter Property="Background" Value="#CC88EEEE" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

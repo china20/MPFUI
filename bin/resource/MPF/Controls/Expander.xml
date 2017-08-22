@@ -1,0 +1,27 @@
+<?xml encoding="utf-8" ?>
+
+<StackPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+    <Expander Header="Expander" IsExpanded="True" Padding="2" Width="180" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+        <Grid Background="#FFE5E5E5" Height="110" >
+            <TextBlock Text="Expander控件演示" Margin="5,20,5,5" VerticalAlignment="Top" />
+            <Button Text="Expander" Height="30" Margin="5,50,5,5" VerticalAlignment="Top" />
+        </Grid>
+    </Expander>
+
+    <Expander Header="收缩控件" IsExpanded="True" Margin="16,0,0,0" Padding="2" Width="180" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+        <StackPanel Background="#FFE5E5E5" Height="160" >
+            <TextBlock Text="收缩控件演示" Margin="5,5,5,5" VerticalAlignment="Top" />
+            <ListBox >
+                <ListBoxItem Content="ListBoxItem01" />
+                <ListBoxItem Content="ListBoxItem02" />
+                <ListBoxItem >
+                    <DockPanel Orientation="Horizontal">
+                        <Button Content="子按钮"/>
+                        <TextBox Text="Edit" Height="24" Width="120" />
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem Content="ListBoxItem03" />
+            </ListBox>
+        </StackPanel>
+    </Expander>
+</StackPanel>

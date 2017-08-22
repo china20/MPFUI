@@ -1,0 +1,25 @@
+<?xml encoding="utf-8" ?>
+<!--ToolTip模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ControlTemplate x:Key="ToolTipTemplate" TargetType="ToolTip">
+        <Border Name="Bd" Padding="{TemplateBinding}" Background="{TemplateBinding}" BorderBrush="{TemplateBinding}" BorderThickness="{TemplateBinding}" >
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+    
+    <!-- ToolTip控件样式定义 -->
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="Blue" />
+        <Setter Property="Foreground" Value="#666666"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

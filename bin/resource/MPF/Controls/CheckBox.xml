@@ -1,0 +1,52 @@
+<?xml encoding="utf-8" ?>
+<StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel Orientation="Horizontal">
+        <CheckBox Margin="5" Content="中国北京" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Margin="5" Content="上海" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Margin="5" Content="深圳" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Margin="5" Content="贵阳" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Margin="5" Content="南京" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </StackPanel>
+    <StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+        <StackPanel.Resources>
+            <ControlTemplate x:Key="CheckBoxTemplate" TargetType="CheckBox">
+                <DockPanel Orientation="Horizontal" >
+                    <Grid Background="White" Width="60" Height="20">
+                        <Rectangle Name="R1" Visibility="Visible" Fill="Green" Width="30" HorizontalAlignment="Left" />
+                        <Rectangle Name="R2" Visibility="Hidden" Fill="Blue" Width="30" HorizontalAlignment="Right" />
+                    </Grid>
+                    <ContentPresenter VerticalAlignment="Center" />
+                </DockPanel>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="Visibility" TargetName="R2" Value="Visible" />
+                        <Setter Property="Visibility" TargetName="R1" Value="Hidden" />
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <Style TargetType="CheckBox">
+                <Setter Property="BorderBrush" Value="Blue" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Template" Value="{StaticResource CheckBoxTemplate}"/>
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding}" Text="{TemplateBinding Content}" />
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True" >
+                        <Setter Property="BorderBrush" Value="LightGreen" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </StackPanel.Resources>
+
+        <CheckBox Margin="5" Content="中国北京" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Margin="5" Content="上海" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox Margin="5" Content="深圳" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+    </StackPanel>
+</StackPanel>
+

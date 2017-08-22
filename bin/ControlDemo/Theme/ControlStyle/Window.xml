@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <SolidColorBrush x:Key="MainWndBk" Color="#3D3D3D" />
+    <SolidColorBrush x:Key="MainWndBorder" Color="#353535" />
+    
+    <Style TargetType="Window" >
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MainWndBorder}" />
+        <Setter Property="Background" Value="{DynamicResource MainWndBk}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Window">
+                    <Border CornerRadius="2.5"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <AdornerDecorator>
+                            <ContentPresenter />
+                        </AdornerDecorator>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Toast" >
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource MainWndBorder}" />
+        <Setter Property="Background" Value="{DynamicResource MainWndBk}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Toast">
+                    <Border CornerRadius="2.5"
+                            Padding="10"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

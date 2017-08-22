@@ -1,0 +1,264 @@
+<?xml encoding="utf-8" ?>
+<!--ScrollViewer模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <!--滚动条样式-->
+    <Style x:Key="ScrollBarUpButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#BB333333" />
+        <Setter Property="Width" Value="9" />
+        <Setter Property="Height" Value="9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 1 7 L 8 7 L 4.5 2 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarDownButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#BB333333" />
+        <Setter Property="Width" Value="9" />
+        <Setter Property="Height" Value="9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 1 2 L 8 2 L 4.5 7 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarTopButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#BB333333" />
+        <Setter Property="Width" Value="9" />
+        <Setter Property="Height" Value="9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border BorderBrush="#99222222" BorderThickness="0,1,0,0" HorizontalAlignment="Center" Width="7" >
+                        <Path Data="M 0 6 L 7 6 L 3.5 1 Z" Fill="{TemplateBinding Background}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarBottomButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#BB333333" />
+        <Setter Property="Width" Value="9" />
+        <Setter Property="Height" Value="9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border BorderBrush="#99222222" BorderThickness="0,0,0,1" HorizontalAlignment="Center" Width="7" >
+                        <Path Data="M 0 1 L 7 1 L 3.5 6 Z" Fill="{TemplateBinding Background}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarLeftButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#BB333333" />
+        <Setter Property="Width" Value="9" />
+        <Setter Property="Height" Value="9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 7 1 L 7 8 L 2 4.5 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScrollBarRightButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#BB333333" />
+        <Setter Property="Width" Value="9" />
+        <Setter Property="Height" Value="9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Path Data="M 2 1 L 2 8 L 7 4.5 Z" Fill="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HorizontalScrollBarPageButton" TargetType="RepeatButton">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Width1" Value="26" />
+        <Setter Property="Height1" Value="16" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}"
+                            BorderBrush="{TemplateBinding}" Padding="{TemplateBinding}" >
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HorizontalScrollBarPageButtonR" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#888866FF" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RepeatButton">
+                    <Border Background="{TemplateBinding}" BorderThickness="{TemplateBinding}"
+                            BorderBrush="{TemplateBinding}" Padding="{TemplateBinding}" >
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="VerticalScrollBarPageButton1" TargetType="RepeatButton">
+        <Setter Property="Background" Value="888866FF" />
+        <Setter Property="Template" Value="{VertPageButton}" />
+    </Style>
+
+    <Style x:Key="VerticalScrollBarPageButton2" TargetType="RepeatButton">
+        <Setter Property="Background" Value="#888866FF" />
+        <Setter Property="Template" Value="{VertPageButton}" />
+    </Style>
+
+    <Style x:Key="HorizontalScrollBarThumb" TargetType="Thumb">
+        <Setter Property="Background" Value="#99333333" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Rectangle Fill="{TemplateBinding Background}" RadiusX="4.5" RadiusY="4.5" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="VerticalScrollBarThumb" TargetType="Thumb">
+        <Setter Property="Background" Value="#99333333" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Rectangle Fill="{TemplateBinding Background}" RadiusX="4.5" RadiusY="4.5" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter Property="Background" Value="Green" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Blue" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="VerticalScrollBarTemplate" TargetType="ScrollBar">
+        <Grid Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <RepeatButton Name="PART_Up" Visibility="Hidden" Grid.Row="0" Command="{ScrollBar.LineUpCommand}" Style="{ScrollBarUpButton}" />
+            <Track Name="PART_Track" IsDirectionReversed="True" Grid.Row="1" Orientation="{TemplateBinding}"
+                   Visibility="Hidden" Minimum="{TemplateBinding}" Maximum="{TemplateBinding}"
+                   Value="{TemplateBinding}" ViewportSize="{TemplateBinding}" >
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Command="{ScrollBar.PageLeftCommand}" Style="{VerticalScrollBarPageButton1}"/>
+                </Track.DecreaseRepeatButton>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Command="{ScrollBar.PageRightCommand}" Style="{VerticalScrollBarPageButton2}"/>
+                </Track.IncreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb Style="{VerticalScrollBarThumb}" MinHeight="30" ScrollChrome.ScrollGlyph="HorizontalGripper"/>
+                </Track.Thumb>
+            </Track>
+            <RepeatButton Name="PART_Down" Visibility="Hidden" Grid.Row="2" Command="{ScrollBar.LineDownCommand}" Style="{ScrollBarDownButton}" ScrollChrome.ScrollGlyph="RightArrow"/>
+
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Visibility" Value="Visible" TargetName="PART_Track" />
+                <Setter Property="Visibility" Value="Visible" TargetName="PART_Down" />
+                <Setter Property="Visibility" Value="Visible" TargetName="PART_Up" />
+
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="HorizontalScrollBarTemplate" TargetType="ScrollBar">
+        <Grid Background="{TemplateBinding Background}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MaxWidth="9"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition MaxWidth="9"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <RepeatButton Command="{ScrollBar.LineLeftCommand}" Style="{ScrollBarLeftButton}" />
+            <Track Name="PART_Track" Grid.Column="1" Orientation="{TemplateBinding}"
+                   Minimum="{TemplateBinding}" Maximum="{TemplateBinding}"
+                   Value="{TemplateBinding}" ViewportSize="{TemplateBinding}" >
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Command="{ScrollBar.PageLeftCommand}" Style="{HorizontalScrollBarPageButtonR1}"/>
+                </Track.DecreaseRepeatButton>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Command="{ScrollBar.PageRightCommand}" Style="{HorizontalScrollBarPageButtonR1}"/>
+                </Track.IncreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb Style="{HorizontalScrollBarThumb}" ScrollChrome.ScrollGlyph="HorizontalGripper"/>
+                </Track.Thumb>
+            </Track>
+            <RepeatButton Grid.Column="2" Command="{ScrollBar.LineRightCommand}" Style="{ScrollBarRightButton}" ScrollChrome.ScrollGlyph="RightArrow"/>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="ScrollBar">
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal" >
+                <Setter Property="Background" Value="#66CCCCCC" />
+                <Setter Property="MinHeight" Value="8" />
+                <Setter Property="Template" Value="{HorizontalScrollBarTemplate}" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical" >
+                <Setter Property="MinWidth" Value="8" />
+                <Setter Property="Background" Value="#66CCCCCC" />
+                <Setter Property="Template" Value="{VerticalScrollBarTemplate}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--滚动视图样式-->
+    <Style TargetType="ScrollViewer">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollViewer">
+                    <Grid Name="Grid" Background="{TemplateBinding Background}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <ScrollContentPresenter Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" />
+                        <ScrollBar Name="PART_VerticalScrollBar" MinWidth="9" Grid.Column="1" Cursor="Arrow" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{TemplateBinding VerticalOffset}" />
+                        <ScrollBar Name="PART_HorizontalScrollBar" Grid.Row="1" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{TemplateBinding HorizontalOffset}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

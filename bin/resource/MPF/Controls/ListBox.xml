@@ -1,0 +1,38 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="10" >
+    <Grid.Resources>
+        <Style TargetType="GroupItem">
+            <Setter Property="BorderBrush" Value="#595959"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupItem">
+                        <Expander IsExpanded="{Binding Path=Expanded,Mode=TwoWay}" Header="{TemplateBinding Content}">
+                            <ItemsPresenter Name="ItemsPresenter" />
+                        </Expander>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Grid.Resources>
+    <TabControl Name="TabList">
+        <TabItem Header="普通列表" IsSelected="True" >
+            <ListBox BorderThickness="0">
+                <ListBoxItem Content="Button" />
+                <ListBoxItem Content="ListBox" />
+                <ListBoxItem Content="ListView" />
+                <ListBoxItem Content="TreeView" />
+                <ListBoxItem Content="RepeatButton" />
+                <ListBoxItem Content="CheckBox" />
+                <ListBoxItem Content="RatioButton" />
+                <ListBoxItem Content="ComboBox" />
+                <ListBoxItem Content="TextBlock" />
+                <ListBoxItem Content="TextBox" />
+            </ListBox>
+        </TabItem>
+        <TabItem Header="分组列表" Name="groupList" >
+            <ListBox BorderThickness="0" >
+            </ListBox>
+        </TabItem>
+    </TabControl>
+</Grid>

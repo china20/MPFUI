@@ -1,0 +1,27 @@
+<?xml encoding="utf-8" ?>
+<Grid Margin="10" >
+    <Grid.Resources>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="80*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="20*" />
+    </Grid.ColumnDefinitions>
+    <DockPanel Margin="0" Background="LightBlue" LastChildFill="{Binding Path=IsChecked,ElementName=lcf}" >
+        <Button Content="Left" MinWidth="100" />
+        <Button Content="Right" DockPanel.Dock="Right" />
+        <Button Content="Top" DockPanel.Dock="Top" MinHeight="50" />
+        <Button Content="Bottom" DockPanel.Dock="Bottom" MinHeight="60" />
+        <TextBox Text="LastFill" MaxLines="0" MinWidth="120" MinHeight="80" />
+    </DockPanel>
+    <GridSplitter Width="4" Grid.Column="1" Cursor="Splith" >
+        <GridSplitter.Template>
+            <ControlTemplate TargetType="GridSplitter">
+                <Rectangle Fill="SkyBlue" />
+            </ControlTemplate>
+        </GridSplitter.Template>
+    </GridSplitter>
+    <StackPanel Grid.Row="0" Grid.Column="2" MinWidth="20" Background="WhiteSmoke" >
+        <CheckBox Name="lcf" Content="LastChildFill" Margin="5" IsChecked="True" />
+    </StackPanel>
+</Grid>

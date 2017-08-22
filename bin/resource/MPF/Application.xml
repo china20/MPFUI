@@ -1,0 +1,25 @@
+<?xml encoding="utf-8" ?>
+<Application StartupUri="resource/MPF/MainWindow.xml" Author="QQ:386666951)" >
+    <Application.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="resource/MPF/theme/default.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/ScrollViewer.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/TextBox.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/PasswordBox.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/Calendar.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/DatePicker.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/Menu.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/TreeView.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/ListBox.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/ListView.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/Slider.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/Expander.xml" />
+                <ResourceDictionary Source="resource/MPF/Template/TabControl.xml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Bitmap x:Key="Suidemon" Source="resource/MPF/App/Suidemon.png" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

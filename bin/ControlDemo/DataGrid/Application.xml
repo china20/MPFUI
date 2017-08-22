@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application StartupUri="ControlDemo/DataGrid/MainWindow.xml" Author="QQ:386666951)" >
+    <Application.Resources >
+        <ResourceDictionary Source="ControlDemo/Theme/default.xml" />
+    </Application.Resources>
+</Application>

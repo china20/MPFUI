@@ -1,0 +1,34 @@
+<?xml encoding="utf-8" ?>
+<!--TextBox模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <!--普通编辑框控件样式-->
+    <Style TargetType="TextBox">
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="SkyBlue"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="SelectionBrush" Value="Green" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Name="PART_ContentHost"
+                                      VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                      HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter1 Property="SelectionTextBrush" Value="Gray" />
+                <Setter Property="SelectionBrush" Value="SkyBlue" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

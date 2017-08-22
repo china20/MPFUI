@@ -1,0 +1,39 @@
+﻿<!--定义系统所有的控件-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+    <String x:Key="ContentControl" Value="" />
+    <String x:Key="Button" Value="" />
+    <String x:Key="ToggleButton" Value="" />
+    <String x:Key="RadioButton" Value="" />
+    <String x:Key="CheckBox" Value="" />
+    <String x:Key="Window" Value="" />
+    <String x:Key="ComboBox" Value="" />
+    <String x:Key="Calendar" Value="" />
+    <String x:Key="DatePicker" Value="" />
+    <String x:Key="Expander" Value="" />
+    <String x:Key="Path" Value="" />
+    <String x:Key="Ellipse" Value="" />
+    <String x:Key="Rectangle" Value="" />
+    <String x:Key="Line" Value="" />
+
+    <String x:Key="Image" Value="" />
+    <String x:Key="Track" Value="" />
+    <String x:Key="ScrollBar" Value="" />
+    <String x:Key="ScrollViewer" Value="" />
+
+    <String x:Key="Menu" Value="" />
+    <String x:Key="TextBlock" Value="" />
+    <String x:Key="TextBox" Value="" />
+    <String x:Key="RichTextBox" Value="" />
+    
+    <String x:Key="Grid" Value="" />
+    <String x:Key="StackPanel" Value="" />
+    <String x:Key="DockPanel" Value="" />
+    <String x:Key="WrapPanel" Value="" />
+    <String x:Key="UniformGrid" Value="" />
+    <String x:Key="VisualizeStackPanel" Value="" />
+
+    <String x:Key="ListBox" Value="" />
+    <String x:Key="ListView" Value="" />
+    <String x:Key="TreeView" Value="" />
+    
+</ResourceDictionary>

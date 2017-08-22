@@ -1,0 +1,15 @@
+﻿<Menu Background="{StaticResource bkgnd}" Margin="52,70,2,50" Name="Menu1" Enable="True"
+              HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Opacity="1" Text="" BorderThickness="1" BorderBrush="#888899" 
+                    Padding="2" Orientation="Horizontal" >
+    <MenuItem Header="File">
+        <MenuItem Header="Save" />
+        <MenuItem Header="Exit" />
+    </MenuItem>
+    <MenuItem Header="Help">
+        <MenuItem Header="Author" >
+            <MenuItem Header="汪荣" />
+        </MenuItem>
+        <MenuItem Header="About" />
+    </MenuItem>
+</Menu>

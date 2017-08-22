@@ -1,0 +1,8 @@
+<?xml encoding="utf-8" ?>
+<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Slider Name="_Slider" Margin="20" Value="80" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            SelectionEnd="{Binding Value,RelativeSource={RelativeSource Self}}" 
+            IsSelectionRangeEnabled="True" IsMoveToPointEnabled="True" Height="26" Width="200"  />
+    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" 
+               Height="25" Width="100" Text="{Binding Value,ElementName=_Slider}" />
+</Grid>

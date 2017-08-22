@@ -1,0 +1,58 @@
+<?xml encoding="utf-8" ?>
+<StackPanel Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel.Resources>
+        <Bitmap x:Key="phone01" Source="resource/Sharpui/Icons/phone01.png" />
+    </StackPanel.Resources>
+
+    <StackPanel Margin="8">
+        <TextBlock Text="下面按钮演示修改其模版显示一个圆形按钮" Foreground="Green" Margin="2,5,0,2" />
+        <Button Content="圆形按钮" VerticalAlignment="Center" Width="80" Height="80" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Fill="{TemplateBinding Background}"
+                                 Stroke="{TemplateBinding BorderBrush}"
+                                 StrokeThickness="2" />
+                        <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </StackPanel>
+    
+    <StackPanel Margin="8">
+        <TextBlock Text="最基本的按钮，仅仅显示文字，这是默认的Button样式" Foreground="Red" />
+        <Button Content="普通按钮" FontSize="16"  />
+    </StackPanel>
+
+    <StackPanel Margin="8">
+        <TextBlock Text="下面按钮的Content设置为实际控件" Foreground="Green" Margin="2,5,0,2" />
+        <Button>
+            <DockPanel >
+                <Image Source="{phone01}" Width="18" Height="18" Margin="2,0,6,0" />
+                <TextBox Text="编辑框" Height="20" Width="150" />
+                <Button Content="发送" Pading="8" />
+            </DockPanel>
+        </Button>
+    </StackPanel>
+
+    <StackPanel Margin="8">
+        <TextBlock Text="下面按钮演示修改其模版从而改变其外观" Foreground="Green" Margin="2,5,0,2" />
+        <Button Content="从手机发送" VerticalAlignment="Center" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}" >
+                        <StackPanel Orientation="Horizontal" >
+                            <Image Source="{phone01}" Width="18" Height="18" Margin="2,0,6,0" />
+                            <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </StackPanel>
+    
+</StackPanel>
+

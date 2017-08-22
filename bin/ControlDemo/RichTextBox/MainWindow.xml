@@ -1,0 +1,33 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="RichTextBox演示" RoundSize="0" ResizeMode="CanResize"
+        Width="500" Height="500" MinWidth="300" MinHeight="300" MaxWidth="800" MaxHeight="800">
+    <Window.Resources>
+        
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="26" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <MinimizeButton ToolTip="最小化" DockPanel.Dock="Right" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton DockPanel.Dock="Right" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <Grid Margin="0,38,0,0" Background="{DynamicResource BodyBrush}">
+            <DockPanel Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBlock Text="Tips:按下alt+回车键发送信息！" Foreground="Red" DockPanel.Dock="Top" />
+                    <Button Name="sendBtn" Content="发送" Margin="8,0,8,0" VerticalAlignment="Center" DockPanel.Dock="Right" />
+                    <RichTextBox Name="inputRich" Height="38" Background="Green" Margin="0,2,0,8" Foreground="Black" />
+                </DockPanel>
+                <StackPanel DockPanel.Dock="Bottom" Height="32" Margin="0,8,0,8" Orientation="Horizontal">
+                    <Button Name="insertImgBtn" Content="插入图片" Margin="0,0,8,0" />
+                    <Button Content="插入动画" />
+                </StackPanel>
+                <RichTextBox Name="RichAni" TextWrapping="Wrap" CaretBrush="Green" Foreground="Black" Background="White" />
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>

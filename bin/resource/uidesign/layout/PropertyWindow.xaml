@@ -1,0 +1,463 @@
+﻿<?xml encoding="UTF-8" ?>
+<Window Name="propWindow" Author="汪荣(QQ:386666951)" >
+    <Window.Resources>
+        <Style TargetType="Window" >
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid >
+        <DockPanel>
+            <DockPanel Orientation="Horizontal" DockPanel.Dock="Top" VerticalAlignment="Top" Margin="2,0,2,0" MinHeight="36" Background="#595959" >
+                <Rectangle Name="ElementIcon" VerticalAlignment="Center" Width="32" Height="32" Margin="3,0,3,0" />
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Visibility="Collapsed" >
+                    <Rectangle Width="1" Fill="#333333" Margin="2,3,6,3" />
+                    <RadioButton Name="propBtn" ToolTip="属性"  Height="20" Content="" VerticalAlignment="Top" />
+                    <RadioButton Name="eventBtn" ToolTip="事件" Height="20" Content="" VerticalAlignment="Top" />
+                </StackPanel>
+                <DockPanel Margin="6,2,6,0" LastChildFill="False" >
+                    <DockPanel Margin="0,2,0,2" Height="22" DockPanel.Dock="Top" >
+                        <TextBlock Text="名称 " Foreground="#FFFFFF" VerticalAlignment="Center"/>
+                        <NameEditor Name="ElementName" Height="20" Margin="0,0,8,0" VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Margin="0,2,0,4" Height="22" DockPanel.Dock="Top" >
+                        <TextBlock Text="类型 " Foreground="#FFFFFF" VerticalAlignment="Center" />
+                        <TextBlock Name="ElementType" Text="Button" FontWeight="ExtraBold" Foreground="#FFFFFF" VerticalAlignment="Center" />
+                    </DockPanel>
+                </DockPanel>
+            </DockPanel>
+
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Visibility="Collapsed">
+                    <RadioButton Content="属性" />
+                    <RadioButton Content="事件" />
+                </StackPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" Margin="0,2,0,0" >
+                    <StackPanel >
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="MinWidth" Value="100" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Expander Header="画笔" HorizontalAlignment="Stretch" Background="#595959" Margin="2" MinWidth="120" >
+                            <StackPanel>
+                                <BrushEditorPanel Name="BrushEditor" Background="#444444" >
+                                    <BrushEditorPanel.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Width" Value="Auto" />
+                                        </Style>
+                                    </BrushEditorPanel.Resources>
+
+                                    <StackPanel Orientation="Vertical" Name="BrushSetters" >
+                                        <Grid>
+                                            <BrushSetterEditor Name="Foreground" Content="Foreground" Height="20" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <Grid>
+                                            <BrushSetterEditor Name="Background" Content="Background" Height="20" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <Grid>
+                                            <BrushSetterEditor Name="Stroke" Content="Stroke" Height="20" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <Grid>
+                                            <BrushSetterEditor Name="Fill" Content="Fill" Height="20" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <Grid>
+                                            <BrushSetterEditor Name="BorderBrush" Content="BorderBrush" Height="20" VerticalAlignment="Center" />
+                                        </Grid>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Background="#424242" Height="26" >
+                                        <RadioButton Name="NullBrush_R" GroupName="grpBrush" Content="无" IsChecked="True" />
+                                        <RadioButton Name="SolidColorBrush_R" GroupName="grpBrush" Content="纯色" />
+                                        <RadioButton Name="LinearGradientBrush_R" GroupName="grpBrush" Content="线性" />
+                                        <RadioButton Name="RadialGradientBrush_R" GroupName="grpBrush" Content="径向" />
+                                        <RadioButton Name="ImageBrush_R" GroupName="grpBrush" Content="图像" />
+                                        <RadioButton Name="ResBrush_R" GroupName="grpBrush" Content="资源" />
+                                    </StackPanel>
+
+                                    <Grid>
+                                        <NullBrushSetterEditor Name="NullBrush_N" Width="0" Height="0"
+                                        Visibility="{Binding Path=IsChecked, ElementName=NullBrush_R, Converter=BToV}">
+                                        </NullBrushSetterEditor>
+
+                                        <!--纯色画刷-->
+                                        <SolidColorBrushSetterEditor Name="SolidColorBrush_N" MinWidth="120"
+                                          Visibility="{Binding Path=IsChecked, Mode=TwoWay, ElementName=SolidColorBrush_R, Converter=BToV}">
+                                        </SolidColorBrushSetterEditor>
+
+                                        <!--线性渐变画刷-->
+                                        <LinearGradientBrushSetterEditor Name="LinearGradientBrush_N" MinWidth="120"
+                                          Visibility="{Binding Path=IsChecked, ElementName=LinearGradientBrush_R, Converter=BToV}" />
+
+                                        <!--径向渐变画刷-->
+                                        <RadialGradientBrushSetterEditor Name="RadialGradientBrush_N" MinWidth="120"
+                                          Visibility="{Binding Path=IsChecked, ElementName=RadialGradientBrush_R, Converter=BToV}" />
+
+                                        <!--图像画刷-->
+                                        <ImageBrushSetterEditor Name="ImageBrush_N" MinWidth="120"
+                                          Visibility="{Binding Path=IsChecked, ElementName=ImageBrush_R, Converter=BToV}" />
+                                    </Grid>
+                                    
+                                </BrushEditorPanel>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="外观" Background="#595959" Margin="2"  >
+                            <StackPanel Orientation="Vertical" >
+
+                                <StackPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="MinWidth" Value="120" />
+                                    </Style>
+                                </StackPanel.Resources>
+
+                                <DockPanel Margin="2" >
+                                    <TextBlock Text="Opacity " TextAlignment="Right" />
+                                    <TextBoxRangeSetterEditor Name="Opacity" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="2" >
+                                    <TextBlock Text="Visibility " TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="Visibility" IsEditable="False" MinWidth="80" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="BorderThickness " TextAlignment="Right" />
+                                    <fRectSetterEditor Name="BorderThickness" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="CornerRadius " TextAlignment="Right" />
+                                    <fRectSetterEditor Name="CornerRadius" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="StrokeThickness " TextAlignment="Right" />
+                                    <PosFloatSetterEditor Name="StrokeThickness" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="Style " TextAlignment="Right" />
+                                    <StyleSetterEditor Name="Style" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="ItemContainerStyle " TextAlignment="Right" />
+                                    <ItemContainerStyleSetterEditor Name="ItemContainerStyle" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="Template " TextAlignment="Right" />
+                                    <ControlTemplateSetterEditor Name="Template" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="ItemTemplate " TextAlignment="Right" />
+                                    <DataTemplateSetterEditor Name="ItemTemplate" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="ContentTemplate " TextAlignment="Right" />
+                                    <DataTemplateSetterEditor Name="ContentTemplate" />
+                                </DockPanel>
+
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="VerticalScrollBarVisibility " Width="190" TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="VerticalScrollBarVisibility" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="HorizontalScrollBarVisibility " Width="190" TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="HorizontalScrollBarVisibility" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="公共" HorizontalAlignment="Stretch" Background="#595959" Margin="2" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" >
+                                <DockPanel HorizontalAlignment="Stretch" Margin="2" >
+                                    <TextBlock Text="Cursor " TextAlignment="Right" />
+                                    <CursorSetterEditor Name="Cursor" Text="" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="2" >
+                                    <TextBlock Text="ToolTip " TextAlignment="Right" />
+                                    <StringSetterEditor Name="ToolTip" Text="" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="2" >
+                                    <TextBlock Text="HitTestFilterAction " Width="120" TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="HitTestFilterAction" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="IsEnabled" Content="IsEnabled" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="Focusable" Content="Focusable" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="100,2,2,8" >
+                                    <CheckSetterEditor Name="ClipToBounds" Content="ClipToBounds" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="100,2,2,8" >
+                                    <CheckSetterEditor Name="IsHitTestVisible" Content="IsHitTestVisible" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="布局" HorizontalAlignment="Stretch" Background="#595959" Margin="2" >
+                            <StackPanel Orientation="Vertical" Margin="2,1,4,2" >
+                                <StackPanel Orientation="Vertical" Name="FrameworkElement" >
+                                    <DockPanel Margin="2" >
+                                        <TextBlock Text="Width " TextAlignment="Right" />
+                                        <WidthSetterEditor Name="Width" Text="" Height="20" VerticalAlignment="Center" />
+                                    </DockPanel>
+                                    <DockPanel Margin="2" >
+                                        <TextBlock Text="Height " TextAlignment="Right" />
+                                        <WidthSetterEditor Name="Height" Text="" Height="20" VerticalAlignment="Center" />
+                                    </DockPanel>
+
+                                    <StackPanel Orientation="Horizontal" Margin="2,8,2,2" >
+                                        <TextBlock Text="HorizontalAlignment " Width="155" TextAlignment="Right" />
+                                        <AlignHoriSetterEditor Name="HorizontalAlignment" GroupName="ha" Background="#333333" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="2" >
+                                        <TextBlock Text="VerticalAlignment " Width="155" TextAlignment="Right" />
+                                        <AlignVertSetterEditor Name="VerticalAlignment" GroupName="va" Background="#333333" />
+                                    </StackPanel>
+
+                                    <DockPanel Margin="2" >
+                                        <TextBlock Text="Margin " TextAlignment="Right" />
+                                        <fRectSetterEditor Name="Margin" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="2" >
+                                        <TextBlock Text="MinWidth " TextAlignment="Right" />
+                                        <WidthSetterEditor Name="MinWidth" Height="20" VerticalAlignment="Center" />
+                                    </DockPanel>
+                                    <DockPanel Margin="2" >
+                                        <TextBlock Text="MinHeight " TextAlignment="Right" />
+                                        <WidthSetterEditor Name="MinHeight" Height="20" VerticalAlignment="Center" />
+                                    </DockPanel>
+
+                                    <DockPanel Margin="2" >
+                                        <TextBlock Text="MaxWidth " TextAlignment="Right" />
+                                        <WidthSetterEditor Name="MaxWidth" Height="20" VerticalAlignment="Center" />
+                                    </DockPanel>
+                                    <DockPanel Margin="2" >
+                                        <TextBlock Text="MaxHeight " TextAlignment="Right" />
+                                        <WidthSetterEditor Name="MaxHeight" Height="20" VerticalAlignment="Center" />
+                                    </DockPanel>
+                                </StackPanel>
+
+                                <DockPanel Margin="2,2,2,5" >
+                                    <TextBlock Text="Panel.ZIndex " TextAlignment="Right" />
+                                    <PosNumericSetterEditor Name="Panel.ZIndex" />
+                                </DockPanel>
+
+                                <StackPanel Orientation="Vertical" Name="Control" >
+                                    <!--StackPanel Orientation="Horizontal" Margin="2" >
+                                <TextBlock Text="HorizontalContentAlignment " Width="165" TextAlignment="Right" />
+                                <AlignHoriSetterEditor Name="HorizontalContentAlignment" GroupName="hca" Background="#333333" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="2,2,2,8" >
+                                <TextBlock Text="VerticalContentAlignment " Width="165" TextAlignment="Right" />
+                                <AlignVertSetterEditor Name="VerticalContentAlignment" GroupName="vca" Background="#333333" />
+                            </StackPanel-->
+                                    <DockPanel Margin="2,2,2,2" >
+                                        <TextBlock Text="Padding " TextAlignment="Right" />
+                                        <fRectSetterEditor Name="Padding" />
+                                    </DockPanel>
+                                </StackPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Grid.Row " TextAlignment="Right" />
+                                    <PosNumericSetterEditor Name="Grid.Row" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Grid.Column " TextAlignment="Right" />
+                                    <PosNumericSetterEditor Name="Grid.Column" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Grid.RowSpan " TextAlignment="Right" />
+                                    <PosNumericSetterEditor Name="Grid.RowSpan" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Grid.ColumnSpan " TextAlignment="Right" />
+                                    <PosNumericSetterEditor Name="Grid.ColumnSpan" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Definitions(集合) " VerticalAlignment="Center" MinWidth="100" TextAlignment="Right" />
+                                    <ButtonSetterEditor Name="RCDefinitions" Content="..." MinWidth="80" />
+                                </DockPanel>
+
+                                <DockPanel Margin="100,2,2,8" >
+                                    <CheckSetterEditor Name="LastChildFill" Content="LastChildFill" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="DockPanel.Dock " TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="DockPanel.Dock" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Canvas.Left " TextAlignment="Right" />
+                                    <NumericSetterEditor Name="Canvas.Left" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Canvas.Top " TextAlignment="Right" />
+                                    <NumericSetterEditor Name="Canvas.Top" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Canvas.Right " TextAlignment="Right" />
+                                    <NumericSetterEditor Name="Canvas.Right" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Canvas.Bottom " TextAlignment="Right" />
+                                    <NumericSetterEditor Name="Canvas.Bottom" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" Name="Orientation_Panel" >
+                                    <TextBlock Text="Orientation " TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="Orientation" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" >
+                                        <ComboBoxItem Content="Vertical" />
+                                        <ComboBoxItem Content="Horizontal" />
+                                    </ChoiceSetterEditor>
+                                </DockPanel>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Header="文本" Background="#595959" Margin="2,2,2,2" >
+                            <StackPanel Orientation="Vertical" >
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="FontSize " TextAlignment="Right" />
+                                    <FontSizeSetterEditor Name="TextElement.FontSize" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <FontWeightSetterEditor Name="TextElement.FontWeight" Margin="90,1,4,2" Content="Bold" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <FontStyleSetterEditor Name="TextElement.FontStyle" Margin="90,1,4,2" Content="Italic" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <FontUnderlineSetterEditor Name="Underline" Margin="90,1,4,2" Content="Underline" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            </StackPanel>
+
+                        </Expander>
+                        <Expander Header="杂项" Background="#595959" Margin="2,2,2,8" >
+                            <StackPanel Orientation="Vertical" Margin="2,1,4,2" >
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Text " TextAlignment="Right" />
+                                    <StringSetterEditor Name="Text" />
+                                </DockPanel>
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Content " TextAlignment="Right" />
+                                    <StringSetterEditor Name="Content" />
+                                </DockPanel>
+                                <DockPanel Margin="2,2,2,2" >
+                                    <TextBlock Text="Header " TextAlignment="Right" />
+                                    <StringSetterEditor Name="Header" />
+                                </DockPanel>
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="AllowsTransparency" Content="AllowsTransparency" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="IsChecked" Content="IsChecked" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+  
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="ShowInTaskbar" Content="ShowInTaskbar" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="Topmost" Content="Topmost" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel HorizontalAlignment="Stretch" Margin="2" >
+                                    <TextBlock Text="Title " TextAlignment="Right" />
+                                    <StringSetterEditor Name="Title" Text="" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" Name="ResizeMode_Panel" >
+                                    <TextBlock Text="ResizeMode " TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="ResizeMode" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+								
+								<DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="SizeToContent " TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="SizeToContent" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2" >
+                                    <TextBlock Text="RoundSize " TextAlignment="Right" />
+                                    <SizeSetterEditor Name="RoundSize" />
+                                </DockPanel>
+
+                                <DockPanel HorizontalAlignment="Stretch" Margin="2" >
+                                    <TextBlock Text="Data " TextAlignment="Right" />
+                                    <StringSetterEditor Name="Data" Text="" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2" >
+                                    <TextBlock Text="Source " TextAlignment="Right" />
+                                    <SourceSetterEditor Name="Source" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="Stretch " TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="Stretch" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,8" >
+                                    <TextBlock Text="StretchDirection " TextAlignment="Right" />
+                                    <ChoiceSetterEditor Name="StretchDirection" Foreground="Black" IsEditable="False" Height="20" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="Play" Content="Play" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="100,2,2,2" >
+                                    <CheckSetterEditor Name="MouseEnterPlay" Content="MouseEnterPlay" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,5" >
+                                    <TextBlock Text="PlayDelay " TextAlignment="Right" />
+                                    <PosNumericSetterEditor Name="PlayDelay" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,5" >
+                                    <TextBlock Text="Tag " TextAlignment="Right" />
+                                    <ExtensionSetterEditor Name="Tag" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,5" >
+                                    <TextBlock Text="Tag0 " TextAlignment="Right" />
+                                    <ExtensionSetterEditor Name="Tag0" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,5" >
+                                    <TextBlock Text="Tag1 " TextAlignment="Right" />
+                                    <ExtensionSetterEditor Name="Tag1" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,5" >
+                                    <TextBlock Text="Tag2 " TextAlignment="Right" />
+                                    <ExtensionSetterEditor Name="Tag2" />
+                                </DockPanel>
+
+                                <DockPanel Margin="2,2,2,5" >
+                                    <TextBlock Text="Tag3 " TextAlignment="Right" />
+                                    <ExtensionSetterEditor Name="Tag3" />
+                                </DockPanel>
+
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

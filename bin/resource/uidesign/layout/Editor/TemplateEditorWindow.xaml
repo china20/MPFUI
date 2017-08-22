@@ -1,0 +1,65 @@
+<?xml encoding="UTF-8" ?>
+<Window Name="window" Author="汪荣(QQ:386666951)" RoundSize="5"  ResizeMode="CanResize"
+        Title="模版编辑" ResizeBox="True" Background="#FF3D3D3D" Foreground="White"  >
+    <Window.Resources>
+    </Window.Resources>
+
+    <!--主面板-->
+    <DockPanel Background1="#3D3D3D" >
+        <!--标题栏-->
+        <DockPanel DockPanel.Dock="Top" Height="36" Visibility="Collapsed" Background="#3D3D3D" Name="capPanel" >
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right" >
+                <CloseButton Width="26" Height="12" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="16" Foreground="WhiteSmoke" Margin="4" VerticalAlignment="Center"/>
+        </DockPanel>
+        
+        <!--除去标题栏部分-->
+        <!--模版编辑界面-->
+        <Grid Name="TemplateCont" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <!--左边工程视图-->
+            <DockPanel Width="160" >
+                <Button Name="TemplatePanel_Return" DockPanel.Dock="Top" Cursor="Hand" Content="返回样式" Style="{ReturnBtnStyle}" Foreground="Green" Height="26" VerticalAlignment="Top" />
+				<Button Name="MainWindow_Return_FromTemplate" DockPanel.Dock="Top" Cursor="Hand" Content="返回主界面" Style="{ReturnBtnStyle}" Foreground="Green" Height="26" Visibility="Collapsed" VerticalAlignment="Top" />
+                <Grid Name="EditTempGrid" Height="26" DockPanel.Dock="Top" Background="#222222" >
+                    <TextBlock Name="EditTempTrigger" Margin="5,0,0,0" Foreground="White" VerticalAlignment="Center">
+                        <Hyperlink Foreground="White" TextDecorations="Underline" >
+                            <Run Text="编辑模版Triggers" />
+                        </Hyperlink>
+                    </TextBlock>
+                </Grid>
+                <DockPanel>
+                    <Grid DockPanel.Dock="Top" Height="28" Background="#222222" >
+                        <TextBlock Text=" 对象视图" FontSize="11" FontFamily="Tahoma" Foreground="WhiteSmoke" VerticalAlignment="Center" />
+                    </Grid>
+                    <ElementTree Name="ObjTreeView" Foreground="White" Background="#333333"/>
+                </DockPanel>
+            </DockPanel>
+            <GridSplitter Width="4" Grid.Column="1" Cursor="Splith" Background="Grey" />
+            <DockPanel Grid.Column="2" >
+                <!--工具栏-->
+                <StackPanel1 Orientation="Horizontal" DockPanel.Dock="Top" Height="32" Background="#444444" >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" />
+                    <Grid Name="CtrlToolbar" VerticalAlignment="Center" />
+                </StackPanel1>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <!--中间为设计界面视图-->
+                    <ScrollViewer Name="DesignViewer" />
+                    <GridSplitter Width="4" Grid.Column="1" Cursor="Splith" Background="Grey" />
+                    <!--右边属性视图-->
+                    <Grid Name="PropPanel" Grid.Column="2" Width="280" Background="#333333" /> 
+                </Grid>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
+</Window>
