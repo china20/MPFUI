@@ -1,6 +1,0 @@
-LIBRARY uidcored.dll 
-
-EXPORTS 
-
-	InitUIDCore @ 1
-

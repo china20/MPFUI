@@ -1,7 +1,0 @@
-; uidframeu.def
-
-LIBRARY      "uidframeu.DLL"
-
-EXPORTS
-	
-	UIDGetFrame @ 1
