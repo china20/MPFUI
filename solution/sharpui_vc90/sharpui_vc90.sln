@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "suicore", "..\..\trunk\suicore\suicore_vs90.vcproj", "{4C859412-240C-43BC-B84C-1ADF14DDD728}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "suiwgx", "..\..\trunk\suiwgx\suiwgx.vcproj", "{6B245211-8E06-478D-8D97-B641CAB6FEC5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "suiwgx", "..\..\trunk\suiwgx\suiwgx_vs90.vcproj", "{6B245211-8E06-478D-8D97-B641CAB6FEC5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4C859412-240C-43BC-B84C-1ADF14DDD728} = {4C859412-240C-43BC-B84C-1ADF14DDD728}
 	EndProjectSection
