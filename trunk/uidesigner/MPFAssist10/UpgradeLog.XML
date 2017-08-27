@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="MPFAssist">
+</Property><Property Name="Solution File" Value="D:\works\MPF\trunk\uidesigner\MPFAssist10\MPFAssist.sln">
+</Property><Property Name="Date" Value="2016年9月17日 星期六">
+</Property><Property Name="Time" Value="上午 7:01:44">
+</Property></Properties><Event ErrorLevel="0" Project="MPFAssistRes10" Source="..\MPFAssistRes\MPFAssistRes10.vcproj" Description="Converting project file 'D:\works\MPF\trunk\uidesigner\MPFAssistRes\MPFAssistRes10.vcproj'.">
+</Event><Event ErrorLevel="1" Project="MPFAssistRes10" Source="..\MPFAssistRes\MPFAssistRes10.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="MPFAssistRes10" Source="..\MPFAssistRes\MPFAssistRes10.vcproj" Description="MSB8012: $(TargetPath) ('D:\works\MPF\trunk\uidesigner\MPFAssist10\Debug\MPFAssistRes.dll') does not match the Linker's OutputFile property value '..\..\..\bin\1033\MPFAssistRes.dll' ('D:\works\MPF\bin\1033\MPFAssistRes.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="MPFAssistRes10" Source="..\MPFAssistRes\MPFAssistRes10.vcproj" Description="MSB8012: $(TargetPath) ('D:\works\MPF\trunk\uidesigner\MPFAssist10\Release\MPFAssistRes.dll') does not match the Linker's OutputFile property value '..\..\..\bin\1033\MPFAssistRes.dll' ('D:\works\MPF\bin\1033\MPFAssistRes.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="MPFAssistRes10" Source="..\MPFAssistRes\MPFAssistRes10.vcproj" Description="Done converting to new project file 'D:\works\MPF\trunk\uidesigner\MPFAssistRes\MPFAssistRes10.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="MPFAssistRes10" Source="..\MPFAssistRes\MPFAssistRes10.vcproj" Description="Converted">
+</Event></UpgradeLog>

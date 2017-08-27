@@ -1,0 +1,166 @@
+HKCR
+{
+	MPFAssist.Connect.1 = s 'Connect Class'
+	{
+		CLSID = s '{FF3B2ABC-E066-47D3-8B56-1700886E679D}'
+	}
+	MPFAssist.Connect = s 'Connect Class'
+	{
+		CLSID = s '{FF3B2ABC-E066-47D3-8B56-1700886E679D}'
+		CurVer = s 'MPFAssist.Connect.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove '{FF3B2ABC-E066-47D3-8B56-1700886E679D}' = s 'Connect Class'
+		{
+			ProgID = s 'MPFAssist.Connect.1'
+			VersionIndependentProgID = s 'MPFAssist.Connect'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{E1202578-F265-4699-9E25-216B4583962A}'
+		}
+	}
+}
+
+HKCU
+{
+	NoRemove 'SOFTWARE'
+	{
+		NoRemove 'Microsoft'
+		{
+			NoRemove 'VSA'
+			{
+				NoRemove '10.0'
+				{
+					NoRemove 'AddIns'
+					{
+						ForceRemove 'MPFAssist.Connect'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 0
+							val FriendlyName = s 'MPFAssist'
+							val Description = s 'MPFAssist - MPF助手'
+							val AboutBoxDetails = s 'For more information about MPFAssist, see the MPFAssist website at\r\nhttp://www.shidian.net.cn\r\nFor customer support, Please contact QQ(386666951).\r\nCopyright (c) 2016 视点科技 Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+
+							val SatelliteDllName = s 'MPFAssistRes.dll'
+                            val SatelliteDllPath = s '%MODULE_DIR%'
+						}
+					}
+				}
+			}
+		}
+	}
+	NoRemove 'SOFTWARE'
+	{
+		NoRemove 'Microsoft'
+		{
+			NoRemove 'VisualStudio'
+			{
+                NoRemove '8.0'
+				{
+					NoRemove 'AddIns'
+					{
+						ForceRemove 'MPFAssist.Connect'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 0
+							val FriendlyName = s 'MPFAssist'
+							val Description = s 'MPFAssist - MPF助手'
+							val AboutBoxDetails = s 'For more information about MPFAssist, see the MPFAssist website at\r\nhttp://www.shidian.net.cn\r\nFor customer support, Please contact QQ(386666951).\r\nCopyright (c) 2016 视点科技 Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+
+							val SatelliteDllName = s 'MPFAssistRes.dll'
+                            val SatelliteDllPath = s '%MODULE_DIR%'
+						}
+					}
+				}
+
+				NoRemove '9.0'
+				{
+					NoRemove 'AddIns'
+					{
+						ForceRemove 'MPFAssist.Connect'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 0
+							val FriendlyName = s 'MPFAssist'
+							val Description = s 'MPFAssist - MPF助手'
+							val AboutBoxDetails = s 'For more information about MPFAssist, see the MPFAssist website at\r\nhttp://www.shidian.net.cn\r\nFor customer support, Please contact QQ(386666951).\r\nCopyright (c) 2016 视点科技 Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+
+							val SatelliteDllName = s 'MPFAssistRes.dll'
+                            val SatelliteDllPath = s '%MODULE_DIR%'
+						}
+					}
+				}
+
+				NoRemove '10.0'
+				{
+					NoRemove 'AddIns'
+					{
+						ForceRemove 'MPFAssist.Connect'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 0
+							val FriendlyName = s 'MPFAssist'
+							val Description = s 'MPFAssist - MPF助手'
+							val AboutBoxDetails = s 'For more information about MPFAssist, see the MPFAssist website at\r\nhttp://www.shidian.net.cn\r\nFor customer support, Please contact QQ(386666951).\r\nCopyright (c) 2016 视点科技 Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+
+							val SatelliteDllName = s 'MPFAssistRes.dll'
+                            val SatelliteDllPath = s '%MODULE_DIR%'
+						}
+					}
+				}
+
+                NoRemove '11.0'
+				{
+					NoRemove 'AddIns'
+					{
+						ForceRemove 'MPFAssist.Connect'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 0
+							val FriendlyName = s 'MPFAssist'
+							val Description = s 'MPFAssist - MPF助手'
+							val AboutBoxDetails = s 'For more information about MPFAssist, see the MPFAssist website at\r\nhttp://www.shidian.net.cn\r\nFor customer support, Please contact QQ(386666951).\r\nCopyright (c) 2016 视点科技 Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+
+							val SatelliteDllName = s 'MPFAssistRes.dll'
+                            val SatelliteDllPath = s '%MODULE_DIR%'
+						}
+					}
+				}
+
+                NoRemove '12.0'
+				{
+					NoRemove 'AddIns'
+					{
+						ForceRemove 'MPFAssist.Connect'
+						{
+							val LoadBehavior = d 1
+							val CommandLineSafe = d 0
+							val CommandPreload = d 0
+							val FriendlyName = s 'MPFAssist'
+							val Description = s 'MPFAssist - MPF助手'
+							val AboutBoxDetails = s 'For more information about MPFAssist, see the MPFAssist website at\r\nhttp://www.shidian.net.cn\r\nFor customer support, Please contact QQ(386666951).\r\nCopyright (c) 2016 视点科技 Inc.'
+							val AboutBoxIcon = s '%MODULE%,1'
+
+							val SatelliteDllName = s 'MPFAssistRes.dll'
+                            val SatelliteDllPath = s '%MODULE_DIR%'
+						}
+					}
+				}
+			}
+		}
+	}
+}

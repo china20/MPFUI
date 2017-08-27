@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MPFAssist", "MPFAssist.vcxproj", "{D00DBF3B-BEDF-4DA7-B8EC-0DDE2DC5F37E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MPFAssistRes", "..\MPFAssistRes\MPFAssistRes10.vcxproj", "{29FA97B0-6F5F-4D7D-93D7-856B3891F678}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D00DBF3B-BEDF-4DA7-B8EC-0DDE2DC5F37E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D00DBF3B-BEDF-4DA7-B8EC-0DDE2DC5F37E}.Debug|Win32.Build.0 = Debug|Win32
+		{D00DBF3B-BEDF-4DA7-B8EC-0DDE2DC5F37E}.Release|Win32.ActiveCfg = Release|Win32
+		{D00DBF3B-BEDF-4DA7-B8EC-0DDE2DC5F37E}.Release|Win32.Build.0 = Release|Win32
+		{29FA97B0-6F5F-4D7D-93D7-856B3891F678}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29FA97B0-6F5F-4D7D-93D7-856B3891F678}.Debug|Win32.Build.0 = Debug|Win32
+		{29FA97B0-6F5F-4D7D-93D7-856B3891F678}.Release|Win32.ActiveCfg = Release|Win32
+		{29FA97B0-6F5F-4D7D-93D7-856B3891F678}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
