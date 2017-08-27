@@ -58,7 +58,13 @@
 
 #else
 
+#pragma comment(lib, "usp10.lib")
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "windowscodecs.lib")
+
 #ifdef _DEBUG
+#pragma comment(lib, "drawlibsd.lib")
+#pragma comment(lib, "freetype253_d.lib")
 #pragma comment(lib, "suicoresud.lib")
 #else
 #pragma comment(lib, "drawlibs.lib")
