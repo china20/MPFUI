@@ -83,6 +83,17 @@ void MainWindow::OnConnect(suic::IXamlNode* pNode, suic::Object* target)
     
 }
 
+void MainWindow::OnClickHyper(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    Element* pElem = suic::DynamicCast<Element>(e->GetOriginalSource());
+    if (pElem != NULL && pElem->GetName().Equals("hyper"))
+    {
+        suic::InfoBox::Show("Click Hyperlink", "提示");
+    }
+
+    e->SetHandled(true);
+}
+
 void MainWindow::OnLoaded(suic::LoadedEventArg* e)
 {
     suic::Window::OnLoaded(e);
@@ -94,6 +105,12 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     // 窗口居中显示
     //
     CenterWindow();
+
+    suic::TextBlock* pTxt = FindElem<suic::TextBlock>("txtBlock");
+    if (NULL != pTxt)
+    {
+        pTxt->AddHandler(suic::Hyperlink::ClickEvent, new suic::RoutedEventHandler(this, &MainWindow::OnClickHyper));
+    }
 
     //
     // 载入登录界面，窗口类使用我们定义的LoginWindow

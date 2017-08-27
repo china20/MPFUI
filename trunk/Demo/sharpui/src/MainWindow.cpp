@@ -99,6 +99,7 @@ void MainWindow::SwitchToControl(String name)
     {
         fe->GetChildren()->Clear();
         fe->AddChild(elem);
+        elem->UpdateLayout();
 
         Button* pBtn = elem->FindElem<Button>(_U("SetPosBtn"));
         if (pBtn != NULL)
@@ -246,7 +247,7 @@ void MainWindow::OnControlSwitchComplete(Object* sender, EventArg* e)
 void MainWindow::OnAppSelected(Element* sender, MouseButtonEventArg* e)
 {
     //
-    // 获取Sharpui独立的演示程序列表对象（比如QQDemon、SuiDemon等）
+    // 获取MPF独立的演示程序列表对象（比如QQDemon、SuiDemon等）
     //
     ListBox* listApp = FindElem<ListBox>(_U("AppList"));
     if (listApp)

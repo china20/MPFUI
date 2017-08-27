@@ -1,9 +1,9 @@
-// 华勤科技版权所有 2010-2011
+// 华勤科技版权所有 2010-2022
 // 
 // 文件名：ThemeWindow.h
 // 功  能：主题界面窗口。
 // 
-// 作  者：Sharpui开发组
+// 作  者：MPF开发组
 // 时  间：2013-01-02
 // 
 // ============================================================================
@@ -21,7 +21,7 @@ public:
         _thumb = thump;
         _title = title;
         _useCount = _U("2236888人使用");
-        _provider = _U("由Sharpui提供");
+        _provider = _U("由MPF提供");
     }
 
     BeginMember(ThemeItem, Object)

@@ -1,9 +1,9 @@
-// 华勤科技版权所有 2010-2011
+// 华勤科技版权所有 2010-2022
 // 
 // 文件名：MainWindow.h
 // 功  能：主界面窗口。
 // 
-// 作  者：Sharpui开发组
+// 作  者：MPF开发组
 // 时  间：2013-01-02
 // 
 // ============================================================================
@@ -93,6 +93,8 @@ public:
 
     void OnMouseEnterUserInfo(Element* sender, MouseButtonEventArg* e);
     void OnMouseLeaveUserInfo(Element* sender, MouseButtonEventArg* e);
+    
+    void OnClickHyper(suic::DpObject* sender, suic::RoutedEventArg* e);
 
 protected:
 
