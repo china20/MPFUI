@@ -72,7 +72,7 @@ BEGIN
             VALUE "FileDescription", "suiwgx"
             VALUE "FileVersion", "1, 8, 2, 9"
             VALUE "InternalName", "suiwgx"
-            VALUE "LegalCopyright", "MPF开发组 Copyright (C) 2009-2020"
+            VALUE "LegalCopyright", "MPF开发组 Copyright (C) 2008-2022"
             VALUE "OriginalFilename", "suiwgx.dll"
             VALUE "ProductName", "MPF开发组"
             VALUE "ProductVersion", "1, 8, 2, 9"

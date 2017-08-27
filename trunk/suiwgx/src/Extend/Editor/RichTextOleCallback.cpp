@@ -1,12 +1,13 @@
 // ======================================================================
 //
-// Copyright (c) 2008-2012 汪荣, Inc. All rights reserved.
+// Copyright (c) 2008-2022 汪荣, Inc. All rights reserved.
 //
-// suiwgx库源码遵循CPL协议进行开源，任何个人或团体可以免费使用，但不能居于此库衍生任何商业性质的库或代码。
+// MPF界面库遵循指定开源协议，团体或公司商用请根据协议购买授权，
+// 任何个人、团体或公司不能居于此库衍生任何商业性质的库或代码。
 //
 // ======================================================================
 
-//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 // RichEditOleCallback.cpp
 
 #include "stdafx.h"
@@ -14,7 +15,7 @@
 #include "RichTextOleCallback.h"
 #include <TOM.h>
 
-static suic::String SharpuiStmName = L"SharpuiStm";
+static suic::String MPFUIStmName = L"MPFUIStm";
 
 EXTERN_C const CLSID CLSID_UIOleObject;
 
@@ -32,7 +33,7 @@ static bool CreateNewStorageObject(IStorage** lpStg)
     static int iCount = 0;
     String strName;
 
-    strName.Format(_U("SharpuiStg_%d"), ++iCount);
+    strName.Format(_U("MPFUIStg_%d"), ++iCount);
 
     HRESULT lr = s_stg ->CreateStorage(strName.c_str(), flag, 0 , 0 , lpStg);*/
 
@@ -232,7 +233,7 @@ HRESULT WINAPI OleDataObj::EnumDAdvise(IEnumSTATDATA **ppenumAdvise)
     return E_NOTIMPL;
 }
 
-bool UIOleObject::IsSharpuiClsid(const CLSID& clsid)
+bool UIOleObject::IsMPFUIClsid(const CLSID& clsid)
 {
     return IsEqualCLSID(clsid, CLSID_UIOleObject) != 0;
 }

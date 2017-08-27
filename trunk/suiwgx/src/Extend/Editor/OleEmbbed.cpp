@@ -1,12 +1,13 @@
 // ======================================================================
 //
-// Copyright (c) 2008-2012 汪荣, Inc. All rights reserved.
+// Copyright (c) 2008-2022 汪荣, Inc. All rights reserved.
 //
-// suiwgx库源码遵循CPL协议进行开源，任何个人或团体可以免费使用，但不能居于此库衍生任何商业性质的库或代码。
+// MPF界面库遵循指定开源协议，团体或公司商用请根据协议购买授权，
+// 任何个人、团体或公司不能居于此库衍生任何商业性质的库或代码。
 //
 // ======================================================================
 
-//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 // OleEmbbed.cpp
 
 #include "stdafx.h"
@@ -19,7 +20,7 @@
 #include <richedit/INC/richedit.h>
 #include <richedit/src/textserv.h>
 
-static suic::String SharpuiStmName = L"SharpuiStm";
+static suic::String MPFUIStmName = L"MPFUIStm";
 
 static bool CreateNewStorageObject(IStorage** lpStg)
 {
@@ -159,7 +160,7 @@ HRESULT WINAPI OleEmbbed::SetData(FORMATETC *pformatetc,STGMEDIUM *pmedium,BOOL 
      //
      StorageOp sOp(pStgSave);
 
-     if (sOp.LocateReadStm(SharpuiStmName))
+     if (sOp.LocateReadStm(MPFUIStmName))
      {
          //
          // 此函数把我们自己对象的数据系列化到IStorage进行保存
@@ -188,7 +189,7 @@ HRESULT WINAPI OleEmbbed::SetData(FORMATETC *pformatetc,STGMEDIUM *pmedium,BOOL 
 
      StorageOp sOp(pStgSave);
 
-     if (sOp.LocateWriteStm(SharpuiStmName))
+     if (sOp.LocateWriteStm(MPFUIStmName))
      {
          //
          // 此函数把我们自己对象的数据系列化到IStorage进行保存

@@ -1,4 +1,4 @@
-// 华勤科技版权所有 2010-2011
+// 华勤科技版权所有 2008-2022
 // 
 // 文件名：TextHost20.h
 // 功  能：实现ITextHost接口
@@ -74,7 +74,7 @@ public:
 
     HRESULT WINAPI GetUserClassID(CLSID *pClsid);
 
-    static bool IsSharpuiClsid(const CLSID& clsid);
+    static bool IsMPFUIClsid(const CLSID& clsid);
     static bool InsertOleObj(IRichEditOle* pRichEditOle, suic::Int32 cp, suic::Embbed* embbed);
 
 protected:
