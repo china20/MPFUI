@@ -1,4 +1,4 @@
-// 华勤科技版权所有 2010-2011
+// 华勤科技版权所有 2008-2022
 // 
 // 文件名：UIShared
 // 功  能：定义核心库的智能指针对象。
@@ -316,7 +316,7 @@ inline bool operator!=(const shared<L>& lp, const shared<R>& rp)
     return !operator==(lp, rp);
 }
 
-//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 template<typename L, typename R>
 inline bool operator==(const shared<L>& lp, const R* rp)
 {
@@ -334,7 +334,7 @@ inline bool operator!=(const shared<L>& lp, const R* rp)
     return !operator==(lp, rp);
 }
 
-//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 template<typename L, typename R>
 inline bool operator==(const L* lp, const shared<R>& rp)
 {

@@ -1,4 +1,4 @@
-// 华勤科技版权所有 2010-2011
+// 华勤科技版权所有 2008-2022
 // 
 // 文件名：delegate.h
 // 功  能：实现委托调用
@@ -54,7 +54,7 @@ inline void throwBadInvoke()
 
 // error Cannot handle Delegate objects that accept more than 9 arguments!
 
-////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 
 #define REPEAT_2_N(n,T,A) UNION_S(ARGS_REPEAT_2_,n(T,A))
 #define REPEAT_1_N(n,A) UNION_S(ARGS_REPEAT_1_,n(A))

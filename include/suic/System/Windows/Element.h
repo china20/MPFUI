@@ -1,4 +1,4 @@
-// 华勤科技版权所有 2010-2011
+// 华勤科技版权所有 2008-2022
 // 
 // 文件名：Element.h
 // 功  能：定义核心库的Element基类。
@@ -76,9 +76,12 @@ struct LayoutTransformInfo
 
 struct HitTestCtx
 {
-    // 鼠标动作结果
-    ElementPtr hitResult;
+    Byte hitFilter;
     Point hitPoint;
+    // 
+    // 鼠标动作结果
+    //
+    ElementPtr hitRes;
     Array<Point> trans;
 
     HitTestCtx(Point pt);
