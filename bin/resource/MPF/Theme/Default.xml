@@ -11,7 +11,7 @@
     <ImageBrush x:Key="sysbtn_close_hover" Source="resource/MPF/SysButton/sysbtn_close_hover.png" Stretch="Uniform"/>
     <ImageBrush x:Key="sysbtn_close_down" Source="resource/MPF/SysButton/sysbtn_close_down.png" Stretch="Uniform"/>
 
-    <ImageBrush x:Key="sysbtn_restore_normal" Source="resource/MPF/SysButton/sysbtn_restore_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_restore_normal" Source="resource/MPF/SysButton/sysbtn_restore_normal.png" Stretch="Uniform"/>f
     <ImageBrush x:Key="sysbtn_restore_hover" Source="resource/MPF/SysButton/sysbtn_restore_hover.png" Stretch="Uniform"/>
     <ImageBrush x:Key="sysbtn_restore_down" Source="resource/MPF/SysButton/sysbtn_restore_down.png" Stretch="Uniform"/>
 
