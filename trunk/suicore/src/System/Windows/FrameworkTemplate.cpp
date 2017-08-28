@@ -174,7 +174,7 @@ void FrameworkTemplate::SetResourceReferenceState()
 { 
     Debug::Assert(!IsSealed(), _U("call this method before template is sealed"));
 
-    //StyleHelper.SortResourceDependents(ref ResourceDependents);
+    // StyleHelper::SortResourceDependents(ResourceDependents);
 }
 
 void FrameworkTemplate::SetTargetType(RTTIOfInfo* targetType)
