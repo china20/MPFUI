@@ -1,6 +1,7 @@
 
 #include "bookpage.h"
 #include <math.h>
+#include <System/Tools/Math.h>
 
 BookPage::BookPage()
 {
@@ -164,12 +165,12 @@ void  BookPage::CalcPoints()
                 _bezierStartOne.fX = _width - _bezierStartOne.fX;
             }
 
-            Float f1 = abs(_cornerX - _touchPoint.fX);
+            Float f1 = abs(_cornerX - (int)_touchPoint.fX);
             Float f2 = _width * f1 / _bezierStartOne.fX;
-            _touchPoint.fX = abs(_cornerX - f2);
+            _touchPoint.fX = abs(_cornerX - (int)f2);
 
-            Float f3 = abs(_cornerX - _touchPoint.fX) * abs(_cornerY - _touchPoint.fY) / f1;
-            _touchPoint.fY = abs(_cornerY - f3);
+            Float f3 = abs(_cornerX - (int)_touchPoint.fX) * abs(_cornerY - (int)_touchPoint.fY) / f1;
+            _touchPoint.fY = abs(_cornerY - (int)f3);
 
             _middleX = (_touchPoint.fX + _cornerX) / 2.0f;
             _middleY = (_touchPoint.fY + _cornerY) / 2.0f;
@@ -476,9 +477,9 @@ void BookPage::DrawCurrentPageShadow(SkCanvas *canvas)
 void BookPage::DrawCurrentBackArea(SkCanvas *canvas, SkBitmap *bitmap) 
 {
     int i = (int) (_bezierStartOne.fX + _bezierControlOne.fX) / 2;
-    Float f1 = abs(i - _bezierControlOne.fX);
+    Float f1 = Math::Abs(i - _bezierControlOne.fX);
     int i1 = (int) (_bezierStartTwo.fY + _bezierControlTwo.fY) / 2;
-    Float f2 = abs(i1 - _bezierControlTwo.fY);
+    Float f2 = Math::Abs(i1 - _bezierControlTwo.fY);
     Float f3 = min(f1, f2);
     mPath1.reset();
     mPath1.moveTo(_bezierVertexTwo.fX, _bezierVertexTwo.fY);

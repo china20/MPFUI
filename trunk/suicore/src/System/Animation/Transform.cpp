@@ -906,8 +906,8 @@ void Rotate3DTransform::ComputeMatrix(Matrix& m, fRect rect)
     {
         fRect newRect;
         skm.mapRect((SkRect*)&newRect, *((SkRect*)&rect));
-        float fx = rect.Width() / abs(newRect.Width());
-        float fy = rect.Height() / abs(newRect.Height());
+        float fx = rect.Width() / Math::Abs(newRect.Width());
+        float fy = rect.Height() / Math::Abs(newRect.Height());
 
         if (fx > fy)
         {

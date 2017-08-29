@@ -1812,8 +1812,8 @@ Size FrameworkElement::CalcMaximalSpaceRect(const Matrix& matrix, Size size)
 
     if (FloatUtil::IsZero(skewX) || FloatUtil::IsZero(skewY))
     {
-        Float scaleHei = flag2 ? FloatUtil::PosInfinity : abs(height / scaleY);
-        Float scaleWid = flag ? FloatUtil::PosInfinity : abs(width / scaleX);
+        Float scaleHei = flag2 ? FloatUtil::PosInfinity : Math::Abs(height / scaleY);
+        Float scaleWid = flag ? FloatUtil::PosInfinity : Math::Abs(width / scaleX);
 
         if (FloatUtil::IsZero(skewX))
         {
@@ -1824,20 +1824,20 @@ Size FrameworkElement::CalcMaximalSpaceRect(const Matrix& matrix, Size size)
             }
             else
             {
-                calcHei = Math::Min(0.5f * abs(width / skewY), scaleHei);
+                calcHei = Math::Min(0.5f * Math::Abs(width / skewY), scaleHei);
                 calcWid = scaleWid - ((skewY * calcHei) / scaleX);
             }
         }
         else
         {
-            calcWid = Math::Min(0.5f * abs(height / skewX), scaleWid);
+            calcWid = Math::Min(0.5f * Math::Abs(height / skewX), scaleWid);
             calcHei = scaleHei - ((skewX * calcWid) / scaleY);
         }
     }
     else if (FloatUtil::IsZero(scaleX) || FloatUtil::IsZero(scaleY))
     {
-        Float skewHei = abs((Float)(height / skewX));
-        Float skewWid = abs((Float)(width / skewY));
+        Float skewHei = Math::Abs((Float)(height / skewX));
+        Float skewWid = Math::Abs((Float)(width / skewY));
         if (FloatUtil::IsZero(scaleX))
         {
             if (FloatUtil::IsZero(scaleY))
@@ -1847,22 +1847,22 @@ Size FrameworkElement::CalcMaximalSpaceRect(const Matrix& matrix, Size size)
             }
             else
             {
-                calcHei = Math::Min(0.5 * abs((Float)(height / scaleY)), skewWid);
+                calcHei = Math::Min(0.5 * Math::Abs((Float)(height / scaleY)), skewWid);
                 calcWid = skewHei - ((scaleY * calcHei) / skewX);
             }
         }
         else
         {
-            calcWid = Math::Min(0.5 * abs((Float)(width / scaleX)), skewHei);
+            calcWid = Math::Min(0.5 * Math::Abs((Float)(width / scaleX)), skewHei);
             calcHei = skewWid - ((scaleX * calcWid) / skewY);
         }
     }
     else
     {
-        float scaleWidRatio = abs((Float)(width / scaleX));
-        float skewWidRatio = abs((Float)(width / skewY));
-        float skewHeiRatio = abs((Float)(height / skewX));
-        float scaleHeiRatio = abs((Float)(height / scaleY));
+        float scaleWidRatio = Math::Abs((Float)(width / scaleX));
+        float skewWidRatio = Math::Abs((Float)(width / skewY));
+        float skewHeiRatio = Math::Abs((Float)(height / skewX));
+        float scaleHeiRatio = Math::Abs((Float)(height / scaleY));
 
         calcWid = Math::Min(skewHeiRatio, scaleWidRatio) * 0.5;
         calcHei = Math::Min(skewWidRatio, scaleHeiRatio) * 0.5;

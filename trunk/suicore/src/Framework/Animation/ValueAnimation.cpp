@@ -182,7 +182,7 @@ void BounceEase::SetBounciness(Float val)
 
 static bool IsOne(double value)
 {
-    return (abs((double)(value - 1.0)) < 2.2204460492503131E-15);
+    return (Math::Abs((Float)(value - 1.0)) < 2.2204460492503131E-15);
 }
 
 double Math::Log(double a, double newBase)

@@ -235,7 +235,7 @@ static enum Flags
     SizeToContentV = 0x4000,
     ValidCellsStructure = 4,
     ValidDefinitionsUStructure = 1,
-    ValidDefinitionsVStructure = 2
+    ValidDefinitionsVStructure = 2,
 };
 
 ExtendedData::ExtendedData()

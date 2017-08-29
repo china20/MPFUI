@@ -1208,7 +1208,7 @@ bool Clock::ComputeCurrentIteration(TimetNullable parentTime, Float parentSpeed,
 
             if (localProgress == 0)
             {
-                tNextBoundary = DivideTimeSpan(_currentDuration.GetTimeSpan(), abs(parentSpeed));
+                tNextBoundary = DivideTimeSpan(_currentDuration.GetTimeSpan(), Math::Abs(parentSpeed));
             }
             else if (parentSpeed > 0.0)
             {

@@ -127,8 +127,8 @@ void Line::ResetLineInfo()
 Size Line::OnMeasure(const Size& size)
 {
     Size measureSize;
-    measureSize.cx = abs(GetX1() - GetX2());
-    measureSize.cy = abs(GetY1() - GetY2());
+    measureSize.cx = Math::Abs(GetX1() - GetX2());
+    measureSize.cy = Math::Abs(GetY1() - GetY2());
 
     return measureSize;
 }
