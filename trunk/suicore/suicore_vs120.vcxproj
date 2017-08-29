@@ -1,0 +1,1055 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debugx64|Win32">
+      <Configuration>Debugx64</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debugx64|x64">
+      <Configuration>Debugx64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release32Output|Win32">
+      <Configuration>Release32Output</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release32Output|x64">
+      <Configuration>Release32Output</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release64|Win32">
+      <Configuration>Release64</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release64|x64">
+      <Configuration>Release64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseLib|Win32">
+      <Configuration>ReleaseLib</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseLib|x64">
+      <Configuration>ReleaseLib</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>suicore</ProjectName>
+    <ProjectGuid>{4C859412-240C-43BC-B84C-1ADF14DDD728}</ProjectGuid>
+    <RootNamespace>suicore</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32Output|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release32Output|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\bin\intermediate\debug_vc120\$(ProjectName)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\bin\intermediate\release_vc120\$(ProjectName)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'">..\..\bin\intermediate\releaselib_vc100\$(ProjectName)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/GR %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config;./src/System/Render/Skia/src/core;./src/System/Render/Skia/src/ports;./src/System/Render/Skia/src/image;./src/System/Render/Skia/src/images;./src/System/Render/Skia/src/utils;./src/System/Render/Skia/src/opts;./src/System/Render/Skia/src/sfnt;./src/System/Render/Skia/src/pathops;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0500;WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>usp10.lib;drawlibsd.lib;windowscodecs.lib;freetype253_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)ud.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\PDB\debug_vc90\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(ProjectName)ud.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.Lib;usp10.lib;drawlibs.lib;windowscodecs.lib;freetype253.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)u.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>
+      </AssemblyDebug>
+      <ProgramDatabaseFile>..\..\PDB\release_vc90\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <ImportLibrary>..\..\lib\$(ProjectName)u.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/GR %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;./src;../../include;src/render/skia/core;src/render/skia/effects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SK_BUILD_FOR_WIN32;SK_IGNORE_STDINT_DOT_H;SK_DEBUG;GR_DEBUG=1;_WIN32_WINNT=0x0500;WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>coreud.lib;usp10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)64ud.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\bin\intermediate\debug\$(ProjectName)\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(ProjectName)64ud.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;./src;../../include;src/render/skia/core;src/render/skia/effects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SK_BUILD_FOR_WIN32;SK_IGNORE_STDINT_DOT_H;_WIN32_WINNT=0x0500;WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>coreu.lib;usp10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)u.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(ProjectName)u.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0500;WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.Lib;usp10.lib;drawlibs.lib;windowscodecs.lib;freetype253.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\release_vc90_output\$(ProjectName)u.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>
+      </AssemblyDebug>
+      <ProgramDatabaseFile>..\..\bin\intermediate\release_vc90\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>NotSet</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <ImportLibrary>..\..\lib\$(ProjectName)u.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN32_WINNT=0x0500;WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>..\..\lib\$(ProjectName)su.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/GR %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;./src;../../include;src/render/skia/core;src/render/skia/effects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SK_BUILD_FOR_WIN32;SK_IGNORE_STDINT_DOT_H;SK_DEBUG;GR_DEBUG=1;_WIN32_WINNT=0x0500;WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>coreud.lib;usp10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)ud.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\bin\intermediate\debug\$(ProjectName)\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(ProjectName)ud.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;./src;../../include;src/render/skia/core;src/render/skia/effects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SK_BUILD_FOR_WIN32;SK_IGNORE_STDINT_DOT_H;_WIN32_WINNT=0x0500;WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>coreu.lib;usp10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)u.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(ProjectName)u.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/GR %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;./src;../../include;src/render/skia/core;src/render/skia/effects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SK_BUILD_FOR_WIN32;SK_IGNORE_STDINT_DOT_H;SK_DEBUG;GR_DEBUG=1;_WIN32_WINNT=0x0500;WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>core64ud.lib;usp10.lib;sse64.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)64ud.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;./src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>..\..\bin\intermediate\debug\$(ProjectName)\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(ProjectName)64ud.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.;./src;../../include;src/render/skia/core;src/render/skia/effects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SK_BUILD_FOR_WIN32;SK_IGNORE_STDINT_DOT_H;_WIN32_WINNT=0x0500;WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>core64u.lib;usp10.lib;sse64.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\bin\$(ProjectName)64u.dll</OutputFile>
+      <AdditionalLibraryDirectories>../../lib;./src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>..\..\lib\$(ProjectName)64u.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="suicore.cpp" />
+    <ClCompile Include="src\System\Windows\AssignerTimer.cpp" />
+    <ClCompile Include="src\System\Graphics\SuiTypeface.cpp" />
+    <ClCompile Include="src\Framework\Controls\Application.cpp" />
+    <ClCompile Include="src\Framework\Controls\Binding.cpp" />
+    <ClCompile Include="src\Framework\Controls\Border.cpp" />
+    <ClCompile Include="src\Framework\Controls\Button.cpp" />
+    <ClCompile Include="src\Framework\Controls\ButtonBase.cpp" />
+    <ClCompile Include="src\Framework\Controls\Calendar.cpp" />
+    <ClCompile Include="src\Framework\Controls\CalendarItem.cpp" />
+    <ClCompile Include="src\Framework\Controls\Canvas.cpp" />
+    <ClCompile Include="src\Framework\Controls\CaretElement.cpp" />
+    <ClCompile Include="src\Framework\Controls\CheckBox.cpp" />
+    <ClCompile Include="src\Framework\Controls\CollectionViewGroup.cpp" />
+    <ClCompile Include="src\Framework\Controls\ColumnDefinition.cpp" />
+    <ClCompile Include="src\Framework\Controls\Content.cpp" />
+    <ClCompile Include="src\Framework\Controls\Control.cpp" />
+    <ClCompile Include="src\Framework\Controls\ControlTemplate.cpp" />
+    <ClCompile Include="src\Framework\Controls\DataTemplate.cpp" />
+    <ClCompile Include="src\Framework\Controls\DatePicker.cpp" />
+    <ClCompile Include="src\Framework\Controls\Decorator.cpp" />
+    <ClCompile Include="src\Framework\Controls\DefinitionBase.cpp" />
+    <ClCompile Include="src\Framework\Controls\DockPanel.cpp" />
+    <ClCompile Include="src\Framework\Controls\ElementCollectionImpl.cpp" />
+    <ClCompile Include="src\Framework\Controls\Ellipse.cpp" />
+    <ClCompile Include="src\Framework\Controls\Expander.cpp" />
+    <ClCompile Include="src\Framework\Controls\Grid.cpp" />
+    <ClCompile Include="src\Framework\Controls\GridView.cpp" />
+    <ClCompile Include="src\Framework\Controls\GridViewColumn.cpp" />
+    <ClCompile Include="src\Framework\Controls\GridViewColumnCollection.cpp" />
+    <ClCompile Include="src\Framework\Controls\GridViewColumnHeader.cpp" />
+    <ClCompile Include="src\Framework\Controls\GridViewHeaderRowPresenter.cpp" />
+    <ClCompile Include="src\Framework\Controls\GridViewRowPresenter.cpp" />
+    <ClCompile Include="src\Framework\Controls\GridViewRowPresenterBase.cpp" />
+    <ClCompile Include="src\Framework\Controls\GroupItem.cpp" />
+    <ClCompile Include="src\Framework\Controls\HeaderedContentControl.cpp" />
+    <ClCompile Include="src\Framework\Controls\HeaderedItemsControl.cpp" />
+    <ClCompile Include="src\Framework\Controls\HoldControl.cpp" />
+    <ClCompile Include="src\Framework\Controls\HwndHost.cpp" />
+    <ClCompile Include="src\Framework\Controls\Image.cpp" />
+    <ClCompile Include="src\Framework\Controls\ItemCollection.cpp" />
+    <ClCompile Include="src\Framework\Controls\ItemsControl.cpp" />
+    <ClCompile Include="src\Framework\Controls\ItemsPanelTemplate.cpp" />
+    <ClCompile Include="src\Framework\Controls\Label.cpp" />
+    <ClCompile Include="src\Framework\Controls\Line.cpp" />
+    <ClCompile Include="src\Framework\Controls\Menu.cpp" />
+    <ClCompile Include="src\Framework\Controls\MenuItem.cpp" />
+    <ClCompile Include="src\Framework\Controls\MenuItemHelper.cpp" />
+    <ClCompile Include="src\Framework\Controls\Panel.cpp" />
+    <ClCompile Include="src\Framework\Controls\Path.cpp" />
+    <ClCompile Include="src\Framework\Controls\Popup.cpp" />
+    <ClCompile Include="src\Framework\Controls\ProgressBar.cpp" />
+    <ClCompile Include="src\Framework\Controls\RadioButton.cpp" />
+    <ClCompile Include="src\Framework\Controls\RangeBase.cpp" />
+    <ClCompile Include="src\Framework\Controls\Rectangle.cpp" />
+    <ClCompile Include="src\Framework\Controls\RepeatButton.cpp" />
+    <ClCompile Include="src\Framework\Controls\RowDefinition.cpp" />
+    <ClCompile Include="src\Framework\Controls\ScrollBar.cpp" />
+    <ClCompile Include="src\Framework\Controls\ScrollViewer.cpp" />
+    <ClCompile Include="src\Framework\Controls\Selector.cpp" />
+    <ClCompile Include="src\Framework\Controls\Separator.cpp" />
+    <ClCompile Include="src\Framework\Controls\Shape.cpp" />
+    <ClCompile Include="src\Framework\Controls\Slider.cpp" />
+    <ClCompile Include="src\Framework\Controls\StackPanel.cpp" />
+    <ClCompile Include="src\Framework\Controls\TextBlock.cpp" />
+    <ClCompile Include="src\Framework\Controls\TextEditor.cpp" />
+    <ClCompile Include="src\Framework\Controls\TextElement.cpp" />
+    <ClCompile Include="src\Framework\Controls\Thumb.cpp" />
+    <ClCompile Include="src\Framework\Controls\TickBar.cpp" />
+    <ClCompile Include="src\Framework\Controls\ToggleButton.cpp" />
+    <ClCompile Include="src\Framework\Controls\Tooltip.cpp" />
+    <ClCompile Include="src\Framework\Controls\Track.cpp" />
+    <ClCompile Include="src\Framework\Controls\UniformGrid.cpp" />
+    <ClCompile Include="src\Framework\Controls\UserControl.cpp" />
+    <ClCompile Include="src\Framework\Controls\ViewBase.cpp" />
+    <ClCompile Include="src\Framework\Controls\VisualizePanel.cpp" />
+    <ClCompile Include="src\Framework\Controls\VisualizeStackPanel.cpp" />
+    <ClCompile Include="src\Framework\Controls\Window.cpp" />
+    <ClCompile Include="src\Framework\Controls\WindowHelper.cpp" />
+    <ClCompile Include="src\Framework\Presenter\ContentPresenter.cpp" />
+    <ClCompile Include="src\Framework\Presenter\ItemContainerGenerator.cpp" />
+    <ClCompile Include="src\Framework\Presenter\ItemsPresenter.cpp" />
+    <ClCompile Include="src\Framework\Presenter\ScrollContentPresenter.cpp" />
+    <ClCompile Include="src\Framework\Animation\AnimationAsKeyFrame.cpp" />
+    <ClCompile Include="src\Framework\Animation\AnimationAsSeries.cpp" />
+    <ClCompile Include="src\Framework\Animation\ValueAnimation.cpp" />
+    <ClCompile Include="src\System\Windows\Assigner.cpp" />
+    <ClCompile Include="src\System\Windows\AssignerInvoker.cpp" />
+    <ClCompile Include="src\System\Windows\BindingExpression.cpp" />
+    <ClCompile Include="src\System\Windows\BuildFactory.cpp" />
+    <ClCompile Include="src\System\Windows\CommandManager.cpp" />
+    <ClCompile Include="src\System\Windows\CommandSource.cpp" />
+    <ClCompile Include="src\System\Windows\CoreHelper.cpp" />
+    <ClCompile Include="src\System\Windows\CoreTools.cpp" />
+    <ClCompile Include="src\System\Windows\DependentList.cpp" />
+    <ClCompile Include="src\System\Windows\DpObject.cpp" />
+    <ClCompile Include="src\System\Windows\DpProperty.cpp" />
+    <ClCompile Include="src\System\Windows\Effect.cpp" />
+    <ClCompile Include="src\System\Windows\EffectiveValue.cpp" />
+    <ClCompile Include="src\System\Windows\Element.cpp" />
+    <ClCompile Include="src\System\Windows\Environment.cpp" />
+    <ClCompile Include="src\System\Windows\Event.cpp" />
+    <ClCompile Include="src\System\Windows\EventArg.cpp" />
+    <ClCompile Include="src\System\Windows\EventBuilder.cpp" />
+    <ClCompile Include="src\System\Windows\EventHandler.cpp" />
+    <ClCompile Include="src\System\Windows\EventHandlersStore.cpp" />
+    <ClCompile Include="src\System\Windows\EventManager.cpp" />
+    <ClCompile Include="src\System\Windows\Exception.cpp" />
+    <ClCompile Include="src\System\Windows\Expression.cpp" />
+    <ClCompile Include="src\System\Windows\Extension.cpp" />
+    <ClCompile Include="src\System\Windows\FrameworkElement.cpp" />
+    <ClCompile Include="src\System\Windows\FrameworkElementFactory.cpp" />
+    <ClCompile Include="src\System\Windows\FrameworkTemplate.cpp" />
+    <ClCompile Include="src\System\Windows\HierarchicalItem.cpp" />
+    <ClCompile Include="src\System\Windows\HwndAdapter.cpp" />
+    <ClCompile Include="src\System\Windows\HwndHelper.cpp" />
+    <ClCompile Include="src\System\Windows\HwndObject.cpp" />
+    <ClCompile Include="src\System\Windows\HwndSubclass.cpp" />
+    <ClCompile Include="src\System\Windows\InheritStateProperty.cpp" />
+    <ClCompile Include="src\System\Windows\InputAssignerInvoker.cpp" />
+    <ClCompile Include="src\System\Windows\InvManager.cpp" />
+    <ClCompile Include="src\System\Windows\InvokerPriorityQueue.cpp" />
+    <ClCompile Include="src\System\Windows\MarkupExtension.cpp" />
+    <ClCompile Include="src\System\Windows\Object.cpp" />
+    <ClCompile Include="src\System\Windows\PropertyValue.cpp" />
+    <ClCompile Include="src\System\Windows\RenderTarget.cpp" />
+    <ClCompile Include="src\System\Windows\ResourceReferenceeExpression.cpp" />
+    <ClCompile Include="src\System\Windows\ResourceUri.cpp" />
+    <ClCompile Include="src\System\Windows\RoutedCommand.cpp" />
+    <ClCompile Include="src\System\Windows\RoutedEvent.cpp" />
+    <ClCompile Include="src\System\Windows\RoutedEventArg.cpp" />
+    <ClCompile Include="src\System\Windows\ScrollInfo.cpp" />
+    <ClCompile Include="src\System\Windows\SystemParameters.cpp" />
+    <ClCompile Include="src\System\Windows\TemplateBindingExpression.cpp" />
+    <ClCompile Include="src\System\Windows\ValueConvert.cpp" />
+    <ClCompile Include="src\System\Windows\VisualStates.cpp" />
+    <ClCompile Include="src\System\Windows\VisualTreeOp.cpp" />
+    <ClCompile Include="src\System\Windows\WeakRef.cpp" />
+    <ClCompile Include="src\System\Input\Dwmapi.cpp" />
+    <ClCompile Include="src\System\Input\FocusManager.cpp" />
+    <ClCompile Include="src\System\Input\HwndKeyboardFilter.cpp" />
+    <ClCompile Include="src\System\Input\HwndMouseFilter.cpp" />
+    <ClCompile Include="src\System\Input\Keyboard.cpp" />
+    <ClCompile Include="src\System\Input\KeyboardNavigation.cpp" />
+    <ClCompile Include="src\System\Input\Mouse.cpp" />
+    <ClCompile Include="src\System\Input\MouseDevice.cpp" />
+    <ClCompile Include="src\System\Interop\ColorManager.cpp" />
+    <ClCompile Include="src\System\Interop\InternalOper.cpp" />
+    <ClCompile Include="src\System\Interop\InternalWindowOper.cpp" />
+    <ClCompile Include="src\System\Interop\PlugManager.cpp" />
+    <ClCompile Include="src\System\Interop\System.cpp" />
+    <ClCompile Include="src\System\Markup\DictionaryXamlParser.cpp" />
+    <ClCompile Include="src\System\Markup\StyleXamlParser.cpp" />
+    <ClCompile Include="src\System\Markup\TemplateXamlParser.cpp" />
+    <ClCompile Include="src\System\Markup\XamlContextStack.cpp" />
+    <ClCompile Include="src\System\Markup\XamlFrame.cpp" />
+    <ClCompile Include="src\System\Markup\XamlParser.cpp" />
+    <ClCompile Include="src\System\Markup\XamlReader.cpp" />
+    <ClCompile Include="src\System\Markup\XamlStream.cpp" />
+    <ClCompile Include="src\System\Markup\XamlWriter.cpp" />
+    <ClCompile Include="src\System\Tools\AcceleratorOp.cpp" />
+    <ClCompile Include="src\System\Tools\AlphaHelper.cpp" />
+    <ClCompile Include="src\System\Tools\CollectionX.cpp" />
+    <ClCompile Include="src\System\Tools\CommandOp.cpp" />
+    <ClCompile Include="src\System\Tools\Debug.cpp" />
+    <ClCompile Include="src\System\Tools\DesignHelper.cpp" />
+    <ClCompile Include="src\System\Tools\DIBHelper.cpp" />
+    <ClCompile Include="src\System\Tools\EventHelper.cpp" />
+    <ClCompile Include="src\System\Tools\HashHelper.cpp" />
+    <ClCompile Include="src\System\Tools\IconHelper.cpp" />
+    <ClCompile Include="src\System\Tools\Locker.cpp" />
+    <ClCompile Include="src\System\Tools\Log.cpp" />
+    <ClCompile Include="src\System\Tools\LogicalTreeOp.cpp" />
+    <ClCompile Include="src\System\Tools\Signal.cpp" />
+    <ClCompile Include="src\System\Tools\sse.cpp" />
+    <ClCompile Include="src\System\Tools\sse64.cpp" />
+    <ClCompile Include="src\System\Tools\StyleHelper.cpp" />
+    <ClCompile Include="src\System\Tools\SystemHelper.cpp" />
+    <ClCompile Include="src\System\Tools\ThemeOp.cpp" />
+    <ClCompile Include="src\System\Tools\Thread.cpp" />
+    <ClCompile Include="src\System\Tools\TiXmlWrapper.cpp" />
+    <ClCompile Include="src\System\Tools\TreeBuilder.cpp" />
+    <ClCompile Include="src\System\Tools\XunZip.cpp" />
+    <ClCompile Include="src\System\Tools\XZip.cpp" />
+    <ClCompile Include="src\System\Resources\BindParser.cpp" />
+    <ClCompile Include="src\System\Resources\ObjColl.cpp" />
+    <ClCompile Include="src\System\Resources\PropertyFactory.cpp" />
+    <ClCompile Include="src\System\Resources\ResourceDictionary.cpp" />
+    <ClCompile Include="src\System\Resources\ResourceParserImpl.cpp" />
+    <ClCompile Include="src\System\Resources\Setter.cpp" />
+    <ClCompile Include="src\System\Resources\SetterCollection.cpp" />
+    <ClCompile Include="src\System\Resources\Style.cpp" />
+    <ClCompile Include="src\System\Resources\StyleSelector.cpp" />
+    <ClCompile Include="src\System\Resources\Trigger.cpp" />
+    <ClCompile Include="src\System\Resources\TriggerCollection.cpp" />
+    <ClCompile Include="src\System\Resources\XamlNodeImp.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debugx64|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release32Output|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseLib|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\XamlWalker.cpp" />
+    <ClCompile Include="src\System\Types\Colors.cpp" />
+    <ClCompile Include="src\System\Types\DateHelp.cpp" />
+    <ClCompile Include="src\System\Types\DateTime.cpp" />
+    <ClCompile Include="src\System\Types\Double.cpp" />
+    <ClCompile Include="src\System\Types\FloatUtil.cpp" />
+    <ClCompile Include="src\System\Types\StreamDef.cpp" />
+    <ClCompile Include="src\System\Types\StringCore.cpp" />
+    <ClCompile Include="src\System\Types\Structure.cpp" />
+    <ClCompile Include="src\System\Graphics\Bitmap.cpp" />
+    <ClCompile Include="src\System\Graphics\BitmapTool.cpp" />
+    <ClCompile Include="src\System\Graphics\Cursor.cpp" />
+    <ClCompile Include="src\System\Graphics\FormattedText.cpp" />
+    <ClCompile Include="src\System\Graphics\Geometry.cpp" />
+    <ClCompile Include="src\System\Graphics\GradientBrush.cpp" />
+    <ClCompile Include="src\System\Graphics\ImageBrush.cpp" />
+    <ClCompile Include="src\System\Graphics\ImageParse.cpp" />
+    <ClCompile Include="src\System\Graphics\LinearGradientBrush.cpp" />
+    <ClCompile Include="src\System\Graphics\PathFigure.cpp" />
+    <ClCompile Include="src\System\Graphics\RadialGradientBrush.cpp" />
+    <ClCompile Include="src\System\Graphics\SolidColorBrush.cpp" />
+    <ClCompile Include="src\System\Render\ImageResourcePool.cpp" />
+    <ClCompile Include="src\System\Render\RenderManager.cpp" />
+    <ClCompile Include="src\System\Render\Engine\DefaultRender.cpp" />
+    <ClCompile Include="src\System\Render\Skia\BookPage.cpp" />
+    <ClCompile Include="src\System\Render\Skia\SkiaDrawing.cpp" />
+    <ClCompile Include="src\System\Render\Skia\SkTextOp.cpp" />
+    <ClCompile Include="src\System\Animation\AnimationStorage.cpp" />
+    <ClCompile Include="src\System\Animation\TimerManager.cpp" />
+    <ClCompile Include="src\System\Animation\TimerThread.cpp" />
+    <ClCompile Include="src\System\Animation\Transform.cpp" />
+    <ClCompile Include="src\System\DragDrop\DataObject.cpp" />
+    <ClCompile Include="src\System\DragDrop\DragDrop.cpp" />
+    <ClCompile Include="src\System\DragDrop\DropSource.cpp" />
+    <ClCompile Include="src\System\DragDrop\DropTarget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="suicore.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\bytedata.bin" />
+    <None Include="res\resize.cur" />
+    <None Include="res\splith.cur" />
+    <None Include="res\splitv.cur" />
+    <None Include="..\..\include\suic\System\Windows\Delegate.inl" />
+    <None Include="..\..\include\suic\System\Windows\Element.inl" />
+    <None Include="res\DEFRES" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Application.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Border.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Button.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ButtonBase.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Calendar.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\CalendarItem.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Canvas.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\CaretElement.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\CheckBox.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ColumnDefinition.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Content.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Control.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ControlTemplate.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DataTemplate.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DatePicker.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Decorator.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DefinitionBase.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DockPanel.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DragEvent.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Ellipse.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Expander.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Grid.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridView.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewColumn.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewColumnCollection.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewColumnHeader.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewHeaderRowPresenter.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewRowPresenter.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewRowPresenterBase.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GroupItem.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HeaderedContentControl.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HeaderedItemsControl.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HierarchicalItem.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HoldControl.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HwndHost.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Image.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemCollection.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemsControl.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemSource.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemsPanelTemplate.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Label.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Line.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Menu.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\MenuItem.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Panel.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Path.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Popup.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ProgressBar.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RadioButton.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RangeBase.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Rectangle.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RepeatButton.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RowDefinition.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ScrollBar.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ScrollViewer.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Selector.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Separator.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Shape.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Slider.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\StackPanel.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TextBlock.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TextEditor.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TextElement.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Thumb.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TickBar.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToggleButton.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToolBar.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToolBarPanel.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToolTip.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Track.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\UniformGrid.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\UserControl.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ViewBase.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ViewGroup.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\VisualizePanel.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\VisualizeStackPanel.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Window.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Controls\WrapPanel.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Animation\AnimationAsKeyFrame.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Animation\AnimationAsSeries.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Animation\EasingFunc.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Animation\ValueAnimation.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ContentPresenter.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ItemContainerGenerator.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ItemsPresenter.h" />
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ScrollContentPresenter.h" />
+    <ClInclude Include="..\..\include\suic\Config\suicoreconfig.h" />
+    <ClInclude Include="..\..\include\suic\Config\suicoreinc.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\AccessKeyManager.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Assigner.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\AssignerInvoker.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Binding.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\BindingExpression.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\BuildFactory.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\CommandSource.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\DeferredRef.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Delegate.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\DependentList.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\DpObject.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\DpProperty.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\EffectiveValue.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Element.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Environment.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Event.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\EventArg.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\EventHandler.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\EventHandlersStore.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Exception.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Expression.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Extension.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\FrameworkElement.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\FrameworkElementFactory.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\FrameworkTemplate.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\HwndAdapter.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\InvokerPriorityQueue.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\IScrollinfo.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\ItemEntry.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\ItemsChangedEventArg.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\MarkupExtension.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Object.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\PropertyValue.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\RenderTarget.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\ResourceReferenceExpression.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\ResourceUri.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\RoutedCommand.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\RoutedEventArg.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\RoutetEvent.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\ScrollInfo.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\SelectionChangedEventArg.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\Shared.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\SourceRef.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\SystemParameters.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\TemplateBindingExpression.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\TextInput.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\UncommonField.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\ValueConvert.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\VisualStateEventArg.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\VisualStates.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\WeakRef.h" />
+    <ClInclude Include="..\..\include\suic\System\Input\FocusManager.h" />
+    <ClInclude Include="..\..\include\suic\System\Input\Keyboard.h" />
+    <ClInclude Include="..\..\include\suic\System\Input\KeyboardNavigation.h" />
+    <ClInclude Include="..\..\include\suic\System\Input\Mouse.h" />
+    <ClInclude Include="..\..\include\suic\System\Input\MouseDevice.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\DictionaryXamlParser.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\StyleXamlParser.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\TemplateXamlParser.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlContextStack.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlFrame.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlNode.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlParser.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlReader.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlStream.h" />
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlWriter.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\DataTrigger.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\DeferredResRef.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\DynamicResource.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\ObjColl.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\ResourceDictionary.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\Setter.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\SetterCollection.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\StaticResource.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\Style.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\StyleSelector.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\Trigger.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\TriggerBase.h" />
+    <ClInclude Include="..\..\include\suic\System\Resources\TriggerCollection.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\AcceleratorOp.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Array.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\ArrayList.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Collection.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\CollectionX.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\CommandOp.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Comparer.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\CoreHelper.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Debug.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\DIBHelper.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\ElementCollection.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\EventHelper.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Guard.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\HashHelper.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\HashMap.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\HwndHelper.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\IconHelper.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Locker.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Log.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\LogicalTreeOp.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Math.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\ResourceParser.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Signal.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\StyleHelper.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\ThemeOp.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\Thread.h" />
+    <ClInclude Include="..\..\include\suic\System\Tools\VisualTreeOp.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Colors.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Const.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\DateTime.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Double.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Integer.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Interface.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Micro.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Numeric.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Single.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\StreamDef.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\String.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\StringCore.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Structure.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\Types.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\ValueBox.h" />
+    <ClInclude Include="..\..\include\suic\System\Types\XamlNode.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\Bitmap.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\BitmapTool.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\Brush.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\Cursor.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\Drawing.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\FormattedText.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\Geometry.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\GIFParser.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\GradientBrush.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\ImageBrush.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\ImageParse.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\LinearGradientBrush.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\PathFigure.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\RadialGradientBrush.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\Resource.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\SolidcolorBrush.h" />
+    <ClInclude Include="..\..\include\suic\System\Graphics\SuiTypeface.h" />
+    <ClInclude Include="..\..\include\suic\System\Animation\AnimationStorage.h" />
+    <ClInclude Include="..\..\include\suic\System\Animation\Matrix.h" />
+    <ClInclude Include="..\..\include\suic\System\Animation\TimerManager.h" />
+    <ClInclude Include="..\..\include\suic\System\Animation\Transform.h" />
+    <ClInclude Include="..\..\include\suic\System\DragDrop\DragDrop.h" />
+    <ClInclude Include="src\Framework\Controls\MenuItemHelper.h" />
+    <ClInclude Include="src\Framework\Controls\WindowHelper.h" />
+    <ClInclude Include="src\System\Windows\CommandManager.h" />
+    <ClInclude Include="src\System\Windows\EventBuilder.h" />
+    <ClInclude Include="src\System\Windows\EventManager.h" />
+    <ClInclude Include="src\System\Windows\HwndObject.h" />
+    <ClInclude Include="src\System\Windows\HwndSubclass.h" />
+    <ClInclude Include="src\System\Windows\InheritStateProperty.h" />
+    <ClInclude Include="src\System\Windows\InputAssignerInvoker.h" />
+    <ClInclude Include="src\System\Windows\InvManager.h" />
+    <ClInclude Include="src\System\Windows\RenderInfo.h" />
+    <ClInclude Include="..\..\include\suic\System\Windows\TimerBase.h" />
+    <ClInclude Include="src\System\Windows\VisualStateManager.h" />
+    <ClInclude Include="src\System\Input\Dwmapi.h" />
+    <ClInclude Include="src\System\Input\HwndKeyboardFilter.h" />
+    <ClInclude Include="src\System\Input\HwndMouseFilter.h" />
+    <ClInclude Include="src\System\Interop\ColorManager.h" />
+    <ClInclude Include="src\System\Interop\GdiplusManager.h" />
+    <ClInclude Include="src\System\Interop\InternalOper.h" />
+    <ClInclude Include="src\System\Interop\InternalWindowOper.h" />
+    <ClInclude Include="src\System\Interop\PlugManager.h" />
+    <ClInclude Include="src\System\Interop\System.h" />
+    <ClInclude Include="src\System\Tools\DesignHelper.h" />
+    <ClInclude Include="src\System\Tools\SSE.h" />
+    <ClInclude Include="src\System\Tools\TiXmlWrapper.h" />
+    <ClInclude Include="src\System\Tools\XRUnzip.h" />
+    <ClInclude Include="src\System\Tools\XRZip.h" />
+    <ClInclude Include="src\System\Tools\XUnzip.h" />
+    <ClInclude Include="src\System\Tools\XZip.h" />
+    <ClInclude Include="src\System\Resources\BindParser.h" />
+    <ClInclude Include="src\System\Resources\PropertyFactory.h" />
+    <ClInclude Include="src\System\Resources\ResourceParserImpl.h" />
+    <ClInclude Include="src\System\Resources\XamlNodeImp.h" />
+    <ClInclude Include="src\System\Resources\XamlWalker.h" />
+    <ClInclude Include="src\System\Types\DateHelp.h" />
+    <ClInclude Include="src\System\Types\StringCoreHelper.h" />
+    <ClInclude Include="src\System\Render\ImageResourcePool.h" />
+    <ClInclude Include="src\System\Render\RenderManager.h" />
+    <ClInclude Include="src\System\Render\Engine\DefaultRender.h" />
+    <ClInclude Include="src\System\Render\Skia\BookPage.h" />
+    <ClInclude Include="src\System\Render\Skia\SkiaDrawing.h" />
+    <ClInclude Include="src\System\Render\Skia\SkTextOp.h" />
+    <ClInclude Include="src\System\Animation\TimerThread.h" />
+    <ClInclude Include="src\System\DragDrop\DataObject.h" />
+    <ClInclude Include="src\System\DragDrop\DropSource.h" />
+    <ClInclude Include="src\System\DragDrop\DropTarget.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
