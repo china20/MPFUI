@@ -92,7 +92,7 @@
       <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>suiwgxud.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>..\..\PDB\debug_vc90\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\PDB\debug_vc100\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>..\..\lib\$(ProjectName)ud.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
@@ -118,7 +118,7 @@
       <AdditionalLibraryDirectories>../../lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>suiwgxu.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>..\..\PDB\release_vc90\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\PDB\release_vc100\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
