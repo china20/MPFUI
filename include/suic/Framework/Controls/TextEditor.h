@@ -36,7 +36,8 @@ typedef enum eScrollType
     eScrollToVert,
 
     eScrollToLine,
-};
+} ScrollType;
+
 /// <summary>
 ///  TextEditor，可编辑文本的基类。
 /// </summary>

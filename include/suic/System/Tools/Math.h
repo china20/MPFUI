@@ -56,8 +56,31 @@ public:
         {
             return f2;
         }
-
     }
+
+	static Float Abs(Float v)
+	{
+		if (v < 0)
+		{
+			return -v;
+		}
+		else
+		{
+			return v;
+		}
+	}
+
+	static long Abs(long v)
+	{
+		if (v < 0)
+		{
+			return -v;
+		}
+		else
+		{
+			return v;
+		}
+	}
 
     static double Log(double a, double newBase);
 
