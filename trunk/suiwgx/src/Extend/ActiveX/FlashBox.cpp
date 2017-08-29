@@ -12,7 +12,10 @@
 
 #include "stdafx.h"
 
-#include "flash10a.tlh"
+#if _VSMSC_VER_FLASH < 1600
+#import "Flash11.tlb" raw_interfaces_only, named_guids, rename("IDispatchEx","IMyDispatchEx")
+#endif
+
 #include <System/Windows/CoreTool.h>
 #include <System/Tools/CoreHelper.h>
 #include <Extend/ActiveX/FlashBox.h>
@@ -78,8 +81,10 @@ bool FlashBox::LoadMovie(suic::String uri)
     //
     suic::String strUri = suic::FileDir::CalculatePath(uri);
 
-    IShockwaveFlash* pFlash = NULL;
-    QueryControl(__uuidof(IShockwaveFlash), (void**)&pFlash);
+#if _VSMSC_VER < 1600
+
+    ShockwaveFlashObjects::IShockwaveFlash* pFlash = NULL;
+    QueryControl(__uuidof(ShockwaveFlashObjects::IShockwaveFlash), (void**)&pFlash);
 
     if (pFlash != NULL)
     {
@@ -101,6 +106,7 @@ bool FlashBox::LoadMovie(suic::String uri)
         return true;
     }
     else
+#endif
     {
         return false;
     }
@@ -108,34 +114,39 @@ bool FlashBox::LoadMovie(suic::String uri)
 
 void FlashBox::SetTransparent(bool bTransparent)
 {
-    IShockwaveFlash* pFlash = NULL;
-    QueryControl(__uuidof(IShockwaveFlash), (void**)&pFlash);
+#if _VSMSC_VER < 1600
+    ShockwaveFlashObjects::IShockwaveFlash* pFlash = NULL;
+    QueryControl(__uuidof(ShockwaveFlashObjects::IShockwaveFlash), (void**)&pFlash);
 
     if (pFlash != NULL) 
     {
         pFlash->put_WMode(_bstr_t(_T("Transparent")));
         pFlash->Release();
     }
+#endif
 }
 
 void FlashBox::Play()
 {
+#if _VSMSC_VER < 1600
     LoadActiveX(FLASH_CLSID);
 
-    IShockwaveFlash* pFlash = NULL;
-    QueryControl(__uuidof(IShockwaveFlash), (void**)&pFlash);
+    ShockwaveFlashObjects::IShockwaveFlash* pFlash = NULL;
+    QueryControl(__uuidof(ShockwaveFlashObjects::IShockwaveFlash), (void**)&pFlash);
 
     if (pFlash != NULL) 
     {
         pFlash->Play();
         pFlash->Release();
     }
+#endif
 }
 
 void FlashBox::Pause()
 {
-    IShockwaveFlash* pFlash = NULL;
-    QueryControl(__uuidof(IShockwaveFlash), (void**)&pFlash);
+#if _VSMSC_VER < 1600
+    ShockwaveFlashObjects::IShockwaveFlash* pFlash = NULL;
+    QueryControl(__uuidof(ShockwaveFlashObjects::IShockwaveFlash), (void**)&pFlash);
 
     if (pFlash != NULL) 
     {
@@ -148,19 +159,21 @@ void FlashBox::Pause()
         pFlash->StopPlay();
         pFlash->Release();
     }
-
+#endif
 }
 
 void FlashBox::Stop()
 {
-    IShockwaveFlash* pFlash = NULL;
-    QueryControl(__uuidof(IShockwaveFlash), (void**)&pFlash);
+#if _VSMSC_VER < 1600
+    ShockwaveFlashObjects::IShockwaveFlash* pFlash = NULL;
+    QueryControl(__uuidof(ShockwaveFlashObjects::IShockwaveFlash), (void**)&pFlash);
 
     if (pFlash != NULL) 
     {
         pFlash->StopPlay();
         pFlash->Release();
     }
+#endif
 }
 
 /////////////////////////////////////////////////////////////////

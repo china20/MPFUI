@@ -1,13 +1,16 @@
-﻿// Created by Microsoft (R) C/C++ Compiler Version 14.00.50727.762 (78e39b2f).
+﻿// Created by Microsoft (R) C/C++ Compiler Version 12.00.21005.1 (684c4abb).
 //
+// e:\duilib界面源码\sourcecode\sourcecode\duilib\build\debug\flash11.tlh
 //
-// C++ source equivalent of Win32 type library c:\windows\system32\macromed\flash\flash10a.ocx
-// compiler-generated file created 01/29/09 at 22:30:01 - DO NOT EDIT!
+// C++ source equivalent of Win32 type library ..\Utils/Flash11.tlb
+// compiler-generated file created 09/03/14 at 15:38:21 - DO NOT EDIT!
 
 #pragma once
 #pragma pack(push, 8)
 
 #include <comdef.h>
+
+namespace ShockwaveFlashObjects {
 
 //
 // Forward references and typedefs
@@ -17,27 +20,33 @@ struct __declspec(uuid("d27cdb6b-ae6d-11cf-96b8-444553540000"))
 /* LIBID */ __ShockwaveFlashObjects;
 struct __declspec(uuid("d27cdb6c-ae6d-11cf-96b8-444553540000"))
 /* dual interface */ IShockwaveFlash;
+struct __declspec(uuid("c5598e60-b307-11d1-b27d-006008c3fbfb"))
+/* interface */ ICanHandleException;
 struct __declspec(uuid("d27cdb6d-ae6d-11cf-96b8-444553540000"))
 /* dispinterface */ _IShockwaveFlashEvents;
-struct /* coclass */ ShockwaveFlash;
-struct /* coclass */ FlashProp;
 struct __declspec(uuid("d27cdb70-ae6d-11cf-96b8-444553540000"))
 /* interface */ IFlashFactory;
+struct __declspec(uuid("a6ef9860-c720-11d0-9337-00a0c90dcaa9"))
+/* interface */ IMyDispatchEx;
 struct __declspec(uuid("d27cdb72-ae6d-11cf-96b8-444553540000"))
 /* interface */ IFlashObjectInterface;
-struct __declspec(uuid("a6ef9860-c720-11d0-9337-00a0c90dcaa9"))
-/* interface */ IDispatchEx;
+struct __declspec(uuid("86230738-d762-4c50-a2de-a753e5b1686f"))
+/* dual interface */ IFlashObject;
+struct /* coclass */ ShockwaveFlash;
 struct /* coclass */ FlashObjectInterface;
+struct /* coclass */ FlashObject;
 
 //
 // Smart pointer typedef declarations
 //
 
 _COM_SMARTPTR_TYPEDEF(IShockwaveFlash, __uuidof(IShockwaveFlash));
+_COM_SMARTPTR_TYPEDEF(ICanHandleException, __uuidof(ICanHandleException));
 _COM_SMARTPTR_TYPEDEF(_IShockwaveFlashEvents, __uuidof(_IShockwaveFlashEvents));
 _COM_SMARTPTR_TYPEDEF(IFlashFactory, __uuidof(IFlashFactory));
-_COM_SMARTPTR_TYPEDEF(IDispatchEx, __uuidof(IDispatchEx));
+_COM_SMARTPTR_TYPEDEF(IMyDispatchEx, __uuidof(IMyDispatchEx));
 _COM_SMARTPTR_TYPEDEF(IFlashObjectInterface, __uuidof(IFlashObjectInterface));
+_COM_SMARTPTR_TYPEDEF(IFlashObject, __uuidof(IFlashObject));
 
 //
 // Type library items
@@ -254,27 +263,38 @@ IShockwaveFlash : IDispatch
         /*[out,retval]*/ BSTR * pVal ) = 0;
       virtual HRESULT __stdcall put_AllowFullScreen (
         /*[in]*/ BSTR pVal ) = 0;
+      virtual HRESULT __stdcall get_AllowFullScreenInteractive (
+        /*[out,retval]*/ BSTR * pVal ) = 0;
+      virtual HRESULT __stdcall put_AllowFullScreenInteractive (
+        /*[in]*/ BSTR pVal ) = 0;
+      virtual HRESULT __stdcall get_IsDependent (
+        /*[out,retval]*/ VARIANT_BOOL * pVal ) = 0;
+      virtual HRESULT __stdcall put_IsDependent (
+        /*[in]*/ VARIANT_BOOL pVal ) = 0;
+};
+
+struct __declspec(uuid("c5598e60-b307-11d1-b27d-006008c3fbfb"))
+ICanHandleException : IUnknown
+{
+    //
+    // Raw methods provided by interface
+    //
+
+      virtual HRESULT __stdcall CanHandleException (
+        /*[in]*/ EXCEPINFO * pExcepInfo,
+        /*[in]*/ VARIANT * pvar ) = 0;
 };
 
 struct __declspec(uuid("d27cdb6d-ae6d-11cf-96b8-444553540000"))
 _IShockwaveFlashEvents : IDispatch
 {};
 
-struct __declspec(uuid("d27cdb6e-ae6d-11cf-96b8-444553540000"))
-ShockwaveFlash;
-    // [ default ] interface IShockwaveFlash
-    // [ default, source ] dispinterface _IShockwaveFlashEvents
-
-struct __declspec(uuid("1171a62f-05d2-11d1-83fc-00a0c9089c5a"))
-FlashProp;
-    // [ default ] interface IUnknown
-
 struct __declspec(uuid("d27cdb70-ae6d-11cf-96b8-444553540000"))
 IFlashFactory : IUnknown
 {};
 
 struct __declspec(uuid("a6ef9860-c720-11d0-9337-00a0c90dcaa9"))
-IDispatchEx : IDispatch
+IMyDispatchEx : IDispatch
 {
     //
     // Raw methods provided by interface
@@ -316,11 +336,53 @@ IDispatchEx : IDispatch
 };
 
 struct __declspec(uuid("d27cdb72-ae6d-11cf-96b8-444553540000"))
-IFlashObjectInterface : IDispatchEx
+IFlashObjectInterface : IMyDispatchEx
 {};
+
+struct __declspec(uuid("86230738-d762-4c50-a2de-a753e5b1686f"))
+IFlashObject : IMyDispatchEx
+{};
+
+struct __declspec(uuid("d27cdb6e-ae6d-11cf-96b8-444553540000"))
+ShockwaveFlash;
+    // [ default ] interface IShockwaveFlash
+    // [ default, source ] dispinterface _IShockwaveFlashEvents
 
 struct __declspec(uuid("d27cdb71-ae6d-11cf-96b8-444553540000"))
 FlashObjectInterface;
     // [ default ] interface IFlashObjectInterface
+
+struct __declspec(uuid("e0920e11-6b65-4d5d-9c58-b1fc5c07dc43"))
+FlashObject;
+    // [ default ] interface IFlashObject
+
+//
+// Named GUID constants initializations
+//
+
+extern "C" const GUID __declspec(selectany) LIBID_ShockwaveFlashObjects =
+    {0xd27cdb6b,0xae6d,0x11cf,{0x96,0xb8,0x44,0x45,0x53,0x54,0x00,0x00}};
+extern "C" const GUID __declspec(selectany) IID_IShockwaveFlash =
+    {0xd27cdb6c,0xae6d,0x11cf,{0x96,0xb8,0x44,0x45,0x53,0x54,0x00,0x00}};
+extern "C" const GUID __declspec(selectany) IID_ICanHandleException =
+    {0xc5598e60,0xb307,0x11d1,{0xb2,0x7d,0x00,0x60,0x08,0xc3,0xfb,0xfb}};
+extern "C" const GUID __declspec(selectany) DIID__IShockwaveFlashEvents =
+    {0xd27cdb6d,0xae6d,0x11cf,{0x96,0xb8,0x44,0x45,0x53,0x54,0x00,0x00}};
+extern "C" const GUID __declspec(selectany) IID_IFlashFactory =
+    {0xd27cdb70,0xae6d,0x11cf,{0x96,0xb8,0x44,0x45,0x53,0x54,0x00,0x00}};
+extern "C" const GUID __declspec(selectany) IID_IMyDispatchEx =
+    {0xa6ef9860,0xc720,0x11d0,{0x93,0x37,0x00,0xa0,0xc9,0x0d,0xca,0xa9}};
+extern "C" const GUID __declspec(selectany) IID_IFlashObjectInterface =
+    {0xd27cdb72,0xae6d,0x11cf,{0x96,0xb8,0x44,0x45,0x53,0x54,0x00,0x00}};
+extern "C" const GUID __declspec(selectany) IID_IFlashObject =
+    {0x86230738,0xd762,0x4c50,{0xa2,0xde,0xa7,0x53,0xe5,0xb1,0x68,0x6f}};
+extern "C" const GUID __declspec(selectany) CLSID_ShockwaveFlash =
+    {0xd27cdb6e,0xae6d,0x11cf,{0x96,0xb8,0x44,0x45,0x53,0x54,0x00,0x00}};
+extern "C" const GUID __declspec(selectany) CLSID_FlashObjectInterface =
+    {0xd27cdb71,0xae6d,0x11cf,{0x96,0xb8,0x44,0x45,0x53,0x54,0x00,0x00}};
+extern "C" const GUID __declspec(selectany) CLSID_FlashObject =
+    {0xe0920e11,0x6b65,0x4d5d,{0x9c,0x58,0xb1,0xfc,0x5c,0x07,0xdc,0x43}};
+
+} // namespace ShockwaveFlashObjects
 
 #pragma pack(pop)
