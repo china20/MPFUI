@@ -1,0 +1,1689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{c6d2cfdd-b8bc-4e14-83a5-0edfdf8250cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Framework">
+      <UniqueIdentifier>{ca101b8f-21a6-4278-b813-2d93d265ee50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Framework\Controls">
+      <UniqueIdentifier>{f90da7d6-091e-4ea8-9daa-114d1c00e3d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Framework\Animation">
+      <UniqueIdentifier>{ec2466da-f36d-4be1-a548-eaec938d1d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Framework\Presenter">
+      <UniqueIdentifier>{5a9ab088-65d9-430f-ab3e-efd6917ccb76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Config">
+      <UniqueIdentifier>{db3fce76-f080-47bc-8daf-8496a4b1fdf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System">
+      <UniqueIdentifier>{510024a0-283b-4078-8cfa-1af6cb581a54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Windows">
+      <UniqueIdentifier>{c4edb593-195f-456d-a35b-50985399cd5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Input">
+      <UniqueIdentifier>{6e5ead40-cf27-4fb9-9fd8-baf2d2fdafb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Markup">
+      <UniqueIdentifier>{c1375a58-8a94-4db5-b5ec-0aab5a7d28ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Resources">
+      <UniqueIdentifier>{d6d86a69-6145-48db-8cc0-ff07bf641081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Tools">
+      <UniqueIdentifier>{28990641-a21b-401f-9831-4fe1612ef0b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Types">
+      <UniqueIdentifier>{3a5b569f-e8a9-4e34-ab99-1c1d9e49511a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Graphics">
+      <UniqueIdentifier>{b871c322-c8bc-4e79-a272-c716d7347a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\Animation">
+      <UniqueIdentifier>{1a9b6301-9287-46ba-8e32-1d561166e834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\System\DragDrop">
+      <UniqueIdentifier>{acd2502b-7a03-4edb-833e-881d8779f1f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{a909e13d-a553-4643-bd07-16215c934eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework">
+      <UniqueIdentifier>{c613740c-df1d-4c65-a391-0c76d44d17a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework\Controls">
+      <UniqueIdentifier>{58989a0f-9cbe-4821-8e5c-d6a97de13947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework\Presenter">
+      <UniqueIdentifier>{f4cbdc35-775b-4697-bcde-3f08c476f822}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Framework\Animation">
+      <UniqueIdentifier>{4876e549-c540-4ad9-9d1c-6bd488bf6abb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System">
+      <UniqueIdentifier>{151e8e8b-3b6f-4f06-a76d-2e4379c5239c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Windows">
+      <UniqueIdentifier>{a58ddc27-ce1a-4e07-bff8-a56f72de6b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Input">
+      <UniqueIdentifier>{d104a1b5-b899-4141-8c1c-1a1d57e90ce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Interop">
+      <UniqueIdentifier>{fa593522-f61d-4521-a04b-6fd9f9ae8e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Markup">
+      <UniqueIdentifier>{14f36abb-98b9-4185-b237-845a9be54597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Tools">
+      <UniqueIdentifier>{3d145f8f-113e-4fda-bd25-fffbb4fe4625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Resources">
+      <UniqueIdentifier>{360ea600-10c9-4c8f-aa29-fc3cb925ac25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Types">
+      <UniqueIdentifier>{9d31b0e5-a2ff-4ac9-8f78-6f3599e63644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Graphics">
+      <UniqueIdentifier>{e7d61caf-f41d-4b90-8914-1b2ccd3ff29b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Render">
+      <UniqueIdentifier>{663ebb9d-07e9-4572-884c-256d959921e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Render\Engine">
+      <UniqueIdentifier>{7a12ec22-70dc-40af-9abf-2943d47dd0c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Render\Skia">
+      <UniqueIdentifier>{62312f17-c0c6-4d26-82ea-674df63f6504}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\Animation">
+      <UniqueIdentifier>{427a9d40-9ac8-4e69-89a5-cb27c6df5e54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\System\DragDrop">
+      <UniqueIdentifier>{46fa7c43-3293-4336-9bd8-6aba0a62efb5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="suicore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\AssignerTimer.cpp">
+      <Filter>include\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\SuiTypeface.cpp">
+      <Filter>include\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Application.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Binding.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Border.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Button.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ButtonBase.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Calendar.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\CalendarItem.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Canvas.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\CaretElement.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\CheckBox.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\CollectionViewGroup.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ColumnDefinition.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Content.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Control.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ControlTemplate.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\DataTemplate.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\DatePicker.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Decorator.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\DefinitionBase.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\DockPanel.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ElementCollectionImpl.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Ellipse.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Expander.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Grid.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GridView.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GridViewColumn.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GridViewColumnCollection.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GridViewColumnHeader.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GridViewHeaderRowPresenter.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GridViewRowPresenter.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GridViewRowPresenterBase.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\GroupItem.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\HeaderedContentControl.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\HeaderedItemsControl.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\HoldControl.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\HwndHost.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Image.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ItemCollection.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ItemsControl.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ItemsPanelTemplate.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Label.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Line.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Menu.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\MenuItem.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\MenuItemHelper.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Panel.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Path.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Popup.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ProgressBar.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\RadioButton.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\RangeBase.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Rectangle.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\RepeatButton.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\RowDefinition.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ScrollBar.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ScrollViewer.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Selector.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Separator.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Shape.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Slider.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\StackPanel.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\TextBlock.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\TextEditor.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\TextElement.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Thumb.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\TickBar.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ToggleButton.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Tooltip.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Track.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\UniformGrid.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\UserControl.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\ViewBase.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\VisualizePanel.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\VisualizeStackPanel.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\Window.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Controls\WindowHelper.cpp">
+      <Filter>src\Framework\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Presenter\ContentPresenter.cpp">
+      <Filter>src\Framework\Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Presenter\ItemContainerGenerator.cpp">
+      <Filter>src\Framework\Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Presenter\ItemsPresenter.cpp">
+      <Filter>src\Framework\Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Presenter\ScrollContentPresenter.cpp">
+      <Filter>src\Framework\Presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Animation\AnimationAsKeyFrame.cpp">
+      <Filter>src\Framework\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Animation\AnimationAsSeries.cpp">
+      <Filter>src\Framework\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Framework\Animation\ValueAnimation.cpp">
+      <Filter>src\Framework\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Assigner.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\AssignerInvoker.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\BindingExpression.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\BuildFactory.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\CommandManager.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\CommandSource.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\CoreHelper.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\CoreTools.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\DependentList.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\DpObject.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\DpProperty.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Effect.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\EffectiveValue.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Element.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Environment.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Event.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\EventArg.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\EventBuilder.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\EventHandler.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\EventHandlersStore.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\EventManager.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Exception.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Expression.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Extension.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\FrameworkElement.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\FrameworkElementFactory.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\FrameworkTemplate.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\HierarchicalItem.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\HwndAdapter.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\HwndHelper.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\HwndObject.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\HwndSubclass.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\InheritStateProperty.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\InputAssignerInvoker.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\InvManager.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\InvokerPriorityQueue.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\MarkupExtension.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\Object.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\PropertyValue.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\RenderTarget.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\ResourceReferenceeExpression.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\ResourceUri.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\RoutedCommand.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\RoutedEvent.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\RoutedEventArg.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\ScrollInfo.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\SystemParameters.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\TemplateBindingExpression.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\ValueConvert.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\VisualStates.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\VisualTreeOp.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Windows\WeakRef.cpp">
+      <Filter>src\System\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\Dwmapi.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\FocusManager.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\HwndKeyboardFilter.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\HwndMouseFilter.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\Keyboard.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\KeyboardNavigation.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\Mouse.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Input\MouseDevice.cpp">
+      <Filter>src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Interop\ColorManager.cpp">
+      <Filter>src\System\Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Interop\InternalOper.cpp">
+      <Filter>src\System\Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Interop\InternalWindowOper.cpp">
+      <Filter>src\System\Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Interop\PlugManager.cpp">
+      <Filter>src\System\Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Interop\System.cpp">
+      <Filter>src\System\Interop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\DictionaryXamlParser.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\StyleXamlParser.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\TemplateXamlParser.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\XamlContextStack.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\XamlFrame.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\XamlParser.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\XamlReader.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\XamlStream.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Markup\XamlWriter.cpp">
+      <Filter>src\System\Markup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\AcceleratorOp.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\AlphaHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\CollectionX.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\CommandOp.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\Debug.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\DesignHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\DIBHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\EventHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\HashHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\IconHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\Locker.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\Log.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\LogicalTreeOp.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\Signal.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\sse.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\sse64.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\StyleHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\SystemHelper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\ThemeOp.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\Thread.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\TiXmlWrapper.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\TreeBuilder.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\XunZip.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Tools\XZip.cpp">
+      <Filter>src\System\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\BindParser.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\ObjColl.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\PropertyFactory.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\ResourceDictionary.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\ResourceParserImpl.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\Setter.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\SetterCollection.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\Style.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\StyleSelector.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\Trigger.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\TriggerCollection.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\XamlNodeImp.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Resources\XamlWalker.cpp">
+      <Filter>src\System\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\Colors.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\DateHelp.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\DateTime.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\Double.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\FloatUtil.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\StreamDef.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\StringCore.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Types\Structure.cpp">
+      <Filter>src\System\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\Bitmap.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\BitmapTool.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\Cursor.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\FormattedText.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\Geometry.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\GradientBrush.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\ImageBrush.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\ImageParse.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\LinearGradientBrush.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\PathFigure.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\RadialGradientBrush.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Graphics\SolidColorBrush.cpp">
+      <Filter>src\System\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Render\ImageResourcePool.cpp">
+      <Filter>src\System\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Render\RenderManager.cpp">
+      <Filter>src\System\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Render\Engine\DefaultRender.cpp">
+      <Filter>src\System\Render\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Render\Skia\BookPage.cpp">
+      <Filter>src\System\Render\Skia</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Render\Skia\SkiaDrawing.cpp">
+      <Filter>src\System\Render\Skia</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Render\Skia\SkTextOp.cpp">
+      <Filter>src\System\Render\Skia</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Animation\AnimationStorage.cpp">
+      <Filter>src\System\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Animation\TimerManager.cpp">
+      <Filter>src\System\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Animation\TimerThread.cpp">
+      <Filter>src\System\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\Animation\Transform.cpp">
+      <Filter>src\System\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\DragDrop\DataObject.cpp">
+      <Filter>src\System\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\DragDrop\DragDrop.cpp">
+      <Filter>src\System\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\DragDrop\DropSource.cpp">
+      <Filter>src\System\DragDrop</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\DragDrop\DropTarget.cpp">
+      <Filter>src\System\DragDrop</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="suicore.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\bytedata.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\resize.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\splith.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\splitv.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\include\suic\System\Windows\Delegate.inl">
+      <Filter>include\System\Windows</Filter>
+    </None>
+    <None Include="..\..\include\suic\System\Windows\Element.inl">
+      <Filter>include\System\Windows</Filter>
+    </None>
+    <None Include="res\DEFRES" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Application.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Border.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Button.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ButtonBase.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Calendar.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\CalendarItem.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Canvas.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\CaretElement.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\CheckBox.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ColumnDefinition.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Content.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Control.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ControlTemplate.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DataTemplate.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DatePicker.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Decorator.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DefinitionBase.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DockPanel.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\DragEvent.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Ellipse.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Expander.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Grid.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridView.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewColumn.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewColumnCollection.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewColumnHeader.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewHeaderRowPresenter.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewRowPresenter.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GridViewRowPresenterBase.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\GroupItem.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HeaderedContentControl.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HeaderedItemsControl.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HierarchicalItem.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HoldControl.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\HwndHost.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Image.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemCollection.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemsControl.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemSource.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ItemsPanelTemplate.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Label.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Line.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Menu.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\MenuItem.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Panel.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Path.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Popup.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ProgressBar.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RadioButton.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RangeBase.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Rectangle.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RepeatButton.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\RowDefinition.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ScrollBar.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ScrollViewer.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Selector.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Separator.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Shape.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Slider.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\StackPanel.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TextBlock.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TextEditor.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TextElement.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Thumb.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\TickBar.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToggleButton.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToolBar.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToolBarPanel.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ToolTip.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Track.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\UniformGrid.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\UserControl.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ViewBase.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\ViewGroup.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\VisualizePanel.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\VisualizeStackPanel.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\Window.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Controls\WrapPanel.h">
+      <Filter>include\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Animation\AnimationAsKeyFrame.h">
+      <Filter>include\Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Animation\AnimationAsSeries.h">
+      <Filter>include\Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Animation\EasingFunc.h">
+      <Filter>include\Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Animation\ValueAnimation.h">
+      <Filter>include\Framework\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ContentPresenter.h">
+      <Filter>include\Framework\Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ItemContainerGenerator.h">
+      <Filter>include\Framework\Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ItemsPresenter.h">
+      <Filter>include\Framework\Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Framework\Presenter\ScrollContentPresenter.h">
+      <Filter>include\Framework\Presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Config\suicoreconfig.h">
+      <Filter>include\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Config\suicoreinc.h">
+      <Filter>include\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\AccessKeyManager.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Assigner.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\AssignerInvoker.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Binding.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\BindingExpression.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\BuildFactory.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\CommandSource.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\DeferredRef.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Delegate.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\DependentList.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\DpObject.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\DpProperty.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\EffectiveValue.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Element.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Environment.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Event.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\EventArg.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\EventHandler.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\EventHandlersStore.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Exception.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Expression.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Extension.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\FrameworkElement.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\FrameworkElementFactory.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\FrameworkTemplate.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\HwndAdapter.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\InvokerPriorityQueue.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\IScrollinfo.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\ItemEntry.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\ItemsChangedEventArg.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\MarkupExtension.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Object.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\PropertyValue.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\RenderTarget.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\ResourceReferenceExpression.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\ResourceUri.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\RoutedCommand.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\RoutedEventArg.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\RoutetEvent.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\ScrollInfo.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\SelectionChangedEventArg.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\Shared.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\SourceRef.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\SystemParameters.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\TemplateBindingExpression.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\TextInput.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\UncommonField.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\ValueConvert.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\VisualStateEventArg.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\VisualStates.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\WeakRef.h">
+      <Filter>include\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Input\FocusManager.h">
+      <Filter>include\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Input\Keyboard.h">
+      <Filter>include\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Input\KeyboardNavigation.h">
+      <Filter>include\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Input\Mouse.h">
+      <Filter>include\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Input\MouseDevice.h">
+      <Filter>include\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\DictionaryXamlParser.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\StyleXamlParser.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\TemplateXamlParser.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlContextStack.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlFrame.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlNode.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlParser.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlReader.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlStream.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Markup\XamlWriter.h">
+      <Filter>include\System\Markup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\DataTrigger.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\DeferredResRef.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\DynamicResource.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\ObjColl.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\ResourceDictionary.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\Setter.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\SetterCollection.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\StaticResource.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\Style.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\StyleSelector.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\Trigger.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\TriggerBase.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Resources\TriggerCollection.h">
+      <Filter>include\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\AcceleratorOp.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Array.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\ArrayList.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Collection.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\CollectionX.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\CommandOp.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Comparer.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\CoreHelper.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Debug.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\DIBHelper.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\ElementCollection.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\EventHelper.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Guard.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\HashHelper.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\HashMap.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\HwndHelper.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\IconHelper.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Locker.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Log.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\LogicalTreeOp.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Math.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\ResourceParser.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Signal.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\StyleHelper.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\ThemeOp.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\Thread.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Tools\VisualTreeOp.h">
+      <Filter>include\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Colors.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Const.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\DateTime.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Double.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Integer.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Interface.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Micro.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Numeric.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Single.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\StreamDef.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\String.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\StringCore.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Structure.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\Types.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\ValueBox.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Types\XamlNode.h">
+      <Filter>include\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\Bitmap.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\BitmapTool.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\Brush.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\Cursor.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\Drawing.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\FormattedText.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\Geometry.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\GIFParser.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\GradientBrush.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\ImageBrush.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\ImageParse.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\LinearGradientBrush.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\PathFigure.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\RadialGradientBrush.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\Resource.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\SolidcolorBrush.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Graphics\SuiTypeface.h">
+      <Filter>include\System\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Animation\AnimationStorage.h">
+      <Filter>include\System\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Animation\Matrix.h">
+      <Filter>include\System\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Animation\TimerManager.h">
+      <Filter>include\System\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Animation\Transform.h">
+      <Filter>include\System\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\DragDrop\DragDrop.h">
+      <Filter>include\System\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Framework\Controls\MenuItemHelper.h">
+      <Filter>src\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Framework\Controls\WindowHelper.h">
+      <Filter>src\Framework\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\CommandManager.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\EventBuilder.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\EventManager.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\HwndObject.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\HwndSubclass.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\InheritStateProperty.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\InputAssignerInvoker.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\InvManager.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\RenderInfo.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\System\Windows\TimerBase.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Windows\VisualStateManager.h">
+      <Filter>src\System\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Input\Dwmapi.h">
+      <Filter>src\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Input\HwndKeyboardFilter.h">
+      <Filter>src\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Input\HwndMouseFilter.h">
+      <Filter>src\System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Interop\ColorManager.h">
+      <Filter>src\System\Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Interop\GdiplusManager.h">
+      <Filter>src\System\Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Interop\InternalOper.h">
+      <Filter>src\System\Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Interop\InternalWindowOper.h">
+      <Filter>src\System\Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Interop\PlugManager.h">
+      <Filter>src\System\Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Interop\System.h">
+      <Filter>src\System\Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Tools\DesignHelper.h">
+      <Filter>src\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Tools\SSE.h">
+      <Filter>src\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Tools\TiXmlWrapper.h">
+      <Filter>src\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Tools\XRUnzip.h">
+      <Filter>src\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Tools\XRZip.h">
+      <Filter>src\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Tools\XUnzip.h">
+      <Filter>src\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Tools\XZip.h">
+      <Filter>src\System\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Resources\BindParser.h">
+      <Filter>src\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Resources\PropertyFactory.h">
+      <Filter>src\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Resources\ResourceParserImpl.h">
+      <Filter>src\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Resources\XamlNodeImp.h">
+      <Filter>src\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Resources\XamlWalker.h">
+      <Filter>src\System\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Types\DateHelp.h">
+      <Filter>src\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Types\StringCoreHelper.h">
+      <Filter>src\System\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Render\ImageResourcePool.h">
+      <Filter>src\System\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Render\RenderManager.h">
+      <Filter>src\System\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Render\Engine\DefaultRender.h">
+      <Filter>src\System\Render\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Render\Skia\BookPage.h">
+      <Filter>src\System\Render\Skia</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Render\Skia\SkiaDrawing.h">
+      <Filter>src\System\Render\Skia</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Render\Skia\SkTextOp.h">
+      <Filter>src\System\Render\Skia</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\Animation\TimerThread.h">
+      <Filter>src\System\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\DragDrop\DataObject.h">
+      <Filter>src\System\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\DragDrop\DropSource.h">
+      <Filter>src\System\DragDrop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\DragDrop\DropTarget.h">
+      <Filter>src\System\DragDrop</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -164,10 +164,10 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\bin\intermediate\debug_vc120\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\bin\intermediate\debug_vc100\$(ProjectName)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\bin\intermediate\release_vc120\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\bin\intermediate\release_vc100\$(ProjectName)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debugx64|Win32'">$(Configuration)\</IntDir>
@@ -215,7 +215,7 @@
       <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>..\..\PDB\debug_vc90\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\PDB\debug_vc100\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <ImportLibrary>..\..\lib\$(ProjectName)ud.lib</ImportLibrary>
@@ -247,7 +247,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AssemblyDebug>
       </AssemblyDebug>
-      <ProgramDatabaseFile>..\..\PDB\release_vc90\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>..\..\PDB\release_vc100\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>NotSet</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
