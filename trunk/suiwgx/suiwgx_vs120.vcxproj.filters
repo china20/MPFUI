@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{ac56648a-42f5-4013-bf52-6284837eefe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Extend">
+      <UniqueIdentifier>{f2e96c9c-f44a-475f-ad26-7ee9c01d34a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Extend\Editor">
+      <UniqueIdentifier>{53a79a47-310f-4f15-9265-ac20dcbdbc75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Extend\Tools">
+      <UniqueIdentifier>{f49b61f1-5723-4b7b-9891-396dff2566f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Extend\ActiveX">
+      <UniqueIdentifier>{a7e19861-abf9-489c-b049-8c8be1a61f4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Extend\Controls">
+      <UniqueIdentifier>{2251c340-8e6b-4fd8-ab4f-a328ca71d317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Common">
+      <UniqueIdentifier>{e5fd13dd-fa47-43cd-bd82-f7034c0b1fd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ClassFactory">
+      <UniqueIdentifier>{11126dfe-aee3-43f9-a8e6-a43175f99dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\richedit">
+      <UniqueIdentifier>{9f5692bf-f44b-4744-b6fe-2dc0165be513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\richedit\src">
+      <UniqueIdentifier>{509e8d3f-504c-401e-9822-6d2ac0a3934d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{27eec281-ed79-4dc8-a9a5-6c642b43586a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Extend">
+      <UniqueIdentifier>{dd06cdf8-3833-453e-a928-1c3395accf66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Extend\Editor">
+      <UniqueIdentifier>{c0376ef7-8fc7-46cc-af37-416d49c457da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Extend\Tools">
+      <UniqueIdentifier>{7ddbcb7a-6b1d-4670-b929-252959fb8bd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Extend\ActiveX">
+      <UniqueIdentifier>{f45a1137-9304-454a-ba45-9fa2daf3b429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Extend\Controls">
+      <UniqueIdentifier>{1b5b3590-0967-4792-b44f-98d700a923de}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="suiwgx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\Embbed.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\GifDecoder.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\OleEmbbed.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\PasswordBox.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\RichInterface.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\RichTextBox.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\RichTextOleCallback.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\TextBoxBase.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\TextContainer.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Editor\TextHostView.cpp">
+      <Filter>src\Extend\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Tools\ExtendHelper.cpp">
+      <Filter>src\Extend\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Tools\RegKeyOp.cpp">
+      <Filter>src\Extend\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\ActiveX\ActiveX.cpp">
+      <Filter>src\Extend\ActiveX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\ActiveX\ActiveXContainer.cpp">
+      <Filter>src\Extend\ActiveX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\ActiveX\ActiveXSite.cpp">
+      <Filter>src\Extend\ActiveX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\ActiveX\FlashBox.cpp">
+      <Filter>src\Extend\ActiveX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\ActiveX\WebBrowser.cpp">
+      <Filter>src\Extend\ActiveX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\ActiveX\WebBrowserEvent.cpp">
+      <Filter>src\Extend\ActiveX</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ComboBox.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ComboBoxItem.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\DirBrowser.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\FileBrowser.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\GifBox.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\GridSplitter.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\HyperPanel.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\InfoBox.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ListBox.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ListBoxItem.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ListView.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ListViewItem.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\PlayBox.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\TabControl.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\TabItem.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\TabPanel.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ToolBar.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\ToolBarPanel.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\TreeView.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\TreeViewItem.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\WebkitBox.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Extend\Controls\WrapPanel.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Common\sse.cpp">
+      <Filter>src\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ClassFactory\OleClassFactory.cpp">
+      <Filter>src\ClassFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\antievt.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\array.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\callmgr.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\cfpf.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\clasifyc.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\coleobj.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\devdsc.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\dfreeze.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\disp.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\dispml.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\dispprt.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\dispsl.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\doc.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\dragdrp.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\dxfrobj.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\edit.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\font.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\format.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\frunptr.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\hash.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\ime.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\ldte.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\line.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\m_undo.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\magellan.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\measure.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\notmgr.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\object.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\objmgr.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\osdc.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\pensup.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\propchg.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\range.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\reinit.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\remain.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\render.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\rtext.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\rtflex.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\rtflog.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\rtfread.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\rtfread2.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\rtfwrit.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\rtfwrit2.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\runptr.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\select.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\text.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\textserv.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\tokens.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\tomdoc.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\tomfmt.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\tomrange.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\tomsel.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\urlsup.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\util.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\uuid.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\w32sys.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\w32win32.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\richedit\src\wsprintf.cpp">
+      <Filter>src\richedit\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extend\Editor\GifDecoder.h">
+      <Filter>src\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extend\Editor\RichInterface.h">
+      <Filter>src\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extend\Editor\RichTextOleCallback.h">
+      <Filter>src\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extend\Editor\TextHostView.h">
+      <Filter>src\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extend\Controls\uvsize.h">
+      <Filter>src\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\SSE.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ClassFactory\OleClassFactory.h">
+      <Filter>src\ClassFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\suiwgxconfig.h">
+      <Filter>include\Extend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\Embbed.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\ImageEmbbed.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\OleEmbbed.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\PasswordBox.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\RichTextBox.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\RichTextDef.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\TextBox.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\TextBoxBase.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Editor\TextContainer.h">
+      <Filter>include\Extend\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Tools\RegKeyOp.h">
+      <Filter>include\Extend\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\ActiveX\ActiveX.h">
+      <Filter>include\Extend\ActiveX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\ActiveX\ActiveXContainer.h">
+      <Filter>include\Extend\ActiveX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\ActiveX\ActiveXHost.h">
+      <Filter>include\Extend\ActiveX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\ActiveX\ActiveXSite.h">
+      <Filter>include\Extend\ActiveX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\ActiveX\FlashBox.h">
+      <Filter>include\Extend\ActiveX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\ActiveX\WebBrowser.h">
+      <Filter>include\Extend\ActiveX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\ActiveX\WebBrowserEvent.h">
+      <Filter>include\Extend\ActiveX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ComboBox.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ComboBoxItem.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\DirBrowser.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\FileBrowser.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\GifBox.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\GridSplitter.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\HyperPanel.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\InfoBox.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ListBox.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ListBoxItem.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ListView.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ListViewItem.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\PlayBox.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\TabControl.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\TabItem.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\TabPanel.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ToolBar.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\ToolBarPanel.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\TreeView.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\TreeViewItem.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\WebkitBox.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\wke.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\WrapPanel.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="suiwgx.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Extend\ActiveX\flash10a.tlh">
+      <Filter>src\Extend\ActiveX</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
