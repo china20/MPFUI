@@ -11,7 +11,12 @@
 #include "SkPreConfig.h"
 #include "SkUserConfig.h"
 #include "SkPostConfig.h"
+
+#if _MSC_VER < 1900 
+#include <stdinti.h>
+#else
 #include <stdint.h>
+#endif
 
 /** \file SkTypes.h
 */

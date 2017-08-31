@@ -11,7 +11,12 @@
 /** Windows Interlocked atomics. */
 
 #include <intrin.h>
+
+#if _MSC_VER < 1900 
+#include <stdinti.h>
+#else
 #include <stdint.h>
+#endif
 
 //MSDN says in order to declare an interlocked function for use as an
 //intrinsic, include intrin.h and put the function in a #pragma intrinsic
