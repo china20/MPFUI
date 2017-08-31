@@ -222,7 +222,7 @@ public:
     }
 };
 
-static enum Flags
+enum Flags
 {
     ArrangeOverrideInProgress = 0x80000,
     HasGroup3CellsInAutoRows = 0x20000,
