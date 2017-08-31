@@ -32,14 +32,11 @@ CaretProxy* GetCaretProxy();
 RenderEngine::RenderEngine(Element* root, const fRect* lprc)
 {
     _root = dynamic_cast<FrameworkElement*>(root);
+    _clip.SetLTRB(0, 0, _root->GetActualWidth(), _root->GetActualHeight());
 
-    if (lprc)
+    if (lprc != NULL)
     {
-        _clip = *lprc;
-    }
-    else
-    {
-        _clip.SetLTRB(0, 0, _root->GetActualWidth(), _root->GetActualHeight());
+        _clip.Intersect(lprc);
     }
 }
 

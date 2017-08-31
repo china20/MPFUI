@@ -214,10 +214,10 @@ void MinMaxInfo::UpdateMinMax(FrameworkElement* fe, int w, int h)
 void FrameworkElement::OnStylePropChanged(DpObject* d, DpPropChangedEventArg* e)
 {
     FrameworkElement* fe = RTTICast<FrameworkElement>(d);
-    //bool hasStyleLocal = e->GetNewEntry()->GetBaseValueType() == BaseValueType::Local;
+    // bool hasStyleLocal = e->GetNewEntry()->GetBaseValueType() == BaseValueType::Local;
     Style* oldStyle = RTTICast<Style>(e->GetOldValue());
     Style* newStyle = RTTICast<Style>(e->GetNewValue());
-    //fe->WriteInnerFlag(InnerFlags::HasLocalStyle, hasStyleLocal);
+    // fe->WriteInnerFlag(InnerFlags::HasLocalStyle, hasStyleLocal);
     StyleHelper::UpdateStyleCache(fe, oldStyle, newStyle, fe->_styleCache);
     fe->SetIsStyleSetFromGenerator(false);
 }
@@ -490,8 +490,8 @@ bool FrameworkElement::StaticInit()
         FindToolTipEvent = EventHelper::RegisterRoutedEvent(_U("FindToolTip"), RoutingStrategy::Bubble, typeInfo, typeInfo);
         RequestBringIntoViewEvent = EventHelper::RegisterRoutedEvent(_U("RequestBringIntoView"), RoutingStrategy::Bubble, typeInfo, typeInfo);
         ScrollPosChangedEvent  = EventHelper::RegisterRoutedEvent(_U("ScrollPosChanged"), RoutingStrategy::Tunnel, typeInfo, typeInfo);
-        //ContextMenuClosingEvent  = EventHelper::RegisterClassHandler(_U("ContextMenuClosing"), RoutingStrategy::Tunnel, typeInfo, typeInfo);
-        //ContextMenuOpeningEvent  = EventHelper::RegisterClassHandler(_U("ContextMenuOpening"), RoutingStrategy::Tunnel, typeInfo, typeInfo);
+        // ContextMenuClosingEvent  = EventHelper::RegisterClassHandler(_U("ContextMenuClosing"), RoutingStrategy::Tunnel, typeInfo, typeInfo);
+        // ContextMenuOpeningEvent  = EventHelper::RegisterClassHandler(_U("ContextMenuOpening"), RoutingStrategy::Tunnel, typeInfo, typeInfo);
 
         ToolTipOpeningEvent = EventHelper::RegisterRoutedEvent(_U("ToolTipOpening"), RoutingStrategy::Direct, ToolTipEventHandler::RTTIType(), typeInfo);
         ToolTipClosingEvent = EventHelper::RegisterRoutedEvent(_U("ToolTipClosing"), RoutingStrategy::Direct, ToolTipEventHandler::RTTIType(), typeInfo);
@@ -520,7 +520,7 @@ bool FrameworkElement::StaticInit()
         CursorProperty = DpProperty::Register(_T("Cursor"), typeInfo, OCursor::RTTIType(), DpPropMemory::GetPropMeta(new OCursor(), PropMetadataOptions::AffectsNone));
         ToolTipProperty = DpProperty::Register(_T("ToolTip"), typeInfo, Object::RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
 
-        //AnimageTagProperty = DpProperty::Register(_U("AnimageTag"), typeInfo, Object::RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
+        // AnimageTagProperty = DpProperty::Register(_U("AnimageTag"), typeInfo, Object::RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
 
         StyleProperty = DpProperty::Register(_U("Style"), typeInfo, Style::RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsParentMeasure, FrameworkElement::OnStylePropChanged));
         FocusVisualStyleProperty = DpProperty::Register(_U("FocusVisualStyle"), typeInfo, Style::RTTIType(), DpPropMemory::GetPropMeta(DefaultFocusVisualStyle, PropMetadataOptions::AffectsNone));
@@ -535,7 +535,7 @@ bool FrameworkElement::StaticInit()
         FlowDirectionProperty->SetConvertValueCb(FlowDirectionConvert::Convert);
         HorizontalAlignmentProperty->SetConvertValueCb(AlignmentConvert::Convert);
         VerticalAlignmentProperty->SetConvertValueCb(AlignmentConvert::Convert);
-        //CursorProperty->SetConvertValueCb(CurosrConvert::Convert);
+        // CursorProperty->SetConvertValueCb(CurosrConvert::Convert);
 
         WidthProperty->SetConvertValueCb(AutoN1Convert::Convert);
         HeightProperty->SetConvertValueCb(AutoN1Convert::Convert);
@@ -704,7 +704,7 @@ int FrameworkElement::GetHorizontalAlignment()
 int FrameworkElement::GetVerticalAlignment()
 {
     return _verticalAlignment;
-    //return GetValue(VerticalAlignmentProperty)->ToInt();
+    // return GetValue(VerticalAlignmentProperty)->ToInt();
 }
 
 void FrameworkElement::SetHorizontalAlignment(int val)
@@ -1402,7 +1402,7 @@ void FrameworkElement::Render(Drawing* drawing)
 
                 bOffset = RenderEngine::RenderShot(this, dib, clip.ToRect());
 
-                //dib.Save(_U("d:\\88888.png"), Bitmap::ImageType::kPNG);
+                // dib.Save(_U("d:\\88888.png"), Bitmap::ImageType::kPNG);
 
                 if (Transform::GetIdentity() != trans)
                 {

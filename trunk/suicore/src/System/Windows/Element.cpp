@@ -1540,21 +1540,6 @@ Point Element::TransformToAncestor(Element* ancestor)
     point.x -= ancestorPoint.x;
     point.y -= ancestorPoint.y;
 
-    /*Point pt;
-
-    while (parent != ancestor)
-    {
-        pt.x += parent->GetVisualOffset().x;
-        pt.y += parent->GetVisualOffset().y;
-
-        parent = parent->GetUIParent();
-
-        if (NULL == parent)
-        {
-            break;
-        }
-    }*/
-
     return point;
 }
 
@@ -1591,16 +1576,6 @@ bool Element::IsDescendantOf(const Element* ancestor) const
 
 Point Element::PointFromScreen(Point point)
 {
-    /*const Element* parent = this;
-
-    while (parent)
-    {
-        point.x -= parent->GetVisualOffset().x;
-        point.y -= parent->GetVisualOffset().y;
-
-        parent = parent->GetUIParent();
-    }*/
-
     point.x -= _canvasOffset.x;
     point.y -= _canvasOffset.y;
 
@@ -1611,15 +1586,6 @@ Point Element::PointToScreen(Point point)
 {
     point.x += _canvasOffset.x;
     point.y += _canvasOffset.y;
-    /*const Element* parent = this;
-
-    while (parent)
-    {
-        point.x += parent->GetVisualOffset().x;
-        point.y += parent->GetVisualOffset().y;
-
-        parent = parent->GetUIParent();
-    }*/
 
     return point;
 }
@@ -1647,7 +1613,10 @@ Size Element::MeasureCore(const Size& availableSize)
 void Element::Measure(const Size& availableSize)
 {
     Element* parent = GetUIParent();
+
+    // 
     // 如果没有初始化，先初始化
+    // 
     if (!ReadFlag(CoreFlags::IsInitPending) && (parent == NULL || parent->IsInitialized()))
     {
         RecursiveInit();
@@ -2072,7 +2041,7 @@ void Element::Arrange(const Rect& arrangeRect)
 
 void Element::SetClipToBounds(bool val)
 {
-    //WriteViewFlag(ViewFlags::IsClipToBounds, value);
+    // WriteViewFlag(ViewFlags::IsClipToBounds, value);
     SetValue(ClipToBoundsProperty, BOOLTOBOOLEAN(val));
 }
 
@@ -2153,7 +2122,8 @@ void Element::InnerEnableChildren(Element* elem, bool val)
     for (int i = 0; i < elem->GetVisualChildrenCount(); ++i)
     {
         Element* pElem(elem->GetVisualChild(i));
-        if (pElem)
+
+        if (NULL != pElem)
         {
             if (val == !pElem->IsInnerEnabled())
             {
@@ -2283,7 +2253,7 @@ void Element::SignalDesiredSizeChange()
 
     if (parent != NULL)
     {
-        //parent->OnChildDesiredSizeChanged(this);
+        // parent->OnChildDesiredSizeChanged(this);
     }
 }
 
@@ -2870,9 +2840,9 @@ void Element::OnMouseMove(MouseButtonEventArg* e)
 
 void Element::OnMouseLeave(MouseButtonEventArg* e)
 {
-    //BeginAnimation(OpacityProperty, NULL);
-    //DoubleAnimation* pAni = new DoubleAnimation(1, 0, Duration(2000), FillBehavior::fbStop);
-    //BeginAnimation(OpacityProperty, pAni);
+    // BeginAnimation(OpacityProperty, NULL);
+    // DoubleAnimation* pAni = new DoubleAnimation(1, 0, Duration(2000), FillBehavior::fbStop);
+    // BeginAnimation(OpacityProperty, pAni);
 }
 
 void Element::OnMouseWheel(MouseWheelEventArg* e)
@@ -3460,7 +3430,7 @@ int Element::HitTestPoint(HitTestCtx* hitResult)
 {
     int iHitRes = HitTestFilter();
 
-    //Debug::Trace(_U("HitTestPoint:%d,%d\n"), hitResult->hitPoint.x, hitResult->hitPoint.y);
+    // Debug::Trace(_U("HitTestPoint:%d,%d\n"), hitResult->hitPoint.x, hitResult->hitPoint.y);
 
     if (iHitRes == HitTestFilterAction::ContinueSkipSelfAndChildren)
     {
@@ -3484,7 +3454,9 @@ int Element::HitTestPoint(HitTestCtx* hitResult)
             return HitTestFilterAction::Stop;
         }
 
+        // 
         // 测量子元素
+        // 
         if (iHitRes != HitTestFilterAction::ContinueSkipChildren)
         {
             int iCount = GetVisibleChildrenCount();
