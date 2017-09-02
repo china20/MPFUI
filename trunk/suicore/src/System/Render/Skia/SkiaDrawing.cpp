@@ -18,17 +18,17 @@ namespace suic
 {
 
 PointerDic<RTTIOfInfo*, lpfnDrawBrush> SkiaDrawing::_drawBrushes;
-void DrawImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect* lprc);
+void DrawImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc);
 
-void SkiaDrawing::DrawImageBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
+void SkiaDrawing::DrawImageBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
 {
-    suic::DrawImageBrush(drawing, (ImageBrush*)brush, frc);
+    suic::DrawImageBrush(drawCtx, drawing, (ImageBrush*)brush, frc);
 }
 
-void SkiaDrawing::DrawSolidColorBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
+void SkiaDrawing::DrawSolidColorBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
 {
     SolidColorBrush* clrBrush = (SolidColorBrush*)brush;
-    drawing->FillRectWith(clrBrush->ToColor(), lprc);
+    drawing->FillRectWith(drawCtx, clrBrush->ToColor(), lprc);
 }
 
 static SkShader* CreateLinearShader(LinearGradientBrush* linearBr, const SkRect* lprc)
@@ -55,7 +55,7 @@ static SkShader* CreateLinearShader(LinearGradientBrush* linearBr, const SkRect*
     return shader;
 }
 
-void SkiaDrawing::DrawLinearGradientBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
+void SkiaDrawing::DrawLinearGradientBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
 {
     LinearGradientBrush* linearBr = (LinearGradientBrush*)brush;
     SkShader* shader = CreateLinearShader(linearBr, lprc);
@@ -105,7 +105,7 @@ static SkShader* CreateRadialShader(RadialGradientBrush* radialBr, const SkRect*
     return shader;
 }
 
-void SkiaDrawing::DrawRadialGradientBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
+void SkiaDrawing::DrawRadialGradientBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
 {
     RadialGradientBrush* radialBr = (RadialGradientBrush*)brush;
     SkShader* shader = CreateRadialShader(radialBr, lprc);
@@ -321,12 +321,12 @@ void SkiaDrawing::WritePixels(Bitmap* dest, Point casOff)
     GetDrawCv()->writePixels(*bmp, casOff.x, casOff.y);
 }
 
-void SkiaDrawing::EraseColor(Color color)
+void SkiaDrawing::EraseColor(DrawCtx* drawCtx, Color color)
 {
     GetDrawCv()->drawColor(color);
 }
 
-void SkiaDrawing::EraseRect(Color color, const fRect* rc)
+void SkiaDrawing::EraseRect(DrawCtx* drawCtx, Color color, const fRect* rc)
 {
     SkPaint paint;
     SkIRect rect = AdjustSkIRect(rc);
@@ -335,12 +335,12 @@ void SkiaDrawing::EraseRect(Color color, const fRect* rc)
     GetDrawCv()->drawIRect(rect, paint);
 }
 
-void SkiaDrawing::EraseRect(Bitmap* bmp, const fRect* rc)
+void SkiaDrawing::EraseRect(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rc)
 {
 
 }
 
-void SkiaDrawing::DrawLine(Pen* pen, fPoint pt0, fPoint pt1)
+void SkiaDrawing::DrawLine(DrawCtx* drawCtx, Pen* pen, fPoint pt0, fPoint pt1)
 {
     DrawLayer& _currLay = _CurrLayer();
     SkPaint paint;
@@ -415,7 +415,7 @@ void SkiaDrawing::InitPaintBrush(SkPaint& paint, Brush* brush, const SkRect* lpr
     }
 }
 
-void SkiaDrawing::FillRect(Color color, const fRect* rc)
+void SkiaDrawing::FillRect(DrawCtx* drawCtx, Color color, const fRect* rc)
 {
     SkRect rect = AdjustSkRect(rc);
 
@@ -426,7 +426,7 @@ void SkiaDrawing::FillRect(Color color, const fRect* rc)
     _canvas.cv->drawRect(rect, _canvas.p);
 }
 
-void SkiaDrawing::FillRectWith(Color color, const SkRect* rect)
+void SkiaDrawing::FillRectWith(DrawCtx* drawCtx, Color color, const SkRect* rect)
 {
     ResetSkPaint(_canvas.p);
 
@@ -435,7 +435,7 @@ void SkiaDrawing::FillRectWith(Color color, const SkRect* rect)
     _canvas.cv->drawRect(*rect, _canvas.p);
 }
 
-void SkiaDrawing::DrawRect(Brush* brush, Pen* pen, const fRect* rc)
+void SkiaDrawing::DrawRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc)
 {
     SkRect rect = AdjustSkRect(rc);
 
@@ -448,7 +448,7 @@ void SkiaDrawing::DrawRect(Brush* brush, Pen* pen, const fRect* rc)
         if (_drawBrushes.TryGetValue(brush->GetRTTIType(), fnDraw))
         {
             _canvas.p.setStyle(SkPaint::Style::kStrokeAndFill_Style);
-            fnDraw(this, brush, &rect, rc);
+            fnDraw(drawCtx, this, brush, &rect, rc);
         }
     }
 
@@ -474,7 +474,7 @@ void SkiaDrawing::DrawRect(Brush* brush, Pen* pen, const fRect* rc)
     }
 }
 
-void SkiaDrawing::DrawRRect(Brush* brush, Pen* pen, const fRRect* rc)
+void SkiaDrawing::DrawRRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRRect* rc)
 {
     SkRRect rrect;
     SkVector raddi[4];
@@ -499,7 +499,7 @@ void SkiaDrawing::DrawRRect(Brush* brush, Pen* pen, const fRRect* rc)
         {
             Save();
             _canvas.cv->clipRRect(rrect, SkRegion::Op::kIntersect_Op, true);
-            fnDraw(this, brush, rect, &(rc->rect));
+            fnDraw(drawCtx, this, brush, rect, &(rc->rect));
             Restore();
         }
         else
@@ -535,7 +535,7 @@ void SkiaDrawing::DrawRRect(Brush* brush, Pen* pen, const fRRect* rc)
     }
 }
 
-void SkiaDrawing::DrawRoundRect(Brush* brush, Pen* pen, const fRect* rc, Float radiusX, Float radiusY)
+void SkiaDrawing::DrawRoundRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc, Float radiusX, Float radiusY)
 {
     fRect frc = AdjustfRect(rc);
     SkRect* rect = ToSkRect(frc);
@@ -558,7 +558,7 @@ void SkiaDrawing::DrawRoundRect(Brush* brush, Pen* pen, const fRect* rc, Float r
 
             Save();
             _canvas.cv->clipRRect(rrect, SkRegion::Op::kIntersect_Op, true);
-            fnDraw(this, brush, rect, rc);
+            fnDraw(drawCtx, this, brush, rect, rc);
             Restore();
         }
         else
@@ -581,7 +581,7 @@ void SkiaDrawing::DrawRoundRect(Brush* brush, Pen* pen, const fRect* rc, Float r
     }
 }
 
-void SkiaDrawing::DrawCircle(Brush* brush, Pen* pen, fPoint center, Float radius)
+void SkiaDrawing::DrawCircle(DrawCtx* drawCtx, Brush* brush, Pen* pen, fPoint center, Float radius)
 {
     DrawLayer& _currLay = _CurrLayer();
 
@@ -620,7 +620,7 @@ void SkiaDrawing::DrawCircle(Brush* brush, Pen* pen, fPoint center, Float radius
     }
 }
 
-void SkiaDrawing::DrawEllipse(Brush* brush, Pen* pen, const fRect* rc)
+void SkiaDrawing::DrawEllipse(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc)
 {
     fRect frc = AdjustfRect(rc);
     SkRect* rect = ToSkRect(frc);
@@ -650,7 +650,7 @@ void SkiaDrawing::DrawEllipse(Brush* brush, Pen* pen, const fRect* rc)
     }   
 }
 
-void SkiaDrawing::DrawPath(Brush* brush, Pen* pen, PathFigure* pathF)
+void SkiaDrawing::DrawPath(DrawCtx* drawCtx, Brush* brush, Pen* pen, PathFigure* pathF)
 {
     DrawLayer& _currLay = _CurrLayer();
 
@@ -681,16 +681,16 @@ void SkiaDrawing::DrawPath(Brush* brush, Pen* pen, PathFigure* pathF)
     path.offset(-_currLay.offset.x, -_currLay.offset.y);
 }
 
-void SkiaDrawing::DrawGeometry(Brush* brush, Pen* pen, Geometry* geometry)
+void SkiaDrawing::DrawGeometry(DrawCtx* drawCtx, Brush* brush, Pen* pen, Geometry* geometry)
 {
     if (geometry->GetRTTIType() == PathGeometry::RTTIType())
     {
         PathGeometry* pathClip = (PathGeometry*)geometry;
-        DrawPath(brush, pen, pathClip->GetPathFigure());
+        DrawPath(drawCtx, brush, pen, pathClip->GetPathFigure());
     }
 }
 
-void SkiaDrawing::DrawArc(Brush* brush, Pen* pen, fRect* oval, Float starta, Float sweepa, bool usecenter)
+void SkiaDrawing::DrawArc(DrawCtx* drawCtx, Brush* brush, Pen* pen, fRect* oval, Float starta, Float sweepa, bool usecenter)
 {
     fRect frc = AdjustfRect(oval);
     SkRect* rect = ToSkRect(frc);
@@ -720,28 +720,28 @@ void SkiaDrawing::DrawArc(Brush* brush, Pen* pen, fRect* oval, Float starta, Flo
     }
 }
 
-void SkiaDrawing::DrawSprite(Bitmap* bmp, int x, int y, Byte alpha)
+void SkiaDrawing::DrawSprite(DrawCtx* drawCtx, Bitmap* bmp, int x, int y)
 {
     SkPaint paint;
-    SkBitmap* skbmp = InitBitmap(bmp, alpha, paint);
+    SkBitmap* skbmp = InitBitmap(bmp, drawCtx, paint);
     DrawLayer& _drawLay = _CurrLayer();
 
     GetDrawCv()->drawSprite(*skbmp, x + _drawLay.offset.x, y + _drawLay.offset.y, &paint);
 }
 
-void SkiaDrawing::DrawImage(Bitmap* bmp, int x, int y, Byte alpha)
+void SkiaDrawing::DrawImage(DrawCtx* drawCtx, Bitmap* bmp, int x, int y)
 {
     SkPaint paint;
-    SkBitmap* skbmp = InitBitmap(bmp, alpha, paint);
+    SkBitmap* skbmp = InitBitmap(bmp, drawCtx, paint);
     DrawLayer& _drawLay = _CurrLayer();
 
     GetDrawCv()->drawBitmap(*skbmp, x + _drawLay.offset.x, y + _drawLay.offset.y, &paint);
 }
 
-void SkiaDrawing::DrawImage(Bitmap* bmp, const Matrix* m, Byte alpha)
+void SkiaDrawing::DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const Matrix* m)
 {
     SkPaint paint;
-    SkBitmap* skbmp = InitBitmap(bmp, alpha, paint);
+    SkBitmap* skbmp = InitBitmap(bmp, drawCtx, paint);
     SkMatrix skm;
 
     Save();
@@ -752,10 +752,10 @@ void SkiaDrawing::DrawImage(Bitmap* bmp, const Matrix* m, Byte alpha)
     Restore();
 }
 
-void SkiaDrawing::DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Byte alpha)
+void SkiaDrawing::DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rcdc, const fRect* rcimg)
 {
     SkPaint paint;
-    SkBitmap* skbmp = InitBitmap(bmp, alpha, paint);
+    SkBitmap* skbmp = InitBitmap(bmp, drawCtx, paint);
 
     SkIRect irc = SkIRect::MakeLTRB(rcimg->left, rcimg->top, rcimg->right, rcimg->bottom);
     SkRect rect = AdjustSkRect(rcdc);
@@ -763,12 +763,12 @@ void SkiaDrawing::DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, 
     GetDrawCv()->drawBitmapRect(*skbmp, &irc, rect, &paint);
 }
 
-void SkiaDrawing::DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Byte alpha, Color trans)
+void SkiaDrawing::DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Color trans)
 {
     if (rcdc->right > rcdc->left && rcdc->bottom > rcdc->top)
     {
         SkPaint paint;
-        SkBitmap* skbmp = InitBitmap(bmp, alpha, paint);
+        SkBitmap* skbmp = InitBitmap(bmp, drawCtx, paint);
         SkIRect irc = SkIRect::MakeLTRB(rcimg->left, rcimg->top, rcimg->right, rcimg->bottom);
         SkRect rect = AdjustSkRect(rcdc);
 
@@ -776,7 +776,7 @@ void SkiaDrawing::DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, 
     }
 }
 
-void SkiaDrawing::DrawString(FormattedText* formattedText, const Char* text, int size, const fRect* rc)
+void SkiaDrawing::DrawString(FormattedText* fmtText, const Char* text, int size, const fRect* rc)
 {
     SkTypeface* skface = NULL;
     SkRect rect = AdjustSkRect(rc);
@@ -784,11 +784,11 @@ void SkiaDrawing::DrawString(FormattedText* formattedText, const Char* text, int
     const int textFlag = SkPaint::kGenA8FromLCD_Flag | SkPaint::Flags::kAntiAlias_Flag
         | SkPaint::Flags::kEmbeddedBitmapText_Flag;
 
-    Brush* textBrush = formattedText->GetForeground();
-    Mulstr fName(formattedText->GetFontFamily().c_str());
-    int iSize = (int)CoreHelper::FontPoundToPixel(formattedText->GetFontSize());
+    Brush* textBrush = fmtText->GetForeground();
+    Mulstr fName(fmtText->GetFontFamily().c_str());
+    int iSize = (int)CoreHelper::FontPoundToPixel(fmtText->GetFontSize());
 
-    if (formattedText->GetFontWeight() >= FontWeightStyle::fwSemiBold)
+    if (fmtText->GetFontWeight() >= FontWeightStyle::fwSemiBold)
     {
         skface = SkTypeface::CreateFromName(fName.c_str(), SkTypeface::Style::kBold);
     }
@@ -828,8 +828,8 @@ void SkiaDrawing::DrawString(FormattedText* formattedText, const Char* text, int
         p.setTextSkewX(0.0f);
     }
 
-    p.setUnderlineText(formattedText->GetUnderline());
-    p.setStrikeThruText(formattedText->GetStrikeout());
+    p.setUnderlineText(fmtText->GetUnderline());
+    p.setStrikeThruText(fmtText->GetStrikeout());
 
     if (textBrush->GetRTTIType() == SolidColorBrush::RTTIType())
     {
@@ -842,7 +842,7 @@ void SkiaDrawing::DrawString(FormattedText* formattedText, const Char* text, int
 
     int iFmt = 0;
 
-    switch (formattedText->GetTextTrimming())
+    switch (fmtText->GetTextTrimming())
     {
     case TextTrimming::tCharacterEllipsis:
         iFmt |= SkTextOp::TextFormat::tEllipsisText;
@@ -853,7 +853,7 @@ void SkiaDrawing::DrawString(FormattedText* formattedText, const Char* text, int
         break;
     }
 
-    if (formattedText->GetSingleline())
+    if (fmtText->GetSingleline())
     {
         if (0 == iFmt)
         {
@@ -872,9 +872,9 @@ void SkiaDrawing::DrawString(FormattedText* formattedText, const Char* text, int
     }
 }
 
-void SkiaDrawing::MeasureString(TmParam& tm, FormattedText* formattedText, const Char* text, int size)
+void SkiaDrawing::MeasureString(TmParam& tm, FormattedText* fmtText, const Char* text, int size)
 {
-    formattedText->MeasureString(tm, text, size);
+    fmtText->MeasureString(tm, text, size);
 }
 
 }

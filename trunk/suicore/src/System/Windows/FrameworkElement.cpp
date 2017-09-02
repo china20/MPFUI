@@ -1404,6 +1404,8 @@ void FrameworkElement::Render(Drawing* drawing)
 
                 // dib.Save(_U("d:\\88888.png"), Bitmap::ImageType::kPNG);
 
+                DrawCtx drawCtx(suic::DrawCtx::eDrawLevel::flLow, true, alpha);
+
                 if (Transform::GetIdentity() != trans)
                 {
                     Matrix m;
@@ -1411,12 +1413,13 @@ void FrameworkElement::Render(Drawing* drawing)
                     trans->ComputeMatrix(m, elemClip);
 
                     drawing->PushOffset(dOffset);
-                    drawing->DrawImage(&dib, &m, alpha);
+                    
+                    drawing->DrawImage(&drawCtx, &dib, &m);
                     drawing->PopOffset();
                 }
                 else
                 {
-                    drawing->DrawImage(&dib, -bOffset.x, -bOffset.y, alpha);
+                    drawing->DrawImage(&drawCtx, &dib, -bOffset.x, -bOffset.y);
                 }
             }
             else
@@ -1434,7 +1437,7 @@ void FrameworkElement::Render(Drawing* drawing)
                 pen.SetBrush(SolidColorBrush::Red);
                 pen.SetThickness(1);
                 rect.Deflate(1);
-                drawing->DrawRect(NULL, &pen, &rect.TofRect());
+                drawing->DrawRect(DrawCtx::DefDraw, NULL, &pen, &rect.TofRect());
             }
 #endif
         }

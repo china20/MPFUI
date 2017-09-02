@@ -183,7 +183,7 @@ void Panel::OnRender(Drawing* drawing)
     {
         Size rSize = GetRenderSize();
         fRect rect(Point(), rSize);
-        drawing->DrawRect(background, NULL, rect);
+        drawing->DrawRect(DrawCtx::DefDraw, background, NULL, rect);
     }
 }
 

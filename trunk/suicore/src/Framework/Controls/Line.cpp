@@ -151,7 +151,7 @@ void Line::OnRender(Drawing * drawing)
         pen.SetThickness(iStrokeThickness);
         pen.SetBrush(brush);
 
-        drawing->DrawLine(&pen, pt1, pt2);
+        drawing->DrawLine(DrawCtx::DefDraw, &pen, pt1, pt2);
     }
 }
 

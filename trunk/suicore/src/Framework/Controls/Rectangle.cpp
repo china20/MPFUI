@@ -63,22 +63,22 @@ void Rectangle::OnRender(Drawing* drawing)
 
         if (radiusX == 0 && radiusY == 0)
         {
-            drawing->DrawRect(brush, &pen, rect);
+            drawing->DrawRect(DrawCtx::DefDraw, brush, &pen, rect);
         }
         else
         {
-            drawing->DrawRoundRect(brush, &pen, &rect, radiusX, radiusY);
+            drawing->DrawRoundRect(DrawCtx::DefDraw, brush, &pen, &rect, radiusX, radiusY);
         }
     }
     else
     {
         if (radiusX == 0 && radiusY == 0)
         {
-            drawing->DrawRect(brush, NULL, rect);
+            drawing->DrawRect(DrawCtx::DefDraw, brush, NULL, rect);
         }
         else
         {
-            drawing->DrawRoundRect(brush, NULL, &rect, radiusX, radiusY);
+            drawing->DrawRoundRect(DrawCtx::DefDraw, brush, NULL, &rect, radiusX, radiusY);
         }
     }
 }

@@ -36,7 +36,7 @@ void DefRender::DrawDebugLine(FrameworkElement* child, Drawing* drawing)
     Pen pen;
     //pen.SetColor(ARGB(255,255,0,0));
     pen.SetThickness(2);
-    drawing->DrawRect(NULL, &pen, &child->GetRenderRect().TofRect());
+    drawing->DrawRect(DrawCtx::DefDraw, NULL, &pen, &child->GetRenderRect().TofRect());
 }
 
 void DefRender::RenderCanvas(FrameworkElement* root, Handle hdc, Bitmap* canvas, Handle h, fRect clip, Point pt, bool bDebugLine)

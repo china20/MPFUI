@@ -516,7 +516,7 @@ static void ComputeViewport(ImageBrush* brImg, const fRect* lprc, fRect& rcCanva
     rcCanvas.bottom = rcCanvas.top + vRect.bottom;
 }
 
-static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lprc, const fRect& rcImage)
+static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc, const fRect& rcImage)
 {
     fRect rcDc;
     fRect rcImg;
@@ -534,7 +534,7 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
             rcDc.SetXYWH(lprc->left, lprc->top, viewCorner.left, viewCorner.top);
             rcImg.SetXYWH(rcImage.left, rcImage.top, viewCorner.left, viewCorner.top);
 
-            drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
         }
 
         // 左下角
@@ -543,7 +543,7 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
             rcDc.SetXYWH(lprc->left, lprc->bottom - viewCorner.bottom, viewCorner.left, viewCorner.bottom);
             rcImg.SetXYWH(rcImage.left, rcImage.bottom - viewCorner.bottom, viewCorner.left, viewCorner.bottom);
 
-            drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
         }
 
         // 左边中部
@@ -552,7 +552,7 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
         rcImg.SetLTRB(rcImage.left, rcImage.top + viewCorner.top
             , rcImage.left + viewCorner.left, rcImage.bottom - viewCorner.bottom);
 
-        drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
     }
 
     // 右边框
@@ -564,7 +564,7 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
             rcDc.SetXYWH(lprc->right - viewCorner.right, lprc->top, viewCorner.right, viewCorner.top);
             rcImg.SetXYWH(rcImage.right - viewCorner.right, rcImage.top, viewCorner.right, viewCorner.top);
 
-            drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
         }
 
         // 右下角
@@ -573,13 +573,13 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
             rcDc.SetXYWH(lprc->right - viewCorner.right, lprc->bottom - viewCorner.bottom, viewCorner.right, viewCorner.bottom);
             rcImg.SetXYWH(rcImage.right - viewCorner.right, rcImage.bottom - viewCorner.bottom, viewCorner.right, viewCorner.bottom);
 
-            drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
         }
 
         // 右边中部
         rcDc.SetLTRB(lprc->right - viewCorner.right, lprc->top + viewCorner.top, lprc->right, lprc->bottom - viewCorner.bottom);
         rcImg.SetLTRB(rcImage.right - viewCorner.right, rcImage.top + viewCorner.top, rcImage.right, rcImage.bottom - viewCorner.bottom);
-        drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
     }
 
     // 上边框
@@ -588,7 +588,7 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
         // 填充上边中间
         rcDc.SetLTRB(lprc->left + viewCorner.left, lprc->top, lprc->right - viewCorner.right, lprc->top + viewCorner.top);
         rcImg.SetLTRB(rcImage.left + viewCorner.left, rcImage.top, rcImage.right - viewCorner.right, rcImage.top + viewCorner.top);
-        drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
     }
 
     // 下边框
@@ -597,7 +597,7 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
         // 填充下边中间
         rcDc.SetLTRB(lprc->left + viewCorner.left, lprc->bottom - viewCorner.bottom, lprc->right - viewCorner.right, lprc->bottom);
         rcImg.SetLTRB(rcImage.left + viewCorner.left, rcImage.bottom - viewCorner.bottom, rcImage.right - viewCorner.right, rcImage.bottom);
-        drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
     }
 
     // 绘制中间
@@ -611,10 +611,10 @@ static void DrawViewCorner(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
     rcImg.right = rcImage.right - viewCorner.right;
     rcImg.bottom = rcImage.bottom - viewCorner.bottom;
 
-    drawing->DrawImage(pImage, rcDc, rcImg, opacity);
+    drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
 }
 
-static void DrawRealBitmap(Drawing* drawing, ImageBrush* brImg, const fRect* lprc, const fRect* rcImage, const Size* szCanvas, fRect rcDc)
+static void DrawRealBitmap(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc, const fRect* rcImage, const Size* szCanvas, fRect rcDc)
 {
     Bitmap* pImage = brImg->GetImageSource()->GetBitmap();
     suic::Byte opacity = brImg->GetOpacity();
@@ -622,7 +622,7 @@ static void DrawRealBitmap(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
     //-------------------------------------------------
     if (brImg->GetTileMode() == TileMode::tmNone)
     {
-        drawing->DrawImage(pImage, rcDc, rcImage, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImage, opacity);
     }
     else if (szCanvas->cx > 0 && szCanvas->cy > 0)
     {
@@ -631,7 +631,7 @@ static void DrawRealBitmap(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
 
         for (;;)
         {
-            drawing->DrawImage(pImage, rcDc, rcImage, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImage, opacity);
             rcDc.left += szCanvas->cx;
             rcDc.right += szCanvas->cx;
 
@@ -652,7 +652,7 @@ static void DrawRealBitmap(Drawing* drawing, ImageBrush* brImg, const fRect* lpr
     }
 }
 
-static void DrawFillImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
+static void DrawFillImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
 {
     fRect rcDc;
     fRect rcImage;
@@ -665,7 +665,7 @@ static void DrawFillImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect*
     if (brImg->HasViewCorner())
     {
         //drawing->DrawImage(pImage, lprc, rcImage, 255);
-        DrawViewCorner(drawing, brImg, lprc, rcImage);
+        DrawViewCorner(drawCtx, drawing, brImg, lprc, rcImage);
     }
     else
     {
@@ -685,11 +685,11 @@ static void DrawFillImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect*
 
         //-------------------------------------------------
 
-        DrawRealBitmap(drawing, brImg, lprc, rcImage, &szCanvas, rcDc);
+        DrawRealBitmap(drawCtx, drawing, brImg, lprc, rcImage, &szCanvas, rcDc);
     }
 }
 
-static void DrawUniformToFillImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
+static void DrawUniformToFillImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
 {
     fRect rcDc;
     fRect rcCanvas;
@@ -730,11 +730,11 @@ static void DrawUniformToFillImageBrush(Drawing* drawing, ImageBrush* brImg, con
 
     drawing->Save();
     drawing->ClipRect(lprc, ClipOp::OpIntersect);
-    drawing->DrawImage(pImage, rcDc, rcImage, opacity);
+    drawing->DrawImage(drawCtx, pImage, rcDc, rcImage, opacity);
     drawing->Restore();
 }
 
-static void DrawUniformImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
+static void DrawUniformImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
 {
     fRect rcDc;
     fRect rcCanvas;
@@ -777,10 +777,10 @@ static void DrawUniformImageBrush(Drawing* drawing, ImageBrush* brImg, const fRe
     AdjustAlignment(brImg, &rcDc, &rcCanvas, szReal);
 
     //-------------------------------------------------
-    DrawRealBitmap(drawing, brImg, lprc, rcImage, &szCanvas, rcDc);
+    DrawRealBitmap(drawCtx, drawing, brImg, lprc, rcImage, &szCanvas, rcDc);
 }
 
-static void DrawDefaultImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
+static void DrawDefaultImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
 {
     fRect rcDc;
     fRect rcCanvas;
@@ -812,10 +812,10 @@ static void DrawDefaultImageBrush(Drawing* drawing, ImageBrush* brImg, const fRe
 
     //-------------------------------------------------
     
-    DrawRealBitmap(drawing, brImg, lprc, rcImage, &szCanvas, rcDc);
+    DrawRealBitmap(drawCtx, drawing, brImg, lprc, rcImage, &szCanvas, rcDc);
 }
 
-void DrawImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
+void DrawImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
 {
     suic::Byte bStretch = brImg->GetStretch();
     ImageSource* pImage = brImg->GetImageSource();
@@ -837,22 +837,22 @@ void DrawImageBrush(Drawing* drawing, ImageBrush* brImg, const fRect* lprc)
     {
     case Stretch::stFill:
         // 直接填充
-        DrawFillImageBrush(drawing, brImg, lprc);
+        DrawFillImageBrush(drawCtx, drawing, brImg, lprc);
         break;
 
     case Stretch::stUniformToFill:
         // 按照显示区域最大比率缩放
-        DrawUniformToFillImageBrush(drawing, brImg, lprc);
+        DrawUniformToFillImageBrush(drawCtx, drawing, brImg, lprc);
         break;
 
     case Stretch::stUniform:
         // 按照显示区域最小比率缩放
-        DrawUniformImageBrush(drawing, brImg, lprc);
+        DrawUniformImageBrush(drawCtx, drawing, brImg, lprc);
         break;
 
     default:
         // 默认按照图像实际大小绘制
-        DrawDefaultImageBrush(drawing, brImg, lprc);
+        DrawDefaultImageBrush(drawCtx, drawing, brImg, lprc);
     }
 
     if (brImg->GetGrey())

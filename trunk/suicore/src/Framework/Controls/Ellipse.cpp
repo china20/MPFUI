@@ -39,11 +39,11 @@ void Ellipse::OnRender(Drawing * drawing)
         Pen pen;
 
         InitPen(&pen, strokeBrush, iStrokeThickness);
-        drawing->DrawEllipse(fillBrush, &pen, &rect);
+        drawing->DrawEllipse(DrawCtx::DefDraw, fillBrush, &pen, &rect);
     }
     else
     {
-        drawing->DrawEllipse(fillBrush, NULL, &rect);
+        drawing->DrawEllipse(DrawCtx::DefDraw, fillBrush, NULL, &rect);
     }
 }
 

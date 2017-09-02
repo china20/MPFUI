@@ -373,11 +373,11 @@ void Border::UpdateCachedBitmap(Drawing* drawing)
             if (bHasCorner)
             {
                 rrect.rect = rect;
-                drawing->DrawRRect(clrBrush, NULL, &rrect);
+                drawing->DrawRRect(DrawCtx::DefDraw, clrBrush, NULL, &rrect);
             }
             else
             {
-                drawing->DrawRect(backBrush, NULL, rect);
+                drawing->DrawRect(DrawCtx::DefDraw, backBrush, NULL, rect);
             }
         }
         else
@@ -388,12 +388,12 @@ void Border::UpdateCachedBitmap(Drawing* drawing)
                 rrect.rect = rect;
                 drawing->Save();
                 drawing->ClipRound(&rrect, ClipOp::OpIntersect, true);
-                drawing->DrawRect(backBrush, NULL, rect);
+                drawing->DrawRect(DrawCtx::DefDraw, backBrush, NULL, rect);
                 drawing->Restore();
             }
             else
             {
-                drawing->DrawRect(backBrush, NULL, rect);
+                drawing->DrawRect(DrawCtx::DefDraw, backBrush, NULL, rect);
             }
         }
     }
@@ -418,7 +418,7 @@ void Border::UpdateCachedBitmap(Drawing* drawing)
             drawing->Save();
             drawing->ClipRound(&rrect, ClipOp::OpIntersect, true);
             drawing->ClipRound(&outrect, ClipOp::OpDifference, true);
-            drawing->DrawRect(borderBrush, NULL, rect);
+            drawing->DrawRect(DrawCtx::DefDraw, borderBrush, NULL, rect);
             drawing->Restore();
         }
         else
@@ -430,7 +430,7 @@ void Border::UpdateCachedBitmap(Drawing* drawing)
             drawing->Save();
             drawing->ClipRect(&rect, ClipOp::OpIntersect);
             drawing->ClipRect(&fFillClip, ClipOp::OpDifference);
-            drawing->DrawRect(borderBrush, NULL, rect);
+            drawing->DrawRect(DrawCtx::DefDraw, borderBrush, NULL, rect);
             drawing->Restore();
         }
     }

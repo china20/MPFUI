@@ -80,6 +80,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -188,7 +189,7 @@
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>.;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config;./src/System/Render/Skia/src/core;./src/System/Render/Skia/src/ports;./src/System/Render/Skia/src/image;./src/System/Render/Skia/src/images;./src/System/Render/Skia/src/utils;./src/System/Render/Skia/src/opts;./src/System/Render/Skia/src/sfnt;./src/System/Render/Skia/src/pathops;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0500;WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>

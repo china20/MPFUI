@@ -279,13 +279,9 @@ void Bitmap::DrawTo(Bitmap* Other, const Rect* src, const Rect* dst) const
     canvas.drawBitmapRectToRect(*bmpSelf, &rect, imgrc, &paint);
 }
 
-bool Bitmap::SetConfig(Int32 wid, Int32 hei, int bits)
+static void __SetConfig(SkBitmap* bmp, Int32 wid, Int32 hei, int bits)
 {
-    Clear();
-
-    //SkColorType ct = SkColorType::kN32_SkColorType;
-    SkBitmap* bmp = &(GetBitmapInfo()->bmp);
-#if 0
+    #if 0
     switch (bits)
     {
     case 32:
@@ -352,6 +348,17 @@ bool Bitmap::SetConfig(Int32 wid, Int32 hei, int bits)
 
     SkImageInfo sii = SkImageInfo::Make(wid, hei, ct, SkAlphaType::kPremul_SkAlphaType);
     bmp->setInfo(sii);*/
+}
+
+bool Bitmap::SetConfig(Int32 wid, Int32 hei, int bits)
+{
+    Clear();
+
+    //SkColorType ct = SkColorType::kN32_SkColorType;
+    SkBitmap* bmp = &(GetBitmapInfo()->bmp);
+
+    __SetConfig(bmp, wid, hei, bits);
+
     return (!bmp->empty());
 }
 
@@ -408,13 +415,22 @@ bool Bitmap::Create(Int32 wid, Int32 hei, Byte* data, int bits)
 {
     Clear();
 
-    if (SetConfig(wid, hei, bits))
+    SkBitmap sbmp;
+    SkBitmap* bmp = &(GetBitmapInfo()->bmp);
+
+    __SetConfig(&sbmp, wid, hei, bits);
+    sbmp.setPixels(data);
+    sbmp.copyTo(bmp);
+
+    return (!sbmp.empty());
+
+    /*if (SetConfig(wid, hei, bits))
     {
         SetPixels(data);
         return true;
     }
 
-    return false;
+    return false;*/
 }
 
 bool Bitmap::Backup()

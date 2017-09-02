@@ -35,7 +35,7 @@ namespace suic
 
 class SkiaDrawing;
 const int DEFAULT_DRAW_STACK_SIZE = 256;
-typedef void (*lpfnDrawBrush)(SkiaDrawing*,Brush*,const SkRect*,const fRect*);
+typedef void (*lpfnDrawBrush)(DrawCtx*, SkiaDrawing*,Brush*,const SkRect*,const fRect*);
 
 struct CanvasLayer
 {
@@ -161,37 +161,37 @@ public:
     virtual void ReadPixels(Bitmap* dest, Point offset);
     virtual void WritePixels(Bitmap* dest, Point casOff);
 
-    virtual void EraseColor(Color color);
-    virtual void EraseRect(Color color, const fRect* rc);
-    virtual void EraseRect(Bitmap* bmp, const fRect* rc);
-    virtual void FillRect(Color color, const fRect* rc);
+    virtual void EraseColor(DrawCtx* drawCtx, Color color);
+    virtual void EraseRect(DrawCtx* drawCtx, Color color, const fRect* rc);
+    virtual void EraseRect(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rc);
+    virtual void FillRect(DrawCtx* drawCtx, Color color, const fRect* rc);
 
-    virtual void DrawLine(Pen* pen, fPoint pt0, fPoint pt1);
-    virtual void DrawRect(Brush* brush, Pen* pen, const fRect* rc);
-    virtual void DrawRRect(Brush* brush, Pen* pen, const fRRect* rc);
-    virtual void DrawRoundRect(Brush* brush, Pen* pen, const fRect* rc, Float radiusX, Float radiusY);
-    virtual void DrawCircle(Brush* brush, Pen* pen, fPoint center, Float radius);
-    virtual void DrawEllipse(Brush* brush, Pen* pen, const fRect* rc);
-    virtual void DrawPath(Brush* brush, Pen* pen, PathFigure* path);
-    virtual void DrawGeometry(Brush* brush, Pen* pen, Geometry* regm);
-    virtual void DrawArc(Brush* brush, Pen* pen, fRect* oval, Float starta, Float sweepa, bool usecenter);
+    virtual void DrawLine(DrawCtx* drawCtx, Pen* pen, fPoint pt0, fPoint pt1);
+    virtual void DrawRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc);
+    virtual void DrawRRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRRect* rc);
+    virtual void DrawRoundRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc, Float radiusX, Float radiusY);
+    virtual void DrawCircle(DrawCtx* drawCtx, Brush* brush, Pen* pen, fPoint center, Float radius);
+    virtual void DrawEllipse(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc);
+    virtual void DrawPath(DrawCtx* drawCtx, Brush* brush, Pen* pen, PathFigure* path);
+    virtual void DrawGeometry(DrawCtx* drawCtx, Brush* brush, Pen* pen, Geometry* regm);
+    virtual void DrawArc(DrawCtx* drawCtx, Brush* brush, Pen* pen, fRect* oval, Float starta, Float sweepa, bool usecenter);
 
-    virtual void DrawSprite(Bitmap* bmp, int x, int y, Byte alpha);
+    virtual void DrawSprite(DrawCtx* drawCtx, Bitmap* bmp, int x, int y);
 
-    virtual void DrawImage(Bitmap* bmp, int x, int y, Byte alpha);
-    virtual void DrawImage(Bitmap* bmp, const Matrix* m, Byte alpha);
-    virtual void DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Byte alpha);
-    virtual void DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Byte alpha, Color trans);
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, int x, int y);
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const Matrix* m);
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rcdc, const fRect* rcimg);
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Color trans);
 
-    virtual void DrawString(FormattedText* formattedText, const Char* text, int size, const fRect* rc);
-    virtual void MeasureString(TmParam& tm, FormattedText* formattedText, const Char* text, int size);
+    virtual void DrawString(FormattedText* fmtText, const Char* text, int size, const fRect* rc);
+    virtual void MeasureString(TmParam& tm, FormattedText* fmtText, const Char* text, int size);
 
     static void InitDrawBrushes();
 
-    static void DrawImageBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
-    static void DrawSolidColorBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
-    static void DrawLinearGradientBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
-    static void DrawRadialGradientBrush(SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
+    static void DrawImageBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
+    static void DrawSolidColorBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
+    static void DrawLinearGradientBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
+    static void DrawRadialGradientBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc);
 
     static SkIRect ToSkIRect(const fRect* rc)
     {
@@ -208,7 +208,7 @@ public:
         return  &(bmp->GetBitmapInfo()->bmp);
     }
 
-    void FillRectWith(Color color, const SkRect* rect);
+    void FillRectWith(DrawCtx* drawCtx, Color color, const SkRect* rect);
 
     inline fRect AdjustfRect(const fRect* clip)
     {
@@ -251,15 +251,15 @@ public:
         return rect;
     }
 
-    inline SkBitmap* InitBitmap(Bitmap* bmp, Byte alpha, SkPaint& paint)
+    inline SkBitmap* InitBitmap(Bitmap* bmp, DrawCtx* drawCtx, SkPaint& paint)
     {
         SkBitmap* skbmp = BitmapToSk(bmp);
 
-        paint.setAlpha(alpha < 255 ? alpha : 255);
+        paint.setAlpha(drawCtx->GetAlpha());
 
         paint.setStrokeWidth(0);
-        paint.setAntiAlias(true);
-        paint.setFilterLevel(SkPaint::FilterLevel::kMedium_FilterLevel);
+        paint.setAntiAlias(drawCtx->GetAntiAlias());
+        paint.setFilterLevel((SkPaint::FilterLevel)(drawCtx->GetDrawLevel()));
 
         return skbmp;
     }

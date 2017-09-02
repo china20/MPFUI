@@ -560,7 +560,7 @@ void Run::Render(LineDrawing& ldraw)
     suic::Brush* brush = GetBackground();
     if (NULL != brush)
     {
-        ldraw.drawing->DrawRect(brush, NULL, &ldraw.rect);
+        ldraw.drawing->DrawRect(DrawCtx::DefDraw, brush, NULL, &ldraw.rect);
     }
 
     if (0 != txtTrim)
@@ -1270,7 +1270,7 @@ void TextBlock::OnRender(suic::Drawing* drawing)
     if (NULL != brush)
     {
         suic::fRect rect(0, 0, iRight, GetActualHeight());
-        drawing->DrawRect(brush, NULL, &rect);
+        drawing->DrawRect(DrawCtx::DefDraw, brush, NULL, &rect);
     }
 
     if (_seqLines.GetCount() > 0)

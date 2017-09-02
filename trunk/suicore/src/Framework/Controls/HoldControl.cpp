@@ -30,7 +30,7 @@ void HoldControl::OnRender(Drawing* drawing)
     suic::FormattedText fmt;
     suic::fRect rect(Point(), GetRenderSize());
 
-    drawing->FillRect(suic::Colors::White, &rect);
+    drawing->FillRect(DrawCtx::DefDraw, suic::Colors::White, &rect);
     drawing->DrawString(&fmt, _name.c_str(), _name.Length(), &rect);
 }
 

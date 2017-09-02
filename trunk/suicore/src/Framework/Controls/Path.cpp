@@ -82,11 +82,11 @@ void Path::OnRender(Drawing * drawing)
         if (FloatUtil::GreaterThan(iStrokeThickness, 0) && stroke != NULL)
         {
             InitPen(&pen, stroke, iStrokeThickness);
-            drawing->DrawPath(GetFill(), &pen, GetData()->GetPathFigure());
+            drawing->DrawPath(DrawCtx::DefDraw, GetFill(), &pen, GetData()->GetPathFigure());
         }
         else
         {
-            drawing->DrawPath(GetFill(), NULL, GetData()->GetPathFigure());
+            drawing->DrawPath(DrawCtx::DefDraw, GetFill(), NULL, GetData()->GetPathFigure());
         }
     }
 }

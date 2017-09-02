@@ -34,6 +34,33 @@ void Typeface::SetTextStyle(Uint16 key, bool val)
     }
 }
 
+DrawCtx::DrawCtx()
+    : _alpha(255)
+    , _antiAlias(true)
+    , _level(DrawCtx::eDrawLevel::flLow)
+{
+}
+
+DrawCtx::DrawCtx(eDrawLevel l, bool alias)
+    : _alpha(255)
+    , _antiAlias(true)
+    , _level(l)
+{
+}
+
+DrawCtx::DrawCtx(eDrawLevel l, bool alias, Byte a)
+    : _alpha(a)
+    , _antiAlias(alias)
+    , _level(l)
+{
+}
+
+DrawCtx::~DrawCtx()
+{
+}
+
+DrawCtx* DrawCtx::DefDraw = new DrawCtx();
+
 FormattedText::FormattedText()
     : _singleLine(true)
     , _foreground(SolidColorBrush::Black)

@@ -110,7 +110,7 @@ void CaretElement::OnRender(Drawing* drawing)
         if (NULL != brush)
         {
             fRect rect(Point(), GetRenderSize());
-            drawing->DrawRect(brush, NULL, rect);
+            drawing->DrawRect(DrawCtx::DefDraw, brush, NULL, rect);
         }
     }
 }

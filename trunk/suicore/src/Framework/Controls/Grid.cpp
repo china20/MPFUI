@@ -409,19 +409,19 @@ void Grid::RenderChildren(Drawing* drawing)
         {
             iOffset = GetRowDefs()->GetItem(i)->GetOffset();
             // »æÖÆÏß
-            drawing->DrawLine(&pen, fPoint(0, iOffset), fPoint(iWid, iOffset));
+            drawing->DrawLine(DrawCtx::DefDraw, &pen, fPoint(0, iOffset), fPoint(iWid, iOffset));
         }
 
         for (int j = 0; j < GetColumnDefs()->GetCount(); ++j)
         {
             iOffset = GetColumnDefs()->GetItem(j)->GetOffset();
-            drawing->DrawLine(&pen, fPoint(iOffset, 0), fPoint(iOffset, iHei));
+            drawing->DrawLine(DrawCtx::DefDraw, &pen, fPoint(iOffset, 0), fPoint(iOffset, iHei));
         }
 
-        drawing->DrawLine(&pen, fPoint(0, 0), fPoint(iWid, 0));
-        drawing->DrawLine(&pen, fPoint(iWid - pen.GetThickness(), 0), fPoint(iWid, iHei));
-        drawing->DrawLine(&pen, fPoint(iWid, iHei - pen.GetThickness()), fPoint(0, iHei - pen.GetThickness()));
-        drawing->DrawLine(&pen, fPoint(0, iHei), fPoint(0, 0));
+        drawing->DrawLine(DrawCtx::DefDraw, &pen, fPoint(0, 0), fPoint(iWid, 0));
+        drawing->DrawLine(DrawCtx::DefDraw, &pen, fPoint(iWid - pen.GetThickness(), 0), fPoint(iWid, iHei));
+        drawing->DrawLine(DrawCtx::DefDraw, &pen, fPoint(iWid, iHei - pen.GetThickness()), fPoint(0, iHei - pen.GetThickness()));
+        drawing->DrawLine(DrawCtx::DefDraw, &pen, fPoint(0, iHei), fPoint(0, 0));
     }
 }
 
