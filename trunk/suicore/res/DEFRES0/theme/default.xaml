@@ -353,8 +353,9 @@
 
     <ControlTemplate TargetType="Button" x:Key="sysButtonTemplate">
         <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" >
+                Padding="{TemplateBinding Padding}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" >
             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
     </ControlTemplate>
