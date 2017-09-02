@@ -83,7 +83,7 @@ void ChatItem::DrawHeader(suic::Drawing* drawing, suic::Rect rect)
         {
             suic::Bitmap* pBmp = pImgSrc->GetBitmap();
             suic::fRect rcImg(0, 0, pBmp->Width(), pBmp->Height());
-            drawing->DrawImage(pBmp, rect.TofRect(), &rcImg, 255);
+            drawing->DrawImage(suic::DrawCtx::DefDraw, pBmp, rect.TofRect(), &rcImg, 255);
         }
     }
 }
@@ -93,7 +93,7 @@ void ChatItem::DrawMessageBk(suic::Drawing* drawing, suic::Rect rect)
     if (NULL != _messageBk)
     {
         rect.Inflate(12,12,15,12);
-        drawing->DrawRect(_messageBk, NULL, rect.TofRect());
+        drawing->DrawRect(suic::DrawCtx::DefDraw, _messageBk, NULL, rect.TofRect());
     }
 }
 
