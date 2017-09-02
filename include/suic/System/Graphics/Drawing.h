@@ -67,29 +67,29 @@ public:
     virtual void ReadPixels(Bitmap* dest, Point offset) = 0;
     virtual void WritePixels(Bitmap* dest, Point offset) = 0;
 
-    virtual void EraseColor(Color color) = 0;
-    virtual void EraseRect(Color color, const fRect* rc) = 0;
-    virtual void EraseRect(Bitmap* bmp, const fRect* rc) = 0;
-    virtual void FillRect(Color color, const fRect* rc) = 0;
+    virtual void EraseColor(DrawCtx* drawCtx, Color color) = 0;
+    virtual void EraseRect(DrawCtx* drawCtx, Color color, const fRect* rc) = 0;
+    virtual void EraseRect(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rc) = 0;
+    virtual void FillRect(DrawCtx* drawCtx, Color color, const fRect* rc) = 0;
 
-    virtual void DrawLine(Pen* pen, fPoint pt0, fPoint pt1) = 0;
-    virtual void DrawRect(Brush* brush, Pen* pen, const fRect* rc) = 0;
-    virtual void DrawRRect(Brush* brush, Pen* pen, const fRRect* rc) = 0;
-    virtual void DrawRoundRect(Brush* brush, Pen* pen, const fRect* rc, Float radiusX, Float radiusY) = 0;
-    virtual void DrawCircle(Brush* brush, Pen* pen, fPoint center, Float radius) = 0;
-    virtual void DrawEllipse(Brush* brush, Pen* pen, const fRect* rc) = 0;
-    virtual void DrawPath(Brush* brush, Pen* pen, PathFigure* path) = 0;
-    virtual void DrawGeometry(Brush* brush, Pen* pen, Geometry* regm) = 0;
-    virtual void DrawArc(Brush* brush, Pen* pen, fRect* oval, Float starta, Float sweepa, bool usecenter) = 0;
+    virtual void DrawLine(DrawCtx* drawCtx, Pen* pen, fPoint pt0, fPoint pt1) = 0;
+    virtual void DrawRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc) = 0;
+    virtual void DrawRRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRRect* rc) = 0;
+    virtual void DrawRoundRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc, Float radiusX, Float radiusY) = 0;
+    virtual void DrawCircle(DrawCtx* drawCtx, Brush* brush, Pen* pen, fPoint center, Float radius) = 0;
+    virtual void DrawEllipse(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect* rc) = 0;
+    virtual void DrawPath(DrawCtx* drawCtx, Brush* brush, Pen* pen, PathFigure* path) = 0;
+    virtual void DrawGeometry(DrawCtx* drawCtx, Brush* brush, Pen* pen, Geometry* regm) = 0;
+    virtual void DrawArc(DrawCtx* drawCtx, Brush* brush, Pen* pen, fRect* oval, Float starta, Float sweepa, bool usecenter) = 0;
 
-    virtual void DrawSprite(Bitmap* bmp, int x, int y, Byte alpha) = 0;
+    virtual void DrawSprite(DrawCtx* drawCtx, Bitmap* bmp, int x, int y) = 0;
 
-    virtual void DrawImage(Bitmap* bmp, int x, int y, Byte alpha) = 0;
-    virtual void DrawImage(Bitmap* bmp, const Matrix* m, Byte alpha) = 0;
-    virtual void DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Byte alpha) = 0;
-    virtual void DrawImage(Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Byte alpha, Color trans) = 0;
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, int x, int y) = 0;
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const Matrix* m) = 0;
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rcdc, const fRect* rcimg) = 0;
+    virtual void DrawImage(DrawCtx* drawCtx, Bitmap* bmp, const fRect* rcdc, const fRect* rcimg, Color trans) = 0;
 
-    virtual void DrawString(FormattedText* formattedText, const Char* text, int size, const fRect* rc) = 0;
+    virtual void DrawString(FormattedText* fmtText, const Char* text, int size, const fRect* rc) = 0;
     virtual void MeasureString(TmParam& tm, FormattedText* formattedText, const Char* text, int size) = 0;
 };
 

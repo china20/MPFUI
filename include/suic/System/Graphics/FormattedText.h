@@ -74,6 +74,66 @@ enum FormattedTextStyle
     ftsStrikeout = 8,
 };
 
+class SUICORE_API DrawCtx
+{
+public:
+
+    enum eDrawLevel { flNone, flLow, flMedium, flHigh };
+
+    DrawCtx();
+    DrawCtx(eDrawLevel l, bool alias);
+    DrawCtx(eDrawLevel l, bool alias, Byte a);
+
+    ~DrawCtx();
+
+    static DrawCtx* DefDraw;
+
+    void SetAlpha(Byte v);
+    Byte GetAlpha() const;
+
+    void SetAntiAlias(bool v);
+    bool GetAntiAlias() const;
+
+    void SetDrawLevel(eDrawLevel a);
+    eDrawLevel GetDrawLevel() const;
+
+private:
+
+    Byte _alpha;
+    bool _antiAlias;
+    eDrawLevel _level;
+};
+
+inline void DrawCtx::SetAlpha(Byte v)
+{
+    _alpha = v;
+}
+
+inline Byte DrawCtx::GetAlpha() const
+{
+    return _alpha;
+}
+
+inline void DrawCtx::SetAntiAlias(bool v)
+{
+    _antiAlias = v;
+}
+
+inline bool DrawCtx::GetAntiAlias() const
+{
+    return _antiAlias;
+}
+
+inline void DrawCtx::SetDrawLevel(DrawCtx::eDrawLevel v)
+{
+    _level = v;
+}
+
+inline DrawCtx::eDrawLevel DrawCtx::GetDrawLevel() const
+{
+    return _level;
+}
+
 class SUICORE_API FormattedText
 {
 public:
