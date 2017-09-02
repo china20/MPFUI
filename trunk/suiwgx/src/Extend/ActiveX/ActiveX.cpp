@@ -154,7 +154,7 @@ void ActiveX::OnRender(suic::Drawing* drawing)
         bmp.SetConfig(w, h, 32);
         bmp.SetPixels(rq);
         _site->OnRender(hdc);
-        drawing->DrawImage(&bmp, &rcdc, &rcimg, 255);
+        drawing->DrawImage(DrawCtx::DefDraw, &bmp, &rcdc, &rcimg, 255);
 
         SelectObject(hdc, oldbmp);
         DeleteObject(hbmp);

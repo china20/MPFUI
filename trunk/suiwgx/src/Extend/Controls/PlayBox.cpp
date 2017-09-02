@@ -276,7 +276,7 @@ void PlayBox::OnRender(suic::Drawing * drawing)
     {
         suic::Size rSize = GetRenderSize();
         suic::fRect rect(suic::Point(), rSize);
-        drawing->DrawRect(background, NULL, rect);
+        drawing->DrawRect(DrawCtx::DefDraw, background, NULL, rect);
     }
 }
 
