@@ -45,13 +45,13 @@ void DrawPanel::UpdateDrawArea()
 {
     if (_drawing != NULL)
     {
-        suic::fRect rect(suic::fPoint(), GetRenderSize());
+        suic::fRect rect(suic::Point(), GetRenderSize());
 
         suic::Pen pen;
         suic::Drawing* drawing = _drawing;
 
         // 绘制背景
-        drawing->FillRect(suic::Colors::Black, rect);
+        drawing->FillRect(suic::DrawCtx::DefDraw, suic::Colors::Black, rect);
 
         // 绘制线条
         pen.SetBrush(suic::SolidColorBrush::Red);
@@ -59,23 +59,23 @@ void DrawPanel::UpdateDrawArea()
 
         // 水平线不抗锯齿
         pen.SetAntiAlias(false);
-        drawing->DrawLine(&pen, suic::fPoint(8, 8), suic::fPoint(100, 8));
+        drawing->DrawLine(suic::DrawCtx::DefDraw, &pen, suic::fPoint(8, 8), suic::fPoint(100, 8));
 
         pen.SetAntiAlias(true);
-        drawing->DrawLine(&pen, suic::fPoint(2, 5), suic::fPoint(100, 100));
+        drawing->DrawLine(suic::DrawCtx::DefDraw, &pen, suic::fPoint(2, 5), suic::fPoint(100, 100));
 
         // 绘制圆形
-        drawing->DrawCircle(NULL, &pen, suic::fPoint(100, 100), 50);
+        drawing->DrawCircle(suic::DrawCtx::DefDraw, NULL, &pen, suic::fPoint(100, 100), 50);
 
         suic::fRect fRect = suic::fRect(260,150,360,200);
-        drawing->DrawRect(suic::SolidColorBrush::Green, &pen, &fRect);
+        drawing->DrawRect(suic::DrawCtx::DefDraw, suic::SolidColorBrush::Green, &pen, &fRect);
 
         // 带填充颜色
         pen.SetThickness(6);
         pen.SetBrush(new suic::SolidColorBrush(0xFFFF0000));
-        drawing->DrawCircle(suic::SolidColorBrush::Green, &pen, suic::fPoint(200, 200), 40);
+        drawing->DrawCircle(suic::DrawCtx::DefDraw, suic::SolidColorBrush::Green, &pen, suic::fPoint(200, 200), 40);
 
-        drawing->DrawCircle(suic::SolidColorBrush::Green, NULL, suic::fPoint(60, 200), 20);
+        drawing->DrawCircle(suic::DrawCtx::DefDraw, suic::SolidColorBrush::Green, NULL, suic::fPoint(60, 200), 20);
 
         // 绘制路径
         suic::PathGeometry path;
@@ -90,13 +90,13 @@ void DrawPanel::UpdateDrawArea()
         path.AddOval(suic::fRect(250, 15, 300, 50));
         pen.SetThickness(3);
 
-        drawing->DrawGeometry(suic::SolidColorBrush::Green, &pen, &path);
+        drawing->DrawGeometry(suic::DrawCtx::DefDraw, suic::SolidColorBrush::Green, &pen, &path);
         //drawing->Restore();
 
         // 绘制弧形
         // 参数：brush：填充画刷；pen：边框画刷；oval：弧所在区域；
         //       starta：开始角度；sweepa：顺时针方向经过的角度；usecenter：是否使用oval中心点
-        drawing->DrawArc(suic::SolidColorBrush::Green, &pen, suic::fRect(260, 200, 320, 280), 10, 90, true);
+        drawing->DrawArc(suic::DrawCtx::DefDraw, suic::SolidColorBrush::Green, &pen, suic::fRect(260, 200, 320, 280), 10, 90, true);
 
         suic::fRect txtRect(10,250,100,280);
         suic::FormattedText formattedText;
