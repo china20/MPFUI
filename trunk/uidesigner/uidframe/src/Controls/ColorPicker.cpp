@@ -171,7 +171,7 @@ void ColorSlider::OnApplyTemplate()
 void ColorSlider::OnRender(suic::Drawing* drawing)
 {
     suic::fRect rect(0, 0, GetActualWidth(), GetActualHeight());
-    drawing->DrawRect(_linearBrush, NULL, &rect);
+    drawing->DrawRect(suic::DrawCtx::DefDraw, _linearBrush, NULL, &rect);
 }
 
 void ColorSlider::OnArrange(const suic::Size& arrangeSize)
@@ -316,14 +316,14 @@ void ColorSelector::OnRender(suic::Drawing* drawing)
 {
     suic::fRect rect(0, 0, GetActualWidth(), GetActualHeight());
 
-    drawing->DrawRect(_background, NULL, &rect);
-    drawing->DrawRect(_white, NULL, &rect);
-    drawing->DrawRect(_black, NULL, &rect);
+    drawing->DrawRect(suic::DrawCtx::DefDraw, _background, NULL, &rect);
+    drawing->DrawRect(suic::DrawCtx::DefDraw, _white, NULL, &rect);
+    drawing->DrawRect(suic::DrawCtx::DefDraw, _black, NULL, &rect);
 
     drawing->Save();
     drawing->ClipRect(&rect, ClipOp::OpIntersect);
     suic::Pen pen;
-    drawing->DrawCircle(NULL, &pen, _colorPoint, 5);
+    drawing->DrawCircle(suic::DrawCtx::DefDraw, NULL, &pen, _colorPoint, 5);
     drawing->Restore();
 }
 

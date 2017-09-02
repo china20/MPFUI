@@ -26,14 +26,14 @@ void DImageGrid::OnRender(Drawing* drawing)
     int iBeg = RECSIZE;
     Color clrs[2] = {0xFFFFFFFF, 0xFFCCCCCC};
 
-    drawing->EraseRect(clrs[0], &rect);
+    drawing->EraseRect(suic::DrawCtx::DefDraw, clrs[0], &rect);
 
     for (int y = 0; y < (int)rect.bottom;)
     {
         for (int x = iBeg; x < (int)rect.right;)
         {
             fRect rcDraw(x, y, RECSIZE, RECSIZE);
-            drawing->EraseRect(clrs[1], &rcDraw);
+            drawing->EraseRect(suic::DrawCtx::DefDraw, clrs[1], &rcDraw);
             x += 16;
         }
         y += RECSIZE;
@@ -434,14 +434,14 @@ void ImageEditPanel::DrawPanelBk(Drawing* drawing)
     int iBeg = RECSIZE;
     Color clrs[2] = {0xFFFFFFFF, 0xFFCCCCCC};
 
-    drawing->EraseRect(clrs[0], &rect);
+    drawing->EraseRect(suic::DrawCtx::DefDraw, clrs[0], &rect);
 
     for (int y = 0; y < (int)rect.bottom;)
     {
         for (int x = iBeg; x < (int)rect.right;)
         {
             fRect rect(x, y, RECSIZE, RECSIZE);
-            drawing->EraseRect(clrs[1], &rect);
+            drawing->EraseRect(suic::DrawCtx::DefDraw, clrs[1], &rect);
             x += 16;
         }
         y += RECSIZE;
@@ -482,7 +482,7 @@ void ImageEditPanel::DrawEditImage(Drawing* drawing)
         _drawRect.right = _drawRect.left + fWid;
         _drawRect.bottom = _drawRect.top + fHei;
 
-        drawing->DrawImage(pBmp, &_drawRect, &rcimg, 255);
+        drawing->DrawImage(suic::DrawCtx::DefDraw, pBmp, &_drawRect, &rcimg, 255);
 
         CalcDrawRectMeta();
     }
@@ -570,12 +570,12 @@ void ImageEditPanel::DrawMetas(Drawing* drawing)
     penGap.SetThickness(1);
     penGap.SetBrush(suic::SolidColorBrush::Blue);
 
-    drawing->DrawRect(NULL, &pen, drawRc);
+    drawing->DrawRect(suic::DrawCtx::DefDraw, NULL, &pen, drawRc);
 
     // 绘制拖曳框
     for (int i = 0; i < 4; ++i)
     {
-        drawing->DrawRect(SolidColorBrush::Green, NULL, _drawMetas[i].TofRect());
+        drawing->DrawRect(suic::DrawCtx::DefDraw, SolidColorBrush::Green, NULL, _drawMetas[i].TofRect());
     }
 
     //-----------------------------------------------------------
@@ -583,32 +583,32 @@ void ImageEditPanel::DrawMetas(Drawing* drawing)
     // 绘制水平
     point = GetHoriUp(drawRc);
     drawing->PushOffset(point);
-    drawing->DrawGeometry(SolidColorBrush::Blue, NULL, _horiGap);                   
+    drawing->DrawGeometry(suic::DrawCtx::DefDraw, SolidColorBrush::Blue, NULL, _horiGap);                   
     drawing->PopOffset();
 
-    drawing->DrawLine(&penGap, fPoint(drawRc.left, point.y + 5), fPoint(drawRc.right + 10, point.y + 5));
+    drawing->DrawLine(suic::DrawCtx::DefDraw, &penGap, fPoint(drawRc.left, point.y + 5), fPoint(drawRc.right + 10, point.y + 5));
 
     point = GetHoriDown(drawRc);
     drawing->PushOffset(point);
-    drawing->DrawGeometry(SolidColorBrush::Blue, NULL, _horiGap);                   
+    drawing->DrawGeometry(suic::DrawCtx::DefDraw, SolidColorBrush::Blue, NULL, _horiGap);                   
     drawing->PopOffset();
 
-    drawing->DrawLine(&penGap, fPoint(drawRc.left, point.y + 5), fPoint(drawRc.right + 10, point.y + 5));
+    drawing->DrawLine(suic::DrawCtx::DefDraw, &penGap, fPoint(drawRc.left, point.y + 5), fPoint(drawRc.right + 10, point.y + 5));
 
     // 绘制垂直
     point = GetVertLeft(drawRc);
     drawing->PushOffset(point);
-    drawing->DrawGeometry(SolidColorBrush::Blue, NULL, _vertGap);                   
+    drawing->DrawGeometry(suic::DrawCtx::DefDraw, SolidColorBrush::Blue, NULL, _vertGap);                   
     drawing->PopOffset();
 
-    drawing->DrawLine(&penGap, fPoint(point.x + 5, drawRc.top), fPoint(point.x + 5, drawRc.bottom + 10));
+    drawing->DrawLine(suic::DrawCtx::DefDraw, &penGap, fPoint(point.x + 5, drawRc.top), fPoint(point.x + 5, drawRc.bottom + 10));
 
     point = GetVertRight(drawRc);
     drawing->PushOffset(point);
-    drawing->DrawGeometry(SolidColorBrush::Blue, NULL, _vertGap);                   
+    drawing->DrawGeometry(suic::DrawCtx::DefDraw, SolidColorBrush::Blue, NULL, _vertGap);                   
     drawing->PopOffset();
 
-    drawing->DrawLine(&penGap, fPoint(point.x + 5, drawRc.top), fPoint(point.x + 5, drawRc.bottom + 10));
+    drawing->DrawLine(suic::DrawCtx::DefDraw, &penGap, fPoint(point.x + 5, drawRc.top), fPoint(point.x + 5, drawRc.bottom + 10));
 }
 
 void ImageEditPanel::OnRender(Drawing* drawing)

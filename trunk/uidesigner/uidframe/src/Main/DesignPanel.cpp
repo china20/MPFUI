@@ -14,7 +14,7 @@ void DragBox::UpdateDragRect(suic::Rect rect)
 
 void DragBox::DrawDrag(suic::Drawing* drawing)
 {
-    drawing->FillRect(suic::Colors::Green, _rect.TofRect());
+    drawing->FillRect(suic::DrawCtx::DefDraw, suic::Colors::Green, _rect.TofRect());
 }
 
 bool DragBox::HitTest(suic::Point pt) const
@@ -396,7 +396,7 @@ void DesignPanel::DrawRectOnly(suic::Drawing* drawing, Rect rect, suic::Color cl
     suic::Pen pen;
     pen.SetBrush(new suic::SolidColorBrush(clr));
     pen.SetThickness(iThickness);
-    drawing->DrawRect(NULL, &pen, rect.TofRect());
+    drawing->DrawRect(suic::DrawCtx::DefDraw, NULL, &pen, rect.TofRect());
 }
 
 Rect DesignPanel::GetRelativeRect(Element* Other)
@@ -571,7 +571,7 @@ void DesignPanel::OnDrawBkgnd(suic::Drawing* drawing)
         for (int x = 0; x < GetActualWidth(); )
         {
             rect.right = rect.left + RECSIZE;
-            drawing->FillRect(clrs[index], rect.TofRect());
+            drawing->FillRect(suic::DrawCtx::DefDraw, clrs[index], rect.TofRect());
             rect.left = rect.right;
 
             ++index;
@@ -1771,11 +1771,11 @@ void tagDragMeta::OnRender(suic::Drawing * drawing)
 {
     if (index < 9)
     {
-        drawing->FillRect(flColor, rect.TofRect());
+        drawing->FillRect(suic::DrawCtx::DefDraw, flColor, rect.TofRect());
     }
     else
     {
-        drawing->DrawRect(flBrush, NULL, rect.TofRect());
+        drawing->DrawRect(suic::DrawCtx::DefDraw, flBrush, NULL, rect.TofRect());
     }
 }
 

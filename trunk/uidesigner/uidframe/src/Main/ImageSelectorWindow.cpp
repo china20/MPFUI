@@ -16,14 +16,14 @@ void GridBk::DrawBkgnd(Drawing* drawing)
     int iBeg = RECSIZE;
     Color clrs[2] = {0xFFFFFFFF, 0xFFCCCCCC};
 
-    drawing->EraseRect(clrs[0], &rect);
+    drawing->EraseRect(suic::DrawCtx::DefDraw, clrs[0], &rect);
 
     for (int y = 0; y < (int)rect.bottom;)
     {
         for (int x = iBeg; x < (int)rect.right;)
         {
             fRect rect(x, y, RECSIZE, RECSIZE);
-            drawing->EraseRect(clrs[1], &rect);
+            drawing->EraseRect(suic::DrawCtx::DefDraw, clrs[1], &rect);
             x += 16;
         }
         y += RECSIZE;

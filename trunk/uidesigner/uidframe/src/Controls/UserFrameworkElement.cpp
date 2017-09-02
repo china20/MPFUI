@@ -24,7 +24,7 @@ void UserFrameworkElement::OnRender(Drawing* drawing)
     fmt.SetColor(suic::Colors::White);
     fmt.SetSingleline(true);
 
-    drawing->FillRect(0x8800FF00, &rect);
+    drawing->FillRect(suic::DrawCtx::DefDraw, 0x8800FF00, &rect);
 
     drawing->MeasureString(tm, &fmt, strText.c_str(), strText.Length());
 

@@ -2598,7 +2598,7 @@ void GradientStop::OnRender(suic::Drawing* drawing)
     {
         rect.bottom = rect.top + 16;
         _bk->SetGradientStops(stops);
-        drawing->DrawRect(_bk, NULL, &rect);
+        drawing->DrawRect(suic::DrawCtx::DefDraw, _bk, NULL, &rect);
     }
 
     if (NULL != stops)
@@ -2629,10 +2629,10 @@ void GradientStop::OnRender(suic::Drawing* drawing)
 
             fPoint pt(rctmp.left, rctmp.top);
             drawing->PushOffset(pt);
-            drawing->DrawGeometry(SolidColorBrush::White, &pen, _path);           
+            drawing->DrawGeometry(suic::DrawCtx::DefDraw, SolidColorBrush::White, &pen, _path);           
             fRect rc(2,7,8,13);
             pen.SetThickness(2);
-            drawing->DrawRect(&fillBr, &pen, &rc);          
+            drawing->DrawRect(suic::DrawCtx::DefDraw, &fillBr, &pen, &rc);          
             drawing->PopOffset();
             drawing->Restore();
             //drawing->FillRect(Colors::Red, &rctmp);
