@@ -406,17 +406,22 @@
         </Style.Triggers>
     </Style>
 
-    <ControlTemplate TargetType="MaximizeButton" x:Key="sysMaximizeButtonTemplate">
-        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-            <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
-        </Border>
-    </ControlTemplate>
-
     <!--最小化按钮样式定义-->
     <Style TargetType="MaximizeButton">
         <Setter Property="BorderBrush" Value="{DynamicResource restoreButtonNormal}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ToolTip" Value="最大化" />
-        <Setter Property="Template" Value="{DynamicResource sysMaximizeButtonTemplate}" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="MaximizeButton">
+                    <Border Height="10" Width="10" ToolTip="{TemplateBinding ToolTip}" 
+                            Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Rectangle Fill="Aqua" Margin="5" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -426,7 +431,6 @@
                 <Setter Property="ToolTip" Value="向下还原" />
                 <Setter Property="BorderBrush" Value="{DynamicResource maxButtonHot}" />
             </MultiTrigger>
-
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="WindowState" Value="Maximized" />
@@ -437,7 +441,10 @@
             <Trigger Property="WindowState" Value="Maximized" >
                 <Setter Property="BorderBrush" Value="{DynamicResource maxButtonNormal}" />
             </Trigger>
-			<Trigger Property="IsMouseOver" Value="True" >
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="BorderBrush" Value="{DynamicResource maxButtonNormal}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
                 <Setter Property="BorderBrush" Value="{DynamicResource restoreButtonHot}" />
             </Trigger>
         </Style.Triggers>
