@@ -340,6 +340,7 @@ protected:
 protected:
 
     Rect _startpos;
+    Rect _prevPos;
     Point _startdragpos;
     Size _sizeFrame;
     Point _location;
