@@ -22,9 +22,14 @@
             </Grid>
 
             <DockPanel Height="38" VerticalAlignment="Bottom">
-                <Grid Margin="2">
-                    <ProgressBar Height="10" HorizontalAlignment="Stretch" Value="10" />
+                <Grid Margin="2" DockPanel.Dock="Top">
+                    <ProgressBar Name="playPB" Height="10" HorizontalAlignment="Stretch" Value="1" />
                 </Grid>
+                <StackPanel Orientation="Horizontal" Margin="2" VerticalAlignment="Center" >
+                    <TextBlock Name="curDuration" Text="00:00:00.000" />
+                    <TextBlock Text="/" />
+                    <TextBlock Name="duration" Text="00:00:00.000" />
+                </StackPanel>
             </DockPanel>
         </Grid>
     </Grid>
