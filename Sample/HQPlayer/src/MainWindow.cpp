@@ -115,3 +115,19 @@ void MainWindow::OnClickStopButton(suic::DpObject* sender, suic::RoutedEventArg*
     e->SetHandled(true);
     _playManager->StopVideo();
 }
+
+void MainWindow::OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    e->SetHandled(true);
+    SetAllowsFullScreen(!AllowsFullScreen());
+
+    if (AllowsFullScreen())
+    {
+        FindName("layCaption")->SetVisibility(suic::Visibility::Collapsed);
+    }
+    else
+    {
+        FindName("layCaption")->SetVisibility(suic::Visibility::Visible);
+    }
+}
+

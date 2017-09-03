@@ -22,6 +22,7 @@ public:
         MemberRouted(OnClickButton)
         MemberRouted(OnClickOpenButton)
         MemberRouted(OnClickStopButton)
+        MemberRouted(OnClickFullButton)
     EndRoutedEvent()
 
     MainWindow();
@@ -32,6 +33,7 @@ public:
     void OnClickButton(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickStopButton(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg* e);
 
 protected:
 
