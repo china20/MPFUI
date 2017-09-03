@@ -1517,7 +1517,34 @@ bool Window::AllowsFullScreen()
 
 void Window::SetAllowsFullScreen(bool val)
 {
+    if (AllowsFullScreen() != val)
+    {
+        SetWndFlag(wfFullScreen, val);
 
+        HWND hwnd = HwndFromRootWindow(this);
+
+        if (NULL != hwnd)
+        {
+            Uint32 flag = SWP_ASYNCWINDOWPOS | SWP_NOZORDER | SWP_NOCOPYBITS | SWP_NOACTIVATE;
+
+            if (val)
+            {
+                suic::Size szFull = Environment::GetScreenClient();
+                ::GetWindowRect(hwnd, _prevPos);
+                //::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, szFull.Width(), szFull.Height(), flag);
+                WINDOWPLACEMENT wndpl; 
+                wndpl.length = sizeof(WINDOWPLACEMENT); 
+                wndpl.flags = 0; 
+                wndpl.showCmd = SW_SHOWNORMAL; 
+                wndpl.rcNormalPosition = suic::Rect(Point(), szFull); 
+                ::SetWindowPlacement(hwnd, &wndpl);
+            }
+            else
+            {
+                ::SetWindowPos(hwnd, NULL, _prevPos.left, _prevPos.top, _prevPos.Width(), _prevPos.Height(), flag);
+            }
+        }
+    }
 }
 
 void Window::OnPreviewGotKeyboardFocus(KeyboardFocusEventArg* e)
@@ -1609,6 +1636,12 @@ void Window::OnMouseLeftButtonDown(MouseButtonEventArg* e)
     ContentControl::OnMouseLeftButtonDown(e);
     Rect rect(0, 0, GetActualWidth(), GetCaptionHeight());
     HWND hwnd = HwndFromRootWindow(this);
+
+    if (AllowsFullScreen() && !GetUIParent())
+    {
+        e->SetHandled(true);
+        return;
+    }
 
     if (e->GetClickCount() % 2 == 0 && rect.PointIn(e->GetMousePoint()) && 
         (GetWindowStyle() != WindowStyle::wsNone) && ::IsWindow(hwnd))
@@ -1788,7 +1821,16 @@ void ResizeGrip::OnMouseLeftButtonUp(MouseButtonEventArg* e)
 void Window::OnHitTest(HitResultEventArg* e)
 {
     HWND hwnd = HwndFromRootWindow(this);
-    if (Mouse::GetCaptured() == NULL && ::IsWindow(hwnd) && 
+
+    if (AllowsFullScreen())
+    {
+        e->SetHandled(true);
+        e->GetHitResult().HitTestCode(CoreFlags::HitClient);
+        return;
+    }
+    
+    if (::IsWindow(hwnd) && 
+        Mouse::GetCaptured() == NULL && 
         GetHitTestFilterAction() == HitTestFilterAction::Continue)
     {
         HitResult& ret = e->GetHitResult();

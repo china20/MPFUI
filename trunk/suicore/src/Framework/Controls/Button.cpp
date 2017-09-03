@@ -172,60 +172,12 @@ void MaximizeButton::OnInitialized(EventArg* e)
     binding->SetPath(ppath);
     binding->SetSourceRef(obj);
     SetBinding(WindowStateProperty, binding);
-
-    /*int iLevel = 0;
-    FrameworkElement* parent = GetParent();
-    while (parent != NULL)
-    {
-        Window* pWnd = RTTICast<Window>(parent);
-        parent = parent->GetParent();
-
-        if (NULL != pWnd)
-        {
-            ++iLevel;
-            if (parent == NULL)
-            {
-                Binding* binding = new Binding();
-                RelativeSource* obj = new RelativeSource();
-                obj->AncestorLevel = iLevel;
-                obj->Mode = RelativeSourceMode::FindAncestor;
-                obj->AncestorType = Window::RTTIType();
-                PropertyPath ppath;
-                ppath.Path = _U("WindowState");
-                binding->SetPath(ppath);
-                binding->SetSourceRef(obj);
-                SetBinding(WindowStateProperty, binding);
-                break;
-            }
-        }
-    }*/
 }
-
-/*void MaximizeButton::OnLoaded(LoadedEventArg* e)
-{
-    SysButton::OnLoaded(e);
-    Window* pWnd = RTTICast<Window>(VisualTreeOp::GetVisualRoot(this));
-    if (pWnd)
-    {
-        pWnd->StateChanged.Clear();
-        pWnd->StateChanged += EventHandler(this, &MaximizeButton::OnWindowStateChanged);
-        SetValue(WindowStateProperty, pWnd->GetValue(Window::WindowStateProperty));
-    }
-}
-
-void MaximizeButton::OnUnloaded(LoadedEventArg* e)
-{
-    Window* pWnd = RTTICast<Window>(VisualTreeOp::GetVisualRoot(this));
-    if (pWnd)
-    {
-        pWnd->StateChanged -= EventHandler(this, &MaximizeButton::OnWindowStateChanged);
-    }
-}*/
 
 void MaximizeButton::OnClick()
 {
     Window* pWnd = RTTICast<Window>(VisualTreeOp::GetVisualRoot(this));
-    if (pWnd && pWnd->GetWindowStyle() != WindowStyle::wsNone)
+    if (pWnd && pWnd->GetWindowStyle() != WindowStyle::wsNone && !pWnd->AllowsFullScreen())
     {
         if (HwndHelper::IsWindowMaximize(pWnd))
         {
@@ -235,14 +187,6 @@ void MaximizeButton::OnClick()
         {
             HwndHelper::MaximizeWindow(pWnd);
         }
-        /*if (pWnd->GetWindowState() != WindowState::wsMaximized)
-        {
-            pWnd->SetWindowState(WindowState::wsMaximized);
-        }
-        else if (pWnd->GetWindowState() == WindowState::wsMaximized)
-        {
-            pWnd->SetWindowState(WindowState::wsNormal);
-        }*/
     }
 }
 
@@ -254,7 +198,6 @@ CloseButton::CloseButton()
 
 CloseButton::~CloseButton()
 {
-    ;
 }
 
 void CloseButton::OnClick()
