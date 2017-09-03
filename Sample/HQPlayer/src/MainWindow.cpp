@@ -45,7 +45,7 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     {
         layPlayer->AddChild(playView);
         _playManager = new PlayManager();
-        _playManager->Init(playView);
+        _playManager->Init(playView, this);
     }
 
     playView->unref();

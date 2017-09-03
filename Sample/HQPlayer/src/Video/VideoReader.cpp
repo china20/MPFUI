@@ -543,6 +543,22 @@ void VideoReaderThr::Run()
         return;
     }
 
+    // 获取视频总长度
+    if (pFormatCtx->duration != AV_NOPTS_VALUE) 
+    {
+        _videoInfo.iDuration = pFormatCtx->duration + 5000;
+        _videoInfo.iDuration /= 1000;
+
+        int hours, mins, secs, us;
+        int64_t duration = pFormatCtx->duration + 5000;
+        secs = duration / AV_TIME_BASE;
+        us = duration % AV_TIME_BASE;
+        mins = secs / 60;
+        secs %= 60;
+        hours = mins/ 60;
+        mins %= 60;
+    }
+
     //
     // 查找音频、视频信息
     // 循环查找视频中包含的流信息，
@@ -957,6 +973,8 @@ void VideoDecodeThr::Run()
             BmpInfo* bmp = new BmpInfo();
             bmp->ref();
             bmp->bmp.Create(pCodecCtx->width, pCodecCtx->height, pRgbBuffer, 32);
+            bmp->curDuration = vPts;
+            bmp->duration = _videoInfo->iDuration;
 
             _reflesh->PostInvoker(0, bmp);
 

@@ -34,9 +34,13 @@ class BmpInfo : public suic::Object
 public:
 
     suic::Bitmap bmp;
+    int64_t duration;
+    int64_t curDuration;
 
     BmpInfo()
     {
+        duration = 0;
+        curDuration = 0;
     }
 
     ~BmpInfo()
@@ -94,6 +98,9 @@ public:
     core::NormalQueue<AVPacket*> audioQueue;
 
     AVRational vrate;
+
+    // 视频总长度
+    int64_t iDuration;
 
     int tickavdiff;
     int tickframe;
@@ -154,6 +161,7 @@ public:
         , audioStrm(NULL)
         , videoStrm(NULL)
         , audio_frame(NULL)
+        , iDuration(0)
         , vCodecCtx(NULL)
         , aCodecCtx(NULL)
         , audioSwrCtx(NULL)

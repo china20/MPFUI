@@ -23,8 +23,10 @@ PlayManager::~PlayManager()
     }
 }
 
-void PlayManager::Init(PlayerView* pView)
+void PlayManager::Init(PlayerView* pView, suic::Element* pRoot)
 {
+    _rootView = pRoot;
+
     if (NULL == _reflesh)
     {
         av_register_all();
@@ -37,11 +39,65 @@ void PlayManager::Init(PlayerView* pView)
     }
 }
 
+suic::String PlayManager::FormatTime(int64_t d)
+{
+    int hours = 0;
+    int mins = 0;
+    int secs = 0;
+    int us = 0;
+    int64_t duration = d;
+
+    secs = duration / 1000;
+    us = duration % 1000;
+    mins = secs / 60;
+    secs %= 60;
+    hours = mins/ 60;
+    mins %= 60;
+
+    return suic::String().Format(_U("%02d:%02d:%02d.%03d"), hours, mins, secs, us);
+}
+
+void PlayManager::UpdatePlayDate(BmpInfo* bmp)
+{
+    suic::TextBlock* pTxt = NULL;
+
+    pTxt = _rootView->FindElem<suic::TextBlock>("curDuration");
+    if (NULL != pTxt)
+    {
+        pTxt->SetText(FormatTime(bmp->curDuration));
+    }
+
+    pTxt = _rootView->FindElem<suic::TextBlock>("duration");
+    if (NULL != pTxt)
+    {
+        pTxt->SetText(FormatTime(bmp->duration));
+    }
+
+    suic::ProgressBar* pPB = _rootView->FindElem<suic::ProgressBar>("playPB");
+    if (NULL != pPB )
+    {
+        double dCur = (double)bmp->curDuration;
+        double dAll = (double)bmp->duration;
+        double dRatio = dCur / dAll;
+
+        pPB->SetValue(dRatio * 100);
+    }
+}
+
 void PlayManager::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
 {
     BmpInfo* bmp = (BmpInfo*)e->GetData();
-    //bmp->unref();
-    _playView->PostRender(bmp);
+    
+    UpdatePlayDate(bmp);
+
+    if (bmp->bmp.IsValid())
+    {
+        _playView->PostRender(bmp);
+    }
+    else
+    {
+        bmp->unref();
+    }
 }
 
 void PlayManager::PlayVideo(suic::String filename)
