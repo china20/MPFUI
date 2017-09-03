@@ -1,37 +1,266 @@
 <?xml encoding="utf-8" ?>
 <Window Name="window" AllowsTransparency1="True" Title="HQPlayer（Beta0.1.0）" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
-        CaptionHeight="20" Width="580" Height="400" MinWidth="380" MinHeight="300" >
+        CaptionHeight="20" Width="580" Height="400" MinWidth="380" MinHeight="300"
+        BorderThickness="0" Background="#FF202020" Foreground="Gray" >
+
+    <Window.Resources>
+
+        <ImageBrush x:Key="OpenNormal" ImageSource="HQPlayer/Images/Middle/openfile.png" Viewbox="0,0,25,25" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="OpenHot" ImageSource="HQPlayer/Images/Middle/openfile.png" Viewbox="25,0,25,25" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="OpenPress" ImageSource="HQPlayer/Images/Middle/openfile.png" Viewbox="50,0,25,25" ViewboxUnits="Absolute" />
+        
+        <ImageBrush x:Key="PlayNormal" ImageSource="HQPlayer/Images/Ctrl/play.png" Viewbox="0,0,38,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PlayHot" ImageSource="HQPlayer/Images/Ctrl/play.png" Viewbox="38,0,38,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PlayPress" ImageSource="HQPlayer/Images/Ctrl/play.png" Viewbox="76,0,38,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="PauseNormal" ImageSource="HQPlayer/Images/Ctrl/pause.png" Viewbox="0,0,38,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PauseHot" ImageSource="HQPlayer/Images/Ctrl/pause.png" Viewbox="38,0,38,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PausePress" ImageSource="HQPlayer/Images/Ctrl/pause.png" Viewbox="76,0,38,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="StopNormal" ImageSource="HQPlayer/Images/Ctrl/stop.png" Viewbox="0,0,22,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="StopHot" ImageSource="HQPlayer/Images/Ctrl/stop.png" Viewbox="22,0,22,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="StopPress" ImageSource="HQPlayer/Images/Ctrl/stop.png" Viewbox="44,0,22,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="SettingNormal" ImageSource="HQPlayer/Images/Ctrl/setting.png" Viewbox="0,0,26,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="SettingHot" ImageSource="HQPlayer/Images/Ctrl/setting.png" Viewbox="26,0,26,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="SettingPress" ImageSource="HQPlayer/Images/Ctrl/setting.png" Viewbox="52,0,26,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="FullNormal" ImageSource="HQPlayer/Images/Ctrl/full.png" Viewbox="0,0,24,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="FullHot" ImageSource="HQPlayer/Images/Ctrl/full.png" Viewbox="24,0,24,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="FullPress" ImageSource="HQPlayer/Images/Ctrl/full.png" Viewbox="48,0,24,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="PrevNormal" ImageSource="HQPlayer/Images/Ctrl/prev.png" Viewbox="0,0,22,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PrevHot" ImageSource="HQPlayer/Images/Ctrl/prev.png" Viewbox="22,0,22,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PrevPress" ImageSource="HQPlayer/Images/Ctrl/prev.png" Viewbox="44,0,22,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="NextNormal" ImageSource="HQPlayer/Images/Ctrl/next.png" Viewbox="0,0,22,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="NextHot" ImageSource="HQPlayer/Images/Ctrl/next.png" Viewbox="22,0,22,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="NextPress" ImageSource="HQPlayer/Images/Ctrl/next.png" Viewbox="44,0,22,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="MiniPlayNormal" ImageSource="HQPlayer/Images/Top/mini_player.png" Viewbox="0,0,22,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="MiniPlayHot" ImageSource="HQPlayer/Images/Top/mini_player.png" Viewbox="22,0,22,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="MiniPlayPress" ImageSource="HQPlayer/Images/Top/mini_player.png" Viewbox="44,0,22,21" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="sysbtn_min_normal" ImageSource="HQPlayer/Images/Top/minimize.png" Viewbox="0,0,17,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_min_hover" ImageSource="HQPlayer/Images/Top/minimize.png" Viewbox="17,0,17,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_min_down" ImageSource="HQPlayer/Images/Top/minimize.png" Viewbox="34,0,17,21" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="sysbtn_close_normal" ImageSource="HQPlayer/Images/Top/close.png" Viewbox="0,0,17,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_close_hover" ImageSource="HQPlayer/Images/Top/close.png" Viewbox="17,0,17,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_close_down" ImageSource="HQPlayer/Images/Top/close.png" Viewbox="34,0,17,21" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="sysbtn_restore_normal" ImageSource="HQPlayer/Images/Top/restore.png" Viewbox="0,0,19,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_restore_hover" ImageSource="HQPlayer/Images/Top/restore.png" Viewbox="19,0,19,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_restore_down" ImageSource="HQPlayer/Images/Top/restore.png" Viewbox="38,0,19,21" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="sysbtn_max_normal" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="0,0,19,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_max_hover" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="19,0,19,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="sysbtn_max_down" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="38,0,19,21" ViewboxUnits="Absolute" />
+        
+        <Style TargetType="Button" x:Key="ButtonStyle" >
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="btnCnt" Background="{TemplateBinding Tag1}" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="btnCnt" Value="{TemplateBinding Tag3}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="btnCnt" Value="{TemplateBinding Tag2}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="CloseButton" >
+            <Setter Property="Background" Value="{DynamicResource sysbtn_close_normal}" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="CloseButton">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True" >
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_close_down}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True" >
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_close_hover}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="MinimizeButton">
+            <Setter Property="Background" Value="{DynamicResource sysbtn_min_normal}" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="MinimizeButton">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True" >
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_min_down}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True" >
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_min_hover}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="MaximizeButton">
+            <Setter Property="Background" Value="{DynamicResource sysbtn_max_normal}" />
+            <Setter Property="ToolTip" Value="最大化" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="MaximizeButton">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="WindowState" Value="Maximized" />
+                        <Condition Property="IsMouseOver" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="ToolTip" Value="向下还原" />
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_restore_hover}" />
+                </MultiTrigger>
+
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="WindowState" Value="Maximized" />
+                        <Condition Property="IsPressed" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_restore_down}" />
+                </MultiTrigger>
+
+                <Trigger Property="WindowState" Value="Maximized" >
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_restore_normal}" />
+                </Trigger>
+
+                <Trigger Property="IsPressed" Value="True" >
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_max_down}" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True" >
+                    <Setter Property="Background" Value="{DynamicResource sysbtn_max_hover}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+    </Window.Resources>
 
     <Grid Margin="0" Name="RootGrid" >
         <!--标题栏-->
-        <DockPanel VerticalAlignment="Top" Height="35" >
-            <StackPanel VerticalAlignment="Top" Height="35" Orientation="Horizontal" DockPanel.Dock="Right">
-                <MinimizeButton ToolTip="最小化" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
-                <MaximizeButton ToolTip="最大化" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
-                <CloseButton ToolTip="关闭" Width="25" Height="25" VerticalAlignment="Top" />
+        <DockPanel VerticalAlignment="Top" Height="32" >
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center" >
+                <MinimizeButton ToolTip="最小化" Focusable="False" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,9,0" />
+                <MaximizeButton Focusable="False" Width="19" Height="21" VerticalAlignment="Top" Margin="5,0,8,0" />
+                <CloseButton ToolTip="关闭" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,6,0" />
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Height="32" Orientation="Horizontal" DockPanel.Dock="Right" Margin="5,0,6,0" >
+                <Button Name="miniStop" Width="22" Height="21" Margin="2" Click="OnClickMiniPlayButton" 
+                            ToolTip="精简模式"
+                            Tag1="{DynamicResource MiniPlayNormal}"
+                            Tag2="{DynamicResource MiniPlayHot}"
+                            Tag3="{DynamicResource MiniPlayPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                <Button Name="btnOpen" Width="25" Height="25" Click="OnClickOpenButton" Margin="10,0,0,0"
+                            ToolTip="播放视频"
+                            Tag1="{DynamicResource OpenNormal}"
+                            Tag2="{DynamicResource OpenHot}"
+                            Tag3="{DynamicResource OpenPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                
             </StackPanel>
             <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
-                       Foreground="Gray" FontWeight="ExtraBold" FontSize="12" Margin="4" VerticalAlignment="Center"/>
-            
+                       Foreground="Gray" FontSize="12" Margin="4" VerticalAlignment="Center"/>
         </DockPanel>
 
-        <Grid Margin="0,35,0,0" >
+        <Grid Margin="0,32,0,0" >
             <Grid>
-                <Grid Name="layPlayer" Margin="0,0,0,38" />
+                <Grid Name="layPlayer" Margin="0,0,0,52" />
             </Grid>
 
-            <DockPanel Height="38" VerticalAlignment="Bottom">
-                <Grid Margin="2,4,2,2" DockPanel.Dock="Top">
-                    <ProgressBar Name="playPB" Height="8" HorizontalAlignment="Stretch" Value="1" />
+            <DockPanel Height="52" VerticalAlignment="Bottom" Background="#FF111111" >
+                <Grid Margin="0,4,0,2" DockPanel.Dock="Top">
+                    <ProgressBar Name="playPB" Height="3" HorizontalAlignment="Stretch" Value="1" />
                 </Grid>
-                <Button Name="btnPlay" Content="播放" MinWidth="50" Margin="2" Click="OnClickButton" Padding="2"
-                        VerticalAlignment="Center" />
-                <StackPanel Orientation="Horizontal" Margin="2" VerticalAlignment="Center" >
-                    
-                    <TextBlock Name="curDuration" Text="00:00:00.000" />
-                    <TextBlock Text="/" />
-                    <TextBlock Name="duration" Text="00:00:00.000" />
-                </StackPanel>
+                
+                <DockPanel>
+                    <Grid Margin="2" >
+                        <Button Name="btnPlay" Width="38" Height="44" Click="OnClickButton" Padding="2"
+                            Tag1="{DynamicResource PlayNormal}"
+                            Tag2="{DynamicResource PlayHot}"
+                            Tag3="{DynamicResource PlayPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                        <Button Name="btnPause" Width="38" Height="44" Click="OnClickButton" Padding="2"
+                            Visibility="Hidden"
+                            Tag1="{DynamicResource PauseNormal}"
+                            Tag2="{DynamicResource PauseHot}"
+                            Tag3="{DynamicResource PausePress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                    </Grid>
+
+                    <Button Name="btnStop" Width="22" Height="44" Margin="2" Click="OnClickStopButton" Padding="2"
+                            Tag1="{DynamicResource StopNormal}"
+                            Tag2="{DynamicResource StopHot}"
+                            Tag3="{DynamicResource StopPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                    <Button Name="prevStop" Width="22" Height="44" Margin="2" Click="OnClickPrevButton" Padding="2"
+                            Tag1="{DynamicResource PrevNormal}"
+                            Tag2="{DynamicResource PrevHot}"
+                            Tag3="{DynamicResource PrevPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+
+                    <Button Name="nextStop" Width="22" Height="44" Margin="2" Click="OnClickNextButton" Padding="2"
+                            Tag1="{DynamicResource NextNormal}"
+                            Tag2="{DynamicResource NextHot}"
+                            Tag3="{DynamicResource NextPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+
+                    <StackPanel Orientation="Horizontal" Margin="2,5,2,2" VerticalAlignment="Center" >
+                        <TextBlock Name="curDuration" Text="00:00:00.000" />
+                        <TextBlock Text="/" />
+                        <TextBlock Name="duration" Text="00:00:00.000" />
+                    </StackPanel>
+
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" FlowDirection="RightToLeft">
+
+                        <Button Name="btnFull" Width="24" Height="44" Margin="2" Click="OnClickFullButton" Padding="2"
+                            Tag1="{DynamicResource FullNormal}"
+                            Tag2="{DynamicResource FullHot}"
+                            Tag3="{DynamicResource FullPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                        
+                        <Button Name="btnSet" Width="26" Height="44" Margin="2" Click="OnClickSettingButton" Padding="2"
+                            Tag1="{DynamicResource SettingNormal}"
+                            Tag2="{DynamicResource SettingHot}"
+                            Tag3="{DynamicResource SettingPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                        
+                    </StackPanel>
+                </DockPanel>
             </DockPanel>
         </Grid>
     </Grid>
