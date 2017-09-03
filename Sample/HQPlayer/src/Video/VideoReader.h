@@ -58,6 +58,9 @@ public:
     void Run();
 
     void StopPlay();
+    void PausePlay(bool bPause);
+    bool IsPlaying() const;
+    bool IsPause() const;
 
 private:
 
@@ -67,6 +70,7 @@ private:
 
     suic::String _filename;
     VideoInfo _videoInfo;
+
     suic::InvokeProxy* _reflesh;
     VideoDecodeThr* _decodeThr;
 };

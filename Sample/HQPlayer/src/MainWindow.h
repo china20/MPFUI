@@ -21,6 +21,7 @@ public:
     BeginRoutedEvent(MainWindow, suic::Window)
         MemberRouted(OnClickButton)
         MemberRouted(OnClickOpenButton)
+        MemberRouted(OnClickStopButton)
     EndRoutedEvent()
 
     MainWindow();
@@ -30,10 +31,12 @@ public:
 
     void OnClickButton(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickStopButton(suic::DpObject* sender, suic::RoutedEventArg* e);
 
 protected:
 
     void Dispose();
+    void PlayCallback(bool start);
 
 protected:
 

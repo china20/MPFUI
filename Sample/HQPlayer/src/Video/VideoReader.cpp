@@ -34,12 +34,33 @@ VideoReaderThr::~VideoReaderThr()
 
 void VideoReaderThr::StopPlay()
 {
+    SDL_PauseAudio(1);
+
     if (NULL != _decodeThr)
     {
         _decodeThr->Stop();
     }
 
     Stop();
+}
+
+void VideoReaderThr::PausePlay(bool bPause)
+{
+    if (IsPlaying())
+    {
+        _videoInfo.isPause = bPause;
+        SDL_PauseAudio(bPause ? 1 : 0);
+    }
+}
+
+bool VideoReaderThr::IsPlaying() const
+{
+    return !_videoInfo.quit;
+}
+
+bool VideoReaderThr::IsPause() const
+{
+    return _videoInfo.isPause;
 }
 
 void avcodec_get_frame_defaults(AVFrame *frame)
@@ -342,7 +363,10 @@ static void audio_callback(void *userdata, Uint8 *stream, int len)
                     return;
                 }
                 
-                memset(is->audio_buf, 0, is->audio_buf_size);
+                if (is->audio_buf == &is->audio_buf_temp[0])
+                {
+                    memset(is->audio_buf, 0, is->audio_buf_size);
+                }
             } 
             else 
             {
@@ -671,6 +695,8 @@ void VideoReaderThr::Run()
     AVPacket *packet = NULL;
     int ySize = pVCodecCtx->width * pVCodecCtx->height;
 
+    _reflesh->PostInvoker(1, NULL);
+
     for (;;)
     {
         // 
@@ -684,6 +710,12 @@ void VideoReaderThr::Run()
             _decodeThr->Stop();
             _decodeThr->Join();
             break;
+        }
+
+        if (_videoInfo.isPause)
+        {
+            Sleep(100);
+            continue;
         }
 
         if (_videoInfo.vedioQueue.IsFull() ||
@@ -761,6 +793,8 @@ void VideoReaderThr::Run()
     avformat_free_context(pFormatCtx);
 
     SDL_CloseAudio();
+
+    _reflesh->PostInvoker(0, NULL);
 }
 
 VideoDecodeThr::VideoDecodeThr(VideoInfo* vInfo, suic::InvokeProxy* reflesh)
@@ -877,6 +911,12 @@ void VideoDecodeThr::Run()
         {
             //_playThread->Stop();
             break;
+        }
+
+        if (_videoInfo->isPause)
+        {
+            Sleep(100);
+            continue;
         }
 
         pPacket = NULL; 
