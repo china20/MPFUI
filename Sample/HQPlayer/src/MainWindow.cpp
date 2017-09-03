@@ -82,7 +82,11 @@ void MainWindow::OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg*
     suic::FileBrowser fb;
     if (NULL != _playManager && fb.Open())
     {
-        _playManager->PlayVideo(fb.GetFilePath());
+        suic::String strPath = fb.GetFilePath();
+
+        _playManager->PlayVideo(strPath);
+
+        SetTitle(strPath);
 
         FindName("btnPause")->SetVisibility(suic::Visibility::Visible);
         FindName("btnPlay")->SetVisibility(suic::Visibility::Hidden);
