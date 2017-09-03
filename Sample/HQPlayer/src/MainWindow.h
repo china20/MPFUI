@@ -20,6 +20,7 @@ public:
     // ÊÂ¼þÓ³Éä
     BeginRoutedEvent(MainWindow, suic::Window)
         MemberRouted(OnClickButton)
+        MemberRouted(OnClickOpenButton)
     EndRoutedEvent()
 
     MainWindow();
@@ -28,6 +29,7 @@ public:
     void OnLoaded(suic::LoadedEventArg* e);
 
     void OnClickButton(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg* e);
 
 protected:
 

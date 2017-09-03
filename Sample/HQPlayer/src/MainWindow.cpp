@@ -56,14 +56,36 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     CenterWindow();
 }
 
-void MainWindow::OnClickButton(suic::DpObject* sender, suic::RoutedEventArg* e)
+
+void MainWindow::OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg* e)
 {
     e->SetHandled(true);
 
     suic::FileBrowser fb;
-
     if (NULL != _playManager && fb.Open())
     {
         _playManager->PlayVideo(fb.GetFilePath());
+
+        FindName("btnPause")->SetVisibility(suic::Visibility::Visible);
+        FindName("btnPlay")->SetVisibility(suic::Visibility::Hidden);
+    }
+}
+
+void MainWindow::OnClickButton(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    e->SetHandled(true);
+
+    suic::Element* pElem = suic::DynamicCast<suic::Element>(sender);
+    suic::String name = pElem->GetName();
+
+    pElem->SetVisibility(suic::Visibility::Hidden);
+   
+    if (name.Equals("btnPlay"))
+    {
+        FindName("btnPause")->SetVisibility(suic::Visibility::Visible);
+    }
+    else
+    {
+        FindName("btnPlay")->SetVisibility(suic::Visibility::Visible);
     }
 }
