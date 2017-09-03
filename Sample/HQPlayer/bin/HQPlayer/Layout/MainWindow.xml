@@ -1,0 +1,31 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency1="True" Title="HQPlayer" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
+        CaptionHeight="20" Width="580" Height="400" MinWidth="380" MinHeight="300" >
+
+    <Grid Margin="0" Name="RootGrid" >
+        <!--标题栏-->
+        <DockPanel VerticalAlignment="Top" Height="36">
+            <StackPanel VerticalAlignment="Top" Height="60" Orientation="Horizontal" DockPanel.Dock="Right">
+                <MinimizeButton ToolTip="最小化" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <MaximizeButton ToolTip="最大化" Focusable="False" Width="25" Height="25" VerticalAlignment="Top" />
+                <CloseButton ToolTip="关闭" Width="25" Height="25" VerticalAlignment="Top" />
+            </StackPanel>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" FontSize="12" Margin="4" VerticalAlignment="Center"/>
+            
+        </DockPanel>
+
+        <Grid Margin="0,36,0,0" >
+            <Grid>
+                <Grid Name="layPlayer" Margin="0,4,0,38" />
+                <Button Name="btnPlay" Content="播放视频" Click="OnClickButton" Padding="8"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+
+            <DockPanel Height="38" VerticalAlignment="Bottom">
+                <Grid Margin="2">
+                    <ProgressBar Height="10" HorizontalAlignment="Stretch" Value="10" />
+                </Grid>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>
