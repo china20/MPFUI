@@ -187,7 +187,7 @@
                                 Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
                 </StackPanel>
                 <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
-                           Foreground="Gray" FontSize="12" Margin="4" VerticalAlignment="Center"/>
+                           Foreground="Gray" FontSize="11" Margin="4" VerticalAlignment="Center"/>
             </DockPanel>
 
             <DockPanel Name="layBottom" Height="52" VerticalAlignment="Bottom" Background="#FF111111" DockPanel.Dock="Bottom">
