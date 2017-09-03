@@ -851,15 +851,15 @@ void VideoDecodeThr::Run()
     static int index = 0;
     unsigned long long startTime = GetCurrentTimeMsec();
 
-    _playThread = new VideoPlayThread(_videoInfo, _reflesh);
-    _playThread->Start();
+    //_playThread = new VideoPlayThread(_videoInfo, _reflesh);
+    //_playThread->Start();
 
     for (;;)
     {
         // 线程已经退出
         if (IsStopped())
         {
-            _playThread->Stop();
+            //_playThread->Stop();
             break;
         }
 
@@ -985,5 +985,5 @@ void VideoDecodeThr::Run()
     // 
     _videoInfo->decodeFinished = true;
 
-    _playThread->Join();
+    //_playThread->Join();
 }
