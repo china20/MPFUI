@@ -12,15 +12,18 @@
         <ImageBrush x:Key="PlayNormal" ImageSource="HQPlayer/Images/Ctrl/play.png" Viewbox="0,0,38,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="PlayHot" ImageSource="HQPlayer/Images/Ctrl/play.png" Viewbox="38,0,38,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="PlayPress" ImageSource="HQPlayer/Images/Ctrl/play.png" Viewbox="76,0,38,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PlayEnabled" ImageSource="HQPlayer/Images/Ctrl/play.png" Viewbox="114,0,38,44" ViewboxUnits="Absolute" />
 
         <ImageBrush x:Key="PauseNormal" ImageSource="HQPlayer/Images/Ctrl/pause.png" Viewbox="0,0,38,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="PauseHot" ImageSource="HQPlayer/Images/Ctrl/pause.png" Viewbox="38,0,38,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="PausePress" ImageSource="HQPlayer/Images/Ctrl/pause.png" Viewbox="76,0,38,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PauseEnabled" ImageSource="HQPlayer/Images/Ctrl/pause.png" Viewbox="114,0,38,44" ViewboxUnits="Absolute" />
 
         <ImageBrush x:Key="StopNormal" ImageSource="HQPlayer/Images/Ctrl/stop.png" Viewbox="0,0,22,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="StopHot" ImageSource="HQPlayer/Images/Ctrl/stop.png" Viewbox="22,0,22,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="StopPress" ImageSource="HQPlayer/Images/Ctrl/stop.png" Viewbox="44,0,22,44" ViewboxUnits="Absolute" />
-
+        <ImageBrush x:Key="StopEnabled" ImageSource="HQPlayer/Images/Ctrl/stop.png" Viewbox="66,0,22,44" ViewboxUnits="Absolute" />
+        
         <ImageBrush x:Key="SettingNormal" ImageSource="HQPlayer/Images/Ctrl/setting.png" Viewbox="0,0,26,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="SettingHot" ImageSource="HQPlayer/Images/Ctrl/setting.png" Viewbox="26,0,26,44" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="SettingPress" ImageSource="HQPlayer/Images/Ctrl/setting.png" Viewbox="52,0,26,44" ViewboxUnits="Absolute" />
@@ -206,23 +209,26 @@
                 
                 <DockPanel>
                     <Grid Margin="2" >
-                        <Button Name="btnPlay" Width="38" Height="44" Click="OnClickButton" Padding="2"
+                        <Button Name="btnPlay" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
                             Tag1="{DynamicResource PlayNormal}"
                             Tag2="{DynamicResource PlayHot}"
                             Tag3="{DynamicResource PlayPress}"
+                            Tag4="{DynamicResource PlayEnabled}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-                        <Button Name="btnPause" Width="38" Height="44" Click="OnClickButton" Padding="2"
+                        <Button Name="btnPause" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
                             Visibility="Hidden"
                             Tag1="{DynamicResource PauseNormal}"
                             Tag2="{DynamicResource PauseHot}"
                             Tag3="{DynamicResource PausePress}"
+                            Tag4="{DynamicResource PauseEnabled}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
                     </Grid>
 
-                    <Button Name="btnStop" Width="22" Height="44" Margin="2" Click="OnClickStopButton" Padding="2"
+                    <Button Name="btnStop" Width="22" Height="44" Margin="2" Click="OnClickStopButton" IsEnabled="False"
                             Tag1="{DynamicResource StopNormal}"
                             Tag2="{DynamicResource StopHot}"
                             Tag3="{DynamicResource StopPress}"
+                            Tag4="{DynamicResource StopEnabled}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
                     <Button Name="prevStop" Width="22" Height="44" Margin="2" Click="OnClickPrevButton" Padding="2"
