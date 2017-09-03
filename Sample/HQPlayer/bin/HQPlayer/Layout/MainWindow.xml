@@ -170,39 +170,27 @@
     </Window.Resources>
 
     <Grid Margin="0" Name="RootGrid" >
-        <!--标题栏-->
-        <DockPanel VerticalAlignment="Top" Height="32" >
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center" >
-                <MinimizeButton ToolTip="最小化" Focusable="False" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,9,0" />
-                <MaximizeButton Focusable="False" Width="19" Height="21" VerticalAlignment="Top" Margin="5,0,8,0" />
-                <CloseButton ToolTip="关闭" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,6,0" />
-            </StackPanel>
-            <StackPanel VerticalAlignment="Center" Height="32" Orientation="Horizontal" DockPanel.Dock="Right" Margin="5,0,6,0" >
-                <Button Name="miniStop" Width="22" Height="21" Margin="2" Click="OnClickMiniPlayButton" 
-                            ToolTip="精简模式"
-                            Tag1="{DynamicResource MiniPlayNormal}"
-                            Tag2="{DynamicResource MiniPlayHot}"
-                            Tag3="{DynamicResource MiniPlayPress}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+        <DockPanel >
+            <!--标题栏-->
+            <DockPanel Name="layCaption" VerticalAlignment="Top" Height="32" DockPanel.Dock="Top" >
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center" >
+                    <MinimizeButton ToolTip="最小化" Focusable="False" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,9,0" />
+                    <MaximizeButton Focusable="False" Width="19" Height="21" VerticalAlignment="Top" Margin="5,0,8,0" />
+                    <CloseButton ToolTip="关闭" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,6,0" />
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Height="32" Orientation="Horizontal" DockPanel.Dock="Right" Margin="5,0,6,0" >
+                    <Button Name="miniStop" Width="22" Height="21" Margin="2" Click="OnClickMiniPlayButton"
+                                ToolTip="精简模式"
+                                Tag1="{DynamicResource MiniPlayNormal}"
+                                Tag2="{DynamicResource MiniPlayHot}"
+                                Tag3="{DynamicResource MiniPlayPress}"
+                                Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                </StackPanel>
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                           Foreground="Gray" FontSize="12" Margin="4" VerticalAlignment="Center"/>
+            </DockPanel>
 
-                <Button Name="btnOpen" Width="25" Height="25" Click="OnClickOpenButton" Margin="10,0,0,0"
-                            ToolTip="播放视频"
-                            Tag1="{DynamicResource OpenNormal}"
-                            Tag2="{DynamicResource OpenHot}"
-                            Tag3="{DynamicResource OpenPress}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-                
-            </StackPanel>
-            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
-                       Foreground="Gray" FontSize="12" Margin="4" VerticalAlignment="Center"/>
-        </DockPanel>
-
-        <Grid Margin="0,32,0,0" >
-            <Grid>
-                <Grid Name="layPlayer" Margin="0,0,0,52" />
-            </Grid>
-
-            <DockPanel Height="52" VerticalAlignment="Bottom" Background="#FF111111" >
+            <DockPanel Name="layBottom" Height="52" VerticalAlignment="Bottom" Background="#FF111111" DockPanel.Dock="Bottom">
                 <Grid Margin="0,4,0,2" DockPanel.Dock="Top">
                     <ProgressBar Name="playPB" Height="3" HorizontalAlignment="Stretch" Value="1" />
                 </Grid>
@@ -264,10 +252,20 @@
                             Tag2="{DynamicResource SettingHot}"
                             Tag3="{DynamicResource SettingPress}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                        <Button Name="btnOpen" Width="25" Height="25" Click="OnClickOpenButton" Margin="10,0,8,0"
+                                ToolTip="播放视频"
+                                Tag1="{DynamicResource OpenNormal}"
+                                Tag2="{DynamicResource OpenHot}"
+                                Tag3="{DynamicResource OpenPress}"
+                                Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
                         
                     </StackPanel>
                 </DockPanel>
             </DockPanel>
-        </Grid>
+            <Grid>
+                <Grid Name="layPlayer" />
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
