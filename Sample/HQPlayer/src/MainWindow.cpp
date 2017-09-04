@@ -7,6 +7,9 @@
 MainWindow::MainWindow()
 {
     _playManager = NULL;
+    _layBottom = NULL;
+    _timer = new suic::AssignerTimer();
+    _timer->ref();
 }
 
 MainWindow::~MainWindow()
@@ -15,6 +18,8 @@ MainWindow::~MainWindow()
     {
         _playManager->unref();
     }
+
+    _timer->unref();
 }
 
 void MainWindow::Dispose()
@@ -55,6 +60,67 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     // 窗口居中显示
     //
     CenterWindow();
+    _layBottom = FindName("layBottom");
+    UpdateLayBottomPos();
+}
+
+void MainWindow::OnCheckMouseMove(suic::Object* sender, suic::EventArg* e)
+{
+    // 
+    // 关闭定时器
+    // 
+    _timer->Stop();
+    if (AllowsFullScreen() && NULL != _layBottom)
+    {
+        _layBottom->SetVisibility(suic::Visibility::Collapsed);
+    }
+}
+
+void MainWindow::UpdateLayBottomPos()
+{
+    if (NULL != _layBottom)
+    {
+        _layBotPos = suic::Rect(_layBottom->GetCanvasOffset(), _layBottom->GetRenderSize());
+    }
+}
+
+void MainWindow::OnRenderSizeChanged(suic::SizeChangedInfo& sizeInfo)
+{
+    suic::Window::OnRenderSizeChanged(sizeInfo);
+
+    UpdateLayBottomPos();
+}
+
+void MainWindow::OnPreviewMouseMove(suic::MouseButtonEventArg* e)
+{
+    suic::Window::OnPreviewMouseMove(e);
+
+    if (_layBotPos.PointIn(e->GetMousePoint()))
+    {
+        _timer->Stop();
+    }
+
+    if (_lastMousePt != e->GetMousePoint())
+    {
+        if (NULL != _layBottom)
+        {
+            _layBottom->SetVisibility(suic::Visibility::Visible);
+        }
+
+        if (_layBotPos.PointIn(e->GetMousePoint()))
+        {
+            _timer->Stop();
+        }
+        else if (AllowsFullScreen())
+        {
+            _timer->Stop();
+            _timer->SetInterval(2000);
+            _timer->SetTick(suic::EventHandler(this, &MainWindow::OnCheckMouseMove));
+            _timer->Start();
+        }
+    }
+
+    _lastMousePt = e->GetMousePoint();
 }
 
 void MainWindow::PlayCallback(bool start)
@@ -132,6 +198,10 @@ void MainWindow::OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg*
     else
     {
         FindName("layCaption")->SetVisibility(suic::Visibility::Visible);
+        if (NULL != _layBottom)
+        {
+            _layBottom->SetVisibility(suic::Visibility::Visible);
+        }
     }
 }
 
