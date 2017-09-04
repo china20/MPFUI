@@ -236,9 +236,9 @@
 
 
                     <StackPanel Orientation="Horizontal" Margin="2,5,2,2" VerticalAlignment="Center" >
-                        <TextBlock Name="curDuration" Text="00:00:00.000" />
+                        <TextBlock Name="curDuration" Text="00:00:00" />
                         <TextBlock Text="/" />
-                        <TextBlock Name="duration" Text="00:00:00.000" />
+                        <TextBlock Name="duration" Text="00:00:00" />
                     </StackPanel>
 
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" FlowDirection="RightToLeft">

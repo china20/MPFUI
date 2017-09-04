@@ -125,8 +125,8 @@ void MainWindow::OnPreviewMouseMove(suic::MouseButtonEventArg* e)
 
 void MainWindow::PlayCallback(bool start)
 {
-    FindName("btnPause")->Enable(start);
-    FindName("btnPlay")->Enable(start);
+    FindName("btnPause")->Enable(true);
+    FindName("btnPlay")->Enable(true);
     FindName("btnStop")->Enable(start);
 
     if (start)
@@ -170,7 +170,18 @@ void MainWindow::OnClickButton(suic::DpObject* sender, suic::RoutedEventArg* e)
    
     if (name.Equals("btnPlay"))
     {
-        _playManager->PauseVideo(false);
+        // 
+        // 播放已经暂停，重新播放当前视频
+        // 
+        if (!_playManager->IsPlaying())
+        {
+            _playManager->PlayCurrentVideo();
+        }
+        else
+        {
+            _playManager->PauseVideo(false);
+        }
+
         FindName("btnPause")->SetVisibility(suic::Visibility::Visible);
     }
     else

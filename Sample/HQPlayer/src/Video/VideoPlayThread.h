@@ -27,6 +27,8 @@ extern "C"
     #include "libswresample/swresample.h"
 }
 
+#include "SDL.h"
+
 #include <src/Common/ThreadQueue.h>
 
 typedef delegate<void(bool)> PlayVideoCb;
@@ -120,6 +122,7 @@ public:
     // 跳转到播放的时间点
     int seekTime;
 
+    int volume;
     suic::Uint32 audioID;
     
     suic::Uint32 audio_hw_buf_size;
@@ -192,6 +195,7 @@ public:
         , audio_buf_index(0)
         , frame_last_delay(0)
         , frame_last_pts(0)
+        , volume(SDL_MIX_MAXVOLUME)
     {
 
     }

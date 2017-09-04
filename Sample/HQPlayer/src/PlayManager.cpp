@@ -8,6 +8,7 @@ PlayManager::PlayManager()
 {
     _vReaderThr = NULL;
     _reflesh = NULL;
+    _playIndex = -1;
 }
 
 PlayManager::~PlayManager()
@@ -46,16 +47,16 @@ suic::String PlayManager::FormatTime(int64_t d)
     int mins = 0;
     int secs = 0;
     int us = 0;
-    int64_t duration = d;
+    int64_t duration = d / 1000;
 
-    secs = duration / 1000;
+    secs = duration;
     us = duration % 1000;
     mins = secs / 60;
     secs %= 60;
     hours = mins/ 60;
     mins %= 60;
 
-    return suic::String().Format(_U("%02d:%02d:%02d.%03d"), hours, mins, secs, us);
+    return suic::String().Format(_U("%02d:%02d:%02d"), hours, mins, secs);
 }
 
 void PlayManager::UpdatePlayDate(BmpInfo* bmp)
@@ -75,11 +76,11 @@ void PlayManager::UpdatePlayDate(BmpInfo* bmp)
     }
 
     suic::ProgressBar* pPB = _rootView->FindElem<suic::ProgressBar>("playPB");
-    if (NULL != pPB )
+    if (NULL != pPB)
     {
-        double dCur = (double)bmp->curDuration;
-        double dAll = (double)bmp->duration;
-        double dRatio = dCur / dAll;
+        double dCur = bmp->curDuration / 1.0f;
+        double dAll = bmp->duration / 1.0f;
+        double dRatio = (double)dCur / (double)dAll;
 
         pPB->SetValue(dRatio * 100);
     }
@@ -105,24 +106,70 @@ void PlayManager::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
     else
     {
         _playCb(e->GetWhat() == 1);
+        if (0 == e->GetWhat())
+        {
+            suic::ProgressBar* pPB = _rootView->FindElem<suic::ProgressBar>("playPB");
+            if (NULL != pPB)
+            {
+                pPB->SetValue(100.0f);
+            }
+        }
     }
+}
+
+int PlayManager::CheckPlayFile(suic::String filename)
+{
+    for (int i = 0; i < _playLists.Length(); ++i)
+    {
+        suic::String strName = _playLists.GetItem(i);
+        if (strName.CompareI(filename) == 0)
+        {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 void PlayManager::PlayVideo(suic::String filename)
 {
-    if (NULL != _reflesh)
-    {
-        if (_vReaderThr != NULL)
-        {
-            _vReaderThr->StopPlay();
-            _vReaderThr->Join();
-            _vReaderThr->unref();
-        }
+    int index = CheckPlayFile(filename);
 
-        _vReaderThr = new VideoReaderThr(filename, _reflesh);
-        _vReaderThr->ref();
-        _vReaderThr->Start();
-    }    
+    if (index == -1)
+    {
+        _playIndex = _playLists.Length();
+        _playLists.Add(filename);
+    }
+    else
+    {
+        _playIndex = index;
+    }
+
+    PlayCurrentVideo();
+}
+
+void PlayManager::PlayCurrentVideo()
+{
+    suic::String filename;
+    
+    if (_playIndex >= 0)
+    {
+        filename = _playLists.GetItem(_playIndex);
+
+        if (NULL != _reflesh)
+        {
+            if (_vReaderThr != NULL)
+            {
+                _vReaderThr->StopPlay();
+                _vReaderThr->Join();
+                _vReaderThr->unref();
+            }
+
+            _vReaderThr = new VideoReaderThr(filename, _reflesh);
+            _vReaderThr->ref();
+            _vReaderThr->Start();
+        }
+    }
 }
 
 bool PlayManager::IsPlaying() const

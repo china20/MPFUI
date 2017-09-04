@@ -21,8 +21,6 @@ extern "C"
     #include "libswresample/swresample.h"
 }
 
-#include "SDL.h"
-
 #include <src/Video/VideoPlayThread.h>
 
 // 内部常量定义

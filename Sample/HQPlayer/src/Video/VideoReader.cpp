@@ -320,6 +320,108 @@ static int audio_decode_frame(VideoInfo *is, double *pts_ptr)
     return 0;
 }
 
+/*
+void audio_track_change(Uint8 *pBuffer, int iSize, int AudioChannel, int AudioBits )
+{
+  int i=0,w_pos=0,r_pos=0, n=0;
+
+  n = iSize / 4; //循环次数
+
+  switch (AudioBits)
+  {
+  case 8:
+    //进行声道选择
+    switch(AudioChannel)
+    {
+    case 1:r_pos=0;
+      w_pos=1;
+      break;             //左声道
+
+    case 2:r_pos=1;
+      w_pos=0;  
+      break;             //右声道
+
+    default:return ;           //不处理（双声道模式）
+
+    }
+    //执行声道切换操作  
+    for(i=0;i<n;i++){  
+      memcpy(pBuffer+w_pos,pBuffer+r_pos,1);  
+      w_pos+=2;
+      r_pos+=2;
+    }
+    break;
+  case 16:
+    //进行声道选择
+    switch(AudioChannel)
+    {
+    case 1:r_pos=0;
+      w_pos=2;
+      break;             //左声道
+
+    case 2:r_pos=2;
+      w_pos=0;  
+      break;             //右声道
+
+    default:return ;           //不处理（双声道模式）
+
+    }
+    //执行声道切换操作  
+    for(i=0;i<n;i++){  
+      memcpy(pBuffer+w_pos,pBuffer+r_pos,2);  
+      w_pos+=4;
+      r_pos+=4;
+    }
+    break;
+  case 24:
+    //进行声道选择
+    switch(AudioChannel)
+    {
+    case 1:r_pos=0;
+      w_pos=3;
+      break;             //左声道
+
+    case 2:r_pos=3;
+      w_pos=0;  
+      break;             //右声道
+
+    default:return;           //不处理（双声道模式）
+
+    }
+    //执行声道切换操作  
+    for(i=0;i<n;i++){  
+      memcpy(pBuffer+w_pos,pBuffer+r_pos,3);  
+      w_pos+=6;
+      r_pos+=6;
+    }
+    break;
+  case 32:
+    //进行声道选择
+    switch(AudioChannel)
+    {
+    case 1:r_pos=0;
+      w_pos=4;
+      break;             //左声道
+
+    case 2:r_pos=4;
+      w_pos=0;  
+      break;             //右声道
+
+    default:return ;           //不处理（双声道模式）
+
+    }
+    //执行声道切换操作  
+    for(i=0;i<n;i++){  
+      memcpy(pBuffer+w_pos,pBuffer+r_pos,4);  
+      w_pos+=8;
+      r_pos+=8;
+    }
+    break;
+  }
+  return ;		
+}
+*/
+
 static void audio_callback(void *userdata, Uint8 *stream, int len) 
 {
     VideoInfo *is = (VideoInfo*)userdata;
@@ -394,16 +496,22 @@ static void audio_callback(void *userdata, Uint8 *stream, int len)
             return;
         }
 
+        SDL_memset(stream, 0, len);
+
+        // 声道控制函数, gTrack 1 - 左声道, 2 - 右声道, 0 - 立体声
+        // audio_track_change((uint8_t *)is->audio_buf + is->audio_buf_index, len1, gTrack, 16);    
+
         // 
         // 把音频数据拷贝到SDL缓冲，准备播放
         // 
-        memcpy(stream, (uint8_t*)is->audio_buf + is->audio_buf_index, needCopyDataSize);
+        // memcpy(stream, (uint8_t*)is->audio_buf + is->audio_buf_index, needCopyDataSize);
+        SDL_MixAudio(stream, (uint8_t*)is->audio_buf + is->audio_buf_index, needCopyDataSize, is->volume); 
 
         // 
         // 调整下缓冲区位置 
         //
         len -= needCopyDataSize;
-        stream += needCopyDataSize;
+        //stream += needCopyDataSize;
         is->audio_buf_index += needCopyDataSize;
     }
 }
