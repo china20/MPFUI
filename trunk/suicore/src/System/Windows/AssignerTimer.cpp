@@ -125,10 +125,9 @@ void AssignerTimer::Stop()
 
 Object* AssignerTimer::FireTick(bool unused)
 {
-    OnTimer();
-    
     if (IsEnabled())
     {
+        OnTimer();
         Restart();
     }
     else

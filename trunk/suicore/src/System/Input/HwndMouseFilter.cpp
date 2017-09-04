@@ -205,15 +205,15 @@ void HwndMouseFilter::Process_WM_MOUSEMOVE(Element* rootElement, MessageParam* m
         }
         else if (NULL != hitRes.hitRes.get())
         {
+            e.SetRoutedEvent(Element::PreMouseMoveEvent);
+            hitRes.hitRes->RaiseEvent(&e);
+
             e.SetRoutedEvent(Element::MouseMoveEvent);
             hitRes.hitRes->RaiseEvent(&e);
         }
 
         //Process_MouseEvent(hitRes.hitResult.get(), mp);
     }
-
-    //SystemLog()->Warn(String().Format(_U("Process_WM_MOUSEMOVE Cost : %ld\n")
-    //    , Environment::GetSystemTick()-dwTime));
 }
 
 void HwndMouseFilter::Process_WM_MOUSELEAVE(Element* rootElement, MessageParam* mp)
@@ -230,17 +230,6 @@ void HwndMouseFilter::Process_WM_MOUSELEAVE(Element* rootElement, MessageParam* 
         me.SetRoutedEvent(Element::MouseLeaveEvent);
         ePtr->RaiseEvent(&me);
     }
-    /*else if (Mouse::GetCaptured())
-    {
-        HandleMouseCapture(rootElement, mp);
-    }*/
-    /*else
-    {
-        Mouse::ChangeMouseOver(NULL);
-
-        me.SetRoutedEvent(Element::MouseLeaveEvent);
-        rootElement->RaiseEvent(&me);
-    }*/
 
     _hwndObj->StopMouseTrack();
 }
