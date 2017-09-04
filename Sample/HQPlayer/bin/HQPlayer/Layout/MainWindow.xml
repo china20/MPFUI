@@ -198,6 +198,7 @@
                 <DockPanel>
                     <Grid Margin="2" >
                         <Button Name="btnPlay" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
+                            ToolTip="播放"
                             Tag1="{DynamicResource PlayNormal}"
                             Tag2="{DynamicResource PlayHot}"
                             Tag3="{DynamicResource PlayPress}"
@@ -205,6 +206,7 @@
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
                         <Button Name="btnPause" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
                             Visibility="Hidden"
+                            ToolTip="暂停"
                             Tag1="{DynamicResource PauseNormal}"
                             Tag2="{DynamicResource PauseHot}"
                             Tag3="{DynamicResource PausePress}"
@@ -241,20 +243,20 @@
 
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" FlowDirection="RightToLeft">
 
-                        <Button Name="btnFull" Width="24" Height="44" Margin="2" Click="OnClickFullButton" Padding="2"
+                        <Button Name="btnFull" Width="24" Height="44" Margin="2" Click="OnClickFullButton" ToolTip="全屏显示"
                             Tag1="{DynamicResource FullNormal}"
                             Tag2="{DynamicResource FullHot}"
                             Tag3="{DynamicResource FullPress}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
                         
-                        <Button Name="btnSet" Width="26" Height="44" Margin="2" Click="OnClickSettingButton" Padding="2"
+                        <Button Name="btnSet" Width="26" Height="44" Margin="2" Click="OnClickSettingButton" ToolTip="设置"
                             Tag1="{DynamicResource SettingNormal}"
                             Tag2="{DynamicResource SettingHot}"
                             Tag3="{DynamicResource SettingPress}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
                         <Button Name="btnOpen" Width="25" Height="25" Click="OnClickOpenButton" Margin="10,0,8,0"
-                                ToolTip="播放视频"
+                                ToolTip="打开视频"
                                 Tag1="{DynamicResource OpenNormal}"
                                 Tag2="{DynamicResource OpenHot}"
                                 Tag3="{DynamicResource OpenPress}"
