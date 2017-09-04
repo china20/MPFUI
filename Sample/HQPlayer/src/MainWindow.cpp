@@ -188,15 +188,19 @@ void MainWindow::OnClickStopButton(suic::DpObject* sender, suic::RoutedEventArg*
 
 void MainWindow::OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg* e)
 {
+    suic::FrameworkElement* pFull = suic::DynamicCast<suic::FrameworkElement>(sender);
     e->SetHandled(true);
     SetAllowsFullScreen(!AllowsFullScreen());
 
     if (AllowsFullScreen())
     {
+        pFull->SetToolTip("退出全屏");
         FindName("layCaption")->SetVisibility(suic::Visibility::Collapsed);
     }
     else
     {
+        _timer->Stop();
+        pFull->SetToolTip("全屏显示");
         FindName("layCaption")->SetVisibility(suic::Visibility::Visible);
         if (NULL != _layBottom)
         {
