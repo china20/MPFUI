@@ -321,11 +321,11 @@ void Track::OnPreApplyTemplate()
 void Track::OnArrange(const Size& arrangeSize)
 {
     // 上边页大小
-    int num = 0;
+    int upPageSize = 0;
     // 滑块大小
-    int num2 = 0;
+    int thumbSize = 0;
     // 下边页大小
-    int num3 = 0;
+    int downPageSize = 0;
 
     int iOrien = GetOrientation();
     bool isVertical = iOrien == Orientation::Vertical;
@@ -335,9 +335,9 @@ void Track::OnArrange(const Size& arrangeSize)
 
     if (iViewSize < 0)
     {
-        ComputeSliderLengths(arrangeSize, isVertical, num, num2, num3);
+        ComputeSliderLengths(arrangeSize, isVertical, upPageSize, thumbSize, downPageSize);
     }
-    else if (!ComputeScrollBarLengths(arrangeSize, isVertical, d, num, num2, num3))
+    else if (!ComputeScrollBarLengths(arrangeSize, isVertical, d, upPageSize, thumbSize, downPageSize))
     {
         return;
     }
@@ -349,64 +349,64 @@ void Track::OnArrange(const Size& arrangeSize)
 
     if (isVertical)
     {
-        CoerceLength(num, arrangeSize.Height());
-        CoerceLength(num3, arrangeSize.Height());
-        CoerceLength(num2, arrangeSize.Height());
-        dy = isDirectionReversed ? (num + num2) : 0;
-        size.cy = num3;
+        CoerceLength(upPageSize, arrangeSize.Height());
+        CoerceLength(downPageSize, arrangeSize.Height());
+        CoerceLength(thumbSize, arrangeSize.Height());
+        dy = isDirectionReversed ? (upPageSize + thumbSize) : 0;
+        size.cy = downPageSize;
 
         if (_increaseButton != NULL)
         {
             _increaseButton->Arrange(Rect(dx, dy, size.Width(), size.Height()));
         }
 
-        dy = isDirectionReversed ? 0.0 : (num3 + num2);
-        size.cy = num;
+        dy = isDirectionReversed ? 0.0 : (downPageSize + thumbSize);
+        size.cy = upPageSize;
 
         if (_decreaseButton != NULL)
         {
             _decreaseButton->Arrange(Rect(dx, dy, size.Width(), size.Height()));
         }
 
-        dy = isDirectionReversed ? num : num3;
-        size.cy = num2;
+        dy = isDirectionReversed ? upPageSize : downPageSize;
+        size.cy = thumbSize;
 
         if (_thumb != NULL)
         {
             _thumb->Arrange(Rect(dx, dy, size.Width(), size.Height()));
         }
-        _thumbCenterOffset = dy + (num2 * 0.5);
+        _thumbCenterOffset = dy + (thumbSize * 0.5);
         return ;
     }
 
-    CoerceLength(num, arrangeSize.Width());
-    CoerceLength(num3, arrangeSize.Width());
-    CoerceLength(num2, arrangeSize.Width());
-    dx = isDirectionReversed ? (num3 + num2) : 0;
-    size.cx = num;
+    CoerceLength(upPageSize, arrangeSize.Width());
+    CoerceLength(downPageSize, arrangeSize.Width());
+    CoerceLength(thumbSize, arrangeSize.Width());
+    dx = isDirectionReversed ? (downPageSize + thumbSize) : 0;
+    size.cx = upPageSize;
 
     if (_decreaseButton != NULL)
     {
         _decreaseButton->Arrange(Rect(dx, dy, size.Width(), size.Height()));
     }
 
-    dx = isDirectionReversed ? 0 : (num + num2);
-    size.cx = num3;
+    dx = isDirectionReversed ? 0 : (upPageSize + thumbSize);
+    size.cx = downPageSize;
 
     if (_increaseButton != NULL)
     {
         _increaseButton->Arrange(Rect(dx, dy, size.Width(), size.Height()));
     }
 
-    dx = isDirectionReversed ? num3 : num;
-    size.cx = num2;
+    dx = isDirectionReversed ? downPageSize : upPageSize;
+    size.cx = thumbSize;
 
     if (_thumb != NULL)
     {
         _thumb->Arrange(Rect(dx, dy, size.Width(), size.Height()));
     }
 
-    _thumbCenterOffset = dx + (num2 * 0.5);
+    _thumbCenterOffset = dx + (thumbSize * 0.5);
 }
 
 Size Track::OnMeasure(const Size& constraintSize)
