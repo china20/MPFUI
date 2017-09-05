@@ -261,6 +261,29 @@ public:
         }
 	}
 
+    suic::Mutex& GetLock()
+    {
+        return moni_lock;
+    }
+
+    bool PopItem(Element& ele)
+	{
+		if (m_queue.size() == 0) 
+        {
+            return false;
+        }
+
+		ele = m_queue.front();
+		m_queue.pop_front();
+
+		return true;
+	}
+
+    void Clear()
+    {
+        m_queue.clear();
+    }
+
 private:
 
     suic::Mutex		moni_lock;

@@ -30,7 +30,7 @@ double VideoPlayThread::SynchronizeVideo(double pts, int repeat_pict)
     // 
     // ¸üÐÂÊ±ÖÓ
     // 
-    frameDelay = av_q2d(_videoInfo->videoStrm->codec->time_base);
+    frameDelay = av_q2d(_videoInfo->GetVideoStrm()->codec->time_base);
     frameDelay += repeat_pict * (frameDelay * 0.5);
 
     _videoInfo->videoClock += frameDelay;
@@ -58,7 +58,7 @@ void VideoPlayThread::Run()
 
         double videoPts = playItem->videoPts;
 
-        videoPts *= av_q2d(_videoInfo->videoStrm->time_base);
+        videoPts *= av_q2d(_videoInfo->GetVideoStrm()->time_base);
         videoPts = SynchronizeVideo(videoPts, playItem->repeat_pict);
 
         if (_videoInfo->seek_flag_video)

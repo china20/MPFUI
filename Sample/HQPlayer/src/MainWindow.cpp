@@ -72,6 +72,22 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
         pSlider->AddValueChanged(new suic::FloatPropChangedEventHandler(this, &MainWindow::OnVolumeChanged));
         pSlider->SetValue(100.0f);
     }
+
+    suic::Slider* pPB = FindElem<suic::Slider>("playPB");
+    if (NULL != pPB)
+    {
+        pPB->AddValueChanged(new suic::FloatPropChangedEventHandler(this, &MainWindow::OnPlayProgressChanged));
+        pPB->SetValue(0);
+    }
+}
+
+void MainWindow::OnPlayProgressChanged(suic::Element*, suic::FloatPropChangedEventArg* e)
+{
+    if (NULL != _playManager)
+    {
+        _playManager->SetPlayProgress(e->GetNewValue() / 100.0f);
+    }
+    e->SetHandled(true);
 }
 
 void MainWindow::OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg* e)

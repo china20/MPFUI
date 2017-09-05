@@ -16,6 +16,37 @@ VideoInfo::~VideoInfo()
     }
 }
 
+void VideoInfo::ClearVideos()
+{
+    suic::Mutex::Locker guard(vedioQueue.GetLock());
+    AVPacket* packet = NULL;
+
+    while (vedioQueue.PopItem(packet))
+    {
+        if (NULL != packet)
+        {
+            av_free_packet(packet);
+            av_packet_free(&packet);
+        }
+    }
+}
+
+void VideoInfo::ClearAudios()
+{
+    suic::Mutex::Locker guard(audioQueue.GetLock());
+
+    AVPacket* packet = NULL;
+
+    while (audioQueue.PopItem(packet))
+    {
+        if (NULL != packet)
+        {
+            av_free_packet(packet);
+            av_packet_free(&packet);
+        }
+    }
+}
+
 VideoReaderThr::VideoReaderThr(suic::String filename, suic::InvokeProxy* reflesh)
     : _filename(filename)
     , _reflesh(reflesh)
@@ -66,6 +97,18 @@ bool VideoReaderThr::IsPause() const
 void VideoReaderThr::SetPlayVolume(int volume)
 {
     _videoInfo.volume = volume;
+}
+
+void VideoReaderThr::SetPlayProgress(float v)
+{
+    // 
+    // 只有在播放过程中设置才有效
+    // 
+    if (IsPlaying())
+    {
+        _videoInfo.seek_pos = _videoInfo.iDuration * v;
+        _videoInfo.seek_req = true;
+    }
 }
 
 void avcodec_get_frame_defaults(AVFrame *frame)
@@ -257,9 +300,14 @@ static int audio_decode_frame(VideoInfo *is, double *pts_ptr)
             if (is->seek_flag_audio)
             {
                 // 
+                // 这里需要把毫秒转换到秒
+                // 
+                int64_t iAudioTime = is->audioClock * 1000;
+
+                // 
                 // 发生了跳转 则跳过关键帧到目的时间的这几帧
                 // 
-                if (is->audioClock < is->seekTime)
+                if (iAudioTime < is->seekTime)
                 {
                     break;
                 }
@@ -294,6 +342,15 @@ static int audio_decode_frame(VideoInfo *is, double *pts_ptr)
         if (!is->audioQueue.Pop(is->audio_pkt))
         {
             return -1;
+        }
+
+        // 
+        // 发生了跳转，刷新缓存
+        // 
+        if (NULL == is->audio_pkt)
+        {
+            avcodec_flush_buffers(is->audioStrm->codec);
+            continue;
         }
 
         pkt = is->audio_pkt;
@@ -638,6 +695,65 @@ int VideoReaderThr::InitAudioComponent(VideoInfo *pVI, int streamIndex)
     return 0;
 }
 
+void VideoReaderThr::DoSeekFrameReq()
+{
+    if (_videoInfo.seek_req)
+    {
+        int stream_index = -1;
+        int64_t seek_target = _videoInfo.seek_pos;
+
+        if (_videoInfo.videoIndex >= 0)
+        {
+            stream_index = _videoInfo.videoIndex;
+        }
+        else if (_videoInfo.audioIndex >= 0)
+        {
+            stream_index = _videoInfo.audioIndex;
+        }
+
+        AVRational aVRational = {1, AV_TIME_BASE};
+        
+        if (stream_index >= 0)
+        {
+            // 
+            // seek_target单位是毫秒，这里需要转换到FFMpeg时间单位
+            // 
+            seek_target = av_rescale_q(seek_target, aVRational, _videoInfo.GetStream(stream_index)->time_base);
+        }
+
+        // 
+        // 定位帧到指定时间
+        // 
+        if (av_seek_frame(_videoInfo.formatCtx, stream_index, seek_target, AVSEEK_FLAG_BACKWARD) < 0) 
+        {
+            fprintf(stderr, "%s: error while seeking\n", _videoInfo.formatCtx->filename);
+        } 
+        else 
+        {
+            if (_videoInfo.audioIndex >= 0) 
+            {
+                _videoInfo.ClearVideos();
+                _videoInfo.vedioQueue.Add(NULL);
+            }
+
+            if (_videoInfo.videoIndex >= 0) 
+            {
+                _videoInfo.ClearAudios();
+                _videoInfo.audioQueue.Add(NULL);
+            }
+        }
+
+        _videoInfo.seek_req = false;
+
+        // 
+        // 转换到秒
+        // 
+        _videoInfo.seekTime = _videoInfo.seek_pos / 1000000.0;
+        _videoInfo.seek_flag_audio = true;
+        _videoInfo.seek_flag_video = true;
+    }
+}
+
 void VideoReaderThr::Run()
 {
     suic::Mulstr fname(_filename.c_str());
@@ -675,7 +791,8 @@ void VideoReaderThr::Run()
         return;
     }
 
-    if (avformat_find_stream_info(pFormatCtx, NULL) < 0) {
+    if (avformat_find_stream_info(pFormatCtx, NULL) < 0) 
+    {
         printf("Could't find stream infomation.\n");
         return;
     }
@@ -684,16 +801,6 @@ void VideoReaderThr::Run()
     if (pFormatCtx->duration != AV_NOPTS_VALUE) 
     {
         _videoInfo.iDuration = pFormatCtx->duration + 5000;
-        _videoInfo.iDuration /= 1000;
-
-        int hours, mins, secs, us;
-        int64_t duration = pFormatCtx->duration + 5000;
-        secs = duration / AV_TIME_BASE;
-        us = duration % AV_TIME_BASE;
-        mins = secs / 60;
-        secs %= 60;
-        hours = mins/ 60;
-        mins %= 60;
     }
 
     //
@@ -728,6 +835,9 @@ void VideoReaderThr::Run()
         printf("Didn't find a audio stream.\n");
     }
 
+    _videoInfo.videoIndex = videoStream;
+    _videoInfo.audioIndex = audioStream;
+
     // 
     // 输出视频信息
     // 
@@ -757,9 +867,7 @@ void VideoReaderThr::Run()
         return;
     }
 
-    _videoInfo.videoStrm = pFormatCtx->streams[videoStream];
-
-    _videoInfo.vrate = _videoInfo.videoStrm->r_frame_rate;
+    _videoInfo.vrate = _videoInfo.GetVideoStrm()->r_frame_rate;
     if (_videoInfo.vrate.num / _videoInfo.vrate.den > 100) 
     {
         _videoInfo.vrate.num = 21;
@@ -824,6 +932,8 @@ void VideoReaderThr::Run()
             _decodeThr->Join();
             break;
         }
+
+        DoSeekFrameReq();
 
         if (_videoInfo.isPause)
         {
@@ -936,7 +1046,7 @@ double VideoDecodeThr::SynchronizeVideo(AVFrame *srcFrame, double pts)
     // 
     // 更新时钟
     // 
-    frameDelay = av_q2d(_videoInfo->videoStrm->codec->time_base);
+    frameDelay = av_q2d(_videoInfo->GetVideoStrm()->codec->time_base);
     frameDelay += srcFrame->repeat_pict * (frameDelay * 0.5);
 
     _videoInfo->videoClock += frameDelay;
@@ -1054,6 +1164,13 @@ void VideoDecodeThr::Run()
             }
         }
 
+        if (NULL == pPacket)
+        {
+            _videoInfo->ticklast = 0;
+            avcodec_flush_buffers(_videoInfo->GetVideoStrm()->codec);
+            continue;
+        }
+
         startTime = GetCurrentTimeMsec();
 
         //
@@ -1071,12 +1188,29 @@ void VideoDecodeThr::Run()
 
         int64_t aPts = _videoInfo->audioClock * 1000;
         int64_t vPts = av_rescale_q(av_frame_get_best_effort_timestamp(pFrame), 
-            _videoInfo->videoStrm->time_base, TIMEBASE_MS);
+            _videoInfo->GetVideoStrm()->time_base, TIMEBASE_MS);
         DWORD tickcur = GetTickCount();
         int tickdiff = tickcur - _videoInfo->ticklast;
         int64_t avDiff = aPts - vPts - _videoInfo->tickavdiff;
 
         _videoInfo->ticklast = tickcur;
+
+        if (_videoInfo->seek_flag_video)
+        {
+            // 
+            // 发生了跳转 则跳过关键帧到目的时间的这几帧
+            //
+            if (vPts < _videoInfo->seekTime)
+            {
+                av_free_packet(pPacket);
+                av_packet_free(&pPacket);
+                continue;
+            }
+            else
+            {
+                _videoInfo->seek_flag_video = false;
+            }
+        }
 
         if (tickdiff - _videoInfo->tickframe >  2) 
         {
@@ -1127,7 +1261,11 @@ void VideoDecodeThr::Run()
             bmp->ref();
             bmp->bmp.Create(pCodecCtx->width, pCodecCtx->height, pRgbBuffer, 32);
             bmp->curDuration = vPts;
-            bmp->duration = _videoInfo->iDuration;
+
+            // 
+            // 转换到毫秒
+            // 
+            bmp->duration = _videoInfo->iDuration / 1000;
 
             _reflesh->PostInvoker(0, bmp);
 

@@ -36,6 +36,7 @@ public:
     void OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg* e);
 
     void OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
+    void OnPlayProgressChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
 
 protected:
 

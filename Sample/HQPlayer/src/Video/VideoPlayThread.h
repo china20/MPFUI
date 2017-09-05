@@ -84,11 +84,12 @@ public:
     AVPacket *vPacket;
 
     AVFormatContext *formatCtx;
-
     AVFrame *audio_frame;
 
-    AVStream *videoStrm;
-    AVStream *audioStrm;
+    int audioIndex;
+    int videoIndex;
+
+    AVStream* audioStrm;
 
     AVCodec* aCodec;
     AVCodec* vCodec;
@@ -116,11 +117,13 @@ public:
     bool readFinished;
     bool decodeFinished;
 
+    bool seek_req;
     bool seek_flag_audio;
     bool seek_flag_video;
 
     // 跳转到播放的时间点
     int seekTime;
+    int64_t seek_pos;
 
     int volume;
     suic::Uint32 audioID;
@@ -159,18 +162,21 @@ public:
         , decodeFinished(false)
         , isPause(false)
         , quit(false)
+        , seek_req(false)
         , seek_flag_audio(false)
         , seek_flag_video(false)
         , vPacket(NULL)
         , formatCtx(NULL)
+        , audioIndex(-1)
+        , videoIndex(-1)
         , audioStrm(NULL)
-        , videoStrm(NULL)
         , audio_frame(NULL)
         , iDuration(0)
         , vCodecCtx(NULL)
         , aCodecCtx(NULL)
         , audioSwrCtx(NULL)
         , seekTime(0)
+        , seek_pos(0)
         , videoClock(0)
         , audioClock(0)
         , tickavdiff(0)
@@ -201,6 +207,41 @@ public:
     }
 
     ~VideoInfo();
+
+    AVStream* GetVideoStrm()
+    {
+        return GetStream(videoIndex);
+    }
+
+    AVStream* GetAudioStrm()
+    {
+        return GetStream(audioIndex);
+    }
+
+    AVStream* GetStream(int index)
+    {
+        if (NULL != formatCtx && index >= 0)
+        {
+            return formatCtx->streams[index];
+        }
+        else
+        {
+            return NULL;
+        }
+    }
+
+    void PushVideoPacket(AVPacket* packet)
+    {
+        vedioQueue.Add(packet);
+    }
+
+    void PushAudioPacket(AVPacket* packet)
+    {
+        audioQueue.Add(packet);
+    }
+
+    void ClearVideos();
+    void ClearAudios();
 };
 
 class VideoPlayThread : public suic::Thread

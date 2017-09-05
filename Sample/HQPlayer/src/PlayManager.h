@@ -17,6 +17,7 @@ public:
     void OnInvoker(suic::Object* sender, suic::InvokerArg* e);
 
     void SetPlayVolume(int volume);
+    void SetPlayProgress(float v);
 
     void PlayCurrentVideo();
     void PlayVideo(suic::String filename);
@@ -43,6 +44,7 @@ private:
 
     int _volume;
     int _playIndex;
+    bool _fromPlay;
     suic::Array<suic::String> _playLists;
 };
 

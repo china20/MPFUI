@@ -61,9 +61,11 @@ public:
     bool IsPause() const;
 
     void SetPlayVolume(int volume);
+    void SetPlayProgress(float v);
 
 private:
 
+    void DoSeekFrameReq();
     int InitAudioComponent(VideoInfo *pVI, int streamIndex);
 
 private:

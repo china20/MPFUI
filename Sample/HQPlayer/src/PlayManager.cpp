@@ -10,6 +10,7 @@ PlayManager::PlayManager()
     _reflesh = NULL;
     _playIndex = -1;
     _volume = 100;
+    _fromPlay = false;
 }
 
 PlayManager::~PlayManager()
@@ -83,7 +84,9 @@ void PlayManager::UpdatePlayDate(BmpInfo* bmp)
         double dAll = bmp->duration / 1.0f;
         double dRatio = (double)dCur / (double)dAll;
 
+        _fromPlay = true;
         pPB->SetValue(dRatio * 100);
+        _fromPlay = false;
     }
 }
 
@@ -112,7 +115,9 @@ void PlayManager::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
             suic::Slider* pPB = _rootView->FindElem<suic::Slider>("playPB");
             if (NULL != pPB)
             {
+                _fromPlay = true;
                 pPB->SetValue(100.0f);
+                _fromPlay = false;
             }
         }
     }
@@ -156,6 +161,14 @@ void PlayManager::SetPlayVolume(int volume)
     if (NULL != _vReaderThr)
     {
         _vReaderThr->SetPlayVolume(_volume);
+    }
+}
+
+void PlayManager::SetPlayProgress(float v)
+{
+    if (NULL != _vReaderThr && !_fromPlay)
+    {
+        _vReaderThr->SetPlayProgress(v);
     }
 }
 
