@@ -60,6 +60,10 @@
         <ImageBrush x:Key="sysbtn_max_hover" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="19,0,19,21" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="sysbtn_max_down" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="38,0,19,21" ViewboxUnits="Absolute" />
 
+        <ImageBrush x:Key="BrowserNormal" ImageSource="HQPlayer/Images/third_player/browser.png" Viewbox="0,0,20,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="BrowserHot" ImageSource="HQPlayer/Images/third_player/browser.png" Viewbox="20,0,20,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="BrowserPress" ImageSource="HQPlayer/Images/third_player/browser.png" Viewbox="40,0,20,21" ViewboxUnits="Absolute" />
+        
         <!--ProgressBar皮肤资源定义-->        
         <ImageBrush x:Key="pbTrackBackground" ImageSource="HQPlayer/Images/Ctrl/slider_bk.png" />
         <ImageBrush x:Key="pbTrackForeground" ImageSource="HQPlayer/Images/Ctrl/play_slider.png" />
@@ -75,6 +79,9 @@
 
         <ImageBrush x:Key="VolumeButtonNormal" ImageSource="HQPlayer/Images/Ctrl/volume_button.png" Viewbox="0,0,13,13" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="VolumeButtonHot" ImageSource="HQPlayer/Images/Ctrl/volume_button.png" Viewbox="13,0,13,13" ViewboxUnits="Absolute" />
+
+        <SolidColorBrush x:Key="listBoxItemHot" Color="#99444444" />
+        <SolidColorBrush x:Key="listBoxItemSelected" Color="#99555555" />
 
         <Style TargetType="Button" x:Key="ButtonStyle" >
             <Setter Property="Template">
@@ -380,20 +387,23 @@
                     </Grid>
 
                     <Button Name="btnStop" Width="22" Height="44" Margin="2" Click="OnClickStopButton" IsEnabled="False"
+                            ToolTip="停止"
                             Tag1="{DynamicResource StopNormal}"
                             Tag2="{DynamicResource StopHot}"
                             Tag3="{DynamicResource StopPress}"
                             Tag4="{DynamicResource StopEnabled}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
-                    <Button Name="prevStop" Width="22" Height="44" Margin="2" Click="OnClickPrevButton" Padding="2"
+                    <Button Name="prevStop" Width="22" Height="44" Margin="2" Click="OnClickPrevButton"
+                            ToolTip="上一个"
                             Tag1="{DynamicResource PrevNormal}"
                             Tag2="{DynamicResource PrevHot}"
                             Tag3="{DynamicResource PrevPress}"
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
 
-                    <Button Name="nextStop" Width="22" Height="44" Margin="2" Click="OnClickNextButton" Padding="2"
+                    <Button Name="nextStop" Width="22" Height="44" Margin="2" Click="OnClickNextButton" 
+                            ToolTip="下一个"
                             Tag1="{DynamicResource NextNormal}"
                             Tag2="{DynamicResource NextHot}"
                             Tag3="{DynamicResource NextPress}"
@@ -407,6 +417,12 @@
                     </StackPanel>
 
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" FlowDirection="RightToLeft">
+                        
+                        <Button Name="btnFull" Width="20" Height="21" Margin="3,2,3,2" Click="OnClickBrowserButton" ToolTip="播放列表"
+                            Tag1="{DynamicResource BrowserNormal}"
+                            Tag2="{DynamicResource BrowserHot}"
+                            Tag3="{DynamicResource BrowserPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
                         <Button Name="btnFull" Width="24" Height="44" Margin="2" Click="OnClickFullButton" ToolTip="全屏显示"
                             Tag1="{DynamicResource FullNormal}"
@@ -448,9 +464,15 @@
                     </StackPanel>
                 </DockPanel>
             </DockPanel>
-            <Grid>
+            <DockPanel>
+                <DockPanel Name="rightPanel" Width="180" DockPanel.Dock="Right" Visibility="Collapsed" >
+                    <DockPanel DockPanel.Dock="Bottom" Background="#FF111111" MinHeight="60" >
+                        
+                    </DockPanel>
+                    <ListBox Name="playList" Background="#FF121212" BorderThickness="0" />
+                </DockPanel>
                 <Grid Name="layPlayer" />
-            </Grid>
+            </DockPanel>
         </DockPanel>
     </Grid>
 </Window>
