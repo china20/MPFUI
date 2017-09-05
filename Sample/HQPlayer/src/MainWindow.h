@@ -28,6 +28,8 @@ public:
     MainWindow();
     ~MainWindow();
 
+    void SetFullScreenMode(bool bFull);
+
     void OnLoaded(suic::LoadedEventArg* e);
 
     void OnClickButton(suic::DpObject* sender, suic::RoutedEventArg* e);
@@ -42,6 +44,8 @@ protected:
 
     void OnRenderSizeChanged(suic::SizeChangedInfo& sizeInfo);
     void OnPreviewMouseMove(suic::MouseButtonEventArg* e);
+    void OnKeyDown(suic::KeyboardEventArg* e);
+    void OnPreviewMouseLeftButtonDown(suic::MouseButtonEventArg* e);
 
     void OnCheckMouseMove(suic::Object* sender, suic::EventArg* e);
 
@@ -57,9 +61,11 @@ protected:
 
 private:
 
+    suic::Rect _playPos;
     suic::Rect _layBotPos;
     PlayManager* _playManager;
     suic::Element* _layBottom;
+    suic::Element* _playArea;
 
     suic::Point _lastMousePt;
     // 定时器，用来检测在全屏状态时鼠标停留时间

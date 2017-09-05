@@ -61,6 +61,8 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     //
     CenterWindow();
     _layBottom = FindName("layBottom");
+    _playArea = FindName("layPlayer");
+
     UpdateLayBottomPos();
 
     // 
@@ -78,6 +80,27 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     {
         pPB->AddValueChanged(new suic::FloatPropChangedEventHandler(this, &MainWindow::OnPlayProgressChanged));
         pPB->SetValue(0);
+    }
+}
+
+void MainWindow::OnKeyDown(suic::KeyboardEventArg* e)
+{
+    if (e->GetKey() == suic::Key::kSpace && NULL != _playManager)
+    {
+        _playManager->PauseVideo(!_playManager->IsPause());
+    }
+    else if (e->GetKey() == suic::Key::kEscape && AllowsFullScreen())
+    {
+        SetFullScreenMode(false);
+    }
+}
+
+void MainWindow::OnPreviewMouseLeftButtonDown(suic::MouseButtonEventArg* e)
+{
+    if (_playPos.PointIn(e->GetMousePoint()) && NULL != _playManager)
+    {
+        _playManager->PauseVideo(!_playManager->IsPause());
+        Focus();
     }
 }
 
@@ -115,6 +138,7 @@ void MainWindow::UpdateLayBottomPos()
 {
     if (NULL != _layBottom)
     {
+        _playPos = suic::Rect(_playArea->GetCanvasOffset(), _playArea->GetRenderSize());
         _layBotPos = suic::Rect(_layBottom->GetCanvasOffset(), _layBottom->GetRenderSize());
     }
 }
@@ -234,9 +258,15 @@ void MainWindow::OnClickStopButton(suic::DpObject* sender, suic::RoutedEventArg*
 
 void MainWindow::OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg* e)
 {
-    suic::FrameworkElement* pFull = suic::DynamicCast<suic::FrameworkElement>(sender);
     e->SetHandled(true);
-    SetAllowsFullScreen(!AllowsFullScreen());
+    SetFullScreenMode(!AllowsFullScreen());
+}
+
+void MainWindow::SetFullScreenMode(bool bFull)
+{
+    suic::FrameworkElement* pFull = FindElem<suic::FrameworkElement>("btnFull");
+
+    SetAllowsFullScreen(bFull);
 
     if (AllowsFullScreen())
     {
