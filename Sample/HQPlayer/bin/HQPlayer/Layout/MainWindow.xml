@@ -253,7 +253,7 @@
             </Setter>
         </Style>
 
-        <Style TargetType="{x:Type Slider}">
+        <Style TargetType="{x:Type Slider}" x:Key="VolumeSliderStyle" >
             <Setter Property="Background" Value="{StaticResource pbvTrackBackground}"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -268,6 +268,59 @@
                                 </Track.IncreaseRepeatButton>
                                 <Track.Thumb>
                                     <Thumb x:Name="Thumb" Style="{StaticResource HorizontalSliderThumbStyle}"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HorizontalPBSliderThumbStyle" TargetType="Thumb">
+            <Setter Property="Background" Value="{StaticResource VolumeButtonNormal}" />
+            <Setter Property="Width" Value="4" />
+            <Setter Property="Height" Value="4" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle Fill="{TemplateBinding Background}" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource VolumeButtonHot}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="PBSliderRepeatButtonStyle" TargetType="RepeatButton">
+            <Setter Property="Background" Value="{StaticResource pbTrackForeground}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle Fill="{TemplateBinding Background}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="{x:Type Slider}" x:Key="PBSliderStyle" >
+            <Setter Property="Background" Value="{StaticResource pbTrackBackground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Border Background="{TemplateBinding Background}" Height="4" Cursor="Hand" >
+                            <Track x:Name="PART_Track" >
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource PBSliderRepeatButtonStyle}"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource SliderIncreaseRepeatButtonStyle}"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Style1="{StaticResource HorizontalPBSliderThumbStyle}"/>
                                 </Track.Thumb>
                             </Track>
                         </Border>
@@ -301,7 +354,10 @@
 
             <DockPanel Name="layBottom" Height="52" VerticalAlignment="Bottom" Background="#FF111111" DockPanel.Dock="Bottom">
                 <Grid Margin="0,0,0,0" DockPanel.Dock="Top">
-                    <ProgressBar Name="playPB" Height="4" HorizontalAlignment="Stretch" Value="1" />
+                    <Slider Name="playPB" Style="{DynamicResource PBSliderStyle}"
+                            HorizontalAlignment="Stretch"
+                            IsSelectionRangeEnabled="False" IsMoveToPointEnabled="True"
+                            Height="4" Value="1" Maximum="100" />
                 </Grid>
                 
                 <DockPanel>
@@ -372,8 +428,9 @@
                                 Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
                         <Grid Width="79" Height="44" >
-                            <Slider Name="volumeSlider" SelectionEnd="{Binding Value,RelativeSource={RelativeSource Self}}" 
-                                    IsSelectionRangeEnabled="True" IsMoveToPointEnabled="True" Width="79" Height="44" Value="10" />
+                            <Slider Name="volumeSlider" Style="{DynamicResource VolumeSliderStyle}"
+                                    IsSelectionRangeEnabled="False" IsMoveToPointEnabled="True" 
+                                    Width="79" Height="44" Value="1" Maximum="128" />
                         </Grid>
                         
                         <Grid Width="24" Height="44" Margin="3,0,10,0">

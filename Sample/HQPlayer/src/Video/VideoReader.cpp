@@ -63,6 +63,11 @@ bool VideoReaderThr::IsPause() const
     return _videoInfo.isPause;
 }
 
+void VideoReaderThr::SetPlayVolume(int volume)
+{
+    _videoInfo.volume = volume;
+}
+
 void avcodec_get_frame_defaults(AVFrame *frame)
 {
 #if LIBAVCODEC_VERSION_MAJOR >= 55

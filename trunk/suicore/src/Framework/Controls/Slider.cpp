@@ -198,9 +198,8 @@ bool Slider::StaticInit()
         IsMoveToPointEnabledProperty = DpProperty::Register("IsMoveToPointEnabled", RTTIType(), Boolean::RTTIType(), DpPropMemory::GetPropMeta(Boolean::False));
 
         TicksProperty->SetConvertValueCb(IntAutoArrayConvert::Convert);
-        RangeBase::MinimumProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(OFloat::GetZeroFloat(), PropMetadataOptions::AffectsMeasure));
-        RangeBase::MaximumProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(new OFloat(10.0f), PropMetadataOptions::AffectsMeasure));
-        RangeBase::ValueProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(OFloat::GetZeroFloat(), PropMetadataOptions::AffectsMeasure));
+        
+        RangeBase::MaximumProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(new OFloat(10.0f), PropMetadataOptions::AffectsMeasure, &RangeBase::OnMaximumPropChanged));
 
         EventHelper::RegisterClassHandler(RTTIType(), Thumb::DragStartedEvent, new RoutedEventHandler(&Slider::OnThumbDragStartedEvent), false);
         EventHelper::RegisterClassHandler(RTTIType(), Thumb::DragDeltaEvent, new RoutedEventHandler(&Slider::OnThumbDragDeltaEvent), false);
@@ -403,7 +402,7 @@ void Slider::UpdateSelectionRangeElementPositionAndSize()
     {
         renderSize = GetTrack()->GetRenderSize();
         thumbSize = (GetTrack()->GetThumb() != NULL) ? GetTrack()->GetThumb()->GetRenderSize() : Size();
-        Float num = RangeBase::GetMaximum() - RangeBase::GetMinimum();
+        Float numLength = RangeBase::GetMaximum() - RangeBase::GetMinimum();
         FrameworkElement* selectionRangeElement = _selectionRangeElement;
 
         if (selectionRangeElement != NULL)
@@ -412,13 +411,13 @@ void Slider::UpdateSelectionRangeElementPositionAndSize()
 
             if (GetOrientation() == Orientation::Horizontal)
             {
-                if ((num == 0) || (renderSize.Width() == thumbSize.Width()))
+                if ((numLength == 0) || (renderSize.Width() == thumbSize.Width()))
                 {
                     num2 = 0.0f;
                 }
                 else
                 {
-                    num2 = max(0.0f, ((renderSize.Width() - thumbSize.Width()) / (Float)num));
+                    num2 = Math::Max(0.0f, ((renderSize.Width() - thumbSize.Width()) / (Float)numLength));
                 }
 
                 selectionRangeElement->SetWidth((GetSelectionEnd() - GetSelectionStart()) * num2);
@@ -434,13 +433,13 @@ void Slider::UpdateSelectionRangeElementPositionAndSize()
             }
             else
             {
-                if ((num == 0) || (renderSize.Height() == thumbSize.Height()))
+                if ((numLength == 0) || (renderSize.Height() == thumbSize.Height()))
                 {
                     num2 = 0;
                 }
                 else
                 {
-                    num2 = max(0.0f, ((renderSize.Height() - thumbSize.Height()) / (Float)num));
+                    num2 = max(0.0f, ((renderSize.Height() - thumbSize.Height()) / (Float)numLength));
                 }
 
                 selectionRangeElement->SetHeight((GetSelectionEnd() - GetSelectionStart()) * num2);
@@ -533,7 +532,10 @@ void Slider::OnThumbDragStarted(DragStartedEventArg* e)
 
 void Slider::OnPreviewMouseLeftButtonDown(MouseButtonEventArg* e)
 {
-    if ((IsMoveToPointEnabled() && (GetTrack() != NULL)) && ((GetTrack()->GetThumb() != NULL) && !GetTrack()->GetThumb()->IsMouseOver()))
+    if ((IsMoveToPointEnabled() && 
+        (GetTrack() != NULL)) && 
+        ((GetTrack()->GetThumb() != NULL) && 
+        !GetTrack()->GetThumb()->IsMouseOver()))
     {
         Point position = GetTrack()->PointToScreen(Point());
         int o = 0;

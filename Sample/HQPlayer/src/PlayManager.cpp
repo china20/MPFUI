@@ -9,6 +9,7 @@ PlayManager::PlayManager()
     _vReaderThr = NULL;
     _reflesh = NULL;
     _playIndex = -1;
+    _volume = 100;
 }
 
 PlayManager::~PlayManager()
@@ -75,7 +76,7 @@ void PlayManager::UpdatePlayDate(BmpInfo* bmp)
         pTxt->SetText(FormatTime(bmp->duration));
     }
 
-    suic::ProgressBar* pPB = _rootView->FindElem<suic::ProgressBar>("playPB");
+    suic::Slider* pPB = _rootView->FindElem<suic::Slider>("playPB");
     if (NULL != pPB)
     {
         double dCur = bmp->curDuration / 1.0f;
@@ -108,7 +109,7 @@ void PlayManager::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
         _playCb(e->GetWhat() == 1);
         if (0 == e->GetWhat())
         {
-            suic::ProgressBar* pPB = _rootView->FindElem<suic::ProgressBar>("playPB");
+            suic::Slider* pPB = _rootView->FindElem<suic::Slider>("playPB");
             if (NULL != pPB)
             {
                 pPB->SetValue(100.0f);
@@ -148,6 +149,16 @@ void PlayManager::PlayVideo(suic::String filename)
     PlayCurrentVideo();
 }
 
+void PlayManager::SetPlayVolume(int volume)
+{
+    _volume = volume;
+
+    if (NULL != _vReaderThr)
+    {
+        _vReaderThr->SetPlayVolume(_volume);
+    }
+}
+
 void PlayManager::PlayCurrentVideo()
 {
     suic::String filename;
@@ -167,6 +178,8 @@ void PlayManager::PlayCurrentVideo()
 
             _vReaderThr = new VideoReaderThr(filename, _reflesh);
             _vReaderThr->ref();
+
+            SetPlayVolume(_volume);
             _vReaderThr->Start();
         }
     }

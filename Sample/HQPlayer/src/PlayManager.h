@@ -16,6 +16,8 @@ public:
     void Init(PlayerView* pView, suic::Element* pRoot, PlayVideoCb cb);
     void OnInvoker(suic::Object* sender, suic::InvokerArg* e);
 
+    void SetPlayVolume(int volume);
+
     void PlayCurrentVideo();
     void PlayVideo(suic::String filename);
     void PauseVideo(bool bPause);
@@ -39,6 +41,7 @@ private:
     VideoReaderThr* _vReaderThr;
     suic::InvokeProxy* _reflesh;
 
+    int _volume;
     int _playIndex;
     suic::Array<suic::String> _playLists;
 };

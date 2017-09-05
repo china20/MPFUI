@@ -62,6 +62,25 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     CenterWindow();
     _layBottom = FindName("layBottom");
     UpdateLayBottomPos();
+
+    // 
+    // 注册音量按钮的回调
+    // 
+    suic::Slider* pSlider = FindElem<suic::Slider>("volumeSlider");
+    if (NULL != pSlider)
+    {
+        pSlider->AddValueChanged(new suic::FloatPropChangedEventHandler(this, &MainWindow::OnVolumeChanged));
+        pSlider->SetValue(100.0f);
+    }
+}
+
+void MainWindow::OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg* e)
+{
+    if (NULL != _playManager)
+    {
+        _playManager->SetPlayVolume(e->GetNewValue());
+    }
+    e->SetHandled(true);
 }
 
 void MainWindow::OnCheckMouseMove(suic::Object* sender, suic::EventArg* e)

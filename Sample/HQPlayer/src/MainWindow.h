@@ -35,6 +35,8 @@ public:
     void OnClickStopButton(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg* e);
 
+    void OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
+
 protected:
 
     void OnRenderSizeChanged(suic::SizeChangedInfo& sizeInfo);

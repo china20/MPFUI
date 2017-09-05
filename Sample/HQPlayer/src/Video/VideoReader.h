@@ -60,6 +60,8 @@ public:
     bool IsPlaying() const;
     bool IsPause() const;
 
+    void SetPlayVolume(int volume);
+
 private:
 
     int InitAudioComponent(VideoInfo *pVI, int streamIndex);
