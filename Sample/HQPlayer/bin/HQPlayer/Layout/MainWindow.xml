@@ -59,7 +59,23 @@
         <ImageBrush x:Key="sysbtn_max_normal" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="0,0,19,21" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="sysbtn_max_hover" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="19,0,19,21" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="sysbtn_max_down" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="38,0,19,21" ViewboxUnits="Absolute" />
+
+        <!--ProgressBar皮肤资源定义-->        
+        <ImageBrush x:Key="pbTrackBackground" ImageSource="HQPlayer/Images/Ctrl/slider_bk.png" />
+        <ImageBrush x:Key="pbTrackForeground" ImageSource="HQPlayer/Images/Ctrl/play_slider.png" />
+
+        <ImageBrush x:Key="pbvTrackBackground" ImageSource="HQPlayer/Images/Ctrl/volume_bg.png" />
+        <ImageBrush x:Key="pbvTrackForeground" ImageSource="HQPlayer/Images/Ctrl/volume_now.png" />
+
+        <ImageBrush x:Key="VolumeOpenNormal" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="0,0,24,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeOpenHot" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="24,0,24,44" ViewboxUnits="Absolute" />
         
+        <ImageBrush x:Key="VolumeCloseNormal" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="48,0,24,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeCloseHot" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="72,0,24,44" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="VolumeButtonNormal" ImageSource="HQPlayer/Images/Ctrl/volume_button.png" Viewbox="0,0,13,13" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeButtonHot" ImageSource="HQPlayer/Images/Ctrl/volume_button.png" Viewbox="13,0,13,13" ViewboxUnits="Absolute" />
+
         <Style TargetType="Button" x:Key="ButtonStyle" >
             <Setter Property="Template">
                 <Setter.Value>
@@ -166,6 +182,99 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="ProgressBar">
+            <Setter Property="Background" Value="{DynamicResource pbTrackBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource pbTrackForeground}" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Border Name="PART_Track" Background="{TemplateBinding TemplateBinding}" BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" >
+                            <Rectangle Fill="{TemplateBinding Foreground}" Name="PART_Indicator" HorizontalAlignment="Left" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ProgressBar" x:Key="VolumeProgressStyle" >
+            <Setter Property="Background" Value="{DynamicResource pbvTrackBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource pbvTrackForeground}" />
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Border Name="PART_Track" Background="{TemplateBinding TemplateBinding}" BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" >
+                            <Rectangle Fill="{TemplateBinding Foreground}" Name="PART_Indicator" HorizontalAlignment="Left" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HorizontalSliderThumbStyle" TargetType="Thumb">
+            <Setter Property="Background" Value="{StaticResource VolumeButtonNormal}" />
+            <Setter Property="Width" Value="13" />
+            <Setter Property="Height" Value="13" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle Fill="{TemplateBinding Background}" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource VolumeButtonHot}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderRepeatButtonStyle" TargetType="RepeatButton">
+            <Setter Property="Background" Value="{StaticResource pbvTrackForeground}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle Fill="{TemplateBinding Background}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SliderIncreaseRepeatButtonStyle" TargetType="RepeatButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Rectangle />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Slider}">
+            <Setter Property="Background" Value="{StaticResource pbvTrackBackground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Border Background="{TemplateBinding Background}" Height="44" >
+                            <Track x:Name="PART_Track" >
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource SliderRepeatButtonStyle}"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource SliderIncreaseRepeatButtonStyle}"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Style="{StaticResource HorizontalSliderThumbStyle}"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         
     </Window.Resources>
 
@@ -191,8 +300,8 @@
             </DockPanel>
 
             <DockPanel Name="layBottom" Height="52" VerticalAlignment="Bottom" Background="#FF111111" DockPanel.Dock="Bottom">
-                <Grid Margin="0,4,0,2" DockPanel.Dock="Top">
-                    <ProgressBar Name="playPB" Height="3" HorizontalAlignment="Stretch" Value="1" />
+                <Grid Margin="0,0,0,0" DockPanel.Dock="Top">
+                    <ProgressBar Name="playPB" Height="4" HorizontalAlignment="Stretch" Value="1" />
                 </Grid>
                 
                 <DockPanel>
@@ -261,6 +370,23 @@
                                 Tag2="{DynamicResource OpenHot}"
                                 Tag3="{DynamicResource OpenPress}"
                                 Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                        <Grid Width="79" Height="44" >
+                            <Slider Name="volumeSlider" SelectionEnd="{Binding Value,RelativeSource={RelativeSource Self}}" 
+                                    IsSelectionRangeEnabled="True" IsMoveToPointEnabled="True" Width="79" Height="44" Value="10" />
+                        </Grid>
+                        
+                        <Grid Width="24" Height="44" Margin="3,0,10,0">
+                            <Button Name="closeVolume" Width="24" Height="44" 
+                                    Tag1="{DynamicResource VolumeOpenNormal}" 
+                                    Tag2="{DynamicResource VolumeOpenHot}" 
+                                    Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                            <Button Name="openVolume" Visibility="Hidden"
+                                    Tag1="{DynamicResource VolumeCloseNormal}"
+                                    Tag2="{DynamicResource VolumeCloseHot}"
+                                    Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                        </Grid>
                         
                     </StackPanel>
                 </DockPanel>
