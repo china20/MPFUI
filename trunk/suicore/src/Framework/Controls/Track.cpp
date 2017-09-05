@@ -337,7 +337,7 @@ void Track::OnArrange(const Size& arrangeSize)
     {
         ComputeSliderLengths(arrangeSize, isVertical, num, num2, num3);
     }
-    else if (!ComputeScrollBarLengths(arrangeSize, d, isVertical, num, num2, num3))
+    else if (!ComputeScrollBarLengths(arrangeSize, isVertical, d, num, num2, num3))
     {
         return;
     }
@@ -436,10 +436,11 @@ Size Track::OnMeasure(const Size& constraintSize)
 
 void Track::ComputeSliderLengths(Size arrangeSize, bool isVertical, int& decreaseButtonLength, int& thumbLength, int& increaseButtonLength)
 {
-    int height = 0;
-    int minimum = (int)GetMinimum();
-    int num2 = max(0, (int) (GetMaximum() - minimum));
-    int num3 = min(num2, GetValue() - minimum);
+    Float height = 0;
+    Float minimum = GetMinimum();
+    Float numLength = Math::Max(0, GetMaximum() - minimum);
+    // 矫正后的当前值
+    Float numPos = Math::Min(numLength, GetValue() - minimum);
 
     if (isVertical)
     {
@@ -453,29 +454,30 @@ void Track::ComputeSliderLengths(Size arrangeSize, bool isVertical, int& decreas
     }
 
     CoerceLength(thumbLength, height);
-    int trackLength = height - thumbLength;
-    decreaseButtonLength = (int)((Float)(trackLength * num3) / (Float)num2);
+    Float trackLength = height - thumbLength;
+    decreaseButtonLength = ((Float)(trackLength * numPos) / (Float)numLength);
     CoerceLength(decreaseButtonLength, trackLength);
     increaseButtonLength = trackLength - decreaseButtonLength;
     CoerceLength(increaseButtonLength, trackLength);
 
-    _density = (Float)num2 / (Float)trackLength;
+    _density = (Float)numLength / (Float)trackLength;
 }
 
-bool Track::ComputeScrollBarLengths(Size arrangeSize, int viewportSize, bool isVertical, int& decreaseButtonLength, int& thumbLength, int& increaseButtonLength)
+bool Track::ComputeScrollBarLengths(Size arrangeSize, bool isVertical, int viewportSize, int& decreaseButtonLength, int& thumbLength, int& increaseButtonLength)
 {
     int height = 0;
-    int num6 = 0;
-    int minimum = GetMinimum();
+    // 矫正后的Thumb大小
+    int thumbRealLen = 0;
+    Float minimum = GetMinimum();
     // 滚动的逻辑大小
     // GetMaximum()表示可以滚动的逻辑高度（总的逻辑高度减掉可视高度）
-    int num2 = max(0, (int)(GetMaximum() - minimum));
+    Float numLength = Math::Max(0, (GetMaximum() - minimum));
     // 当前跟踪的逻辑位置
-    int num3 = min(num2, (int)(GetValue() - minimum));
+    Float numPos = Math::Min(numLength, (GetValue() - minimum));
     // 计算总的逻辑高度（加上viewportSize可视高度）
-    int num4 = max(0, num2) + viewportSize;
+    int numLogicLen = Math::Max(0, numLength) + viewportSize;
 
-    if (num4 == 0)
+    if (numLogicLen == 0)
     {
         return false;
     }
@@ -483,38 +485,38 @@ bool Track::ComputeScrollBarLengths(Size arrangeSize, int viewportSize, bool isV
     if (isVertical)
     {
         height = arrangeSize.Height();
-        num6 = 16;
+        thumbRealLen = 16;
 
-        if (num6 < _thumb->GetDesiredSize().Height())
+        if (thumbRealLen < _thumb->GetDesiredSize().Height())
         {
-            num6 = _thumb->GetDesiredSize().Height();
+            thumbRealLen = _thumb->GetDesiredSize().Height();
         }
     }
     else
     {
         height = arrangeSize.Width();
-        num6 = 16;
+        thumbRealLen = 16;
 
-        if (num6 < _thumb->GetDesiredSize().Width())
+        if (thumbRealLen < _thumb->GetDesiredSize().Width())
         {
-            num6 = _thumb->GetDesiredSize().Width();
+            thumbRealLen = _thumb->GetDesiredSize().Width();
         }
     }
 
     // 计算滑块的大小
     // 这里height相当于page（逻辑高度一页的大小）
     // height是Track的尺寸，viewportSize是滚动区尺寸
-    thumbLength = (int)((Float) (height * viewportSize) / (Float) num4);
+    thumbLength = (int)((Float) (height * viewportSize) / (Float) numLogicLen);
     // 校正大小，不能大于布局大小
     CoerceLength(thumbLength, height);
     // 滑块最小值不能小于默认滑块大小的一半
-    thumbLength = max(num6, thumbLength);
+    thumbLength = max(thumbRealLen, thumbLength);
 
     // 滑块无效，隐藏
-    bool flag = num2 <= 0;
-    bool flag2 = thumbLength > height;
+    bool bLessZero = (int)numPos <= 0;
+    bool bGreateMax = thumbLength > height;
 
-    if (flag || flag2)
+    if (bLessZero || bGreateMax)
     {
         _thumbCenterOffset = 0;
         _density = 0;
@@ -526,13 +528,13 @@ bool Track::ComputeScrollBarLengths(Size arrangeSize, int viewportSize, bool isV
     // 上下页总大小（可视大小减掉滑块大小）
     int trackLength = height - (int)thumbLength;
     // 最上边滑块大小
-    decreaseButtonLength = (int)((Float) (trackLength * num3) / (Float) num2);
+    decreaseButtonLength = (int)((Float) (trackLength * numPos) / (Float) numLength);
     CoerceLength(decreaseButtonLength, trackLength);
     // 最下边滑块大小
     increaseButtonLength = trackLength - decreaseButtonLength;
     CoerceLength(increaseButtonLength, trackLength);
 
-    _density = (Float)num2 / (Float)trackLength;
+    _density = (Float)numPos / (Float)trackLength;
 
     return true;
 }
