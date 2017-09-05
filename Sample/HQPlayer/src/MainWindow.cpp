@@ -8,6 +8,7 @@ MainWindow::MainWindow()
 {
     _playManager = NULL;
     _layBottom = NULL;
+    _playListBox = NULL;
     _timer = new suic::AssignerTimer();
     _timer->ref();
 }
@@ -81,6 +82,42 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
         pPB->AddValueChanged(new suic::FloatPropChangedEventHandler(this, &MainWindow::OnPlayProgressChanged));
         pPB->SetValue(0);
     }
+
+    _playListBox = FindElem<suic::ListBox>("playList");
+    if (NULL != _playListBox)
+    {
+        _playListBox->SetItemsSource(_playManager->GetPlayList());
+        _playListBox->AddMouseDoubleClick(new suic::MouseButtonEventHandler(this, &MainWindow::OnDblPlayListClick));
+        //_playListBox->AddSelectionChanged(new suic::SelectionChangedEventHandler(this, &MainWindow::OnPlayListSelectionChanged));
+    }
+}
+
+void MainWindow::OnDblPlayListClick(suic::Element* sender, suic::MouseButtonEventArg* e)
+{
+    //
+    // Êó±êË«»÷ÊÂ¼þ
+    //
+    suic::Element* pElem = suic::DynamicCast<suic::Element>(e->GetOriginalSource());
+    VideoItem* pItem = suic::DynamicCast<VideoItem>(pElem->GetDataContext());
+
+    if (NULL != pItem)
+    {
+        _playManager->PlayVideoItem(pItem);
+    }
+
+    e->SetHandled(true);
+}
+
+void MainWindow::OnPlayListSelectionChanged(suic::Element* sender, suic::SelectionChangedEventArg* e)
+{
+    e->SetHandled(true);
+    if (e->GetAddedItems()->GetCount() > 0)
+    {
+        VideoItem* pItem = NULL;
+        
+        pItem = suic::DynamicCast<VideoItem>(e->GetAddedItems()->GetItem(0));
+        _playManager->PlayVideoItem(pItem);
+    }
 }
 
 void MainWindow::OnKeyDown(suic::KeyboardEventArg* e)
@@ -97,7 +134,8 @@ void MainWindow::OnKeyDown(suic::KeyboardEventArg* e)
 
 void MainWindow::OnPreviewMouseLeftButtonDown(suic::MouseButtonEventArg* e)
 {
-    if (_playPos.PointIn(e->GetMousePoint()) && NULL != _playManager)
+    suic::Rect playPos(_playArea->GetCanvasOffset(), _playArea->GetRenderSize());
+    if (playPos.PointIn(e->GetMousePoint()) && NULL != _playManager)
     {
         _playManager->PauseVideo(!_playManager->IsPause());
         Focus();
@@ -136,11 +174,6 @@ void MainWindow::OnCheckMouseMove(suic::Object* sender, suic::EventArg* e)
 
 void MainWindow::UpdateLayBottomPos()
 {
-    if (NULL != _layBottom)
-    {
-        _playPos = suic::Rect(_playArea->GetCanvasOffset(), _playArea->GetRenderSize());
-        _layBotPos = suic::Rect(_layBottom->GetCanvasOffset(), _layBottom->GetRenderSize());
-    }
 }
 
 void MainWindow::OnRenderSizeChanged(suic::SizeChangedInfo& sizeInfo)
@@ -154,7 +187,9 @@ void MainWindow::OnPreviewMouseMove(suic::MouseButtonEventArg* e)
 {
     suic::Window::OnPreviewMouseMove(e);
 
-    if (_layBotPos.PointIn(e->GetMousePoint()))
+    suic::Rect layBotPos(_layBottom->GetCanvasOffset(), _layBottom->GetRenderSize());
+
+    if (layBotPos.PointIn(e->GetMousePoint()))
     {
         _timer->Stop();
     }
@@ -166,7 +201,7 @@ void MainWindow::OnPreviewMouseMove(suic::MouseButtonEventArg* e)
             _layBottom->SetVisibility(suic::Visibility::Visible);
         }
 
-        if (_layBotPos.PointIn(e->GetMousePoint()))
+        if (layBotPos.PointIn(e->GetMousePoint()))
         {
             _timer->Stop();
         }
@@ -182,7 +217,7 @@ void MainWindow::OnPreviewMouseMove(suic::MouseButtonEventArg* e)
     _lastMousePt = e->GetMousePoint();
 }
 
-void MainWindow::PlayCallback(bool start)
+void MainWindow::PlayCallback(bool start, int index)
 {
     FindName("btnPause")->Enable(true);
     FindName("btnPlay")->Enable(true);
@@ -198,6 +233,8 @@ void MainWindow::PlayCallback(bool start)
         FindName("btnPause")->SetVisibility(suic::Visibility::Hidden);
         FindName("btnPlay")->SetVisibility(suic::Visibility::Visible);
     }
+
+    _playListBox->SetSelectedIndex(index);
 }
 
 void MainWindow::OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg* e)
@@ -260,6 +297,41 @@ void MainWindow::OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg*
 {
     e->SetHandled(true);
     SetFullScreenMode(!AllowsFullScreen());
+}
+
+void MainWindow::OnClickBrowserButton(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    suic::Element* pElem = NULL;
+    e->SetHandled(true);
+    
+    pElem = FindName("rightPanel");
+
+    if (pElem->GetVisibility() == suic::Visibility::Visible)
+    {
+        pElem->SetVisibility(suic::Visibility::Collapsed);
+    }
+    else
+    {
+        pElem->SetVisibility(suic::Visibility::Visible);
+    }
+}
+
+void MainWindow::OnClickPrevButton(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    e->SetHandled(true);
+    if (NULL != _playManager)
+    {
+        _playManager->PlayPrevVideo();
+    }
+}
+
+void MainWindow::OnClickNextButton(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    e->SetHandled(true);
+    if (NULL != _playManager)
+    {
+        _playManager->PlayNextVideo();
+    }
 }
 
 void MainWindow::SetFullScreenMode(bool bFull)

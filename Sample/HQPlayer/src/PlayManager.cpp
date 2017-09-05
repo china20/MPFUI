@@ -4,6 +4,12 @@
 #include "stdafx.h"
 #include "PlayManager.h"
 
+ImplementRTTIOfClass(VideoItem, suic::NotifyPropChanged)
+
+PlayCollection::PlayCollection()
+{
+}
+
 PlayManager::PlayManager()
 {
     _vReaderThr = NULL;
@@ -11,6 +17,8 @@ PlayManager::PlayManager()
     _playIndex = -1;
     _volume = 100;
     _fromPlay = false;
+    _playList = new PlayCollection();
+    _playList->ref();
 }
 
 PlayManager::~PlayManager()
@@ -24,6 +32,8 @@ PlayManager::~PlayManager()
     {
         _vReaderThr->unref();
     }
+
+    _playList->unref();
 }
 
 void PlayManager::Init(PlayerView* pView, suic::Element* pRoot, PlayVideoCb cb)
@@ -90,6 +100,11 @@ void PlayManager::UpdatePlayDate(BmpInfo* bmp)
     }
 }
 
+VideoItem* PlayManager::GetPlayItem()
+{
+    return _playList->GetVideoItem(_playIndex);
+}
+
 void PlayManager::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
 {
     BmpInfo* bmp = (BmpInfo*)e->GetData();
@@ -109,7 +124,7 @@ void PlayManager::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
     }
     else
     {
-        _playCb(e->GetWhat() == 1);
+        _playCb(e->GetWhat() == 1, _playIndex);
         if (0 == e->GetWhat())
         {
             suic::Slider* pPB = _rootView->FindElem<suic::Slider>("playPB");
@@ -125,10 +140,10 @@ void PlayManager::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
 
 int PlayManager::CheckPlayFile(suic::String filename)
 {
-    for (int i = 0; i < _playLists.Length(); ++i)
+    for (int i = 0; i < _playList->GetCount(); ++i)
     {
-        suic::String strName = _playLists.GetItem(i);
-        if (strName.CompareI(filename) == 0)
+        VideoItem* pItem = _playList->GetVideoItem(i);
+        if (filename.CompareI(pItem->GetFilePath()) == 0)
         {
             return i;
         }
@@ -143,8 +158,12 @@ void PlayManager::PlayVideo(suic::String filename)
 
     if (index == -1)
     {
-        _playIndex = _playLists.Length();
-        _playLists.Add(filename);
+        VideoItem* pItem = new VideoItem();
+
+        _playList->AddItem(pItem);
+        pItem->SetFilePath(filename);
+
+        _playIndex = _playList->GetCount() - 1;
     }
     else
     {
@@ -172,13 +191,44 @@ void PlayManager::SetPlayProgress(float v)
     }
 }
 
+void PlayManager::PlayPrevVideo()
+{
+    if (_playIndex > 0)
+    {
+        --_playIndex;
+        PlayCurrentVideo();
+    }
+}
+
+void PlayManager::PlayNextVideo()
+{
+    if (_playIndex < _playList->GetCount() - 1)
+    {
+        ++_playIndex;
+        PlayCurrentVideo();
+    }
+}
+
+void PlayManager::PlayVideoItem(VideoItem* pItem)
+{
+    int index = _playList->IndexOf(pItem);
+    if (index != -1)
+    {
+        if (!IsPlaying() || index != _playIndex)
+        {
+            _playIndex = index;
+            PlayCurrentVideo();
+        }
+    }
+}
+
 void PlayManager::PlayCurrentVideo()
 {
-    suic::String filename;
+    VideoItem* pItem = NULL;
     
     if (_playIndex >= 0)
     {
-        filename = _playLists.GetItem(_playIndex);
+        pItem = _playList->GetVideoItem(_playIndex);
 
         if (NULL != _reflesh)
         {
@@ -189,7 +239,7 @@ void PlayManager::PlayCurrentVideo()
                 _vReaderThr->unref();
             }
 
-            _vReaderThr = new VideoReaderThr(filename, _reflesh);
+            _vReaderThr = new VideoReaderThr(pItem->GetFilePath(), _reflesh);
             _vReaderThr->ref();
 
             SetPlayVolume(_volume);

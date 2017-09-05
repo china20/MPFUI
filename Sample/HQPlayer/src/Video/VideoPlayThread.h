@@ -31,7 +31,7 @@ extern "C"
 
 #include <src/Common/ThreadQueue.h>
 
-typedef delegate<void(bool)> PlayVideoCb;
+typedef delegate<void(bool, int)> PlayVideoCb;
 
 class BmpInfo : public suic::Object
 {

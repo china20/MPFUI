@@ -6,6 +6,38 @@
 
 #include <src/Video/VideoReader.h>
 
+class VideoItem : public suic::NotifyPropChanged 
+{
+public:
+
+    BeginMember(VideoItem, suic::NotifyPropChanged)
+        MemberString(FilePath)
+    EndMember()
+
+    RTTIOfClass(VideoItem)
+
+    DefineString(FilePath);
+
+    suic::String ToString()
+    {
+        return GetFilePath();
+    }
+};
+
+class PlayCollection : public suic::ObservableCollection
+{
+public:
+
+    PlayCollection();
+
+    VideoItem* GetVideoItem(int index)
+    {
+        VideoItem* pItem = NULL;
+        pItem = suic::DynamicCast<VideoItem>(GetItem(index));
+        return pItem;
+    }
+};
+
 class PlayManager : public suic::Object
 {
 public:
@@ -26,6 +58,17 @@ public:
     bool IsPlaying() const;
     bool IsPause() const;
 
+    PlayCollection* GetPlayList()
+    {
+        return _playList;
+    }
+
+    VideoItem* GetPlayItem();
+
+    void PlayPrevVideo();
+    void PlayNextVideo();
+    void PlayVideoItem(VideoItem* pItem);
+
 private:
 
     void UpdatePlayDate(BmpInfo* bmp);
@@ -45,7 +88,7 @@ private:
     int _volume;
     int _playIndex;
     bool _fromPlay;
-    suic::Array<suic::String> _playLists;
+    PlayCollection* _playList;
 };
 
 #endif

@@ -23,6 +23,9 @@ public:
         MemberRouted(OnClickOpenButton)
         MemberRouted(OnClickStopButton)
         MemberRouted(OnClickFullButton)
+        MemberRouted(OnClickBrowserButton)
+        MemberRouted(OnClickPrevButton)
+        MemberRouted(OnClickNextButton)
     EndRoutedEvent()
 
     MainWindow();
@@ -36,9 +39,14 @@ public:
     void OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickStopButton(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickBrowserButton(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickPrevButton(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickNextButton(suic::DpObject* sender, suic::RoutedEventArg* e);
 
     void OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
     void OnPlayProgressChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
+    void OnDblPlayListClick(suic::Element* sender, suic::MouseButtonEventArg* e);
+    void OnPlayListSelectionChanged(suic::Element* sender, suic::SelectionChangedEventArg* e);
 
 protected:
 
@@ -51,7 +59,7 @@ protected:
 
     void Dispose();
     void UpdateLayBottomPos();
-    void PlayCallback(bool start);
+    void PlayCallback(bool start, int index);
 
 protected:
 
@@ -61,11 +69,10 @@ protected:
 
 private:
 
-    suic::Rect _playPos;
-    suic::Rect _layBotPos;
     PlayManager* _playManager;
     suic::Element* _layBottom;
     suic::Element* _playArea;
+    suic::ListBox* _playListBox;
 
     suic::Point _lastMousePt;
     // 定时器，用来检测在全屏状态时鼠标停留时间
