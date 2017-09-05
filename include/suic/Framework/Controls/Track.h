@@ -95,7 +95,7 @@ private:
     void BindChildToTemplatedParent(FrameworkElement* element, DpProperty* target, DpProperty* source);
 
     void ComputeSliderLengths(Size arrangeSize, bool isVertical, int& decreaseButtonLength, int& thumbLength, int& increaseButtonLength);
-    bool ComputeScrollBarLengths(Size arrangeSize, int viewportSize, bool isVertical, int& decreaseButtonLength, int& thumbLength, int& increaseButtonLength);
+    bool ComputeScrollBarLengths(Size arrangeSize, bool isVertical, int viewportSize, int& decreaseButtonLength, int& thumbLength, int& increaseButtonLength);
 
 protected:
 
