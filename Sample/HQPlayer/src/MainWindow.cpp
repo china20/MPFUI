@@ -212,12 +212,8 @@ void MainWindow::ShowRightPlayPanel(bool bShow)
     {
         toMargin.right = _layRight->GetWidth() * -1;
     }
-
-    // 
-    // 这里使用RectAnimation类型的动画，对suic::Rect这种类型的属性执行动画变换
-    // 为了使得底部状态栏产生显示和隐藏的动画效果，对MarginProperty属性执行动画变换
-    // 
-    mgrAni = new suic::RectAnimation(fromMargin, toMargin, suic::Duration(250), suic::FillBehavior::fbHoldEnd);
+ 
+    mgrAni = new suic::RectAnimation(fromMargin, toMargin, suic::Duration(200), suic::FillBehavior::fbHoldEnd);
     _layRight->BeginAnimation(suic::FrameworkElement::MarginProperty, mgrAni);
 }
 
