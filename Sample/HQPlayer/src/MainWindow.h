@@ -58,8 +58,11 @@ protected:
     void OnCheckMouseMove(suic::Object* sender, suic::EventArg* e);
 
     void Dispose();
-    void UpdateLayBottomPos();
+    
     void PlayCallback(bool start, int index);
+
+    void ShowBottomStatus(bool bShow);
+    void ShowRightPlayPanel(bool bShow);
 
 protected:
 
@@ -70,9 +73,11 @@ protected:
 private:
 
     PlayManager* _playManager;
-    suic::Element* _layBottom;
-    suic::Element* _playArea;
+
     suic::ListBox* _playListBox;
+    suic::FrameworkElement* _playArea;
+    suic::FrameworkElement* _layBottom;
+    suic::FrameworkElement* _layRight;
 
     suic::Point _lastMousePt;
     // 定时器，用来检测在全屏状态时鼠标停留时间

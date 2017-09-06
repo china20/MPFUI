@@ -61,10 +61,9 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     // 窗口居中显示
     //
     CenterWindow();
-    _layBottom = FindName("layBottom");
-    _playArea = FindName("layPlayer");
-
-    UpdateLayBottomPos();
+    _layBottom = FindElem<suic::FrameworkElement>("layBottom");
+    _playArea = FindElem<suic::FrameworkElement>("layPlayer");
+    _layRight = FindElem<suic::FrameworkElement>("rightPanel");
 
     // 
     // 注册音量按钮的回调
@@ -166,21 +165,65 @@ void MainWindow::OnCheckMouseMove(suic::Object* sender, suic::EventArg* e)
     // 关闭定时器
     // 
     _timer->Stop();
-    if (AllowsFullScreen() && NULL != _layBottom)
+
+    // 
+    // 处于全屏状态，开始隐藏底部状态栏
+    // 
+    if (AllowsFullScreen())
     {
-        _layBottom->SetVisibility(suic::Visibility::Collapsed);
+        ShowBottomStatus(false);
     }
 }
 
-void MainWindow::UpdateLayBottomPos()
+void MainWindow::ShowBottomStatus(bool bShow)
 {
+    suic::RectAnimation* mgrAni = NULL;
+    suic::Rect fromMargin = _layBottom->GetMargin();
+    suic::Rect toMargin = fromMargin;
+
+    if (bShow)
+    {
+        toMargin.bottom = 0;
+    }
+    else
+    {
+        toMargin.bottom = _layBottom->GetHeight() * -1;
+    }
+
+    // 
+    // 这里使用RectAnimation类型的动画，对suic::Rect这种类型的属性执行动画变换
+    // 为了使得底部状态栏产生显示和隐藏的动画效果，对MarginProperty属性执行动画变换
+    // 
+    mgrAni = new suic::RectAnimation(fromMargin, toMargin, suic::Duration(300), suic::FillBehavior::fbHoldEnd);
+    _layBottom->BeginAnimation(suic::FrameworkElement::MarginProperty, mgrAni);
+}
+
+void MainWindow::ShowRightPlayPanel(bool bShow)
+{
+    suic::RectAnimation* mgrAni = NULL;
+    suic::Rect fromMargin = _layRight->GetMargin();
+    suic::Rect toMargin = fromMargin;
+
+    if (bShow)
+    {
+        toMargin.right = 0;
+    }
+    else
+    {
+        toMargin.right = _layRight->GetWidth() * -1;
+    }
+
+    // 
+    // 这里使用RectAnimation类型的动画，对suic::Rect这种类型的属性执行动画变换
+    // 为了使得底部状态栏产生显示和隐藏的动画效果，对MarginProperty属性执行动画变换
+    // 
+    mgrAni = new suic::RectAnimation(fromMargin, toMargin, suic::Duration(250), suic::FillBehavior::fbHoldEnd);
+    _layRight->BeginAnimation(suic::FrameworkElement::MarginProperty, mgrAni);
 }
 
 void MainWindow::OnRenderSizeChanged(suic::SizeChangedInfo& sizeInfo)
 {
     suic::Window::OnRenderSizeChanged(sizeInfo);
-
-    UpdateLayBottomPos();
 }
 
 void MainWindow::OnPreviewMouseMove(suic::MouseButtonEventArg* e)
@@ -194,11 +237,15 @@ void MainWindow::OnPreviewMouseMove(suic::MouseButtonEventArg* e)
         _timer->Stop();
     }
 
+    // 
+    // 是否移动了鼠标，移动了需要显示状态栏
+    // 同时启动一个定时监测鼠标超过一定时间未动时隐藏底部和上部的状态显示
+    // 
     if (_lastMousePt != e->GetMousePoint())
     {
         if (NULL != _layBottom)
         {
-            _layBottom->SetVisibility(suic::Visibility::Visible);
+            ShowBottomStatus(true);
         }
 
         if (layBotPos.PointIn(e->GetMousePoint()))
@@ -301,18 +348,17 @@ void MainWindow::OnClickFullButton(suic::DpObject* sender, suic::RoutedEventArg*
 
 void MainWindow::OnClickBrowserButton(suic::DpObject* sender, suic::RoutedEventArg* e)
 {
-    suic::Element* pElem = NULL;
     e->SetHandled(true);
     
-    pElem = FindName("rightPanel");
+    suic::Rect rcMargin = _layRight->GetMargin();
 
-    if (pElem->GetVisibility() == suic::Visibility::Visible)
+    if (rcMargin.right == 0)
     {
-        pElem->SetVisibility(suic::Visibility::Collapsed);
+        ShowRightPlayPanel(false);
     }
     else
     {
-        pElem->SetVisibility(suic::Visibility::Visible);
+        ShowRightPlayPanel(true);
     }
 }
 
