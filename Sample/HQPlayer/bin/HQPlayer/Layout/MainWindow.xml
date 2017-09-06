@@ -79,10 +79,10 @@
         <ImageBrush x:Key="pbvTrackBackground" ImageSource="HQPlayer/Images/Ctrl/volume_bg.png" />
         <ImageBrush x:Key="pbvTrackForeground" ImageSource="HQPlayer/Images/Ctrl/volume_now.png" />
 
-        <ImageBrush x:Key="VolumeOpenNormal" ImageSource="HQPlayer/Images/Ctrl/voice_normal.png" Viewbox="0,0,21,12" ViewboxUnits="Absolute" />
-        <ImageBrush x:Key="VolumeOpenHot" ImageSource="HQPlayer/Images/Ctrl/voice_normal.png" Opacity="0.8" Viewbox="0,0,21,12" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeOpenNormal" ImageSource="HQPlayer/Images/Ctrl/voice_normal.png" Opacity="0.8" Viewbox="0,0,21,12" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeOpenHot" ImageSource="HQPlayer/Images/Ctrl/voice_normal.png" Viewbox="0,0,21,12" ViewboxUnits="Absolute" />
         
-        <ImageBrush x:Key="VolumeCloseNormal" ImageSource="HQPlayer/Images/Ctrl/voice_mute.png" Viewbox="0,0,20,12" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeCloseNormal" ImageSource="HQPlayer/Images/Ctrl/voice_mute.png" Opacity="0.8" Viewbox="0,0,20,12" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="VolumeCloseHot" ImageSource="HQPlayer/Images/Ctrl/voice_mute.png" Viewbox="0,0,20,12" ViewboxUnits="Absolute" />
 
         <ImageBrush x:Key="VolumeButtonNormal" ImageSource="HQPlayer/Images/Ctrl/volume_button.png" Viewbox="0,0,13,13" ViewboxUnits="Absolute" />
