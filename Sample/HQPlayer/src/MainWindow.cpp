@@ -394,6 +394,7 @@ void MainWindow::SetFullScreenMode(bool bFull)
         FindName("layCaption")->SetVisibility(suic::Visibility::Visible);
         if (NULL != _layBottom)
         {
+            _layBottom->SetMargin(suic::Rect());
             _layBottom->SetVisibility(suic::Visibility::Visible);
         }
     }
