@@ -1,7 +1,7 @@
 <?xml encoding="utf-8" ?>
 <Window Name="window" AllowsTransparency1="True" Title="HQPlayer（Beta0.1.0）" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
         CaptionHeight="20" Width="640" Height="380" MinWidth="380" MinHeight="300"
-        BorderThickness="0" Background="#FF202020" Foreground="Gray" >
+        BorderThickness="0" Background="#FF202020" Foreground="Gray" Topmost="True" >
 
     <Window.Resources>
 
@@ -59,6 +59,14 @@
         <ImageBrush x:Key="sysbtn_max_normal" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="0,0,19,21" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="sysbtn_max_hover" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="19,0,19,21" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="sysbtn_max_down" ImageSource="HQPlayer/Images/Top/maximize.png" Viewbox="38,0,19,21" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="TopmostNormal" ImageSource="HQPlayer/Images/Top/topmost.png" Viewbox="0,0,20,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="TopmostHot" ImageSource="HQPlayer/Images/Top/topmost.png" Viewbox="20,0,20,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="TopmostPress" ImageSource="HQPlayer/Images/Top/topmost.png" Viewbox="40,0,20,21" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="UntopmostNormal" ImageSource="HQPlayer/Images/Top/untopmost.png" Viewbox="0,0,20,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="UntopmostHot" ImageSource="HQPlayer/Images/Top/untopmost.png" Viewbox="20,0,20,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="UntopmostPress" ImageSource="HQPlayer/Images/Top/untopmost.png" Viewbox="40,0,20,21" ViewboxUnits="Absolute" />
 
         <ImageBrush x:Key="BrowserNormal" ImageSource="HQPlayer/Images/third_player/browser.png" Viewbox="0,0,20,21" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="BrowserHot" ImageSource="HQPlayer/Images/third_player/browser.png" Viewbox="20,0,20,21" ViewboxUnits="Absolute" />
@@ -335,6 +343,43 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!--多选按钮样式定义-->
+        <Style TargetType="CheckBox" x:Key="TopmostStyle">
+            <Setter Property="ToolTip" Value="置顶" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="{DynamicResource TopmostNormal}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox" >
+                        <Border Name="Bd" Background="{TemplateBinding Background}" />
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="True"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="ToolTip" Value="取消置顶" />
+                                <Setter Property="Background" Value="{DynamicResource UntopmostHot}" />
+                            </MultiTrigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource UntopmostNormal}" />
+                                <Setter Property="ToolTip" Value="取消置顶" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsChecked" Value="False"/>
+                        <Condition Property="IsMouseOver" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{DynamicResource TopmostHot}" />
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
         
     </Window.Resources>
 
@@ -348,7 +393,9 @@
                     <CloseButton ToolTip="关闭" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,6,0" />
                 </StackPanel>
                 <StackPanel VerticalAlignment="Center" Height="32" Orientation="Horizontal" DockPanel.Dock="Right" Margin="5,0,6,0" >
-                    <Button Name="miniStop" Width="22" Height="21" Margin="2" Click="OnClickMiniPlayButton"
+                    <CheckBox IsChecked="{Binding Topmost,Mode=TwoWay,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
+                              Width="20" Height="21" Style="{DynamicResource TopmostStyle}" />
+                    <Button1 Name="miniStop" Width="22" Height="21" Margin="2" Click="OnClickMiniPlayButton"
                                 ToolTip="精简模式"
                                 Tag1="{DynamicResource MiniPlayNormal}"
                                 Tag2="{DynamicResource MiniPlayHot}"
@@ -446,7 +493,7 @@
                         <Grid Width="79" Height="44" >
                             <Slider Name="volumeSlider" Style="{DynamicResource VolumeSliderStyle}"
                                     IsSelectionRangeEnabled="False" IsMoveToPointEnabled="True" 
-                                    Width="79" Height="44" Value="1" Maximum="128" />
+                                    Cursor="Hand" Width="79" Height="44" Value="1" Maximum="128" />
                         </Grid>
                         
                         <Grid Width="24" Height="44" Margin="3,0,10,0">
