@@ -581,7 +581,7 @@ void Window::OnTopMostPropChanged(DpObject* d, DpPropChangedEventArg* e)
 {
     Window* pWnd = RTTICast<Window>(d);
     bool topmost = e->GetNewValue()->ToBool();
-    pWnd->OnShowInTaskbarChanged(e->GetOldValue()->ToBool(), topmost);
+    pWnd->OnTopMostChanged(e->GetOldValue()->ToBool(), topmost);
 }
 
 void Window::OnShowInTaskbarPropChanged(DpObject* d, DpPropChangedEventArg* e)
