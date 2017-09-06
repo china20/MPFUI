@@ -26,6 +26,8 @@ public:
         MemberRouted(OnClickBrowserButton)
         MemberRouted(OnClickPrevButton)
         MemberRouted(OnClickNextButton)
+        MemberRouted(OnClickOpenVolume)
+        MemberRouted(OnClickCloseVolume)
     EndRoutedEvent()
 
     MainWindow();
@@ -43,6 +45,9 @@ public:
     void OnClickPrevButton(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickNextButton(suic::DpObject* sender, suic::RoutedEventArg* e);
 
+    void OnClickOpenVolume(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickCloseVolume(suic::DpObject* sender, suic::RoutedEventArg* e);
+    
     void OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
     void OnPlayProgressChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
     void OnDblPlayListClick(suic::Element* sender, suic::MouseButtonEventArg* e);
@@ -53,7 +58,8 @@ protected:
     void OnRenderSizeChanged(suic::SizeChangedInfo& sizeInfo);
     void OnPreviewMouseMove(suic::MouseButtonEventArg* e);
     void OnKeyDown(suic::KeyboardEventArg* e);
-    void OnPreviewMouseLeftButtonDown(suic::MouseButtonEventArg* e);
+    void OnMouseLeftButtonDown(suic::MouseButtonEventArg* e);
+    void OnMouseLeftButtonUp(suic::MouseButtonEventArg* e);
 
     void OnCheckMouseMove(suic::Object* sender, suic::EventArg* e);
 
@@ -63,6 +69,8 @@ protected:
 
     void ShowBottomStatus(bool bShow);
     void ShowRightPlayPanel(bool bShow);
+
+    void UpdateVolumeStatus(bool bOpen);
 
 protected:
 
@@ -80,6 +88,7 @@ private:
     suic::FrameworkElement* _layRight;
 
     suic::Point _lastMousePt;
+    suic::Point _prevMouseDown;
     // 定时器，用来检测在全屏状态时鼠标停留时间
     // 根据停留时间长短显示状态栏
     suic::AssignerTimer* _timer;

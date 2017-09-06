@@ -131,14 +131,34 @@ void MainWindow::OnKeyDown(suic::KeyboardEventArg* e)
     }
 }
 
-void MainWindow::OnPreviewMouseLeftButtonDown(suic::MouseButtonEventArg* e)
+void MainWindow::OnMouseLeftButtonDown(suic::MouseButtonEventArg* e)
 {
+    suic::Window::OnMouseLeftButtonDown(e);
+
     suic::Rect playPos(_playArea->GetCanvasOffset(), _playArea->GetRenderSize());
     if (playPos.PointIn(e->GetMousePoint()) && NULL != _playManager)
     {
-        _playManager->PauseVideo(!_playManager->IsPause());
         Focus();
     }
+
+    _prevMouseDown = e->GetMousePoint();
+    e->SetHandled(true);
+}
+
+void MainWindow::OnMouseLeftButtonUp(suic::MouseButtonEventArg* e)
+{
+    suic::Window::OnMouseLeftButtonUp(e);
+
+    if (_prevMouseDown == e->GetMousePoint())
+    {
+        suic::Rect playPos(_playArea->GetCanvasOffset(), _playArea->GetRenderSize());
+        if (playPos.PointIn(e->GetMousePoint()) && NULL != _playManager)
+        {
+            _playManager->PauseVideo(!_playManager->IsPause());
+        }
+    }
+
+    e->SetHandled(true);
 }
 
 void MainWindow::OnPlayProgressChanged(suic::Element*, suic::FloatPropChangedEventArg* e)
@@ -156,6 +176,7 @@ void MainWindow::OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg*
     {
         _playManager->SetPlayVolume(e->GetNewValue());
     }
+    UpdateVolumeStatus(true);
     e->SetHandled(true);
 }
 
@@ -373,6 +394,49 @@ void MainWindow::OnClickNextButton(suic::DpObject* sender, suic::RoutedEventArg*
     if (NULL != _playManager)
     {
         _playManager->PlayNextVideo();
+    }
+}
+
+void MainWindow::UpdateVolumeStatus(bool bOpen)
+{
+    if (!bOpen)
+    {
+        FindName("openVolume")->SetVisibility(suic::Visibility::Visible);
+        FindName("closeVolume")->SetVisibility(suic::Visibility::Collapsed);
+    }
+    else
+    {
+        FindName("openVolume")->SetVisibility(suic::Visibility::Collapsed);
+        FindName("closeVolume")->SetVisibility(suic::Visibility::Visible);
+    }
+}
+
+
+void MainWindow::OnClickOpenVolume(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    e->SetHandled(true);
+    
+    UpdateVolumeStatus(true);
+
+    suic::Slider* pSlider = FindElem<suic::Slider>("volumeSlider");
+    if (NULL != pSlider)
+    {
+        if (NULL != _playManager)
+        {
+            _playManager->SetPlayVolume(pSlider->GetValue());
+        }
+    }
+}
+
+void MainWindow::OnClickCloseVolume(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    e->SetHandled(true);
+
+    UpdateVolumeStatus(false);
+
+    if (NULL != _playManager)
+    {
+        _playManager->SetPlayVolume(0);
     }
 }
 
