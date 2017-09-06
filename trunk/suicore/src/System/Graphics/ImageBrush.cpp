@@ -525,6 +525,8 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
     suic::Byte opacity = brImg->GetOpacity();
     Rect viewCorner = brImg->GetViewCorner();
 
+    drawCtx->SetAlpha(opacity);
+
     // 左边框
     if (viewCorner.left > 0)
     {
@@ -534,7 +536,7 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
             rcDc.SetXYWH(lprc->left, lprc->top, viewCorner.left, viewCorner.top);
             rcImg.SetXYWH(rcImage.left, rcImage.top, viewCorner.left, viewCorner.top);
 
-            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
         }
 
         // 左下角
@@ -543,7 +545,7 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
             rcDc.SetXYWH(lprc->left, lprc->bottom - viewCorner.bottom, viewCorner.left, viewCorner.bottom);
             rcImg.SetXYWH(rcImage.left, rcImage.bottom - viewCorner.bottom, viewCorner.left, viewCorner.bottom);
 
-            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
         }
 
         // 左边中部
@@ -552,7 +554,7 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
         rcImg.SetLTRB(rcImage.left, rcImage.top + viewCorner.top
             , rcImage.left + viewCorner.left, rcImage.bottom - viewCorner.bottom);
 
-        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
     }
 
     // 右边框
@@ -564,7 +566,7 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
             rcDc.SetXYWH(lprc->right - viewCorner.right, lprc->top, viewCorner.right, viewCorner.top);
             rcImg.SetXYWH(rcImage.right - viewCorner.right, rcImage.top, viewCorner.right, viewCorner.top);
 
-            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
         }
 
         // 右下角
@@ -573,13 +575,13 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
             rcDc.SetXYWH(lprc->right - viewCorner.right, lprc->bottom - viewCorner.bottom, viewCorner.right, viewCorner.bottom);
             rcImg.SetXYWH(rcImage.right - viewCorner.right, rcImage.bottom - viewCorner.bottom, viewCorner.right, viewCorner.bottom);
 
-            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
         }
 
         // 右边中部
         rcDc.SetLTRB(lprc->right - viewCorner.right, lprc->top + viewCorner.top, lprc->right, lprc->bottom - viewCorner.bottom);
         rcImg.SetLTRB(rcImage.right - viewCorner.right, rcImage.top + viewCorner.top, rcImage.right, rcImage.bottom - viewCorner.bottom);
-        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
     }
 
     // 上边框
@@ -588,7 +590,7 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
         // 填充上边中间
         rcDc.SetLTRB(lprc->left + viewCorner.left, lprc->top, lprc->right - viewCorner.right, lprc->top + viewCorner.top);
         rcImg.SetLTRB(rcImage.left + viewCorner.left, rcImage.top, rcImage.right - viewCorner.right, rcImage.top + viewCorner.top);
-        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
     }
 
     // 下边框
@@ -597,7 +599,7 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
         // 填充下边中间
         rcDc.SetLTRB(lprc->left + viewCorner.left, lprc->bottom - viewCorner.bottom, lprc->right - viewCorner.right, lprc->bottom);
         rcImg.SetLTRB(rcImage.left + viewCorner.left, rcImage.bottom - viewCorner.bottom, rcImage.right - viewCorner.right, rcImage.bottom);
-        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
     }
 
     // 绘制中间
@@ -611,7 +613,7 @@ static void DrawViewCorner(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
     rcImg.right = rcImage.right - viewCorner.right;
     rcImg.bottom = rcImage.bottom - viewCorner.bottom;
 
-    drawing->DrawImage(drawCtx, pImage, rcDc, rcImg, opacity);
+    drawing->DrawImage(drawCtx, pImage, rcDc, rcImg);
 }
 
 static void DrawRealBitmap(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc, const fRect* rcImage, const Size* szCanvas, fRect rcDc)
@@ -619,10 +621,12 @@ static void DrawRealBitmap(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
     Bitmap* pImage = brImg->GetImageSource()->GetBitmap();
     suic::Byte opacity = brImg->GetOpacity();
 
+    drawCtx->SetAlpha(opacity);
+
     //-------------------------------------------------
     if (brImg->GetTileMode() == TileMode::tmNone)
     {
-        drawing->DrawImage(drawCtx, pImage, rcDc, rcImage, opacity);
+        drawing->DrawImage(drawCtx, pImage, rcDc, rcImage);
     }
     else if (szCanvas->cx > 0 && szCanvas->cy > 0)
     {
@@ -631,7 +635,7 @@ static void DrawRealBitmap(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg
 
         for (;;)
         {
-            drawing->DrawImage(drawCtx, pImage, rcDc, rcImage, opacity);
+            drawing->DrawImage(drawCtx, pImage, rcDc, rcImage);
             rcDc.left += szCanvas->cx;
             rcDc.right += szCanvas->cx;
 
@@ -695,7 +699,6 @@ static void DrawUniformToFillImageBrush(DrawCtx* drawCtx, Drawing* drawing, Imag
     fRect rcCanvas;
     fRect rcImage;
 
-    suic::Byte opacity = brImg->GetOpacity();
     Bitmap* pImage = brImg->GetImageSource()->GetBitmap();
 
     // 计算实际绘制图像块区域
@@ -730,7 +733,7 @@ static void DrawUniformToFillImageBrush(DrawCtx* drawCtx, Drawing* drawing, Imag
 
     drawing->Save();
     drawing->ClipRect(lprc, ClipOp::OpIntersect);
-    drawing->DrawImage(drawCtx, pImage, rcDc, rcImage, opacity);
+    drawing->DrawImage(drawCtx, pImage, rcDc, rcImage);
     drawing->Restore();
 }
 
@@ -740,7 +743,6 @@ static void DrawUniformImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush
     fRect rcCanvas;
     fRect rcImage;
 
-    suic::Byte opacity = brImg->GetOpacity();
     Bitmap* pImage = brImg->GetImageSource()->GetBitmap();
 
     // 计算实际绘制图像块区域
@@ -786,7 +788,6 @@ static void DrawDefaultImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush
     fRect rcCanvas;
     fRect rcImage;
 
-    suic::Byte opacity = brImg->GetOpacity();
     Bitmap* pImage = brImg->GetImageSource()->GetBitmap();
 
     // 计算实际绘制图像块区域
@@ -832,6 +833,8 @@ void DrawImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const
         bmp->Backup();
         bmp->EraseGray();
     }
+
+    drawCtx->SetAlpha(brImg->GetOpacity());
 
     switch (bStretch)
     {
