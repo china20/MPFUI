@@ -405,18 +405,22 @@ bool HwndObject::Process_WM_CREATE(Element* rootElement, MessageParam* mp)
 
 bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
 {
+    int maxFlag = (int)mp->wp;
     int x = LOWORD(mp->lp);
     int y = HIWORD(mp->lp);
     MonitorInfo mi = Environment::GetMonitorBoundByWindow(HANDLETOHWND(mp->hwnd));
 
-    x = UIMIN(x, mi.rcMonitor.Width());
-    y = UIMIN(y, mi.rcMonitor.Height());
+    if (SIZE_MAXIMIZED == maxFlag)
+    {
+        x = UIMIN(x, mi.rcMonitor.Width());
+        y = UIMIN(y, mi.rcMonitor.Height());
+    }
 
     Size realSize(x, y);
     Rect finalRect(Point(), realSize);
     FrameworkElementPtr main(rootElement);
 
-    SetWindowInMinimizeState(((Int32)mp->wp == SIZE_MINIMIZED) ? true : false);
+    SetWindowInMinimizeState((maxFlag == SIZE_MINIMIZED) ? true : false);
 
     if (!IsOwnUpdating() && 
         !IsWindowInMinimizeState() && 

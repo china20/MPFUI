@@ -157,27 +157,13 @@ void HwndHelper::MaximizeWindow(Element* elem)
         return;
     }
 
-    /*VisualHost* visualHost = VisualHost::GetVisualHost(elem);
-    if (NULL != visualHost)
-    {
-        Window* pWnd = DynamicCast<Window>(visualHost->GetRootElement());
-        if (NULL != pWnd)
-        {
-            HWND hwnd = HANDLETOHWND(visualHost->GetHandle());
-            SetWndPlacement(hwnd, SW_SHOWMAXIMIZED, pWnd->GetBorderThickness());
-            pWnd->SetValue(Window::WindowStateProperty, WindowStateBox::MaximizedBox);
-        }
-    }
-    return;*/
-
     POINT pt; 
     HWND hwnd = __HwndFromElement(elem);
 
     if (!::IsZoomed(hwnd))
     {
         ::GetCursorPos(&pt);
-        ::PostMessage(hwnd, WM_SYSCOMMAND, 
-            SC_MAXIMIZE, MAKELPARAM(pt.x, pt.y));
+        ::PostMessage(hwnd, WM_SYSCOMMAND, SC_MAXIMIZE, MAKELPARAM(pt.x, pt.y));
     }
 }
 
@@ -187,20 +173,6 @@ void HwndHelper::RestoreWindow(Element* elem)
     {
         return;
     }
-
-    /*VisualHost* visualHost = VisualHost::GetVisualHost(elem);
-    if (NULL != visualHost)
-    {
-        Window* pWnd = RTTICast<Window>(visualHost->GetRootElement());
-        if (NULL != pWnd)
-        {
-            HWND hwnd = HANDLETOHWND(visualHost->GetHandle());
-            SetWndPlacement(hwnd, SW_RESTORE, pWnd->GetBorderThickness());
-            pWnd->SetValue(Window::WindowStateProperty, WindowStateBox::NormalBox);
-        }
-    }
-
-    return;*/
 
     POINT pt; 
     HWND hwnd = __HwndFromElement(elem);
