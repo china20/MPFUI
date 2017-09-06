@@ -79,11 +79,11 @@
         <ImageBrush x:Key="pbvTrackBackground" ImageSource="HQPlayer/Images/Ctrl/volume_bg.png" />
         <ImageBrush x:Key="pbvTrackForeground" ImageSource="HQPlayer/Images/Ctrl/volume_now.png" />
 
-        <ImageBrush x:Key="VolumeOpenNormal" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="0,0,24,44" ViewboxUnits="Absolute" />
-        <ImageBrush x:Key="VolumeOpenHot" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="24,0,24,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeOpenNormal" ImageSource="HQPlayer/Images/Ctrl/voice_normal.png" Viewbox="0,0,21,12" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeOpenHot" ImageSource="HQPlayer/Images/Ctrl/voice_normal.png" Opacity="0.8" Viewbox="0,0,21,12" ViewboxUnits="Absolute" />
         
-        <ImageBrush x:Key="VolumeCloseNormal" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="48,0,24,44" ViewboxUnits="Absolute" />
-        <ImageBrush x:Key="VolumeCloseHot" ImageSource="HQPlayer/Images/Ctrl/volume.png" Viewbox="72,0,24,44" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeCloseNormal" ImageSource="HQPlayer/Images/Ctrl/voice_mute.png" Viewbox="0,0,20,12" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="VolumeCloseHot" ImageSource="HQPlayer/Images/Ctrl/voice_mute.png" Viewbox="0,0,20,12" ViewboxUnits="Absolute" />
 
         <ImageBrush x:Key="VolumeButtonNormal" ImageSource="HQPlayer/Images/Ctrl/volume_button.png" Viewbox="0,0,13,13" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="VolumeButtonHot" ImageSource="HQPlayer/Images/Ctrl/volume_button.png" Viewbox="13,0,13,13" ViewboxUnits="Absolute" />
@@ -484,7 +484,7 @@
                             Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
                         <Button Name="btnOpen" Width="25" Height="25" Click="OnClickOpenButton" Margin="10,0,8,0"
-                                ToolTip="打开视频"
+                                ToolTip="打开视频" Cursor="Hand"
                                 Tag1="{DynamicResource OpenNormal}"
                                 Tag2="{DynamicResource OpenHot}"
                                 Tag3="{DynamicResource OpenPress}"
@@ -497,12 +497,14 @@
                         </Grid>
                         
                         <Grid Width="24" Height="44" Margin="3,0,10,0">
-                            <Button Name="closeVolume" Width="24" Height="44" 
+                            <Button Name="closeVolume" Width="21" Height="12" Cursor="Hand"
+                                    Click="OnClickCloseVolume"
                                     Tag1="{DynamicResource VolumeOpenNormal}" 
                                     Tag2="{DynamicResource VolumeOpenHot}" 
                                     Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
 
-                            <Button Name="openVolume" Visibility="Hidden"
+                            <Button Name="openVolume" Width="20" Height="12" Cursor="Hand" Visibility="Hidden"
+                                    Click="OnClickOpenVolume"
                                     Tag1="{DynamicResource VolumeCloseNormal}"
                                     Tag2="{DynamicResource VolumeCloseHot}"
                                     Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
