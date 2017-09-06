@@ -16,6 +16,12 @@
 namespace suic 
 {
 
+typedef struct tagMonitorInfo
+{
+    Rect rcWork;
+    Rect rcMonitor;
+} MonitorInfo;
+
 class SUICORE_API Environment
 {
 public:
@@ -25,6 +31,9 @@ public:
     static Size GetScreenBound();
     static Time_t GetSystemTick();
     static Time_t GetSystemTime();
+
+    static MonitorInfo GetMonitorBoundByPoint(suic::Point* pt);
+    static MonitorInfo GetMonitorBoundByWindow(HWND hwnd);
 };
 
 }

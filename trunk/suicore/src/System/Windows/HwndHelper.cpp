@@ -121,24 +121,20 @@ static void SetWndPlacement(HWND hwnd, int nCode, Rect border)
 
     if (SW_SHOWMAXIMIZED == nCode)
     {
-        HMONITOR hMonitor; 
-        MONITORINFO mi; 
-        hMonitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
-        mi.cbSize = sizeof(mi); 
-        GetMonitorInfo(hMonitor, &mi); 
-        int frameCX = GetSystemMetrics(SM_CXSIZEFRAME); 
-        int frameCY = GetSystemMetrics(SM_CYSIZEFRAME); 
-        int menuCY = 0;//GetSystemMetrics(SM_CYMENU);
+        Rect rcWnd;
+        MonitorInfo mi;
+        mi = Environment::GetMonitorBoundByWindow(hwnd);
 
+        rcWnd = mi.rcWork;
         border = SystemParameters::TransformToDevice(border.TofRect()).ToRect();
 
-        mi.rcMonitor.left -= border.left;
-        mi.rcMonitor.top -= border.top;
-        mi.rcMonitor.right += border.left + border.right;
-        mi.rcMonitor.bottom += border.top + border.bottom;
+        rcWnd.left -= border.left;
+        rcWnd.top -= border.top;
+        rcWnd += border.left + border.right;
+        rcWnd.bottom += border.top + border.bottom;
 
-        ::SetWindowPos(hwnd, NULL, mi.rcMonitor.left, mi.rcMonitor.top - menuCY, mi.rcMonitor.right - mi.rcMonitor.left, mi.rcMonitor.bottom - mi.rcMonitor.top + menuCY
-            , SWP_SHOWWINDOW | SWP_NOZORDER);
+        ::SetWindowPos(hwnd, NULL, rcWnd.left, rcWnd.top, rcWnd.Width(), rcWnd.Height(), SWP_SHOWWINDOW | SWP_NOZORDER);
+
         return;
     }
 

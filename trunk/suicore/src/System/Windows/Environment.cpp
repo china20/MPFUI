@@ -66,16 +66,16 @@ OSType Environment::GetOSType()
 Size Environment::GetScreenClient()
 {
     Size size;
-    size.cx = GetSystemMetrics(SM_CXSCREEN);
-    size.cy = GetSystemMetrics(SM_CYSCREEN);
+    size.cx = GetSystemMetrics(SM_CXFULLSCREEN);
+    size.cy = GetSystemMetrics(SM_CYFULLSCREEN);
     return size;
 }
 
 Size Environment::GetScreenBound()
 {
     Size size;
-    size.cx = GetSystemMetrics(SM_CXFULLSCREEN);
-    size.cy = GetSystemMetrics(SM_CYFULLSCREEN);
+    size.cx = GetSystemMetrics(SM_CXSCREEN);
+    size.cy = GetSystemMetrics(SM_CYSCREEN);
     return size;
 }
 
@@ -87,6 +87,54 @@ Time_t Environment::GetSystemTick()
 Time_t Environment::GetSystemTime()
 {
     return (Time_t)time(NULL);
+}
+
+MonitorInfo Environment::GetMonitorBoundByPoint(suic::Point* pt)
+{
+    MonitorInfo mi;
+    suic::Point pos;
+
+    if (NULL == pt)
+    {
+        ::GetCursorPos(&pos);
+    }
+    else
+    {
+        pos = *pt;
+    }
+
+#if WINVER < 0x500
+    mi.rcWork = Rect(Point(), Environment::GetScreenClient());
+    mi.rcMonitor = Rect(Point(), Environment::GetScreenBound());
+#else
+    MONITORINFO minfo;
+    HMONITOR hMonitor = ::MonitorFromPoint(pos, MONITOR_DEFAULTTOPRIMARY);
+    minfo.cbSize = sizeof(MONITORINFO);
+    ::GetMonitorInfo(hMonitor, &minfo);
+    mi.rcWork = minfo.rcWork;
+    mi.rcMonitor = minfo.rcMonitor;
+#endif
+
+    return mi;
+}
+
+MonitorInfo Environment::GetMonitorBoundByWindow(HWND hwnd)
+{
+    MonitorInfo mi;
+
+#if WINVER < 0x500
+    mi.rcWork = Rect(Point(), Environment::GetScreenClient());
+    mi.rcMonitor = Rect(Point(), Environment::GetScreenBound());
+#else
+    MONITORINFO minfo;
+    HMONITOR hMonitor = ::MonitorFromWindow(hwnd, MONITOR_DEFAULTTOPRIMARY);
+    minfo.cbSize = sizeof(MONITORINFO);
+    ::GetMonitorInfo(hMonitor, &minfo);
+    mi.rcWork = minfo.rcWork;
+    mi.rcMonitor = minfo.rcMonitor;
+#endif
+
+    return mi;
 }
 
 }

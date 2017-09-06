@@ -196,7 +196,7 @@ InfoBox::Result InfoBox::ShowInfo(Window* main, Object* info, const String& capt
 
     infoBox.SetTitle(caption);
     infoBox.SetContent(info);
-    infoBox.SetMaxWidth(Environment::GetScreenClient().Width() * 0.66);
+    infoBox.SetMaxWidth(Environment::GetScreenBound().Width() * 0.66);
 
     infoBox._options = options;
 

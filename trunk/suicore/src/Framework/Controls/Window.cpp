@@ -1529,14 +1529,14 @@ void Window::SetAllowsFullScreen(bool val)
 
             if (val)
             {
-                suic::Size szFull = Environment::GetScreenClient();
+                MonitorInfo mi = Environment::GetMonitorBoundByWindow(hwnd);
                 ::GetWindowRect(hwnd, _prevPos);
                 //::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, szFull.Width(), szFull.Height(), flag);
                 WINDOWPLACEMENT wndpl; 
                 wndpl.length = sizeof(WINDOWPLACEMENT); 
                 wndpl.flags = 0; 
                 wndpl.showCmd = SW_SHOWNORMAL; 
-                wndpl.rcNormalPosition = suic::Rect(Point(), szFull); 
+                wndpl.rcNormalPosition = mi.rcMonitor; 
                 ::SetWindowPlacement(hwnd, &wndpl);
             }
             else
@@ -2443,9 +2443,16 @@ void Window::CenterWindow(Handle hActive)
     {
         bool bDesk = true;
 
+        Rect rcSelf;
+        Rect rcOwner;
+
         HWND self = __HwndFromElement(this);
         HWND hwnd = ::GetDesktopWindow();
         HWND hwndOwner = HANDLETOHWND(hActive);
+        MonitorInfo mi = Environment::GetMonitorBoundByWindow(self);
+
+        rcOwner = mi.rcWork;
+        ::GetWindowRect(self, &rcSelf);
 
         if (hwndOwner == NULL)
         {
@@ -2469,13 +2476,8 @@ void Window::CenterWindow(Handle hActive)
         {
             bDesk = false;
             hwnd = hwndOwner;
+            ::GetWindowRect(hwnd, &rcOwner);
         }
-
-        Rect rcOwner;
-        Rect rcSelf;
-
-        ::GetWindowRect(hwnd, &rcOwner);
-        ::GetWindowRect(self, &rcSelf);
 
         int x = rcOwner.left + (Float) (rcOwner.Width() - rcSelf.Width()) / 2.0f;
         int y = rcOwner.top + (Float) (rcOwner.Height() - rcSelf.Height()) / 2.0f;

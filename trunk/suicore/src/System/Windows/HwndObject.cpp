@@ -273,7 +273,6 @@ void HwndObject::SetLayoutSize()
 
         if (GetSizeToContent() == SizeToContent::stcWidthAndHeight)
         {
-            availableSize = Environment::GetScreenClient();
             availableSize = Size(Numeric::MeasureInt, Numeric::MeasureInt);
             _rootElement->Measure(availableSize);
             availableSize = _rootElement->GetDesiredSize();
@@ -406,13 +405,14 @@ bool HwndObject::Process_WM_CREATE(Element* rootElement, MessageParam* mp)
 
 bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
 {
-    int x = LOWORD(mp->lp); 
+    int x = LOWORD(mp->lp);
     int y = HIWORD(mp->lp);
-    fSize devSize(x, y);
+    MonitorInfo mi = Environment::GetMonitorBoundByWindow(HANDLETOHWND(mp->hwnd));
 
-    //devSize = SystemParameters::TransformFromDevice(devSize);
+    x = UIMIN(x, mi.rcMonitor.Width());
+    y = UIMIN(y, mi.rcMonitor.Height());
 
-    Size realSize(devSize.cx, devSize.cy);
+    Size realSize(x, y);
     Rect finalRect(Point(), realSize);
     FrameworkElementPtr main(rootElement);
 
@@ -428,12 +428,12 @@ bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
         if (GetSizeToContent() == SizeToContent::stcWidth)
         {
             realSize.cx = Numeric::MeasureInt;
-            measureData->SetAvailableSize(Size(Environment::GetScreenClient().cx, realSize.cy));
+            measureData->SetAvailableSize(Size(mi.rcMonitor.Width(), realSize.cy));
         }
         else if (GetSizeToContent() == SizeToContent::stcHeight)
         {
             realSize.cy = Numeric::MeasureInt;
-            measureData->SetAvailableSize(Size(realSize.cx, Environment::GetScreenClient().cy));
+            measureData->SetAvailableSize(Size(realSize.cx, mi.rcMonitor.Height()));
         }
         else
         {
@@ -558,27 +558,17 @@ bool HwndObject::Process_WM_GETMINMAXINFO(Element* rootElement, MessageParam* mp
 {
     Window* pWnd = RTTICast<Window>(rootElement);
 
-    if (pWnd)
+    if (NULL != pWnd)
     {
-        fSize szDev;
         Rect rcArea;
+        MonitorInfo mi;
         PMINMAXINFO mInfo = (PMINMAXINFO)(ULONG_PTR)mp->lp;
         Rect rcmgr = SystemParameters::TransformToDevice(pWnd->GetBorderThickness());
-        //fRect rcDev = SystemParameters::TransformFromDevice(rcmgr.TofRect());
 
-        //rcmgr = rcDev.ToRect();
+        mi = Environment::GetMonitorBoundByWindow(HANDLETOHWND(mp->hwnd));
 
-        //-------------------------------------------------
-
-        MONITORINFO minfo;
-        HMONITOR hMonitor = ::MonitorFromWindow(HANDLETOHWND(mp->hwnd), MONITOR_DEFAULTTONEAREST);
-        minfo.cbSize = sizeof(MONITORINFO);
-        ::GetMonitorInfo(hMonitor, &minfo);
-        rcArea = minfo.rcWork;
-
-        rcArea.Offset(-minfo.rcMonitor.left, -minfo.rcMonitor.top);
-
-        //-------------------------------------------------
+        rcArea = mi.rcWork;
+        rcArea.Offset(-rcArea.left, -rcArea.top);
 
         Size szMin(pWnd->GetMinWidth(), pWnd->GetMinHeight());
         Size szMax(pWnd->GetMaxWidth(), pWnd->GetMaxHeight());
@@ -588,6 +578,16 @@ bool HwndObject::Process_WM_GETMINMAXINFO(Element* rootElement, MessageParam* mp
 
         mInfo->ptMaxPosition.x = -rcmgr.left + rcArea.left;
         mInfo->ptMaxPosition.y = -rcmgr.top + rcArea.top;
+
+        if (szMax.cx > rcArea.Width())
+        {
+            szMax.cx = rcArea.Width();
+        }
+
+        if (szMax.cy > rcArea.Height())
+        {
+            szMax.cy = rcArea.Height();
+        }
 
         if (szMax.cx > 2)
         {
@@ -618,9 +618,8 @@ bool HwndObject::Process_WM_GETMINMAXINFO(Element* rootElement, MessageParam* mp
         {
             mInfo->ptMinTrackSize.y = szMin.cy;
         }
-
     }
-    return false;
+    return true;
 }
 
 bool HwndObject::Process_WM_TIMER(Element* rootElement, MessageParam* mp)
