@@ -809,12 +809,12 @@ void DpObject::SetEqualValue(DpProperty* dp, Object* value)
     }
 }
 
-/*void DpObject::RaiseDpPropertyChanged(DpProperty* dp)
+void DpObject::RaiseDpPropertyChanged(DpProperty* dp)
 {
     // 
     // 值已经改变，触发事件
     //
-    PropMetadata* metadata = NULL;
+    /*PropMetadata* metadata = NULL;
     EffectiveValue entry;
     EntryIndex entryIndex = FindEntryIndex(dp->GetIndex());
     if (entryIndex.IsFound())
@@ -825,8 +825,8 @@ void DpObject::SetEqualValue(DpProperty* dp, Object* value)
         GetEffectiveValue(entryIndex, dp, metadata, RequestFlags::RawEntry, entry);
         DpPropChangedEventArg e(dp, metadata, val, val);
         NotifyDpPropertyChanged(&e);
-    }
-}*/
+    }*/
+}
 
 void DpObject::InternalSetValue(DpProperty* dp, Object* val, bool coerceWithCurr, OperationType operType, bool isInternal)
 {

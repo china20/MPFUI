@@ -354,7 +354,7 @@
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <AdditionalIncludeDirectories>.;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0500;WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Sync</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -365,6 +365,7 @@
     </ClCompile>
     <Lib>
       <OutputFile>..\..\lib\$(ProjectName)su.lib</OutputFile>
+      <AdditionalDependencies>../../lib/drawlib14s.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -2502,7 +2502,7 @@ bool Element::IsMouseCaptureWithin()
     return ReadFlag(CoreFlags::IsMouseCapturedWithinCache);
 }
 
-__forceinline bool Element::IsVisible()
+bool Element::IsVisible()
 {
     return ReadFlag(CoreFlags::IsVisibleCache);
     const Element* elem(this);
