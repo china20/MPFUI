@@ -129,7 +129,25 @@
 	<SolidColorBrush x:Key="listBoxItemHot" Color="#FFDFEDFA" />
 	<SolidColorBrush x:Key="listBoxItemSelected" Color="#FFDFEDFA" />
 
-	<!--TreeView皮肤资源定义-->
+    <!--ListView皮肤资源定义-->
+    <SolidColorBrush x:Key="listViewBk" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="listViewBorderNormal" Color="#FFBACED9" />
+    <SolidColorBrush x:Key="listViewBorderHot" Color="#FFAADBFE" />
+    <SolidColorBrush x:Key="listViewBorderFocused" Color="#FFAADBFE" />
+    <SolidColorBrush x:Key="listViewItemHot" Color="#FFDFEDFA" />
+    <SolidColorBrush x:Key="listViewItemSelected" Color="#FFDFEDFA" />
+    <SolidColorBrush x:Key="listViewItemBorder" Color="#FFBACED9" />
+    <SolidColorBrush x:Key="listViewHeaderRowBknd" Color="#FFE7F0F1" />
+    <SolidColorBrush x:Key="listViewComumnBknd" Color="#FFE7F0F1" />
+    <SolidColorBrush x:Key="listViewComumnBkndHot" Color="#FFE7F0F1" />
+    <SolidColorBrush x:Key="listViewComumnBkndPress" Color="#FFE7F0F1" />
+    <LinearGradientBrush x:Key="listViewGripper" StartPoint="0.5,0" EndPoint="0.5,1" >
+        <GradientStop Offset="0.0" Color="#6600FFDD" />
+        <GradientStop Offset="0.5" Color="Gray" />
+        <GradientStop Offset="1.0" Color="#6600FFDD" />
+    </LinearGradientBrush>
+
+    <!--TreeView皮肤资源定义-->
 	<SolidColorBrush x:Key="treeViewBk" Color="#FFFFFF" />
 	<SolidColorBrush x:Key="treeViewBorderNormal" Color="#FFBACED9" />
 	<SolidColorBrush x:Key="treeViewBorderHot" Color="#FFAADBFE" />
@@ -1165,8 +1183,7 @@
                 </Setter>
             </Trigger>
         </Style.Triggers>
-
-        <Setter Property="ItemsPanel">
+        <Setter Property="ItemsPanel" >
             <Setter.Value>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
@@ -1323,6 +1340,130 @@
         <Setter Property="Template" Value="{DynamicResource ListBoxTemplate}" />
         <!--根据业务自己定制数据模版-->
         <Setter Property="ItemTemplate" Value="{DynamicResource ListBoxDataTemplate}" />
+    </Style>
+    
+    <!--ListView样式-->
+    <Style TargetType="GridViewHeaderRowPresenter">
+        <Setter Property="Background" Value="{DynamicResource listViewHeaderRowBknd}" />
+    </Style>
+
+    <Style TargetType="GridViewColumnHeader" >
+        <Setter Property="Background" Value="{DynamicResource listViewComumnBknd}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GridViewColumnHeader">
+                    <DockPanel Background="{TemplateBinding Background}" >
+                        <Border DockPanel.Dock="Right" Margin="0,0,0,0" Background="{DynamicResource listViewGripper}">
+                            <Thumb Cursor="Resize" Width="2" Name="PART_HeaderGripper" />
+                        </Border>
+                        <ContentPresenter />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource listViewComumnBkndHot}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource listViewComumnBkndPress}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ListViewItem" >
+        <Setter Property="BorderBrush" Value="{DynamicResource listViewItemBorder}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" >
+                        <GridViewRowPresenter MinHeight="24" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource listViewItemSelected}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="GridViewScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollViewer">
+                    <Grid Background="{TemplateBinding Background}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Margin="{TemplateBinding Padding}" >
+                            <ScrollViewer Height="25" DockPanel.Dock="Top" Focusable="False" HorizontalScrollBarVisibility="Collapsed" VerticalScrollBarVisibility="Collapsed">
+                                <GridViewHeaderRowPresenter Columns="{Binding TemplatedParent.View.Columns, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ColumnHeaderContainerStyle="{Binding TemplatedParent.View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ColumnHeaderToolTip="{Binding TemplatedParent.View.ColumnHeaderToolTip, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ColumnHeaderTemplate="{Binding TemplatedParent.View.ColumnHeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </ScrollViewer>
+                            <ScrollContentPresenter Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
+                        </DockPanel>
+                        <ScrollBar Name="PART_HorizontalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0.0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
+                        <ScrollBar Name="PART_VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0.0" Orientation="Vertical" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ListViewTemplate" TargetType="{x:Type ListView}">
+        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+            <ScrollViewer Padding="{TemplateBinding Padding}" Style="{DynamicResource GridViewScrollViewerStyle}">
+                <ItemsPresenter />
+            </ScrollViewer>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsGrouping" Value="true">
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Background" TargetName="Bd" Value="Gray"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="ListView">
+        <Setter Property="Background" Value="{DynamicResource listViewBk}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource listViewBorderNormal}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="Template" Value="{DynamicResource ListViewTemplate}" />
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- PART_HeaderButton控件样式定义 -->

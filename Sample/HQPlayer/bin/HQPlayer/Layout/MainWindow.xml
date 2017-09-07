@@ -1,5 +1,5 @@
 <?xml encoding="utf-8" ?>
-<Window Name="window" AllowsTransparency1="True" Title="HQPlayer（Beta0.1.0）" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
+<Window Name="window" AllowsTransparency="False" Title="HQPlayer（Beta0.1.0）" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
         CaptionHeight="20" Width="640" Height="380" MinWidth="380" MinHeight="300"
         BorderThickness="0" Background="#FF202020" Foreground="Gray" Topmost="True" >
 
