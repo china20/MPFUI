@@ -28,6 +28,7 @@ public:
         MemberRouted(OnClickNextButton)
         MemberRouted(OnClickOpenVolume)
         MemberRouted(OnClickCloseVolume)
+        MemberRouted(OnDblPlayListClick)
     EndRoutedEvent()
 
     MainWindow();
@@ -47,10 +48,11 @@ public:
 
     void OnClickOpenVolume(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickCloseVolume(suic::DpObject* sender, suic::RoutedEventArg* e);
+
+    void OnDblPlayListClick(suic::DpObject* sender, suic::RoutedEventArg* e);
     
     void OnVolumeChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
     void OnPlayProgressChanged(suic::Element*, suic::FloatPropChangedEventArg* e);
-    void OnDblPlayListClick(suic::Element* sender, suic::MouseButtonEventArg* e);
     void OnPlayListSelectionChanged(suic::Element* sender, suic::SelectionChangedEventArg* e);
 
 protected:

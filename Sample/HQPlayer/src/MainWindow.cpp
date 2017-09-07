@@ -86,12 +86,12 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     if (NULL != _playListBox)
     {
         _playListBox->SetItemsSource(_playManager->GetPlayList());
-        _playListBox->AddMouseDoubleClick(new suic::MouseButtonEventHandler(this, &MainWindow::OnDblPlayListClick));
+        //_playListBox->AddMouseDoubleClick(new suic::MouseButtonEventHandler(this, &MainWindow::OnDblPlayListClick));
         //_playListBox->AddSelectionChanged(new suic::SelectionChangedEventHandler(this, &MainWindow::OnPlayListSelectionChanged));
     }
 }
 
-void MainWindow::OnDblPlayListClick(suic::Element* sender, suic::MouseButtonEventArg* e)
+void MainWindow::OnDblPlayListClick(suic::DpObject* sender, suic::RoutedEventArg* e)
 {
     //
     // Êó±êË«»÷ÊÂ¼þ
