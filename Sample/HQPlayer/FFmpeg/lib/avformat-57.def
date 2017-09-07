@@ -34,6 +34,7 @@ EXPORTS
     av_format_set_subtitle_codec
     av_format_set_video_codec
     av_get_frame_filename
+    av_get_frame_filename2
     av_get_output_timestamp
     av_get_packet
     av_guess_codec
@@ -65,6 +66,8 @@ EXPORTS
     av_register_output_format
     av_sdp_create
     av_seek_frame
+    av_stream_add_side_data
+    av_stream_get_codec_timebase
     av_stream_get_end_pts
     av_stream_get_parser
     av_stream_get_r_frame_rate
@@ -90,6 +93,7 @@ EXPORTS
     avformat_get_mov_video_tags
     avformat_get_riff_audio_tags
     avformat_get_riff_video_tags
+    avformat_init_output
     avformat_license
     avformat_match_stream_specifier
     avformat_network_deinit
@@ -99,6 +103,7 @@ EXPORTS
     avformat_query_codec
     avformat_queue_attached_pictures
     avformat_seek_file
+    avformat_transfer_internal_stream_timing_info
     avformat_version
     avformat_write_header
     avio_accept
@@ -108,11 +113,13 @@ EXPORTS
     avio_close_dir
     avio_close_dyn_buf
     avio_closep
+    avio_context_free
     avio_enum_protocols
     avio_feof
     avio_find_protocol_name
     avio_flush
     avio_free_directory_entry
+    avio_get_dyn_buf
     avio_get_str
     avio_get_str16be
     avio_get_str16le
@@ -133,6 +140,7 @@ EXPORTS
     avio_rb64
     avio_read
     avio_read_dir
+    avio_read_partial
     avio_read_to_bprint
     avio_rl16
     avio_rl24
