@@ -37,9 +37,9 @@ bool ToggleButton::StaticInit()
         IsThreeStateProperty = DpProperty::Register(_T("IsThreeState"), RTTIType(), Boolean::RTTIType()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsNone));
 
-        CheckedEvent = EventHelper::RegisterRoutedEvent(_U("Checked"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-        UncheckedEvent = EventHelper::RegisterRoutedEvent(_U("Unchecked"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-        IndeterminateEvent = EventHelper::RegisterRoutedEvent(_U("Indeterminate"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
+        CheckedEvent = EventHelper::RegisterRoutedEvent(_U("Checked"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
+        UncheckedEvent = EventHelper::RegisterRoutedEvent(_U("Unchecked"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
+        IndeterminateEvent = EventHelper::RegisterRoutedEvent(_U("Indeterminate"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
     }
     return true;
 }

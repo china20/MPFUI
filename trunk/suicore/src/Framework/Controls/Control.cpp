@@ -149,8 +149,8 @@ bool Control::StaticInit()
         TabIndexProperty = KeyboardNavigation::TabIndexProperty->AddOwner(RTTIType(), NULL);
         IsTabStopProperty = KeyboardNavigation::IsTabStopProperty->AddOwner(RTTIType(), NULL);
 
-        MouseDoubleClickEvent = EventHelper::RegisterRoutedEvent(_U("MouseDoubleClick"), RoutingStrategy::Direct, RTTIType(), RTTIType());
-        PreviewMouseDoubleClickEvent = EventHelper::RegisterRoutedEvent(_U("PreviewMouseDoubleClick"), RoutingStrategy::Direct, RTTIType(), RTTIType());
+        MouseDoubleClickEvent = EventHelper::RegisterRoutedEvent(_U("MouseDoubleClick"), RoutingStrategy::Direct, MouseButtonEventHandler::RTTIType(), RTTIType());
+        PreviewMouseDoubleClickEvent = EventHelper::RegisterRoutedEvent(_U("PreviewMouseDoubleClick"), RoutingStrategy::Direct, MouseButtonEventHandler::RTTIType(), RTTIType());
 
         //EventHelper::RegisterClassHandler(RTTIType(), Element::PreMouseLButtonDownEvent, new MouseButtonEventHandler(&Control::HandleDoubleClick), true);
         //EventHelper::RegisterClassHandler(RTTIType(), Element::MouseLButtonDownEvent, new MouseButtonEventHandler(&Control::HandleDoubleClick), true);

@@ -79,8 +79,8 @@ bool Expander::StaticInit()
     {
         HeaderedContentControl::StaticInit();
 
-        ExpandedEvent = EventControl::RegisterRoutedEvent(_T("Expanded"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-        CollapsedEvent = EventControl::RegisterRoutedEvent(_T("Collapsed"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
+        ExpandedEvent = EventControl::RegisterRoutedEvent(_T("Expanded"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
+        CollapsedEvent = EventControl::RegisterRoutedEvent(_T("Collapsed"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
         ExpandDirectionProperty = DpProperty::Register(_T("ExpandDirection"), RTTIType(), Integer::RTTIType()
             , DpPropMemory::GetPropMeta(Integer::GetPosInt(ExpandDirection::edDown), PropMetadataOptions::AffectsParentMeasure));
         IsExpandedProperty = DpProperty::Register(_T("IsExpanded"), RTTIType(), Boolean::RTTIType()

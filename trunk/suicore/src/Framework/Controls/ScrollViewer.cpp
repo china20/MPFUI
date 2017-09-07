@@ -185,7 +185,7 @@ bool ScrollViewer::StaticInit()
         ComputedHorizontalScrollBarVisibilityProperty->SetConvertValueCb(VisibilityConvert::Convert);
         ComputedVerticalScrollBarVisibilityProperty->SetConvertValueCb(VisibilityConvert::Convert);
 
-        ScrollChangedEvent = EventHelper::RegisterRoutedEvent(_U("ScrollChanged"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
+        ScrollChangedEvent = EventHelper::RegisterRoutedEvent(_U("ScrollChanged"), RoutingStrategy::Bubble, ScrollChangedEventHandler::RTTIType(), RTTIType());
 
         Control::IsTabStopProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Boolean::False));
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knLocal)));

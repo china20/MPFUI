@@ -67,7 +67,7 @@ bool RangeBase::StaticInit()
     {
         Control::StaticInit();
         ValueChangedEvent = EventHelper::RegisterRoutedEvent(_U("ValueChanged"), RoutingStrategy::Bubble
-            , RangeBase::RTTIType(), RangeBase::RTTIType());
+            , FloatPropChangedEventHandler::RTTIType(), RangeBase::RTTIType());
 
         ValueProperty = DpProperty::Register(_T("Value"), RTTIType(), OFloat::RTTIType()
             , DpPropMemory::GetPropMeta(OFloat::GetZeroFloat(), PropMetadataOptions::AffectsMeasure, &RangeBase::OnValuePropChanged));

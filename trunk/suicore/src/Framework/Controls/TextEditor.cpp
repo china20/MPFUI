@@ -68,8 +68,8 @@ bool TextEditor::StaticInit()
     {
         ScrollViewer::StaticInit();
 
-        TextChangedEvent = EventHelper::RegisterRoutedEvent(_T("TextChanged"), RoutingStrategy::Bubble, TextEditor::RTTIType(), TextEditor::RTTIType());
-        SelectionChangedEvent = EventHelper::RegisterRoutedEvent(_T("SelectionChanged"), RoutingStrategy::Bubble, TextEditor::RTTIType(), TextEditor::RTTIType());
+        TextChangedEvent = EventHelper::RegisterRoutedEvent(_T("TextChanged"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), TextEditor::RTTIType());
+        SelectionChangedEvent = EventHelper::RegisterRoutedEvent(_T("SelectionChanged"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), TextEditor::RTTIType());
 
         WatermarkProperty = DpProperty::Register(_T("Watermark"), RTTIType(), OString::RTTIType(), DpPropMemory::GetPropMeta(OString::EmptyString, PropMetadataOptions::AffectsRender));
         TextProperty = DpProperty::Register(_T("Text"), RTTIType(), OString::RTTIType(), DpPropMemory::GetPropMeta(OString::EmptyString, PropMetadataOptions::AffectsRender, &TextEditor::OnTextPropChanged));

@@ -702,7 +702,7 @@ bool Hyperlink::StaticInit()
         Inline::StaticInit();
         CursorProperty->OverrideMetadata(RTTIType(), suic::DpPropMemory::GetPropMeta(suic::OCursor::Hand));
 
-        ClickEvent = suic::EventHelper::RegisterRoutedEvent(_U("Click"), suic::RoutingStrategy::Bubble, RTTIType(), RTTIType());
+        ClickEvent = suic::EventHelper::RegisterRoutedEvent(_U("Click"), suic::RoutingStrategy::Bubble, suic::RoutedEventHandler::RTTIType(), RTTIType());
         IsHyperlinkPressedProperty = suic::DpProperty::Register(_T("IsHyperlinkPressed"), RTTIType(), suic::Boolean::RTTIType(), suic::DpPropMemory::GetPropMeta(suic::Boolean::False));
 
         NavigateUriProperty = suic::DpProperty::Register(_T("NavigateUri"), RTTIType(), suic::OString::RTTIType(), suic::DpPropMemory::GetPropMeta(suic::OString::EmptyString));
