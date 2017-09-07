@@ -222,6 +222,11 @@ inline bool DpObject::IsSealed()
     return ReadDoFlag(ViewFlags::IsObjectSealedVF); 
 }
 
+inline bool DpObject::ReadDoFlag(suic::Uint32 key) const
+{
+	return (key == (_viewflag & key));
+}
+
 }
 
 #endif

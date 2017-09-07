@@ -63,11 +63,19 @@
 #pragma comment(lib, "windowscodecs.lib")
 
 #ifdef _DEBUG
+#if _MSC_VER >= 1900
+#pragma comment(lib, "drawlibs14d.lib")
+#else
 #pragma comment(lib, "drawlibsd.lib")
+#endif
 #pragma comment(lib, "freetype253_d.lib")
 #pragma comment(lib, "suicoresud.lib")
 #else
+#if _MSC_VER >= 1900
+#pragma comment(lib, "drawlib14s.lib")
+#else
 #pragma comment(lib, "drawlibs.lib")
+#endif
 #pragma comment(lib, "freetype253.lib")
 #pragma comment(lib, "suicoresu.lib")
 #endif

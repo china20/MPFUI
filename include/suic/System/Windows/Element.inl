@@ -114,12 +114,7 @@ inline void Element::AddHandler(const RoutedEvent* routedEvent, Handler* handler
     AddHandler(routedEvent, handler, false);
 }
 
-inline bool DpObject::ReadDoFlag(Uint32 key) const
-{
-    return (key == (_viewflag & key));
-}
-
-inline Point Element::GetVisualOffset() const
+inline suic::Point Element::GetVisualOffset() const
 {
     return _offset;
 }
