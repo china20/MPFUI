@@ -518,7 +518,7 @@
                     <DockPanel DockPanel.Dock="Bottom" Background="#FF111111" MinHeight="60" >
                         
                     </DockPanel>
-                    <ListBox Name="playList" Background="#FF121212" BorderThickness="0" />
+                    <ListBox Name="playList" MouseDoubleClick="OnDblPlayListClick" Background="#FF121212" BorderThickness="0" />
                 </DockPanel>
                 <Grid Name="layPlayer" />
             </DockPanel>
