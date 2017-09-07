@@ -1,0 +1,31 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="简易任务管理器" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
+        CaptionHeight="20" Width="660" Height="390" MinWidth="380" MinHeight="300" >
+
+    <Window.Resources>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <DockPanel >
+            <!--标题栏-->
+            <DockPanel Name="layCaption" VerticalAlignment="Top" Height="32" DockPanel.Dock="Top" >
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center" >
+                    <MinimizeButton ToolTip="最小化" Focusable="False" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,9,0" />
+                    <MaximizeButton Focusable="False" Width="19" Height="21" VerticalAlignment="Top" Margin="5,0,8,0" />
+                    <CloseButton ToolTip="关闭" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,6,0" />
+                </StackPanel>
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                           Foreground="Gray" FontSize="11" Margin="4" VerticalAlignment="Center"/>
+            </DockPanel>
+            <ListView Name="listProcess" Margin="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="60" Header="进程号" DisplayMemberBinding="{Binding Path=ProcessID}"/>
+                        <GridViewColumn Width="100" Header="进程名称" DisplayMemberBinding="{Binding Path=Name}"/>
+                        <GridViewColumn Width="120" Header="用户名" DisplayMemberBinding="{Binding Path=UserName}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>

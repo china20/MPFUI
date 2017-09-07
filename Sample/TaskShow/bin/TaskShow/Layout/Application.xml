@@ -1,0 +1,10 @@
+<?xml encoding="utf-8" ?>
+<Application StartupUri="TaskShow/Layout/MainWindow.xml" Author="QQ:386666951)" >
+    <Application.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="TaskShow/Template/ListView.xml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
