@@ -22,10 +22,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                        LPTSTR    lpCmdLine,
                        int       nCmdShow)
 {
-
-    HMODULE h = ::LoadLibrary(_T("avformat-57.dll"));
-    lpfn_av_register_all avr = (lpfn_av_register_all)::GetProcAddress(h, "av_register_all");
-    avr();
     suic::InitUIWgx();
 
     suic::WindowPtr wnd(new MainWindow());
@@ -57,9 +53,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     wnd = NULL;
     
     suic::ExitUIWgx();
-
-    //int c;
-    //scanf("%d", &c);
 
     return 0;
 }
