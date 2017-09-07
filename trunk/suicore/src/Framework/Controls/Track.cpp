@@ -513,7 +513,7 @@ bool Track::ComputeScrollBarLengths(Size arrangeSize, bool isVertical, int viewp
     thumbLength = max(thumbRealLen, thumbLength);
 
     // »¬¿éÎÞÐ§£¬Òþ²Ø
-    bool bLessZero = (int)numPos <= 0;
+    bool bLessZero = (int)numLength <= 0;
     bool bGreateMax = thumbLength > height;
 
     if (bLessZero || bGreateMax)
@@ -534,7 +534,7 @@ bool Track::ComputeScrollBarLengths(Size arrangeSize, bool isVertical, int viewp
     increaseButtonLength = trackLength - decreaseButtonLength;
     CoerceLength(increaseButtonLength, trackLength);
 
-    _density = (Float)numPos / (Float)trackLength;
+    _density = (Float)numLength / (Float)trackLength;
 
     return true;
 }
