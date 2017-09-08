@@ -261,7 +261,7 @@ void MainWindow::OnAppSelected(Element* sender, MouseButtonEventArg* e)
             String strPath;
             strPath.Format(_U("%s.exe"), item->GetName().c_str());
             strPath = FileDir::CalculatePath(strPath);
-            ShellExecute(NULL, _U("open"), strPath.c_str(), NULL, NULL, SW_SHOW);
+            ShellExecuteW(NULL, _U("open"), strPath.c_str(), NULL, NULL, SW_SHOW);
         }
         e->SetHandled(true);
     }

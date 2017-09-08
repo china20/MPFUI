@@ -170,7 +170,7 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release32Output|Win32"
+			Name="ReleaselibLink|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
@@ -196,8 +196,8 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../include/suic"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				AdditionalIncludeDirectories="../../../include/suic"
+				PreprocessorDefinitions="WIN32;NDEBUG;SUICORE_LIB;SUIWGX_LIB;"
 				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
@@ -215,9 +215,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\..\bin\release_vc90\$(ProjectName).exe"
+				OutputFile="..\..\..\bin\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="../../lib"
+				AdditionalLibraryDirectories="../../../lib"
 				GenerateDebugInformation="true"
 				SubSystem="0"
 				OptimizeReferences="2"
@@ -279,7 +279,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release32Output|Win32"
+					Name="ReleaselibLink|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
