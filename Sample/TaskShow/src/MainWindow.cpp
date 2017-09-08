@@ -6,10 +6,13 @@
 
 MainWindow::MainWindow()
 {
+    _timer = new suic::AssignerTimer();
+    _timer->ref();
 }
 
 MainWindow::~MainWindow()
 {
+    _timer->unref();
 }
 
 void MainWindow::OnLoaded(suic::LoadedEventArg* e)
@@ -17,6 +20,10 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     suic::Window::OnLoaded(e);
 
     CenterWindow();
+
+    _timer->SetTick(suic::EventHandler(this, &MainWindow::OnRefleshTimer));
+    _timer->SetInterval(1000);
+    _timer->Start();
 
     _processInfo.RefleshProcessInfo();
 
@@ -34,4 +41,9 @@ bool MainWindow::OnBuild(suic::IXamlNode* pNode, suic::ObjectPtr& obj)
 
 void MainWindow::OnConnect(suic::IXamlNode* pNode, suic::Object* target)
 {
+}
+
+void MainWindow::OnRefleshTimer(suic::Object* sender, suic::EventArg* e)
+{
+    _processInfo.RefleshProcessInfo();
 }

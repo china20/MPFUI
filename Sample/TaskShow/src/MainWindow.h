@@ -30,8 +30,15 @@ protected:
 
 private:
 
+    void OnRefleshTimer(suic::Object* sender, suic::EventArg* e);
+
+private:
+
     ProcessInfo _processInfo;
     suic::ListView* _listProcess;
+
+    // 定时器，用来刷新进程列表
+    suic::AssignerTimer* _timer;
 };
 
 #endif
