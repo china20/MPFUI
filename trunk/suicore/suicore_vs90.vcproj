@@ -359,96 +359,7 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release32Output|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="2"
-			CharacterSet="1"
-			WholeProgramOptimization="1"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="false"
-				FavorSizeOrSpeed="0"
-				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories=".;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config"
-				PreprocessorDefinitions="_WIN32_WINNT=0x0500;WIN32;NDEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS"
-				ExceptionHandling="1"
-				RuntimeLibrary="0"
-				TreatWChar_tAsBuiltInType="true"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="opengl32.Lib usp10.lib drawlibs.lib windowscodecs.lib freetype253.lib"
-				OutputFile="..\..\bin\release_vc90_output\$(ProjectName)u.dll"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="../../lib;./../third_party/freetype/lib"
-				IgnoreDefaultLibraryNames="msvcrt.lib;"
-				GenerateDebugInformation="true"
-				AssemblyDebug="0"
-				ProgramDatabaseFile="..\..\bin\intermediate\release_vc90\$(TargetName).pdb"
-				SubSystem="0"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				OptimizeForWindows98="1"
-				LinkTimeCodeGeneration="1"
-				ImportLibrary="..\..\lib\$(ProjectName)u.lib"
-				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="ReleaseLib|Win32"
+			Name="Release32Lib|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="..\..\bin\intermediate\releaselib_vc90\$(ProjectName)"
 			ConfigurationType="4"
@@ -909,15 +820,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release32Output|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="ReleaseLib|Win32"
+					Name="Release32Lib|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2991,16 +2894,7 @@
 							/>
 						</FileConfiguration>
 						<FileConfiguration
-							Name="Release32Output|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-								ObjectFile="$(IntDir)\$(InputName)1.obj"
-								XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
-							/>
-						</FileConfiguration>
-						<FileConfiguration
-							Name="ReleaseLib|Win32"
+							Name="Release32Lib|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
