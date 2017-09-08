@@ -21,7 +21,7 @@ class FEFactory;
 /// <summary>
 /// ItemsPanelTemplate，其可视树根必须从Panel继承。
 /// </summary>
-class ItemsPanelTemplate : public FrameworkTemplate
+class SUICORE_API ItemsPanelTemplate : public FrameworkTemplate
 {
 public:
 

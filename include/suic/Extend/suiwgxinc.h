@@ -101,6 +101,7 @@
 namespace suic
 {
     SUIWGX_API bool __stdcall InitUIWgx();
+    SUIWGX_API bool __stdcall InitUIWgxs(bool initWgx);
     SUIWGX_API void __stdcall ExitUIWgx();
 }
 

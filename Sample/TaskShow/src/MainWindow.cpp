@@ -22,6 +22,8 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
 
     _listProcess = FindElem<suic::ListView>("listProcess");
     _listProcess->SetItemsSource(_processInfo.GetProcessColl());
+
+    //_listProcess->SetItemsPanel(new suic::ItemsPanelTemplate(new suic::FEFactory(suic::WrapPanel::RTTIType())));
 }
 
 

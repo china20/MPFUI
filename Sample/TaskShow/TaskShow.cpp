@@ -10,7 +10,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                        LPTSTR    lpCmdLine,
                        int       nCmdShow)
 {
-    suic::InitUIWgx();
+    suic::InitUIWgxs(true);
+    suic::InitUILogLevel(suic::LogLevel::Trace);
 
     suic::WindowPtr wnd(new MainWindow());
 

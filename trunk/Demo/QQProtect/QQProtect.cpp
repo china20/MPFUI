@@ -11,7 +11,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                        int       nCmdShow)
 {
 
-    suic::InitUIWgx();
+    suic::InitUIWgxs(true);
     // suic::CoreHelper::SetScaleRatio(1.3f);
     
     suic::BuildFactory::Ins()->Add(ChatTextBox::RTTIType());

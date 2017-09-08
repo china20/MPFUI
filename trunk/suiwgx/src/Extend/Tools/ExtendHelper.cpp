@@ -235,7 +235,38 @@ public:
     }
 };
 
-SUIWGX_API bool __stdcall InitUIWgx()
+void __stdcall InitUIControls()
+{
+    suic::GifBox::StaticInit();
+    suic::TextBoxBase::StaticInit();
+    suic::TextBox::StaticInit();
+    suic::PlayBox::StaticInit();
+    suic::InfoBox::StaticInit();
+    suic::ToolBar::StaticInit();
+    suic::TabControl::StaticInit();
+    suic::ListBox::StaticInit();
+    suic::FlashBox::StaticInit();
+    suic::TabControl::StaticInit();
+    suic::TreeView::StaticInit();
+    suic::ListView::StaticInit();
+    suic::ComboBox::StaticInit();
+    suic::WebkitBox::StaticInit();
+    suic::WrapPanel::StaticInit();
+    suic::WebBrowser::StaticInit();
+    suic::HyperPanel::StaticInit();
+    suic::TabControl::StaticInit();
+    suic::PasswordBox::StaticInit();
+    suic::RichTextBox::StaticInit();
+    suic::ListBox::StaticInit();
+    suic::TabControl::StaticInit();
+    suic::GridSplitter::StaticInit();
+    suic::TreeView::StaticInit();
+    suic::ListView::StaticInit();
+    suic::ComboBox::StaticInit();
+    suic::TextBox::StaticInit();
+}
+
+SUIWGX_API bool __stdcall InitUIWgxs(bool initWgx)
 {
     if (!s_g_init)
     {
@@ -244,10 +275,19 @@ SUIWGX_API bool __stdcall InitUIWgx()
         ::OleInitialize(NULL);
         //suic::BuildFactory::Ins()->Add();
         suic::InfoBox::StaticInit();
+        if (initWgx)
+        {
+            InitUIControls();
+        }
         s_g_init = true;
     }
 
     return true;
+}
+
+SUIWGX_API bool __stdcall InitUIWgx()
+{
+    return InitUIWgxs(false);
 }
 
 SUIWGX_API void __stdcall ExitUIWgx()
