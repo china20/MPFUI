@@ -64,6 +64,9 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     _layBottom = FindElem<suic::FrameworkElement>("layBottom");
     _playArea = FindElem<suic::FrameworkElement>("layPlayer");
     _layRight = FindElem<suic::FrameworkElement>("rightPanel");
+    _layPlayer = FindElem<suic::FrameworkElement>("layPlayer");
+
+    _layPlayer->SetMargin(suic::Rect(0, 0, 0, 52));
 
     // 
     // 注册音量按钮的回调
@@ -449,13 +452,16 @@ void MainWindow::SetFullScreenMode(bool bFull)
     if (AllowsFullScreen())
     {
         pFull->SetToolTip("退出全屏");
+        _layPlayer->SetMargin(suic::Rect());
         FindName("layCaption")->SetVisibility(suic::Visibility::Collapsed);
     }
     else
     {
         _timer->Stop();
         pFull->SetToolTip("全屏显示");
+        _layPlayer->SetMargin(suic::Rect(0, 0, 0, 52));
         FindName("layCaption")->SetVisibility(suic::Visibility::Visible);
+       
         if (NULL != _layBottom)
         {
             _layBottom->SetMargin(suic::Rect());

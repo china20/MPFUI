@@ -88,6 +88,7 @@ private:
     suic::FrameworkElement* _playArea;
     suic::FrameworkElement* _layBottom;
     suic::FrameworkElement* _layRight;
+    suic::FrameworkElement* _layPlayer;
 
     suic::Point _lastMousePt;
     suic::Point _prevMouseDown;
