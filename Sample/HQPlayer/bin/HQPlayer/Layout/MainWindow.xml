@@ -406,121 +406,120 @@
                            Foreground="Gray" FontSize="11" Margin="4" VerticalAlignment="Center"/>
             </DockPanel>
 
-            <DockPanel Name="layBottom" Margin="0,0,0,0" Height="52" VerticalAlignment="Bottom" Background="#FF111111" DockPanel.Dock="Bottom">
-                <Grid Margin="0,0,0,0" DockPanel.Dock="Top">
-                    <Slider Name="playPB" Style="{DynamicResource PBSliderStyle}"
-                            HorizontalAlignment="Stretch"
-                            IsSelectionRangeEnabled="False" IsMoveToPointEnabled="True"
-                            Height="4" Value="1" Maximum="100" />
-                </Grid>
-                
-                <DockPanel>
-                    <Grid Margin="2" >
-                        <Button Name="btnPlay" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
-                            ToolTip="播放"
-                            Tag1="{DynamicResource PlayNormal}"
-                            Tag2="{DynamicResource PlayHot}"
-                            Tag3="{DynamicResource PlayPress}"
-                            Tag4="{DynamicResource PlayEnabled}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-                        <Button Name="btnPause" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
-                            Visibility="Hidden"
-                            ToolTip="暂停"
-                            Tag1="{DynamicResource PauseNormal}"
-                            Tag2="{DynamicResource PauseHot}"
-                            Tag3="{DynamicResource PausePress}"
-                            Tag4="{DynamicResource PauseEnabled}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-                    </Grid>
-
-                    <Button Name="btnStop" Width="22" Height="44" Margin="2" Click="OnClickStopButton" IsEnabled="False"
-                            ToolTip="停止"
-                            Tag1="{DynamicResource StopNormal}"
-                            Tag2="{DynamicResource StopHot}"
-                            Tag3="{DynamicResource StopPress}"
-                            Tag4="{DynamicResource StopEnabled}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-
-                    <Button Name="prevStop" Width="22" Height="44" Margin="2" Click="OnClickPrevButton"
-                            ToolTip="上一个"
-                            Tag1="{DynamicResource PrevNormal}"
-                            Tag2="{DynamicResource PrevHot}"
-                            Tag3="{DynamicResource PrevPress}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-
-
-                    <Button Name="nextStop" Width="22" Height="44" Margin="2" Click="OnClickNextButton" 
-                            ToolTip="下一个"
-                            Tag1="{DynamicResource NextNormal}"
-                            Tag2="{DynamicResource NextHot}"
-                            Tag3="{DynamicResource NextPress}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-
-
-                    <StackPanel Orientation="Horizontal" Margin="2,5,2,2" VerticalAlignment="Center" >
-                        <TextBlock Name="curDuration" Text="00:00:00" />
-                        <TextBlock Text="/" />
-                        <TextBlock Name="duration" Text="00:00:00" />
-                    </StackPanel>
-
-                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" FlowDirection="RightToLeft">
-                        
-                        <Button Name="btnFull" Width="20" Height="21" Margin="3,2,3,2" Click="OnClickBrowserButton" ToolTip="播放列表"
-                            Tag1="{DynamicResource BrowserNormal}"
-                            Tag2="{DynamicResource BrowserHot}"
-                            Tag3="{DynamicResource BrowserPress}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-
-                        <Button Name="btnFull" Width="24" Height="44" Margin="2" Click="OnClickFullButton" ToolTip="全屏显示"
-                            Tag1="{DynamicResource FullNormal}"
-                            Tag2="{DynamicResource FullHot}"
-                            Tag3="{DynamicResource FullPress}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-                        
-                        <Button Name="btnSet" Width="26" Height="44" Margin="2" Click="OnClickSettingButton" ToolTip="设置"
-                            Tag1="{DynamicResource SettingNormal}"
-                            Tag2="{DynamicResource SettingHot}"
-                            Tag3="{DynamicResource SettingPress}"
-                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-
-                        <Button Name="btnOpen" Width="25" Height="25" Click="OnClickOpenButton" Margin="10,0,8,0"
-                                ToolTip="打开视频" Cursor="Hand"
-                                Tag1="{DynamicResource OpenNormal}"
-                                Tag2="{DynamicResource OpenHot}"
-                                Tag3="{DynamicResource OpenPress}"
-                                Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-
-                        <Grid Width="79" Height="44" >
-                            <Slider Name="volumeSlider" Style="{DynamicResource VolumeSliderStyle}"
-                                    IsSelectionRangeEnabled="False" IsMoveToPointEnabled="True" 
-                                    Cursor="Hand" Width="79" Height="44" Value="1" Maximum="128" />
-                        </Grid>
-                        
-                        <Grid Width="24" Height="44" Margin="3,0,10,0">
-                            <Button Name="closeVolume" Width="21" Height="12" Cursor="Hand"
-                                    Click="OnClickCloseVolume"
-                                    Tag1="{DynamicResource VolumeOpenNormal}" 
-                                    Tag2="{DynamicResource VolumeOpenHot}" 
-                                    Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-
-                            <Button Name="openVolume" Width="20" Height="12" Cursor="Hand" Visibility="Hidden"
-                                    Click="OnClickOpenVolume"
-                                    Tag1="{DynamicResource VolumeCloseNormal}"
-                                    Tag2="{DynamicResource VolumeCloseHot}"
-                                    Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
-                        </Grid>
-                        
-                    </StackPanel>
-                </DockPanel>
-            </DockPanel>
-            <DockPanel>
+            <DockPanel Name="layPlayer">
                 <DockPanel Name="rightPanel" Width="180" DockPanel.Dock="Right" Margin="0,0,-180,0" >
                     <DockPanel DockPanel.Dock="Bottom" Background="#FF111111" MinHeight="60" >
-                        
+
                     </DockPanel>
                     <ListBox Name="playList" MouseDoubleClick="OnDblPlayListClick" Background="#FF121212" BorderThickness="0" />
                 </DockPanel>
                 <Grid Name="layPlayer" />
+            </DockPanel>
+        </DockPanel>
+
+        <DockPanel Name="layBottom" Margin="0,0,0,0" Height="52" VerticalAlignment="Bottom" Background="#99111111" >
+            <Grid Margin="0,0,0,0" DockPanel.Dock="Top">
+                <Slider Name="playPB" Style="{DynamicResource PBSliderStyle}"
+                        HorizontalAlignment="Stretch"
+                        IsSelectionRangeEnabled="False" IsMoveToPointEnabled="True"
+                        Height="4" Value="1" Maximum="100" />
+            </Grid>
+            <DockPanel>
+                <Grid Margin="2" >
+                    <Button Name="btnPlay" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
+                        ToolTip="播放"
+                        Tag1="{DynamicResource PlayNormal}"
+                        Tag2="{DynamicResource PlayHot}"
+                        Tag3="{DynamicResource PlayPress}"
+                        Tag4="{DynamicResource PlayEnabled}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                    <Button Name="btnPause" Width="38" Height="44" Click="OnClickButton" IsEnabled="False"
+                        Visibility="Hidden"
+                        ToolTip="暂停"
+                        Tag1="{DynamicResource PauseNormal}"
+                        Tag2="{DynamicResource PauseHot}"
+                        Tag3="{DynamicResource PausePress}"
+                        Tag4="{DynamicResource PauseEnabled}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                </Grid>
+
+                <Button Name="btnStop" Width="22" Height="44" Margin="2" Click="OnClickStopButton" IsEnabled="False"
+                        ToolTip="停止"
+                        Tag1="{DynamicResource StopNormal}"
+                        Tag2="{DynamicResource StopHot}"
+                        Tag3="{DynamicResource StopPress}"
+                        Tag4="{DynamicResource StopEnabled}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                <Button Name="prevStop" Width="22" Height="44" Margin="2" Click="OnClickPrevButton"
+                        ToolTip="上一个"
+                        Tag1="{DynamicResource PrevNormal}"
+                        Tag2="{DynamicResource PrevHot}"
+                        Tag3="{DynamicResource PrevPress}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+
+                <Button Name="nextStop" Width="22" Height="44" Margin="2" Click="OnClickNextButton"
+                        ToolTip="下一个"
+                        Tag1="{DynamicResource NextNormal}"
+                        Tag2="{DynamicResource NextHot}"
+                        Tag3="{DynamicResource NextPress}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+
+                <StackPanel Orientation="Horizontal" Margin="2,5,2,2" VerticalAlignment="Center" >
+                    <TextBlock Name="curDuration" Text="00:00:00" />
+                    <TextBlock Text="/" />
+                    <TextBlock Name="duration" Text="00:00:00" />
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" FlowDirection="RightToLeft">
+
+                    <Button Name="btnFull" Width="20" Height="21" Margin="3,2,3,2" Click="OnClickBrowserButton" ToolTip="播放列表"
+                        Tag1="{DynamicResource BrowserNormal}"
+                        Tag2="{DynamicResource BrowserHot}"
+                        Tag3="{DynamicResource BrowserPress}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                    <Button Name="btnFull" Width="24" Height="44" Margin="2" Click="OnClickFullButton" ToolTip="全屏显示"
+                        Tag1="{DynamicResource FullNormal}"
+                        Tag2="{DynamicResource FullHot}"
+                        Tag3="{DynamicResource FullPress}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                    <Button Name="btnSet" Width="26" Height="44" Margin="2" Click="OnClickSettingButton" ToolTip="设置"
+                        Tag1="{DynamicResource SettingNormal}"
+                        Tag2="{DynamicResource SettingHot}"
+                        Tag3="{DynamicResource SettingPress}"
+                        Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                    <Button Name="btnOpen" Width="25" Height="25" Click="OnClickOpenButton" Margin="10,0,8,0"
+                            ToolTip="打开视频" Cursor="Hand"
+                            Tag1="{DynamicResource OpenNormal}"
+                            Tag2="{DynamicResource OpenHot}"
+                            Tag3="{DynamicResource OpenPress}"
+                            Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                    <Grid Width="79" Height="44" >
+                        <Slider Name="volumeSlider" Style="{DynamicResource VolumeSliderStyle}"
+                                IsSelectionRangeEnabled="False" IsMoveToPointEnabled="True"
+                                Cursor="Hand" Width="79" Height="44" Value="1" Maximum="128" />
+                    </Grid>
+
+                    <Grid Width="24" Height="44" Margin="3,0,10,0">
+                        <Button Name="closeVolume" Width="21" Height="12" Cursor="Hand"
+                                Click="OnClickCloseVolume"
+                                Tag1="{DynamicResource VolumeOpenNormal}"
+                                Tag2="{DynamicResource VolumeOpenHot}"
+                                Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+
+                        <Button Name="openVolume" Width="20" Height="12" Cursor="Hand" Visibility="Hidden"
+                                Click="OnClickOpenVolume"
+                                Tag1="{DynamicResource VolumeCloseNormal}"
+                                Tag2="{DynamicResource VolumeCloseHot}"
+                                Style="{DynamicResource ButtonStyle}" VerticalAlignment="Center" />
+                    </Grid>
+                </StackPanel>
             </DockPanel>
         </DockPanel>
     </Grid>
