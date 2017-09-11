@@ -11,6 +11,8 @@
 // VisualizePanel.cpp
 
 #include <System/Tools/Debug.h>
+
+#include <Framework/Controls/ScrollViewer.h>
 #include <Framework/Controls/VisualizePanel.h>
 //#include <Framework/Controls/ItemsElement.h>
 
@@ -52,6 +54,14 @@ VirtualizingPanel* VirtualizingPanel::Clone()
 void VirtualizingPanel::ClearAllContainers(ItemsControl* itemsControl)
 {
 
+}
+
+void VirtualizingPanel::OnScrollChange(IScrollInfo* pScrollInfo)
+{
+    if (pScrollInfo->GetScrollOwner() != NULL)
+    {
+        pScrollInfo->GetScrollOwner()->InvalidateScrollInfo(true);
+    }
 }
 
 void VirtualizingPanel::OnItemsChangedInternal(Object* sender, ItemsChangedEventArg* e)

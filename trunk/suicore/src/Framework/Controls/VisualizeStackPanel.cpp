@@ -177,48 +177,6 @@ int ScrollContentPresenter::CoerceOffset(int offset, int extent, int viewport)
     return offset;
 }
 
-void VirtualizingStackPanel::SetAndVerifyScrollingData(Size viewport, Size prevSize, Size extent, Point offset)
-{
-    ScrollData* scrollData = _scrollInfo->GetScrollData();
-
-    offset.x = min(offset.x, extent.cx - viewport.cx);
-    offset.y = min(offset.y, extent.cy - viewport.cy);
-
-    offset.x = max(0, offset.x);
-    offset.y = max(0, offset.y);
-
-    bool flag = viewport != GetScrollData()->viewport;
-    bool flag2 = extent != GetScrollData()->extent;
-    bool flag3 = offset != GetScrollData()->computedOffset;
-
-    if ((flag || flag2) || flag3)
-    {
-        Point oldViewportOffset = scrollData->computedOffset;
-        Size oldViewportSize = scrollData->viewport;
-        scrollData->viewport = viewport;
-        scrollData->extent = extent;
-        scrollData->SetComputedOffset(offset);
-
-        if (flag)
-        {
-            OnViewportSizeChanged(oldViewportSize, viewport);
-        }
-        if (flag3)
-        {
-            OnViewportOffsetChanged(oldViewportOffset, offset);
-        }
-        OnScrollChange();
-    }
-}
-
-void VirtualizingStackPanel::OnViewportSizeChanged(Size oldViewportSize, Size newViewportSize)
-{
-}
-
-void VirtualizingStackPanel::OnViewportOffsetChanged(Point oldViewportOffset, Point newViewportOffset)
-{
-}
-
 void VirtualizingStackPanel::OnItemsChangedInternal(Object* sender, ItemsChangedEventArg* e)
 {
     _visibleCount = 0;
@@ -251,11 +209,47 @@ void VirtualizingStackPanel::OnItemsChangedInternal(Object* sender, ItemsChanged
     }
 }
 
-void VirtualizingStackPanel::OnScrollChange()
+void VirtualizingStackPanel::OnViewportSizeChanged(Size oldViewportSize, Size newViewportSize)
 {
-    if (GetScrollInfo()->GetScrollOwner() != NULL)
+}
+
+void VirtualizingStackPanel::OnViewportOffsetChanged(Point oldViewportOffset, Point newViewportOffset)
+{
+}
+
+void VirtualizingStackPanel::SetAndVerifyScrollingData(Size viewport, Size extent, Point offset)
+{
+    ScrollData* scrollData = _scrollInfo->GetScrollData();
+
+    offset.x = min(offset.x, extent.cx - viewport.cx);
+    offset.y = min(offset.y, extent.cy - viewport.cy);
+
+    offset.x = max(0, offset.x);
+    offset.y = max(0, offset.y);
+
+    bool flag = viewport != scrollData->viewport;
+    bool flag2 = extent != scrollData->extent;
+    bool flag3 = offset != scrollData->computedOffset;
+
+    if ((flag || flag2) || flag3)
     {
-        GetScrollInfo()->GetScrollOwner()->InvalidateScrollInfo(true);
+        Point oldViewportOffset = scrollData->computedOffset;
+        Size oldViewportSize = scrollData->viewport;
+        scrollData->viewport = viewport;
+        scrollData->extent = extent;
+        scrollData->SetComputedOffset(offset);
+
+        if (flag)
+        {
+            OnViewportSizeChanged(oldViewportSize, viewport);
+        }
+
+        if (flag3)
+        {
+            OnViewportOffsetChanged(oldViewportOffset, offset);
+        }
+
+        OnScrollChange(_scrollInfo);
     }
 }
 
@@ -363,7 +357,7 @@ Size VirtualizingStackPanel::OnMeasure(const Size& constraint)
         scrollData->SetComputedOffset(offset);
         scrollData->viewport = constraint;
 
-        OnScrollChange();
+        OnScrollChange(GetScrollInfo());
     }
     else
     {
@@ -485,7 +479,8 @@ Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
 
     ItemCollection* itemColl = icGenerator->GetItems();
 
-    if (NULL == itemColl) {
+    if (NULL == itemColl) 
+    {
         return extent;
     }
 
@@ -495,7 +490,7 @@ Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
     ClearRealizedContainer();
     itemsOwner->OnPrepareContainer();
 
-    if (IsScrolling())
+    if (bScrolling)
     {
         empty = Rect(scrollData->offset.x, scrollData->offset.y, constraint.Width(), constraint.Height());
         measureData.SetAvailableSize(constraint);
@@ -505,8 +500,6 @@ Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
     {
         AdjustViewportOffset(measureData, itemsOwner, bHori);
     }
-
-    //suic::Debug::Trace(_U("+++++++++++++VirtualizingStackPanel, Top:%d;Bottom:%d\n"), measureData.viewPort.top, measureData.viewPort.bottom);
 
     if (bHori)
     {
@@ -683,7 +676,7 @@ Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
 
     if (bScrolling)
     {
-        SetAndVerifyScrollingData(empty.ToSize(), prevSize, extent, offset);
+        SetAndVerifyScrollingData(empty.ToSize(), extent, offset);
     }
 
     HandleMoreContainer();

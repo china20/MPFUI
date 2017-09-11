@@ -1069,6 +1069,8 @@ int ItemsControl::ComputeOffsetFromItem(Object* item, int& offset, int& itemSize
     bool bHori = false;
     int index = -1;
 
+    suic::Panel* pPanel = GetItemsHost();
+
     offset = 0;
     itemSize = 0;
 
@@ -1082,27 +1084,35 @@ int ItemsControl::ComputeOffsetFromItem(Object* item, int& offset, int& itemSize
         iOri = 1;
     }
 
-    for (int i = 0; i < GetCount(); ++i)
+    if (pPanel != NULL)
     {
-        Size size;
-        ItemEntry* itemb = GetItemsSource()->GetItemEntry(i);
+        index = pPanel->ComputeOffsetFromItem(item, offset, itemSize);
+    }
 
-        ReadItemSize(itemb, bHori, i, size);
+    if (index == -1)
+    {
+        for (int i = 0; i < GetCount(); ++i)
+        {
+            Size size;
+            ItemEntry* itemb = GetItemsSource()->GetItemEntry(i);
 
-        if (item == itemb->GetItem())
-        {
-            index = i;
-            itemSize = 0 == iOri ? size.cx : size.cy;
-            break;
-        }
+            ReadItemSize(itemb, bHori, i, size);
 
-        if (0 == iOri)
-        {
-            offset += size.cx;
-        }
-        else if (1 == iOri)
-        {
-            offset += size.cy;
+            if (item == itemb->GetItem())
+            {
+                index = i;
+                itemSize = 0 == iOri ? size.cx : size.cy;
+                break;
+            }
+
+            if (0 == iOri)
+            {
+                offset += size.cx;
+            }
+            else if (1 == iOri)
+            {
+                offset += size.cy;
+            }
         }
     }
 
@@ -1195,6 +1205,12 @@ bool ItemsControl::IsOnCurrentPage(Element* elem, AxisDirection axis, bool fully
     }
 
     Element* scrollHost = GetItemsHost();
+
+    if (NULL != scrollHost)
+    {
+        scrollHost = scrollHost->GetUIParent();
+    }
+
     if (scrollHost == NULL)
     {
         scrollHost = GetScrollHost();

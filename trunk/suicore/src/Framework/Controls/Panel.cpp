@@ -284,6 +284,11 @@ void Panel::NotifyItemChanged()
 
 }
 
+int Panel::ComputeOffsetFromItem(Object* item, int& offset, int& itemSize)
+{
+    return -1;
+}
+
 void Panel::GenerateChildren()
 {
     if (_icGenerator != NULL)
