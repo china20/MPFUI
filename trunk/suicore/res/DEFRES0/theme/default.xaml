@@ -3,8 +3,8 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Author="汪荣(QQ:386666951)" >
     <!--定义系统需要的资源-->
-	
-	<!--Window皮肤资源定义-->
+
+    <!--Window皮肤资源定义-->
 	<SolidColorBrush x:Key="sysWindowCaptionBrush" Color="#FF008CEE" />
 	<SolidColorBrush x:Key="sysWindowBackground" Color="#FFFFFF" />
 	<SolidColorBrush x:Key="sysWindowBorderBrush" Color="#FF008CEE" />
@@ -107,6 +107,10 @@
 	<SolidColorBrush x:Key="sysGroupItemBorderNormal" Color="#FFBACED9" />
 	
 	<!--ComboBox皮肤资源定义-->
+    
+    <sys:RectF x:Key="comboBoxCornerRadius">4</sys:RectF>
+    <sys:Rect x:Key="comboBoxDropDownThickness">1,1,1,0</sys:Rect>
+    
 	<SolidColorBrush x:Key="comboBoxBkNormal" Color="#FFFFFF" />
 	<SolidColorBrush x:Key="comboBoxBorderNormal" Color="#FFBACED9" />
 	<SolidColorBrush x:Key="comboBoxBorderHot" Color="#FFAADBFE" />
@@ -622,18 +626,25 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
     <ControlTemplate TargetType="ComboBox" x:Key="sysComboBoxTemplate">
         <Grid>
-            <Border Name="Bd" CornerRadius="4" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+            <Border Name="Bd" 
+                    CornerRadius="{DynamicResource comboBoxCornerRadius}" 
+                    Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="{TemplateBinding BorderBrush}">
                 <DockPanel >
-                    <ToggleButton Name="PART_Down" TabIndex="{TemplateBinding TabIndex}" MinWidth="16" DockPanel.Dock="Right" 
-                                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
-                                              Style="{StaticResource ComboBoxTransparentButtonStyle}" />
-                    <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" Content="{TemplateBinding SelectionBoxItem}"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    <TextBox Name="PART_TextBox" MaxLines="1" TabIndex="{TemplateBinding}" BorderThickness="0" Visibility="{Binding Path=TemplatedParent.IsEditable,Converter=BToV}" Margin="0,1,1,1" />
+                    <ToggleButton Name="PART_Down" 
+                                  TabIndex="{TemplateBinding TabIndex}" MinWidth="16" DockPanel.Dock="Right" 
+                                  IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+                                  Style="{StaticResource ComboBoxTransparentButtonStyle}" />
+                    <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                      Content="{TemplateBinding SelectionBoxItem}" 
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <TextBox Name="PART_TextBox" MaxLines="1" TabIndex="{TemplateBinding}" BorderThickness="0" 
+                                    Visibility="{Binding Path=TemplatedParent.IsEditable,Converter=BToV}" Margin="0,1,1,1" />
                 </DockPanel>
             </Border>
             <Popup Name="PART_Popup" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom">
@@ -646,8 +657,7 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsDropDownOpen" Value="True">
-                <Setter Property="CornerRadius" TargetName="Bd" Value="4,4,0,0" />
-                <Setter Property="BorderThickness" Value="1,1,1,0" />
+                <Setter Property="BorderThickness" Value="{DynamicResource comboBoxDropDownThickness}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

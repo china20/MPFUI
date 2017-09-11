@@ -180,7 +180,7 @@ void WrapPanel::OnArrange(const Size& finalSize)
     UVSize curLineSize(GetOrientation()); 
     UVSize uvFinalSize(GetOrientation(), finalSize.Width(), finalSize.Height()); 
     bool itemWidthSet = itemWidth > 0;
-    bool itemHeightSet = itemHeight > 0; 
+    bool itemHeightSet = itemHeight > 0;
     bool useItemU = (bHori ? itemWidthSet : itemHeightSet);
 
     allSize += scrollOffset;

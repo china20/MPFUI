@@ -292,11 +292,11 @@ void ResourceParserI::InitResourceParser()
     {
         _bases.Add(_U("String"), new BaseTypeParser<OString>(Resource::ResType::resString));
         _bases.Add(_U("Rect"), new BaseTypeParser<ORect>(Resource::ResType::resRect));
-        _bases.Add(_U("fRect"), new BaseTypeParser<OfRect>(Resource::ResType::resfRect));
+        _bases.Add(_U("RectF"), new BaseTypeParser<OfRect>(Resource::ResType::resfRect));
         _bases.Add(_U("Size"), new BaseTypeParser<OSize>(Resource::ResType::resSize));
-        _bases.Add(_U("fSize"), new BaseTypeParser<OfSize>(Resource::ResType::resfSize));
+        _bases.Add(_U("SizeF"), new BaseTypeParser<OfSize>(Resource::ResType::resfSize));
         _bases.Add(_U("Point"), new BaseTypeParser<OPoint>(Resource::ResType::resPoint));
-        _bases.Add(_U("fPoint"), new BaseTypeParser<OfPoint>(Resource::ResType::resfPoint));
+        _bases.Add(_U("PointF"), new BaseTypeParser<OfPoint>(Resource::ResType::resfPoint));
         _bases.Add(_U("Float"), new BaseTypeParser<OFloat>(Resource::ResType::resFloat));
         
         _bases.Add(_U("Color"), new BaseTypeParser<OColor>(Resource::ResType::resColor));

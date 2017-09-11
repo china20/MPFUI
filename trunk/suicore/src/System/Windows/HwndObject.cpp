@@ -412,8 +412,8 @@ bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
 
     if (SIZE_MAXIMIZED == maxFlag)
     {
-        x = UIMIN(x, mi.rcMonitor.Width());
-        y = UIMIN(y, mi.rcMonitor.Height());
+        x = _maxSize.x; // UIMIN(x, mi.rcMonitor.Width());
+        y = _maxSize.y; // UIMIN(y, mi.rcMonitor.Height());
     }
 
     Size realSize(x, y);
@@ -610,6 +610,8 @@ bool HwndObject::Process_WM_GETMINMAXINFO(Element* rootElement, MessageParam* mp
         {
             mInfo->ptMaxSize.y = rcArea.Height() + rcmgr.top + rcmgr.bottom;
         }
+
+        _maxSize = mInfo->ptMaxSize;
 
         mInfo->ptMaxTrackSize = mInfo->ptMaxSize;
 

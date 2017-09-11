@@ -119,6 +119,7 @@ protected:
     HwndAdapter* _hwnd;
     Element* _rootElement;
 
+    Point _maxSize;
     Size _previousSize;
     int _sizeToContent;
 

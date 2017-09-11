@@ -1,23 +1,23 @@
 ﻿<!--定义默认的皮肤样式-->
 <ResourceDictionary Author="汪荣(QQ:386666951)" >
 
-    <ImageBrush x:Key="Tooltip_bkg" Source="resource/MPF/ToolTip/tooltip_bkg.png" ViewCorner="5" />
+    <ImageBrush x:Key="Tooltip_bkg" ImageSource="resource/MPF/ToolTip/tooltip_bkg.png" ViewCorner="5" />
     
-    <ImageBrush x:Key="sysbtn_min_normal" Source="resource/MPF/SysButton/sysbtn_min_normal.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="sysbtn_min_hover" Source="resource/MPF/SysButton/sysbtn_min_hover.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="sysbtn_min_down" Source="resource/MPF/SysButton/sysbtn_min_down.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_min_normal" ImageSource="resource/MPF/SysButton/sysbtn_min_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_min_hover" ImageSource="resource/MPF/SysButton/sysbtn_min_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_min_down" ImageSource="resource/MPF/SysButton/sysbtn_min_down.png" Stretch="Uniform"/>
 
-    <ImageBrush x:Key="sysbtn_close_normal" Source="resource/MPF/SysButton/sysbtn_close_normal.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="sysbtn_close_hover" Source="resource/MPF/SysButton/sysbtn_close_hover.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="sysbtn_close_down" Source="resource/MPF/SysButton/sysbtn_close_down.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_close_normal" ImageSource="resource/MPF/SysButton/sysbtn_close_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_close_hover" ImageSource="resource/MPF/SysButton/sysbtn_close_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_close_down" ImageSource="resource/MPF/SysButton/sysbtn_close_down.png" Stretch="Uniform"/>
 
-    <ImageBrush x:Key="sysbtn_restore_normal" Source="resource/MPF/SysButton/sysbtn_restore_normal.png" Stretch="Uniform"/>f
-    <ImageBrush x:Key="sysbtn_restore_hover" Source="resource/MPF/SysButton/sysbtn_restore_hover.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="sysbtn_restore_down" Source="resource/MPF/SysButton/sysbtn_restore_down.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_restore_normal" ImageSource="resource/MPF/SysButton/sysbtn_restore_normal.png" Stretch="Uniform"/>f
+    <ImageBrush x:Key="sysbtn_restore_hover" ImageSource="resource/MPF/SysButton/sysbtn_restore_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_restore_down" ImageSource="resource/MPF/SysButton/sysbtn_restore_down.png" Stretch="Uniform"/>
 
-    <ImageBrush x:Key="sysbtn_max_normal" Source="resource/MPF/SysButton/sysbtn_max_normal.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="sysbtn_max_hover" Source="resource/MPF/SysButton/sysbtn_max_hover.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="sysbtn_max_down" Source="resource/MPF/SysButton/sysbtn_max_down.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_max_normal" ImageSource="resource/MPF/SysButton/sysbtn_max_normal.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_max_hover" ImageSource="resource/MPF/SysButton/sysbtn_max_hover.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="sysbtn_max_down" ImageSource="resource/MPF/SysButton/sysbtn_max_down.png" Stretch="Uniform"/>
 
     <LinearGradientBrush x:Key="ButtonBorderRes" StartPoint="0,0" EndPoint="0,1" >
         <GradientStop Offset="0.0" Color="#A3AEB9" />
