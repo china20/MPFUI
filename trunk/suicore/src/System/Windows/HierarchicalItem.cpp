@@ -21,6 +21,11 @@ HierarchicalItem::~HierarchicalItem()
     }
 }
 
+void HierarchicalItem::OnSetExpanded(bool val)
+{
+    SetExpandedFlag(val);
+}
+
 ItemCollection* HierarchicalItem::GetChildren()
 {
     if (NULL == _children)
