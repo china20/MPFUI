@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "DriverItem.h"
 
+static const suic::String PIC_FILTER = ".jpg;.jpeg;.bmp;.tif;.png";
+
 DriverItem::DriverItem(suic::String name, suic::String path, bool subInited)
 {
     _name = name;
@@ -49,9 +51,30 @@ void DriverItem::InitSubFolders()
                         }
                         else
                         {
-                            _files.Add(ff.GetFilePath());
+                            suic::String strExt;
+                            suic::String strName = ff.GetFileName();
+                            int iPos = strName.IndexOf(".");
+
+                            if (iPos > 0)
+                            {
+                                strExt = strName.Substring(iPos);
+                                strExt.ToLower();
+
+                                if (PIC_FILTER.IndexOf(strExt) != -1)
+                                {
+                                    _files.Add(ff.GetFilePath());
+                                }
+                            }
                         }
                     }
+                }
+
+                // 
+                // 如果有图像文件，通知绑定器更新显示
+                // 
+                if (_files.GetCount() > 0)
+                {
+                    NotifyChanged("Name");
                 }
             }
         }

@@ -32,7 +32,16 @@ public:
 
     suic::String ToString()
     {
-        return GetName();
+        suic::String strName;
+        if (_files.GetCount() > 0)
+        {
+            strName.Format(_U("%s (%d)"), GetName().c_str(), _files.GetCount());
+        }
+        else
+        {
+            strName = GetName();
+        }
+        return strName;
     }
 
     void OnSetExpanded(bool val);

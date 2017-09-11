@@ -57,5 +57,5 @@ void MainWindow::OnConnect(suic::IXamlNode* pNode, suic::Object* target)
 
 void MainWindow::OnRefleshTimer(suic::Object* sender, suic::EventArg* e)
 {
-    // _processInfo.RefleshProcessInfo();
+    ;
 }

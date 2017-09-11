@@ -43,7 +43,7 @@
                 </Grid>
                 <GridSplitter Width="5" Grid.Column="1" ShowsPreview="False" Cursor="Splith" Background="Gray" />
                 <Grid Grid.Column="2" >
-                    <TreeView />
+                    <Image Name="imgShow" />
                 </Grid>
             </Grid >
 
