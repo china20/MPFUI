@@ -1,0 +1,52 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="False" RoundSize="5,5" Title="简易图像查看器" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
+        CaptionHeight="20" Width="660" Height="390" MinWidth="380" MinHeight="300" >
+
+    <Window.Resources>
+        <Style TargetType="GridSplitter">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridSplitter">
+                        <Rectangle Fill="{TemplateBinding Background}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0" Name="RootGrid" >
+        <DockPanel >
+            <!--标题栏-->
+            <DockPanel Name="layCaption" VerticalAlignment="Top" Height="32" DockPanel.Dock="Top" >
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center" >
+                    <MinimizeButton ToolTip="最小化" Focusable="False" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,9,0" />
+                    <MaximizeButton Focusable="False" Width="19" Height="21" VerticalAlignment="Top" Margin="5,0,8,0" />
+                    <CloseButton ToolTip="关闭" Width="17" Height="21" VerticalAlignment="Top" Margin="5,0,6,0" />
+                </StackPanel>
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                           Foreground="Gray" FontSize="11" Margin="4" VerticalAlignment="Center"/>
+            </DockPanel>
+
+            <DockPanel DockPanel.Dock="Bottom" MinHeight="32">
+                
+            </DockPanel>
+            
+            <Grid Margin="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Background="Green" Grid.Row="0" Grid.Column="0" Width="160" MinWidth="10">
+                    <TreeView Name="tvDriver" />
+                </Grid>
+                <GridSplitter Width="5" Grid.Column="1" ShowsPreview="False" Cursor="Splith" Background="Gray" />
+                <Grid Grid.Column="2" >
+                    <TreeView />
+                </Grid>
+            </Grid >
+
+        </DockPanel>
+    </Grid>
+</Window>
