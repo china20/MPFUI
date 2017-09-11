@@ -585,7 +585,8 @@ void ItemsControl::PrepareItemsControl(ItemEntry* item, ItemsControl* parentItem
         DataTemplateSelector* itemTemplateSelector = parentItemsControl->GetItemTemplateSelector();
         Style* itemContainerStyle = parentItemsControl->GetItemContainerStyle();
         StyleSelector* itemContainerStyleSelector = parentItemsControl->GetItemContainerStyleSelector();
-        //int alternationCount = parentItemsControl->GetAlternationCount();
+
+        // int alternationCount = parentItemsControl->GetAlternationCount();
 
         if (itemTemplate != NULL)
         {
@@ -608,16 +609,6 @@ void ItemsControl::PrepareItemsControl(ItemEntry* item, ItemsControl* parentItem
         }
     }
 }
-
-//void ItemsControl::AddItemClick(RoutedEventHandler* h)
-//{
-//    AddHandler(ItemClickEvent, h, false);
-//}
-//
-//void ItemsControl::RemoveItemClick(RoutedEventHandler* h)
-//{
-//    RemoveHandler(ItemClickEvent, h);
-//}
 
 ScrollViewer* ItemsControl::GetScrollHost()
 {
@@ -1176,7 +1167,7 @@ Object* ItemsControl::FindFocusable(int iStart, int dir, int& outIndex)
 
         while ((iStart >= 0) && (iStart < count))
         {
-            FrameworkElement* elem = NULL;//GetItemContainerGenerator()->GetContainerFromIndex(iStart);
+            FrameworkElement* elem = NULL;
 
             if ((elem == NULL) || Keyboard::IsFocusable(elem))
             {
@@ -1223,29 +1214,29 @@ bool ItemsControl::IsOnCurrentPage(Element* elem, AxisDirection axis, bool fully
             return false;
         }
 
-        Rect rect(Point(), scrollHost->GetRenderSize());
-        Rect rect2(elem->TransformToAncestor(scrollHost), elem->GetRenderSize());
+        Rect rectHost(Point(), scrollHost->GetRenderSize());
+        Rect rectElem(elem->TransformToAncestor(scrollHost), elem->GetRenderSize());
 
         if (fullyVisible)
         {
             // 水平
             if (AxisDirection::xAxis == axis)
             {
-                rect2.top = rect.top;
-                rect2.bottom = rect.bottom;
+                rectElem.top = rectHost.top;
+                rectElem.bottom = rectHost.bottom;
             }
             // 垂直
             else if (AxisDirection::yAxis == axis)
             {
-                rect2.left = rect.left;
-                rect2.right = rect.right;
+                rectElem.left = rectHost.left;
+                rectElem.right = rectHost.right;
             }
             
-            return rect.Contains(rect2);
+            return rectHost.Contains(rectElem);
         }
         else
         {
-            Rect rc = rect.IntersectRet(&rect2);
+            Rect rc = rectHost.IntersectRet(&rectElem);
             return !rc.IsZero();
         }
     }
@@ -1274,13 +1265,16 @@ bool ItemsControl::MakeVisible(int index, bool atTopOfViewport)
         return false;
     }
 
-    bool flag = false;
+    
     Float horizontalOffset = scrollView->GetHorizontalOffset();
     Float verticalOffset = scrollView->GetVerticalOffset();
-    Float num3 = horizontalOffset;
-    Float num4 = verticalOffset;
+    Float hOffset = horizontalOffset;
+    Float vOffset = verticalOffset;
+
     int offset = 0;
     int indexSize = 0;
+
+    bool flag = false;
     
     ComputeOffsetFromIndex(index, offset, indexSize);
 
@@ -1289,16 +1283,16 @@ bool ItemsControl::MakeVisible(int index, bool atTopOfViewport)
         // 滚动到最上面
         if (atTopOfViewport)
         {
-            num4 = offset;
+            vOffset = offset;
         }
         else
         {
-            num4 = max(0, offset - scrollView->GetViewportHeight() + indexSize);
+            vOffset = max(0, offset - scrollView->GetViewportHeight() + indexSize);
         }
 
-        if ((int)verticalOffset != (int)num4)
+        if ((int) verticalOffset != (int) vOffset)
         {
-            scrollView->ScrollToVerticalOffset(num4);
+            scrollView->ScrollToVerticalOffset(vOffset);
             flag = true;
         }
 
@@ -1310,16 +1304,16 @@ bool ItemsControl::MakeVisible(int index, bool atTopOfViewport)
         // 滚动到最左边
         if (atTopOfViewport)
         {
-            num3 = offset;
+            hOffset = offset;
         }
         else
         {
-            num3 = max(0, offset - scrollView->GetViewportWidth() + indexSize);
+            hOffset = max(0, offset - scrollView->GetViewportWidth() + indexSize);
         }
 
-        if ((int)horizontalOffset != (int)num3)
+        if ((int) horizontalOffset != (int) hOffset)
         {
-            scrollView->ScrollToHorizontalOffset(num3);
+            scrollView->ScrollToHorizontalOffset(hOffset);
             flag = true;
         }
 
@@ -1437,7 +1431,17 @@ void ItemsControl::NavigateToItem(Object* item, int offset, int itemLen, ItemNav
     {
         _focusedItem = GetItemsSource()->GetItemEntry(index);
     }
+
     UpdateLayout();
+}
+
+void ItemsControl::HandleSelectedItem(Object* container, MouseButton mouseButton)
+{
+}
+
+void ItemsControl::UpdateFocusItem(suic::Object* item)
+{
+    _focusedItem = item;
 }
 
 void ItemsControl::SetFocusItem(Object* item)
