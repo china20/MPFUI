@@ -109,7 +109,7 @@ void GifBox::OnRender(suic::Drawing * drawing)
             iDelay = 100;
         }
 
-        drawing->DrawImage(DrawCtx::DefDraw, &bmp, rcDraw, rcImg, 255);
+        drawing->DrawImage(DrawCtx::DefDraw, &bmp, rcDraw, rcImg);
         _timer->SetInterval(iDelay);
         _timer->Start();
     }

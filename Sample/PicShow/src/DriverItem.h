@@ -47,9 +47,16 @@ public:
     void OnSetExpanded(bool val);
     void InitSubFolders();
 
+    int GetPicCount() const;
+    suic::String GetPicPath();
+
+    void PrevImage();
+    void NextImage();
+
 private:
 
     bool _subInited;
+    int _currentIndex;
 
     suic::String _name;
     suic::String _path;

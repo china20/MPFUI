@@ -83,7 +83,7 @@ void ChatItem::DrawHeader(suic::Drawing* drawing, suic::Rect rect)
         {
             suic::Bitmap* pBmp = pImgSrc->GetBitmap();
             suic::fRect rcImg(0, 0, pBmp->Width(), pBmp->Height());
-            drawing->DrawImage(suic::DrawCtx::DefDraw, pBmp, rect.TofRect(), &rcImg, 255);
+            drawing->DrawImage(suic::DrawCtx::DefDraw, pBmp, rect.TofRect(), &rcImg);
         }
     }
 }

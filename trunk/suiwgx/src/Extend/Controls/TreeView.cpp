@@ -39,7 +39,7 @@ bool TreeView::StaticInit()
     {
         TreeViewItem::StaticInit();
 
-        SelectedItemChangedEvent = EventHelper::RegisterRoutedEvent(_U("SelectedItemChanged"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
+        SelectedItemChangedEvent = EventHelper::RegisterRoutedEvent(_U("SelectedItemChanged"), RoutingStrategy::Bubble, RoutedPropChangedEventHandler::RTTIType(), RTTIType());
         SelectedItemProperty = DpProperty::Register(_T("SelectedItem"), RTTIType(), Object::RTTIType(), DpPropMemory::GetPropMeta(NULL, 0, &TreeView::OnSelectedItemPropChanged));
 
         CachedContainerSizeCount = new UncommonField<XArray>(NULL);

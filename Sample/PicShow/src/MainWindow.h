@@ -17,10 +17,25 @@ class MainWindow : public suic::Window
 {
 public:
 
+    BeginRoutedEvent(MainWindow, suic::Window)
+        MemberRouted(OnClickPrevImage)
+        MemberRouted(OnClickNextImage)
+        MemberRouted(OnTreeViewSelectedItemChanged)
+    EndRoutedEvent()
+
     MainWindow();
     ~MainWindow();
 
+    void ShowImage(DriverItem* pItem);
+
     void OnLoaded(suic::LoadedEventArg* e);
+
+protected:
+
+    void OnClickPrevImage(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnClickNextImage(suic::DpObject* sender, suic::RoutedEventArg* e);
+
+    void OnTreeViewSelectedItemChanged(suic::DpObject* sender, suic::RoutedEventArg* e);
 
 protected:
 

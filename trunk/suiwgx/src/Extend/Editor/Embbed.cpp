@@ -163,7 +163,7 @@ void ImageEmbbed::OnRender(suic::Drawing* drawing)
 {
     suic::fRect rect(GetVisualOffet(), GetRenderSize());
     suic::fRect rcImg(0, 0, GetBitmap()->Width(), GetBitmap()->Height());
-    drawing->DrawImage(DrawCtx::DefDraw, GetBitmap(), rect, rcImg, 255);
+    drawing->DrawImage(DrawCtx::DefDraw, GetBitmap(), rect, rcImg);
 }
 
 void ImageEmbbed::OnSave(suic::ISStream* strm)
@@ -362,7 +362,7 @@ void PlayImageEmbbed::OnRender(suic::Drawing* drawing)
         _timer->Start();
 
         suic::fRect rcImg(pImf->offet, pImf->size);
-        drawing->DrawImage(DrawCtx::DefDraw, pImf->bmp->GetBitmap(), rect, rcImg, 255);
+        drawing->DrawImage(DrawCtx::DefDraw, pImf->bmp->GetBitmap(), rect, rcImg);
     }
     else if (NULL != _timer)
     {

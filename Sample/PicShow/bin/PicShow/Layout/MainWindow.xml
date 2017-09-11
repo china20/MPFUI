@@ -28,7 +28,10 @@
             </DockPanel>
 
             <DockPanel DockPanel.Dock="Bottom" MinHeight="32">
-                
+                <UniformGrid Columns="2" >
+                    <Button Name="PrevImg" Content="上一张" Padding="6" Click="OnClickPrevImage" />
+                    <Button Name="NextImg" Content="下一张" Padding="6" Click="OnClickNextImage" />
+                </UniformGrid>
             </DockPanel>
             
             <Grid Margin="2">
@@ -39,11 +42,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Background="Green" Grid.Row="0" Grid.Column="0" Width="160" MinWidth="10">
-                    <TreeView Name="tvDriver" />
+                    <TreeView Name="tvDriver" SelectedItemChanged="OnTreeViewSelectedItemChanged" />
                 </Grid>
                 <GridSplitter Width="5" Grid.Column="1" ShowsPreview="False" Cursor="Splith" Background="Gray" />
                 <Grid Grid.Column="2" >
-                    <Image Name="imgShow" />
+                    <Border BorderBrush="Gray" BorderThickness="0,1,1,1">
+                        <Image Name="imgShow" Margin="2" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
                 </Grid>
             </Grid >
 

@@ -95,7 +95,7 @@ void AlphaOp::Restore(Drawing* drawing)
         dBmp.SetConfig(rect.Width(), rect.Height(), 32);
         dBmp.SetPixels(bytes);
 
-        //drawing->DrawImage(&dBmp, &rcimg, &rcimg, 255);
+        //drawing->DrawImage(&dBmp, &rcimg, &rcimg);
         drawing->WritePixels(&dBmp, rect.LeftTop());
     }
 

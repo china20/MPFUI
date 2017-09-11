@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "DriverItem.h"
+#include "MainWindow.h"
 
 static const suic::String PIC_FILTER = ".jpg;.jpeg;.bmp;.tif;.png";
 
@@ -11,6 +12,7 @@ DriverItem::DriverItem(suic::String name, suic::String path, bool subInited)
     _name = name;
     _path = path;
     _subInited = subInited;
+    _currentIndex = -1;
 }
 
 DriverItem::DriverItem(suic::String name, suic::String path)
@@ -18,6 +20,40 @@ DriverItem::DriverItem(suic::String name, suic::String path)
     _name = name;
     _path = path;
     _subInited = false;
+    _currentIndex = -1;
+}
+
+int DriverItem::GetPicCount() const
+{
+    return _files.GetCount();
+}
+
+void DriverItem::PrevImage()
+{
+    --_currentIndex;
+    if (_currentIndex < 0)
+    {
+        _currentIndex = 0;
+    }
+}
+
+void DriverItem::NextImage()
+{
+    ++_currentIndex;
+    if (_currentIndex >= _files.GetCount())
+    {
+        _currentIndex = _files.GetCount() - 1;
+    }
+}
+
+suic::String DriverItem::GetPicPath()
+{
+    suic::String strPath;
+    if (_files.GetCount() > 0)
+    {
+        strPath = _files.GetItem(_currentIndex);
+    }
+    return strPath;
 }
 
 void DriverItem::OnSetExpanded(bool val)
@@ -74,7 +110,11 @@ void DriverItem::InitSubFolders()
                 // 
                 if (_files.GetCount() > 0)
                 {
+                    _currentIndex = 0;
                     NotifyChanged("Name");
+
+                    MainWindow* mainWnd = suic::DynamicCast<MainWindow>(suic::Application::Current()->GetMainWindow());
+                    mainWnd->ShowImage(this);
                 }
             }
         }

@@ -290,7 +290,7 @@ void Image::OnRender(Drawing * drawing)
         fRect rect(Point(), GetRenderSize());
         fRect rcimg(0, 0, (Float)bmp->Width(), (Float)bmp->Height());
 
-        drawing->DrawImage(DrawCtx::DefDraw, bmp, &rect, &rcimg, 255);
+        drawing->DrawImage(DrawCtx::DefDraw, bmp, &rect, &rcimg);
 
         if (bGrey)
         {

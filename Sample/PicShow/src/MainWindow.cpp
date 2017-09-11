@@ -55,6 +55,63 @@ void MainWindow::OnConnect(suic::IXamlNode* pNode, suic::Object* target)
 {
 }
 
+void MainWindow::OnClickPrevImage(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    DriverItem* pItem = NULL;
+
+    e->SetHandled(true);
+    pItem = dynamic_cast<DriverItem*>(_tvDrivers->GetSelectedItem());
+
+    if (NULL != pItem)
+    {
+        pItem->PrevImage();
+        ShowImage(pItem);
+    }
+}
+
+void MainWindow::OnClickNextImage(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    DriverItem* pItem = NULL;
+
+    e->SetHandled(true);
+    pItem = dynamic_cast<DriverItem*>(_tvDrivers->GetSelectedItem());
+
+    if (NULL != pItem)
+    {
+        pItem->NextImage();
+        ShowImage(pItem);
+    }
+}
+
+void MainWindow::OnTreeViewSelectedItemChanged(suic::DpObject* sender, suic::RoutedEventArg* e)
+{
+    DriverItem* pItem = NULL;
+
+    e->SetHandled(true);
+    pItem = dynamic_cast<DriverItem*>(_tvDrivers->GetSelectedItem());
+
+    ShowImage(pItem);
+}
+
+void MainWindow::ShowImage(DriverItem* pItem)
+{
+    if (NULL != pItem && pItem->GetPicCount() > 0)
+    {
+        suic::Image* pImg = FindElem<suic::Image>("imgShow");
+        suic::ImageSource* pImgSrc = pImg->GetSource();
+
+        if (NULL == pImgSrc)
+        {
+            pImgSrc = new suic::ImageSource();
+            pImg->SetSource(pImgSrc);
+        }
+
+        pImgSrc->SetUri(pItem->GetPicPath());
+
+        UpdateLayout();
+    }
+}
+
 void MainWindow::OnRefleshTimer(suic::Object* sender, suic::EventArg* e)
 {
     ;
