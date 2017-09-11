@@ -64,6 +64,8 @@ public:
     virtual int GetLogicalOrientation();
     virtual void NotifyItemChanged();
 
+    virtual int ComputeOffsetFromItem(Object* item, int& offset, int& itemSize);
+
 public:
 
     void OnRender(Drawing* drawing);

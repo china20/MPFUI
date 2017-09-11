@@ -12,7 +12,6 @@
 #ifndef _UIVISUALIZINGSTACKPANEL_H_
 #define _UIVISUALIZINGSTACKPANEL_H_
 
-#include <System/Windows/ScrollInfo.h>
 #include <Framework/Controls/VisualizePanel.h>
 
 namespace suic
@@ -46,10 +45,11 @@ public:
     VirtualizingStackPanel();
     virtual ~VirtualizingStackPanel();
 
-    IScrollInfo* GetScrollInfo();
-    ScrollData* GetScrollData();
     bool IsScrolling();
 
+    IScrollInfo* GetScrollInfo();
+    ScrollData* GetScrollData();
+    
     /// <summary>
     ///  获取界面元素的方向
     /// </summary>
@@ -76,10 +76,9 @@ public:
     
 protected:
 
-    virtual void OnScrollChange();
+    virtual void OnItemsChangedInternal(Object* sender, ItemsChangedEventArg* e);
     virtual void OnViewportSizeChanged(Size oldViewportSize, Size newViewportSize);
     virtual void OnViewportOffsetChanged(Point oldViewportOffset, Point newViewportOffset);
-    virtual void OnItemsChangedInternal(Object* sender, ItemsChangedEventArg* e);
 
     Size MeasureCommon(const Size& constraint);
 
@@ -91,6 +90,7 @@ protected:
     void SetAndVerifyScrollingData(Size viewport, Size prevSize, Size extent, Point offset);
     void AdjustViewportOffset(MeasureData& measureData, ItemsControl* itemsControl, bool isHori);
 
+    void SetAndVerifyScrollingData(Size viewport, Size extent, Point offset);
     void ResetChildMeasureData(MeasureData* childMeasureData, const MeasureData& measureData, Size layoutSize, Size stackSize, bool bHori);
     int CalcFirstVisibleItemOffset(ItemsControl* itemsOwner, MeasureData& measureData, bool bHori, int& firstItemOffset, Size& stackOffset);
 

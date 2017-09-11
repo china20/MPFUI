@@ -12,6 +12,7 @@
 #ifndef _UIVISUALIZEPANEL_H_
 #define _UIVISUALIZEPANEL_H_
 
+#include <System/Windows/ScrollInfo.h>
 #include <Framework/Controls/Panel.h>
 
 namespace suic
@@ -40,7 +41,9 @@ public:
 
 protected:
 
-    void OnItemsChangedInternal(Object* sender, ItemsChangedEventArg* e);
+    virtual void OnScrollChange(IScrollInfo* pScrollInfo);
+    virtual void OnItemsChangedInternal(Object* sender, ItemsChangedEventArg* e);
+    
 };
 
 }
