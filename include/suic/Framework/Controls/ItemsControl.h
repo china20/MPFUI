@@ -173,9 +173,13 @@ public:
     /// <returns>×ÓÏîÈÝÆ÷</returns>
     Element* GetContainerForItem(Object* item);
     void ClearContainerForItem(DpObject* element, ItemEntry* item);
+
+    void UpdateFocusItem(suic::Object* item);
+    bool IsOnCurrentPage(Element* elem, AxisDirection axis, bool fullyVisible);
     
     virtual void OnPrepareContainer();
     virtual bool IsItemItsOwnContainer(Object* item);
+    virtual void HandleSelectedItem(Object* container, MouseButton mouseButton);
 
 public:
 
@@ -238,7 +242,6 @@ protected:
     bool MakeVisible(int index, bool atTopOfViewport);
     bool MakeVisible(Object* item, int offset, int iItemSize, bool atTopOfViewport);
 
-    bool IsOnCurrentPage(Element* elem, AxisDirection axis, bool fullyVisible);
     void SetItemValuesOnContainer(DpObject* container, ItemEntry* item, int* dpIndices);
 
     void NavigateToEnd(ItemNavigateArg* e);

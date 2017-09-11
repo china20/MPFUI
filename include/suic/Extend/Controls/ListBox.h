@@ -63,7 +63,7 @@ protected:
     
     void NotifyListItemMouseDragged(ListBoxItem* listItem);
     void NotifyListItemClicked(ListBoxItem* item, MouseButton mouseButton);
-    void HandleSelectedItem(ListBoxItem* container, MouseButton mouseButton);
+    void HandleSelectedItem(Object* container, MouseButton mouseButton);
 
     void UpdateAnchorAndActionItem(ListBoxItem* listItem);
 
