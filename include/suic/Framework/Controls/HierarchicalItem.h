@@ -51,8 +51,13 @@ public:
 
 protected:
 
+    void SetExpandedFlag(bool val);
+
+protected:
+
+    virtual void OnSetExpanded(bool val);
     virtual void OnItemsChanged(NotifyCollChangedEventArg* e);
-    void OnItemsChanged(Object* sender, NotifyCollChangedEventArg* e);
+    virtual void OnItemsChanged(Object* sender, NotifyCollChangedEventArg* e);
 
 protected:
 
@@ -82,7 +87,7 @@ inline bool HierarchicalItem::GetExpanded()
     return (_flag & 1) == 1;
 }
 
-inline void HierarchicalItem::SetExpanded(bool val)
+inline void HierarchicalItem::SetExpandedFlag(bool val)
 {
     if (val)
     {
@@ -92,6 +97,11 @@ inline void HierarchicalItem::SetExpanded(bool val)
     {
         _flag &= ~1;
     }
+}
+
+inline void HierarchicalItem::SetExpanded(bool val)
+{
+    OnSetExpanded(val);
 }
 
 inline bool HierarchicalItem::IsLeafItem()
