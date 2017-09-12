@@ -64,7 +64,7 @@ public:
             if (strType.Equals(_U("GifBox")))
             {
                 rttiInfo = GifBox::RTTIType();
-                //GifBox::StaticInit();
+                GifBox::StaticInit();
             }
             break;
 
