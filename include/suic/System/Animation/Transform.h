@@ -65,7 +65,7 @@ class SUICORE_API Transform : public Animatable
 public:
 
     static void OnPropNotifyChanged(DpObject* d, DpPropChangedEventArg* e);
-    static bool StaticInit();
+    static void StaticInit();
 
     static Transform* GetIdentity();
 

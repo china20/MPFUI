@@ -14,7 +14,7 @@ DpProperty* TabItem::TabStripPlacementProperty;
 
 ImplementRTTIOfClass(TabItem, HeaderedContentControl)
 
-bool TabItem::StaticInit()
+void TabItem::StaticInit()
 {
     if (NULL == IsSelectedProperty)
     {
@@ -27,8 +27,6 @@ bool TabItem::StaticInit()
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knContained)));
         KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knLocal)));
     }
-
-    return true;
 }
 
 TabItem::TabItem()

@@ -39,7 +39,7 @@ public:
     // 是否扩展属性，Boolean类型
     static DpProperty* IsExpandedProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnIsExpandedChanged(DpObject* d, DpPropChangedEventArg* e);
 
     Expander();

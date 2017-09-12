@@ -37,7 +37,7 @@ Thumb::~Thumb()
 {
 }
 
-bool Thumb::StaticInit()
+void Thumb::StaticInit()
 {
     if (IsDraggingProperty == NULL)
     {
@@ -55,7 +55,6 @@ bool Thumb::StaticInit()
         DragCompletedEvent = EventHelper::RegisterRoutedEvent(_T("DragCompleted")
             , RoutingStrategy::Bubble, Thumb::RTTIType(), Thumb::RTTIType());
     }
-    return true;
 }
 
 void Thumb::SetIsDraging(bool val)

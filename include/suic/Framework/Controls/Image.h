@@ -29,7 +29,7 @@ public:
     static DpProperty* EnableGreyProperty;
     static DpProperty* StretchDirectionProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnSourcePropChanged(DpObject* d, DpPropChangedEventArg* e);
 

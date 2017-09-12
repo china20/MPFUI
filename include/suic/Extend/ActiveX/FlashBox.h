@@ -30,7 +30,7 @@ public:
     static suic::DpProperty* SourceProperty;
     static suic::DpProperty* PlayProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 

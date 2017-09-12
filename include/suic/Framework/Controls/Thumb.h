@@ -34,7 +34,7 @@ public:
     Thumb();
     virtual ~Thumb();
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(Thumb)
 

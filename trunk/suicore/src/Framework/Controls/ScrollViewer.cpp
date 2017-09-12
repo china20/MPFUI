@@ -130,7 +130,7 @@ void ScrollViewer::OnHorizontalOffsetPropChanged(DpObject* d, DpPropChangedEvent
     }
 }
 
-bool ScrollViewer::StaticInit()
+void ScrollViewer::StaticInit()
 {
     if (NULL == CanContentScrollProperty)
     {
@@ -215,7 +215,6 @@ bool ScrollViewer::StaticInit()
         CommandOp::RegisterClassCommandHandler(RTTIType(),
             ScrollBar::ScrollToRightCommand, ExecutedRoutedEventHandler(ScrollViewer::OnScrollCommand));
     }
-    return true;
 }
 
 void ScrollViewer::OnScrollCommand(Object* target, ExecutedRoutedEventArg* e)

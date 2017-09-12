@@ -171,7 +171,7 @@ class SUICORE_API DpProperty
 {    
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static Object* NullValue;
 

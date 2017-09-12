@@ -29,7 +29,7 @@ public:
     static DpProperty* BorderBrushProperty;
     static DpProperty* BorderThicknessProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnBackgroundPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnForegroundPropChanged(DpObject* d, DpPropChangedEventArg* e);

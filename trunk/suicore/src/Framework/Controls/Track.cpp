@@ -68,7 +68,7 @@ Track::~Track()
     }
 }
 
-bool Track::StaticInit()
+void Track::StaticInit()
 {
     if (ValueProperty == NULL)
     {
@@ -91,7 +91,6 @@ bool Track::StaticInit()
         IsDirectionReversedProperty = DpProperty::Register(_T("IsDirectionReversed"), RTTIType(), Boolean::RTTIType()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsArrange));
     }
-    return true;
 }
 
 static void CoerceLength(int& componentLength, int trackLength)

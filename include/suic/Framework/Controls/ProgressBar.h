@@ -30,7 +30,7 @@ public:
     static DpProperty* IsIndeterminateProperty;
     static DpProperty* OrientationProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ProgressBar();
     virtual ~ProgressBar();

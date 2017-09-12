@@ -30,7 +30,7 @@ public:
     static DpProperty* ZIndexProperty;
     static DpProperty* BackgroundProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnZIndexPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnBackgroundPropChanged(DpObject* d, DpPropChangedEventArg* e);

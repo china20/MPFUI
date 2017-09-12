@@ -12,7 +12,7 @@ ImplementRTTIOfClass(ListView, ListBox)
 
 DpProperty* ListView::ViewProperty;
 
-bool ListView::StaticInit()
+void ListView::StaticInit()
 {
     if (NULL == ViewProperty)
     {
@@ -21,7 +21,6 @@ bool ListView::StaticInit()
         ViewProperty = DpProperty::Register(_U("View"), RTTIType(), ViewBase::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsMeasure, &ListView::OnViewPropChanged));
     }
-    return true;
 }
 
 void ListView::OnViewPropChanged(DpObject* d, DpPropChangedEventArg* e)

@@ -754,7 +754,7 @@ void Element::RemoveInvoker(InvokerEventHandler* h)
     RemoveHandler(InvokerEvent, h);
 }
 
-bool Element::StaticInit()
+void Element::StaticInit()
 {
     if (HitTestFilterActionProperty == NULL)
     {
@@ -962,8 +962,6 @@ bool Element::StaticInit()
         CacheLayerProperty = DpProperty::Register(_U("CacheLayer"), RTTIType(), Boolean::RTTIType()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsNone, &Element::OnCacheLayerPropChanged));
     }
-
-    return true;
 }
 
 //------------------------------------------------------------------

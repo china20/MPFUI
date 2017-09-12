@@ -29,7 +29,7 @@ RadioButton::~RadioButton()
     RadioButton::Unregister(GetGroupName(), this);
 }
 
-bool RadioButton::StaticInit()
+void RadioButton::StaticInit()
 {
     if (GroupNameProperty == NULL)
     {
@@ -37,8 +37,6 @@ bool RadioButton::StaticInit()
         GroupNameProperty = DpProperty::Register(_U("GroupName"), RTTIType(), OString::RTTIType()
             , DpPropMemory::GetPropMeta(OString::EmptyString, PropMetadataOptions::AffectsNone, &RadioButton::OnGroupNameChanged));
     }
-
-    return true;
 }
 
 void RadioButton::OnLoaded(LoadedEventArg* e)

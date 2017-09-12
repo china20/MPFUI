@@ -24,7 +24,7 @@ public:
     static RoutedEvent* PreviewQueryContinueDragEvent;
     static RoutedEvent* QueryContinueDragEvent;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(DragDrop)
 

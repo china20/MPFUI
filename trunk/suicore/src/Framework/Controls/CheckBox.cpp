@@ -14,9 +14,8 @@ CheckBox::~CheckBox()
 {
 }
 
-bool CheckBox::StaticInit()
+void CheckBox::StaticInit()
 {
-    return true;
 }
 
 }

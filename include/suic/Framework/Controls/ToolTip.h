@@ -28,7 +28,7 @@ public:
     static DpProperty* VerticalOffsetProperty;
     static DpProperty* HorizontalOffsetProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ToolTip();
     ~ToolTip();

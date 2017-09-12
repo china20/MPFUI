@@ -44,9 +44,8 @@ void ToolBarPanel::OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* 
 
 }
 
-bool ToolBarPanel::StaticInit()
+void ToolBarPanel::StaticInit()
 {
-    return true;
 }
 
 int ToolBarPanel::GetMinLength() const
@@ -459,9 +458,8 @@ bool ToolBarPanel::MeasureGeneratedItems(bool asNeededPass, Size constraint, boo
 
 DpProperty* ToolBarOverflowPanel::WrapWidthProperty;
 
-bool ToolBarOverflowPanel::StaticInit()
+void ToolBarOverflowPanel::StaticInit()
 {
-    return false;
 }
 
 ElementColl* ToolBarOverflowPanel::CreateUIElementCollection(FrameworkElement* logicalParent)

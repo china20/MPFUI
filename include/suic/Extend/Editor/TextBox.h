@@ -37,7 +37,7 @@ public:
     static void OnMinLinesPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
     static void OnTextAlignmentPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     TextBox();
     virtual ~TextBox();

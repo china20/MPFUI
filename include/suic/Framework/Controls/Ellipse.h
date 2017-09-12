@@ -21,7 +21,7 @@ class SUICORE_API Ellipse : public Shape
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Ellipse();
     virtual ~Ellipse();

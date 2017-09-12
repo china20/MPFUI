@@ -39,7 +39,7 @@ public:
     static DpProperty* StrokeLineJoinProperty;
     static DpProperty* StrokeMiterLimitProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Shape();
     virtual ~Shape();

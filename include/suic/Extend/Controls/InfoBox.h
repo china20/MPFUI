@@ -54,7 +54,7 @@ public:
 
     static DpProperty* ButtonTypeProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ~InfoBox();
 

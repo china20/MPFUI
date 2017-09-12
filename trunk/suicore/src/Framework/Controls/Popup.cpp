@@ -489,7 +489,7 @@ Integer* PlacementModeBox::From(int index)
     return val;
 }
 
-bool Popup::StaticInit()
+void Popup::StaticInit()
 {
     if (NULL == ChildProperty)
     {
@@ -519,8 +519,6 @@ bool Popup::StaticInit()
         PlacementProperty->SetConvertValueCb(new PlacementConvert());
         AllowsTransparencyProperty = Window::AllowsTransparencyProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(Boolean::True, PropMetadataOptions::AffectsRender, &Popup::OnAllowsTransparencyPropChanged));
     }
-
-    return true;
 }
 
 bool Popup::OnFilterMessage(Object* sender, MessageParam* mp, bool& interrupt)

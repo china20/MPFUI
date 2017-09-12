@@ -32,7 +32,7 @@ public:
     static DpProperty* IsTodayProperty;
     static DpProperty* IsInactiveProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(CalendarDayButton)
 
@@ -54,7 +54,7 @@ public:
 
     static DpProperty* HasSelectedDaysProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(CalendarButton)
 
@@ -109,7 +109,7 @@ public:
     static DpProperty* CalendarButtonStyleProperty;
     static DpProperty* CalendarDayButtonStyleProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(Calendar)
 

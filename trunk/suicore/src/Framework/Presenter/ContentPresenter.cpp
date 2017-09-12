@@ -99,7 +99,7 @@ DataTemplate* DefaultTemplateSelector::SelectTemplate(Object* item, FrameworkEle
     }
 }
 
-bool ContentPresenter::StaticInit()
+void ContentPresenter::StaticInit()
 {
     if (ContentSourceProperty == NULL)
     {
@@ -116,7 +116,6 @@ bool ContentPresenter::StaticInit()
 
         ClipToBoundsProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Boolean::True, PropMetadataOptions::AffectsParentMeasure, &Element::OnClipToBoundsPropChanged));
     }
-    return true;
 }
 
 void ContentPresenter::AddChild(Object* obj)

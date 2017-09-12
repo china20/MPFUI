@@ -59,7 +59,7 @@ public:
     static void OnIsEditableChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIsDropDownOpenChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(ComboBox)
 

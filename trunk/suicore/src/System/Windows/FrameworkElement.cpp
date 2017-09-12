@@ -470,7 +470,7 @@ void FrameworkElement::OnToolTipClosingThunk(Element* sender, ToolTipEventArg* e
     fe->OnToolTipClosing(e);
 }
 
-bool FrameworkElement::StaticInit()
+void FrameworkElement::StaticInit()
 {
     if (NULL == WidthProperty)
     {
@@ -553,7 +553,6 @@ bool FrameworkElement::StaticInit()
         EventHelper::RegisterClassHandler(RTTIType(), ToolTipOpeningEvent, new ToolTipEventHandler(&FrameworkElement::OnToolTipOpeningThunk), false);
         EventHelper::RegisterClassHandler(RTTIType(), ToolTipClosingEvent, new ToolTipEventHandler(&FrameworkElement::OnToolTipClosingThunk), false);
     }
-    return true;
 }
 
 ToolTipEventArg::ToolTipEventArg(bool opening, HwndParam* hp)

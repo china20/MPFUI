@@ -63,10 +63,9 @@ void RichTextBox::InitTextHost()
     trScope->SetMaxLines(100000);
 }
 
-bool RichTextBox::StaticInit()
+void RichTextBox::StaticInit()
 {
     TextBoxBase::StaticInit();
-    return true;
 }
 
 ITextDoc* RichTextBox::GetTextDoc()
@@ -131,7 +130,7 @@ void TextBox::InitTextHost()
     trScope->SetTextMode(TM_PLAINTEXT | TM_RICHTEXT | TM_MULTILEVELUNDO | TM_MULTICODEPAGE);
 }
 
-bool TextBox::StaticInit()
+void TextBox::StaticInit()
 {
     if (NULL == MaxLengthProperty)
     {
@@ -150,7 +149,6 @@ bool TextBox::StaticInit()
         TextDecorationsProperty = suic::DpProperty::Register(_T("TextDecorations"), RTTIType(), suic::OString::RTTIType()
             , suic::DpPropMemory::GetPropMeta(suic::OString::EmptyString, suic::PropMetadataOptions::AffectsMeasure));
     }
-    return true;
 }
 
 void TextBox::OnMaxLengthPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)

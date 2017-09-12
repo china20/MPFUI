@@ -33,7 +33,7 @@ TreeView::~TreeView()
     FREEREFOBJ(_selContainer);
 }
 
-bool TreeView::StaticInit()
+void TreeView::StaticInit()
 {
     if (NULL == SelectedItemProperty)
     {
@@ -48,7 +48,6 @@ bool TreeView::StaticInit()
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knContained)));
         KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knNone)));
     }
-    return true;
 }
 
 void TreeView::OnSelectedItemPropChanged(DpObject* d, DpPropChangedEventArg* e)

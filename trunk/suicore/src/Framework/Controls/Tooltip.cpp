@@ -34,7 +34,7 @@ ToolTip::~ToolTip()
     }
 }
 
-bool ToolTip::StaticInit()
+void ToolTip::StaticInit()
 {
     if (NULL == IsOpenProperty)
     {
@@ -48,7 +48,6 @@ bool ToolTip::StaticInit()
         VerticalOffsetProperty = Popup::VerticalOffsetProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetZeroInt(), 0));
         HorizontalOffsetProperty = Popup::HorizontalOffsetProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetZeroInt(), 0));
     }
-    return true;
 }
 
 ToolTip* ToolTip::Ins()

@@ -27,7 +27,7 @@ ToggleButton::~ToggleButton()
 {
 }
 
-bool ToggleButton::StaticInit()
+void ToggleButton::StaticInit()
 {
     if (IsCheckedProperty == NULL)
     {
@@ -41,7 +41,6 @@ bool ToggleButton::StaticInit()
         UncheckedEvent = EventHelper::RegisterRoutedEvent(_U("Unchecked"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
         IndeterminateEvent = EventHelper::RegisterRoutedEvent(_U("Indeterminate"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
     }
-    return true;
 }
 
 void ToggleButton::AddCheckedEvent(RoutedEventHandler* h)

@@ -24,7 +24,7 @@ RoutedEvent* DragDrop::QueryContinueDragEvent;
 
 ImplementRTTIOfClass(DragDrop, DpObject)
 
-bool DragDrop::StaticInit()
+void DragDrop::StaticInit()
 {
     if (NULL == DragEnterEvent)
     {
@@ -41,8 +41,6 @@ bool DragDrop::StaticInit()
         PreviewQueryContinueDragEvent = EventHelper::RegisterRoutedEvent("PreviewQueryContinueDrag", RoutingStrategy::Tunnel, RoutedEventHandler::RTTIType(), RTTIType());
         QueryContinueDragEvent = EventHelper::RegisterRoutedEvent("QueryContinueDrag", RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
     }
-
-    return true;
 }
 
 DragDropEffects DragDrop::DoDragDrop(Element* dragSource, Object* data, DragDropEffects allowedEffects)

@@ -31,7 +31,7 @@ ToolBar::~ToolBar()
 {
 }
 
-bool ToolBar::StaticInit()
+void ToolBar::StaticInit()
 {
     if (NULL == OrientationProperty)
     {
@@ -54,7 +54,6 @@ bool ToolBar::StaticInit()
         OverflowModeProperty = DpProperty::Register(_T("OverflowMode"), RTTIType(), Integer::RTTIType()
             , DpPropMemory::GetPropMeta(new Integer(OverflowMode::AsNeeded), PropMetadataOptions::AffectsNone));
     }
-    return true;
 }
 
 bool ToolBar::CoerceIsOverflowOpen(DpObject* d, bool val)
@@ -479,11 +478,13 @@ ToolBarTray::~ToolBarTray()
     }
 }
 
-bool ToolBarTray::StaticInit()
+void ToolBarTray::StaticInit()
 {
-    OrientationProperty = DpProperty::Register(_T("Orientation"), RTTIType(), Integer::RTTIType()
-        , DpPropMemory::GetPropMeta(OrientationBox::HorizontalBox, PropMetadataOptions::AffectsMeasure));
-    return true;
+    if (NULL == OrientationProperty)
+    {
+        OrientationProperty = DpProperty::Register(_T("Orientation"), RTTIType(), Integer::RTTIType()
+            , DpPropMemory::GetPropMeta(OrientationBox::HorizontalBox, PropMetadataOptions::AffectsMeasure));
+    }
 }
 
 ToolBarCollection* ToolBarTray::GetToolBars()

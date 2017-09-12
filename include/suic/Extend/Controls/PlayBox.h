@@ -45,7 +45,7 @@ public:
     static void OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
     static void OnPlayIndexPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     PlayBox();
     virtual ~PlayBox();

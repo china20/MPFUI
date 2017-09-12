@@ -52,9 +52,8 @@ void MenuBase::SetOwner(MenuBase* owner)
     _ownerMenu = owner;
 }
 
-bool MenuBase::StaticInit()
+void MenuBase::StaticInit()
 {
-    return true;
 }
 
 bool MenuBase::IsItemItsOwnContainer(Object* item)
@@ -169,9 +168,8 @@ void MenuBase::OnMouseLeftButtonUp(MouseButtonEventArg* e)
     return;
 }
 
-bool Menu::StaticInit()
+void Menu::StaticInit()
 {
-    return true;
 }
 
 Menu::Menu()
@@ -206,7 +204,7 @@ void ContextMenu::OnIsOpenPropChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-bool ContextMenu::StaticInit()
+void ContextMenu::StaticInit()
 {
     if (NULL == IsOpenProperty)
     {
@@ -219,8 +217,6 @@ bool ContextMenu::StaticInit()
         VerticalOffsetProperty = Popup::VerticalOffsetProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetZeroInt(), 0));
         HorizontalOffsetProperty = Popup::HorizontalOffsetProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetZeroInt(), 0));
     }
-
-    return true;
 }
 
 ContextMenu::ContextMenu()

@@ -27,7 +27,7 @@ public:
     static DpProperty* RightProperty;
     static DpProperty* BottomProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Canvas();
     virtual ~Canvas();

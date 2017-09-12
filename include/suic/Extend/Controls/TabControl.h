@@ -35,7 +35,7 @@ public:
 
     static void OnTabArrangeModePropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnTabStripPlacementPropChanged(DpObject* d, DpPropChangedEventArg* e);
-    static bool StaticInit();
+    static void StaticInit();
 
     TabControl();
     ~TabControl();

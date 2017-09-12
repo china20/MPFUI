@@ -32,7 +32,7 @@ public:
     // 是否选中属性（Boolean类型）
     static DpProperty* IsCheckedProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnIsCheckedChanged(DpObject* d, DpPropChangedEventArg* e);
 

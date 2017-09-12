@@ -23,7 +23,7 @@ public:
     // FrameworkElement模板子元素个数
     static UncommonField<XArray>* TemplatedBindField;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void UpdateTemplateInvalidations(FrameworkElement* fe);
     static void UpdateTemplateCache(FrameworkElement* fe, FrameworkTemplate* oldTemplate, FrameworkTemplate* newTemplate, DpProperty* prop);

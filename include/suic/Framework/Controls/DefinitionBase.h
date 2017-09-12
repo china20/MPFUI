@@ -118,7 +118,7 @@ public:
 
     static DpProperty* NameProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(DefinitionBase)
 

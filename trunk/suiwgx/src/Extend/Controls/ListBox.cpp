@@ -45,7 +45,7 @@ protected:
 
 SelectionModeConvert* SelectionModeConvert::Convert = new SelectionModeConvert();
 
-bool ListBox::StaticInit()
+void ListBox::StaticInit()
 {
     if (NULL == SelectionModeProperty)
     {
@@ -58,8 +58,6 @@ bool ListBox::StaticInit()
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knContained)));
         KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knOnce)));
     }
-
-    return true;
 }
 
 void ListBox::OnSelectionModePropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)

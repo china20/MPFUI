@@ -129,7 +129,7 @@ public:
     // 是否运行窗口半透明
     static DpProperty* AllowsTransparencyProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnAllowDropPropChanged(DpObject* d, DpPropChangedEventArg* e);
 

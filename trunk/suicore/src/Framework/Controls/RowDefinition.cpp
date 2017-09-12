@@ -23,7 +23,7 @@ DpProperty* RowDefinition::MaxHeightProperty;
 DpProperty* RowDefinition::MinHeightProperty;
 DpProperty* RowDefinition::HeightProperty;
 
-bool RowDefinition::StaticInit()
+void RowDefinition::StaticInit()
 {
     DefinitionBase::StaticInit();
 
@@ -40,8 +40,6 @@ bool RowDefinition::StaticInit()
 
         HeightProperty->SetConvertValueCb(GridSizeConvert::Convert);
     }
-
-    return true;
 }
 
 void RowDefinition::OnHeightPropChanged(DpObject* d, DpPropChangedEventArg* e)

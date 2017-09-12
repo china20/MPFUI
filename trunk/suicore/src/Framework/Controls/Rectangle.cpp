@@ -10,7 +10,7 @@ ImplementRTTIOfClass(Rectangle, Shape)
 DpProperty* Rectangle::RadiusXProperty;
 DpProperty* Rectangle::RadiusYProperty;
 
-bool Rectangle::StaticInit()
+void Rectangle::StaticInit()
 {
     if (NULL == RadiusXProperty)
     {
@@ -20,8 +20,6 @@ bool Rectangle::StaticInit()
         RadiusYProperty = DpProperty::Register(_T("RadiusY"), RTTIType(), Integer::RTTIType()
             , DpPropMemory::GetPropMeta(Integer::GetZeroInt(), PropMetadataOptions::AffectsNone));
     }
-
-    return true;
 }
 
 Rectangle::Rectangle()

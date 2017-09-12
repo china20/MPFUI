@@ -41,7 +41,7 @@ public:
 
     static DpProperty* TemplateProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static ItemsPresenter* FromPanel(Panel* panel);
     static void OnTemplateChanged(DpObject* d, DpPropChangedEventArg* e);
 

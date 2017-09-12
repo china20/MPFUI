@@ -39,7 +39,7 @@ public:
     static DpProperty* IsSelectedProperty;
     static DpProperty* IsSelectionActiveProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnIndentChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIndentValueChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIsExpandedChanged(DpObject* d, DpPropChangedEventArg* e);

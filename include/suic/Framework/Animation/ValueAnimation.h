@@ -28,7 +28,7 @@ public:
     static DpProperty* FromProperty;
     static DpProperty* EasingFunctionProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(ValueAnimation)
 

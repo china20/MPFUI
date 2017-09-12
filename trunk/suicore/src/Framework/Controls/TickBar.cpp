@@ -44,7 +44,7 @@ TickBar::~TickBar()
 
 }
 
-bool TickBar::StaticInit()
+void TickBar::StaticInit()
 {
     if (FillProperty == NULL)
     {
@@ -66,7 +66,6 @@ bool TickBar::StaticInit()
 
         TicksProperty->SetConvertValueCb(IntAutoArrayConvert::Convert);
     }
-    return true;
 }
 
 bool TickBar::IsDirectionReversed()

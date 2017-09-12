@@ -24,7 +24,7 @@ public:
 
     static DpProperty* ColumnsProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnColumnsPropChanged(DpObject* d, DpPropChangedEventArg* e);
 

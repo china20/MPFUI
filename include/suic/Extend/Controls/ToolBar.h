@@ -89,7 +89,7 @@ public:
 
     static DpProperty* OrientationProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ToolBarTray();
     ~ToolBarTray();
@@ -157,7 +157,7 @@ public:
     static void OnOverflowModeChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnOverflowOpenChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ToolBar();
     virtual ~ToolBar();

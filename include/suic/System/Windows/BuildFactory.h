@@ -34,6 +34,7 @@ public:
     static BuildFactory* Ins();
 
     RTTIOfInfo* Lookup(const String& strType);
+    RTTIOfInfo* AddByType(const String& strType);
 
     bool Contains(const String& strType);
     bool Contains(RTTIOfInfo* cls);
@@ -51,6 +52,8 @@ protected:
 
     RTTIOfInfo* AddType(const String& strType);
     RTTIOfInfo* AddSystmeType(const String& strType);
+
+    RTTIOfInfo* LookupType(const String& strType);
 
 private:
 

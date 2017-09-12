@@ -9,9 +9,8 @@ namespace suic
 
 ImplementRTTIOfClass(DoubleAnimation, ValueAnimation)
 
-bool DoubleAnimation::StaticInit()
+void DoubleAnimation::StaticInit()
 {
-    return true;
 }
 
 DoubleAnimation::DoubleAnimation()
@@ -185,9 +184,8 @@ void DoubleAnimation::SetFrom(Float val)
 //
 ImplementRTTIOfClass(Int32Animation, ValueAnimation)
 
-bool Int32Animation::StaticInit()
+void Int32Animation::StaticInit()
 {
-    return true;
 }
 
 Int32Animation::Int32Animation()
@@ -365,9 +363,8 @@ void Int32Animation::SetFrom(Int32 val)
 //
 ImplementRTTIOfClass(RectAnimation, ValueAnimation)
 
-bool RectAnimation::StaticInit()
+void RectAnimation::StaticInit()
 {
-    return true;
 }
 
 RectAnimation::RectAnimation()
@@ -547,9 +544,8 @@ void RectAnimation::SetFrom(Rect val)
 //
 ImplementRTTIOfClass(ColorAnimation, ValueAnimation)
 
-bool ColorAnimation::StaticInit()
+void ColorAnimation::StaticInit()
 {
-    return true;
 }
 
 ColorAnimation::ColorAnimation()
@@ -712,9 +708,8 @@ void ColorAnimation::SetFrom(Color val)
 //
 ImplementRTTIOfClass(PointAnimation, ValueAnimation)
 
-bool PointAnimation::StaticInit()
+void PointAnimation::StaticInit()
 {
-    return true;
 }
 
 PointAnimation::PointAnimation()

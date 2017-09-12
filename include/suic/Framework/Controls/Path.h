@@ -24,7 +24,7 @@ public:
 
     static DpProperty* DataProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnDataPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
     Path();

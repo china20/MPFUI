@@ -9,9 +9,8 @@ namespace suic
 
 ImplementRTTIOfClass(ListViewItem, ListBoxItem)
 
-bool ListViewItem::StaticInit()
+void ListViewItem::StaticInit()
 {
-    return true;
 }
 
 ListViewItem::ListViewItem()

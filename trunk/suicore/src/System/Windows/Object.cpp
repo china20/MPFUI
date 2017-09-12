@@ -464,6 +464,10 @@ Object* __stdcall Object::Create()
     return NULL;//new Object();
 }
 
+void Object::StaticInit()
+{
+}
+
 const suic::MemberInfo* __stdcall Object::ClassMemberInfo()
 {
     return NULL;

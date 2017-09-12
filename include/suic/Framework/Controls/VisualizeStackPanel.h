@@ -37,18 +37,13 @@ public:
 
     static DpProperty* OrientationProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
     RTTIOfClass(VirtualizingStackPanel)
 
     VirtualizingStackPanel();
     virtual ~VirtualizingStackPanel();
-
-    bool IsScrolling();
-
-    IScrollInfo* GetScrollInfo();
-    ScrollData* GetScrollData();
     
     /// <summary>
     ///  获取界面元素的方向
@@ -77,32 +72,19 @@ public:
 protected:
 
     virtual void OnItemsChangedInternal(Object* sender, ItemsChangedEventArg* e);
-    virtual void OnViewportSizeChanged(Size oldViewportSize, Size newViewportSize);
-    virtual void OnViewportOffsetChanged(Point oldViewportOffset, Point newViewportOffset);
-
+    
     Size MeasureCommon(const Size& constraint);
-
     void HandleMoreContainer();
-    void ClearRealizedContainer();
-    void InsertContainer(int index, Element* conainer);
-    Element* RecycleContainer(int index, ItemEntry* item);
-
-    void SetAndVerifyScrollingData(Size viewport, Size prevSize, Size extent, Point offset);
     void AdjustViewportOffset(MeasureData& measureData, ItemsControl* itemsControl, bool isHori);
 
-    void SetAndVerifyScrollingData(Size viewport, Size extent, Point offset);
     void ResetChildMeasureData(MeasureData* childMeasureData, const MeasureData& measureData, Size layoutSize, Size stackSize, bool bHori);
     int CalcFirstVisibleItemOffset(ItemsControl* itemsOwner, MeasureData& measureData, bool bHori, int& firstItemOffset, Size& stackOffset);
 
 protected:
 
-    int _realedCount;
     int _visibleCount;
     int _visibleStart;
     int _visibleOffset;
-    int _visibleMeasure;
-
-    ScrollInfo* _scrollInfo;
 };
 
 inline int VirtualizingStackPanel::GetVisibleChildrenCount()

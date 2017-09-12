@@ -24,7 +24,7 @@ public:
     static DpProperty* IsFocusScopeProperty;
     static DpProperty* FocusedElementProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static InputDevice* GetCurrentInputDevice();
     static void SetCurrentInputDevice(InputDevice* inputDevice);

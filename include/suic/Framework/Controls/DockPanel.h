@@ -27,7 +27,7 @@ public:
 
     DockPanel();
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnLastChildFillPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static int GetDock(Element* child);
 

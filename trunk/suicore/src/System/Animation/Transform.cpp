@@ -405,7 +405,7 @@ DpProperty* MatrixTransform::MatrixProperty;
 
 //=============================================================
 //
-bool Transform::StaticInit()
+void Transform::StaticInit()
 {
     if (NULL == ScaleTransform::CenterXProperty)
     {
@@ -433,7 +433,6 @@ bool Transform::StaticInit()
         Rotate3DTransform::AngleZProperty = DpProperty::Register(_T("AngleZ"), Rotate3DTransform::RTTIType(), OFloat::RTTIType(), DpPropMemory::GetPropMeta(OFloat::GetZeroFloat(), PropMetadataOptions::AffectsNone, &Transform::OnPropNotifyChanged));
         Rotate3DTransform::AutoScaleProperty = DpProperty::Register(_T("AutoScale"), Rotate3DTransform::RTTIType(), Boolean::RTTIType(), DpPropMemory::GetPropMeta(Boolean::True, PropMetadataOptions::AffectsNone, &Transform::OnPropNotifyChanged));
     }
-    return true;
 }
 
 void Transform::OnPropNotifyChanged(DpObject* d, DpPropChangedEventArg* e)

@@ -31,7 +31,7 @@ Canvas::~Canvas()
 {
 }
 
-bool Canvas::StaticInit()
+void Canvas::StaticInit()
 {
     if (LeftProperty == NULL)
     {
@@ -45,7 +45,6 @@ bool Canvas::StaticInit()
         BottomProperty = DpProperty::RegisterAttached(_U("Bottom")
             , RTTIType(), Integer::RTTIType(), DpPropMemory::GetPropMeta(Integer::GetZeroInt(), PropMetadataOptions::AffectsParentArrange));
     }
-    return true;
 }
 
 int Canvas::GetLeft(suic::Element* element)

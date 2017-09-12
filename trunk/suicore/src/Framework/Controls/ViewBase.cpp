@@ -9,9 +9,8 @@ namespace suic
 
 ImplementRTTIOfClass(ViewBase, DpObject)
 
-bool ViewBase::StaticInit()
+void ViewBase::StaticInit()
 {
-    return true;
 }
 
 //----------------------------------------------------

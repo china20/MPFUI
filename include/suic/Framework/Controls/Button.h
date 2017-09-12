@@ -27,7 +27,7 @@ public:
     static DpProperty* IsDefaultedProperty;
     static DpProperty* IsDefaultProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnIsDefaultedPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
@@ -50,7 +50,7 @@ class SUICORE_API SysButton : public ButtonBase
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     SysButton();
     ~SysButton();
@@ -81,7 +81,7 @@ class SUICORE_API MaximizeButton : public SysButton
 public:
 
     static DpProperty* WindowStateProperty;
-    static bool StaticInit();
+    static void StaticInit();
 
     MaximizeButton();
     ~MaximizeButton();

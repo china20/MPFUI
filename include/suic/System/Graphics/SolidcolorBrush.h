@@ -26,7 +26,7 @@ public:
     static SolidColorBrush* Black;
     static SolidColorBrush* White;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(SolidColorBrush)
 

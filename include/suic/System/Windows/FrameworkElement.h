@@ -207,7 +207,7 @@ public:
     static Style* DefaultFocusVisualStyle;
     static UncommonField<OSize> UnclippedDesiredSizeField;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnWidthPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnHeightPropChanged(DpObject* d, DpPropChangedEventArg* e);

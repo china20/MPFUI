@@ -33,7 +33,7 @@ SolidColorBrush::~SolidColorBrush()
 
 }
 
-bool SolidColorBrush::StaticInit()
+void SolidColorBrush::StaticInit()
 {
     if (NULL == Red)
     {
@@ -49,8 +49,6 @@ bool SolidColorBrush::StaticInit()
         SolidColorBrush::Black->ref();
         SolidColorBrush::White->ref();
     }
-
-    return true;
 }
 
 SolidColorBrush* SolidColorBrush::Clone() const

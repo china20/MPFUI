@@ -85,7 +85,7 @@ void Border::OnPaddingPropChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-bool Border::StaticInit()
+void Border::StaticInit()
 {
     if (BorderThicknessProperty == NULL)
     {
@@ -111,7 +111,6 @@ bool Border::StaticInit()
         BorderThicknessProperty = DpProperty::Register(_U("BorderThickness"), RTTIType(), ORect::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsParentMeasure, &Border::OnBorderThicknessPropChanged));
     }
-    return true;
 }
 
 fRect Border::GetCornerRadius()

@@ -24,7 +24,7 @@ public:
     static DpProperty* RadiusXProperty;
     static DpProperty* RadiusYProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Rectangle();
     virtual ~Rectangle();

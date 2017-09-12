@@ -71,7 +71,7 @@ public:
 
     static void OnTextDecorationsPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Inline();
     ~Inline();
@@ -110,7 +110,7 @@ public:
 
     static void OnTextPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(Run)
 
@@ -215,7 +215,7 @@ class SUICORE_API Bold : public Span
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(Bold)
     
@@ -254,7 +254,7 @@ public:
     static suic::DpProperty* NavigateUriProperty;
     static suic::DpProperty* IsHyperlinkPressedProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(Hyperlink)
 
@@ -389,7 +389,7 @@ public:
 
     static void OnTextPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(TextBlock)
 

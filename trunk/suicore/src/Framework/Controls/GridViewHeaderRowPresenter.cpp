@@ -14,7 +14,7 @@ DpProperty* GridViewHeaderRowPresenter::ColumnHeaderToolTipProperty;
 DpProperty* GridViewHeaderRowPresenter::ColumnHeaderTemplateProperty;
 DpProperty* GridViewHeaderRowPresenter::ColumnHeaderContainerStyleProperty;
 
-bool GridViewHeaderRowPresenter::StaticInit()
+void GridViewHeaderRowPresenter::StaticInit()
 {
     if (NULL == ColumnHeaderToolTipProperty)
     {
@@ -25,8 +25,6 @@ bool GridViewHeaderRowPresenter::StaticInit()
         ColumnHeaderTemplateProperty = GridView::ColumnHeaderTemplateProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
         ColumnHeaderContainerStyleProperty = GridView::ColumnHeaderContainerStyleProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
     }
-
-    return true;
 }
 
 //----------------------------------------------------

@@ -209,7 +209,7 @@ void Inline::OnTextDecorationsPropChanged(suic::DpObject* d, suic::DpPropChanged
     }
 }
 
-bool Inline::StaticInit()
+void Inline::StaticInit()
 {
     if (NULL == TextDecorationsProperty)
     {
@@ -232,8 +232,6 @@ bool Inline::StaticInit()
         TextDecorations::strikethrough;
         TextDecorations::underline;*/
     }
-
-    return false;
 }
 
 int Inline::GetCount()
@@ -388,7 +386,7 @@ void Run::OnTextPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
     }
 }
 
-bool Run::StaticInit()
+void Run::StaticInit()
 {
     if (NULL == TextProperty)
     {
@@ -396,8 +394,6 @@ bool Run::StaticInit()
         TextProperty = suic::DpProperty::Register(_T("Text"), RTTIType(), suic::OString::RTTIType()
             , suic::DpPropMemory::GetPropMeta(suic::OString::EmptyString, suic::PropMetadataOptions::AffectsParentMeasure, &Run::OnTextPropChanged));
     }
-
-    return true;
 }
 
 
@@ -666,7 +662,7 @@ Bold::~Bold()
 {
 }
 
-bool Bold::StaticInit()
+void Bold::StaticInit()
 {
     static bool s_init = false;
     if (!s_init)
@@ -675,7 +671,6 @@ bool Bold::StaticInit()
         Uint32 flag = PropMetadataOptions::AffectsParentMeasure | PropMetadataOptions::AffectsParentRender | PropMetadataOptions::AffectsInherits;
         TextElement::FontWeightProperty->OverrideMetadata(RTTIType(), suic::DpPropMemory::GetPropMeta(new suic::Integer(suic::FontWeightStyle::fwExtraBold), flag));
     }
-    return true;
 }
 
 //=================================================
@@ -695,7 +690,7 @@ Hyperlink::~Hyperlink()
 {
 }
 
-bool Hyperlink::StaticInit()
+void Hyperlink::StaticInit()
 {
     if (ClickEvent == NULL)
     {
@@ -707,8 +702,6 @@ bool Hyperlink::StaticInit()
 
         NavigateUriProperty = suic::DpProperty::Register(_T("NavigateUri"), RTTIType(), suic::OString::RTTIType(), suic::DpPropMemory::GetPropMeta(suic::OString::EmptyString));
     }
-
-    return true;
 }
 
 void Hyperlink::SetIsHyperlinkPressed(bool pressed)
@@ -936,7 +929,7 @@ void TextBlock::OnTextPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg
     }
 }
 
-bool TextBlock::StaticInit()
+void TextBlock::StaticInit()
 {
     if (NULL == TextProperty)
     {
@@ -970,8 +963,6 @@ bool TextBlock::StaticInit()
         TextDecorationsProperty->SetConvertValueCb(suic::TextDecorationsConvert::Convert);
         TextAlignmentProperty->SetConvertValueCb(suic::TextAlignmentConvert::Convert);
     }
-
-    return true;
 }
 
 void TextBlock::Clear()

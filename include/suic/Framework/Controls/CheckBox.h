@@ -23,7 +23,7 @@ class SUICORE_API CheckBox : public ToggleButton
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     CheckBox();
     virtual ~CheckBox();

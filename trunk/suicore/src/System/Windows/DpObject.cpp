@@ -165,15 +165,13 @@ DpObject::~DpObject()
     }
 }
 
-bool DpObject::StaticInit()
+void DpObject::StaticInit()
 {
     if (DependentDpField == NULL)
     {
         DependentDpField = new UncommonProperty(NULL);
         DirectDpProperty = DpProperty::Register(_T("DirectDp"), RTTIType(), Object::RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
     }
-
-    return true;
 }
 
 Object* DpObject::GetDefaultValue(DpProperty* dp)

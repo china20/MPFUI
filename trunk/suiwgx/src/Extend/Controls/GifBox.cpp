@@ -57,7 +57,7 @@ void GifBox::OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e
 
 }
 
-bool GifBox::StaticInit()
+void GifBox::StaticInit()
 {
     if (NULL == UriProperty)
     {
@@ -66,8 +66,6 @@ bool GifBox::StaticInit()
         PlayProperty = suic::DpProperty::Register(_U("Play"), RTTIType(), suic::Boolean::RTTIType(), 
             suic::DpPropMemory::GetPropMeta(suic::Boolean::False, suic::PropMetadataOptions::AffectsRender, &GifBox::OnPlayPropChanged));
     }
-
-    return true;
 }
 
 suic::String GifBox::GetUri()

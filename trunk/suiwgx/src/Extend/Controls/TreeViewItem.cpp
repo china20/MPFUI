@@ -184,7 +184,7 @@ void TreeViewItem::OnMouseButtonDown(Element* sender, MouseButtonEventArg* e)
     }
 }
 
-bool TreeViewItem::StaticInit()
+void TreeViewItem::StaticInit()
 {
     if (NULL == IndentProperty)
     {
@@ -209,7 +209,6 @@ bool TreeViewItem::StaticInit()
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knContinue)));
         KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knNone)));
     }
-    return true;
 }
 
 TreeViewItem::TreeViewItem()

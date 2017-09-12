@@ -23,7 +23,7 @@ ItemsPresenter::~ItemsPresenter()
 {
 }
 
-bool ItemsPresenter::StaticInit()
+void ItemsPresenter::StaticInit()
 {
     if (NULL == TemplateProperty)
     {
@@ -32,7 +32,6 @@ bool ItemsPresenter::StaticInit()
             , &ItemsPresenter::OnTemplateChanged));
         ClipToBoundsProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Boolean::True, PropMetadataOptions::AffectsParentMeasure, &Element::OnClipToBoundsPropChanged));
     }
-    return true;
 }
 
 ItemsPresenter* ItemsPresenter::FromPanel(Panel* panel)

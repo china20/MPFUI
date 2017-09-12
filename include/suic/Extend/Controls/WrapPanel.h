@@ -28,9 +28,7 @@ public:
 
     static DpProperty* OrientationProperty;
 
-    static bool StaticInit();
-
-    static void OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* e);
+    static void StaticInit();
 
     WrapPanel();
     virtual ~WrapPanel();

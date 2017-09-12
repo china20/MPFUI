@@ -82,7 +82,7 @@ ItemsControl::~ItemsControl()
     }
 }
 
-bool ItemsControl::StaticInit()
+void ItemsControl::StaticInit()
 {
     if (HasItemsProperty == NULL)
     {
@@ -128,8 +128,6 @@ bool ItemsControl::StaticInit()
         EventHelper::RegisterClassHandler(RTTIType(), GotKeyboardFocusEvent, new KeyboardFocusEventHandler(&ItemsControl::OnGotKeyboardFocusThunk), false);
         EventHelper::RegisterClassHandler(RTTIType(), LostKeyboardFocusEvent, new KeyboardFocusEventHandler(&ItemsControl::OnLostKeyboardFocusThunk), false);
     }
-
-    return true;
 }
 
 ItemCollection* ItemsControl::GetItemsSource()

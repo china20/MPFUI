@@ -25,7 +25,7 @@ public:
     static DpProperty* MinHeightProperty;
     static DpProperty* HeightProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnHeightPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnMinHeightPropChanged(DpObject* d, DpPropChangedEventArg* e);

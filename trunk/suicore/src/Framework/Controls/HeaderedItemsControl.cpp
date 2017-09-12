@@ -27,7 +27,7 @@ HeaderedItemsControl::~HeaderedItemsControl()
 {
 }
 
-bool HeaderedItemsControl::StaticInit()
+void HeaderedItemsControl::StaticInit()
 {
     if (NULL == HasHeaderProperty)
     {
@@ -42,8 +42,6 @@ bool HeaderedItemsControl::StaticInit()
         HeaderTemplateSelectorProperty = DpProperty::Register(_U("HeaderTemplateSelector"), RTTIType(), Object::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
     }
-
-    return true;
 }
 
 void HeaderedItemsControl::OnHasHeaderPropChanged(DpObject* d, DpPropChangedEventArg* e)

@@ -163,7 +163,7 @@ void ComboBox::OnTextPropChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-bool ComboBox::StaticInit()
+void ComboBox::StaticInit()
 {
     if (NULL == TextProperty)
     {
@@ -191,8 +191,6 @@ bool ComboBox::StaticInit()
         KeyboardNavigation::ControlTabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knNone)));
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knNone)));
     }
-
-    return true;
 }
 
 bool ComboBox::OnMessageFilter(Object* sender, MessageParam* mp, bool& interrupt)

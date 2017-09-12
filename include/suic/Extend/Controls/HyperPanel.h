@@ -39,7 +39,7 @@ public:
     static void OnHorizontalContentAlignmentPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e); 
     static void OnVerticalContentAlignmentPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     HyperPanel();
     ~HyperPanel();

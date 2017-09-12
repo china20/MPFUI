@@ -73,7 +73,7 @@ void Expander::OnIsExpandedChanged(DpObject* d, DpPropChangedEventArg* e)
     element->UpdateVisualState(true);
 }
 
-bool Expander::StaticInit()
+void Expander::StaticInit()
 {
     if (NULL == IsExpandedProperty)
     {
@@ -89,8 +89,6 @@ bool Expander::StaticInit()
         ExpandDirectionProperty->SetConvertValueCb(new ExpandDirectionConvert());
         Control::IsTabStopProperty->OverrideMetadata(RTTIType(), new PropMetadata(Boolean::False));
     }
-
-    return true;
 }
 
 ExpandDirection Expander::GetExpandDirection()

@@ -108,7 +108,7 @@ void Control::HandleDoubleClick(Element* sender, MouseButtonEventArg* e)
     }
 }
 
-bool Control::StaticInit()
+void Control::StaticInit()
 {
     if (NULL == PaddingProperty)
     {
@@ -157,8 +157,6 @@ bool Control::StaticInit()
         //EventHelper::RegisterClassHandler(RTTIType(), Element::PreMouseRButtonDownEvent, new MouseButtonEventHandler(&Control::HandleDoubleClick), true);
         //EventHelper::RegisterClassHandler(RTTIType(), Element::MouseRButtonDownEvent, new MouseButtonEventHandler(&Control::HandleDoubleClick), true);
     }
-
-    return true;
 }
 
 void Control::OnPreviewMouseDown(MouseButtonEventArg* e)

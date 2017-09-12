@@ -27,7 +27,7 @@ GridSplitter::GridSplitter()
     GridSplitter::StaticInit();
 }
 
-bool GridSplitter::StaticInit()
+void GridSplitter::StaticInit()
 {
     if (NULL == DragIncrementProperty)
     {
@@ -52,8 +52,6 @@ bool GridSplitter::StaticInit()
         suic::EventHelper::RegisterClassHandler(GridSplitter::RTTIType(), suic::Thumb::DragDeltaEvent,new suic::RoutedEventHandler(&GridSplitter::OnDragDeltaTrunk), false);
         suic::EventHelper::RegisterClassHandler(GridSplitter::RTTIType(), suic::Thumb::DragCompletedEvent,new suic::RoutedEventHandler(&GridSplitter::OnDragCompletedTrunk), false);
     }
-
-	return true;
 }
 
 PreviewAdorner::PreviewAdorner(GridSplitter* gridSplitter, Style* previewStyle) 

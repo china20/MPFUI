@@ -57,7 +57,7 @@ public:
     static DpProperty* ControlTabOnceActiveElementProperty;
     static DpProperty* DirectionalNavigationProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static bool IsTabStop(Element* elem);
     static int GetTabIndex(Element* elem);

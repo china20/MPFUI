@@ -24,7 +24,7 @@ class SUIWGX_API RichTextBox : public suic::TextBoxBase
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(RichTextBox)
 

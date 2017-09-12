@@ -63,7 +63,7 @@ public:
 
     void Dispose();
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnIsCheckedPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIsCheckablePropChanged(DpObject* target, DpPropChangedEventArg* e);

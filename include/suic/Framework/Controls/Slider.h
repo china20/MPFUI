@@ -56,7 +56,7 @@ public:
 
     static void OnMouseLeftButtonDownThunk(Element* sender, MouseButtonEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Slider();
     virtual ~Slider();

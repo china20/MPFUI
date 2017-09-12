@@ -43,7 +43,7 @@ public:
     static void OnFontWeightPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
     static void OnFontSizePropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     PasswordBox();
     virtual ~PasswordBox();

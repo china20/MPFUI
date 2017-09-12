@@ -51,7 +51,7 @@ public:
     static UncommonField<XArray>* CachedContainerSizeCount;
     static UncommonField<ContainerSize>* CachedEstimateContainerSize;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnSelectedItemPropChanged(DpObject* d, DpPropChangedEventArg* e);
 

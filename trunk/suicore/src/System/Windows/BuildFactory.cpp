@@ -153,18 +153,40 @@ BuildFactory* BuildFactory::Ins()
 
 RTTIOfInfo* BuildFactory::Lookup(const String& strType)
 {
+    RTTIOfInfo* cls = LookupType(strType);
+
+    if (NULL == cls)
+    {
+        cls = AddByType(strType);
+    }
+
+    return cls;
+}
+
+RTTIOfInfo* BuildFactory::LookupType(const String& strType)
+{
     RTTIOfInfo* cls = NULL;
 
     if (strType.Length() > 0 && !_classes.TryGetValue(strType, cls))
     {
         if (!_sysClasses.TryGetValue(strType, cls))
         {
-            cls = AddSystmeType(strType);
-            if (NULL == cls)
-            {
-                cls = AddType(strType);
-            }
+            ; // Î´ÕÒµ½
         }
+    }
+
+    return cls;
+}
+
+RTTIOfInfo* BuildFactory::AddByType(const String& strType)
+{
+    RTTIOfInfo* cls = NULL;
+
+    cls = AddSystmeType(strType);
+
+    if (NULL == cls)
+    {
+        cls = AddType(strType);
     }
 
     return cls;
@@ -172,7 +194,7 @@ RTTIOfInfo* BuildFactory::Lookup(const String& strType)
 
 bool BuildFactory::Contains(const String& strType)
 {
-    return (NULL != Lookup(strType));
+    return (NULL != LookupType(strType));
 }
 
 bool BuildFactory::Contains(RTTIOfInfo* cls)
@@ -196,6 +218,10 @@ void BuildFactory::Add(RTTIOfInfo* cls)
     {
         Remove(cls);
         InvalidOperationException e(_U("has contains the type"), __FILELINE__);
+    }
+    else
+    {
+        cls->staticInit();
     }
     _classes.Add(cls->typeName, cls);
 }
@@ -232,6 +258,8 @@ RTTIOfInfo* BuildFactory::AddType(const String& strType)
         rttiInfo = _addTypes.GetItem(i)->AddType(strType);
         if (NULL != rttiInfo)
         {
+            rttiInfo->staticInit();
+            _classes.Add(rttiInfo->typeName, rttiInfo);
             break;
         }
     }
@@ -681,7 +709,12 @@ RTTIOfInfo* BuildFactory::AddSystmeType(const String& strType)
         }
         break;
     }
-    _sysClasses.Add(strName, rttiInfo);
+
+    if (NULL != rttiInfo)
+    {
+        // rttiInfo->staticInit();
+        _sysClasses.Add(strName, rttiInfo);
+    }
 
     return rttiInfo;
 }

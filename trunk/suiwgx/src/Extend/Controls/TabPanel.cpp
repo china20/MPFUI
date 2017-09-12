@@ -57,7 +57,7 @@ protected:
 
 TabArrangeModeConvert* TabArrangeModeConvert::Convert = NULL;
 
-bool TabPanel::StaticInit()
+void TabPanel::StaticInit()
 {
     static bool s_init = false;
 
@@ -71,7 +71,6 @@ bool TabPanel::StaticInit()
         KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knOnce)));
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knCycle)));
     }
-    return true;
 }
 
 TabPanel::TabPanel()

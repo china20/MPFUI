@@ -39,7 +39,7 @@ void DockPanel::OnLastChildFillPropChanged(DpObject* d, DpPropChangedEventArg* e
     }
 }
 
-bool DockPanel::StaticInit()
+void DockPanel::StaticInit()
 {
     if (DockProperty == NULL)
     {
@@ -52,7 +52,6 @@ bool DockPanel::StaticInit()
 
         DockProperty->SetConvertValueCb(DockConvert::Convert);
     }
-    return true;
 }
 
 int DockPanel::GetDock(Element* child)

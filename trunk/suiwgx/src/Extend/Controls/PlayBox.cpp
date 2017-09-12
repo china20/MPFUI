@@ -63,7 +63,7 @@ void PlayBox::OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* 
     }
 }
 
-bool PlayBox::StaticInit()
+void PlayBox::StaticInit()
 {
     if (NULL == BackgroundProperty)
     {
@@ -84,8 +84,6 @@ bool PlayBox::StaticInit()
         PlayDelayProperty = suic::DpProperty::RegisterAttached(_U("PlayDelay"), RTTIType(), suic::Integer::RTTIType(), 
             suic::DpPropMemory::GetPropMeta(new suic::Integer(100), suic::PropMetadataOptions::AffectsRender));
     }
-
-    return true;
 }
 
 int PlayBox::GetPlayIndex()

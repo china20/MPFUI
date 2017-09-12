@@ -59,7 +59,7 @@ static DataTemplate* CreateContentTemplate(RTTIOfInfo* rttiInfo)
     return temp;
 }
 
-bool Button::StaticInit()
+void Button::StaticInit()
 {
     if (NULL == IsDefaultedProperty)
     {
@@ -71,8 +71,6 @@ bool Button::StaticInit()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsNone));
         ContentTemplateProperty->OverrideMetadata(RTTIType(), new PropMetadata(CreateContentTemplate(RTTIType())));
     }
-
-    return true;
 }
 
 void Button::OnClick()
@@ -129,7 +127,7 @@ DpProperty* MaximizeButton::WindowStateProperty;
     }
 }*/
 
-bool MaximizeButton::StaticInit()
+void MaximizeButton::StaticInit()
 {
     if (NULL == WindowStateProperty)
     {
@@ -138,7 +136,6 @@ bool MaximizeButton::StaticInit()
         WindowStateProperty->SetConvertValueCb(WindowStateConvert::Convert);
         FocusableProperty->OverrideMetadata(RTTIType(), new PropMetadata(Boolean::False));
     }
-    return true;
 }
 
 SysButton::SysButton()
@@ -150,7 +147,7 @@ SysButton::~SysButton()
 
 }
 
-bool SysButton::StaticInit()
+void SysButton::StaticInit()
 {
     static bool s_init = false;
     if (!s_init)
@@ -158,7 +155,6 @@ bool SysButton::StaticInit()
         s_init = true;
         FocusableProperty->OverrideMetadata(RTTIType(), new PropMetadata(Boolean::False));
     }
-    return true;
 }
 
 void MaximizeButton::OnInitialized(EventArg* e)

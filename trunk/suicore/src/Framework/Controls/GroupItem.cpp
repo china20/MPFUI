@@ -7,7 +7,7 @@ namespace suic
 
 ImplementRTTIOfClass(GroupItem, suic::ContentControl)
 
-bool GroupItem::StaticInit()
+void GroupItem::StaticInit()
 {
     static bool s_init = false;
     if (!s_init)
@@ -16,7 +16,6 @@ bool GroupItem::StaticInit()
         Element::StaticInit();
         Element::FocusableProperty->OverrideMetadata(GroupItem::RTTIType(), new PropMetadata(Boolean::False));
     }
-    return true;
 }
 
 GroupItem::GroupItem()

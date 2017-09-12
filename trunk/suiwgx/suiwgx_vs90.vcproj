@@ -1070,6 +1070,26 @@
 						>
 					</File>
 					<File
+						RelativePath=".\src\Extend\Controls\VisualizeWrapPanel.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								UsePrecompiledHeader="0"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath=".\src\Extend\Controls\WebkitBox.cpp"
 						>
 					</File>
@@ -2931,6 +2951,10 @@
 					</File>
 					<File
 						RelativePath="..\..\include\suic\Extend\Controls\TreeViewItem.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\include\suic\Extend\Controls\VisualizeWrapPanel.h"
 						>
 					</File>
 					<File

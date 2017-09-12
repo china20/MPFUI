@@ -32,7 +32,7 @@ public:
 
 protected:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     void OnMouseMove(MouseButtonEventArg* e);
     void OnMouseLeftButtonUp(MouseButtonEventArg* e);

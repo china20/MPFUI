@@ -279,7 +279,7 @@ public:
     static DpProperty* Tag2Property;
     static DpProperty* Tag3Property;
     
-    static bool StaticInit();
+    static void StaticInit();
     
     static void OnClipPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnClipToBoundsPropChanged(DpObject* d, DpPropChangedEventArg* e);

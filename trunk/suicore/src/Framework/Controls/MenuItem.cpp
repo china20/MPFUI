@@ -164,7 +164,7 @@ void MenuItem::OnIsCheckedPropChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-bool MenuItem::StaticInit()
+void MenuItem::StaticInit()
 {
     if (NULL == IsSubmenuOpenProperty)
     {
@@ -195,8 +195,6 @@ bool MenuItem::StaticInit()
         SubmenuOpenedEvent = EventHelper::RegisterRoutedEvent(_U("SubmenuOpened"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
         SubmenuClosedEvent = EventHelper::RegisterRoutedEvent(_U("SubmenuClosed"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
     }
-
-    return true;
 }
 
 void MenuItem::OnIsCheckablePropChanged(DpObject* target, DpPropChangedEventArg* e)

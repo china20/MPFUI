@@ -23,7 +23,7 @@ public:
 
     RTTIOfClass(ListViewItem)
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ListViewItem();
     ~ListViewItem();

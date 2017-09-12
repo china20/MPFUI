@@ -27,13 +27,12 @@ IntAutoDicObj::~IntAutoDicObj()
 
 }
 
-bool StyleHelper::StaticInit()
+void StyleHelper::StaticInit()
 {
     if (NULL == TemplatedBindField)
     {
         TemplatedBindField = new UncommonField<XArray>(NULL);
     }
-    return true;
 }
 
 void StyleHelper::UpdateBindingSource(DpObject* source, DpProperty* sourceDp, DpObject* target, DpProperty* targetDp, Expression* expr, bool bAdd)

@@ -64,7 +64,7 @@ public:
     static void OnVerticalOffsetPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnHorizontalOffsetPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ScrollViewer();
     virtual ~ScrollViewer();

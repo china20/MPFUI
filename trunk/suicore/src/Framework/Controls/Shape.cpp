@@ -267,7 +267,7 @@ Shape::~Shape()
     }
 }
 
-bool Shape::StaticInit()
+void Shape::StaticInit()
 {
     if (EffectProperty == NULL)
     {
@@ -295,8 +295,6 @@ bool Shape::StaticInit()
         StrokeLineJoinProperty->SetConvertValueCb(PenLineJoinConvert::Convert);
         StretchProperty->SetConvertValueCb(StretchConvert::Convert);
     }
-
-    return true;
 }
 
 PenLineCap Shape::GetStrokeDashCap()

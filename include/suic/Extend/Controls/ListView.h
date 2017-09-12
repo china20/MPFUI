@@ -27,7 +27,7 @@ public:
     static DpProperty* ViewProperty;
 
     static void OnViewPropChanged(DpObject* d, DpPropChangedEventArg* e);
-    static bool StaticInit();
+    static void StaticInit();
 
     ListView();
     ~ListView();

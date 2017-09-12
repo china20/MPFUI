@@ -9,9 +9,8 @@ namespace suic
 
 ImplementRTTIOfClass(GridViewColumnCollection, Object)
 
-bool GridViewColumnCollection::StaticInit()
+void GridViewColumnCollection::StaticInit()
 {
-    return true;
 }
 
 //----------------------------------------------------

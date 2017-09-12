@@ -29,7 +29,7 @@ public:
 
     static suic::DpProperty* UriProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnUriPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 

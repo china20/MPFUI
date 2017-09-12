@@ -13,7 +13,7 @@ DpProperty* ValueAnimation::EasingFunctionProperty;
 
 ImplementRTTIOfClass(ValueAnimation, AnimationTimeline)
 
-bool ValueAnimation::StaticInit()
+void ValueAnimation::StaticInit()
 {
     if (NULL == ByProperty)
     {
@@ -22,7 +22,6 @@ bool ValueAnimation::StaticInit()
         FromProperty = DpProperty::Register(_U("From"), RTTIType(), Object::RTTIType(), DpPropMemory::GetPropMeta(NULL));
         EasingFunctionProperty = DpProperty::Register(_U("EasingFunction"), RTTIType(), IEasingFunction::RTTIType(), DpPropMemory::GetPropMeta(NULL));;
     }
-    return true;
 }
 
 ValueAnimation::ValueAnimation()
@@ -327,7 +326,7 @@ void PowerEase::SetPower(Float val)
     SetValue(PowerProperty, new OFloat(val));
 }
 
-bool EasingFuncBase::StaticInit()
+void EasingFuncBase::StaticInit()
 {
     if (NULL == EasingFuncBase::EasingModeProperty)
     {
@@ -345,7 +344,6 @@ bool EasingFuncBase::StaticInit()
 
         PowerEase::PowerProperty = DpProperty::Register(_T("Power"), PowerEase::RTTIType(), OFloat::RTTIType(), DpPropMemory::GetPropMeta(new OFloat(2.0)));
     }
-    return true;
 }
 
 }

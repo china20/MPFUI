@@ -31,7 +31,7 @@ ProgressBar::~ProgressBar()
 {
 }
 
-bool ProgressBar::StaticInit()
+void ProgressBar::StaticInit()
 {
     if (NULL == OrientationProperty)
     {
@@ -43,8 +43,6 @@ bool ProgressBar::StaticInit()
         OrientationProperty->SetConvertValueCb(OrientationConvert::Convert);
         RangeBase::MaximumProperty->OverrideMetadata(RTTIType(), new PropMetadata(new OFloat(100.0f)));
     }
-
-    return true;
 }
 
 String ProgressBar::ToString() const

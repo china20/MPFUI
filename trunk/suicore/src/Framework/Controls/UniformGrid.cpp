@@ -32,7 +32,7 @@ UniformGrid::~UniformGrid()
 {
 }
 
-bool UniformGrid::StaticInit()
+void UniformGrid::StaticInit()
 {
     if (ColumnsProperty == NULL)
     {
@@ -42,7 +42,6 @@ bool UniformGrid::StaticInit()
         RowsProperty = DpProperty::Register(_T("Rows")
             , RTTIType(), Integer::RTTIType(), DpPropMemory::GetPropMeta(Integer::GetZeroInt(), PropMetadataOptions::AffectsMeasure));
     }
-    return false;
 }
 
 Size UniformGrid::OnMeasure(const Size& constraint) 

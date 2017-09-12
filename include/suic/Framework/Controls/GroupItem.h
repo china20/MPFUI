@@ -24,7 +24,7 @@ public:
 
 	RTTIOfClass(GroupItem)
 
-    static bool StaticInit();
+    static void StaticInit();
 
 	GroupItem();
 	~GroupItem();

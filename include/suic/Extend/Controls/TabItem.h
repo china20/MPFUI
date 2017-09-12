@@ -58,7 +58,7 @@ protected:
 
 private:
 
-    static bool StaticInit();
+    static void StaticInit();
     static int CoerceTabStripPlacement(DpObject* d, Object* value);
 
     bool GetBoolField(BoolField field);

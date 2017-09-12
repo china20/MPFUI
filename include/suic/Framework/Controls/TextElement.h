@@ -27,7 +27,7 @@ public:
     static suic::DpProperty* LocationProperty;
     static suic::DpProperty* PenOffsetProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(TextDecoration)
 
@@ -132,7 +132,7 @@ public:
     static DpProperty* IsSingleLineProperty;
     static DpProperty* TextEffectsProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     TextElement();
     ~TextElement();

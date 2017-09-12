@@ -13,7 +13,7 @@ DpProperty* GridView::ColumnHeaderToolTipProperty;
 DpProperty* GridView::ColumnHeaderTemplateProperty;
 DpProperty* GridView::ColumnHeaderContainerStyleProperty;
 
-bool GridView::StaticInit()
+void GridView::StaticInit()
 {
     if (NULL == ColumnsProperty)
     {
@@ -23,8 +23,6 @@ bool GridView::StaticInit()
         ColumnHeaderTemplateProperty = DpProperty::Register(_T("ColumnHeaderTemplate"), RTTIType(), ControlTemplate::RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
         ColumnHeaderContainerStyleProperty = DpProperty::Register(_T("ColumnHeaderContainerStyle"), RTTIType(), Style::RTTIType(), DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
     }
-
-    return true;
 }
 
 //----------------------------------------------------

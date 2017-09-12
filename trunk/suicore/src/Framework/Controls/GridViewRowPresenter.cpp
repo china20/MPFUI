@@ -14,7 +14,7 @@ ImplementRTTIOfClass(GridViewRowPresenter, GridViewRowPresenterBase)
 
 DpProperty* GridViewRowPresenter::ContentProperty;
 
-bool GridViewRowPresenter::StaticInit()
+void GridViewRowPresenter::StaticInit()
 {
     if (NULL == ContentProperty)
     {
@@ -24,7 +24,6 @@ bool GridViewRowPresenter::StaticInit()
         ContentProperty = ContentControl::ContentProperty->AddOwner(RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsMeasure, &GridViewRowPresenter::OnContentPropChanged));
     }
-    return true;
 }
 
 void GridViewRowPresenter::OnContentPropChanged(DpObject* d, DpPropChangedEventArg* e)

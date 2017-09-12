@@ -33,7 +33,7 @@ public:
     static void OnMinimumPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnMaximumPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RangeBase();
     virtual ~RangeBase();

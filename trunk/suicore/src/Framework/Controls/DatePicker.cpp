@@ -104,7 +104,7 @@ void DatePicker::OnIsDropDownOpenChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-bool DatePicker::StaticInit()
+void DatePicker::StaticInit()
 {
     if (NULL == TextProperty)
     {
@@ -126,8 +126,6 @@ bool DatePicker::StaticInit()
         IsDropDownOpenProperty = DpProperty::Register(_T("IsDropDownOpen"), RTTIType(), Boolean::RTTIType()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsRender, &DatePicker::OnIsDropDownOpenChanged));
     }
-
-    return true;
 }
 
 String DatePicker::ElementRoot = _T("PART_Root"); 

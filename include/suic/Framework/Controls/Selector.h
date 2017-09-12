@@ -107,7 +107,7 @@ public:
     static RoutedEvent* SelectedEvent;
     static RoutedEvent* UnselectedEvent;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void SelectContainer(Element* container, bool val);
 

@@ -27,7 +27,7 @@ public:
 
     RTTIOfClass(GridViewHeaderRowPresenter)
 
-    static bool StaticInit();
+    static void StaticInit();
 
     GridViewHeaderRowPresenter();
     ~GridViewHeaderRowPresenter();

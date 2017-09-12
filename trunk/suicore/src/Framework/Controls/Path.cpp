@@ -10,7 +10,7 @@ ImplementRTTIOfClass(Path, Shape)
 
 DpProperty* Path::DataProperty;
 
-bool Path::StaticInit()
+void Path::StaticInit()
 {
     if (NULL == DataProperty)
     {
@@ -19,7 +19,6 @@ bool Path::StaticInit()
         DataProperty = DpProperty::Register(_T("Data"), RTTIType(), PathGeometry::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsParentMeasure, &Path::OnDataPropChanged));
     }
-    return true;
 }
 
 void Path::OnDataPropChanged(DpObject* d, DpPropChangedEventArg* e)

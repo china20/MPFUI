@@ -75,7 +75,7 @@ void GridViewColumn::OnHeaderTemplatePropChanged(DpObject* d, DpPropChangedEvent
     }
 }
 
-bool GridViewColumn::StaticInit()
+void GridViewColumn::StaticInit()
 {
     if (NULL == WidthProperty)
     {
@@ -94,8 +94,6 @@ bool GridViewColumn::StaticInit()
         CellTemplateProperty = DpProperty::Register(_U("CellTemplate"), RTTIType(), DataTemplate::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone, &GridViewColumn::OnCellTemplatePropChanged));
     }
-
-    return true;
 }
 
 //----------------------------------------------------

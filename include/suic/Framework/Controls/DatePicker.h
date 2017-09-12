@@ -62,7 +62,7 @@ public:
     static void OnSelectedDatePropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIsDropDownOpenChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     String ToString();
     String GetText();

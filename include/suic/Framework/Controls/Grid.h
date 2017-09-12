@@ -137,7 +137,7 @@ public:
     static int GetColumnSpan(Element* elem);
     static int GetRowSpan(Element* elem);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ColumnDefinitions* GetColumnDefs();
     RowDefinitions* GetRowDefs();

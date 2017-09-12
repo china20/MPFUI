@@ -20,10 +20,10 @@
     virtual suic::RTTIOfInfo* GetRTTIType() const {return (suic::RTTIOfInfo*)&(This::type##This);}\
 
 #define __ImplementRTTIOfClass(This,Base,index) \
-    suic::RTTIOfInfo This::type##This = {index,L#This,&Base::RTTIType,&This::Create};\
+    suic::RTTIOfInfo This::type##This = {index,L#This,&Base::RTTIType,&This::Create,&This::StaticInit};\
 
 #define __ImplementRTTIOfClassName(This,Base,Name,index) \
-    suic::RTTIOfInfo This::type##This = {index,L#Name,&Base::RTTIType,&This::Create};\
+    suic::RTTIOfInfo This::type##This = {index,L#Name,&Base::RTTIType,&This::Create,&This::StaticInit};\
 
 //--------------------------------------------------------------------
 

@@ -31,7 +31,7 @@ public:
 
     static DpProperty* HasContentProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnContentPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnContentTemplatePropChanged(DpObject* sender, DpPropChangedEventArg* e);
     static void OnContentTemplateSelectorPropChanged(DpObject* sender, DpPropChangedEventArg* e);

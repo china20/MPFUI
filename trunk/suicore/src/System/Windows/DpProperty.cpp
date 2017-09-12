@@ -160,15 +160,17 @@ PropMetadata::~PropMetadata()
     FREEREFOBJ(_defaultValue);
 }
 
-bool DpProperty::StaticInit()
+void DpProperty::StaticInit()
 {
-    _unsetValue = new Object(false);
-    unsetMetadata = new PropMetadata();
+    if (_unsetValue == NULL)
+    {
+        _unsetValue = new Object(false);
+        unsetMetadata = new PropMetadata();
+    }
 
     //unsetMetadata->setAutoDelete(false);
     //_unsetValue = new Object(false);
     //PropFromNames.Init(880);
-    return true;
 }
 
 void PropMetadata::ConvertFlag(int flag)

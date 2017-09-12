@@ -36,7 +36,7 @@ RepeatButton::~RepeatButton()
     }
 }
 
-bool RepeatButton::StaticInit()
+void RepeatButton::StaticInit()
 {
     if (NULL == DelayProperty)
     {
@@ -44,7 +44,6 @@ bool RepeatButton::StaticInit()
         DelayProperty = DpProperty::Register("Delay", Integer::RTTIType(), RTTIType(), DpPropMemory::GetPropMeta(new Integer(MouseDevice::Current()->GetDoubleDeltaTime() * 1.2)));
         IntervalProperty = DpProperty::Register("Interval", Integer::RTTIType(), RTTIType(), DpPropMemory::GetPropMeta(new Integer(MouseDevice::Current()->GetDoubleDeltaTime() * 0.2)));
     }
-    return true;
 }
 
 void RepeatButton::OnInitialized(EventArg* e)

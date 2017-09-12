@@ -170,7 +170,7 @@ void Slider::OnMouseLeftButtonDownThunk(Element* sender, MouseButtonEventArg* e)
     }
 }
 
-bool Slider::StaticInit()
+void Slider::StaticInit()
 {
     if (NULL == OrientationProperty)
     {
@@ -206,8 +206,6 @@ bool Slider::StaticInit()
         EventHelper::RegisterClassHandler(RTTIType(), Thumb::DragCompletedEvent, new RoutedEventHandler(&Slider::OnThumbDragCompletedEvent), false);
         EventHelper::RegisterClassHandler(RTTIType(), MouseDownEvent, new MouseButtonEventHandler(&Slider::OnMouseLeftButtonDownThunk), true);
     }
-
-    return true;
 }
 
 Track* Slider::GetTrack() const

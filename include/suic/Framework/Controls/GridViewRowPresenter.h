@@ -22,7 +22,7 @@ public:
 
     static DpProperty* ContentProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnContentPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
     RTTIOfClass(GridViewRowPresenter)

@@ -6,9 +6,8 @@ namespace suic
 
 ImplementRTTIOfClass(UserControl, suic::ContentControl)
 
-bool UserControl::StaticInit()
+void UserControl::StaticInit()
 {
-    return true;
 }
 
 UserControl::UserControl()

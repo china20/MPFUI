@@ -28,7 +28,7 @@ class SUICORE_API MenuBase : public Selector
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     MenuBase();
     virtual ~MenuBase();
@@ -70,7 +70,7 @@ class SUICORE_API Menu : public MenuBase
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Menu();
     virtual ~Menu();
@@ -91,7 +91,7 @@ public:
     static DpProperty* VerticalOffsetProperty;
     static DpProperty* HorizontalOffsetProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void CloseContextMenu();
 
     static void OnIsOpenPropChanged(DpObject* d, DpPropChangedEventArg* e);

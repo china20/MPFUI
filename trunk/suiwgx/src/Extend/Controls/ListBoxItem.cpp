@@ -15,7 +15,7 @@ DpProperty* ListBoxItem::IsSelectedProperty;
 RoutedEvent* ListBoxItem::SelectedEvent;
 RoutedEvent* ListBoxItem::UnselectedEvent;
 
-bool ListBoxItem::StaticInit()
+void ListBoxItem::StaticInit()
 {
     if (NULL == IsSelectedProperty)
     {
@@ -26,7 +26,6 @@ bool ListBoxItem::StaticInit()
         KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knOnce)));
         KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knLocal)));
     }
-    return true;
 }
 
 void ListBoxItem::OnIsSelectedChanged(DpObject* d, DpPropChangedEventArg* e)

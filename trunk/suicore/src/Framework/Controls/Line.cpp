@@ -57,7 +57,7 @@ void Line::OnY2PropChanged(DpObject* d, DpPropChangedEventArg* e)
     lObj->ResetLineInfo();
 }
 
-bool Line::StaticInit()
+void Line::StaticInit()
 {
     if (X1Property == NULL)
     {
@@ -72,8 +72,6 @@ bool Line::StaticInit()
         Y2Property = DpProperty::Register(_U("Y2"), RTTIType(), OFloat::RTTIType(), 
             DpPropMemory::GetPropMeta(new OFloat(0), PropMetadataOptions::AffectsParentArrange, &Line::OnY2PropChanged));
     }
-
-    return true;
 }
 
 Float Line::GetX1()

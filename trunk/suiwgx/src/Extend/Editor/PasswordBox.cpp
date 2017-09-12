@@ -64,7 +64,7 @@ PasswordBox::~PasswordBox()
     txtCtrl->unref();
 }
 
-bool PasswordBox::StaticInit()
+void PasswordBox::StaticInit()
 {
     if (NULL == PasswordCharProperty)
     {
@@ -85,7 +85,6 @@ bool PasswordBox::StaticInit()
         suic::Control::FontWeightProperty->OverrideMetadata(RTTIType(), suic::DpPropMemory::GetPropMeta(NULL, suic::PropMetadataOptions::AffectsParentMeasure, &PasswordBox::OnFontWeightPropChanged));
         suic::Control::FontSizeProperty->OverrideMetadata(RTTIType(), suic::DpPropMemory::GetPropMeta(suic::Integer::GetPosInt(12), suic::PropMetadataOptions::AffectsParentMeasure, &PasswordBox::OnFontSizePropChanged));
     }
-    return true;
 }
 
 void PasswordBox::OnPasswordCharPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)

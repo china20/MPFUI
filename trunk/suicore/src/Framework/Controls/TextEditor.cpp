@@ -62,7 +62,7 @@ void TextEditor::SetText(const String& text)
     SetValue(TextProperty, new OString(text));
 }
 
-bool TextEditor::StaticInit()
+void TextEditor::StaticInit()
 {
     if (NULL == TextProperty)
     {
@@ -92,8 +92,6 @@ bool TextEditor::StaticInit()
 
         //EventHelper::RegisterClassHandler(RTTIType(), ExecutedEvent, new ExecutedRoutedEventHandler(OnTextExecutedThunk), false);
     }
-
-    return true;
 }
 
 void TextEditor::OnTextPropChanged(DpObject* d, DpPropChangedEventArg* e)

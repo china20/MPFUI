@@ -122,7 +122,7 @@ void TextBoxBase::OnTextDecorationsPropChanged(suic::DpObject* d, suic::DpPropCh
     }
 }
 
-bool TextBoxBase::StaticInit()
+void TextBoxBase::StaticInit()
 {
     if (NULL == AcceptsReturnProperty)
     {
@@ -174,8 +174,6 @@ bool TextBoxBase::StaticInit()
         CommandOp::RegisterClassCommandHandler(RTTIType(),
             SelectAllCommand, ExecutedRoutedEventHandler(TextBoxBase::OnHandleCommand));        
     }
-
-    return true;
 }
 
 void TextBoxBase::OnHandleCommand(suic::Object* target, suic::ExecutedRoutedEventArg* e)

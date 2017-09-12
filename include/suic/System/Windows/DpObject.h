@@ -75,7 +75,7 @@ public:
     static DpProperty* DirectDpProperty;
     static UncommonProperty* DependentDpField;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static Expression* GetExpression(DpObject* d, DpProperty* dp, PropMetadata* metadata);
 

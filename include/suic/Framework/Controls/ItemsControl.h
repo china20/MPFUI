@@ -46,7 +46,7 @@ public:
     static DpProperty* ItemTemplateProperty;
     static DpProperty* ItemTemplateSelectorProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static ItemsControl* GetItemsOwner(DpObject* element);
 
     static void OnItemContainerStylePropChanged(DpObject* d, DpPropChangedEventArg* e);

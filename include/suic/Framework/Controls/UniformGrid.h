@@ -27,7 +27,7 @@ public:
     static DpProperty* ColumnsProperty;
     static DpProperty* RowsProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     UniformGrid();
     ~UniformGrid();

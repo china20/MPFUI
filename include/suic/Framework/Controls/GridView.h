@@ -28,7 +28,7 @@ public:
     static DpProperty* ColumnHeaderTemplateProperty;
     static DpProperty* ColumnHeaderContainerStyleProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     GridView();
     ~GridView();

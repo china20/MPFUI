@@ -44,7 +44,7 @@ void FlashBox::OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg*
     }
 }
 
-bool FlashBox::StaticInit()
+void FlashBox::StaticInit()
 {
     if (NULL == SourceProperty)
     {
@@ -53,8 +53,6 @@ bool FlashBox::StaticInit()
         PlayProperty  = suic::DpProperty::Register(_U("Play"), RTTIType(), suic::Boolean::RTTIType()
             , suic::DpPropMemory::GetPropMeta(suic::Boolean::False, suic::PropMetadataOptions::AffectsRender, &FlashBox::OnPlayPropChanged));
     }
-
-    return true;
 }
 
 FlashBox::FlashBox()

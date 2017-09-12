@@ -618,7 +618,7 @@ void Window::OnSizeToContentPropChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-bool Window::StaticInit()
+void Window::StaticInit()
 {
     if (IsActiveProperty == NULL)
     {
@@ -688,7 +688,6 @@ bool Window::StaticInit()
         KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knCycle), PropMetadataOptions::AffectsNone)); 
         KeyboardNavigation::ControlTabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knCycle), PropMetadataOptions::AffectsNone));
     }
-    return true;
 }
 
 void Window::OnAllowsTransparencyChanged(bool oldVal, bool newVal)

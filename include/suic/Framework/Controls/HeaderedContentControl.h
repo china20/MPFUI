@@ -30,7 +30,7 @@ public:
     static DpProperty* HeaderTemplateProperty;
     static DpProperty* HeaderTemplateSelectorProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void OnHeaderPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnHeaderTemplatePropChanged(DpObject* d, DpPropChangedEventArg* e);
 

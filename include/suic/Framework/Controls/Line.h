@@ -30,7 +30,7 @@ public:
     static void OnX2PropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnY2PropChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Line();
     virtual ~Line();

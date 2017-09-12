@@ -33,7 +33,7 @@ public:
 
     static DpProperty* IsDirectionReversedProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Track();
     virtual ~Track();

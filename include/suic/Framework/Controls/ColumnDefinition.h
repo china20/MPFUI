@@ -25,7 +25,7 @@ public:
     static DpProperty* MinWidthProperty;
     static DpProperty* WidthProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnWidthPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnMinWidthPropChanged(DpObject* d, DpPropChangedEventArg* e);

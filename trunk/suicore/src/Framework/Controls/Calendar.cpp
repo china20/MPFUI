@@ -55,14 +55,13 @@ CalendarButton::CalendarButton()
 {
 }
 
-bool CalendarButton::StaticInit()
+void CalendarButton::StaticInit()
 {
     if (NULL == HasSelectedDaysProperty)
     {
         HasSelectedDaysProperty = DpProperty::Register(_T("HasSelectedDays"), RTTIType(), Boolean::RTTIType()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsRender));
     }
-    return true;
 }
 
 bool CalendarButton::HasSelectedDays()
@@ -79,7 +78,7 @@ CalendarDayButton::CalendarDayButton()
 {
 }
 
-bool CalendarDayButton::StaticInit()
+void CalendarDayButton::StaticInit()
 {
     if (NULL == IsSelectedProperty)
     {
@@ -90,7 +89,6 @@ bool CalendarDayButton::StaticInit()
         IsInactiveProperty = DpProperty::Register(_T("IsInactive"), RTTIType(), Boolean::RTTIType()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsRender));
     }
-    return true;
 }
 
 bool CalendarDayButton::IsSelected()
@@ -147,7 +145,7 @@ Calendar::~Calendar()
     _currentDate->unref();
 }
 
-bool Calendar::StaticInit()
+void Calendar::StaticInit()
 {
     if (NULL == DisplayModeProperty)
     {
@@ -172,8 +170,6 @@ bool Calendar::StaticInit()
         CalendarButtonStyleProperty = DpProperty::Register(_U("CalendarButtonStyle"), RTTIType(), Style::RTTIType(), DpPropMemory::GetPropMeta(NULL));
         CalendarDayButtonStyleProperty = DpProperty::Register(_U("CalendarDayButtonStyle"), RTTIType(), Style::RTTIType(), DpPropMemory::GetPropMeta(NULL));
     }
-
-    return true;
 }
 
 String Calendar::ElementHeaderButton = _T("PART_HeaderButton"); 

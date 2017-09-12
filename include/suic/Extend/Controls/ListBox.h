@@ -28,7 +28,7 @@ public:
 
     static void OnSelectionModePropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ListBox();
     ~ListBox();

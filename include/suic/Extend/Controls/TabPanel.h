@@ -69,7 +69,7 @@ protected:
     void ArrangeMultiVertical(Size arrangeSize);
     void ArrangeMultiHorizontal(Size arrangeSize);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     bool AllTabsInVisible();
 

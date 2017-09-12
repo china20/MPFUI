@@ -22,7 +22,7 @@ HeaderedContentControl::~HeaderedContentControl()
 {
 }
 
-bool HeaderedContentControl::StaticInit()
+void HeaderedContentControl::StaticInit()
 {
     if (NULL == HasHeaderProperty)
     {
@@ -38,8 +38,6 @@ bool HeaderedContentControl::StaticInit()
             , RTTIType(), Object::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
     }
-
-    return true;
 }
 
 void HeaderedContentControl::OnHeaderPropChanged(DpObject* d, DpPropChangedEventArg* e)

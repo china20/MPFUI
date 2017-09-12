@@ -37,7 +37,7 @@ public:
     static void OnCellTemplatePropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnHeaderTemplatePropChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     GridViewColumn();
     ~GridViewColumn();

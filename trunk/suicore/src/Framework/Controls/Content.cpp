@@ -52,7 +52,7 @@ void ContentControl::OnContentTemplateSelectorPropChanged(DpObject* sender, DpPr
     ctrl->OnContentTemplateSelectorChanged(RTTICast<DataTemplateSelector>(e->GetOldValue()), ctrl->_contentTemplateSelector);
 }
 
-bool ContentControl::StaticInit()
+void ContentControl::StaticInit()
 {
     if (ContentProperty == NULL)
     {
@@ -69,8 +69,6 @@ bool ContentControl::StaticInit()
 
         ClipToBoundsProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Boolean::True, PropMetadataOptions::AffectsParentMeasure, &Element::OnClipToBoundsPropChanged));
     }
-
-    return true;
 }
 
 void ContentControl::OnContentPropChanged(DpObject* d, DpPropChangedEventArg* e)

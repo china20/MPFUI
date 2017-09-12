@@ -12,7 +12,7 @@ ImplementRTTIOfClass(GridViewColumnHeader, ButtonBase)
 int GridViewColumnHeader::_trackValue = 0;
 DpProperty* GridViewColumnHeader::ColumnProperty;
 
-bool GridViewColumnHeader::StaticInit()
+void GridViewColumnHeader::StaticInit()
 {
     if (NULL == ColumnProperty)
     {
@@ -21,7 +21,6 @@ bool GridViewColumnHeader::StaticInit()
         ColumnProperty = DpProperty::Register(_U("Column"), RTTIType(), GridViewColumn::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsParentArrange));
     }
-    return true;
 }
 
 //----------------------------------------------------

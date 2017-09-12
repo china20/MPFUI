@@ -31,15 +31,13 @@ void WebkitBox::OnUriPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg*
     }
 }
 
-bool WebkitBox::StaticInit()
+void WebkitBox::StaticInit()
 {
     if (NULL == UriProperty)
     {
         UriProperty = suic::DpProperty::Register(_U("Uri"), RTTIType(), suic::OString::RTTIType(), 
             suic::DpPropMemory::GetPropMeta(NULL, suic::PropMetadataOptions::AffectsRender, &WebkitBox::OnUriPropChanged));
     }
-
-    return true;
 }
 
 //============================================================================

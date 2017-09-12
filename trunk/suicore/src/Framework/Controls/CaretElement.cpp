@@ -22,15 +22,13 @@ CaretElement::~CaretElement()
 {
 }
 
-bool CaretElement::StaticInit()
+void CaretElement::StaticInit()
 {
     if (NULL == BackgroundProperty)
     {
         BackgroundProperty = DpProperty::Register(_U("Background"), RTTIType(), Brush::RTTIType()
             , DpPropMemory::GetPropMeta(SolidColorBrush::Black, PropMetadataOptions::AffectsRender));
     }
-
-    return true;
 }
 
 void CaretElement::Show()

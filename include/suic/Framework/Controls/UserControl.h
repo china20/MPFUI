@@ -22,7 +22,7 @@ public:
 
 	RTTIOfClass(UserControl)
 
-    static bool StaticInit();
+    static void StaticInit();
 
 	UserControl();
 	~UserControl();

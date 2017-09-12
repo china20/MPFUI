@@ -12,13 +12,12 @@ DpProperty* DefinitionBase::NameProperty;
 
 GridSizeConvert* GridSizeConvert::Convert = new GridSizeConvert();
 
-bool DefinitionBase::StaticInit()
+void DefinitionBase::StaticInit()
 {
     if (NULL == NameProperty)
     {
         NameProperty = Element::NameProperty->AddOwner(RTTIType(), NULL);
     }
-    return true;
 }
 
 AutoObj GridSizeConvert::ConvertValue(DpProperty* dp, Object* val)

@@ -21,7 +21,7 @@ public:
     
     static DpProperty* EasingModeProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     EasingMode GetEasingMode();
     void SetEasingMode(EasingMode val);

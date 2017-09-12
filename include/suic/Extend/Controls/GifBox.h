@@ -28,7 +28,7 @@ public:
     static void OnUriPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
     static void OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     GifBox();
     virtual ~GifBox();

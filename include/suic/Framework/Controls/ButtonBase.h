@@ -27,7 +27,7 @@ public:
 
     static DpProperty* IsPressedProperty;
     
-    static bool StaticInit();
+    static void StaticInit();
 
     ButtonBase();
     virtual ~ButtonBase();

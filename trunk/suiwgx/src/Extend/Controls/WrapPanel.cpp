@@ -31,28 +31,19 @@ WrapPanel::~WrapPanel()
 {
 }
 
-void WrapPanel::OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* e)
+void WrapPanel::StaticInit()
 {
-
-}
-
-bool WrapPanel::StaticInit()
-{
-    if (ItemWidthProperty != NULL)
+    if (ItemWidthProperty == NULL)
     {
-        return true;
+        ItemWidthProperty = DpProperty::Register(_U("ItemWidth"), RTTIType(), Integer::RTTIType()
+            , DpPropMemory::GetPropMeta(Integer::GetZeroInt(), PropMetadataOptions::AffectsMeasure));
+        ItemHeightProperty = DpProperty::Register(_U("ItemHeight"), RTTIType(), Integer::RTTIType()
+            , DpPropMemory::GetPropMeta(Integer::GetZeroInt(), PropMetadataOptions::AffectsMeasure));
+
+        OrientationProperty = DpProperty::Register(_T("Orientation"), RTTIType(), Integer::RTTIType()
+            , DpPropMemory::GetPropMeta(OrientationBox::HorizontalBox, PropMetadataOptions::AffectsMeasure));
+        OrientationProperty->SetConvertValueCb(OrientationConvert::Convert);
     }
-
-    ItemWidthProperty = DpProperty::Register(_U("ItemWidth"), RTTIType(), Integer::RTTIType()
-        , DpPropMemory::GetPropMeta(Integer::GetZeroInt(), PropMetadataOptions::AffectsMeasure));
-    ItemHeightProperty = DpProperty::Register(_U("ItemHeight"), RTTIType(), Integer::RTTIType()
-        , DpPropMemory::GetPropMeta(Integer::GetZeroInt(), PropMetadataOptions::AffectsMeasure));
-
-    OrientationProperty = DpProperty::Register(_T("Orientation"), RTTIType(), Integer::RTTIType()
-        , DpPropMemory::GetPropMeta(OrientationBox::HorizontalBox, PropMetadataOptions::AffectsMeasure, &WrapPanel::OnOrientationPropChanged));
-    OrientationProperty->SetConvertValueCb(OrientationConvert::Convert);
-
-    return true;
 }
 
 ScrollData* WrapPanel::GetScrollData()
@@ -105,7 +96,7 @@ Size WrapPanel::OnMeasure(const Size& constraint)
         (itemWidthSet ?  itemWidth  : constraint.Width()),
         (itemHeightSet ? itemHeight : constraint.Height())); 
 
-    ElementColl* children = GetChildren(); 
+    ElementColl* children = GetChildren();
 
     for(int i = 0, count = children->GetCount(); i < count; i++)
     { 
@@ -146,7 +137,7 @@ Size WrapPanel::OnMeasure(const Size& constraint)
             curLineSize.U += sz.U;
             curLineSize.V = max(sz.V, curLineSize.V);
         }
-    } 
+    }
 
     panelSize.U = max(curLineSize.U, panelSize.U); 
     panelSize.V += curLineSize.V;

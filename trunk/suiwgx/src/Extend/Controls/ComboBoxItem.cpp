@@ -22,7 +22,7 @@ ComboBoxItem::~ComboBoxItem()
 {
 }
 
-bool ComboBoxItem::StaticInit()
+void ComboBoxItem::StaticInit()
 {
     static bool s_init = false;
     if (!s_init)
@@ -31,7 +31,6 @@ bool ComboBoxItem::StaticInit()
         IsMouseOverProperty->OverrideMetadata(RTTIType()
             , DpPropMemory::GetPropMeta(suic::Boolean::False, PropMetadataOptions::AffectsNone, &OnVisualStatePropChanged));
     }
-    return true;
 }
 
 }

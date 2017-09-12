@@ -25,7 +25,7 @@ public:
     Label();
     virtual ~Label();
 
-    static bool StaticInit();
+    static void StaticInit();
 
     Label* Clone();
 };

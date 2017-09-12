@@ -26,7 +26,7 @@ public:
 
     static DpProperty* WrapWidthProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static bool IsWrapWidthValid(Object* value);
 
@@ -60,7 +60,7 @@ class SUIWGX_API ToolBarPanel : public StackPanel
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* e);
 

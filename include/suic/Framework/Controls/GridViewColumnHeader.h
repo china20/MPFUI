@@ -26,7 +26,7 @@ public:
 
     static DpProperty* ColumnProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     GridViewColumnHeader();
     ~GridViewColumnHeader();

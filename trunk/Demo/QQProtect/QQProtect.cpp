@@ -12,7 +12,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 {
 
     suic::InitUIWgxs(true);
-    // suic::CoreHelper::SetScaleRatio(1.3f);
+    suic::InitUILogLevel(suic::LogLevel::Trace);
     
     suic::BuildFactory::Ins()->Add(ChatTextBox::RTTIType());
 

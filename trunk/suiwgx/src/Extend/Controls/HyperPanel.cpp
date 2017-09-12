@@ -19,7 +19,7 @@ suic::DpProperty* HyperPanel::MinElementScaleProperty;
 suic::DpProperty* HyperPanel::VerticalContentAlignmentProperty;
 suic::DpProperty* HyperPanel::HorizontalContentAlignmentProperty;
 
-bool HyperPanel::StaticInit()
+void HyperPanel::StaticInit()
 {
     if (NULL == CenterProperty)
     {
@@ -31,7 +31,6 @@ bool HyperPanel::StaticInit()
         VerticalContentAlignmentProperty = suic::DpProperty::Register(_U("VerticalContentAlignment"), RTTIType(), suic::Integer::RTTIType(), suic::DpPropMemory::GetPropMeta(suic::VertAlignBox::CenterBox, suic::PropMetadataOptions::AffectsMeasure, &HyperPanel::OnVerticalContentAlignmentPropChanged));
         HorizontalContentAlignmentProperty = suic::DpProperty::Register(_U("HorizontalContentAlignment"), RTTIType(), suic::Integer::RTTIType(), suic::DpPropMemory::GetPropMeta(suic::HoriAlignBox::CenterBox, suic::PropMetadataOptions::AffectsMeasure, &HyperPanel::OnHorizontalContentAlignmentPropChanged));
     }
-    return true;
 }
 
 void HyperPanel::OnCenterPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)

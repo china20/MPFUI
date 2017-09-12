@@ -7,9 +7,8 @@ namespace suic
 
 ImplementRTTIOfClass(Ellipse, Shape)
 
-bool Ellipse::StaticInit()
+void Ellipse::StaticInit()
 {
-    return true;
 }
 
 Ellipse::Ellipse()

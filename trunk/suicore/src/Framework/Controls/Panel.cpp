@@ -70,7 +70,7 @@ void Panel::OnBackgroundPropChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-bool Panel::StaticInit()
+void Panel::StaticInit()
 {
     if (ZIndexProperty == NULL)
     {
@@ -85,8 +85,6 @@ bool Panel::StaticInit()
 
         EventControl::RegisterClassHandler(RTTIType(), InvalidateEvent, new RoutedEventHandler(&Panel::OnInvalidateThunk), false);
     }
-
-    return true;
 }
 
 void Panel::OnIsItemsHostPropChanged(DpObject* d, DpPropChangedEventArg* e)

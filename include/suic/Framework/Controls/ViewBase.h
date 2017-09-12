@@ -22,7 +22,7 @@ public:
 
     RTTIOfClass(ViewBase)
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ViewBase();
     ~ViewBase();

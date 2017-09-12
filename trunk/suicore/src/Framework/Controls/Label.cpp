@@ -26,7 +26,7 @@ Label::~Label()
 {
 }
 
-bool Label::StaticInit()
+void Label::StaticInit()
 {
     static bool s_init = false;
     if (!s_init)
@@ -35,7 +35,6 @@ bool Label::StaticInit()
         ContentControl::StaticInit();
         IsEnabledProperty->OverrideMetadata(RTTIType(), suic::DpPropMemory::GetPropMeta(Boolean::True, PropMetadataOptions::AffectsNone, &OnVisualStatePropChanged));
     }
-    return true;
 }
 
 Label* Label::Clone()

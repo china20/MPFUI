@@ -23,23 +23,17 @@ ImplementRTTIOfClass(VirtualizingStackPanel, VirtualizingPanel)
 DpProperty* VirtualizingStackPanel::OrientationProperty;
 
 VirtualizingStackPanel::VirtualizingStackPanel()
-    : _realedCount(0)
-    , _visibleStart(0)
+    : _visibleStart(0)
     , _visibleCount(0)
-    , _visibleMeasure(0)
-    , _scrollInfo(NULL)
+    , _visibleOffset(0)
 {
 }
 
 VirtualizingStackPanel::~VirtualizingStackPanel()
 {
-    if (_scrollInfo)
-    {
-        delete _scrollInfo;
-    }
 }
 
-bool VirtualizingStackPanel::StaticInit()
+void VirtualizingStackPanel::StaticInit()
 {
     if (NULL == OrientationProperty)
     {
@@ -49,33 +43,11 @@ bool VirtualizingStackPanel::StaticInit()
             , &VirtualizingStackPanel::OnOrientationPropChanged));
         OrientationProperty->SetConvertValueCb(OrientationConvert::Convert);
     }
-    return true;
 }
 
 void VirtualizingStackPanel::OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* e)
 {
     //ResetScrolling(d);
-}
-
-IScrollInfo* VirtualizingStackPanel::GetScrollInfo()
-{
-    if (NULL == _scrollInfo)
-    {
-        _scrollInfo = new ScrollInfo();
-        _scrollInfo->SetOwner(this);
-    }
-    return _scrollInfo;
-}
-
-ScrollData* VirtualizingStackPanel::GetScrollData()
-{
-    GetScrollInfo();
-    return _scrollInfo->GetScrollData();
-}
-
-bool VirtualizingStackPanel::IsScrolling()
-{
-    return (_scrollInfo != NULL && _scrollInfo->GetScrollOwner() != NULL);
 }
 
 void VirtualizingStackPanel::ClearAllContainers(ItemsControl* itemsControl)
@@ -206,50 +178,6 @@ void VirtualizingStackPanel::OnItemsChangedInternal(Object* sender, ItemsChanged
     {
         _scrollInfo->GetScrollData()->extent = Size();
         UpdateLayout();
-    }
-}
-
-void VirtualizingStackPanel::OnViewportSizeChanged(Size oldViewportSize, Size newViewportSize)
-{
-}
-
-void VirtualizingStackPanel::OnViewportOffsetChanged(Point oldViewportOffset, Point newViewportOffset)
-{
-}
-
-void VirtualizingStackPanel::SetAndVerifyScrollingData(Size viewport, Size extent, Point offset)
-{
-    ScrollData* scrollData = _scrollInfo->GetScrollData();
-
-    offset.x = min(offset.x, extent.cx - viewport.cx);
-    offset.y = min(offset.y, extent.cy - viewport.cy);
-
-    offset.x = max(0, offset.x);
-    offset.y = max(0, offset.y);
-
-    bool flag = viewport != scrollData->viewport;
-    bool flag2 = extent != scrollData->extent;
-    bool flag3 = offset != scrollData->computedOffset;
-
-    if ((flag || flag2) || flag3)
-    {
-        Point oldViewportOffset = scrollData->computedOffset;
-        Size oldViewportSize = scrollData->viewport;
-        scrollData->viewport = viewport;
-        scrollData->extent = extent;
-        scrollData->SetComputedOffset(offset);
-
-        if (flag)
-        {
-            OnViewportSizeChanged(oldViewportSize, viewport);
-        }
-
-        if (flag3)
-        {
-            OnViewportOffsetChanged(oldViewportOffset, offset);
-        }
-
-        OnScrollChange(_scrollInfo);
     }
 }
 
@@ -386,75 +314,6 @@ void VirtualizingStackPanel::HandleMoreContainer()
     }
 }
 
-void VirtualizingStackPanel::ClearRealizedContainer()
-{
-    ElementColl* coll = GetChildren();
-    if (_realedCount > 0)
-    {
-        if (_realedCount == coll->GetCount())
-        {
-            coll->Reset();
-        }
-        else
-        {
-            for (int i = 0; i < coll->GetCount(); ++i)
-            {
-                Element* elem = coll->GetAt(i);
-                if (elem->GetContainerItem() == elem)
-                {
-                    coll->RemoveAt(i);
-                    --i;
-                    --_realedCount;
-                }
-                if (_realedCount == 0)
-                {
-                    break;
-                }
-            }
-        }
-    }
-}
-
-Element* VirtualizingStackPanel::RecycleContainer(int index, ItemEntry* item)
-{
-    ElementColl* coll = GetChildren();
-    if (index < coll->GetCount())
-    {
-        for (int i = index; i < coll->GetCount(); ++i)
-        {
-            Element* elem = coll->GetAt(i);
-            ItemEntry* entry = elem->GetItemEntry();
-            if (!elem->ReadDoFlag(ViewFlags::IsContainerItemVF))
-            {
-                coll->RemoveAt(i);
-                --i;
-            }
-            else
-            {
-                if (item != entry)
-                {
-                    ItemsControl::ClearBeforeLinkContainer(elem);
-                }
-                return elem;                
-            }
-        }
-    }
-    return NULL;
-}
-
-void VirtualizingStackPanel::InsertContainer(int index, Element* conainer)
-{
-    ElementColl* children = GetChildren();
-    if (children->GetCount() <= index)
-    {
-        children->AddInternal(conainer);
-    }
-    else 
-    {
-        children->Insert(index, conainer);
-    }
-}
-
 Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
 {
     Rect empty;
@@ -484,6 +343,7 @@ Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
         return extent;
     }
 
+    int visibleMeasure = 0;
     int itemCount = itemColl->GetCount();
     MeasureData measureData = *GetMeasureData();
 
@@ -541,7 +401,6 @@ Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
     childIndex = firstItemIndex;
     _visibleStart = firstItemIndex;
     _visibleCount = 0;
-    _visibleMeasure = 0;
     _realedCount = 0;
     
     int visibleOffset = _visibleOffset;
@@ -620,19 +479,19 @@ Size VirtualizingStackPanel::MeasureCommon(const Size& constraint)
                 {
                     extent.cx += desiredSize.Width();
                     extent.cy = max(extent.cy, desiredSize.Height());
-                    _visibleMeasure = extent.cx - stackSize + _visibleOffset;
+                    visibleMeasure = extent.cx - stackSize + _visibleOffset;
                 }
                 else
                 {
                     extent.cy += desiredSize.Height();
                     extent.cx = max(extent.cx, desiredSize.Width());
-                    _visibleMeasure = extent.cy - stackSize + _visibleOffset;
+                    visibleMeasure = extent.cy - stackSize + _visibleOffset;
                 }
 
                 // 缓存实时计算的大小
                 itemsOwner->StoreItemSize(item, childIndex, desiredSize);
 
-                if (_visibleMeasure > viewPortSize)
+                if (visibleMeasure > viewPortSize)
                 {
                     break;
                 }

@@ -333,7 +333,7 @@ Grid::~Grid()
     }
 }
 
-bool Grid::StaticInit()
+void Grid::StaticInit()
 {
     if (ColumnProperty == NULL)
     {
@@ -351,8 +351,6 @@ bool Grid::StaticInit()
         ShowGridLinesProperty = DpProperty::Register(_T("ShowGridLines"), RTTIType(), Boolean::RTTIType(), 
             DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsRender));
     }
-
-    return false;
 }
 
 void Grid::ValidateDefsLayout(GridDefinitions* defs, bool treatStarAsAuto)

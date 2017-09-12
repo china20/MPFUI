@@ -57,7 +57,7 @@ void StackPanel::OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* e)
     //ResetScrolling(d);
 }
 
-bool StackPanel::StaticInit()
+void StackPanel::StaticInit()
 {
     if (OrientationProperty == NULL)
     {
@@ -66,7 +66,6 @@ bool StackPanel::StaticInit()
             , DpPropMemory::GetPropMeta(OrientationBox::VerticalBox, PropMetadataOptions::AffectsMeasure, &StackPanel::OnOrientationPropChanged));
         OrientationProperty->SetConvertValueCb(OrientationConvert::Convert);
     }
-    return true;
 }
 
 int StackPanel::GetVisibleChildrenCount()

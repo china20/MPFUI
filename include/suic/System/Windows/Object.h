@@ -28,8 +28,15 @@ typedef autoshared<Object> AutoObj;
 
 struct SUICORE_API RTTIOfInfo
 {
-    Object* Create() { return (*typeCreate)(); }
-    RTTIOfInfo* BaseType() { return (*baseType)(); }
+    Object* Create() 
+    {
+        return (*typeCreate)(); 
+    }
+    
+    RTTIOfInfo* BaseType() 
+    { 
+        return (*baseType)(); 
+    }
 
     bool Equals(RTTIOfInfo* Other);
     bool InheritFrom(RTTIOfInfo* baseType);
@@ -40,6 +47,7 @@ struct SUICORE_API RTTIOfInfo
     const Char* typeName;
     RTTIOfInfo* (__stdcall* baseType)();
     Object* (__stdcall* typeCreate)();
+    void (*staticInit)();
 
     static Uint16 classCount;
 };
@@ -149,6 +157,7 @@ public:
     static RTTIOfInfo typeObject;
     static RTTIOfInfo* __stdcall RTTIType();
     static Object* __stdcall Create();
+    static void StaticInit();
     static const suic::MemberInfo* __stdcall ClassMemberInfo();
 
     bool InheritFrom(Object* other);

@@ -65,7 +65,7 @@ protected:
     bool ContainsSelectedFlag(Byte k);
     void SetSelectedFlag(Byte k, bool v);
 
-    static bool StaticInit();
+    static void StaticInit();
 
 private:
 

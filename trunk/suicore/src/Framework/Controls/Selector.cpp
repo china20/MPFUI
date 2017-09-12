@@ -328,7 +328,7 @@ bool Selector::ValidateSelectedIndex(DpObject* d, Object* val)
     }
 }
 
-bool Selector::StaticInit()
+void Selector::StaticInit()
 {
     if (NULL == IsSelectedProperty)
     {
@@ -353,8 +353,6 @@ bool Selector::StaticInit()
         EventHelper::RegisterClassHandler(RTTIType(), SelectedEvent, new RoutedEventHandler(&Selector::OnSelected), true);
         EventHelper::RegisterClassHandler(RTTIType(), UnselectedEvent, new RoutedEventHandler(&Selector::OnUnselected), true);
     }
-
-    return true;
 }
 
 void Selector::SelectContainer(Element* container, bool val)

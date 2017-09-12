@@ -35,7 +35,7 @@ public:
     static DpProperty* TicksProperty;
     static DpProperty* TickFrequencyProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     TickBar();
     virtual ~TickBar();

@@ -37,7 +37,7 @@ ButtonBase::~ButtonBase()
     _timer->unref();
 }
 
-bool ButtonBase::StaticInit()
+void ButtonBase::StaticInit()
 {
     if (IsPressedProperty == NULL)
     {
@@ -51,8 +51,6 @@ bool ButtonBase::StaticInit()
 
         KeyboardNavigation::AcceptsReturnProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Boolean::True));
     }
-
-    return true;
 }
 
 void ButtonBase::AddClick(ClickEventHandler* handler)

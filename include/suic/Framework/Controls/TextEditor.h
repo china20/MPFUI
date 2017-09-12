@@ -70,7 +70,7 @@ public:
     static void OnSelectionTextBrushPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnTextWrappingPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(TextEditor)
 

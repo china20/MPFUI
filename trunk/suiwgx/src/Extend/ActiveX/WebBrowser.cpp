@@ -128,14 +128,13 @@ void WebBrowser::OnArrange(const suic::Size& arrangeSize)
 
 suic::DpProperty* WebBrowser::UriProperty;
 
-bool WebBrowser::StaticInit()
+void WebBrowser::StaticInit()
 {
     if (NULL == UriProperty)
     {
         UriProperty = suic::DpProperty::Register(_U("Uri"), RTTIType(), suic::OString::RTTIType()
             , suic::DpPropMemory::GetPropMeta(suic::OString::EmptyString, suic::PropMetadataOptions::AffectsRender, &WebBrowser::OnUriPropChanged));
     }
-    return true;
 }
 
 void WebBrowser::OnUriPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)

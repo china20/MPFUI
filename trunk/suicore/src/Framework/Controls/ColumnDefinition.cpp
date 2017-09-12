@@ -20,7 +20,7 @@ DpProperty* ColumnDefinition::MaxWidthProperty;
 DpProperty* ColumnDefinition::MinWidthProperty;
 DpProperty* ColumnDefinition::WidthProperty;
 
-bool ColumnDefinition::StaticInit()
+void ColumnDefinition::StaticInit()
 {
     DefinitionBase::StaticInit();
 
@@ -37,8 +37,6 @@ bool ColumnDefinition::StaticInit()
 
         WidthProperty->SetConvertValueCb(GridSizeConvert::Convert);
     }
-
-    return true;
 }
 
 void ColumnDefinition::OnWidthPropChanged(DpObject* d, DpPropChangedEventArg* e)

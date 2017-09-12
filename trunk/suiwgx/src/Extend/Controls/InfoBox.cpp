@@ -95,7 +95,7 @@ InfoBox::~InfoBox()
 {
 }
 
-bool InfoBox::StaticInit()
+void InfoBox::StaticInit()
 {
     if (ButtonTypeProperty == NULL)
     {
@@ -104,8 +104,6 @@ bool InfoBox::StaticInit()
             , DpPropMemory::GetPropMeta(Integer::GetPosInt(ButtonType::IB_OK), PropMetadataOptions::AffectsNone));
         ButtonTypeProperty->SetConvertValueCb(new ButtonTypeConvert());
     }
-
-    return true;
 }
 
 InfoBox* InfoBox::Clone()

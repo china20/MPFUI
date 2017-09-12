@@ -17,7 +17,7 @@
 #include <Extend/Controls/WebkitBox.h>
 #include <Extend/Controls/TreeView.h>
 #include <Extend/Controls/WrapPanel.h>
-//#include <Extend/Controls/DockPanel.h>
+
 //#include <Extend/Controls/StackPanel.h>
 
 #include <Extend/Controls/ToolBar.h>
@@ -36,6 +36,8 @@
 
 #include <Extend/Controls/ListView.h>
 #include <Extend/Controls/ListViewItem.h>
+
+#include <Extend/Controls/VisualizeWrapPanel.h>
 
 namespace suic
 {
@@ -62,7 +64,7 @@ public:
             if (strType.Equals(_U("GifBox")))
             {
                 rttiInfo = GifBox::RTTIType();
-                GifBox::StaticInit();
+                //GifBox::StaticInit();
             }
             break;
 
@@ -224,11 +226,14 @@ public:
                 rttiInfo = PlayImageEmbbed::RTTIType();
             }
             break;
-        }
 
-        if (NULL != rttiInfo)
-        {
-            suic::BuildFactory::Ins()->Add(rttiInfo);
+        case 18:
+            if (strType.Equals(_U("VisualizeWrapPanel")))
+            {
+                rttiInfo = VisualizeWrapPanel::RTTIType();
+                suic::VisualizeWrapPanel::StaticInit();
+            }
+            break;
         }
 
         return rttiInfo;
@@ -264,6 +269,7 @@ void __stdcall InitUIControls()
     suic::ListView::StaticInit();
     suic::ComboBox::StaticInit();
     suic::TextBox::StaticInit();
+    suic::VisualizeWrapPanel::StaticInit();
 }
 
 SUIWGX_API bool __stdcall InitUIWgxs(bool initWgx)

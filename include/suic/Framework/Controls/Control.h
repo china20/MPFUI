@@ -61,7 +61,7 @@ public:
 
     RTTIOfClass(Control)
 
-    static bool StaticInit();
+    static void StaticInit();
 
 // 属性访问定义
 public:

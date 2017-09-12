@@ -26,7 +26,7 @@ public:
     static DpProperty* ContentTemplateProperty;
     static DpProperty* ContentTemplateSelectorProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     static void OnContentPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnContentTemplatePropChanged(DpObject* sender, DpPropChangedEventArg* e);

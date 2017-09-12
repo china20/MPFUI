@@ -25,7 +25,7 @@ public:
 
     RTTIOfClass(GridViewColumnCollection)
 
-    static bool StaticInit();
+    static void StaticInit();
 
     GridViewColumnCollection();
 

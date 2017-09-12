@@ -20,7 +20,7 @@ void GridViewRowPresenterBase::OnColumnsPropChanged(DpObject* d, DpPropChangedEv
     }
 }
 
-bool GridViewRowPresenterBase::StaticInit()
+void GridViewRowPresenterBase::StaticInit()
 {
     if (NULL == ColumnsProperty)
     {
@@ -28,8 +28,6 @@ bool GridViewRowPresenterBase::StaticInit()
         ColumnsProperty = DpProperty::Register(_U("Columns"), RTTIType(), GridViewColumnCollection::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone, &GridViewRowPresenterBase::OnColumnsPropChanged));
     }
-
-    return true;
 }
 
 //----------------------------------------------------

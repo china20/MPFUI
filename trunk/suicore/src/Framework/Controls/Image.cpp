@@ -126,7 +126,7 @@ void Image::OnSourcePropChanged(DpObject* d, DpPropChangedEventArg* e)
 
 }
 
-bool Image::StaticInit()
+void Image::StaticInit()
 {
     if (SourceProperty == NULL)
     {
@@ -147,8 +147,6 @@ bool Image::StaticInit()
         StretchProperty->SetConvertValueCb(StretchConvert::Convert);
         StretchDirectionProperty->SetConvertValueCb(new StretchDirectionConvert());
     }
-
-    return true;
 }
 
 static fSize ComputeScaleFactor(Size availableSize, Size contentSize, int stretch, int stretchDirection)

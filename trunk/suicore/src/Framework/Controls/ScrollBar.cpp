@@ -75,7 +75,7 @@ void ScrollBar::OnOrientationPropChanged(DpObject* d, DpPropChangedEventArg* e)
 
 }
 
-bool ScrollBar::StaticInit()
+void ScrollBar::StaticInit()
 {
     if (PageUpCommand == NULL)
     {
@@ -160,7 +160,6 @@ bool ScrollBar::StaticInit()
         RangeBase::MaximumProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(new OFloat(100.0f), 0, PropChangedCallback(ScrollBar::OnViewChanged)));
         RangeBase::MinimumProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(OFloat::GetZeroFloat(), 0, PropChangedCallback(ScrollBar::OnViewChanged)));
     }
-    return true;
 }
 
 bool ScrollBar::IsValidOrientation(Object* o)

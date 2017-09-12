@@ -24,7 +24,7 @@ public:
     CaretElement();
     virtual ~CaretElement();
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(CaretElement)
 

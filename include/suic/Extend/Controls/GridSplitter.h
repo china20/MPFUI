@@ -152,7 +152,7 @@ public:
     static suic::DpProperty* ResizeDirectionProperty;
     static suic::DpProperty* ShowsPreviewProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
 public:
 

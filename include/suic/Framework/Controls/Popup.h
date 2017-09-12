@@ -130,7 +130,7 @@ public:
     static DpProperty* HorizontalOffsetProperty;
     static DpProperty* AllowsTransparencyProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
     static void CreateRootPopup(Popup* popup, Element* child);
 
     static void OnChildPropChanged(DpObject* d, DpPropChangedEventArg* e);

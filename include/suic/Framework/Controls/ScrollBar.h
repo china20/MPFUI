@@ -97,7 +97,7 @@ public:
     ScrollBar();
     virtual ~ScrollBar();
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(ScrollBar)
 

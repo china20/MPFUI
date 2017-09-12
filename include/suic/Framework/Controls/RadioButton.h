@@ -44,7 +44,7 @@ public:
     static void Register(String groupName, RadioButton* radioBtn);
     static void Unregister(String groupName, RadioButton* radioBtn);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RadioButton();
     virtual ~RadioButton();

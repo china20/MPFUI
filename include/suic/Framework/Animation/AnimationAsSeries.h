@@ -11,7 +11,7 @@ class SUICORE_API DoubleAnimation : public ValueAnimation
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(DoubleAnimation)
 
@@ -50,7 +50,7 @@ class SUICORE_API Int32Animation : public ValueAnimation
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(Int32Animation)
 
@@ -86,7 +86,7 @@ class SUICORE_API RectAnimation : public ValueAnimation
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(RectAnimation)
 
@@ -122,7 +122,7 @@ class SUICORE_API ColorAnimation : public ValueAnimation
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(ColorAnimation)
 
@@ -158,7 +158,7 @@ class SUICORE_API PointAnimation : public ValueAnimation
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfAbstractClass(PointAnimation)
 

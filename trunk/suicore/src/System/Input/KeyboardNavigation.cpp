@@ -255,7 +255,7 @@ KeyboardNavigation::KeyboardNavigation()
     _focusVisualAdornerCache = NULL;
 }
 
-bool KeyboardNavigation::StaticInit()
+void KeyboardNavigation::StaticInit()
 {
     if (NULL == IsTabStopProperty)
     {
@@ -279,8 +279,6 @@ bool KeyboardNavigation::StaticInit()
 
         //_alwaysShowFocusVisual = (keyboardCues ? true : false);
     }
-
-    return true;
 }
 
 void KeyboardNavigation::ShowFocusVisual()

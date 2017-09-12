@@ -61,7 +61,7 @@ void RangeBase::OnMaximumPropChanged(DpObject* d, DpPropChangedEventArg* e)
     rb->OnMaximumChanged(oldValue, newValue);
 }
 
-bool RangeBase::StaticInit()
+void RangeBase::StaticInit()
 {
     if (ValueProperty == NULL)
     {
@@ -81,8 +81,6 @@ bool RangeBase::StaticInit()
         SmallChangeProperty = DpProperty::Register(_T("SmallChange"), RTTIType(), OFloat::RTTIType()
             , DpPropMemory::GetPropMeta(new OFloat(0.1f), PropMetadataOptions::AffectsArrange));
     }
-
-    return true;
 }
 
 void RangeBase::AddValueChanged(FloatPropChangedEventHandler* handler)

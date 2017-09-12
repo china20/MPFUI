@@ -18,7 +18,7 @@ FocusManager::FocusManager()
     setAutoDelete(false);
 }
 
-bool FocusManager::StaticInit()
+void FocusManager::StaticInit()
 {
     if (NULL == IsFocusScopeProperty)
     {
@@ -27,7 +27,6 @@ bool FocusManager::StaticInit()
         FocusedElementProperty = DpProperty::RegisterAttached(_T("FocusedElement"), RTTIType(), Element::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone, &FocusManager::OnFocusedElementChanged));
     }
-    return true;
 }
 
 InputDevice* FocusManager::GetCurrentInputDevice()

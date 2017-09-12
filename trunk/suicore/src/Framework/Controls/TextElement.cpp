@@ -52,7 +52,7 @@ TextDecorationCollection* TextDecorations::overline;
 TextDecorationCollection* TextDecorations::strikethrough;
 TextDecorationCollection* TextDecorations::underline;
 
-bool TextDecoration::StaticInit()
+void TextDecoration::StaticInit()
 {
     if (PenProperty == NULL)
     {
@@ -77,8 +77,6 @@ bool TextDecoration::StaticInit()
         TextDecorations::underline->AddTextDecoration(new TextDecoration(TextDecorationLocation::Underline));
         TextDecorations::strikethrough->AddTextDecoration(new TextDecoration(TextDecorationLocation::Strikethrough));
     }
-
-    return true;
 }
 
 TextDecoration::TextDecoration()
@@ -301,7 +299,7 @@ TextElement::~TextElement()
 {
 }
 
-bool TextElement::StaticInit()
+void TextElement::StaticInit()
 {
     if (NULL == ForegroundProperty)
     {
@@ -331,7 +329,6 @@ bool TextElement::StaticInit()
 
         KeyboardNavigation::TabIndexProperty->AddOwner(RTTIType(), NULL);
     }
-    return true;
 }
 
 String TextElement::GetFontFamily()
