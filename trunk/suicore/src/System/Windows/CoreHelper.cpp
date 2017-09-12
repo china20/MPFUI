@@ -66,6 +66,85 @@ void CoreHelper::SetScaleRatio(Float fScale)
     CoreSystem::Ins()->SetScaleRatio(fScale);
 }
 
+fSize CoreHelper::ComputeScaleFactor(Size availableSize, Size contentSize, int stretch, int stretchDirection)
+{
+    Float width = 1.0;
+    Float height = 1.0;
+    bool maxWid = Numeric::IsMeasureInt(availableSize.Width());
+    bool maxHei = Numeric::IsMeasureInt(availableSize.Height());
+
+    if (maxWid && maxHei)
+    {
+        return fSize(width, height);
+    }
+
+    width = contentSize.Width() == 0 ? 0.0 : ((Float) availableSize.Width() / (Float) contentSize.Width());
+    height = contentSize.Height() == 0 ? 0.0 : ((Float) availableSize.Height() / (Float) contentSize.Height());
+
+    if (maxWid)
+    {
+        width = height;
+    }
+    else if (maxHei)
+    {
+        height = width;
+    }
+    else
+    {
+        switch (stretch)
+        {
+        // 拉伸至整个区域
+        case Stretch::stFill:
+            break;
+
+        // 按照高和框最大值缩放显示
+        case Stretch::stUniform:
+            {
+                Float num3 = (width < height) ? width : height;
+                width = height = num3;
+                break;
+            }
+        // 按照高和框最小值缩放显示（图像显示可能会超过显示区域）
+        case Stretch::stUniformToFill:
+            {
+                Float num4 = (width > height) ? width : height;
+                width = height = num4;
+                break;
+            }
+        }
+    }
+
+    switch (stretchDirection)
+    {
+    case StretchDirection::sdUpOnly:
+        if (width < 1.0)
+        {
+            width = 1.0;
+        }
+        if (height < 1.0)
+        {
+            height = 1.0;
+        }
+        break;
+
+    case StretchDirection::sdDownOnly:
+        if (width > 1.0)
+        {
+            width = 1.0;
+        }
+        if (height > 1.0)
+        {
+            height = 1.0;
+        }
+        break;
+
+    case StretchDirection::sdBoth:
+        break;
+    }
+
+    return fSize(width, height);
+}
+
 String FileDir::GetAppDir()
 {
     //

@@ -80,6 +80,8 @@ public:
     static Float GetScaleRatio();
     static void SetScaleRatio(Float fScale);
 
+    static fSize ComputeScaleFactor(Size availableSize, Size contentSize, int stretch, int stretchDirection);
+
 private:
 
     CoreHelper();

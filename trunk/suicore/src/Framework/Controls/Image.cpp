@@ -2,6 +2,7 @@
 // Image.cpp
 
 #include <Framework/Controls/Image.h>
+#include <System/Tools/CoreHelper.h>
 #include <System/Graphics/Solidcolorbrush.h>
 
 namespace suic
@@ -149,85 +150,6 @@ void Image::StaticInit()
     }
 }
 
-static fSize ComputeScaleFactor(Size availableSize, Size contentSize, int stretch, int stretchDirection)
-{
-    Float width = 1.0;
-    Float height = 1.0;
-    bool maxWid = Numeric::IsMeasureInt(availableSize.Width());
-    bool maxHei = Numeric::IsMeasureInt(availableSize.Height());
-
-    if (maxWid && maxHei)
-    {
-        return fSize(width, height);
-    }
-
-    width = contentSize.Width() == 0 ? 0.0 : ((Float) availableSize.Width() / (Float) contentSize.Width());
-    height = contentSize.Height() == 0 ? 0.0 : ((Float) availableSize.Height() / (Float) contentSize.Height());
-
-    if (maxWid)
-    {
-        width = height;
-    }
-    else if (maxHei)
-    {
-        height = width;
-    }
-    else
-    {
-        switch (stretch)
-        {
-        // 拉伸至整个区域
-        case Stretch::stFill:
-            break;
-
-        // 按照高和框最大值缩放显示
-        case Stretch::stUniform:
-            {
-                Float num3 = (width < height) ? width : height;
-                width = height = num3;
-                break;
-            }
-        // 按照高和框最小值缩放显示（图像显示可能会超过显示区域）
-        case Stretch::stUniformToFill:
-            {
-                Float num4 = (width > height) ? width : height;
-                width = height = num4;
-                break;
-            }
-        }
-    }
-
-    switch (stretchDirection)
-    {
-    case StretchDirection::sdUpOnly:
-        if (width < 1.0)
-        {
-            width = 1.0;
-        }
-        if (height < 1.0)
-        {
-            height = 1.0;
-        }
-        break;
-
-    case StretchDirection::sdDownOnly:
-        if (width > 1.0)
-        {
-            width = 1.0;
-        }
-        if (height > 1.0)
-        {
-            height = 1.0;
-        }
-        break;
-
-    case StretchDirection::sdBoth:
-        break;
-    }
-
-    return fSize(width, height);
-}
-
 Size Image::InternalMeasureArrange(Size inputSize)
 {
     ImageSource* source = GetSource();
@@ -243,7 +165,7 @@ Size Image::InternalMeasureArrange(Size inputSize)
     contentSize.cy = source->GetBitmap()->Height();
 
     Float rzoom = Math::Max(0.2f, GetZoomRatio());
-    fSize fRadio = ComputeScaleFactor(inputSize, contentSize, GetStretch(), GetStretchDirection());
+    fSize fRadio = CoreHelper::ComputeScaleFactor(inputSize, contentSize, GetStretch(), GetStretchDirection());
 
     fRadio.cx *= rzoom;
     fRadio.cy *= rzoom;
@@ -271,6 +193,20 @@ void Image::SetSource(ImageSource* val)
     SetValue(SourceProperty, val);
 }
 
+void Image::CalcDrawBound(Bitmap* bmp, fRect& rect)
+{
+    Size szDest(GetRenderSize());
+    Size szBmp(bmp->Width(), bmp->Height());
+    fSize fRadio = CoreHelper::ComputeScaleFactor(szDest, szBmp, GetStretch(), GetStretchDirection());
+    Float fWid = szBmp.Width() * fRadio.cx;
+    Float fHei = szBmp.Height() * fRadio.cy;
+
+    rect.left = (szDest.Width() - fWid) / 2;
+    rect.right = rect.left + fWid;
+    rect.top = (szDest.Height() - fHei) / 2;
+    rect.bottom = rect.top + fHei;
+}
+
 void Image::OnRender(Drawing * drawing)
 {
     ImageSource* img = GetSource();
@@ -285,16 +221,13 @@ void Image::OnRender(Drawing * drawing)
             bmp->EraseGray();
         }
 
-        fRect rect(Point(), GetRenderSize());
+        fRect rect;
         fRect rcimg(0, 0, (Float)bmp->Width(), (Float)bmp->Height());
-        fSize fRadio = ComputeScaleFactor(GetRenderSize(), Size(bmp->Width(), bmp->Height()), GetStretch(), GetStretchDirection());
-        Float fWid = rcimg.Width() * fRadio.cx;
-        Float fHei = rcimg.Height() * fRadio.cy;
-
-        rect.left = (rect.right - fWid) / 2;
-        rect.right = rect.left + fWid;
-        rect.top = (rect.bottom - fHei) / 2;
-        rect.bottom = rect.top + fHei;
+ 
+        // 
+        // 计算最终绘制区域
+        // 
+        CalcDrawBound(bmp, rect);
 
         drawing->DrawImage(DrawCtx::DefDraw, bmp, &rect, &rcimg);
 

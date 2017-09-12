@@ -963,21 +963,15 @@ void Popup::ComputePosition(Size desiredSize)
 {
     Point pos;
     Rect rect;
-    CURSORINFO ci;
+
     Element* placeElem = GetPlacementTarget();
     PositionInfo* posInfo = GetPositionInfo();
 
     ::GetCursorPos(&pos);
 
-#if WINVER < 0x500
-    rect = Rect(Point(), Environment::GetScreenBound());
-#else
-    MONITORINFO minfo;
-    HMONITOR hMonitor = ::MonitorFromPoint(pos, MONITOR_DEFAULTTONEAREST);
-    minfo.cbSize = sizeof(MONITORINFO);
-    ::GetMonitorInfo(hMonitor, &minfo);
-    rect = minfo.rcWork;
-#endif
+    MonitorInfo mi = Environment::GetMonitorBoundByPoint(&pos);
+
+    rect = mi.rcWork;
 
     Size offset(GetHorizontalOffset(), GetVerticalOffset());
     PlacementMode pmode = GetPlacement();

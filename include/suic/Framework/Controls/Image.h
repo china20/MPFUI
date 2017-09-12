@@ -60,6 +60,7 @@ protected:
 private:
 
     Size InternalMeasureArrange(Size size);
+    void CalcDrawBound(Bitmap* bmp, fRect& rect);
 };
 
 inline int Image::GetStretch()

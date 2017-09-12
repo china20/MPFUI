@@ -219,7 +219,6 @@ void CoreSystem::InitDefaultRes()
 
             ThemeOp::SetReadResourceMask(suic::ResReadMask::ReadDefMask);
 
-            XamlReader xamlRead;
             AutoObj dicObj = xamlRead.LoadMemory(NULL, NULL, data.GetBuffer(), data.GetSize());
             ResourceDictionary* resDic = RTTICast<ResourceDictionary>(dicObj.get());
             if (NULL != resDic)
