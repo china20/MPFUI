@@ -305,7 +305,7 @@ void MenuItem::OnClick()
 
     if (NULL != targetElem)
     {
-        RoutedEventArg e(targetElem, ClickEvent);
+        suic::ClickEventArg e(targetElem, ClickEvent);
         e.OnOverrideOriginalSource(this);
         targetElem->RaiseEvent(&e);
     }

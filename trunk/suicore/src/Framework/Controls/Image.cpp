@@ -287,6 +287,14 @@ void Image::OnRender(Drawing * drawing)
 
         fRect rect(Point(), GetRenderSize());
         fRect rcimg(0, 0, (Float)bmp->Width(), (Float)bmp->Height());
+        fSize fRadio = ComputeScaleFactor(GetRenderSize(), Size(bmp->Width(), bmp->Height()), GetStretch(), GetStretchDirection());
+        Float fWid = rcimg.Width() * fRadio.cx;
+        Float fHei = rcimg.Height() * fRadio.cy;
+
+        rect.left = (rect.right - fWid) / 2;
+        rect.right = rect.left + fWid;
+        rect.top = (rect.bottom - fHei) / 2;
+        rect.bottom = rect.top + fHei;
 
         drawing->DrawImage(DrawCtx::DefDraw, bmp, &rect, &rcimg);
 

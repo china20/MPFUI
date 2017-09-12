@@ -227,11 +227,11 @@ public:
             }
             break;
 
-        case 18:
-            if (strType.Equals(_U("VisualizeWrapPanel")))
+        case 21:
+            if (strType.Equals(_U("VirtualizingWrapPanel")))
             {
-                rttiInfo = VisualizeWrapPanel::RTTIType();
-                suic::VisualizeWrapPanel::StaticInit();
+                rttiInfo = VirtualizingWrapPanel::RTTIType();
+                suic::VirtualizingWrapPanel::StaticInit();
             }
             break;
         }
@@ -269,7 +269,7 @@ void __stdcall InitUIControls()
     suic::ListView::StaticInit();
     suic::ComboBox::StaticInit();
     suic::TextBox::StaticInit();
-    suic::VisualizeWrapPanel::StaticInit();
+    suic::VirtualizingWrapPanel::StaticInit();
 }
 
 SUIWGX_API bool __stdcall InitUIWgxs(bool initWgx)

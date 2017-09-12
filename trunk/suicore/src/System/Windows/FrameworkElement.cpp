@@ -573,6 +573,11 @@ HwndParam* ToolTipEventArg::GetHwndParam() const
     return _hp;
 }
 
+void ClickEventArg::CallEventHandler(Object* handler, Object* target)
+{
+    InternalCall<Element, ClickEventHandler, RoutedEventArg>(handler, target);
+}
+
 void ToolTipEventArg::CallEventHandler(Object* handler, Object* target)
 {
     InternalCall<Element, ToolTipEventHandler, ToolTipEventArg>(handler, target);

@@ -98,6 +98,8 @@
 
 #include <Extend/Controls/TabControl.h>
 
+#include <Extend/Controls/VisualizeWrapPanel.h>
+
 namespace suic
 {
     SUIWGX_API bool __stdcall InitUIWgx();

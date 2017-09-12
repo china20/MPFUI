@@ -211,16 +211,6 @@ void ButtonBase::OnMouseLeftButtonUp(MouseButtonEventArg* e)
     ContentControl::OnMouseLeftButtonUp(e);
 }
 
-ClickEventArg::ClickEventArg(Object* source, RoutedEvent* routedEvent)
-    : RoutedEventArg(source, routedEvent)
-{
-}
-
-void ClickEventArg::CallEventHandler(Object* handler, Object* target)
-{
-    InternalCall<Element, ClickEventHandler, RoutedEventArg>(handler, target);
-}
-
 void ButtonBase::OnClick()
 {
     ClickEventArg e(this, ClickEvent);

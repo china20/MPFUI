@@ -63,6 +63,12 @@ public:
         {
             (*pHandler)(pElem, ((A*)this));
         }
+        else
+        {
+#ifdef _DEBUG
+            throw ArgumentNullException(target->GetRTTIType()->typeName, __FILELINE__);
+#endif
+        }
     }
 
 public:
@@ -71,6 +77,21 @@ public:
     Object* _source;
     Object* _originalSource;
     RoutedEvent* _routedEvent;
+};
+
+class SUICORE_API ClickEventArg : public RoutedEventArg
+{
+public:
+
+    ClickEventArg();
+    ClickEventArg(Object* source);
+    ClickEventArg(Object* source, RoutedEvent* routedEvent);
+
+    ~ClickEventArg();
+
+protected:
+
+    void CallEventHandler(Object* handler, Object* target);
 };
 
 class SUICORE_API ToolTipEventArg : public RoutedEventArg
@@ -120,17 +141,6 @@ private:
 
     int _what;
     Object* _data;
-};
-
-class ClickEventArg : public RoutedEventArg
-{
-public:
-
-    ClickEventArg(Object* source, RoutedEvent* routedEvent);
-
-protected:
-
-    void CallEventHandler(Object* handler, Object* target);
 };
 
 //==============================================================

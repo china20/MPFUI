@@ -17,7 +17,7 @@
 namespace suic
 {
 
-class VisualizeWrapPanel : public suic::VirtualizingPanel
+class SUIWGX_API VirtualizingWrapPanel : public suic::VirtualizingPanel
 {
 public:
 
@@ -25,10 +25,10 @@ public:
 
     static void StaticInit();
 
-    RTTIOfClass(VisualizeWrapPanel)
+    RTTIOfClass(VirtualizingWrapPanel)
 
-    VisualizeWrapPanel();
-    ~VisualizeWrapPanel();
+    VirtualizingWrapPanel();
+    ~VirtualizingWrapPanel();
 
     int GetItemWidth();
     void SetItemWidth(int wid);
@@ -69,12 +69,12 @@ protected:
     int _countPerShow;
 };
 
-inline int VisualizeWrapPanel::GetVisibleChildrenCount()
+inline int VirtualizingWrapPanel::GetVisibleChildrenCount()
 {
     return _visibleCount;
 }
 
-inline int VisualizeWrapPanel::GetVisibleStart() const
+inline int VirtualizingWrapPanel::GetVisibleStart() const
 {
     return _visibleStart;
 }

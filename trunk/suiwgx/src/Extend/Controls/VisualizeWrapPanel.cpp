@@ -8,7 +8,7 @@
 // ======================================================================
 
 /////////////////////////////////////////////////////////////////////////
-// VisualizeWrapPanel.cpp
+// VirtualizingWrapPanel.cpp
 
 #include <Extend/Controls/VisualizeWrapPanel.h>
 
@@ -21,11 +21,11 @@
 namespace suic
 {
 
-ImplementRTTIOfClass(VisualizeWrapPanel, suic::VirtualizingPanel)
+ImplementRTTIOfClass(VirtualizingWrapPanel, suic::VirtualizingPanel)
 
-suic::DpProperty* VisualizeWrapPanel::OrientationProperty;
+suic::DpProperty* VirtualizingWrapPanel::OrientationProperty;
 
-void VisualizeWrapPanel::StaticInit()
+void VirtualizingWrapPanel::StaticInit()
 {
     if (OrientationProperty == NULL)
     {
@@ -35,7 +35,7 @@ void VisualizeWrapPanel::StaticInit()
     }
 }
 
-VisualizeWrapPanel::VisualizeWrapPanel()
+VirtualizingWrapPanel::VirtualizingWrapPanel()
     : _visibleStart(0)
     , _visibleCount(0)
     , _visibleOffset(0)
@@ -45,46 +45,46 @@ VisualizeWrapPanel::VisualizeWrapPanel()
 {
 }
 
-VisualizeWrapPanel::~VisualizeWrapPanel()
+VirtualizingWrapPanel::~VirtualizingWrapPanel()
 {
 }
 
-suic::Orientation VisualizeWrapPanel::GetOrientation()
+suic::Orientation VirtualizingWrapPanel::GetOrientation()
 {
     return (suic::Orientation)GetValue(OrientationProperty)->ToInt();
 }
 
-void VisualizeWrapPanel::SetOrientation(suic::Orientation val)
+void VirtualizingWrapPanel::SetOrientation(suic::Orientation val)
 {
     SetValue(OrientationProperty, suic::OrientationBox::From(val));
 }
 
-int VisualizeWrapPanel::GetLogicalOrientation()
+int VirtualizingWrapPanel::GetLogicalOrientation()
 {
     return GetOrientation();
 }
 
-int VisualizeWrapPanel::GetItemWidth()
+int VirtualizingWrapPanel::GetItemWidth()
 {
     return _itemWid;
 }
 
-void VisualizeWrapPanel::SetItemWidth(int wid)
+void VirtualizingWrapPanel::SetItemWidth(int wid)
 {
     _itemWid = wid;
 }
 
-int VisualizeWrapPanel::GetItemHeight()
+int VirtualizingWrapPanel::GetItemHeight()
 {
     return _itemHei;
 }
 
-void VisualizeWrapPanel::SetItemHeight(int hei)
+void VirtualizingWrapPanel::SetItemHeight(int hei)
 {
     _itemHei = hei;
 }
 
-void VisualizeWrapPanel::ResetChildMeasureData(suic::MeasureData* childMeasureData, const suic::MeasureData& measureData, suic::Size layoutSize)
+void VirtualizingWrapPanel::ResetChildMeasureData(suic::MeasureData* childMeasureData, const suic::MeasureData& measureData, suic::Size layoutSize)
 {
     suic::Rect viewport = measureData.GetViewPort();
 
@@ -92,7 +92,7 @@ void VisualizeWrapPanel::ResetChildMeasureData(suic::MeasureData* childMeasureDa
     childMeasureData->SetViewPort(viewport);
 }
 
-int VisualizeWrapPanel::ComputeOffsetFromItem(suic::Object* item, int& offset, int& itemSize)
+int VirtualizingWrapPanel::ComputeOffsetFromItem(suic::Object* item, int& offset, int& itemSize)
 {
     int index = -1;
     bool bHori = GetOrientation() == suic::Orientation::Horizontal;
@@ -158,12 +158,12 @@ int VisualizeWrapPanel::ComputeOffsetFromItem(suic::Object* item, int& offset, i
     return index;
 }
 
-int VisualizeWrapPanel::ComputeOffsetFromIndex(int index, int& offset, int& itemSize)
+int VirtualizingWrapPanel::ComputeOffsetFromIndex(int index, int& offset, int& itemSize)
 {
     return -1;
 }
 
-void VisualizeWrapPanel::OnKeyDown(suic::KeyboardEventArg* e)
+void VirtualizingWrapPanel::OnKeyDown(suic::KeyboardEventArg* e)
 {
     suic::ItemsControl* itemsOwner = NULL;
 
@@ -270,7 +270,7 @@ void VisualizeWrapPanel::OnKeyDown(suic::KeyboardEventArg* e)
     }
 }
 
-suic::Size VisualizeWrapPanel::OnMeasure(const suic::Size& constraint)
+suic::Size VirtualizingWrapPanel::OnMeasure(const suic::Size& constraint)
 {
     suic::Rect empty;
     suic::Size extent;
@@ -448,7 +448,7 @@ suic::Size VisualizeWrapPanel::OnMeasure(const suic::Size& constraint)
     return extent;
 }
 
-void VisualizeWrapPanel::OnArrange(const suic::Size& arrangesize)
+void VirtualizingWrapPanel::OnArrange(const suic::Size& arrangesize)
 {
     int x = 0;
     int y = 0;
@@ -516,7 +516,7 @@ void VisualizeWrapPanel::OnArrange(const suic::Size& arrangesize)
     }
 }
 
-void VisualizeWrapPanel::OnItemsChangedInternal(suic::Object* sender, suic::ItemsChangedEventArg* e)
+void VirtualizingWrapPanel::OnItemsChangedInternal(suic::Object* sender, suic::ItemsChangedEventArg* e)
 {
     _visibleCount = 0;
     _visibleStart = 0;
@@ -548,7 +548,7 @@ void VisualizeWrapPanel::OnItemsChangedInternal(suic::Object* sender, suic::Item
     }
 }
 
-void VisualizeWrapPanel::InvalidateChildrenResourceReference()
+void VirtualizingWrapPanel::InvalidateChildrenResourceReference()
 {
     suic::ElementColl* children = GetChildren();
     int count = children->GetCount();

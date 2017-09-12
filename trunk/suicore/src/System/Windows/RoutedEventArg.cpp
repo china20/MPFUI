@@ -94,4 +94,22 @@ Object* RoutedEventArg::GetOriginalSource()
     return _originalSource;
 }
 
+ClickEventArg::ClickEventArg()
+{
+}
+
+ClickEventArg::ClickEventArg(Object* source)
+    : RoutedEventArg(source)
+{
+}
+
+ClickEventArg::ClickEventArg(Object* source, RoutedEvent* routedEvent)
+    : RoutedEventArg(source, routedEvent)
+{
+}
+
+ClickEventArg::~ClickEventArg()
+{
+}
+
 }
