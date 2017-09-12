@@ -174,7 +174,7 @@ public:
     Element* GetContainerForItem(Object* item);
     void ClearContainerForItem(DpObject* element, ItemEntry* item);
 
-    void UpdateFocusItem(suic::Object* item);
+    void UpdateFocusItem(suic::ItemEntry* item);
     bool IsOnCurrentPage(Element* elem, AxisDirection axis, bool fullyVisible);
     
     virtual void OnPrepareContainer();
