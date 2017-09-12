@@ -717,11 +717,6 @@ public:
     void UpdateArrange();
     void UpdateMeasure();
 
-    Element* FindFixedAncestor();
-
-    void UpdateAncestorMeasure();
-    void UpdateAncestorArrange();
-
     /// <summary>
     ///  刷新元素布局,此函数不会立即刷新布局，只有绘制时才会刷新
     /// </summary>

@@ -352,7 +352,8 @@ void KeyboardNavigation::ShowFocusVisual(Element* elem)
                 _focusVisualAdornerCache = new FocusVisualAdorner(elem, focusStyle);
                 adornerLayer->Add(_focusVisualAdornerCache);
 
-                elem->UpdateArrange();
+                elem->InvalidateArrange();
+
                 adornerLayer->UpdateLayout();
             }
         }

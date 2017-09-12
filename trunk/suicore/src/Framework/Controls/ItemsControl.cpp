@@ -1423,15 +1423,7 @@ void ItemsControl::NavigateToItem(Object* item, int offset, int itemLen, ItemNav
         ComputeOffsetFromItem(item, offset, itemLen);
     }
 
-    if (IsKeyboardFocusWithin())
-    {
-        SetFocusItem(item);
-    }
-    else
-    {
-        _focusedItem = GetItemsSource()->GetItemEntry(index);
-    }
-
+    UpdateFocusItem(GetItemsSource()->GetItemEntry(index));
     UpdateLayout();
 }
 
@@ -1445,10 +1437,7 @@ void ItemsControl::UpdateFocusItem(suic::ItemEntry* item)
     {
         SetFocusItem(item->GetItem());
     }
-    else
-    {
-        _focusedItem = item;
-    }
+    _focusedItem = item;
 }
 
 void ItemsControl::SetFocusItem(Object* item)

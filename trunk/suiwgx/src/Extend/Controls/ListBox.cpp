@@ -238,8 +238,9 @@ void ListBox::UpdateAnchorAndActionItem(ListBoxItem* listItem)
     KeyboardNavigation::SetTabOnceActiveElement(this, listItem);
 }
 
-void ListBox::HandleSelectedItem(ListBoxItem* container, MouseButton mouseButton)
+void ListBox::HandleSelectedItem(Object* cHost, MouseButton mouseButton)
 {
+    ListBoxItem* container = (ListBoxItem*) cHost;
     ItemEntry* itemb = container->GetItemEntry();
 
     switch (GetSelectionMode())

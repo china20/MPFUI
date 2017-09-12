@@ -256,7 +256,7 @@ static void __TransformAncestorRect(Element* fe, Element* ancestor, Matrix& m)
 void AdornerLayer::OnArrange(const Size& arrangeSize)
 {
     int iCount = _adornerInfos.Length();
-
+ 
     for (int i = 0; i < iCount; i++)
     {
         AdornerInfo* aInfo = _adornerInfos[i];
@@ -277,22 +277,29 @@ void AdornerLayer::OnArrange(const Size& arrangeSize)
             {
                 if (adorned->IsVisible())
                 {
-                    aInfo->size = adorned->ComputeRenderSize();
-                    ComputeClipGeometry(aInfo->adorner, adorned);
-
-                    __TransformAncestorRect(adorned, GetUIParent(), matrix);
-
-                    rect.SetXYWH(0, 0, aInfo->size.cx, aInfo->size.cy);
-
-                    rect = matrix.TransformRect(rect);
-                    aInfo->pos = rect.ToRect().LeftTop();
-                    
-                    matrix.PostTranslate(-rect.left, -rect.top);
-                    aInfo->adorner->Arrange(Rect(aInfo->pos, aInfo->size));
-
-                    if (!matrix.IsIdentity())
+                    if (adorned->ReadFlag(CoreFlags::IsArrangeDirty))
                     {
-                        aInfo->adorner->SetVisualTransform(new MatrixTransform(matrix));
+                        aInfo->adorner->Arrange(Rect());
+                    }
+                    else
+                    {
+                        aInfo->size = adorned->ComputeRenderSize();
+                        ComputeClipGeometry(aInfo->adorner, adorned);
+
+                        __TransformAncestorRect(adorned, GetUIParent(), matrix);
+
+                        rect.SetXYWH(0, 0, aInfo->size.cx, aInfo->size.cy);
+
+                        rect = matrix.TransformRect(rect);
+                        aInfo->pos = rect.ToRect().LeftTop();
+
+                        matrix.PostTranslate(-rect.left, -rect.top);
+                        aInfo->adorner->Arrange(Rect(aInfo->pos, aInfo->size));
+
+                        if (!matrix.IsIdentity())
+                        {
+                            aInfo->adorner->SetVisualTransform(new MatrixTransform(matrix));
+                        }
                     }
                 }
             }

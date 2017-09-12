@@ -24,6 +24,7 @@
 #include <Framework/Controls/Popup.h>
 #include <Framework/Controls/Window.h>
 #include <Framework/Controls/Tooltip.h>
+#include <Framework/Controls/Decorator.h>
 #include <Framework/Controls/Application.h>
 #include <Framework/Controls/ItemCollection.h>
 
@@ -1672,7 +1673,7 @@ void Element::UpdateMeasure()
     ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateMeasure);
 }
 
-Element* Element::FindFixedAncestor()
+/*Element* Element::FindFixedAncestor()
 {
     return NULL;
 }
@@ -1685,7 +1686,7 @@ void Element::UpdateAncestorMeasure()
 void Element::UpdateAncestorArrange()
 {
     ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateArrange);
-}
+}*/
 
 void Element::InvalidateMeasure()
 {
@@ -2042,10 +2043,20 @@ void Element::Arrange(const Rect& arrangeRect)
                 LayoutUpdated(this, &EventArg::Empty);
             }
         }
+
+        if (IsKeyboardFocused())
+        {
+            AdornerLayer* adornerLayer = AdornerLayer::GetAdornerLayer(this);
+            if (NULL != adornerLayer)
+            {
+                WriteFlag(CoreFlags::IsArrangeDirty, false);
+                adornerLayer->UpdateArrange();
+                adornerLayer->InvalidateVisual();
+            }
+        }
     }
 
-    if (GetAssigner()->GetBindingWorker()->GetTaskCount() > 0 && 
-        IsInitialized())
+    if (GetAssigner()->GetBindingWorker()->GetTaskCount() > 0 && IsInitialized())
     {
         Assigner::Current()->GetBindingWorker()->Run();
     }
