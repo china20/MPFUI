@@ -1672,6 +1672,21 @@ void Element::UpdateMeasure()
     ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateMeasure);
 }
 
+Element* Element::FindFixedAncestor()
+{
+    return NULL;
+}
+
+void Element::UpdateAncestorMeasure()
+{
+    ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateMeasure);
+}
+
+void Element::UpdateAncestorArrange()
+{
+    ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateArrange);
+}
+
 void Element::InvalidateMeasure()
 {
     VerifyAccess(__FILELINE__);

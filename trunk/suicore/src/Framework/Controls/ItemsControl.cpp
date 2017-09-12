@@ -1439,9 +1439,16 @@ void ItemsControl::HandleSelectedItem(Object* container, MouseButton mouseButton
 {
 }
 
-void ItemsControl::UpdateFocusItem(suic::Object* item)
+void ItemsControl::UpdateFocusItem(suic::ItemEntry* item)
 {
-    _focusedItem = item;
+    if (IsKeyboardFocusWithin())
+    {
+        SetFocusItem(item->GetItem());
+    }
+    else
+    {
+        _focusedItem = item;
+    }
 }
 
 void ItemsControl::SetFocusItem(Object* item)
