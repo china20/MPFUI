@@ -213,8 +213,10 @@ void CoreSystem::InitDefaultRes()
     if (pResInfo != NULL)
     {
         ByteStream data;
+
         if (pResInfo->ReadRes(_U("theme/default.xaml"), &data) > 0)
         {
+            XamlReader xamlRead;
             suic::Uint16 iMask = ThemeOp::GetReadResourceMask();
 
             ThemeOp::SetReadResourceMask(suic::ResReadMask::ReadDefMask);
