@@ -203,11 +203,10 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
             if (NULL != itemb)
             {
                 focusElem = GetContainerFromItem(item);
-                if (NULL == focusElem || !IsOnCurrentPage(focusElem, dAxis, true))
+                if (NULL == focusElem/* || !IsOnCurrentPage(focusElem, dAxis, true)*/)
                 {
                     MakeVisible(item, offset, itemSize, false);
                 }
-
                 UpdateFocusItem(itemb);
             }
         }

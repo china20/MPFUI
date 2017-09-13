@@ -61,7 +61,7 @@ void VirtualizingWrapPanel::SetOrientation(suic::Orientation val)
 
 int VirtualizingWrapPanel::GetLogicalOrientation()
 {
-    return GetOrientation();
+    return ((GetOrientation() + 1) % 2);
 }
 
 int VirtualizingWrapPanel::GetItemWidth()
