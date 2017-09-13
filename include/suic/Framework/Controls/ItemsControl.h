@@ -176,6 +176,8 @@ public:
 
     void UpdateFocusItem(suic::ItemEntry* item);
     bool IsOnCurrentPage(Element* elem, AxisDirection axis, bool fullyVisible);
+
+    virtual int ScrollIntoView(Object* item, bool atTopOfViewport);
     
     virtual void OnPrepareContainer();
     virtual bool IsItemItsOwnContainer(Object* item);
@@ -192,8 +194,6 @@ public:
 
     virtual void OnItemTemplateChanged(DataTemplate* oldItemTemplate, DataTemplate* newItemTemplate);
     virtual void OnItemTemplateSelectorChanged(DataTemplateSelector* oldItemTemplateSelector, DataTemplateSelector* newItemTemplateSelector);
-
-    Object* OnBringItemIntoView(Object* arg);
 
     void OnItemCollectionChanged(Object* sender,  NotifyCollChangedEventArg* e);
     void OnTemplateChangedInternal(FrameworkTemplate* oldTemplate, FrameworkTemplate* newTemplate);
@@ -235,7 +235,7 @@ protected:
     void SetFocusItem(Object* item);
     Object* FindFocusable(int iStart, int dir, int& outIndex);
 
-    int ComputeOffsetFromItem(Object* item, int& offset, int& itemSize);
+    int ComputeOffsetFromItem(Object* item, eItemDirection id, int& offset, int& itemSize);
     int ComputeOffsetFromIndex(int index, int& offset, int& itemSize);
 
     bool MakeVisible(int index);

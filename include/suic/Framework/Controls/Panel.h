@@ -19,6 +19,13 @@ namespace suic
 
 class ItemContainerGenerator;
 
+enum eItemDirection
+{
+    idPrev,
+    idCurr,
+    idNext,
+};
+
 /// <summary>
 /// 所有面板界面元素类的基类，实现一般界面元素的公共操作和接口.
 /// </summary>
@@ -64,7 +71,8 @@ public:
     virtual int GetLogicalOrientation();
     virtual void NotifyItemChanged();
 
-    virtual int ComputeOffsetFromItem(Object* item, int& offset, int& itemSize);
+    virtual int ComputeOffsetFromItem(Object* item, eItemDirection id, int& offset, int& itemSize);
+    virtual int ComputeOffsetFromIndex(int index, int& offset, int& itemSize);
 
 public:
 

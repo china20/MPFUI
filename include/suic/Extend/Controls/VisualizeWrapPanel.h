@@ -51,8 +51,7 @@ protected:
 
     void OnKeyDown(suic::KeyboardEventArg* e);
 
-    int ComputeOffsetFromItem(suic::Object* item, int& offset, int& itemSize);
-    int ComputeOffsetFromIndex(int index, int& offset, int& itemSize);
+    int ComputeOffsetFromItem(suic::Object* item, eItemDirection id, int& offset, int& itemSize);
 
     void OnItemsChangedInternal(suic::Object* sender, suic::ItemsChangedEventArg* e);
 

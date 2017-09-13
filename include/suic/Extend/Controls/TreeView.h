@@ -62,7 +62,7 @@ public:
 
     void SetItemIsExpanded(Object* item, bool val);
 
-    void ScrollIntoView(Object* item, bool atTopOfViewport);
+    int ScrollIntoView(Object* item, bool atTopOfViewport);
     void ScrollToEdge(bool bEnd);
 
     void AddSelectedItemChanged(RoutedPropChangedEventHandler* handler);
