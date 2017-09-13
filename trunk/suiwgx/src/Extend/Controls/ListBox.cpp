@@ -103,7 +103,9 @@ bool ListBox::IsItemItsOwnContainer(Object* item)
 void ListBox::OnKeyDown(KeyboardEventArg* e)
 {
     bool bHori = IsLogicalHorizontal();
-    if (IsLogicalVertical() || bHori)
+    ScrollViewer* scrollView = GetScrollHost();
+
+    if (NULL != scrollView && (IsLogicalVertical() || bHori))
     {
         if (e->GetKey() == Key::kSpace || 
             (e->GetKey() == Key::kReturn && KeyboardNavigation::IsAcceptsReturn(this)) )
@@ -121,82 +123,93 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
             return;
         }
 
-        int index = 0;
+        int index = -1;
         int offset = 0;
-        int itemLen = 0;
+        int itemSize = 0;
+
+        Object* item = NULL;
+        Element* focusElem = NULL;
         ItemEntry* itemb = GetFocusedItem();
-        Object* currentItem = NULL;
-        Size itemSize;
+
         AxisDirection dAxis = (IsLogicalVertical() ? AxisDirection::yAxis : AxisDirection::xAxis);
 
         if (NULL == itemb)
         {
-            currentItem = GetSelectedItem();
+            item = GetSelectedItem();
         }
         else
         {
-            currentItem = itemb->GetItem();
+            item = itemb->GetItem();
         }
 
-        // 
-        // offset为前index个元素的总长度
-        //
-        index = ComputeOffsetFromItem(currentItem, offset, itemLen);
-
-        if (index < 0)
+        if (e->GetKey() == Key::kUp)
         {
-            e->SetHandled(true);
-            ScrollToStart();
-            return;
-        }
-
-        if ((e->GetKey() == Key::kUp && dAxis == AxisDirection::yAxis) || 
-            (e->GetKey() == Key::kLeft && dAxis == AxisDirection::xAxis))
-        {
-            if (index > 0)
+            // 往上滚动一个元素
+            if (dAxis == AxisDirection::yAxis)
             {
-                index -= 1;
-                itemb = GetItemsSource()->GetItemEntry(index);
-                ReadItemSize(itemb, bHori, index, itemSize);
-                // index-1处子项的高度
-                itemLen = (e->GetKey() == Key::kUp ? itemSize.cy : itemSize.cx);
-                // 前index-1个子项总长度
-                offset -= itemLen;
+                index = ComputeOffsetFromItem(item, eItemDirection::idPrev, offset, itemSize);
             }
             else
             {
-                return;
+                // 往上滚动一行
+                scrollView->LineUp();
             }
         }
-        else if ((e->GetKey() == Key::kDown && dAxis == AxisDirection::yAxis) || 
-            (e->GetKey() == Key::kRight && dAxis == AxisDirection::xAxis))
+        else if (e->GetKey() == Key::kLeft)
         {
-            if (index < GetCount() - 1)
+            // 往左滚动一个元素
+            if (dAxis == AxisDirection::xAxis)
             {
-                offset += itemLen;
-                index += 1;
-                itemb = GetItemsSource()->GetItemEntry(index);
-                ReadItemSize(itemb, bHori, index, itemSize);
-                itemLen = (e->GetKey() == Key::kDown ? itemSize.cy : itemSize.cx);
+                index = ComputeOffsetFromItem(item, eItemDirection::idPrev, offset, itemSize);
             }
             else
             {
-                return;
+                // 往左滚动一行
+                scrollView->LineLeft();
+            }
+        }
+        else if (e->GetKey() == Key::kDown)
+        {
+            // 往下滚动一个元素
+            if (dAxis == AxisDirection::yAxis)
+            {
+                index = ComputeOffsetFromItem(item, eItemDirection::idNext, offset, itemSize);
+            }
+            else
+            {
+                // 往下滚动一行
+                scrollView->LineDown();
+            }
+        }
+        else if (e->GetKey() == Key::kRight)
+        {
+            // 往右滚动一个元素
+            if (dAxis == AxisDirection::xAxis)
+            {
+                index = ComputeOffsetFromItem(item, eItemDirection::idNext, offset, itemSize);
+            }
+            else
+            {
+                // 往右滚动一行
+                scrollView->LineRight();
             }
         }
 
-        ItemEntry* moveItem = ItemEntryFromIndex(index);
-        Element* moveElem = GetContainerFromItem(moveItem->GetItem());
-        ItemNavigateArg enav(KeyboardDeice::Current(), e->GetModifierKey());
+        if (index >= 0)
+        {
+            itemb = ItemEntryFromIndex(index);
+            item = itemb->GetItem();
 
-        if (!IsOnCurrentPage(moveElem, dAxis, true))
-        {
-            NavigateToItem(moveItem->GetItem(), offset, itemLen, &enav, e->GetKey() == Key::kUp || e->GetKey() == Key::kLeft);
-        }
-        else
-        {
-            moveElem->Focus();
-            UpdateLayout();
+            if (NULL != itemb)
+            {
+                focusElem = GetContainerFromItem(item);
+                if (NULL == focusElem || !IsOnCurrentPage(focusElem, dAxis, true))
+                {
+                    MakeVisible(item, offset, itemSize, false);
+                }
+
+                UpdateFocusItem(itemb);
+            }
         }
 
         e->SetHandled(true);

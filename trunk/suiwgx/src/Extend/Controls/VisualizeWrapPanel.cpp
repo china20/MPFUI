@@ -92,13 +92,13 @@ void VirtualizingWrapPanel::ResetChildMeasureData(suic::MeasureData* childMeasur
     childMeasureData->SetViewPort(viewport);
 }
 
-int VirtualizingWrapPanel::ComputeOffsetFromItem(suic::Object* item, int& offset, int& itemSize)
+int VirtualizingWrapPanel::ComputeOffsetFromItem(suic::Object* item, eItemDirection id, int& offset, int& itemSize)
 {
-    int index = -1;
+    int index = -2;
     bool bHori = GetOrientation() == suic::Orientation::Horizontal;
     suic::ItemContainerGenerator* icGenerator = GetGenerator();
 
-    if (NULL == icGenerator)
+    if (NULL == icGenerator || _countPerShow <= 0)
     {
         return index;
     }
@@ -113,54 +113,52 @@ int VirtualizingWrapPanel::ComputeOffsetFromItem(suic::Object* item, int& offset
         return index;
     }
 
-    for (int i = 0; i < itemColl->GetCount(); ++i)
-    {
-        if (((i + 1) % _countPerShow) == 0)
-        {
-            if (!bHori)
-            {
-                offset += GetItemWidth();
-            }
-            else
-            {
-                offset += GetItemHeight();
-            }
-        }
+    int iCount = itemColl->GetCount();
 
+    for (int i = 0; i < iCount; ++i)
+    {
         if (item == itemColl->GetItem(i))
         {
             index = i;
-
-            if (!bHori)
-            {
-                itemSize = GetItemWidth();
-            }
-            else
-            {
-                itemSize = GetItemHeight();
-            }
             break;
         }
     }
 
-    if (index > 0 && ((index + 1) % _countPerShow) == 0)
+    if (index >= 0)
     {
+        switch (id)
+        {
+        case eItemDirection::idPrev:
+            if (index > 0)
+            {
+                index -= 1;
+            }
+            break;
+
+        case eItemDirection::idNext:
+            if (index < iCount - 1)
+            {
+                index += 1;
+            }
+            break;
+
+        default:
+            ;
+        }
+
         if (!bHori)
         {
-            offset -= GetItemWidth();
+            itemSize = GetItemWidth();
         }
         else
         {
-            offset -= GetItemHeight();
+            itemSize = GetItemHeight();
         }
+
+        offset = itemSize * (index / _countPerShow);
     }
 
     return index;
-}
-
-int VirtualizingWrapPanel::ComputeOffsetFromIndex(int index, int& offset, int& itemSize)
-{
-    return -1;
 }
 
 void VirtualizingWrapPanel::OnKeyDown(suic::KeyboardEventArg* e)
@@ -219,7 +217,7 @@ void VirtualizingWrapPanel::OnKeyDown(suic::KeyboardEventArg* e)
         currentItem = itemb->GetItem();
     }
 
-    currIndex = ComputeOffsetFromItem(currentItem, offset, itemLen);
+    currIndex = ComputeOffsetFromItem(currentItem, eItemDirection::idCurr, offset, itemLen);
 
     if (e->GetKey() == suic::Key::kLeft)
     {

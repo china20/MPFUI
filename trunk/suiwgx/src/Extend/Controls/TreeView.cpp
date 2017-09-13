@@ -344,11 +344,11 @@ void TreeView::SetItemIsExpanded(Object* item, bool val)
     }
 }
 
-void TreeView::ScrollIntoView(Object* item, bool atTopOfViewport)
+int TreeView::ScrollIntoView(Object* item, bool atTopOfViewport)
 {
     if (NULL == item)
     {
-        return;
+        return -1;
     }
 
     int iItemSize = 0;
@@ -361,7 +361,7 @@ void TreeView::ScrollIntoView(Object* item, bool atTopOfViewport)
 
     if (NULL == scrollHost)
     {
-        return;
+        return -1;
     }
 
     if (bHori)
@@ -370,7 +370,7 @@ void TreeView::ScrollIntoView(Object* item, bool atTopOfViewport)
         if (iItemOffset <= (iStart + scrollHost->GetViewportWidth()) && 
             iOffset >= iStart)
         {
-            return;
+            return -2;
         }
     }
     else
@@ -379,7 +379,7 @@ void TreeView::ScrollIntoView(Object* item, bool atTopOfViewport)
         if (iItemOffset <= (iStart + scrollHost->GetViewportHeight()) && 
             iOffset >= iStart)
         {
-            return;
+            return -1;
         }
     }
 
@@ -412,6 +412,8 @@ void TreeView::ScrollIntoView(Object* item, bool atTopOfViewport)
         iOffset = 0;
         find = ComputeItemOffset(GetItemsSource(), bHori, item, iOffset, iItemSize);
     }
+
+    return -1;
 }
 
 void TreeView::ScrollToEdge(bool bEnd)
