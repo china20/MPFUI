@@ -501,40 +501,26 @@ void ItemsControl::OnItemTemplateSelectorChanged(DataTemplateSelector* oldItemTe
 {
 }
 
-Object* ItemsControl::OnBringItemIntoView(Object* arg)
-{
-    FrameworkElement* element = RTTICast<FrameworkElement>(GetItemContainerGenerator()->ContainerFromItem(arg));
-    if (element != NULL)
-    {
-        element->BringIntoView();
-    }
-    else if (GetItemsSource()->Contains(arg))
-    {
-        VirtualizingPanel* itemsHost = RTTICast<VirtualizingPanel>(GetItemsHost());
-        if (itemsHost != NULL)
-        {
-            itemsHost->BringIndexIntoView(GetItemsSource()->IndexOf(arg, 0, GetCount()));
-        }
-    }
-
-    return NULL;
-}
-
 //--------------------------------------------------------------------------------
 //
 
 void ItemsControl::OnGotKeyboardFocusThunk(Element* sender, KeyboardFocusEventArg* e)
 {
     ItemsControl* control = RTTICast<ItemsControl>(sender);
-    Element* originalSource = RTTICast<Element>(e->GetOriginalSource());
+    Element* oriSource = RTTICast<Element>(e->GetOriginalSource());
 
-    if (!control->ReadItemFlags(Control::CantCachedFocusedItem) && originalSource != NULL && originalSource != control)
+    if (!control->ReadItemFlags(Control::CantCachedFocusedItem) && 
+        oriSource != NULL && 
+        oriSource != control)
     {
-        ItemEntry* obj = originalSource->GetItemEntry();
-
+        ItemEntry* obj = oriSource->GetItemEntry();
         if (obj != NULL && obj->GetItem() != DpProperty::UnsetValue())
         {
             control->_focusedItem = obj;
+
+            // 
+            //  滚动到此元素
+            // 
         }
     }
 }
@@ -1052,11 +1038,14 @@ void ItemsControl::DoAutoScroll(Object* startingItem)
 
 }
 
-int ItemsControl::ComputeOffsetFromItem(Object* item, int& offset, int& itemSize)
+int ItemsControl::ComputeOffsetFromItem(Object* item, eItemDirection id, int& offset, int& itemSize)
 {
     int iOri = -1;
     bool bHori = false;
     int index = -1;
+
+    Size size;
+    ItemEntry* itemb = NULL;
 
     suic::Panel* pPanel = GetItemsHost();
 
@@ -1075,33 +1064,54 @@ int ItemsControl::ComputeOffsetFromItem(Object* item, int& offset, int& itemSize
 
     if (pPanel != NULL)
     {
-        index = pPanel->ComputeOffsetFromItem(item, offset, itemSize);
+        index = pPanel->ComputeOffsetFromItem(item, id, offset, itemSize);
     }
 
     if (index == -1)
     {
         for (int i = 0; i < GetCount(); ++i)
         {
-            Size size;
-            ItemEntry* itemb = GetItemsSource()->GetItemEntry(i);
-
+            itemb = GetItemsSource()->GetItemEntry(i);
             ReadItemSize(itemb, bHori, i, size);
 
             if (item == itemb->GetItem())
             {
                 index = i;
-                itemSize = 0 == iOri ? size.cx : size.cy;
+                itemSize = (0 == iOri ? size.cx : size.cy);
+
                 break;
             }
 
-            if (0 == iOri)
+            offset += (0 == iOri ? size.cx : size.cy);
+        }
+
+        switch (id)
+        {
+        case eItemDirection::idPrev:
+            if (index > 0)
             {
-                offset += size.cx;
+                index -= 1;
+                itemb = GetItemsSource()->GetItemEntry(index);
+                ReadItemSize(itemb, bHori, index, size);
+                offset -= (0 == iOri ? size.cx : size.cy);
+                itemSize = (0 == iOri ? size.cx : size.cy);
             }
-            else if (1 == iOri)
+            break;
+
+        case eItemDirection::idNext:
+            if (index < GetCount() - 1)
             {
-                offset += size.cy;
+                index += 1;
+                offset += itemSize;
+
+                itemb = GetItemsSource()->GetItemEntry(index);
+                ReadItemSize(itemb, bHori, index, size);
+                itemSize = (0 == iOri ? size.cx : size.cy);
             }
+            break;
+
+        default:
+            ;
         }
     }
 
@@ -1244,6 +1254,46 @@ bool ItemsControl::IsOnCurrentPage(Element* elem, AxisDirection axis, bool fully
     }
 }
 
+
+int ItemsControl::ScrollIntoView(Object* item, bool atTopOfViewport)
+{
+    int index = -1;
+    int offset = 0;
+    int itemSize = 0;
+
+    Panel* itemHost = GetItemsHost();
+    Element* elem = NULL;
+    ScrollViewer* scrollView = GetScrollHost();
+
+    if (NULL != itemHost && NULL != scrollView)
+    {
+        int iViewSize = scrollView->GetViewportHeight();
+        bool bHori = itemHost->GetLogicalOrientation() == Orientation::Horizontal;
+        AxisDirection axis = AxisDirection::yAxis;
+
+        if (bHori)
+        {
+            iViewSize = scrollView->GetViewportWidth();
+            axis = AxisDirection::xAxis;
+        }
+
+        elem = RTTICast<Element>(GetItemContainerGenerator()->ContainerFromItem(item));
+        if (elem != NULL)
+        {
+            if (IsOnCurrentPage(elem, axis, true))
+            {
+                return -2;
+            }
+        }
+
+        index = ComputeOffsetFromItem(item, eItemDirection::idCurr, offset, itemSize);
+
+        MakeVisible(item, offset, itemSize, atTopOfViewport);
+    }
+
+    return index;
+}
+
 bool ItemsControl::MakeVisible(int index)
 {
     return MakeVisible(index, false);
@@ -1346,7 +1396,7 @@ bool ItemsControl::MakeVisible(Object* item, int offset, int iItemSize, bool atT
 
     if (IsLogicalVertical())
     {
-        if (!atTopOfViewport)
+        if (!atTopOfViewport && offset > scrollView->GetVerticalOffset())
         {
             offset = max(0, offset - scrollView->GetViewportHeight() + iItemSize);
         }
@@ -1356,7 +1406,7 @@ bool ItemsControl::MakeVisible(Object* item, int offset, int iItemSize, bool atT
 
     if (IsLogicalHorizontal())
     {
-        if (!atTopOfViewport)
+        if (!atTopOfViewport && offset > scrollView->GetHorizontalOffset())
         {
             offset = max(0, offset - scrollView->GetViewportWidth() + iItemSize);
         }
@@ -1384,7 +1434,7 @@ void ItemsControl::NavigateToItem(Object* item, int offset, int itemLen, ItemNav
     {
         if (offset == -1)
         {
-            index = ComputeOffsetFromItem(item, offset, itemLen);
+            index = ComputeOffsetFromItem(item, eItemDirection::idCurr, offset, itemLen);
             
             if (index < 0)
             {
@@ -1418,7 +1468,7 @@ void ItemsControl::NavigateToItem(Object* item, int offset, int itemLen, ItemNav
             break;
         }
 
-        ComputeOffsetFromItem(item, offset, itemLen);
+        ComputeOffsetFromItem(item, eItemDirection::idCurr, offset, itemLen);
     }
 
     UpdateFocusItem(GetItemsSource()->GetItemEntry(index));

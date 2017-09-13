@@ -282,7 +282,12 @@ void Panel::NotifyItemChanged()
 
 }
 
-int Panel::ComputeOffsetFromItem(Object* item, int& offset, int& itemSize)
+int Panel::ComputeOffsetFromItem(Object* item, eItemDirection id, int& offset, int& itemSize)
+{
+    return -1;
+}
+
+int Panel::ComputeOffsetFromIndex(int index, int& offset, int& itemSize)
 {
     return -1;
 }
