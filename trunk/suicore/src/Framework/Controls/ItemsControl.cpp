@@ -521,6 +521,7 @@ void ItemsControl::OnGotKeyboardFocusThunk(Element* sender, KeyboardFocusEventAr
             // 
             //  滚动到此元素
             // 
+            control->ScrollIntoView(obj->GetItem(), false);
         }
     }
 }
@@ -1289,6 +1290,8 @@ int ItemsControl::ScrollIntoView(Object* item, bool atTopOfViewport)
         index = ComputeOffsetFromItem(item, eItemDirection::idCurr, offset, itemSize);
 
         MakeVisible(item, offset, itemSize, atTopOfViewport);
+
+        UpdateLayout();
     }
 
     return index;
