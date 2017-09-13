@@ -15,8 +15,11 @@
 	
     <ImageBrush x:Key="sysCalendarToggleButtonImage" ImageSource="/_mpf_def_theme_;/images/control/Calendar/calendar.png" Stretch="Uniform"/>
 	
-    <SolidColorBrush x:Key="InfoBoxBorderBk" Color="#FF008CEE" />
-    <SolidColorBrush x:Key="InfoBoxBk" Color="#FFFAFAFC" />
+    <SolidColorBrush x:Key="infoBoxBorderBk" Color="#FF008CEE" />
+    <SolidColorBrush x:Key="infoBoxBackgroud" Color="#FFFAFAFC" />
+    <SolidColorBrush x:Key="infoBoxHeadBackgroud" Color="#FF0393F4" />
+    <SolidColorBrush x:Key="infoBoxForegroud" Color="#FF000000" />
+    <SolidColorBrush x:Key="infoBoxHeadForeground" Color="#FFFFFFFF" />
     
 	<!--TextBox皮肤资源定义-->
 	<SolidColorBrush x:Key="sysTextBoxBorderNormal" Color="#FFBACED9" />
@@ -109,7 +112,9 @@
 	<!--ComboBox皮肤资源定义-->
     
     <sys:RectF x:Key="comboBoxCornerRadius">4</sys:RectF>
-    <sys:Rect x:Key="comboBoxDropDownThickness">1,1,1,0</sys:Rect>
+    <sys:RectF x:Key="buttonCornerRadius">3</sys:RectF>
+
+    <sys:Rect x:Key="comboBoxDropDownThickness">1,1,1,1</sys:Rect>
     
 	<SolidColorBrush x:Key="comboBoxBkNormal" Color="#FFFFFF" />
 	<SolidColorBrush x:Key="comboBoxBorderNormal" Color="#FFBACED9" />
@@ -162,25 +167,25 @@
 	<SolidColorBrush x:Key="treeViewItemExpandHot" Color="#FFAADBFE" />
 	<SolidColorBrush x:Key="treeViewItemExpandPress" Color="#FFAADBFE" />
 	
-	<!--MinimizeButton皮肤资源定义-->
-	<SolidColorBrush x:Key="minButtonNormal" Color="#FFA7B8B5" />
-	<SolidColorBrush x:Key="minButtonHot" Color="#FFFF476D" />
-	<SolidColorBrush x:Key="minButtonPress" Color="#FFFF476D" />
-	
-	<!--MaximizeButton皮肤资源定义-->
-	<SolidColorBrush x:Key="maxButtonNormal" Color="#FFA7B8B5" />
-	<SolidColorBrush x:Key="maxButtonHot" Color="#FFFF476D" />
-	<SolidColorBrush x:Key="maxButtonPress" Color="#FFFF476D" />
-	
-	<!--RestoreButton皮肤资源定义-->
-	<SolidColorBrush x:Key="restoreButtonNormal" Color="#FFA7B8B5" />
-	<SolidColorBrush x:Key="restoreButtonHot" Color="#FFFF476D" />
-	<SolidColorBrush x:Key="restoreButtonPress" Color="#FFFF476D" />
-	
-	<!--CloseButton皮肤资源定义-->
-	<SolidColorBrush x:Key="closeButtonNormal" Color="#FFA7B8B5" />
-	<SolidColorBrush x:Key="closeButtonHot" Color="#FFFF476D" />
-	<SolidColorBrush x:Key="closeButtonPress" Color="#FFFF476D" />
+    <!--系统关闭按钮-->
+    <ImageBrush x:Key="sysCloseNormal" ImageSource="images/system/close.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysCloseHot" ImageSource="images/system/close.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysClosePress" ImageSource="images/system/close.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
+
+    <!--系统最小化按钮-->
+    <ImageBrush x:Key="sysMinNormal" ImageSource="images/system/min.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysMinHot" ImageSource="images/system/min.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysMinPress" ImageSource="images/system/min.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
+
+    <!--系统最大化按钮-->
+    <ImageBrush x:Key="sysMaxNormal" ImageSource="images/system/max.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysMaxHot" ImageSource="images/system/max.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysMaxPress" ImageSource="images/system/max.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
+
+    <!--系统最大化恢复按钮-->
+    <ImageBrush x:Key="sysRestoreNormal" ImageSource="images/system/restore.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysRestoreHot" ImageSource="images/system/restore.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="sysRestorePress" ImageSource="images/system/restore.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
 	
 	<!--ContextMenu皮肤资源定义-->
 	<SolidColorBrush x:Key="sysContextMenuBackgroundBrush" Color="#FFFAFAFC" />
@@ -256,19 +261,22 @@
 
     <Style TargetType="InfoBox">
         <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="MinWidth" Value="160" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource InfoBoxBorderBk}" />
-        <Setter Property="Background" Value="{DynamicResource InfoBoxBk}" />
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderBrush" Value="{DynamicResource infoBoxBorderBk}" />
+        <Setter Property="Background" Value="{DynamicResource infoBoxBackgroud}" />
+        <Setter Property="Foreground" Value="{DynamicResource infoBoxForegroud}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="InfoBox">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" >
-                        <Grid>
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" >
+                        <Grid >
                             <DockPanel>
-                                <DockPanel DockPanel.Dock="Top" >
-                                    <CloseButton DockPanel.Dock="Right" Width="30" Height="27" />
-                                    <TextBlock VerticalAlignment="Center" Margin="4" Text="{TemplateBinding Title}" />
+                                <DockPanel DockPanel.Dock="Top" Height="32" Background="{DynamicResource infoBoxHeadBackgroud}">
+                                    <CloseButton DockPanel.Dock="Right" Width="29" Height="32" />
+                                    <TextBlock Foreground="{DynamicResource infoBoxHeadForeground}" VerticalAlignment="Center" Margin="4" Text="{TemplateBinding Title}" />
                                 </DockPanel>
                                 <Grid Height="38" DockPanel.Dock="Bottom" >
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -278,7 +286,7 @@
                                         <Button Name="PART_Cancel" Content="取消" Margin="16,0,0,0" MinWidth="50" />
                                     </StackPanel>
                                 </Grid>
-                                <DockPanel Margin="4" >
+                                <DockPanel Margin="16,12,16,4">
                                     <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
                                 </DockPanel>
                             </DockPanel>
@@ -337,16 +345,17 @@
 
     <!-- 关闭按钮控件样式定义 -->
     <Style TargetType="CloseButton">
-        <Setter Property="BorderBrush" Value="{DynamicResource closeButtonNormal}" />
-        <Setter Property="Width" Value="25" />
+        <Setter Property="BorderBrush" Value="{DynamicResource sysCloseNormal}" />
+        <Setter Property="Width" Value="29" />
+        <Setter Property="Height" Value="32" />
         <Setter Property="ToolTip" Value="关闭" />
         <Setter Property="Template" Value="{DynamicResource sysCloseButtonTemplate}" />
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource closeButtonPress}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource sysClosePress}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource closeButtonHot}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource sysCloseHot}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -359,31 +368,81 @@
 
     <!-- 最小化按钮控件样式定义 -->
     <Style TargetType="MinimizeButton">
-        <Setter Property="BorderBrush" Value="{DynamicResource minButtonNormal}" />
-        <Setter Property="Width" Value="25" />
+        <Setter Property="Width" Value="29" />
+        <Setter Property="Height" Value="32" />
         <Setter Property="ToolTip" Value="最小化" />
+        <Setter Property="BorderBrush" Value="{DynamicResource sysMinNormal}" />
         <Setter Property="Template" Value="{DynamicResource sysMinimizeButtonTemplate}" />
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource minButtonPress}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource sysMinPress}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource minButtonHot}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource sysMinHot}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <ControlTemplate TargetType="Button" x:Key="sysButtonTemplate">
+    <!--最大化按钮样式定义-->
+    <Style TargetType="MaximizeButton">
+        <Setter Property="Background" Value="{DynamicResource sysMaxNormal}" />
+        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="Width" Value="29" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="MaximizeButton">
+                    <Border Background="{TemplateBinding Background}" >
+                        <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsPressed" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource sysRestorePress}" />
+            </MultiTrigger>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="ToolTip" Value="向下还原" />
+                <Setter Property="Background" Value="{DynamicResource sysRestoreHot}" />
+            </MultiTrigger>
+
+            <Trigger Property="WindowState" Value="Maximized" >
+                <Setter Property="Background" Value="{DynamicResource sysRestoreNormal}" />
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysMaxPress}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource sysMaxHot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+   <ControlTemplate TargetType="Button" x:Key="sysButtonTemplate">
         <Border Background="{TemplateBinding Background}"
                 Padding="{TemplateBinding Padding}"
                 BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3" >
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{DynamicResource buttonCornerRadius}" >
             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Border>
     </ControlTemplate>
 
     <!--通用Button控件的样式定义-->
     <Style TargetType="Button" >
+        <Setter Property="Padding" Value="4,3,4,3" />
         <Setter Property="Background" Value="{DynamicResource sysButtonNormal}" />
 		<Setter Property="Foreground" Value="{DynamicResource sysButtonTextNormal}" />
         <Setter Property="Template" Value="{DynamicResource sysButtonTemplate}" />
@@ -427,51 +486,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
-    <!--最小化按钮样式定义-->
-    <Style TargetType="MaximizeButton">
-        <Setter Property="BorderBrush" Value="{DynamicResource restoreButtonNormal}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="ToolTip" Value="最大化" />
-        <Setter Property="Template" >
-            <Setter.Value>
-                <ControlTemplate TargetType="MaximizeButton">
-                    <Border Height="10" Width="10" ToolTip="{TemplateBinding ToolTip}" 
-                            Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <Rectangle Fill="Aqua" Margin="5" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        
-        <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="WindowState" Value="Maximized" />
-                    <Condition Property="IsMouseOver" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="ToolTip" Value="向下还原" />
-                <Setter Property="BorderBrush" Value="{DynamicResource maxButtonHot}" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="WindowState" Value="Maximized" />
-                    <Condition Property="IsPressed" Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource maxButtonPress}" />
-            </MultiTrigger>
-            <Trigger Property="WindowState" Value="Maximized" >
-                <Setter Property="BorderBrush" Value="{DynamicResource maxButtonNormal}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource maxButtonNormal}" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource restoreButtonHot}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
+    
     <ControlTemplate TargetType="ToolTip" x:Key="sysToolTipTemplate">
         <Border Name="Bd" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" >
             <ContentPresenter />

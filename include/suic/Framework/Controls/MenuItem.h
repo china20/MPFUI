@@ -58,6 +58,8 @@ public:
     static DpProperty* IsPressedProperty;
     static DpProperty* IsHighlightedProperty;
 
+    static DpProperty* IsSeparatorProperty;
+
     MenuItem();
     virtual ~MenuItem();
 
@@ -66,6 +68,7 @@ public:
     static void StaticInit();
 
     static void OnIsCheckedPropChanged(DpObject* d, DpPropChangedEventArg* e);
+    static void OnIsSeparatorPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIsCheckablePropChanged(DpObject* target, DpPropChangedEventArg* e);
 
     RTTIOfClass(MenuItem)
@@ -84,6 +87,8 @@ public:
 
     bool IsCheckable();
     void SetIsCheckable(bool val);
+
+    bool IsSeparator();
 
     bool IsChecked();
     void SetIsChecked(bool val);
@@ -128,6 +133,7 @@ private:
 
     void UpdateRole();
     Element* GetTargetElement();
+    void SetIsSeparator(bool val);
     void HandleLeftButtonDown(MouseButtonEventArg* e);
 
 protected:
@@ -163,6 +169,16 @@ inline bool MenuItem::IsCheckable()
 inline void MenuItem::SetIsCheckable(bool val)
 {
     SetValue(IsCheckableProperty, BOOLTOBOOLEAN(val));
+}
+
+inline bool MenuItem::IsSeparator()
+{
+    return _isSeparator;
+}
+
+inline void MenuItem::SetIsSeparator(bool val)
+{
+    SetValue(IsSeparatorProperty, BOOLTOBOOLEAN(val));
 }
 
 inline bool MenuItem::IsChecked()

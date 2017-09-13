@@ -35,6 +35,8 @@ DpProperty* MenuItem::IsHighlightedProperty;
 DpProperty* MenuItem::RoleProperty;
 DpProperty* MenuItem::IconProperty;
 
+DpProperty* MenuItem::IsSeparatorProperty;
+
 Integer* MenuItemRoleBox::TopLevelItemBox = new Integer(MenuItemRole::TopLevelItem, false);
 Integer* MenuItemRoleBox::TopLevelHeaderBox = new Integer(MenuItemRole::TopLevelHeader, false);
 Integer* MenuItemRoleBox::SubmenuItemBox = new Integer(MenuItemRole::SubmenuItem, false);
@@ -164,6 +166,15 @@ void MenuItem::OnIsCheckedPropChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
+void MenuItem::OnIsSeparatorPropChanged(DpObject* d, DpPropChangedEventArg* e)
+{
+    MenuItem* pItem = DynamicCast<MenuItem>(d);
+    if (NULL != pItem)
+    {
+        pItem->_isSeparator = e->GetNewValue()->ToBool();
+    }
+}
+
 void MenuItem::StaticInit()
 {
     if (NULL == IsSubmenuOpenProperty)
@@ -187,6 +198,9 @@ void MenuItem::StaticInit()
         RoleProperty->SetConvertValueCb(new MenuItemRoleConvert());
         IconProperty = DpProperty::Register(_T("Icon"), RTTIType(), ImageSource::RTTIType()
             , DpPropMemory::GetPropMeta(NULL, PropMetadataOptions::AffectsNone));
+
+        IsSeparatorProperty = DpProperty::RegisterReadOnly(_T("IsSeparator"), RTTIType(), Boolean::RTTIType()
+            , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsRender, &MenuItem::OnIsSeparatorPropChanged));
 
         ClickEvent = EventHelper::RegisterRoutedEvent(_U("Click"), RoutingStrategy::Bubble, ClickEventHandler::RTTIType(), RTTIType());
         CheckedEvent = EventHelper::RegisterRoutedEvent(_U("Checked"), RoutingStrategy::Bubble, RoutedEventHandler::RTTIType(), RTTIType());
@@ -401,11 +415,11 @@ void MenuItem::PrepareHeaderedItemsControl(ItemEntry* item, ItemsControl* parent
 
     if (NULL != pSep)
     {
-        _isSeparator = true;
+        SetIsSeparator(true);
     }
     else
     {
-        _isSeparator = false;
+        SetIsSeparator(false);
 
         if (HeaderIsItem())
         {
@@ -425,7 +439,7 @@ void MenuItem::OnMouseEnter(MouseButtonEventArg* e)
 
     e->SetHandled(true);
 
-    if (!_isSeparator)
+    if (!IsSeparator())
     {
         SetValue(IsHighlightedProperty, Boolean::True);
         
@@ -517,7 +531,7 @@ void MenuItem::HandleLeftButtonDown(MouseButtonEventArg* e)
     e->SetHandled(true);
     e->SetSource(this);
 
-    if (_isSeparator)
+    if (IsSeparator())
     {
         ;
     }
@@ -564,7 +578,7 @@ void MenuItem::OnMouseLeftButtonUp(MouseButtonEventArg* e)
 {
     HeaderedItemsControl::OnMouseLeftButtonUp(e);
 
-    if (_isSeparator)
+    if (IsSeparator())
     {
         ;
     }
