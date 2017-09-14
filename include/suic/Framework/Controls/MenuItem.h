@@ -127,6 +127,10 @@ protected:
     void HandleMenuItemClick();
     void HandleLeftButtonDown();
 
+    void SetIsHighlighted(bool val);
+
+    static void SetIsHighlighted(DpObject* o, bool v);
+
     void OnItemsChanged(NotifyCollChangedEventArg* e);
     void OnVisualParentChanged(Element* oldParent);
 
