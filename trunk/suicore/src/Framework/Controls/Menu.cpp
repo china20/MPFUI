@@ -225,13 +225,12 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
 
     Selector::OnKeyDown(e);
 
-    e->SetHandled(true);
-
     if (e->GetKey() == suic::Key::kEscape)
     {
         if (NULL == popup)
         {
             SetSelectedItem(NULL);
+            e->SetHandled(true);
             return;
         }
     }
@@ -271,6 +270,8 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
         {
             pItem = NavigatePrevItem(items);
         }
+
+        e->SetHandled(true);
     }
     else if (e->GetKey() == suic::Key::kRight)
     {
@@ -282,10 +283,12 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
         {
             pItem = GetSelectedItem();
         }
+        e->SetHandled(true);
     }
     else if (e->GetKey() == suic::Key::kUp)
     {
         pItem = NavigatePrevItem(items);
+        e->SetHandled(true);
     }
     else if (e->GetKey() == suic::Key::kDown)
     {
@@ -302,6 +305,7 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
         {
             pItem = NavigateNextItem(items);
         }
+        e->SetHandled(true);
     }
     else if (e->GetKey() == suic::Key::kSpace)
     {
@@ -309,6 +313,7 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
         if (NULL != pMenuItem)
         {
             pMenuItem->HandleMenuItemClick();
+            e->SetHandled(true);
         }
 
         return;
