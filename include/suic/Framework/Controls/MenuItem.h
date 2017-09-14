@@ -125,7 +125,7 @@ protected:
 
     void HandleMenuItemEnter(bool fromKey);
     void HandleMenuItemClick();
-    void HandleLeftButtonDown();
+    void HandleLeftButtonDown(bool fromKey);
 
     void SetIsHighlighted(bool val);
 

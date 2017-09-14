@@ -71,6 +71,13 @@ public:
 
 protected:
 
+    void HandleRightKeyPopup();
+    MenuItem* MenuItemFromItem(Object* item);
+    Object* FindEndToBegin(suic::ItemsControl* items, int iEnd);
+    Object* FindBeginToEnd(suic::ItemsControl* items, int iBegin);
+
+protected:
+
     MenuBase* _ownerMenu;
 };
 
