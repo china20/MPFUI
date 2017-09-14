@@ -935,6 +935,20 @@ void ScrollViewer::OnScrollChanged(ScrollChangedEventArg* e)
     RaiseEvent(e);
 }
 
+void ScrollViewer::OnRequestBringIntoView(RequestBringIntoViewEventArg* e)
+{
+    Element* child = NULL;
+    FrameworkElement* fe = NULL;
+
+    e->SetHandled(true);
+
+    if (GetVisualChildrenCount() > 0)
+    {
+        child = this->GetVisualChild(0);
+        fe = (FrameworkElement*)e->GetOriginalSource();
+    }
+}
+
 void ScrollViewer::ScrollToVerticalOffsetByAnimation(int iStart, int iOffset, int duration, IEasingFunction* func)
 {
     ObjectPtr cacheObj = func;

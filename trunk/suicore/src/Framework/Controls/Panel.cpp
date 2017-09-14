@@ -678,4 +678,24 @@ void Panel::OnIsItemsHostChanged(bool oldIsItemsHost, bool newIsItemsHost)
     CheckItemsHost();
 }
 
+void Panel::OnRequestBringIntoView(RequestBringIntoViewEventArg* e)
+{
+    suic::Element* elem = (suic::Element*)e->GetOriginalSource();
+    suic::ItemsControl* itemsOwner = NULL;
+
+    itemsOwner = suic::ItemsControl::GetItemsOwner(this);
+
+    if (itemsOwner != NULL)
+    {
+        suic::Object* item = elem->GetDataContext().GetTarget();
+        e->SetHandled(true);
+
+        if (NULL != item)
+        {
+            itemsOwner->ScrollIntoView(item, false);
+        }
+        
+    }
+}
+
 }

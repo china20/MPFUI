@@ -776,7 +776,7 @@ void Popup::OnKeyDown(KeyboardEventArg* e)
     }
     else
     {
-        FrameworkElement::OnTextInput(e);
+        FrameworkElement::OnKeyDown(e);
     }
 
     if (!e->IsHandled())

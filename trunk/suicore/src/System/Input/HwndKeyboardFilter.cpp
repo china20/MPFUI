@@ -61,18 +61,26 @@ bool HwndKeyboardFilter::Process_WM_KEYDOWN(Element* rootElement, MessageParam* 
     ElementPtr focused;
     Element* currElem = NULL;
     bool handled = false;
+    Popup* popup(Assigner::Current()->GetTopTrackPopup());
 
-    if (pRoot != rootElement)
+    if (NULL == popup)
     {
-        handled = KeyboardNavigation::Current()->ProcessInput(pRoot, mp);
+        if (pRoot != rootElement)
+        {
+            handled = KeyboardNavigation::Current()->ProcessInput(pRoot, mp);
+        }
+
+        focused = GetFocusedElement(pRoot);
+        currElem = focused.get();
+
+        if (NULL == currElem)
+        {
+            currElem = pRoot;
+        }
     }
-
-    focused = GetFocusedElement(pRoot);
-    currElem = focused.get();
-
-    if (NULL == currElem)
+    else
     {
-        currElem = pRoot;
+        currElem = popup;
     }
 
     KeyboardEventArg ke(currElem, (int)mp->wp, CoreHelper::ToKeyFlags(mp->lp));

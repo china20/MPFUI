@@ -521,7 +521,7 @@ void ItemsControl::OnGotKeyboardFocusThunk(Element* sender, KeyboardFocusEventAr
             // 
             //  滚动到此元素
             // 
-            control->ScrollIntoView(obj->GetItem(), false);
+            // control->ScrollIntoView(obj->GetItem(), false);
         }
     }
 }

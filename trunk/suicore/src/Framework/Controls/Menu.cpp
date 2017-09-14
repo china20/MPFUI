@@ -11,6 +11,7 @@
 // Menu.cpp
 
 #include <Framework/Controls/Menu.h>
+#include <Framework/Controls/Separator.h>
 #include <Framework/Controls/MenuitemHelper.h>
 
 #include <System/Windows/CoreTool.h>
@@ -34,11 +35,6 @@ MenuBase::~MenuBase()
 
 void MenuBase::Dispose()
 {
-    if (_currentSelection)
-    {
-        _currentSelection = MenuItemPtr();
-    }
-
     Selector::Dispose();
 }
 
@@ -71,6 +67,107 @@ bool MenuBase::BlockRouteEvent() const
     return true;
 }
 
+suic::Object* MenuBase::NavigatePrevItem(suic::ItemsControl* items)
+{
+    suic::Object* pItem = NULL;
+    suic::Object* pSelItem = GetSelectedItem();
+
+    if (pSelItem == suic::DpProperty::UnsetValue())
+    {
+        pSelItem = NULL;
+    }
+
+    if (items->GetCount() > 0)
+    {
+        if (NULL == pSelItem)
+        {
+            pItem = items->GetItem(items->GetCount() - 1);
+        }
+        else
+        {
+            for (int i = 0; i < items->GetCount(); ++i)
+            {
+                suic::Object* temp = items->GetItem(i);
+
+                if (pSelItem == temp)
+                {
+                    i--;
+                    pItem = pSelItem;
+
+                    for (; i >= 0; --i)
+                    {
+                        temp = items->GetItem(i);
+                        if (temp->GetRTTIType() != suic::Separator::RTTIType())
+                        {
+                            pItem = temp;
+                            break;
+                        }
+                    }
+
+                    break;
+                }
+            }
+
+            if (NULL == pItem)
+            {
+                pItem = items->GetItem(items->GetCount() - 1);
+            }
+        }
+    }
+
+    return pItem;
+}
+
+suic::Object* MenuBase::NavigateNextItem(suic::ItemsControl* items)
+{
+    suic::Object* pItem = NULL;
+    suic::Object* pSelItem = GetSelectedItem();
+
+    if (pSelItem == suic::DpProperty::UnsetValue())
+    {
+        pSelItem = NULL;
+    }
+
+    if (items->GetCount() > 0)
+    {
+        if (NULL == pSelItem)
+        {
+            pItem = items->GetItem(0);
+        }
+        else
+        {
+            for (int i = 0; i < items->GetCount(); ++i)
+            {
+                suic::Object* temp = items->GetItem(i);
+                if (pSelItem == temp)
+                {
+                    i++;
+                    pItem = pSelItem;
+
+                    for (; i < items->GetCount(); ++i)
+                    {
+                        temp = items->GetItem(i);
+                        if (temp->GetRTTIType() != suic::Separator::RTTIType())
+                        {
+                            pItem = temp;
+                            break;
+                        }
+                    }
+    
+                    break;
+                }
+            }
+
+            if (NULL == pItem)
+            {
+                pItem = items->GetItem(0);
+            }
+        }
+    }
+
+    return pItem;
+}
+
 void MenuBase::OnApplyTemplate()
 {
     Selector::OnApplyTemplate();
@@ -92,7 +189,165 @@ void MenuBase::OnTextInput(KeyboardEventArg* e)
 
 void MenuBase::OnKeyDown(KeyboardEventArg* e)
 {
+    suic::Object* pItem = NULL;
+    suic::ItemsControl* items = this;
+    suic::MenuItem* pMenuItem = NULL;
+    int trackPopupCount = TrackingMenuOp::Ins()->GetTrackPopupCount();
+    Popup* popup = TrackingMenuOp::Ins()->GetTopPopup();
+
+    // 
+    // 子菜单弹出了
+    // 
+    if (NULL != popup && popup != GetParentPopup())
+    {
+        pMenuItem = suic::DynamicCast<suic::MenuItem>(popup->GetPlacementTarget());
+        items = pMenuItem;
+    }
+
     Selector::OnKeyDown(e);
+
+    e->SetHandled(true);
+
+    if (e->GetKey() == suic::Key::kEscape)
+    {
+        if (NULL == popup)
+        {
+            SetSelectedItem(NULL);
+            return;
+        }
+    }
+    else if (e->GetKey() == suic::Key::kLeft)
+    {
+        // 关掉子菜单
+        if (NULL != popup)
+        {
+            GetMenuPopup()->ClosePopup(popup);
+
+            if (NULL != pMenuItem)
+            {
+                pMenuItem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+            }
+            
+            if (trackPopupCount == 1)
+            {
+                if (GetSelectedItem() == GetItem(0))
+                {
+                    pItem = GetItem(GetCount() - 1);
+                }
+                else
+                {
+                    pItem = NavigatePrevItem(this);
+                }
+
+                pMenuItem = suic::DynamicCast<suic::MenuItem>(GetContainerFromItem(pItem));
+                pMenuItem->HandleLeftButtonDown();
+            }
+
+            UpdateLayout();
+
+            return;
+        }
+        else
+        {
+            pItem = NavigatePrevItem(items);
+        }
+    }
+    else if (e->GetKey() == suic::Key::kRight)
+    {
+        if (NULL == popup)
+        {
+            pItem = NavigateNextItem(items);
+        }
+        else
+        {
+            pItem = GetSelectedItem();
+        }
+    }
+    else if (e->GetKey() == suic::Key::kUp)
+    {
+        pItem = NavigatePrevItem(items);
+    }
+    else if (e->GetKey() == suic::Key::kDown)
+    {
+        if (popup == NULL)
+        {
+            pItem = GetSelectedItem();
+            pMenuItem = suic::DynamicCast<suic::MenuItem>(items->GetContainerFromItem(pItem));
+            if (NULL != pMenuItem)
+            {
+                pMenuItem->HandleLeftButtonDown();               
+            }
+        }
+        else
+        {
+            pItem = NavigateNextItem(items);
+        }
+    }
+    else if (e->GetKey() == suic::Key::kSpace)
+    {
+        pMenuItem = suic::DynamicCast<suic::MenuItem>(items->GetContainerFromItem(GetSelectedItem()));
+        if (NULL != pMenuItem)
+        {
+            pMenuItem->HandleMenuItemClick();
+        }
+
+        return;
+    }
+
+    if (NULL != pItem && pItem != suic::DpProperty::UnsetValue())
+    {
+        pMenuItem = suic::DynamicCast<suic::MenuItem>(items->GetContainerFromItem(pItem));
+        if (NULL != pMenuItem)
+        {
+            Menu* pMenu = suic::DynamicCast<Menu>(pMenuItem->GetParent());
+
+            if (e->GetKey() == suic::Key::kRight && popup != NULL && (pMenu != NULL || !pMenuItem->IsSubmenu()))
+            {
+                suic::MenuItem* trackMenuItem = NULL;
+                pMenuItem = suic::DynamicCast<suic::MenuItem>(TrackingMenuOp::Ins()->GetTrackingMenuItem());
+                pMenuItem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+                
+                if (GetSelectedItem() == GetItem(GetCount() - 1))
+                {
+                    pItem = GetItem(0);
+                }
+                else
+                {
+                    pItem = NavigateNextItem(this);
+                }
+
+                trackMenuItem = suic::DynamicCast<suic::MenuItem>(GetContainerFromItem(pItem));
+
+                if (pMenuItem != trackMenuItem)
+                {
+                    pMenuItem = trackMenuItem;
+                    GetMenuPopup()->CloseAllPopup(false);
+                    trackMenuItem->HandleLeftButtonDown();
+                }
+            }
+            else if (pMenuItem->IsSubmenu())
+            {
+                if (e->GetKey() == suic::Key::kRight)
+                {
+                    pMenuItem->HandleMenuItemEnter(true);
+                }
+            }
+
+            if (NULL != pMenuItem)
+            {
+                pMenuItem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+            }
+        }
+
+        if (NULL != popup)
+        {
+            popup->UpdateLayout();
+        }
+        else
+        {
+            UpdateLayout();
+        }
+    }
 }
 
 void MenuBase::OnMouseEnter(MouseButtonEventArg* e)
@@ -168,6 +423,55 @@ void MenuBase::OnMouseLeftButtonUp(MouseButtonEventArg* e)
     return;
 }
 
+void MenuBase::OnSelectionChanged(SelectionChangedEventArg* e)
+{
+    Element* container = NULL;
+
+    e->SetHandled(true);
+
+    if (e->GetRemovedItems()->GetCount() > 0)
+    {
+        container = GetContainerForItem(e->GetRemovedItems()->GetItem(0));
+        if (NULL != container)
+        {
+            container->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::False);
+            UpdateLayout();
+        }
+    }
+}
+
+void MenuBase::OnClearItem(DpObject* elem, ItemEntry* item)
+{
+    Selector::OnClearItem(elem, item);
+    MenuItem* pMenuItem = RTTICast<MenuItem>(elem);
+    if (NULL != pMenuItem && pMenuItem->IsHighlighted())
+    {
+        GetSelectionChanger()->Begin();
+        pMenuItem->ClearValue(MenuItem::IsHighlightedProperty);
+        GetSelectionChanger()->Clear();
+    }
+}
+
+void MenuBase::PrepareContainerForItemOverride(DpObject* elem, ItemEntry* item)
+{
+    Selector::PrepareContainerForItemOverride(elem, item);
+
+    if (elem->GetRTTIType() != suic::Separator::RTTIType() && 
+        item->GetItem() == GetSelectedItem())
+    {
+        elem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+    }
+    else
+    {
+        elem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::False);
+    }
+}
+
+Popup* MenuBase::GetParentPopup()
+{
+    return NULL;
+}
+
 void Menu::StaticInit()
 {
 }
@@ -196,7 +500,7 @@ void ContextMenu::OnIsOpenPropChanged(DpObject* d, DpPropChangedEventArg* e)
         {
             menu->HookupParentPopup();
         }
-        TrackingMenuPopupHook::Ins()->TrackContextMenu(menu->_parentPopup, menu, 0, 0);
+        TrackingMenuOp::Ins()->TrackContextMenu(menu->_parentPopup, menu, 0, 0);
     }
     else
     {
@@ -304,6 +608,7 @@ void ContextMenu::CloseContextMenu()
 
 void ContextMenu::OnPopupOpened(Object* sender, EventArg* e)
 {
+    SetSelectedItem(NULL);
 }
 
 void ContextMenu::OnPopupClosed(Object* sender, EventArg* e)

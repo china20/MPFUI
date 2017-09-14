@@ -99,6 +99,8 @@ protected:
 
     virtual void OnIsItemsHostChanged(bool oldIsItemsHost, bool newIsItemsHost);
 
+    virtual void OnRequestBringIntoView(RequestBringIntoViewEventArg* e);
+
 protected:
 
     virtual void GenerateChildren();

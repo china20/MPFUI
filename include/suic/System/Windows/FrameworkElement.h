@@ -228,6 +228,7 @@ public:
 
     static void OnToolTipOpeningThunk(Element* sender, ToolTipEventArg* e);
     static void OnToolTipClosingThunk(Element* sender, ToolTipEventArg* e);
+    static void OnRequestBringIntoViewThunk(DpObject* sender, RoutedEventArg* e);
 
     static void OnFindToolTip(Object* target, RoutedEventArg* e);
 
@@ -396,6 +397,8 @@ public:
 
     virtual void OnToolTipOpening(ToolTipEventArg* e);
     virtual void OnToolTipClosing(ToolTipEventArg* e);
+
+    virtual void OnRequestBringIntoView(RequestBringIntoViewEventArg* e);
 
 protected:
 

@@ -699,10 +699,10 @@ Element* KeyboardNavigationImpl::GetPrevTab(Element* elem, Element* container, b
 
         if (kNavMode == KNavMode::knOnce)
         {
-            Element* obj3 = GetNextTabInGroup(NULL, container, kNavMode);
-            if (obj3 != NULL)
+            Element* nextTab = GetNextTabInGroup(NULL, container, kNavMode);
+            if (nextTab != NULL)
             {
-                return GetPrevTab(NULL, obj3, true);
+                return GetPrevTab(NULL, nextTab, true);
             }
 
             if (IsTabStop(container))
@@ -739,36 +739,36 @@ Element* KeyboardNavigationImpl::GetPrevTab(Element* elem, Element* container, b
         }
     }
 
-    Element* obj4 = NULL;
-    Element* obj5 = elem;
+    Element* prevTemp = NULL;
+    Element* prevTab = elem;
 
-    while ((obj5 = GetPrevTabInGroup(obj5, container, kNavMode)) != NULL)
+    while ((prevTab = GetPrevTabInGroup(prevTab, container, kNavMode)) != NULL)
     {
-        if ((obj5 == container) && (kNavMode == KNavMode::knLocal))
+        if ((prevTab == container) && (kNavMode == KNavMode::knLocal))
         {
             break;
         }
 
-        if (IsTabStop(obj5) && !IsGroup(obj5))
+        if (IsTabStop(prevTab) && !IsGroup(prevTab))
         {
-            return obj5;
+            return prevTab;
         }
 
-        if (obj4 == obj5)
+        if (prevTemp == prevTab)
         {
             break;
         }
 
-        if (obj4 == NULL)
+        if (prevTemp == NULL)
         {
-            obj4 = obj5;
+            prevTemp = prevTab;
         }
         
-        Element* obj6 = GetPrevTab(NULL, obj5, true);
+        Element* prevTab2 = GetPrevTab(NULL, prevTab, true);
 
-        if (obj6 != NULL)
+        if (prevTab2 != NULL)
         {
-            return obj6;
+            return prevTab2;
         }
     }
 
@@ -1233,27 +1233,27 @@ Element* KeyboardNavigationImpl::GetNextTab(Element* elem, Element* container, b
         return GetNextTab(container, groupParent, onlyDown);
     }
 
-    Element* obj4 = NULL;
-    Element* obj5 = elem;
+    Element* nextTemp = NULL;
+    Element* nextTab = elem;
     KNavMode tabType = keyNavMode;
 
-    while ((obj5 = GetNextTabInGroup(obj5, container, tabType)) != NULL)
+    while ((nextTab = GetNextTabInGroup(nextTab, container, tabType)) != NULL)
     {
-        if (obj4 == obj5)
+        if (nextTemp == nextTab)
         {
             break;
         }
 
-        if (obj4 == NULL)
+        if (nextTemp == NULL)
         {
-            obj4 = obj5;
+            nextTemp = nextTab;
         }
 
-        Element* obj6 = GetNextTab(NULL, obj5, true);
+        Element* nextTab2 = GetNextTab(NULL, nextTab, true);
 
-        if (obj6 != NULL)
+        if (nextTab2 != NULL)
         {
-            return obj6;
+            return nextTab2;
         }
 
         if (tabType == KNavMode::knOnce)
@@ -1315,7 +1315,8 @@ bool KeyboardNavigationImpl::Navigate(Element* elem, FocusNavDirection req, Modi
     if (NULL != fe && fe != elem)
     {
         fe->Focus();
-        //ShowFocusVisual(fe);
+        fe->BringIntoView();
+
         return fe->IsKeyboardFocusWithin();
     }
     else

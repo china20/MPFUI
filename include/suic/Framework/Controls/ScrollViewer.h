@@ -150,6 +150,7 @@ protected:
     void OnMouseWheel(MouseWheelEventArg* e);
 
     virtual void OnScrollChanged(ScrollChangedEventArg* e);
+    virtual void OnRequestBringIntoView(RequestBringIntoViewEventArg* e);
 
 private:
 

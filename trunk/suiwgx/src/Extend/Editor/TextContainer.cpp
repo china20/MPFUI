@@ -353,7 +353,6 @@ void TextContainer::OnArrange(const suic::Size& arrangeSize)
 void TextContainer::OnRenderSizeChanged(suic::SizeChangedInfo& e)
 {
     suic::FrameworkElement::OnRenderSizeChanged(e);
-    //UpdateViewRect();
 }
 
 void TextContainer::UpdateViewRect()
@@ -398,7 +397,6 @@ void TextContainer::InvalidateScrollInfo(bool bRaised)
 
 suic::Size TextContainer::OnMeasure(const suic::Size& constraint)
 {
-    //_caret->Measure(constraint);
     MeasureChild(_caret, constraint);
 
     suic::IScrollInfo* scrInfo = GetScrollInfo();
@@ -439,11 +437,8 @@ void TextContainer::OnTextInput(suic::KeyboardEventArg* e)
 {
     suic::Uint64 lr = 0;
 
-    /*if (__ToRenderHost()->GetReadOnly())
-    {
-        e->SetHandled(true);
-    }
-    else */if (e->GetKey() != suic::Key::kTab || (__ToRenderHost()->GetAcceptsTab() && !e->IsControlDown() && !e->IsShiftDown()))
+    if (e->GetKey() != suic::Key::kTab || 
+        (__ToRenderHost()->GetAcceptsTab() && !e->IsControlDown() && !e->IsShiftDown()))
     {
         e->SetHandled(true);
         DoMessage(WM_CHAR, suic::Assigner::Lastmp()->wp, suic::Assigner::Lastmp()->lp, &lr);
@@ -455,10 +450,7 @@ void TextContainer::OnImeEvent(suic::MessageEventArg* e)
     suic::Uint64 lr = 0;
     suic::MessageParam* mp = e->GetMessageParam();
 
-    //if (!__ToRenderHost()->GetReadOnly())
-    {
-        DoMessage(mp->message, mp->wp, mp->lp, &lr);
-    }
+    DoMessage(mp->message, mp->wp, mp->lp, &lr);
 
     if (S_OK == lr)
     {
@@ -483,24 +475,6 @@ void TextContainer::OnKeyUp(suic::KeyboardEventArg* e)
     DoMessage(WM_KEYUP, suic::Assigner::Lastmp()->wp, suic::Assigner::Lastmp()->lp, &lr);
 }
 
-/*bool TextContainer::OnEvent(suic::Object* sender, suic::MessageParam* mp)
-{
-    suic::Uint64 lr = 0;
-    bool handled = CallMessage(mp->msg, mp->wp, mp->lp, &lr);
-
-    if (handled)
-    {
-        mp->result = (suic::Uint32)lr;
-    }
-
-    if (mp->msg == WM_IME_COMPOSITION)
-    {
-        return false;
-    }
-
-    return handled;
-}*/
-
 void TextContainer::OnLoaded(suic::LoadedEventArg* e)
 {
 
@@ -511,30 +485,16 @@ void TextContainer::OnUnloaded(suic::LoadedEventArg* e)
     __ToRenderHost()->_hwnd = NULL;
 }
 
-//void TextContainer::OnGotFocus(suic::RoutedEventArg* e)
-//{
-//    //
-//    // 鼠标压下时已经设置过
-//    //
-//    if (suic::MouseDevice::GetLeftButton() != suic::MouseButtonState::mbMousePress)
-//    {
-//        GotFocus();
-//    }
-//}
-
 void TextContainer::OnLostFocus(suic::RoutedEventArg* e)
 {
     DoMessage(WM_KILLFOCUS, 0, 0, NULL);
     ShowCaret(false);
-
-    //suic::Debug::Trace(_U("TextContainer::OnLostFocus================\n"));
 }
 
 void TextContainer::OnLostKeyboardFocus(suic::KeyboardFocusEventArg* e)
 {
     DoMessage(WM_KILLFOCUS, 0, 0, NULL);
     ShowCaret(false);
-    //suic::Debug::Trace(_U("TextContainer::OnLostKeyboardFocus================[%d]\n"), _hostElem->IsFocused());
 }
 
 void TextContainer::OnMouseEnter(suic::MouseButtonEventArg* e)
@@ -545,7 +505,6 @@ void TextContainer::OnMouseEnter(suic::MouseButtonEventArg* e)
 
 void TextContainer::OnMouseMove(suic::MouseButtonEventArg* e)
 {
-    //e->SetHandled(true);
     DoMessage(WM_MOUSEMOVE, suic::Assigner::Lastmp()->wp, suic::Assigner::Lastmp()->lp, NULL);
 }
 
@@ -584,22 +543,18 @@ void TextContainer::OnMouseLeftButtonDown(suic::MouseButtonEventArg* e)
     {
         DoMessage(WM_LBUTTONDOWN, suic::Assigner::Lastmp()->wp, suic::Assigner::Lastmp()->lp, NULL);
     }
-
-    //e->SetHandled(true);
 }
 
 void TextContainer::OnMouseLeftButtonDbclk(suic::MouseButtonEventArg* e)
 {
     GotFocus();
     DoMessage(WM_LBUTTONDBLCLK, suic::Assigner::Lastmp()->wp, suic::Assigner::Lastmp()->lp, NULL);
-    //e->SetHandled(true);
 }
 
 void TextContainer::OnMouseLeftButtonUp(suic::MouseButtonEventArg* e)
 {
     FrameworkElement::OnMouseLeftButtonUp(e);
     DoMessage(WM_LBUTTONUP, suic::Assigner::Lastmp()->wp, suic::Assigner::Lastmp()->lp, NULL);
-    //e->SetHandled(true);
 }
 
 }

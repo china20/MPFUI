@@ -16,10 +16,14 @@
 
 #include <System/Windows/CommandSource.h>
 #include <System/Windows/CoreTool.h>
+
 #include <System/Input/MouseDevice.h>
+#include <System/Input/KeyboardNavigation.h>
+
 #include <System/Tools/EventHelper.h>
 #include <System/Tools/HwndHelper.h>
 #include <System/Tools/VisualTreeOp.h>
+#include <System/Tools/LogicalTreeOp.h>
 
 namespace suic
 {
@@ -110,6 +114,7 @@ public:
 
 MenuItem::MenuItem()
 {
+    _fromKey = false;
     _isSeparator = false;
     _commandSource = NULL;
 }
@@ -127,11 +132,6 @@ void MenuItem::Dispose()
     if (_submenuPopup)
     {
         _submenuPopup = NULL;
-    }
-
-    if (_currentSelection)
-    {
-        _currentSelection = NULL;
     }
 
     HeaderedItemsControl::Dispose();
@@ -190,7 +190,10 @@ void MenuItem::StaticInit()
         IsPressedProperty = DpProperty::Register(_T("IsPressed"), RTTIType(), Boolean::RTTIType()
             , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsNone));
         IsHighlightedProperty = DpProperty::Register(_T("IsHighlighted"), RTTIType(), Boolean::RTTIType()
-            , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsRender));
+            , DpPropMemory::GetPropMeta(Boolean::False, PropMetadataOptions::AffectsRender, &MenuItem::OnIsSelectedPropChanged));
+
+        //IsHighlightedProperty = Selector::IsSelectedProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(Boolean::False, 
+        //    PropMetadataOptions::AffectsRender, &MenuItem::OnIsSelectedPropChanged));
 
         RoleProperty = DpProperty::Register(_T("Role"), RTTIType(), Integer::RTTIType()
             , DpPropMemory::GetPropMeta(MenuItemRoleBox::TopLevelItemBox, PropMetadataOptions::AffectsNone));
@@ -215,6 +218,44 @@ void MenuItem::OnIsCheckablePropChanged(DpObject* target, DpPropChangedEventArg*
 {
     MenuItem* pItem = DynamicCast<MenuItem>(target);
     pItem->UpdateRole();
+}
+
+void MenuItem::OnIsSelectedPropChanged(DpObject* d, DpPropChangedEventArg* e)
+{
+    MenuItem* container = RTTICast<MenuItem>(d);
+    bool newValue = e->GetNewValue()->ToBool();
+
+    Selector* parentSelector = container->GetParentSelector();
+
+    if (NULL == parentSelector)
+    {
+        parentSelector = NULL;
+    }
+    else
+    {
+        parentSelector->NotifyIsSelectedChanged(container, newValue);
+    }
+}
+
+Selector* MenuItem::GetParentSelector()
+{
+    Selector* parentSelector = NULL;
+    Element* current = this;
+
+    // 逻辑父元素
+    ItemsControl* parent = RTTICast<ItemsControl>(LogicalTreeOp::GetParent(current));
+    while (parent != NULL)
+    {
+        parentSelector = RTTICast<Selector>(parent);
+        if (NULL != parentSelector)
+        {
+            break;
+        }
+
+        parent = RTTICast<ItemsControl>(LogicalTreeOp::GetParent(parent));
+    }
+
+    return parentSelector;
 }
 
 bool MenuItem::IsSubmenuOpen()
@@ -282,10 +323,11 @@ void MenuItem::OnApplyTemplate()
 {
     HeaderedItemsControl::OnApplyTemplate();
     _submenuPopup = GetTemplateChild(_U("PART_Popup"));
-    if (_submenuPopup)
+    if (NULL != _submenuPopup)
     {
         _submenuPopup->SetPlacementTarget(this);
         _submenuPopup->Closed += EventHandler(this, &MenuItem::OnPopupClosed);
+        _submenuPopup->Opened += EventHandler(this, &MenuItem::OnPopupOpened);
 
         MenuItem* parent = DynamicCast<MenuItem>(GetParent());
         if (NULL != parent)
@@ -328,6 +370,29 @@ void MenuItem::OnClick()
 void MenuItem::OnPopupClosed(Object* source, EventArg* e)
 {
     SetValue(IsSubmenuOpenProperty, Boolean::False);
+}
+
+void MenuItem::OnPopupOpened(Object* source, EventArg* e)
+{
+    if (_fromKey)
+    {
+        _fromKey = false;
+        /*ItemsControl* itemsCtrl = DynamicCast<ItemsControl>(GetParent());
+        Panel* itemsHost = NULL;
+        MenuItem* menuItem = NULL;
+
+        if (NULL != itemsCtrl)
+        {
+            itemsHost = itemsCtrl->GetItemsHost();
+        }
+
+        if (NULL!= itemsHost && itemsHost->GetVisibleChildrenCount() > 0)
+        {
+            menuItem = DynamicCast<MenuItem>(itemsHost->GetChildren()->GetAt(0));
+            menuItem->SetValue(IsHighlightedProperty, Boolean::True);
+            _submenuPopup->UpdateLayout();
+        }*/
+    }
 }
 
 void MenuItem::OnSubmenuOpened(RoutedEventArg* e)
@@ -430,19 +495,27 @@ void MenuItem::PrepareHeaderedItemsControl(ItemEntry* item, ItemsControl* parent
     HeaderedItemsControl::PrepareHeaderedItemsControl(item, parentItemsControl);
 }
 
-void MenuItem::OnMouseEnter(MouseButtonEventArg* e)
+void MenuItem::OnKeyDown(KeyboardEventArg* e)
 {
-    if (!IsEnabled())
+    if (e->GetKey() == Key::kSpace || 
+        (e->GetKey() == Key::kReturn && KeyboardNavigation::IsAcceptsReturn(this)))
     {
-        return;
+        Menu* pMenu = suic::DynamicCast<Menu>(LogicalTreeOp::GetParent(this));
+        if (NULL != pMenu)
+        {
+            pMenu->OnKeyDown(e);
+            e->SetHandled(true);
+        }
     }
+}
 
-    e->SetHandled(true);
-
-    if (!IsSeparator())
+void MenuItem::HandleMenuItemEnter(bool fromKey)
+{
+    if (!IsSeparator() && IsEnabled())
     {
         SetValue(IsHighlightedProperty, Boolean::True);
-        
+
+        MenuItem* menuItem = NULL;
         ItemsControl* itemsCtrl = DynamicCast<ItemsControl>(GetParent());
         Panel* itemsHost = NULL;
 
@@ -457,7 +530,7 @@ void MenuItem::OnMouseEnter(MouseButtonEventArg* e)
         {
             for (int i = 0; i < itemsHost->GetVisibleChildrenCount(); ++i)
             {
-                MenuItem* menuItem = DynamicCast<MenuItem>(itemsHost->GetChildren()->GetAt(i));
+                menuItem = DynamicCast<MenuItem>(itemsHost->GetChildren()->GetAt(i));
 
                 if (menuItem->IsSubmenuOpen())
                 {
@@ -491,53 +564,47 @@ void MenuItem::OnMouseEnter(MouseButtonEventArg* e)
                     }
                     else
                     {
+                        _fromKey = fromKey;
                         _submenuPopup->SetPlacement(PlacementMode::pmRight);
                         GetMenuPopup()->TrackSubMenuPopup(_submenuPopup.get(), this);
                     }
                 }
             }
         }
-        else
-        {
-            Selector::SelectContainer(this, true);
-        }
     }
+}
+
+void MenuItem::OnMouseEnter(MouseButtonEventArg* e)
+{
+    e->SetHandled(true);
+    HandleMenuItemEnter(false);
     HeaderedItemsControl::OnMouseEnter(e);
 }
 
 void MenuItem::OnMouseLeave(MouseButtonEventArg* e)
 {
-    MenuItem* overItem = DynamicCast<MenuItem>(e->GetOriginalSource());
-    VisualTreeOp::GetVisualRoot(this);
-
-    SetValue(IsHighlightedProperty, Boolean::False);
-
-    //
-    // 如果是子菜单弹出并且在同一个菜单元素内，则关闭
-    //
-    if (IsSubmenuOpen() && overItem && overItem->GetParent() == GetParent())
+    if (!IsSeparator())
     {
-     }
+        MenuItem* overItem = DynamicCast<MenuItem>(e->GetOriginalSource());
+        VisualTreeOp::GetVisualRoot(this);
 
-    Selector::SelectContainer(this, false);
-    InvalidateVisual();
+        SetValue(IsHighlightedProperty, Boolean::False);
+
+        InvalidateVisual();
+    }
 
     e->SetHandled(true);
     HeaderedItemsControl::OnMouseLeave(e);
 }
 
-void MenuItem::HandleLeftButtonDown(MouseButtonEventArg* e)
+void MenuItem::HandleLeftButtonDown()
 {
-    e->SetHandled(true);
-    e->SetSource(this);
-
     if (IsSeparator())
     {
         ;
     }
     // 如果子菜单已经弹出并且已经打开，则关闭
-    else if (GetMenuPopup()->IsInTracking() && 
-        GetMenuPopup()->GetTrackingMenuItem() == this)
+    else if (GetMenuPopup()->IsInTracking() && GetMenuPopup()->GetTrackingMenuItem() == this)
     {
         GetMenuPopup()->ClosePopup(_submenuPopup.get());
     }
@@ -552,7 +619,7 @@ void MenuItem::HandleLeftButtonDown(MouseButtonEventArg* e)
                 GetMenuPopup()->TrackMenuPopup(_submenuPopup.get(), this, menu);
             }
         }
-        else if (IsEnabled())/* if (!GetItemEntry()->HasFlag(ItemEntry::fDisabled))*/
+        else if (IsEnabled())
         {
             // 单击菜单
             if (IsCheckable())
@@ -570,24 +637,29 @@ void MenuItem::OnMouseLeftButtonDown(MouseButtonEventArg* e)
     if (!e->IsHandled())
     {
         InvalidateVisual();
-        HandleLeftButtonDown(e);
+        e->SetHandled(true);
+        e->SetSource(this);
+        HandleLeftButtonDown();
     }
 }
 
 void MenuItem::OnMouseLeftButtonUp(MouseButtonEventArg* e)
 {
     HeaderedItemsControl::OnMouseLeftButtonUp(e);
+    HandleMenuItemClick();
+}
 
+void MenuItem::HandleMenuItemClick()
+{
     if (IsSeparator())
     {
         ;
     }
-    else if (GetMenuPopup()->IsInTracking() && 
-        GetMenuPopup()->GetTrackingMenuItem() == this)
+    else if (GetMenuPopup()->IsInTracking() && GetMenuPopup()->GetTrackingMenuItem() == this)
     {
         ;
     }
-    else if (!IsSubmenu() && IsEnabled()/*!GetItemEntry()->HasFlag(ItemEntry::fDisabled)*/)
+    else if (!IsSubmenu() && IsEnabled())
     {
         Object* target = this;
         ICommand* pCmd = DynamicCast<ICommand>(GetContainerItem());

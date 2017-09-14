@@ -47,6 +47,9 @@ public:
 
     bool BlockRouteEvent() const;
 
+    suic::Object* NavigatePrevItem(suic::ItemsControl* items);
+    suic::Object* NavigateNextItem(suic::ItemsControl* items);
+
     void OnApplyTemplate();
     void OnInitialized(EventArg* e);
 
@@ -60,10 +63,15 @@ public:
     void OnMouseLeave(MouseButtonEventArg* e);
     void OnMouseLeftButtonUp(MouseButtonEventArg* e);
 
+    void OnSelectionChanged(SelectionChangedEventArg* e);
+    void OnClearItem(DpObject* elem, ItemEntry* item);
+    void PrepareContainerForItemOverride(DpObject* elem, ItemEntry* item);
+
+    virtual Popup* GetParentPopup();
+
 protected:
 
     MenuBase* _ownerMenu;
-    MenuItemPtr _currentSelection;
 };
 
 class SUICORE_API Menu : public MenuBase

@@ -12,6 +12,7 @@
 #define _UIMENUITEM_H_
 
 #include <Framework/Controls/Popup.h>
+#include <Framework/Controls/Selector.h>
 #include <Framework/Controls/HeaderedItemsControl.h>
 
 namespace suic
@@ -70,6 +71,7 @@ public:
     static void OnIsCheckedPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIsSeparatorPropChanged(DpObject* d, DpPropChangedEventArg* e);
     static void OnIsCheckablePropChanged(DpObject* target, DpPropChangedEventArg* e);
+    static void OnIsSelectedPropChanged(DpObject* d, DpPropChangedEventArg* e);
 
     RTTIOfClass(MenuItem)
 
@@ -89,6 +91,7 @@ public:
     void SetIsCheckable(bool val);
 
     bool IsSeparator();
+    bool IsHighlighted();
 
     bool IsChecked();
     void SetIsChecked(bool val);
@@ -101,6 +104,7 @@ public:
 public:
 
     void OnPopupClosed(Object* source, EventArg* e);
+    void OnPopupOpened(Object* source, EventArg* e);
 
 public:
 
@@ -119,8 +123,14 @@ protected:
 
     void CloseChildSubmenu();
 
+    void HandleMenuItemEnter(bool fromKey);
+    void HandleMenuItemClick();
+    void HandleLeftButtonDown();
+
     void OnItemsChanged(NotifyCollChangedEventArg* e);
     void OnVisualParentChanged(Element* oldParent);
+
+    void OnKeyDown(KeyboardEventArg* e);
 
     void OnMouseEnter(MouseButtonEventArg* e);
     void OnMouseLeave(MouseButtonEventArg* e);
@@ -133,15 +143,15 @@ private:
 
     void UpdateRole();
     Element* GetTargetElement();
+    Selector* GetParentSelector();
     void SetIsSeparator(bool val);
-    void HandleLeftButtonDown(MouseButtonEventArg* e);
 
 protected:
 
+    bool _fromKey;
     bool _isSeparator;
     PopupPtr _submenuPopup;
     ICommandSource* _commandSource;
-    MenuItemPtr _currentSelection;
 
     friend class MenuBase;
 };
@@ -174,6 +184,11 @@ inline void MenuItem::SetIsCheckable(bool val)
 inline bool MenuItem::IsSeparator()
 {
     return _isSeparator;
+}
+
+inline bool MenuItem::IsHighlighted()
+{
+    return GetValue(IsHighlightedProperty)->ToBool();
 }
 
 inline void MenuItem::SetIsSeparator(bool val)

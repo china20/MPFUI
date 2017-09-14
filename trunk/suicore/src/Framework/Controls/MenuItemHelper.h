@@ -15,13 +15,13 @@
 namespace suic
 {
 
-class TrackingMenuPopupHook : public Object
+class TrackingMenuOp : public Object
 {
 public:
 
-    TrackingMenuPopupHook();
+    TrackingMenuOp();
 
-    static TrackingMenuPopupHook* Ins();
+    static TrackingMenuOp* Ins();
 
     void TrackContextMenu(Popup* popup, Element* menu, int x, int y);
     void TrackMenuPopup(Popup* popup, Element* item, Element* menu);
@@ -51,6 +51,11 @@ public:
 
     void AddPopupMenuItem(Popup* popup);
 
+    int GetTrackPopupCount() 
+    {
+        return _popups.GetCount();
+    }
+
     Element* GetTrackingMenu()
     {
         return _trackingMenu;
@@ -59,6 +64,18 @@ public:
     Popup* GetRootPopup() const
     {
         return _popup;
+    }
+
+    Popup* GetTopPopup() const
+    {
+        if (_popups.GetCount() > 0)
+        {
+            return (Popup*)_popups.GetItem(_popups.GetCount() - 1);
+        }
+        else
+        {
+            return _popup;
+        }
     }
 
     Element* GetTrackingMenuItem()
@@ -88,6 +105,6 @@ protected:
     bool _mouseCapture;
 };
 
-#define GetMenuPopup() TrackingMenuPopupHook::Ins()
+#define GetMenuPopup() TrackingMenuOp::Ins()
 
 }

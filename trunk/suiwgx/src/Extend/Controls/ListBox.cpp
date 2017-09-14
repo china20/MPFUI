@@ -108,7 +108,7 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
     if (NULL != scrollView && (IsLogicalVertical() || bHori))
     {
         if (e->GetKey() == Key::kSpace || 
-            (e->GetKey() == Key::kReturn && KeyboardNavigation::IsAcceptsReturn(this)) )
+            (e->GetKey() == Key::kReturn && KeyboardNavigation::IsAcceptsReturn(this)))
         {
             ListBoxItem* pItem = RTTICast<ListBoxItem>(e->GetOriginalSource());
             if (NULL != pItem)
@@ -203,7 +203,7 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
             if (NULL != itemb)
             {
                 focusElem = GetContainerFromItem(item);
-                if (NULL == focusElem/* || !IsOnCurrentPage(focusElem, dAxis, true)*/)
+                if (NULL == focusElem || !IsOnCurrentPage(focusElem, dAxis, true))
                 {
                     MakeVisible(item, offset, itemSize, false);
                 }

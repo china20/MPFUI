@@ -131,7 +131,7 @@
             <Trigger Property="IsSubmenuOpen" Value="True" >
                 <Setter Property="Background" Value="Green" />
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="True" >
+            <Trigger Property="IsHighlighted" Value="True" >
                 <Setter Property="Background" Value="Blue" />
             </Trigger>
         </Style.Triggers>

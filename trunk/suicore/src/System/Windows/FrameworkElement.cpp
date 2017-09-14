@@ -470,6 +470,13 @@ void FrameworkElement::OnToolTipClosingThunk(Element* sender, ToolTipEventArg* e
     fe->OnToolTipClosing(e);
 }
 
+void FrameworkElement::OnRequestBringIntoViewThunk(DpObject* sender, RoutedEventArg* e)
+{
+    FrameworkElement* fe = CASTTOFE(sender);
+    RequestBringIntoViewEventArg* re = (RequestBringIntoViewEventArg*)e;
+    fe->OnRequestBringIntoView(re);
+}
+
 void FrameworkElement::StaticInit()
 {
     if (NULL == WidthProperty)
@@ -552,6 +559,8 @@ void FrameworkElement::StaticInit()
 
         EventHelper::RegisterClassHandler(RTTIType(), ToolTipOpeningEvent, new ToolTipEventHandler(&FrameworkElement::OnToolTipOpeningThunk), false);
         EventHelper::RegisterClassHandler(RTTIType(), ToolTipClosingEvent, new ToolTipEventHandler(&FrameworkElement::OnToolTipClosingThunk), false);
+
+        EventHelper::RegisterClassHandler(RTTIType(), RequestBringIntoViewEvent, new RoutedEventHandler(&FrameworkElement::OnRequestBringIntoViewThunk), false);
     }
 }
 
@@ -1084,6 +1093,11 @@ void FrameworkElement::OnToolTipOpening(ToolTipEventArg* e)
 }
 
 void FrameworkElement::OnToolTipClosing(ToolTipEventArg* e)
+{
+
+}
+
+void FrameworkElement::OnRequestBringIntoView(RequestBringIntoViewEventArg* e)
 {
 
 }

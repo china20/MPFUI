@@ -196,6 +196,10 @@ public:
     void AddText(String val);
     void RemoveChild(Object* child);
 
+    void OnTextInput(KeyboardEventArg* e);
+    void OnKeyDown(KeyboardEventArg* e);
+    void OnKeyUp(KeyboardEventArg* e);
+
     virtual void OnClosing(CancelEventArg& e);
     virtual void OnClosed(EventArg* e);
     virtual void OnOpened(EventArg* e);
@@ -217,10 +221,6 @@ protected:
 
     void OnMouseLeftButtonDown(MouseButtonEventArg* e);
     void OnMouseRightButtonDown(MouseButtonEventArg* e);
-
-    void OnTextInput(KeyboardEventArg* e);
-    void OnKeyDown(KeyboardEventArg* e);
-    void OnKeyUp(KeyboardEventArg* e);
 
 protected:
 

@@ -22,13 +22,13 @@
 namespace suic
 {
 
-TrackingMenuPopupHook* TrackingMenuPopupHook::Ins()
+TrackingMenuOp* TrackingMenuOp::Ins()
 {
-    static TrackingMenuPopupHook ins;
+    static TrackingMenuOp ins;
     return &ins;
 }
 
-TrackingMenuPopupHook::TrackingMenuPopupHook()
+TrackingMenuOp::TrackingMenuOp()
     : _mouseCapture(false)
     , _popup(NULL)
     , _trackingMenu(NULL)
@@ -37,7 +37,7 @@ TrackingMenuPopupHook::TrackingMenuPopupHook()
 {
 }
 
-void TrackingMenuPopupHook::SetTrackingMenu(Popup* popup, Element* menu)
+void TrackingMenuOp::SetTrackingMenu(Popup* popup, Element* menu)
 {
     _mouseCapture = false;
     _trackingMenu = menu;
@@ -49,7 +49,7 @@ void TrackingMenuPopupHook::SetTrackingMenu(Popup* popup, Element* menu)
     }
 }
 
-void TrackingMenuPopupHook::TrackMenuPopup(Popup* popup, Element* item, Element* menu)
+void TrackingMenuOp::TrackMenuPopup(Popup* popup, Element* item, Element* menu)
 {
     CloseAllPopup(false);
 
@@ -57,15 +57,15 @@ void TrackingMenuPopupHook::TrackMenuPopup(Popup* popup, Element* item, Element*
     _trackingMenu = menu;
     _trackingMenuItem = item;
     AddPopupMenuItem(popup);
-    _popup->Closing += EventHandler(this, &TrackingMenuPopupHook::OnRootPopupClosing);
-    popup->TrackingPopup(MessageHook(this, &TrackingMenuPopupHook::OnFilterMessage));
+    _popup->Closing += EventHandler(this, &TrackingMenuOp::OnRootPopupClosing);
+    popup->TrackingPopup(MessageHook(this, &TrackingMenuOp::OnFilterMessage));
     
     _trackingMenu = NULL;
     _popup = NULL;
     _popups.Clear();
 }
 
-void TrackingMenuPopupHook::TrackContextMenu(Popup* popup, Element* menu, int x, int y)
+void TrackingMenuOp::TrackContextMenu(Popup* popup, Element* menu, int x, int y)
 {
     CloseAllPopup(false);
 
@@ -76,9 +76,9 @@ void TrackingMenuPopupHook::TrackContextMenu(Popup* popup, Element* menu, int x,
     AddPopupMenuItem(popup);
     _popup->GetPositionInfo()->x = SystemParameters::TransformXToDevice(x);
     _popup->GetPositionInfo()->y = SystemParameters::TransformYToDevice(y);
-    _popup->Closing += EventHandler(this, &TrackingMenuPopupHook::OnRootPopupClosing);
+    _popup->Closing += EventHandler(this, &TrackingMenuOp::OnRootPopupClosing);
 
-    popup->TrackingPopup(MessageHook(this, &TrackingMenuPopupHook::OnFilterMessage));
+    popup->TrackingPopup(MessageHook(this, &TrackingMenuOp::OnFilterMessage));
 
     _trackingMenu = NULL;
     _popup = NULL;
@@ -86,13 +86,13 @@ void TrackingMenuPopupHook::TrackContextMenu(Popup* popup, Element* menu, int x,
     _popups.Clear();
 }
 
-void TrackingMenuPopupHook::TrackSubMenuPopup(Popup* popup, Element* menu)
+void TrackingMenuOp::TrackSubMenuPopup(Popup* popup, Element* menu)
 {
     AddPopupMenuItem(popup);
     popup->SetIsOpen(true);
 }
 
-bool TrackingMenuPopupHook::HandleMouseDown(Handle hwnd, bool& bOverTree)
+bool TrackingMenuOp::HandleMouseDown(Handle hwnd, bool& bOverTree)
 {
     bool bOver = false;
     bool handled = false;
@@ -110,7 +110,7 @@ bool TrackingMenuPopupHook::HandleMouseDown(Handle hwnd, bool& bOverTree)
     return handled;
 }
 
-bool TrackingMenuPopupHook::HandleMouseUp(Handle hwnd, bool& bOverTree)
+bool TrackingMenuOp::HandleMouseUp(Handle hwnd, bool& bOverTree)
 {
     bool bOver = false;
     bool handled = true;
@@ -128,7 +128,7 @@ bool TrackingMenuPopupHook::HandleMouseUp(Handle hwnd, bool& bOverTree)
     return handled;
 }
 
-MenuItem* TrackingMenuPopupHook::GetMenuItem(Element* elem)
+MenuItem* TrackingMenuOp::GetMenuItem(Element* elem)
 {
     MenuItem* pMenu = NULL;
     Element* parent(elem);
@@ -146,7 +146,7 @@ MenuItem* TrackingMenuPopupHook::GetMenuItem(Element* elem)
     return pMenu;
 }
 
-bool TrackingMenuPopupHook::HandleMouseMove(MessageParam* mp, bool& bOverTree)
+bool TrackingMenuOp::HandleMouseMove(MessageParam* mp, bool& bOverTree)
 {
     bool bOver = false;
     bool handled = false;
@@ -162,7 +162,7 @@ bool TrackingMenuPopupHook::HandleMouseMove(MessageParam* mp, bool& bOverTree)
     return handled;
 }
 
-bool TrackingMenuPopupHook::IsMouseOverOwer()
+bool TrackingMenuOp::IsMouseOverOwer()
 {
     // 当前顶层菜单窗口
     Element* ower(_trackingMenu);
@@ -183,11 +183,11 @@ bool TrackingMenuPopupHook::IsMouseOverOwer()
     return false;
 }
 
-void TrackingMenuPopupHook::OnRootPopupClosing(Object* source, EventArg* e)
+void TrackingMenuOp::OnRootPopupClosing(Object* source, EventArg* e)
 {
     if (NULL != _popup)
     {
-        _popup->Closing -= EventHandler(this, &TrackingMenuPopupHook::OnRootPopupClosing);
+        _popup->Closing -= EventHandler(this, &TrackingMenuOp::OnRootPopupClosing);
     }
 
     int iEnd = _popups.GetCount() - 1;
@@ -206,7 +206,7 @@ void TrackingMenuPopupHook::OnRootPopupClosing(Object* source, EventArg* e)
     }
 }
 
-bool TrackingMenuPopupHook::OnFilterMessage(Object* sender, MessageParam* mp, bool& interrupt)
+bool TrackingMenuOp::OnFilterMessage(Object* sender, MessageParam* mp, bool& interrupt)
 {
     ElementPtr rootElement(sender);
     bool handled = false;
@@ -273,7 +273,7 @@ bool TrackingMenuPopupHook::OnFilterMessage(Object* sender, MessageParam* mp, bo
     return handled;
 }
 
-void TrackingMenuPopupHook::CloseTopPopup()
+void TrackingMenuOp::CloseTopPopup()
 {
     int iCount = _popups.GetCount();
     if (iCount == 0)
@@ -290,7 +290,7 @@ void TrackingMenuPopupHook::CloseTopPopup()
     _popups.RemoveAt(iCount - 1);
 }
 
-void TrackingMenuPopupHook::ClosePopup(Element* elem)
+void TrackingMenuOp::ClosePopup(Element* elem)
 {
     int i = 0;
     int start = -1;
@@ -328,7 +328,7 @@ void TrackingMenuPopupHook::ClosePopup(Element* elem)
     }
 }
 
-void TrackingMenuPopupHook::HideAllPopup()
+void TrackingMenuOp::HideAllPopup()
 {
     for (int i = _popups.GetCount() -1; i >= 0; --i)
     {
@@ -341,7 +341,7 @@ void TrackingMenuPopupHook::HideAllPopup()
     }
 }
 
-void TrackingMenuPopupHook::CloseAllPopup(bool bAsync)
+void TrackingMenuOp::CloseAllPopup(bool bAsync)
 {
     for (int i = _popups.GetCount() -1; i >= 0; --i)
     {
@@ -363,7 +363,7 @@ void TrackingMenuPopupHook::CloseAllPopup(bool bAsync)
     _popups.Clear();
 }
 
-Element* TrackingMenuPopupHook::HitTestPopup(Handle hwnd, bool& bOver, bool& bOverTree)
+Element* TrackingMenuOp::HitTestPopup(Handle hwnd, bool& bOver, bool& bOverTree)
 {
     Popup* overPopup = NULL;
 
@@ -416,7 +416,7 @@ Element* TrackingMenuPopupHook::HitTestPopup(Handle hwnd, bool& bOver, bool& bOv
     }
 }
 
-bool TrackingMenuPopupHook::IsMouseCapture() const
+bool TrackingMenuOp::IsMouseCapture() const
 {        
     return true;
     for (int i = 0; i < _popups.GetCount(); ++i)
@@ -439,11 +439,11 @@ bool TrackingMenuPopupHook::IsMouseCapture() const
     return _mouseCapture;
 }
 
-void TrackingMenuPopupHook::SetMouseCapture(bool value)
+void TrackingMenuOp::SetMouseCapture(bool value)
 {
 }
 
-void TrackingMenuPopupHook::AddPopupMenuItem(Popup* popup)
+void TrackingMenuOp::AddPopupMenuItem(Popup* popup)
 {
     _popups.Add(popup);
 }

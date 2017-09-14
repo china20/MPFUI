@@ -23,8 +23,10 @@ void ListBoxItem::StaticInit()
             , DpPropMemory::GetPropMeta(suic::Boolean::False, PropMetadataOptions::AffectsNone, &OnVisualStatePropChanged));
         IsSelectedProperty = Selector::IsSelectedProperty->AddOwner(RTTIType(), DpPropMemory::GetPropMeta(Boolean::False, 0, &ListBoxItem::OnIsSelectedChanged));
 
-        KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knOnce)));
-        KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knLocal)));
+        KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knContinue)));
+        KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knNone)));
+        //KeyboardNavigation::DirectionalNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knOnce)));
+        //KeyboardNavigation::TabNavigationProperty->OverrideMetadata(RTTIType(), DpPropMemory::GetPropMeta(Integer::GetPosInt(KNavMode::knLocal)));
     }
 }
 
@@ -40,18 +42,6 @@ void ListBoxItem::OnIsSelectedChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 
     container->SetSelectedFlag(ListBoxItem::sfSelected, newValue);
-
-    /*else if (newValue)
-    {
-        RoutedEventArg re(container, Selector::SelectedEvent);
-        container->OnSelected(&re);
-    }
-    else
-    {
-        RoutedEventArg re(container, Selector::UnselectedEvent);
-        container->OnUnselected(&re);
-    }*/
-
     container->UpdateVisualState(false);
 }
 
