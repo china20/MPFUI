@@ -370,28 +370,39 @@ void MenuItem::OnClick()
 void MenuItem::OnPopupClosed(Object* source, EventArg* e)
 {
     SetValue(IsSubmenuOpenProperty, Boolean::False);
+    _fromKey = false;
+    Selector* pSelector = GetParentSelector();
+    Object* selItem = pSelector->GetSelectedItem();
+
+    for (int i = 0; i < GetCount(); ++i)
+    {
+        if (selItem == GetItem(i))
+        {
+            if (pSelector->GetSelectionChanger()->Begin())
+            {
+                pSelector->GetSelectionChanger()->Commit();
+            }
+            break;
+        }
+    }
 }
 
 void MenuItem::OnPopupOpened(Object* source, EventArg* e)
 {
+    SetValue(IsSubmenuOpenProperty, Boolean::True);
+
     if (_fromKey)
     {
         _fromKey = false;
-        /*ItemsControl* itemsCtrl = DynamicCast<ItemsControl>(GetParent());
-        Panel* itemsHost = NULL;
+ 
+        Panel* itemsHost = GetItemsHost();
         MenuItem* menuItem = NULL;
-
-        if (NULL != itemsCtrl)
-        {
-            itemsHost = itemsCtrl->GetItemsHost();
-        }
 
         if (NULL!= itemsHost && itemsHost->GetVisibleChildrenCount() > 0)
         {
             menuItem = DynamicCast<MenuItem>(itemsHost->GetChildren()->GetAt(0));
-            menuItem->SetValue(IsHighlightedProperty, Boolean::True);
-            _submenuPopup->UpdateLayout();
-        }*/
+            menuItem->SetIsHighlighted(true);
+        }
     }
 }
 
@@ -611,7 +622,7 @@ void MenuItem::SetIsHighlighted(DpObject* o, bool v)
     o->SetValue(IsHighlightedProperty, BOOLTOBOOLEAN(v));
 }
 
-void MenuItem::HandleLeftButtonDown()
+void MenuItem::HandleLeftButtonDown(bool fromKey)
 {
     if (IsSeparator())
     {
@@ -629,7 +640,7 @@ void MenuItem::HandleLeftButtonDown()
             Menu* menu = RTTICast<Menu>(GetParent());
             if (menu != NULL && NULL != _submenuPopup)
             {
-                SetValue(IsSubmenuOpenProperty, Boolean::True);
+                _fromKey = fromKey;
                 GetMenuPopup()->TrackMenuPopup(_submenuPopup.get(), this, menu);
             }
         }
@@ -653,7 +664,7 @@ void MenuItem::OnMouseLeftButtonDown(MouseButtonEventArg* e)
         InvalidateVisual();
         e->SetHandled(true);
         e->SetSource(this);
-        HandleLeftButtonDown();
+        HandleLeftButtonDown(false);
     }
 }
 
