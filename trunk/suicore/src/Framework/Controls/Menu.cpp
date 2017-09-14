@@ -307,24 +307,27 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
                 suic::MenuItem* trackMenuItem = NULL;
                 pMenuItem = suic::DynamicCast<suic::MenuItem>(TrackingMenuOp::Ins()->GetTrackingMenuItem());
 
-                pMenuItem->SetIsHighlighted(true);
-                
-                if (GetSelectedItem() == GetItem(GetCount() - 1))
+                if (NULL != pMenuItem)
                 {
-                    pItem = GetItem(0);
-                }
-                else
-                {
-                    pItem = NavigateNextItem(this);
-                }
+                    pMenuItem->SetIsHighlighted(true);
 
-                trackMenuItem = suic::DynamicCast<suic::MenuItem>(GetContainerFromItem(pItem));
+                    if (GetSelectedItem() == GetItem(GetCount() - 1))
+                    {
+                        pItem = GetItem(0);
+                    }
+                    else
+                    {
+                        pItem = NavigateNextItem(this);
+                    }
 
-                if (pMenuItem != trackMenuItem)
-                {
-                    pMenuItem = trackMenuItem;
-                    GetMenuPopup()->CloseAllPopup(false);
-                    trackMenuItem->HandleLeftButtonDown();
+                    trackMenuItem = suic::DynamicCast<suic::MenuItem>(GetContainerFromItem(pItem));
+
+                    if (pMenuItem != trackMenuItem)
+                    {
+                        pMenuItem = trackMenuItem;
+                        GetMenuPopup()->CloseAllPopup(false);
+                        trackMenuItem->HandleLeftButtonDown();
+                    }
                 }
             }
             else if (pMenuItem->IsSubmenu())
