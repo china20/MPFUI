@@ -221,7 +221,7 @@ void BuildFactory::Add(RTTIOfInfo* cls)
     }
     else
     {
-        cls->staticInit();
+        //cls->staticInit();
     }
     _classes.Add(cls->typeName, cls);
 }
@@ -258,7 +258,7 @@ RTTIOfInfo* BuildFactory::AddType(const String& strType)
         rttiInfo = _addTypes.GetItem(i)->AddType(strType);
         if (NULL != rttiInfo)
         {
-            rttiInfo->staticInit();
+            //rttiInfo->staticInit();
             _classes.Add(rttiInfo->typeName, rttiInfo);
             break;
         }

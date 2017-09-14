@@ -597,6 +597,20 @@ void MenuItem::OnMouseLeave(MouseButtonEventArg* e)
     HeaderedItemsControl::OnMouseLeave(e);
 }
 
+void MenuItem::SetIsHighlighted(bool val)
+{
+    SetValue(IsHighlightedProperty, BOOLTOBOOLEAN(val));
+    if (_submenuPopup.get() != NULL)
+    {
+        _submenuPopup->UpdateLayout();
+    }
+}
+
+void MenuItem::SetIsHighlighted(DpObject* o, bool v)
+{
+    o->SetValue(IsHighlightedProperty, BOOLTOBOOLEAN(v));
+}
+
 void MenuItem::HandleLeftButtonDown()
 {
     if (IsSeparator())

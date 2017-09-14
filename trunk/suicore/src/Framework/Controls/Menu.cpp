@@ -225,7 +225,7 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
 
             if (NULL != pMenuItem)
             {
-                pMenuItem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+                pMenuItem->SetIsHighlighted(true);
             }
             
             if (trackPopupCount == 1)
@@ -241,6 +241,7 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
 
                 pMenuItem = suic::DynamicCast<suic::MenuItem>(GetContainerFromItem(pItem));
                 pMenuItem->HandleLeftButtonDown();
+                pMenuItem->SetIsHighlighted(true);
             }
 
             UpdateLayout();
@@ -305,7 +306,8 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
             {
                 suic::MenuItem* trackMenuItem = NULL;
                 pMenuItem = suic::DynamicCast<suic::MenuItem>(TrackingMenuOp::Ins()->GetTrackingMenuItem());
-                pMenuItem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+
+                pMenuItem->SetIsHighlighted(true);
                 
                 if (GetSelectedItem() == GetItem(GetCount() - 1))
                 {
@@ -335,7 +337,7 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
 
             if (NULL != pMenuItem)
             {
-                pMenuItem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+                pMenuItem->SetIsHighlighted(true);
             }
         }
 
@@ -434,7 +436,7 @@ void MenuBase::OnSelectionChanged(SelectionChangedEventArg* e)
         container = GetContainerForItem(e->GetRemovedItems()->GetItem(0));
         if (NULL != container)
         {
-            container->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::False);
+            MenuItem::SetIsHighlighted(container, false);
             UpdateLayout();
         }
     }
@@ -459,11 +461,11 @@ void MenuBase::PrepareContainerForItemOverride(DpObject* elem, ItemEntry* item)
     if (elem->GetRTTIType() != suic::Separator::RTTIType() && 
         item->GetItem() == GetSelectedItem())
     {
-        elem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::True);
+        MenuItem::SetIsHighlighted(elem, true);
     }
     else
     {
-        elem->SetValue(suic::MenuItem::IsHighlightedProperty, suic::Boolean::False);
+        MenuItem::SetIsHighlighted(elem, false);
     }
 }
 
