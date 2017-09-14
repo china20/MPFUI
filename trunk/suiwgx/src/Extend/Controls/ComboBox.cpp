@@ -230,6 +230,7 @@ bool ComboBox::OnMessageFilter(Object* sender, MessageParam* mp, bool& interrupt
             if (index > 0)
             {
                 SetSelectedIndex(--index);
+                _dropDownPopup->UpdateLayout();
             }
             break;
 
@@ -237,6 +238,7 @@ bool ComboBox::OnMessageFilter(Object* sender, MessageParam* mp, bool& interrupt
             if (index < GetCount() - 1)
             {
                 SetSelectedIndex(++index);
+                _dropDownPopup->UpdateLayout();
             }
             break;
 
