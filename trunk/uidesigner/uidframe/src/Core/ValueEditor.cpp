@@ -945,11 +945,10 @@ ButtonSetterEditor::ButtonSetterEditor()
 
 suic::DpProperty* ButtonSetterEditor::ContentProperty;
 
-bool ButtonSetterEditor::StaticInit()
+void ButtonSetterEditor::StaticInit()
 {
     ContentProperty = suic::DpProperty::Register(_U("Content"), RTTIType(), suic::Object::RTTIType(), 
         new suic::PropMetadata(NULL));
-    return true;
 }
 
 void ButtonSetterEditor::OnInitialized(suic::EventArg* e)
@@ -1171,13 +1170,12 @@ void AlignVertSetterEditor::OnCheckedChanged(suic::DpObject* sender, suic::Route
 DpProperty* AlignVertSetterEditor::GroupNameProperty;
 DpProperty* AlignHoriSetterEditor::GroupNameProperty;
 
-bool AlignHoriSetterEditor::StaticInit()
+void AlignHoriSetterEditor::StaticInit()
 {
     AlignVertSetterEditor::GroupNameProperty = DpProperty::Register(_U("GroupName"), 
         AlignVertSetterEditor::RTTIType(), OString::RTTIType(), DpPropMemory::GetPropMeta(NULL));
     AlignHoriSetterEditor::GroupNameProperty = DpProperty::Register(_U("GroupName"), 
         RTTIType(), OString::RTTIType(), DpPropMemory::GetPropMeta(NULL));
-    return true;
 }
 
 AlignHoriSetterEditor::AlignHoriSetterEditor()
@@ -1341,10 +1339,9 @@ void ExtensionSetterEditor::OnApplyTemplate()
 
 DpProperty* ChoiceSetterEditor::SelectIndexProperty;
 
-bool ChoiceSetterEditor::StaticInit()
+void ChoiceSetterEditor::StaticInit()
 {
     SelectIndexProperty = DpProperty::Register(_U("SelectIndex"), RTTIType(), Integer::RTTIType(), DpPropMemory::GetPropMeta(NULL));
-    return true;
 }
 
 ChoiceSetterEditor::ChoiceSetterEditor()
@@ -1653,10 +1650,9 @@ void CursorSetterEditor::OnApplyTemplate()
 
 DpProperty* CheckSetterEditor::ContentProperty;
 
-bool CheckSetterEditor::StaticInit()
+void CheckSetterEditor::StaticInit()
 {
     ContentProperty = DpProperty::Register(_U("Content"), RTTIType(), OString::RTTIType(), DpPropMemory::GetPropMeta(NULL));
-    return true;
 }
 
 CheckSetterEditor::CheckSetterEditor()
@@ -2088,12 +2084,10 @@ void BrushElement::OnClick()
 
 DpProperty* BrushSetterEditor::ContentProperty;
 
-bool BrushSetterEditor::StaticInit()
+void BrushSetterEditor::StaticInit()
 {
     ContentProperty = suic::DpProperty::Register(_U("Content"), RTTIType(), suic::OString::RTTIType()
         , new suic::PropMetadata(suic::OString::EmptyString, PropMetadataOptions::AffectsRender));
-
-    return true;
 }
 
 BrushSetterEditor::BrushSetterEditor()

@@ -56,12 +56,11 @@ ImplementRTTIOfClass(TemplateEditor, EditorControl)
 
 ImplementRTTIOfClass(TextBoxRangeEditor, EditorControl)
 
-bool StringControl::StaticInit()
+void StringControl::StaticInit()
 {
     BaseValueChangedEvent = EventHelper::RegisterRoutedEvent(_U("ValueChanged"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
     GridStarControl::GridValueChangedEvent = EventHelper::RegisterRoutedEvent(_U("GridValueChanged"), RoutingStrategy::Bubble, Object::RTTIType(), GridStarControl::RTTIType());
 
-    return true;
 }
 
 StringControl::StringControl()
@@ -623,11 +622,10 @@ static EditRootPanel* FindEditRttoPanel(suic::FrameworkElement* elem)
     return editPanel;
 }
 
-bool EditorControl::StaticInit()
+void EditorControl::StaticInit()
 {
     suic::Control::FocusableProperty->OverrideMetadata(RTTIType(), new suic::PropMetadata(Boolean::False));
     EditValueChangedEvent = EventHelper::RegisterRoutedEvent(_U("EditValueChanged"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-    return true;
 }
 
 EditorControl::EditorControl()
@@ -811,12 +809,11 @@ StringEditor::~StringEditor()
 DpProperty* StringEditor::MaxLinesProperty;
 DpProperty* StringEditor::TextWrappingProperty;
 
-bool StringEditor::StaticInit()
+void StringEditor::StaticInit()
 {
     MaxLinesProperty = DpProperty::Register(_U("MaxLines"), RTTIType(), Integer::RTTIType(), DpPropMemory::GetPropMeta(NULL));
     TextWrappingProperty = DpProperty::Register(_U("TextWrapping"), RTTIType(), Boolean::RTTIType(), DpPropMemory::GetPropMeta(NULL));//TextEditor::TextWrappingProperty->AddOwner(RTTIType(), NULL);
     TextWrappingProperty->SetConvertValueCb(TextWrappingConvert::Convert);
-    return true;
 }
 
 void StringEditor::OnUpdateValue()
@@ -1491,10 +1488,9 @@ fPointEditor::~fPointEditor()
 {
 }
 
-bool fPointEditor::StaticInit()
+void fPointEditor::StaticInit()
 {
     PointChangedEvent = EventHelper::RegisterRoutedEvent(_U("PointChanged"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-    return true;
 }
 
 void fPointEditor::OnUpdateValue()
@@ -1934,10 +1930,9 @@ void ImageSourceEditor::OnSourceClick(suic::Element* sender, suic::RoutedEventAr
 
 RoutedEvent* BrushEditor::BrushChangedEvent;
 
-bool BrushEditor::StaticInit()
+void BrushEditor::StaticInit()
 {
     BrushChangedEvent = EventHelper::RegisterRoutedEvent(_U("BrushChanged"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-    return true;
 }
 
 BrushEditor::BrushEditor()

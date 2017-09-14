@@ -182,7 +182,7 @@ class ButtonSetterEditor : public SetterEditor
 public:
 
     static suic::DpProperty* ContentProperty;
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(ButtonSetterEditor)
 
@@ -362,7 +362,7 @@ class AlignHoriSetterEditor : public SetterEditor
 public:
 
     static DpProperty* GroupNameProperty;
-    static bool StaticInit();
+    static void StaticInit();
 
     AlignHoriSetterEditor();
 
@@ -428,7 +428,7 @@ class ChoiceSetterEditor : public SetterEditor
 public:
 
     static DpProperty* SelectIndexProperty;
-    static bool StaticInit();
+    static void StaticInit();
 
     ChoiceSetterEditor();
     ~ChoiceSetterEditor();
@@ -484,7 +484,7 @@ class CheckSetterEditor : public SetterEditor
 public:
 
     static DpProperty* ContentProperty;
-    static bool StaticInit();
+    static void StaticInit();
 
     CheckSetterEditor();
 
@@ -593,7 +593,7 @@ public:
 
     static DpProperty* ContentProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     BrushSetterEditor();
 

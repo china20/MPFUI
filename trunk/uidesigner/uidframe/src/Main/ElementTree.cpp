@@ -26,14 +26,13 @@ ImplementRTTIOfClass(ProjectTree, suic::TreeView)
 
 suic::DpProperty* ElementTreeItem::IsActiveMouseOverProperty;
 
-bool ElementTreeItem::StaticInit()
+void ElementTreeItem::StaticInit()
 {
     if (NULL == IsActiveMouseOverProperty)
     {
         IsActiveMouseOverProperty = suic::DpProperty::RegisterAttached(_U("IsActiveMouseOver"), RTTIType(), suic::Boolean::RTTIType()
             , new suic::PropMetadata(suic::Boolean::False, PropMetadataOptions::AffectsRender));
     }
-    return true;
 }
 
 void ElementTreeItem::SetActiveMouseOver(bool val)

@@ -24,7 +24,7 @@ public:
 
     static suic::DpProperty* IsActiveMouseOverProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(ElementTreeItem)
 

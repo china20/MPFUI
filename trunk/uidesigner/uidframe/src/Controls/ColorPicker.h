@@ -23,7 +23,7 @@ public:
     static void OnThumbDragDeltaProp(DpObject* sender, RoutedEventArg* e);
     static void OnThumbDragStartedProp(DpObject* sender, RoutedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(ColorSlider)
 
@@ -54,7 +54,7 @@ class ColorSelector : public suic::Control
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     suic::EventHandler PositionChanged;
 
@@ -97,7 +97,7 @@ class ColorButton : public suic::ButtonBase
 public:
 
     static DpProperty* ColorProperty;
-    static bool StaticInit();
+    static void StaticInit();
 
     ColorButton();
     virtual ~ColorButton();
@@ -112,7 +112,7 @@ class ColorChannel : public TextBoxRange
 {
 public:
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ColorChannel();
 
@@ -163,7 +163,7 @@ public:
     static void OnColorPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
     static void OnInitColorPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e);
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(ColorPicker)
 

@@ -23,7 +23,7 @@ public:
 
     static RoutedEvent* BaseValueChangedEvent;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(StringControl)
 
@@ -232,7 +232,7 @@ class EditorControl : public suic::Control
 public:
 
     static RoutedEvent* EditValueChangedEvent;
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(EditorControl)
 
@@ -286,7 +286,7 @@ public:
     static DpProperty* MaxLinesProperty;
     static DpProperty* TextWrappingProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     StringEditor();
     ~StringEditor();
@@ -516,7 +516,7 @@ public:
     fPointEditor();
     ~fPointEditor();
 
-    static bool StaticInit();
+    static void StaticInit();
 
     RTTIOfClass(fPointEditor)
 
@@ -644,7 +644,7 @@ class BrushEditor : public EditorControl
 public:
 
     static RoutedEvent* BrushChangedEvent;
-    static bool StaticInit();
+    static void StaticInit();
 
     BrushEditor();
     ~BrushEditor();

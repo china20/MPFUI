@@ -11,7 +11,7 @@ public:
 
     static IPropertyId* ResourcesProperty;
 
-    static bool StaticInit();
+    static void StaticInit();
 
     ContentControlElement();
 };

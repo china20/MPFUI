@@ -22,14 +22,13 @@ suic::Brush* ColorSelector::_black;
 suic::Brush* ColorSlider::_linearBrush;
 suic::Float ColorSlider::_previousValue;
 
-bool ColorButton::StaticInit()
+void ColorButton::StaticInit()
 {
     if (NULL == ColorProperty)
     {
         ColorProperty = ColorProperty = suic::DpProperty::Register(_U("Color"), RTTIType(), suic::SolidColorBrush::RTTIType()
             , new suic::PropMetadata(new SolidColorBrush(suic::Colors::White), PropMetadataOptions::AffectsRender));
     }
-    return true;
 }
 
 ColorButton::ColorButton()
@@ -52,7 +51,7 @@ void ColorButton::SetColor(SolidColorBrush* brush)
     SetValue(ColorProperty, brush);
 }
 
-bool ColorSelector::StaticInit()
+void ColorSelector::StaticInit()
 {
     if (NULL == _white)
     {
@@ -77,8 +76,6 @@ bool ColorSelector::StaticInit()
         _white->ref();
         _black->ref();
     }
-
-    return true;
 }
 
 ColorSlider::ColorSlider()
@@ -115,7 +112,7 @@ void ColorSlider::OnThumbDragStartedProp(DpObject* sender, RoutedEventArg* e)
     e->SetHandled(true);
 }
 
-bool ColorSlider::StaticInit()
+void ColorSlider::StaticInit()
 {
     if (NULL == _linearBrush)
     {
@@ -125,8 +122,6 @@ bool ColorSlider::StaticInit()
         EventHelper::RegisterClassHandler(RTTIType(), Thumb::DragDeltaEvent, new RoutedEventHandler(ColorSlider::OnThumbDragDeltaProp), false);
         EventHelper::RegisterClassHandler(RTTIType(), Thumb::DragCompletedEvent, new RoutedEventHandler(ColorSlider::OnThumbDragCompletedProp), false);
     }
-
-    return true;
 }
 
 void ColorSlider::InitLinearGradientBrush()
@@ -330,9 +325,8 @@ void ColorSelector::OnRender(suic::Drawing* drawing)
 //==============================================
 // ColorChannel
 
-bool ColorChannel::StaticInit()
+void ColorChannel::StaticInit()
 {
-    return true;
 }
 
 ColorChannel::ColorChannel()
@@ -434,7 +428,7 @@ DpProperty* ColorPicker::LastColorProperty;
 
 RoutedEvent* ColorPicker::ColorChangedEvent;
 
-bool ColorPicker::StaticInit()
+void ColorPicker::StaticInit()
 {
     if (NULL == InitColorProperty)
     {
@@ -447,8 +441,6 @@ bool ColorPicker::StaticInit()
 
         ColorChangedEvent = suic::EventHelper::RegisterRoutedEvent(_U("ColorChanged"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
     }
-
-    return true;
 }
 
 void ColorPicker::OnColorPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
