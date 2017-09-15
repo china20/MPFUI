@@ -113,7 +113,7 @@ class SkiaDrawing : public Drawing
 {
 public:
 
-    SkiaDrawing(Handle h, bool layeredMode, Bitmap* dib, fRect topClip);
+    SkiaDrawing(bool layeredMode, Bitmap* dib, fRect topClip);
     virtual ~SkiaDrawing();
 
     //virtual Handle GetHandle();

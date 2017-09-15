@@ -26,90 +26,6 @@
 namespace suic
 {
 
-class Win32Bitmap
-{
-public:
-
-    Win32Bitmap()
-    {
-        hbmp = NULL;
-        autodel = true;
-    }
-
-    ~Win32Bitmap()
-    {
-        Clear();
-    }
-
-    void Clear()
-    {
-        if (hbmp && autodel)
-        {
-            ::DeleteObject(hbmp);
-            hbmp = NULL;
-        }
-        bmp.Clear();
-    }
-
-    void CreateBmp(HDC hdc, int w, int h)
-    {
-        Clear();
-
-        autodel = true;
-        hbmp = CreateBitmap(hdc, &bmp, w, h);
-    }
-
-    static HBITMAP CreateBitmap(HDC hdc, Bitmap* pBmp, int w, int h)
-    {
-        BITMAPINFO bmi = {0};
-        HBITMAP hBmp = NULL;
-
-        bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-        bmi.bmiHeader.biWidth = w;
-        bmi.bmiHeader.biHeight = -h;
-        bmi.bmiHeader.biPlanes = 1;
-        bmi.bmiHeader.biBitCount = 32;
-        bmi.bmiHeader.biCompression = BI_RGB;
-        bmi.bmiHeader.biSizeImage = 4 * h * w;
-        Byte* rq = NULL;
-
-        hBmp = ::CreateDIBSection(hdc, &bmi, DIB_RGB_COLORS, (LPVOID*)&rq, NULL, 0);
-
-        pBmp->SetConfig(w, h, 32);
-        pBmp->SetPixels(rq, (Handle)(LONG_PTR)hBmp, false);
-        CSSE::SetColorKey(rq, bmi.bmiHeader.biSizeImage, 0);
-
-        return hBmp;
-    }
-
-    Bitmap* GetBitmap()
-    {
-        return &bmp;
-    }
-
-    HBITMAP GetHBitmap()
-    {
-        return hbmp;
-    }
-
-    void SetHBitmap(HBITMAP bmp, bool bDel)
-    {
-        if (hbmp && autodel)
-        {
-            ::DeleteObject(hbmp);
-        }
-
-        hbmp = bmp;
-        autodel = bDel;
-    }
-
-private:
-
-    Bitmap bmp;
-    HBITMAP hbmp;
-    bool autodel;
-};
-
 class RenderInfo
 {
 public:
@@ -120,7 +36,7 @@ public:
     bool OnFilterMessage(Element* rootElement, MessageParam* mp);
     bool OnHookFilterMessage(Element* rootElement, MessageParam* mp, bool& interrupt);
 
-    Win32Bitmap* GetDib();
+    Bitmap* GetDib();
  
     bool DrawDebugLine() const;
     void SetDrawDebugLine(bool val);
@@ -164,8 +80,8 @@ public:
     HwndMouseFilter _mouseFilter;
     HwndKeyboardFilter _keyboardFilter;
 
+    Bitmap _dib;
     HookInfo _hooks;
-    Win32Bitmap _dib;
 
     Rect _clipRender;
 
@@ -199,7 +115,7 @@ inline HWND RenderInfo::GetHostHwnd()
     }
 }
 
-inline Win32Bitmap* RenderInfo::GetDib()
+inline Bitmap* RenderInfo::GetDib()
 {
     return &_dib;
 }
@@ -327,7 +243,7 @@ public:
     Point GetScreenPoint();
 
     HwndObject* GetHwndObject();
-    Win32Bitmap* GetDib();
+    Bitmap* GetDib();
 };
 
 inline HwndObject* SysRenderSource::GetHwndObject()
@@ -336,7 +252,7 @@ inline HwndObject* SysRenderSource::GetHwndObject()
     return pInfo->GetHwndObject();
 }
 
-inline Win32Bitmap* SysRenderSource::GetDib()
+inline Bitmap* SysRenderSource::GetDib()
 {
     RenderInfo* pInfo(GetRenderInfo());
     return pInfo->GetDib();

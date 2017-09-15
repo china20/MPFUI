@@ -81,6 +81,7 @@ public:
     /// <param name="clr">填充色</param>
     /// <returns>成功返回true；否则false</returns>
     bool AllocPixel(Color clr);
+    bool AllocPixels();
 
     /// <summary>
     ///  创建32位图像，同时返回一个图像句柄（windows是HBITMAP）

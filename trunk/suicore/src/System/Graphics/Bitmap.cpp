@@ -370,7 +370,15 @@ bool Bitmap::AllocPixel(Color clr)
     bmp->eraseColor(clr);
     SetLoaded(true);
 
-    //CSSE::MemSetDWord(clr, _imageData, imgSize);
+    return IsValid();
+}
+
+bool Bitmap::AllocPixels()
+{
+    SkBitmap* bmp = &(GetBitmapInfo()->bmp);
+
+    bmp->allocPixels();
+    SetLoaded(true);
 
     return IsValid();
 }
@@ -403,7 +411,7 @@ bool Bitmap::Create(Int32 wid, Int32 hei, int bits)
 {
     if (SetConfig(wid, hei, bits))
     {
-        return AllocPixel(ARGB(0,255,255,255));
+        return AllocPixels();
     }
     else
     {
@@ -592,7 +600,9 @@ void Bitmap::Clear()
 
     if (!bmp->isNull())
     {
+        bmp->setPixels(NULL);
         bmp->reset();
+
         if(_backupData)
         {
             delete [] _backupData;

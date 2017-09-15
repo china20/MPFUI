@@ -84,7 +84,7 @@ class DefRender
 {
 public:
 
-    static void RenderCanvas(FrameworkElement* root, Handle hdc, Bitmap* canvas, Handle h, fRect clip, Point pt, bool bDebugLine);
+    static void RenderCanvas(FrameworkElement* root, Bitmap* canvas, fRect clip, Point pt, bool bDebugLine);
 
 protected:
 

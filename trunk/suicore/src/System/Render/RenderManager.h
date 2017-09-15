@@ -25,8 +25,8 @@ public:
 
     RenderEngine(Element* root, const fRect* lprc);
     
-    bool RenderToMemory(VisualHost* pHost, Win32Bitmap& bmp);
-    bool RenderLayerToMemory(VisualHost* pHost, Win32Bitmap& bmp);
+    Bitmap* RenderToMemory(VisualHost* pHost);
+    Bitmap* RenderLayerToMemory(VisualHost* pHost);
 
     void RenderToScreen(VisualHost* visualHost, HDC hdc, Point offset);
 
@@ -36,15 +36,15 @@ public:
 
     static void RenderChild(FrameworkElement* elem, Drawing* drawing);
 
-    static void RenderElementToSurface(FrameworkElement* root, Win32Bitmap& pDib);
-    static void RenderLayerWindow(FrameworkElement* root,Win32Bitmap& pDib, HWND hwnd);
+    static void RenderElementToSurface(FrameworkElement* root, suic::Bitmap* bmp);
+    static void RenderLayerWindow(FrameworkElement* root, suic::Bitmap* bmp, HWND hwnd);
 
 protected:
    
     bool CheckRender();
-
-    void RenderNormalWindow(Point offset, Win32Bitmap& pDib, HDC hdc);
-    //void HandleRootTransform(FrameworkElement* root, Transform& trans);
+    void RenderNormalWindow(Point offset, suic::Bitmap* bmp, HDC hdc);
+    
+    static HBITMAP BitmapToHandle(Bitmap* bitmap);
   
 protected:
 

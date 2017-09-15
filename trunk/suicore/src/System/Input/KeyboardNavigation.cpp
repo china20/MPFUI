@@ -488,7 +488,31 @@ Element* KeyboardNavigationImpl::GetFocusedElement(Element* elem)
 
 Element* KeyboardNavigationImpl::GetNextInDirection(Element* elem, FocusNavDirection fDir)
 {
-    return NULL;
+    Element* navElem = elem;
+
+    if (fDir == FocusNavDirection::fndLeft)
+    {
+        do
+        {
+            navElem = GetPrevSibling(navElem);
+        }
+        while (NULL != navElem && !IsTabStop(navElem));
+    }
+    else if (fDir == FocusNavDirection::fndRight)
+    {
+        do
+        {
+            navElem = GetNextSibling(navElem);
+        }
+        while (NULL != navElem && !IsTabStop(navElem));
+    }
+
+    if (NULL == navElem)
+    {
+        navElem = elem;
+    }
+
+    return navElem;
 }
 
 Element* KeyboardNavigationImpl::GetLastInTree(Element* container)
@@ -1008,7 +1032,10 @@ bool KeyboardNavigationImpl::IsElementVisible(Element* elem)
     {
         return false;
     }
-    return true;
+    else
+    {
+        return true;
+    }
 }
 
 Element* KeyboardNavigationImpl::GetFirstChild(Element* elem)
@@ -1055,7 +1082,7 @@ Element* KeyboardNavigationImpl::GetValidParent(Element* elem)
 
     while (NULL != parent && (parent = parent->GetUIParent()) != NULL)
     {
-        if (parent && parent->IsVisible())
+        if (NULL != parent && parent->IsVisible())
         {
             return parent;
         }
@@ -1143,15 +1170,19 @@ Element* KeyboardNavigationImpl::GetNextTabWithNextIndex(Element* elem, Element*
 {
     Element* nextObj = NULL;
     Element* obj = NULL;
+    Element* searchElem = container;
+
     int num = -20000000;
     int num2 = -20000000;
     int iTabIndex = GetTabIndex(elem);
-    Element* searchElem = container;
 
     while ((searchElem = GetNextInTree(searchElem, container)) != NULL)
     {
         if (IsTabStopOrGroup(searchElem))
         {
+            // 
+            // 获取元素的TAB索引
+            // 
             int searchIndex = GetTabIndex(searchElem);
 
             if (searchIndex > iTabIndex && (searchIndex < num2 || nextObj == NULL))
@@ -1168,7 +1199,7 @@ Element* KeyboardNavigationImpl::GetNextTabWithNextIndex(Element* elem, Element*
         }
     }
 
-        if ((tabType == KNavMode::knCycle) && (nextObj == NULL))
+    if ((tabType == KNavMode::knCycle) && (nextObj == NULL))
     {
         nextObj = obj;
     }
@@ -1182,6 +1213,7 @@ Element* KeyboardNavigationImpl::GetNextTabInGroup(Element* elem, Element* conta
     {
         return NULL;
     }
+
     if ((elem == NULL) || (elem == container))
     {
         return GetFirstTabInGroup(container);
@@ -1306,7 +1338,7 @@ bool KeyboardNavigationImpl::Navigate(Element* elem, FocusNavDirection req, Modi
         case FocusNavDirection::fndUp:
         case FocusNavDirection::fndDown:
             _navigationProperty = DirectionalNavigationProperty;
-            //nextInDirection = GetNextInDirection(elem, req);
+            nextInDirection = GetNextInDirection(elem, req);
             break;
     }
 

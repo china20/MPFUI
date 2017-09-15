@@ -2529,17 +2529,6 @@ bool Element::IsMouseCaptureWithin()
 bool Element::IsVisible()
 {
     return ReadFlag(CoreFlags::IsVisibleCache);
-    const Element* elem(this);
-    while (elem)
-    {
-        bool bHide = elem->ReadFlag(CoreFlags::IsHidden | CoreFlags::IsInnerHidden | CoreFlags::IsCollapsed);
-        if (bHide)
-        {
-            return false;
-        }
-        elem = elem->GetUIParent();
-    }
-    return true;
 }
 
 void Element::InvalidateRect(Rect* lprc, bool bForce)
@@ -2780,7 +2769,7 @@ Drawing* RenderContext::Open(int w, int h, int iType)
 
     bitmap = new Bitmap();
     bitmap->AllocHandle(w, h, 0);
-    drawing = new SkiaDrawing(0, true, bitmap, fRect(0, 0, w, h));
+    drawing = new SkiaDrawing(true, bitmap, fRect(0, 0, w, h));
     return drawing;
 }
 
@@ -2789,7 +2778,7 @@ Drawing* RenderContext::Open(Bitmap* bmp, int iType)
     Close();
 
     bitmap = bmp;
-    drawing = new SkiaDrawing(0, true, bitmap, fRect(0, 0, bitmap->Width(), bitmap->Height()));
+    drawing = new SkiaDrawing(true, bitmap, fRect(0, 0, bitmap->Width(), bitmap->Height()));
     return drawing;
 }
 
@@ -3123,6 +3112,14 @@ void Element::OnChildrenChanged(Element* kidAdded, Element* kidRemoved)
 
 void Element::OnVisualParentChanged(const Element* oldParent, Element* newParent)
 {
+    if (NULL != newParent)
+    {
+        if (!newParent->IsVisible() && IsVisible())
+        {
+            UpdateIsVisibleCache();
+            InvalidateIsVisiblePropertyOnChildren(IsVisibleProperty);
+        }
+    }
 }
 
 void Element::OnRenderSizeChanged(SizeChangedInfo& sizeInfo)

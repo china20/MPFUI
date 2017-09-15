@@ -148,13 +148,7 @@ SysButton::~SysButton()
 }
 
 void SysButton::StaticInit()
-{
-    static bool s_init = false;
-    if (!s_init)
-    {
-        s_init = true;
-        FocusableProperty->OverrideMetadata(RTTIType(), new PropMetadata(Boolean::False));
-    }
+{               
 }
 
 void MaximizeButton::OnInitialized(EventArg* e)

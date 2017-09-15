@@ -64,7 +64,7 @@ void RenderEngine::RenderToDib(FrameworkElement* root, Bitmap* pDib, fRect* lprc
     }
 
     Point offset(root->GetVisualOffset());
-    SkiaDrawing drawing(0, HwndHelper::IsAllowsTransparency(root), pDib, rcClip);
+    SkiaDrawing drawing(HwndHelper::IsAllowsTransparency(root), pDib, rcClip);
 
     pDib->Clear();
     pDib->Create(rcDraw.right, rcDraw.bottom, 32);
@@ -108,7 +108,7 @@ fPoint RenderEngine::RenderShot(Element* elem, Bitmap& dib, Rect clip)
 
     dib.AllocHandle(rcBounds.Width(), rcBounds.Height(), 0);
 
-    SkiaDrawing subDrawing(0, true, &dib, clip.TofRect());
+    SkiaDrawing subDrawing(true, &dib, clip.TofRect());
 
     // 执行绘制
     subDrawing.ClipRect(clip.TofRect(), ClipOp::OpIntersect);
@@ -165,13 +165,13 @@ void RenderEngine::RenderToImage(FrameworkElement* element, Bitmap* dib)
     RenderEngine::RenderToDib(element, dib, NULL);
 }
 
-bool RenderEngine::RenderLayerToMemory(VisualHost* pHost, Win32Bitmap& bmp)
+Bitmap* RenderEngine::RenderLayerToMemory(VisualHost* pHost)
 {
     DWORD dwTime = Environment::GetSystemTick();
     RenderInfo* pInfo(pHost->GetRenderInfo());
     HWND hwnd = HANDLETOHWND(pHost->GetHandle());
     Rect rectWnd;
-    bool bSucc = false;
+    Bitmap* canvas = NULL;
 
     ::GetWindowRect(hwnd, &rectWnd);
 
@@ -182,54 +182,40 @@ bool RenderEngine::RenderLayerToMemory(VisualHost* pHost, Win32Bitmap& bmp)
 
     if (CheckRender())
     {
-        Win32Bitmap* win32Bmp = pInfo->GetDib();
-        Bitmap* canvas = win32Bmp->GetBitmap();
-        HDC hdc = ::GetDC(hwnd);
+        canvas = pInfo->GetDib();
 
         if (pInfo->IsNeedRender() || !canvas->IsValid() || 
             (cx == (int)_clip.Width() && cy == (int)_clip.Height()))
         {
             pInfo->SetNeedRender(false);
-            win32Bmp->CreateBmp(hdc, cx, cy);
-            canvas = win32Bmp->GetBitmap();
+            canvas->Create(cx, cy, 32);
+            canvas->EraseColor(0);
         }
         else
         {
             canvas->EraseRect(_clip.ToRect(), 0);
         }
 
-        if (!canvas->IsValid())
+        if (canvas->IsValid())
         {
-            ::ReleaseDC(hwnd ,hdc);
-            return false;
+            DefRender::RenderCanvas(_root, canvas, _clip, Point(), pInfo->DrawDebugLine());
         }
-
-        DefRender::RenderCanvas(_root, HDCTOHANDLE(hdc), canvas, HDCTOHANDLE(win32Bmp->GetHBitmap())
-            , _clip, Point(), pInfo->DrawDebugLine());
-
-        ::ReleaseDC(hwnd ,hdc);
-
-        bmp.Clear();
-        bmp.GetBitmap()->SetConfig(canvas->Width(), canvas->Height(), 32);
-        bmp.GetBitmap()->SetPixels(canvas->GetPixels());
-        bmp.SetHBitmap(win32Bmp->GetHBitmap(), false);
-
-        bSucc = true;
     }
 
-    return bSucc;
+    return canvas;
 }
 
-bool RenderEngine::RenderToMemory(VisualHost* pHost, Win32Bitmap& bmp)
+Bitmap* RenderEngine::RenderToMemory(VisualHost* pHost)
 {
     if (HwndHelper::IsAllowsTransparency(_root))
     {
-        return RenderLayerToMemory(pHost, bmp);
+        return RenderLayerToMemory(pHost);
     }
 
     Rect rectWnd;
     DWORD dwTime = Environment::GetSystemTick();
     RenderInfo* pInfo(pHost->GetRenderInfo());
+    Bitmap* bmp = pInfo->GetDib();
 
     int cx = _root->GetActualWidth();
     int cy = _root->GetActualHeight();
@@ -243,30 +229,22 @@ bool RenderEngine::RenderToMemory(VisualHost* pHost, Win32Bitmap& bmp)
 
     if (CheckRender())
     {
-        pInfo->GetDib()->Clear();
+        bmp->Create(cx, cy, 32);
 
-        HDC hdc = ::GetDC(hwnd);
-
-        bmp.CreateBmp(hdc, cx, cy);
-        DefRender::RenderCanvas(_root, HDCTOHANDLE(hdc), bmp.GetBitmap()
-            , HDCTOHANDLE(bmp.GetHBitmap()), _clip, Point(0, 0), pInfo->DrawDebugLine());
-
-        ::ReleaseDC(hwnd ,hdc);
-
-        bSucc = true;
+        DefRender::RenderCanvas(_root, bmp, _clip, Point(0, 0), pInfo->DrawDebugLine());
     }
 
-    return bSucc;
+    return bmp;
 }
 
 void RenderEngine::RenderToScreen(VisualHost* visualHost, HDC hdc, Point offset)
 {
-    Win32Bitmap bmp;
+    suic::Bitmap* bmp = NULL;
 
     // 先绘制到内存
-    RenderToMemory(visualHost, bmp);
+    bmp = RenderToMemory(visualHost);
 
-    if (bmp.GetBitmap()->IsValid())
+    if (bmp->IsValid())
     {
         HWND hwnd(HANDLETOHWND(visualHost->GetHandle()));
 
@@ -277,13 +255,12 @@ void RenderEngine::RenderToScreen(VisualHost* visualHost, HDC hdc, Point offset)
         else
         {
             RenderNormalWindow(offset, bmp, hdc);
+            bmp->Clear();
         }
     }
-
-    bmp.Clear();
 }
 
-void RenderEngine::RenderNormalWindow(Point offset, Win32Bitmap& pDib, HDC hdc)
+void RenderEngine::RenderNormalWindow(Point offset, suic::Bitmap* bmp, HDC hdc)
 {
     HDC mdc = CreateCompatibleDC(hdc);
     int w = _clip.Width();
@@ -291,29 +268,51 @@ void RenderEngine::RenderNormalWindow(Point offset, Win32Bitmap& pDib, HDC hdc)
 
     if (NULL != mdc)
     {
-        HBITMAP hOldBitmap = (HBITMAP)::SelectObject(mdc, pDib.GetHBitmap());
+        HBITMAP hBitmap = BitmapToHandle(bmp);
+        HBITMAP hOldBitmap = (HBITMAP)::SelectObject(mdc, hBitmap);
 
         BitBlt(hdc, _clip.left, _clip.top, w, h, mdc, _clip.left, _clip.top, SRCCOPY);
 
         SelectObject(mdc, hOldBitmap);
+        DeleteObject(hBitmap);
         DeleteDC(mdc);
     }
 }
 
-void RenderEngine::RenderElementToSurface(FrameworkElement* root, Win32Bitmap& pDib)
+void RenderEngine::RenderElementToSurface(FrameworkElement* root, Bitmap* bmp)
 {
     HWND hwnd = HANDLETOHWND(HwndHelper::GetHostHwnd(root));
-    RenderLayerWindow(root, pDib, hwnd);
+    RenderLayerWindow(root, bmp, hwnd);
 }
 
-void RenderEngine::RenderLayerWindow(FrameworkElement* root, Win32Bitmap& pDib, HWND hwnd)
+HBITMAP RenderEngine::BitmapToHandle(Bitmap* bitmap)
+{
+    int w = bitmap->Width();
+    int h = bitmap->Height();
+
+    BITMAP bmp;
+    bmp.bmType = 0;
+    bmp.bmWidth  = w;
+    bmp.bmHeight = h;
+    bmp.bmWidthBytes = w << 2;
+    bmp.bmPlanes = 1;
+    bmp.bmBitsPixel = 32;
+    bmp.bmBits = bitmap->GetPixels();
+
+    HBITMAP hBitmap = CreateBitmapIndirect(&bmp);
+
+    return hBitmap;
+}
+
+void RenderEngine::RenderLayerWindow(FrameworkElement* root, Bitmap* bmp, HWND hwnd)
 {
     HDC drawdc = ::GetDC(hwnd);
     HDC mdc = CreateCompatibleDC(drawdc);
 
     if (NULL != mdc)
     {
-        HBITMAP hOldBitmap = (HBITMAP)::SelectObject(mdc, pDib.GetHBitmap());
+        HBITMAP hBitmap = BitmapToHandle(bmp);
+        HBITMAP hOldBitmap = (HBITMAP)::SelectObject(mdc, hBitmap);
 
         Rect rect;
         ::GetWindowRect(hwnd, &rect);
@@ -326,6 +325,7 @@ void RenderEngine::RenderLayerWindow(FrameworkElement* root, Win32Bitmap& pDib, 
         ::UpdateLayeredWindow(hwnd, NULL, &ptsrc, &szWnd, mdc, &ptself, 0, &alBlend, ULW_ALPHA);
 
         SelectObject(mdc, hOldBitmap);
+        DeleteObject(hBitmap);
         DeleteDC(mdc);
     }
 

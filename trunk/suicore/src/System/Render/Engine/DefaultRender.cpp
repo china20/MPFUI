@@ -7,7 +7,9 @@
 
 #include <System/Graphics/ImageBrush.h>
 #include <System/Graphics/Bitmaptool.h>
+
 #include <System/Graphics/Geometry.h>
+#include <System/Graphics/SolidColorBrush.h>
 
 /*--------内部使用头文件--------*/
 #include <System/Windows/HwndObject.h>
@@ -34,18 +36,17 @@ namespace suic
 void DefRender::DrawDebugLine(FrameworkElement* child, Drawing* drawing)
 {
     Pen pen;
-    //pen.SetColor(ARGB(255,255,0,0));
+    pen.SetBrush(suic::SolidColorBrush::Red);
     pen.SetThickness(2);
     drawing->DrawRect(DrawCtx::DefDraw, NULL, &pen, &child->GetRenderRect().TofRect());
 }
 
-void DefRender::RenderCanvas(FrameworkElement* root, Handle hdc, Bitmap* canvas, Handle h, fRect clip, Point pt, bool bDebugLine)
+void DefRender::RenderCanvas(FrameworkElement* root, Bitmap* canvas, fRect clip, Point pt, bool bDebugLine)
 {
     DWORD dwBegin = Environment::GetSystemTick();
-    //Rect rc = clip.ToRect();
 
     VisualHost* visualHost = VisualHost::GetVisualHost(root);
-    SkiaDrawing drawing(h, HwndHelper::IsAllowsTransparency(root), canvas, clip);
+    SkiaDrawing drawing(HwndHelper::IsAllowsTransparency(root), canvas, clip);
 
     drawing.Save();
     drawing.ClipRect(&clip, ClipOp::OpIntersect);
@@ -56,12 +57,6 @@ void DefRender::RenderCanvas(FrameworkElement* root, Handle hdc, Bitmap* canvas,
     }
 
     root->Render(&drawing);
-
-    /*String strMPF(_U("欢迎使用MPF"));
-    FormattedText fmt;
-    fRect rcMPF(0, 0, 100, 32);
-    fmt.SetColor(ARGB(11,0,0,0));
-    drawing.DrawString(&fmt, strMPF.c_str(), strMPF.Length(), &rcMPF);*/
 
     drawing.Restore();
 }

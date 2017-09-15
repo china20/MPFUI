@@ -127,7 +127,7 @@ void SkiaDrawing::InitDrawBrushes()
     _drawBrushes.Add(RadialGradientBrush::RTTIType(), SkiaDrawing::DrawRadialGradientBrush);
 }
 
-SkiaDrawing::SkiaDrawing(Handle h, bool layeredMode, Bitmap* dib, fRect topClip)
+SkiaDrawing::SkiaDrawing(bool layeredMode, Bitmap* dib, fRect topClip)
 {
     SkBitmap* bmp = BitmapToSk(dib);
     DrawLayer& dInfo = _CurrLayer();

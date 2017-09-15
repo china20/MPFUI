@@ -1260,6 +1260,8 @@ void VideoDecodeThr::Run()
             BmpInfo* bmp = new BmpInfo();
             bmp->ref();
             bmp->bmp.Create(pCodecCtx->width, pCodecCtx->height, pRgbBuffer, 32);
+            //bmp->bmp.SetConfig(pCodecCtx->width, pCodecCtx->height, 32);
+            //bmp->bmp.SetPixels(pRgbBuffer);
             bmp->curDuration = vPts;
 
             // 
