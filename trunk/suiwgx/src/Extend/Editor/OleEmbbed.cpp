@@ -338,6 +338,7 @@ static void __RenderBmp(HBITMAP hbmp, HDC hdc, suic::Rect rect)
 
     ::SetStretchBltMode(hdc, iMode);
     ::SelectObject(hmem, obmp);
+    ::DeleteObject(hbmp);
 
     ::DeleteDC(hmem);
 }
@@ -363,8 +364,10 @@ HRESULT WINAPI OleEmbbed::Draw(DWORD dwDrawAspect, LONG lindex, void *pvAspect, 
     drawing = rCtx.Open(_rect.Width(), _rect.Height(), 0);
     Render(drawing, rcDraw);
 
+    HBITMAP hbmp = HANDLETOBITMAP(suic::Bitmap::ToHandle(rCtx.bitmap));
+
     // »æÖÆµ½Richedit
-    __RenderBmp(HANDLETOBITMAP(rCtx.bitmap->GetHandle()), hdcDraw, _rect);
+    __RenderBmp(hbmp, hdcDraw, _rect);
 
 	return S_OK;
 }
