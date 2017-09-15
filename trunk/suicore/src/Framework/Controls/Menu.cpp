@@ -15,6 +15,8 @@
 #include <Framework/Controls/MenuitemHelper.h>
 
 #include <System/Windows/CoreTool.h>
+#include <System/Windows/RenderTarget.h>
+
 #include <System/Input/MouseDevice.h>
 
 namespace suic
@@ -206,6 +208,50 @@ void MenuBase::OnTextInput(KeyboardEventArg* e)
 {
 }
 
+void MenuBase::OnPreviewKeyDown(KeyboardEventArg* e)
+{
+    suic::Object* pItem = NULL;
+    suic::MenuItem* pMenuItem = NULL;
+    int trackPopupCount = TrackingMenuOp::Ins()->GetTrackPopupCount();
+    Selector::OnPreviewKeyDown(e);
+
+    if (GetCount() > 0)
+    {
+        if (e->GetKey() == suic::Key::kLeftAlt || 
+            e->GetKey() == suic::Key::kRightAlt)
+        {
+            if (suic::DynamicCast<Menu>(this) != NULL)
+            {
+                e->SetHandled(true);
+
+                pItem = GetSelectedItem();
+
+                if (trackPopupCount > 0)
+                {
+                    GetMenuPopup()->CloseAllPopup(true);
+                }
+
+                // 
+                // 选中第一个
+                // 
+                if (suic::DpProperty::UnsetValue() == pItem)
+                {
+                    pItem = GetItem(0);
+                    pMenuItem = MenuItemFromItem(pItem);
+                    pMenuItem->SetIsHighlighted(true);
+                }
+                else
+                {
+                    pMenuItem = MenuItemFromItem(pItem);
+                    pMenuItem->SetIsHighlighted(false);
+                }
+
+                pMenuItem->Focus();
+            }
+        }
+    }
+}
+
 void MenuBase::OnKeyDown(KeyboardEventArg* e)
 {
     suic::Object* pItem = NULL;
@@ -213,6 +259,11 @@ void MenuBase::OnKeyDown(KeyboardEventArg* e)
     suic::MenuItem* pMenuItem = NULL;
     int trackPopupCount = TrackingMenuOp::Ins()->GetTrackPopupCount();
     Popup* popup = TrackingMenuOp::Ins()->GetTopPopup();
+
+    if (GetCount() == 0)
+    {
+        return;
+    }
 
     // 
     // 子菜单弹出了
@@ -523,6 +574,18 @@ Menu::Menu()
 
 Menu::~Menu()
 {
+}
+
+void Menu::OnLoaded(LoadedEventArg* e)
+{
+    VisualHost* target = NULL;
+    
+    target = suic::DynamicCast<VisualHost>(e->GetTarget());
+
+    if (NULL != target)
+    {
+        target->_mainMenu = this;
+    }
 }
 
 DpProperty* ContextMenu::IsOpenProperty;

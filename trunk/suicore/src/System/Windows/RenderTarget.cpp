@@ -10,6 +10,7 @@
 #include <System/Tools/VisualTreeOp.h>
 #include <System/Windows/HwndSubclass.h>
 
+#include <Framework/Controls/Menu.h>
 #include <Framework/Controls/Popup.h>
 #include <Framework/Controls/Window.h>
 
@@ -177,6 +178,11 @@ void VisualHost::UpdateLayout()
 RenderInfo* VisualHost::GetRenderInfo()
 {
     return _renderInfo;
+}
+
+Menu* VisualHost::GetMainMenu()
+{
+    return suic::DynamicCast<Menu>(_mainMenu.GetTarget());
 }
 
 void VisualHost::Invalidate(const Rect* lprc, bool force)

@@ -17,6 +17,7 @@
 namespace suic
 {
 
+class Menu;
 class RenderInfo;
 
 /// <summary>
@@ -109,6 +110,7 @@ public:
     virtual void OnRender(const Rect* lprc);
 
     RenderInfo* GetRenderInfo();
+    Menu* GetMainMenu();
 
 public:
 
@@ -116,15 +118,19 @@ public:
     virtual bool HandleEvent(Handle h, Uint32 message, Uint32 wp, Uint32 lp, Uint32& result);
 
 private:
-
+    
     Handle _handle;
     Size _size;
 
     Point _offset;
     Point _screenOffset;
 
+    WeakRef _mainMenu;
+
     RenderInfo* _renderInfo;
     FrameworkElement* _rootElement;
+
+    friend class Menu;
 };
 
 typedef shared<VisualHost> VisualHostPtr;

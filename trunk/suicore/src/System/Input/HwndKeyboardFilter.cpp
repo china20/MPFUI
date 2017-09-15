@@ -15,6 +15,8 @@
 #include <System/Tools/VisualTreeOp.h>
 #include <System/Tools/AcceleratorOp.h>
 
+#include <Framework/Controls/Menu.h>
+
 namespace suic
 {
 
@@ -62,6 +64,34 @@ bool HwndKeyboardFilter::Process_WM_KEYDOWN(Element* rootElement, MessageParam* 
     Element* currElem = NULL;
     bool handled = false;
     Popup* popup(Assigner::Current()->GetTopTrackPopup());
+
+    if ((int)mp->wp == VK_MENU)
+    {
+        SHORT shVal = ::GetAsyncKeyState(VK_LMENU);
+        if (shVal != 0)
+        {
+            mp->wp = suic::Key::kLeftAlt;
+        }
+        else
+        {
+            shVal = ::GetAsyncKeyState(VK_RMENU);
+            if (shVal != 0)
+            {
+                mp->wp = suic::Key::kRightAlt;
+            }
+        }
+
+        VisualHost* pHost = VisualHost::GetVisualHost(rootElement);
+        if (NULL != pHost && NULL != pHost->GetMainMenu())
+        {
+            KeyboardEventArg ke(rootElement, (int)mp->wp, CoreHelper::ToKeyFlags(mp->lp));
+            pHost->GetMainMenu()->OnPreviewKeyDown(&ke);
+            if (ke.IsHandled())
+            {
+                return true;
+            }
+        }
+    }
 
     if (NULL == popup)
     {

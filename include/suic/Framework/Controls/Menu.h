@@ -57,6 +57,7 @@ public:
 
     void OnTextInput(KeyboardEventArg* e);
     void OnKeyDown(KeyboardEventArg* e);
+    void OnPreviewKeyDown(KeyboardEventArg* e);
 
     void OnMouseEnter(MouseButtonEventArg* e);
     void OnMouseMove(MouseButtonEventArg* e);
@@ -91,6 +92,8 @@ public:
     virtual ~Menu();
 
     RTTIOfClass(Menu)
+
+    void OnLoaded(LoadedEventArg* e);
 };
 
 typedef suic::shared<Menu> MenuPtr;
