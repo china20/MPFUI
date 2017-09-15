@@ -336,49 +336,49 @@
 
     <ControlTemplate TargetType="CloseButton" x:Key="sysCloseButtonTemplate">
         <Border Background="{TemplateBinding Background}" >
-            <Grid>
+            <!-- Grid>
                 <Path Data="M0 0 L8 8 Z" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <Path Data="M8 0 L0 8 Z" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            </Grid>
+            </Grid -->
         </Border>
     </ControlTemplate>
 
     <!-- 关闭按钮控件样式定义 -->
     <Style TargetType="CloseButton">
-        <Setter Property="BorderBrush" Value="{DynamicResource sysCloseNormal}" />
+        <Setter Property="Background" Value="{DynamicResource sysCloseNormal}" />
         <Setter Property="Width" Value="29" />
         <Setter Property="Height" Value="32" />
         <Setter Property="ToolTip" Value="关闭" />
         <Setter Property="Template" Value="{DynamicResource sysCloseButtonTemplate}" />
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource sysClosePress}" />
+                <Setter Property="Background" Value="{DynamicResource sysClosePress}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource sysCloseHot}" />
+                <Setter Property="Background" Value="{DynamicResource sysCloseHot}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-	
-	<ControlTemplate TargetType="MinimizeButton" x:Key="sysMinimizeButtonTemplate">
-                    <Border Background="{TemplateBinding Background}" >
-                        <Rectangle Fill="{TemplateBinding BorderBrush}" Height="2" Width="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    </Border>
-                </ControlTemplate>
+
+    <ControlTemplate TargetType="MinimizeButton" x:Key="sysMinimizeButtonTemplate">
+        <Border Background="{TemplateBinding Background}" >
+            <!-- Rectangle Fill="{TemplateBinding BorderBrush}" Height="2" Width="8" VerticalAlignment="Center" HorizontalAlignment="Center" / -->
+        </Border>
+    </ControlTemplate>
 
     <!-- 最小化按钮控件样式定义 -->
     <Style TargetType="MinimizeButton">
         <Setter Property="Width" Value="29" />
         <Setter Property="Height" Value="32" />
         <Setter Property="ToolTip" Value="最小化" />
-        <Setter Property="BorderBrush" Value="{DynamicResource sysMinNormal}" />
+        <Setter Property="Background" Value="{DynamicResource sysMinNormal}" />
         <Setter Property="Template" Value="{DynamicResource sysMinimizeButtonTemplate}" />
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource sysMinPress}" />
+                <Setter Property="Background" Value="{DynamicResource sysMinPress}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True" >
-                <Setter Property="BorderBrush" Value="{DynamicResource sysMinHot}" />
+                <Setter Property="Background" Value="{DynamicResource sysMinHot}" />
             </Trigger>
         </Style.Triggers>
     </Style>
