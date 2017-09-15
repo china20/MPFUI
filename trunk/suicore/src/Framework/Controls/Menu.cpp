@@ -217,8 +217,7 @@ void MenuBase::OnPreviewKeyDown(KeyboardEventArg* e)
 
     if (GetCount() > 0)
     {
-        if (e->GetKey() == suic::Key::kLeftAlt || 
-            e->GetKey() == suic::Key::kRightAlt)
+        if (e->GetKey() == suic::Key::kMenu)
         {
             if (suic::DynamicCast<Menu>(this) != NULL)
             {

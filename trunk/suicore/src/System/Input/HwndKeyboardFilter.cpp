@@ -67,7 +67,7 @@ bool HwndKeyboardFilter::Process_WM_KEYDOWN(Element* rootElement, MessageParam* 
 
     if ((int)mp->wp == VK_MENU)
     {
-        SHORT shVal = ::GetAsyncKeyState(VK_LMENU);
+        /*SHORT shVal = ::GetAsyncKeyState(VK_LMENU);
         if (shVal != 0)
         {
             mp->wp = suic::Key::kLeftAlt;
@@ -79,7 +79,7 @@ bool HwndKeyboardFilter::Process_WM_KEYDOWN(Element* rootElement, MessageParam* 
             {
                 mp->wp = suic::Key::kRightAlt;
             }
-        }
+        }*/
 
         VisualHost* pHost = VisualHost::GetVisualHost(rootElement);
         if (NULL != pHost && NULL != pHost->GetMainMenu())
