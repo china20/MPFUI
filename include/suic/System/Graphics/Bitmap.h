@@ -43,6 +43,8 @@ public:
 
     ~Bitmap();
 
+    static Handle ToHandle(Bitmap* bitmap);
+
     void CopyTo(Bitmap* Other) const;
     void DrawTo(Bitmap* Other, const Rect* src, const Rect* dst) const;
 
@@ -83,18 +85,6 @@ public:
     bool AllocPixel(Color clr);
     bool AllocPixels();
 
-    /// <summary>
-    ///  创建32位图像，同时返回一个图像句柄（windows是HBITMAP）
-    /// </summary>
-    /// <remarks>
-    ///  此方法内部自动调用SetConfig
-    /// </remarks>
-    /// <param name="wid">图像宽度</param>
-    /// <param name="hei">图像高度</param>
-    /// <param name="clr">填充色</param>
-    /// <returns>成功返回true；否则false</returns>
-    bool AllocHandle(int wid, int hei, Color clr);
-
     bool Load(const ResourceUri* uri);
     bool Load(const String& strFile);
     bool LoadHandle(Handle h);
@@ -113,8 +103,7 @@ public:
     bool IsValid() const;
     bool IsBackup() const;
     bool IsLoaded() const;
- 
-    Handle GetHandle() const;
+    
     BitmapInfo* GetBitmapInfo() const;
 
     Uint32 GetSize() const;
@@ -144,24 +133,17 @@ public:
     bool Restore();
     void ResetBackup();
 
-    void SetPixels(Byte* pixels, Handle h, bool autoDel);
-
 private:
 
     void SetLoaded(bool bLoad);
 
 protected:
 
-    Byte _flag;
+    suic::Byte _flag;
     BitmapInfo* _bmpInfo;
     // 备份图像数据
     Byte* _backupData;
 };
-
-inline bool Bitmap::IsAlpha() const 
-{ 
-    return (_flag & 0x1) != 0;
-}
 
 inline Byte* Bitmap::GetBackupPixels() const 
 { 

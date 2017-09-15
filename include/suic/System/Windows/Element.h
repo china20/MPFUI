@@ -722,12 +722,14 @@ public:
     /// </summary>
     /// <returns>无</returns>
     void InvalidateArrange();
+    void InvalidateArrange(suic::Rect rect);
 
     /// <summary>
     ///  刷新元素大小。
     /// </summary>
     /// <returns>无</returns>    
     void InvalidateMeasure();
+    void InvalidateMeasure(suic::Size size);
 
     bool ReadFlag(int key) const;
     void WriteFlag(int key, bool add);
