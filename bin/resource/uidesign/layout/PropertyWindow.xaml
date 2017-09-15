@@ -229,7 +229,7 @@
 
                                     <DockPanel Margin="2" >
                                         <TextBlock Text="Margin " TextAlignment="Right" />
-                                        <fRectSetterEditor Name="Margin" />
+                                        <RectSetterEditor Name="Margin" />
                                     </DockPanel>
 
                                     <DockPanel Margin="2" >
