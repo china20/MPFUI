@@ -65,6 +65,7 @@ void InitDControls()
     suic::BuildFactory::Ins()->Add(PosIntegerControl::RTTIType());
 
     suic::BuildFactory::Ins()->Add(WidthControl::RTTIType());
+    suic::BuildFactory::Ins()->Add(WidthFloatControl::RTTIType());
     suic::BuildFactory::Ins()->Add(FloatControl::RTTIType());
     suic::BuildFactory::Ins()->Add(PosFloatControl::RTTIType());
     suic::BuildFactory::Ins()->Add(RatioControl::RTTIType());
@@ -73,6 +74,7 @@ void InitDControls()
 
     suic::BuildFactory::Ins()->Add(StringEditor::RTTIType());
     suic::BuildFactory::Ins()->Add(WidthEditor::RTTIType());
+    suic::BuildFactory::Ins()->Add(WidthFloatEditor::RTTIType());
     suic::BuildFactory::Ins()->Add(IntegerEditor::RTTIType());
     suic::BuildFactory::Ins()->Add(PosIntegerEditor::RTTIType());
     

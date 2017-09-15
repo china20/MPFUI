@@ -35,7 +35,7 @@ protected:
     bool IsItemItsOwnContainer(suic::Object* item);
     suic::Element* GetContainerForItemOverride();
 
-    void ArrangeCore(const suic::fRect& arrangeRect);
+    void ArrangeCore(const suic::Rect& arrangeRect);
 };
 
 class TreeItemDockPanel : public suic::StackPanel
@@ -47,7 +47,7 @@ public:
 public:
 
     void ArrangeChild(ElementTreeItem* parent, suic::ScrollViewer* scrollView);
-    void ArrangeCore(const suic::fRect& arrangeRect);
+    void ArrangeCore(const suic::Rect& arrangeRect);
 };
 
 class TreeItemGrid : public suic::Grid

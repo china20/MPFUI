@@ -19,7 +19,8 @@ ImplementRTTIOfClass(PosFloatControl, FloatControl)
 ImplementRTTIOfClass(RatioControl, FloatControl)
 ImplementRTTIOfClass(IntegerControl, StringControl)
 ImplementRTTIOfClass(PosIntegerControl, IntegerControl)
-ImplementRTTIOfClass(WidthControl, FloatControl)
+ImplementRTTIOfClass(WidthControl, IntegerControl)
+ImplementRTTIOfClass(WidthFloatControl, FloatControl)
 ImplementRTTIOfClass(EditorControl, suic::Control)
 
 ImplementRTTIOfClass(GridWidthControl, WidthControl)
@@ -34,7 +35,8 @@ ImplementRTTIOfClass(PosFloatEditor, FloatEditor)
 ImplementRTTIOfClass(RatioEditor, FloatEditor)
 ImplementRTTIOfClass(IntegerEditor, EditorControl)
 ImplementRTTIOfClass(PosIntegerEditor, IntegerEditor)
-ImplementRTTIOfClass(WidthEditor, FloatEditor)
+ImplementRTTIOfClass(WidthEditor, IntegerEditor)
+ImplementRTTIOfClass(WidthFloatEditor, FloatEditor)
 
 ImplementRTTIOfClass(BooleanEditor, EditorControl)
 
@@ -224,7 +226,111 @@ WidthControl::~WidthControl()
 
 }
 
-Float WidthControl::GetFloat()
+int WidthControl::GetInt()
+{
+    String strText = GetText();
+    if (!strText.Empty() && StringIsInt(strText))
+    {
+        return GetText().ToInt();
+    }
+    else
+    {
+        return -1;
+    }
+}
+
+int WidthControl::StringToInt(const String& val)
+{
+    return val.ToInt();
+}
+
+bool WidthControl::CheckString(String& val)
+{
+    int oldVal = -1;
+    int newVal = -1;
+
+    if (StringIsInt(_oldValue))
+    {
+        oldVal = _oldValue.ToInt();
+    }
+
+    if (StringIsInt(val))
+    {
+        newVal = val.ToInt();
+    }
+
+    val = CheckInteger(newVal);
+    SetText(val);
+
+    if (_oldValue.Equals(val))
+    {
+        return true;
+    }
+
+    return (oldVal ==newVal);
+}
+
+String WidthControl::CheckInteger(int val)
+{
+    String strText;
+    if (val < 0)
+    {
+        strText = _U("Auto");
+    }
+    else
+    {
+        strText.Format(_U("%d"), val);
+    }
+
+    return strText;
+}
+
+bool WidthControl::StringIsInt(const String& strText)
+{
+    if (strText.Empty())
+    {
+        return false;
+    }
+
+    bool dotCount = 0;
+
+    for (int i = 0; i < strText.Length(); ++i)
+    {
+        int c = strText[i];
+
+        if (c < '0' || c > '9')
+        {
+            return false;
+        }
+
+        if (c == '-' && i != 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void WidthControl::NotifyValueChanged()
+{
+    StringControl::NotifyValueChanged();
+}
+
+//=====================================================
+// WidthFloatControl
+
+WidthFloatControl::WidthFloatControl()
+{
+
+}
+
+WidthFloatControl::~WidthFloatControl()
+{
+
+}
+
+Float WidthFloatControl::GetFloat()
 {
     String strText = GetText();
     if (!strText.Empty() && StringIsFloat(strText))
@@ -237,7 +343,7 @@ Float WidthControl::GetFloat()
     }
 }
 
-Float WidthControl::StringToFloat(const String& val)
+Float WidthFloatControl::StringToFloat(const String& val)
 {
     if (!StringIsFloat(val))
     {
@@ -246,7 +352,7 @@ Float WidthControl::StringToFloat(const String& val)
     return (Float)((int)val.ToFloat());
 }
 
-bool WidthControl::CheckString(String& val)
+bool WidthFloatControl::CheckString(String& val)
 {
     suic::Float oldVal = FloatUtil::PosInfinity;
     suic::Float newVal = FloatUtil::PosInfinity;
@@ -272,7 +378,7 @@ bool WidthControl::CheckString(String& val)
     return suic::FloatUtil::AreClose(oldVal, newVal);
 }
 
-String WidthControl::CheckFloat(Float val)
+String WidthFloatControl::CheckFloat(Float val)
 {
     String strText;
     if (FloatUtil::IsPosInfinity(val) || (int)val < 0)
@@ -287,7 +393,7 @@ String WidthControl::CheckFloat(Float val)
     return strText;
 }
 
-bool WidthControl::StringIsFloat(const String& strText)
+bool WidthFloatControl::StringIsFloat(const String& strText)
 {
     if (strText.Empty())
     {
@@ -328,7 +434,7 @@ bool WidthControl::StringIsFloat(const String& strText)
     return true;
 }
 
-void WidthControl::NotifyValueChanged()
+void WidthFloatControl::NotifyValueChanged()
 {
     StringControl::NotifyValueChanged();
 }
@@ -928,12 +1034,18 @@ void IntegerEditor::OnApplyTemplate()
 
 bool IntegerEditor::OnBaseValueChangedOverride(Element* sender)
 {
-    IntegerControl* textBox = RTTICast<IntegerControl>(sender);
-    int iVal = textBox->GetInt();
+    int iVal = IntFromTextBox(sender);
 
     UpdateRealValue(new Integer(iVal));
     NotifyValueToEditRootPanel();
     return true;
+}
+
+int IntegerEditor::IntFromTextBox(Element* sender)
+{
+    IntegerControl* textBox = RTTICast<IntegerControl>(sender);
+    int iVal = textBox->GetInt();
+    return iVal;
 }
 
 //void IntegerEditor::CreateInteger()
@@ -970,15 +1082,53 @@ WidthEditor::~WidthEditor()
 
 void WidthEditor::CreateDefaultValue(ResNodePtr& obj)
 {
+    ResNode::CreateResNode(new Integer(-1), obj);
+}
+
+int WidthEditor::GetInitInteger()
+{
+    return -1;
+}
+
+int WidthEditor::IntFromTextBox(Element* sender)
+{
+    suic::TextBox* textBox = RTTICast<suic::TextBox>(sender);
+    suic::String strText = textBox->GetText();
+    int iVal = -1;
+
+    if (!strText.Equals(_U("Auto")))
+    {
+        iVal = strText.ToInt();
+        if (iVal < 0)
+        {
+            iVal = -1;
+        }
+    }
+    return iVal;
+}
+
+//=====================================================
+// WidthFloatEditor
+
+WidthFloatEditor::WidthFloatEditor()
+{
+}
+
+WidthFloatEditor::~WidthFloatEditor()
+{
+}
+
+void WidthFloatEditor::CreateDefaultValue(ResNodePtr& obj)
+{
     ResNode::CreateResNode(new OFloat(FloatUtil::PosInfinity), obj);
 }
 
-Float WidthEditor::GetInitFloat()
+Float WidthFloatEditor::GetInitFloat()
 {
     return FloatUtil::PosInfinity;
 }
 
-suic::Float WidthEditor::FloatFromTextBox(Element* sender)
+suic::Float WidthFloatEditor::FloatFromTextBox(Element* sender)
 {
     suic::TextBox* textBox = RTTICast<suic::TextBox>(sender);
     suic::String strText = textBox->GetText();

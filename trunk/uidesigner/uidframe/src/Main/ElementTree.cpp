@@ -50,7 +50,7 @@ suic::Element* ElementTreeItem::GetContainerForItemOverride()
     return new ElementTreeItem();
 }
 
-void ElementTreeItem::ArrangeCore(const suic::fRect& arrangeRect)
+void ElementTreeItem::ArrangeCore(const suic::Rect& arrangeRect)
 {
     if (ReadFlag(suic::CoreFlags::IsMeasureDirty))
     {
@@ -81,7 +81,7 @@ void ElementTreeItem::ArrangeCore(const suic::fRect& arrangeRect)
     _descendantBounds = Rect(_canvasOffset, _renderSize);
 }
 
-void TreeItemDockPanel::ArrangeCore(const suic::fRect& arrangeRect)
+void TreeItemDockPanel::ArrangeCore(const suic::Rect& arrangeRect)
 {
 }
 

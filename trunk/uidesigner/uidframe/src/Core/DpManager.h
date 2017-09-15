@@ -228,9 +228,9 @@ public:
 
     virtual suic::String ValueToString(ResNode* val)
     {
-        suic::OFloat* pFloat = RTTICast<suic::OFloat>(val->GetValue());
+        suic::Integer* pWid = RTTICast<suic::Integer>(val->GetValue());
         
-        if (NULL != pFloat && FloatUtil::IsPosInfinity(pFloat->ToFloat()))
+        if (NULL != pWid && pWid->ToInt() < 0)
         {
             return _U("Auto");
         }

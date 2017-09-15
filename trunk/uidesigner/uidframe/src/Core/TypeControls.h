@@ -107,7 +107,7 @@ protected:
     void NotifyValueChanged();
 };
 
-class WidthControl : public FloatControl
+class WidthControl : public IntegerControl
 {
 public:
 
@@ -115,6 +115,26 @@ public:
     ~WidthControl();
 
     RTTIOfClass(WidthControl)
+
+    int GetInt();
+    String CheckInteger(int val);;
+    bool CheckString(String& val);
+
+protected:
+
+    void NotifyValueChanged();
+    int StringToInt(const String& val);
+    bool StringIsInt(const String& strText);
+};
+
+class WidthFloatControl : public FloatControl
+{
+public:
+
+    WidthFloatControl();
+    ~WidthFloatControl();
+
+    RTTIOfClass(WidthFloatControl)
 
     Float GetFloat();
     String CheckFloat(suic::Float val);
@@ -127,7 +147,7 @@ protected:
     Float StringToFloat(const String& val);
 };
 
-class GridWidthControl : public WidthControl
+class GridWidthControl : public WidthFloatControl
 {
 public:
 
@@ -325,6 +345,7 @@ protected:
 
     virtual void OnUpdateValue();
     virtual bool OnBaseValueChangedOverride(Element* sender);
+    virtual int IntFromTextBox(Element* sender);
 
     virtual int GetInitInteger();
 };
@@ -362,7 +383,7 @@ protected:
     virtual suic::Float FloatFromTextBox(Element* sender);
 };
 
-class WidthEditor : public FloatEditor
+class WidthEditor : public IntegerEditor
 {
 public:
 
@@ -370,6 +391,22 @@ public:
     ~WidthEditor();
 
     RTTIOfClass(WidthEditor)
+
+protected:
+
+    virtual int GetInitInteger();
+    virtual void CreateDefaultValue(ResNodePtr& obj);
+    virtual int IntFromTextBox(Element* sender);
+};
+
+class WidthFloatEditor : public FloatEditor
+{
+public:
+
+    WidthFloatEditor();
+    ~WidthFloatEditor();
+
+    RTTIOfClass(WidthFloatEditor)
 
 protected:
 
