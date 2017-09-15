@@ -5,7 +5,7 @@
 namespace suic
 {
 
-static HBITMAP __CreateDib(suic::Byte** rq, int w, int h)
+static HBITMAP __CreateDib(HDC hdc, suic::Byte** rq, int w, int h)
 {
     BITMAPINFO bmi = {0};
     bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
@@ -16,7 +16,7 @@ static HBITMAP __CreateDib(suic::Byte** rq, int w, int h)
     bmi.bmiHeader.biCompression = BI_RGB;
     bmi.bmiHeader.biSizeImage = 4 * h * w;
 
-    return ::CreateDIBSection(NULL, &bmi, DIB_RGB_COLORS, (LPVOID*)rq, NULL, 0);
+    return ::CreateDIBSection(hdc, &bmi, DIB_RGB_COLORS, (LPVOID*)rq, NULL, 0);
 }
 
 AlphaOp::AlphaOp(HDC h, suic::Bitmap* bmp, suic::Rect rect)
@@ -136,7 +136,7 @@ void AlphaOp::BackupLayer(Drawing* drawing, const Rect& clip)
     int h = rect.Height();
 
     //hdc = CreateCompatibleDC(NULL);
-    hbmp = __CreateDib(&bytes, w, h);
+    hbmp = __CreateDib(hdc, &bytes, w, h);
 
     dBmp.SetConfig(w, h, 32);
     dBmp.SetPixels(bytes);
@@ -202,7 +202,7 @@ void SelfAlphaOp::Backup(Drawing* drawing, const Rect& clip)
     int w = rect.Width();
     int h = rect.Height();
 
-    hbmp = __CreateDib(&bytes, w, h);
+    hbmp = __CreateDib(hdc, &bytes, w, h);
     //hdc = CreateCompatibleDC(NULL);
     ohbmp = (HBITMAP)SelectObject(hdc, hbmp);
 
