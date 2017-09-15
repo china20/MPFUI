@@ -49,16 +49,13 @@ HDC AlphaOp::GetDrawDc() const
 
 void AlphaOp::Backup(Drawing* drawing, const Rect& clip)
 {
-    HBITMAP tmbmp = HANDLETOBITMAP(oBmp->GetHandle());
-
-    if (NULL == tmbmp)
+    if (NULL == hbmp)
     {
         BackupLayer(drawing, clip);
     }
     else
     {
-        //hdc = CreateCompatibleDC(NULL);
-        ohbmp = (HBITMAP)SelectObject(hdc, tmbmp);
+        ohbmp = (HBITMAP)SelectObject(hdc, hbmp);
 
         ::SelectClipRgn(hdc, NULL);
         ::IntersectClipRect(hdc, clip.left, clip.top, clip.right, clip.bottom);
@@ -95,7 +92,6 @@ void AlphaOp::Restore(Drawing* drawing)
         dBmp.SetConfig(rect.Width(), rect.Height(), 32);
         dBmp.SetPixels(bytes);
 
-        //drawing->DrawImage(&dBmp, &rcimg, &rcimg);
         drawing->WritePixels(&dBmp, rect.LeftTop());
     }
 
@@ -135,7 +131,6 @@ void AlphaOp::BackupLayer(Drawing* drawing, const Rect& clip)
     int w = rect.Width();
     int h = rect.Height();
 
-    //hdc = CreateCompatibleDC(NULL);
     hbmp = __CreateDib(hdc, &bytes, w, h);
 
     dBmp.SetConfig(w, h, 32);
@@ -203,7 +198,6 @@ void SelfAlphaOp::Backup(Drawing* drawing, const Rect& clip)
     int h = rect.Height();
 
     hbmp = __CreateDib(hdc, &bytes, w, h);
-    //hdc = CreateCompatibleDC(NULL);
     ohbmp = (HBITMAP)SelectObject(hdc, hbmp);
 
     bmp.SetConfig(w, h, 32);
@@ -218,7 +212,7 @@ void SelfAlphaOp::Backup(Drawing* drawing, const Rect& clip)
 
 void SelfAlphaOp::Restore(Drawing* drawing, Byte alpha)
 {
-    #define ABLEND(o,d,a) (suic::Byte)(((Float)((o) * a) / 255) + ((Float)((d) * (255-a)) / 255))
+#define ABLEND(o,d,a) (suic::Byte)(((Float)((o) * a) / 255) + ((Float)((d) * (255-a)) / 255))
 
     Bitmap dBmp;
     Byte* imData = NULL;
@@ -250,7 +244,6 @@ void SelfAlphaOp::Restore(Drawing* drawing, Byte alpha)
                 *(orgb + 1) = *(rgb+1) + Math::Round((ralpha * (*(orgb + 1))) >> 8); 
                 *(orgb + 2) = *(rgb+2) + Math::Round((ralpha * (*(orgb + 2))) >> 8); 
                 *(orgb + 3) = *(rgb+3) + Math::Round((ralpha * (*(orgb + 3))) >> 8);
-
                 */
 
                 Byte a = (ABLEND(alpha,*(orgb + 3),alpha));
@@ -275,7 +268,7 @@ void SelfAlphaOp::Restore(Drawing* drawing, Byte alpha)
 
     hdc = NULL;
 
-    #undef ABLEND
+#undef ABLEND
 }
 
 }

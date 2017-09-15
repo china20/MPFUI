@@ -318,8 +318,11 @@ void HwndObject::RefleshUIShow(bool bForce)
     //
     VisualHost* pHost = VisualHost::GetVisualHost(_rootElement);
 
-    pHost->SetNeedRender(true);
-    pHost->Invalidate(&rect, bForce);
+    if (NULL != pHost)
+    {
+        pHost->SetNeedRender(true);
+        pHost->Invalidate(&rect, bForce);
+    }
 }
 
 void HwndObject::InitializeElements(Element* element)
@@ -446,7 +449,8 @@ bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
 
         measureData->SetViewPort(Rect(Point(), measureData->GetAvailableSize()));
 
-        main->Measure(realSize);
+        main->InvalidateMeasure(realSize);
+        //main->Measure(realSize);
 
         if (GetSizeToContent() == SizeToContent::stcWidth)
         {
@@ -464,7 +468,7 @@ bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
         measureData->SetViewPort(finalRect);
 
         main->ResetCanvasOffset();
-        main->Arrange(finalRect);
+        main->InvalidateArrange(finalRect);
     }
 
     RefleshUIShow(false);

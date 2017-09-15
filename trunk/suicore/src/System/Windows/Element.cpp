@@ -1651,6 +1651,12 @@ void Element::InvalidateArrange()
     WriteFlag(CoreFlags::IsArrangeDirty, true);
 }
 
+void Element::InvalidateArrange(suic::Rect rect)
+{
+    _finalArrange = rect;
+    InvalidateArrange();
+}
+
 void Element::InvalidateVisual()
 {
     ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiInvaliateVisual);
@@ -1691,6 +1697,12 @@ void Element::InvalidateMeasure()
     VerifyAccess(__FILELINE__);
     WriteFlag(CoreFlags::IsMeasureDirty, true);
     InvalidateArrange();
+}
+
+void Element::InvalidateMeasure(suic::Size size)
+{
+    _measureSize = size;
+    InvalidateMeasure();
 }
 
 void Element::WriteFlag(int key, bool add)
@@ -2768,7 +2780,7 @@ Drawing* RenderContext::Open(int w, int h, int iType)
     Close();
 
     bitmap = new Bitmap();
-    bitmap->AllocHandle(w, h, 0);
+    bitmap->Create(w, h, 32);
     drawing = new SkiaDrawing(true, bitmap, fRect(0, 0, w, h));
     return drawing;
 }

@@ -43,11 +43,6 @@ Bitmap::~Bitmap()
         _backupData = NULL;
     }
 
-    if (0 != (_flag & 0x2) && 0 != _bmpInfo->h)
-    {
-        ::DeleteObject(HANDLETOBITMAP(_bmpInfo->h));
-    }
-
     _bmpInfo->bmp.reset();
     delete _bmpInfo;
 }
@@ -378,12 +373,14 @@ bool Bitmap::AllocPixels()
     SkBitmap* bmp = &(GetBitmapInfo()->bmp);
 
     bmp->allocPixels();
+    bmp->eraseColor(0);
+
     SetLoaded(true);
 
     return IsValid();
 }
 
-bool Bitmap::AllocHandle(int wid, int hei, Color clr)
+/*bool Bitmap::AllocHandle(int wid, int hei, Color clr)
 {
     SetConfig(wid, hei, 32);
 
@@ -405,7 +402,7 @@ bool Bitmap::AllocHandle(int wid, int hei, Color clr)
     SetLoaded(true);
 
     return IsValid();
-}
+}*/
 
 bool Bitmap::Create(Int32 wid, Int32 hei, int bits)
 {
@@ -480,26 +477,6 @@ bool Bitmap::Restore()
     {
         return false;
     }
-}
-
-void Bitmap::SetPixels(Byte* pixels, Handle h, bool autoDel)
-{
-    if (0 != (_flag & 0x2) && 0 != GetHandle())
-    {
-        ::DeleteObject(HANDLETOBITMAP(GetHandle()));
-    }
-
-    if (autoDel)
-    {
-        _flag |= 0x2;
-    }
-    else
-    {
-        _flag &= ~0x2;
-    }
-
-    SetPixels(pixels);
-    _bmpInfo->h = h;
 }
 
 void Bitmap::SetLoaded(bool bLoad)
@@ -627,9 +604,29 @@ BitmapInfo* Bitmap::GetBitmapInfo() const
     return _bmpInfo;
 }
 
-Handle Bitmap::GetHandle() const
+Handle Bitmap::ToHandle(Bitmap* bitmap)
 {
-    return _bmpInfo->h;
+    HBITMAP hBitmap = NULL;
+    int w = bitmap->Width();
+    int h = bitmap->Height();
+
+    BITMAP bmp;
+
+    bitmap->LockPixels();
+
+    bmp.bmType = 0;
+    bmp.bmWidth  = w;
+    bmp.bmHeight = h;
+    bmp.bmWidthBytes = w << 2;
+    bmp.bmPlanes = 1;
+    bmp.bmBitsPixel = 32;
+    bmp.bmBits = bitmap->GetPixels();
+
+    hBitmap = CreateBitmapIndirect(&bmp);
+
+    bitmap->UnlockPixels();
+
+    return (Handle)(DWORD_PTR)hBitmap;
 }
 
 int Bitmap::Width() const

@@ -43,15 +43,14 @@ RenderEngine::RenderEngine(Element* root, const fRect* lprc)
 void RenderEngine::RenderToDib(FrameworkElement* root, Bitmap* pDib, fRect* lprc)
 {
     HWND hwnd = HANDLETOHWND(HwndHelper::GetHostHwnd(root));
-    HDC hdc = ::GetDC(hwnd);
-
-    VisualHost* visualHost = VisualHost::GetVisualHost(root);
+    VisualHost* visualHost = NULL;
 
     Point ptOff;
     fRect rcDraw;
     fRect rcThickness;
     fRect rcClip;
 
+    visualHost = VisualHost::GetVisualHost(root);
     rcDraw.SetXYWH(0, 0, root->GetActualWidth(), root->GetActualHeight());        
 
     if (lprc)
@@ -78,8 +77,6 @@ void RenderEngine::RenderToDib(FrameworkElement* root, Bitmap* pDib, fRect* lprc
 
     drawing.Restore();
     root->SetVisualOffset(offset);
-
-    ::ReleaseDC(hwnd, hdc);
 }
 
 fPoint RenderEngine::RenderShot(Element* elem, Bitmap& dib, Rect clip)
@@ -106,7 +103,8 @@ fPoint RenderEngine::RenderShot(Element* elem, Bitmap& dib, Rect clip)
     rcBounds.right = clip.right;
     rcBounds.bottom = clip.bottom;
 
-    dib.AllocHandle(rcBounds.Width(), rcBounds.Height(), 0);
+    dib.Create(rcBounds.Width(), rcBounds.Height(), 32);
+    //dib.AllocHandle(rcBounds.Width(), rcBounds.Height(), 0);
 
     SkiaDrawing subDrawing(true, &dib, clip.TofRect());
 
@@ -189,7 +187,6 @@ Bitmap* RenderEngine::RenderLayerToMemory(VisualHost* pHost)
         {
             pInfo->SetNeedRender(false);
             canvas->Create(cx, cy, 32);
-            canvas->EraseColor(0);
         }
         else
         {
@@ -268,7 +265,7 @@ void RenderEngine::RenderNormalWindow(Point offset, suic::Bitmap* bmp, HDC hdc)
 
     if (NULL != mdc)
     {
-        HBITMAP hBitmap = BitmapToHandle(bmp);
+        HBITMAP hBitmap = HANDLETOBITMAP(Bitmap::ToHandle(bmp));
         HBITMAP hOldBitmap = (HBITMAP)::SelectObject(mdc, hBitmap);
 
         BitBlt(hdc, _clip.left, _clip.top, w, h, mdc, _clip.left, _clip.top, SRCCOPY);
@@ -285,25 +282,6 @@ void RenderEngine::RenderElementToSurface(FrameworkElement* root, Bitmap* bmp)
     RenderLayerWindow(root, bmp, hwnd);
 }
 
-HBITMAP RenderEngine::BitmapToHandle(Bitmap* bitmap)
-{
-    int w = bitmap->Width();
-    int h = bitmap->Height();
-
-    BITMAP bmp;
-    bmp.bmType = 0;
-    bmp.bmWidth  = w;
-    bmp.bmHeight = h;
-    bmp.bmWidthBytes = w << 2;
-    bmp.bmPlanes = 1;
-    bmp.bmBitsPixel = 32;
-    bmp.bmBits = bitmap->GetPixels();
-
-    HBITMAP hBitmap = CreateBitmapIndirect(&bmp);
-
-    return hBitmap;
-}
-
 void RenderEngine::RenderLayerWindow(FrameworkElement* root, Bitmap* bmp, HWND hwnd)
 {
     HDC drawdc = ::GetDC(hwnd);
@@ -311,7 +289,7 @@ void RenderEngine::RenderLayerWindow(FrameworkElement* root, Bitmap* bmp, HWND h
 
     if (NULL != mdc)
     {
-        HBITMAP hBitmap = BitmapToHandle(bmp);
+        HBITMAP hBitmap = HANDLETOBITMAP(Bitmap::ToHandle(bmp));
         HBITMAP hOldBitmap = (HBITMAP)::SelectObject(mdc, hBitmap);
 
         Rect rect;

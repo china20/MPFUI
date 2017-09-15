@@ -40,10 +40,9 @@ void InitializeSystemParameters();
 
 struct BitmapInfo
 {
-    Handle h;
     SkBitmap bmp;
 
-    BitmapInfo() : h(0)
+    BitmapInfo()
     {
     }
 };

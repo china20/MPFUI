@@ -44,8 +44,6 @@ protected:
     bool CheckRender();
     void RenderNormalWindow(Point offset, suic::Bitmap* bmp, HDC hdc);
     
-    static HBITMAP BitmapToHandle(Bitmap* bitmap);
-  
 protected:
 
     FrameworkElement* _root;
