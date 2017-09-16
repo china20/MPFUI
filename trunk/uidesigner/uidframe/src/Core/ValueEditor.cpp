@@ -777,7 +777,7 @@ void SetterEditor::OnUnlockExpresion(Element* sender, suic::RoutedEventArg* e)
     }
 }
 
-void SetterEditor::OnExpresionClick(DpObject* sender, suic::RoutedEventArg* e)
+void SetterEditor::OnExpresionClick(Element* sender, suic::RoutedEventArg* e)
 {
     Element* elem = DynamicCast<Element>(e->GetOriginalSource());
     SetterEditorCmd* pCmd = DynamicCast<SetterEditorCmd>(elem->GetDataContext());
@@ -882,7 +882,7 @@ void SetterEditor::OnInitialized(EventArg* e)
         _selectResBtn->AddClick(new suic::ClickEventHandler(this, &SetterEditor::OnSelectResource));
     }
 
-    AddHandler(MenuItem::ClickEvent, new RoutedEventHandler(this, &SetterEditor::OnExpresionClick));
+    AddHandler(MenuItem::ClickEvent, new ClickEventHandler(this, &SetterEditor::OnExpresionClick));
     AddHandler(EditorControl::EditValueChangedEvent, new RoutedEventHandler(this, &SetterEditor::OnEditValueChanged));
 }
 

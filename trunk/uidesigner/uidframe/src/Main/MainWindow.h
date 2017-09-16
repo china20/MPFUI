@@ -126,7 +126,7 @@ public:
 
 protected:
 
-    void OnMainMenuClick(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnMainMenuClick(suic::Element* sender, suic::RoutedEventArg* e);
     void OnHyperlinkClick(suic::DpObject* sender, suic::RoutedEventArg* e);
 
 protected:

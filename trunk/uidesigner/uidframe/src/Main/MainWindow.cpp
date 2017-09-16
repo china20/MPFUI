@@ -277,14 +277,14 @@ void MainWindow::OnInitialized(EventArg* e)
 
     SwitchToMainView();
 
-    AddHandler(suic::MenuItem::ClickEvent, new suic::RoutedEventHandler(this, &MainWindow::OnMainMenuClick));
+    AddHandler(suic::MenuItem::ClickEvent, new suic::ClickEventHandler(this, &MainWindow::OnMainMenuClick));
 
     // ×¢²á¿ì½Ý¼ü£¨ctrl+zºÍctrl+y£©
     AcceleratorOp::Register(ModifierKey::mkControl, _U("z"), this);
     AcceleratorOp::Register(ModifierKey::mkControl, _U("y"), this);
 }
 
-void MainWindow::OnMainMenuClick(suic::DpObject* sender, suic::RoutedEventArg* e)
+void MainWindow::OnMainMenuClick(suic::Element* sender, suic::RoutedEventArg* e)
 {
     suic::MenuItem* pItem = RTTICast<suic::MenuItem>(e->GetOriginalSource());
     if (NULL != pItem && NULL != pItem->GetDataContext())

@@ -129,7 +129,7 @@ public:
     void OnUnlockExpresion(Element* sender, suic::RoutedEventArg* e);
     void OnSelectResource(Element* sender, suic::RoutedEventArg* e);
 
-    void OnExpresionClick(DpObject* sender, suic::RoutedEventArg* e);
+    void OnExpresionClick(Element* sender, suic::RoutedEventArg* e);
 
 protected:
 
