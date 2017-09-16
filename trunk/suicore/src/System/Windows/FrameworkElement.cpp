@@ -1719,14 +1719,6 @@ Size FrameworkElement::MeasureCore(const Size& availableSize)
     desiredSize.cx = max(desiredSize.cx, _mmInfo.minWidth);
     desiredSize.cy = max(desiredSize.cy, _mmInfo.minHeight);
 
-    Size size = desiredSize;
-
-    if (NULL != _ltData)
-    {
-        _ltData->untransformedSize = desiredSize;
-        size = Transform::TransformSize(_ltData->transform, size);
-    }
-
     bool greatThan = false;
     if (desiredSize.cx > _mmInfo.maxWidth)
     {
@@ -1738,6 +1730,14 @@ Size FrameworkElement::MeasureCore(const Size& availableSize)
     {
         desiredSize.cy = _mmInfo.maxHeight;
         greatThan = true;
+    }
+
+    Size size = desiredSize;
+
+    if (NULL != _ltData)
+    {
+        _ltData->untransformedSize = desiredSize;
+        size = Transform::TransformSize(_ltData->transform, size);
     }
 
     /// 

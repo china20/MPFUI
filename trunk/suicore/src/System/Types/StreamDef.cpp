@@ -160,7 +160,7 @@ bool FileStream::Open(const String& filename, bool bNoExistCreate)
         }
         else
         {
-            _file = ::fopen(_path.c_str(), "rb+");
+            _file = ::fopen(_path.c_str(), "rb");
         }
     }
 
