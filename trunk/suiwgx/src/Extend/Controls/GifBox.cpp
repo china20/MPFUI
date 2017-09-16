@@ -54,7 +54,6 @@ void GifBox::OnUriPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
 
 void GifBox::OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
 {
-
 }
 
 void GifBox::StaticInit()
@@ -78,6 +77,11 @@ void GifBox::SetUri(suic::String uri)
     SetValue(UriProperty, new suic::OString(uri));
 }
 
+bool GifBox::IsPlay()
+{
+    return GetValue(PlayProperty)->ToBool();
+}
+
 suic::Size GifBox::OnMeasure(const suic::Size& constraint)
 {
     suic::Size measureSize;
@@ -91,25 +95,42 @@ suic::Size GifBox::OnMeasure(const suic::Size& constraint)
     return measureSize;
 }
 
+void GifBox::OnArrange(const suic::Size& arrangeSize)
+{
+    FrameworkElement::OnArrange(arrangeSize);
+}
+
 void GifBox::OnRender(suic::Drawing * drawing)
 {
     suic::FrameworkElement::OnRender(drawing);
-    if (NULL != _parser)
-    {
-        int iDelay = _parser->GetDelay();
-        suic::Bitmap bmp;
-        _parser->GetImage(bmp);
-        suic::fRect rcDraw(0, 0, GetActualWidth(), GetActualHeight());
-        suic::fRect rcImg(0, 0, bmp.Width(), bmp.Height());
 
-        if (iDelay <= 0)
+    if (_bitmap.IsValid())
+    {
+        suic::fRect rect(0, 0, GetActualWidth(), GetActualHeight());
+        suic::fRect rcImg(0, 0, _bitmap.Width(), _bitmap.Height());
+
+        suic::Float width = 1.0;
+        suic::Float height = 1.0;
+
+        width = rect.Width() / rcImg.Width();
+        height = rect.Height() / rcImg.Height();
+
+        suic::Float fRatio = (width < height) ? width : height;
+
+        if (fRatio > 1)
         {
-            iDelay = 100;
+            fRatio = 1.0f;
         }
 
-        drawing->DrawImage(DrawCtx::DefDraw, &bmp, rcDraw, rcImg);
-        _timer->SetInterval(iDelay);
-        _timer->Start();
+        suic::Float w = rcImg.Width() * fRatio;
+        suic::Float h = rcImg.Height() * fRatio;
+
+        rect.left = (rect.Width() - w) / 2.0f;
+        rect.top = (rect.Height() - h) / 2.0f;
+        rect.right = rect.left + w;
+        rect.bottom = rect.top + h; 
+
+        drawing->DrawImage(DrawCtx::DefDraw, &_bitmap, rect, rcImg);
     }
 }
 
@@ -117,9 +138,21 @@ void GifBox::OnTick(suic::Object* sender, suic::EventArg* e)
 {
     if (NULL != _parser)
     {
+        int iDelay = 100;
         _parser->MoveNext();
-        InvalidateVisual();
+        iDelay = _parser->GetDelay();
+        _parser->GetImage(_bitmap);
+
+        if (iDelay <= 0)
+        {
+            iDelay = 100;
+        }
+        
         _timer->Stop();
+        _timer->SetInterval(iDelay);
+        _timer->Start();
+
+        InvalidateVisual();
     }
 }
 
@@ -127,6 +160,11 @@ void GifBox::OnInitialized(suic::EventArg* e)
 {
     FrameworkElement::OnInitialized(e);
     _timer->SetTick(suic::EventHandler(this, &GifBox::OnTick));
+
+    if (IsPlay())
+    {
+        _timer->Start();
+    }
 }
 
 void GifBox::OnLoaded(suic::LoadedEventArg* e)
