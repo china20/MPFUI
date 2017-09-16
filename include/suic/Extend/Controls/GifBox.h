@@ -38,6 +38,8 @@ public:
     suic::String GetUri();
     void SetUri(suic::String uri);
 
+    bool IsPlay();
+
 protected:
 
     void OnInitialized(suic::EventArg* e);
@@ -45,11 +47,13 @@ protected:
     void OnTick(suic::Object* sender, suic::EventArg* e);
 
     suic::Size OnMeasure(const suic::Size& constraint);
+    void OnArrange(const suic::Size& arrangeSize);
 
     void OnRender(suic::Drawing* drawing);
 
 private:
 
+    suic::Bitmap _bitmap;
     suic::GIFParser* _parser;
     suic::AssignerTimer* _timer;
 };
