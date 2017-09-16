@@ -21,7 +21,7 @@ public:
     virtual ~ImageParse() {}
 
     virtual void GetInfo(Info& info) = 0;
-    virtual bool MoveNext() = 0;
+    virtual int MoveNext() = 0;
     virtual int GetDelay() = 0;
     virtual bool GetImage(Bitmap& bmp) = 0;
 };

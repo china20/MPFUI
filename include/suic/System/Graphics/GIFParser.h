@@ -14,18 +14,26 @@ public:
     GIFParser();
     virtual ~GIFParser();
 
+    bool IsLoaded() const;
+
     bool LoadUri(const ResourceUri* uri);
     bool LoadMemory(const Byte* buff, int size);
 
     virtual void GetInfo(ImageParse::Info& info);
-    virtual bool MoveNext();
+    virtual int MoveNext();
     virtual int GetDelay();
     virtual bool GetImage(Bitmap& bmp);
 
 private:
 
+    bool _isLoaded;
     ImageParse* _parser;
 };
+
+inline bool GIFParser::IsLoaded() const
+{
+    return _isLoaded;
+}
 
 }
 

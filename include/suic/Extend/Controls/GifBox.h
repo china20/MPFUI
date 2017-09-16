@@ -39,6 +39,7 @@ public:
     void SetUri(suic::String uri);
 
     bool IsPlay();
+    bool IsValid() const;
 
 protected:
 
@@ -51,12 +52,26 @@ protected:
 
     void OnRender(suic::Drawing* drawing);
 
+    void StartGif();
+
 private:
 
     suic::Bitmap _bitmap;
     suic::GIFParser* _parser;
     suic::AssignerTimer* _timer;
 };
+
+inline bool GifBox::IsValid() const
+{
+    if (NULL == _parser || !_parser->IsLoaded())
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 
 }
 
