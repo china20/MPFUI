@@ -1292,6 +1292,7 @@ int Popup::InternalCreate(int wid, int hei)
         ::SetWindowPos(hwnd, HWND_TOPMOST,  hp.x, hp.y, hp.width, hp.height, flags);
         OnShowWindow();
         OnOpened(&EventArg::Empty);
+        InvalidateVisual();
     }
     else
     {

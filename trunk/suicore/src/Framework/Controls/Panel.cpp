@@ -461,7 +461,7 @@ void Panel::RecomputeZState()
         if (flag2)
         {
             ValEqual<int> comparer;
-            _zIndexs.Sort<ValEqual<int> >(&comparer);
+            _zIndexs.Sort<ValEqual<int> >(&comparer, 0);
 
             for (int i = 0; i < _zIndexs.Length(); ++i)
             {

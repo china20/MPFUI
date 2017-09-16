@@ -422,6 +422,11 @@ void FEFactory::AutoDoProperties()
         Object* osr = GetValue(ContentPresenter::ContentSourceProperty);
         String prefix = (osr == DpProperty::UnsetValue()) ? _U("Content") : osr->ToString();
 
+        if (prefix.Equals("ContentSource"))
+            {
+                int i = 0;
+            }
+
         if (!prefix.Empty() && NULL != _frameworkTemplate)
         {
             RTTIOfInfo* targetType = _frameworkTemplate->GetTargetType();

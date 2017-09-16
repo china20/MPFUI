@@ -253,6 +253,11 @@ void XamlWalker::WalkXamlElement(suic::FrameworkElement* fe, ReadContext& rCtx, 
                         rChildCtx.d = d;
                         rChildCtx.fe = CASTTOFE(d);
 
+                        if (NULL == rChildCtx.fe)
+                        {
+                            suic::MemberVisitor::SetInheritParent(rCtx.d, d);
+                        }
+
                         // 递归读取子控件元素
                         WalkXamlElement(fe, rChildCtx, pChildNode);
                     }
@@ -274,7 +279,7 @@ void XamlWalker::WalkXamlElement(suic::FrameworkElement* fe, ReadContext& rCtx, 
         // 静态资源
         if (exten.type == Resource::ResType::resStaticResource)
         {
-            resVal = FindRes(rCtx.fe, ((SRExtension*)exten.ext)->GetResourceKey());
+            resVal = FindRes(resFe, ((SRExtension*)exten.ext)->GetResourceKey());
         }
         else
         {
@@ -985,6 +990,8 @@ void XamlWalker::ReadBaseMetaResource(suic::RTTIOfInfo* trInfo, suic::FrameworkE
 
                 resItem.res = feChild;
                 resItem.type = Resource::ResType::resLayout;
+
+                suic::MemberVisitor::SetInheritParent(fe, feChild);
 
                 WalkXamlElement(fe, rElem, pNode);
             }

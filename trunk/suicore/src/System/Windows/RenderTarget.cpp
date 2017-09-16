@@ -203,13 +203,20 @@ void VisualHost::Invalidate(const Rect* lprc, bool force)
 
         rect.Offset(GetOffset());
 
+        pInfo->AddClip(&rect);
+
         if (force)
         {
             OnRender(&rect);
         }
         else
         {
-            pInfo->AddClip(&rect);
+            //pInfo->AddClip(&rect);
+            HWND hwnd = HANDLETOHWND(GetHandle());
+            if (::IsWindow(hwnd))
+            {
+                ::InvalidateRect(hwnd, lprc, FALSE);
+            }
         }
     }
 }
@@ -272,17 +279,8 @@ bool VisualHost::HandleEvent(MessageParam* mp)
             Rect rect(pts.rcPaint);
             pts.fErase = FALSE;
 
-            // rect = SystemParameters::TransformFromDevice(rect.TofRect()).ToRect();
+            OnRender(HDCTOHANDLE(hdc), &rect);
 
-            rect.Inflate(1, 1);
-            pInfo->GetClipRender(rcDraw);
-            rect.Union(&rcDraw);
-
-            if (!rect.IsZero())
-            {
-                OnRender(HDCTOHANDLE(hdc), &rect);
-            }
-            pInfo->SetClipRender(Rect(), false);
             ::EndPaint(hwnd, &pts);
         }
         return true;
@@ -324,16 +322,27 @@ bool VisualHost::HandleEvent(Handle h, Uint32 message, Uint32 wp, Uint32 lp, Uin
 
 void VisualHost::OnRender(Handle h, const Rect* lprc)
 {
-    fRect rect;
+    Rect rect;
+    RenderInfo* pInfo(GetRenderInfo());
 
-    if (lprc && !lprc->IsZero())
+    pInfo->PopClip(rect);
+
+    if (lprc != NULL)
     {
-        rect = lprc->TofRect();
-        rect.Offset(-_offset.x, -_offset.y);
+        rect.Union(lprc);
     }
 
-    RenderEngine render(_rootElement, lprc ? &rect : NULL);
-    render.RenderToScreen(this, (HDC)(DWORD_PTR)h, _offset);
+    if (!rect.Empty())
+    {
+        rect.Offset(-_offset.x, -_offset.y);
+        RenderEngine render(_rootElement, rect.TofRect());
+        render.RenderToScreen(this, (HDC)(DWORD_PTR)h, _offset);
+    }
+    else
+    {
+        RenderEngine render(_rootElement, NULL);
+        render.RenderToScreen(this, (HDC)(DWORD_PTR)h, _offset);
+    }
 }
 
 void VisualHost::OnRender(const Rect* lprc)

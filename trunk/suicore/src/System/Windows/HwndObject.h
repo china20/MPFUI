@@ -24,6 +24,8 @@
 #include <System/Windows/InvManager.h>
 #include <System/Windows/AssignerTimer.h>
 
+#define WM_INVALIDATERENDER 888
+
 namespace suic
 {
 

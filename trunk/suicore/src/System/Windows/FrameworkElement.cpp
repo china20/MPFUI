@@ -2303,6 +2303,11 @@ FrameworkElement* FrameworkElement::FindResTree(Object** res, const String& name
         if ((*res) == DpProperty::UnsetValue())
         {
             finder = RTTICast<FrameworkElement>(finder->GetParent());
+
+            if (NULL == finder)
+            {
+                finder = RTTICast<FrameworkElement>(VisualTreeOp::GetParent(parent));
+            }
         }
         else
         {

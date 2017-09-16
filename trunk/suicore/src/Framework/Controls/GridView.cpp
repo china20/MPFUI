@@ -42,6 +42,7 @@ void GridView::AddChild(Object* obj)
     GridViewColumn* column = RTTIEqualCast<GridViewColumn>(obj);
     if (NULL != column)
     {
+        column->SetColumnIndex(GetColumns()->GetCount());
         GetColumns()->AddItem(column);
     }
 }

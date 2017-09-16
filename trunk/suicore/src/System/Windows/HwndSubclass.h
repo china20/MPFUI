@@ -59,7 +59,9 @@ public:
     static void UpdateResources();
     static void InvalidateResourceReference();
 
-    static int Render();
+    static void Render();
+    static void RenderHwnd(HWND hwnd);
+    static void RenderVisualHost(VisualHost* visualHost);
 
 protected:
 

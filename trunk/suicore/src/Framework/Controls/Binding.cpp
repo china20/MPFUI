@@ -108,7 +108,6 @@ BindingExpression* Binding::CreateBindingExpression()
 
 void Binding::ProvideValue(DpObject* d, DpProperty* dp, ObjectPtr& obj)
 {
-    //return DpProperty::UnsetValue();
     obj = CreateBindingExpression();
 }
 

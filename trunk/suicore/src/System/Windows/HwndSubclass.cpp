@@ -455,44 +455,51 @@ void HwndSubclass::InvalidateResourceReference()
     }
 }
 
-int HwndSubclass::Render()
+void HwndSubclass::RenderVisualHost(VisualHost* visualHost)
 {
-    int iNum = 0;
+    RenderInfo* pInfo(visualHost->GetRenderInfo());
+    Rect rect;
+    HWND hwnd = HANDLETOHWND(visualHost->GetHandle());
+
+    /*if (pInfo->PopClip(rect) && !::IsIconic(hwnd))
+    {
+        if (NULL != hwnd && ::IsWindow(hwnd))
+        {
+            visualHost->GetRootElement()->GetAssigner()->GetTimeManager()->Tick();
+
+            DWORD exStyle = ::GetWindowLong(hwnd, GWL_EXSTYLE);
+            bool bLayered = false;//(exStyle & WS_EX_LAYERED) != 0;
+            if (bLayered) 
+            {
+                visualHost->OnRender(&rect);
+            }
+            else
+            {
+                ::RedrawWindow(hwnd, &rect, NULL, RDW_INVALIDATE|RDW_INTERNALPAINT);
+            }
+        }
+    }*/
+}
+
+void HwndSubclass::RenderHwnd(HWND hwnd)
+{
+    VisualHost* visualHost = FindRenderTarget(hwnd);
+    if (NULL != visualHost)
+    {
+        RenderVisualHost(visualHost);
+    }
+}
+
+void HwndSubclass::Render()
+{
     Collection<VisualHost*> vals;
     _hwnds.GetValues(vals);
 
     for (int i = 0; i < vals.GetCount(); ++i)
     {
-        VisualHostPtr visualHost = vals.GetItem(i);
-        RenderInfo* pInfo(visualHost->GetRenderInfo());
-        Rect rect;
-        HWND hwnd = HANDLETOHWND(visualHost->GetHandle());
-
-        if (pInfo->PopClip(rect) && !::IsIconic(hwnd))
-        {
-            if (NULL != hwnd && ::IsWindow(hwnd))
-            {
-                DWORD exStyle = ::GetWindowLong(hwnd, GWL_EXSTYLE);
-                bool bLayered = false;//(exStyle & WS_EX_LAYERED) != 0;
-                if (bLayered) 
-                {
-                    visualHost->OnRender(&rect);
-                }
-                else
-                {
-                    pInfo->SetClipRender(rect, true);
-                    // rect = SystemParameters::TransformToDevice(rect.TofRect()).ToRect();
-                    ::RedrawWindow(hwnd, &rect, NULL, RDW_INVALIDATE|RDW_INTERNALPAINT);
-                }
-            }
-            else
-            {
-                pInfo->SetClipRender(Rect(), false);
-            }
-        }
+        VisualHost* visualHost = vals.GetItem(i);
+        RenderVisualHost(visualHost);
     }
-
-    return iNum;
 }
 
 }

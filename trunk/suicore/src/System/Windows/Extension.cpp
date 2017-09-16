@@ -79,32 +79,6 @@ void TemplateBindingExtension::ProvideValue(DpObject* d, DpProperty* dp, ObjectP
     {
         obj = DpProperty::UnsetValue();
     }
-
-    /*FrameworkElement* fe = RTTICast<FrameworkElement>(d);
-
-    if (NULL != fe && NULL != _prop)
-    {
-        FrameworkElement* tfe = RTTICast<FrameworkElement>(fe->GetTemplatedParent());
-        if (NULL == tfe)
-        {
-            obj = DpProperty::UnsetValue();
-            return;
-        }
-
-        _prop = DpProperty::Lookup(_prop->GetName(), tfe->GetRTTIType());
-
-        if (_prop == NULL)//DpProperty::Lookup(_prop->GetName(), tfe->GetClassType()) != _prop)
-        {
-            obj = DpProperty::UnsetValue();
-            return;
-        }
-
-        obj = new TBExpression(this);
-    }
-    else
-    {
-        obj = DpProperty::UnsetValue();
-    }*/
 }
 
 SRExtension::SRExtension()
@@ -124,18 +98,6 @@ SRExtension::~SRExtension()
 {
 
 }
-
-//ObjectPtr StaticResourceExtension::ProvideValue(ResourceDictionary* resDic, DpProperty* dp)
-//{
-//    String resKey(GetResourceKey());
-//    ObjectPtr retVal = DpProperty::UnsetValue();
-//
-//    if (resDic != NULL)
-//    {
-//        retVal = resDic->Lookup(resKey);
-//    }
-//    return retVal;
-//}
 
 void SRExtension::ProvideValue(DpObject* d, DpProperty* dp, ObjectPtr& obj)
 {

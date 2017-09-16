@@ -3,6 +3,8 @@
 #include <System/Windows/TemplateBindingExpression.h>
 
 #include <System/Tools/StyleHelper.h>
+#include <System/Tools/VisualTreeOp.h>
+
 #include <System/Interop/System.h>
 
 namespace suic
@@ -37,6 +39,11 @@ bool TBExpression::GetValue(DpObject* d, DpProperty* dp, ObjectPtr& val)
     bool bFind = false;
     FrameworkElement* tfe = NULL;
     FrameworkElement* fe = RTTICast<FrameworkElement>(d);
+
+    if (fe == NULL)
+    {
+        fe = RTTICast<FrameworkElement>(VisualTreeOp::GetParent(d));
+    }
 
     if (NULL != fe)
     {

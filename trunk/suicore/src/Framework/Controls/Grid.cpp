@@ -80,7 +80,7 @@ public:
         this->definitions = definitions;
     }
 
-    int Compare(Float x, Float y)
+    int Compare(Float x, Float y, Object* flag)
     {
         int num = 0;
         DefinitionBase* defb1 = (*definitions)[x];
@@ -102,7 +102,7 @@ public:
     {
     }
 
-    int Compare(DefinitionBase* defb1, DefinitionBase* defb2)
+    int Compare(DefinitionBase* defb1, DefinitionBase* defb2, Object* flag)
     {
         int num = 0;
 
@@ -122,7 +122,7 @@ public:
     {
     }
 
-    int Compare(DefinitionBase* defb1, DefinitionBase* defb2)
+    int Compare(DefinitionBase* defb1, DefinitionBase* defb2, Object* flag)
     {
         int num = 0;
 
@@ -164,7 +164,7 @@ public:
         this->definitions = definitions;
     }
 
-    int Compare(int x, int y)
+    int Compare(int x, int y, Object* flag)
     {
         int num = 0;
         DefinitionBase* defb1 = (*definitions)[x];
@@ -197,7 +197,7 @@ public:
 
     }
 
-    int Compare(DefinitionBase* defb1, DefinitionBase* defb2)
+    int Compare(DefinitionBase* defb1, DefinitionBase* defb2, Object* flag)
     {
         int num = 0;
 
@@ -1097,7 +1097,7 @@ void Grid::EnsureMinSizeInDefRange(GridDefinitions* defs, int start, int count, 
                 Float num11 = requestedSize;
 
                 SpanPreferredDistributionOrderComparer comparer;
-                temp.Sort<SpanPreferredDistributionOrderComparer>(0, temp.Length(), &comparer);
+                temp.Sort<SpanPreferredDistributionOrderComparer>(0, temp.Length(), &comparer, 0);
 
                 // 减掉需要自动计算列或行大小
                 while (index < num2)
@@ -1125,7 +1125,7 @@ void Grid::EnsureMinSizeInDefRange(GridDefinitions* defs, int start, int count, 
                 Float num14 = requestedSize - num4;
 
                 SpanMaxDistributionOrderComparer comparer;
-                temp.Sort<SpanMaxDistributionOrderComparer>(0, temp.Length(), &comparer);
+                temp.Sort<SpanMaxDistributionOrderComparer>(0, temp.Length(), &comparer, 0);
 
                 while (num15 < (count - num2))
                 {
@@ -1239,7 +1239,7 @@ void Grid::ResolveStar(GridDefinitions* defs, float availableSize)
     if (length > 0)
     {
         static StarDistributionOrderComparer comparer;
-        temp.Sort<StarDistributionOrderComparer>(0, length, &comparer);
+        temp.Sort<StarDistributionOrderComparer>(0, length, &comparer, 0);
 
         Float num6 = 0.0;
         int index = length - 1;
@@ -1352,7 +1352,7 @@ void Grid::SetFinalSize(GridDefinitions* defs, float finalSize, bool columns)
     if (length > 0)
     {
         StarDistributionOrderIndexComparer comparer(defs);
-        definitionIndices.Sort<StarDistributionOrderIndexComparer>(0, length, &comparer);
+        definitionIndices.Sort<StarDistributionOrderIndexComparer>(0, length, &comparer, 0);
         Float num10 = 0.0;
         int index = length - 1;
 
@@ -1393,7 +1393,7 @@ void Grid::SetFinalSize(GridDefinitions* defs, float finalSize, bool columns)
     if ((num3 > finalSize) && num3 != finalSize)
     {
         DistributionOrderIndexComparer comparer2(defs);
-        definitionIndices.Sort<DistributionOrderIndexComparer>(0, defs->GetCount(), &comparer2);
+        definitionIndices.Sort<DistributionOrderIndexComparer>(0, defs->GetCount(), &comparer2, 0);
         Float num15 = finalSize - num3;
 
         for (int k = 0; k < defs->GetCount(); k++)

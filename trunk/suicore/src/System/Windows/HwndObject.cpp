@@ -306,6 +306,8 @@ void HwndObject::SetLayoutSize()
         _rootElement->Arrange(finalRect);
 
         HandleWindowRgn(GetHandle(), _rootElement, availableSize.cx, availableSize.cy);
+
+        _rootElement->InvalidateVisual();
     }
 }
 
@@ -397,6 +399,8 @@ bool HwndObject::Process_WM_CREATE(Element* rootElement, MessageParam* mp)
         {
             Keyboard::Focus(focused.get());
         }
+
+        ::SetTimer(HANDLETOHWND(HANDLETOHWND(mp->hwnd)), WM_INVALIDATERENDER, 10, NULL);
 
         return true;
     }
@@ -634,6 +638,16 @@ bool HwndObject::Process_WM_GETMINMAXINFO(Element* rootElement, MessageParam* mp
 
 bool HwndObject::Process_WM_TIMER(Element* rootElement, MessageParam* mp)
 {
+    HWND hwnd = HANDLETOHWND(mp->hwnd);
+
+    if (WM_INVALIDATERENDER == (int)mp->wp)
+    {
+        VisualHost* pHost = VisualHost::GetVisualHost(rootElement);
+        pHost->Invalidate(NULL, false);
+        ::KillTimer(hwnd, 5);
+        return true;
+    }
+
     return false;
 }
 

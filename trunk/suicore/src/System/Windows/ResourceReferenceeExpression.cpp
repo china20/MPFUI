@@ -4,6 +4,8 @@
 
 #include <System/Tools/DesignHelper.h>
 #include <System/Tools/StyleHelper.h>
+#include <System/Tools/VisualTreeOp.h>
+
 #include <System/Interop/System.h>
 
 namespace suic
@@ -31,7 +33,12 @@ bool RRExpression::GetValue(DpObject* d, DpProperty* dp, ObjectPtr& val)
 {
     FrameworkElement* fe = RTTICast<FrameworkElement>(d);
 
-    if (fe)
+    if (fe == NULL)
+    {
+        fe = RTTICast<FrameworkElement>(VisualTreeOp::GetParent(d));
+    }
+
+    if (fe != NULL)
     {
         Object* resObj = fe->FindRes(_resourceKey);
         if (DpProperty::UnsetValue() != resObj)

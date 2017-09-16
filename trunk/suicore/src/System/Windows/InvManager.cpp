@@ -223,20 +223,13 @@ void InvManager::InvalidateElement(Element* elem, const Rect* lprc, bool force)
     root = elem->TransformAncestorRect(rcTmp, NULL);
     rect = rcTmp.ToRect();
 
-    rect.Inflate(1, 1);
+    //rect.Inflate(1, 1);
 
-    RenderInfo* hObj = HwndObject::GetRenderInfo(root);
+    VisualHost* pHost = VisualHost::GetVisualHost(root);
 
-    if (hObj && rect.Width() > 0 && rect.Height() > 0)
+    if (NULL != pHost && rect.Width() > 0 && rect.Height() > 0)
     {
-        hObj->AddClip(rect);
-
-        if (force && elem->GetAssigner()->GetThreadId() == Thread::CurrentThreadId())
-        {
-            hObj->CombineClips();
-            elem->GetAssigner()->GetTimeManager()->Tick();
-            HwndSubclass::Render();
-        }
+        pHost->Invalidate(&rect, force);
     }
 }
 
