@@ -41,9 +41,9 @@ public:
         info.hei = _gifReader.height();
     }
 
-    bool MoveNext()
+    int MoveNext()
     {
-        return _gifReader.MoveNext() == 0 ? false : true;
+        return _gifReader.MoveNext();
     }
 
     int GetDelay()
@@ -64,6 +64,7 @@ private:
 
 GIFParser::GIFParser()
 {
+    _isLoaded = false;
     _parser = new GifParseImpl();
     _parser->ref();
 }
@@ -76,13 +77,15 @@ GIFParser::~GIFParser()
 bool GIFParser::LoadMemory(const Byte* buff, int size)
 {
     GifParseImpl* gifMovie = (GifParseImpl*)_parser;
-    return gifMovie->Load(buff, size);
+    _isLoaded = gifMovie->Load(buff, size);
+    return _isLoaded;
 }
 
 bool GIFParser::LoadUri(const ResourceUri* uri)
 {
     GifParseImpl* gifMovie = (GifParseImpl*)_parser;
-    return gifMovie->Load(uri);
+    _isLoaded = gifMovie->Load(uri);
+    return _isLoaded;
 }
 
 void GIFParser::GetInfo(ImageParse::Info& info)
@@ -90,9 +93,16 @@ void GIFParser::GetInfo(ImageParse::Info& info)
     _parser->GetInfo(info);
 }
 
-bool GIFParser::MoveNext()
+int GIFParser::MoveNext()
 {
-    return _parser->MoveNext();
+    if (!_isLoaded)
+    {
+        return -1;
+    }
+    else
+    {
+        return _parser->MoveNext();
+    }
 }
 
 int GIFParser::GetDelay()
