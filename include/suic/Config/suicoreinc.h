@@ -171,6 +171,11 @@
 #include <Framework/Controls/UniformGrid.h>
 #include <Framework/Controls/VisualizeStackPanel.h>
 
+#include <Framework/Controls/GridView.h>
+#include <Framework/Controls/GridViewColumn.h>
+#include <Framework/Controls/GridViewColumnHeader.h>
+#include <Framework/Controls/GridViewHeaderRowPresenter.h>
+
 #include <Framework/Animation/AnimationAsSeries.h>
 #include <Framework/Animation/AnimationAsKeyframe.h>
 

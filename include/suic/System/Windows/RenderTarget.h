@@ -11,8 +11,8 @@
 #ifndef _UIRENDERTARGET_H_
 #define _UIRENDERTARGET_H_
 
-#include <System/Windows/FrameworkElement.h>
 #include <System/Windows/HwndAdapter.h>
+#include <System/Windows/FrameworkElement.h>
 
 namespace suic
 {

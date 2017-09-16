@@ -53,15 +53,15 @@ public:
     void Clear();
 
     template<typename C>
-    void Sort(C* comparer)
+    void Sort(C* comparer, Object* flag)
     {
-        _items.Sort<C>(comparer);
+        _items.Sort<C>(comparer, flag);
     }
 
     template<typename C>
-    void Sort(int index, int length, C* comparer)
+    void Sort(int index, int length, C* comparer, Object* flag)
     {
-        _items.Sort<C>(index, length, comparer);
+        _items.Sort<C>(index, length, comparer, flag);
     }
 
 private:

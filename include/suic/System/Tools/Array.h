@@ -23,7 +23,7 @@ class ValEqual
 {
 public:
 
-    static int Compare(const T& t1, const T& t2)
+    static int Compare(const T& t1, const T& t2, Object* flag)
     {
         if (t1 == t2)
         {
@@ -41,7 +41,7 @@ class ObjEqual
 {
 public:
 
-    static int Compare(const T& t1, const T& t2)
+    static int Compare(const T& t1, const T& t2, Object* flag)
     {
         if (t1.Equals(&t2))
         {
@@ -88,7 +88,7 @@ protected:
 struct ArraySort
 {
     template<typename T, typename C>
-    static void QuickSort(T* keys, int left, int right, C* c)
+    static void QuickSort(T* keys, int left, int right, C* c, Object* flag)
     {
         do
         {
@@ -96,19 +96,19 @@ struct ArraySort
             int b = right;
             int num3 = a + ((b - a) >> 1);
 
-            SwapWithQuickSort<T, C>(keys, a, num3, c);
-            SwapWithQuickSort<T, C>(keys, a, b, c);
-            SwapWithQuickSort<T, C>(keys, num3, b, c);
+            SwapWithQuickSort<T, C>(keys, a, num3, c, flag);
+            SwapWithQuickSort<T, C>(keys, a, b, c, flag);
+            SwapWithQuickSort<T, C>(keys, num3, b, c, flag);
 
             T y = keys[num3];
 
             do
             {
-                while (c->Compare(keys[a], y) < 0)
+                while (c->Compare(keys[a], y, flag) < 0)
                 {
                     a++;
                 }
-                while (c->Compare(y, keys[b]) < 0)
+                while (c->Compare(y, keys[b], flag) < 0)
                 {
                     b--;
                 }
@@ -130,7 +130,7 @@ struct ArraySort
             {
                 if (left < b)
                 {
-                    QuickSort(keys, left, b, c);
+                    QuickSort(keys, left, b, c, flag);
                 }
                 left = a;
             }
@@ -138,7 +138,7 @@ struct ArraySort
             {
                 if (a < right)
                 {
-                    QuickSort(keys, a, right, c);
+                    QuickSort(keys, a, right, c, flag);
                 }
                 right = b;
             }
@@ -147,9 +147,9 @@ struct ArraySort
     }
 
     template<typename T, typename C>
-    static void SwapWithQuickSort(T* keys, int a, int b, C* c)
+    static void SwapWithQuickSort(T* keys, int a, int b, C* c, Object* flag)
     {
-        if ((a != b) && (c->Compare(keys[a], keys[b]) > 0))
+        if ((a != b) && (c->Compare(keys[a], keys[b], flag) > 0))
         {
             T local = keys[a];
             keys[a] = keys[b];
@@ -257,15 +257,15 @@ public:
     }
 
     template<typename C>
-    void Sort(C* c)
+    void Sort(C* c, Object* flag)
     {
-        Sort<C>(0, Length(), c);
+        Sort<C>(0, Length(), c, flag);
     }
 
     template<typename C>
-    void Sort(int index, int length, C* c)
+    void Sort(int index, int length, C* c, Object* flag)
     {
-        ArraySort::QuickSort<T, C>(data, index, index + length - 1, c);
+        ArraySort::QuickSort<T, C>(data, index, index + length - 1, c, flag);
     }
 
 private:
@@ -464,21 +464,21 @@ public:
     }
 
     template<typename C>
-    void Sort(C* c)
+    void Sort(C* c, Object* flag)
     {
-        Sort<C>(0, Length(), c);
+        Sort<C>(0, Length(), c, flag);
     }
 
     template<typename C>
-    void Sort(int index, int length, C* c)
+    void Sort(int index, int length, C* c, Object* flag)
     {
-        ArraySort::QuickSort<T, C>(_ptr, index, index + length - 1, c);
+        ArraySort::QuickSort<T, C>(_ptr, index, index + length - 1, c, flag);
     }
 
     template<typename T, typename C>
-    static void Sort(T* keys, int index, int length, C* c)
+    static void Sort(T* keys, int index, int length, C* c, Object* flag)
     {
-        ArraySort::QuickSort<T, C>(keys, index, index + length - 1, c);
+        ArraySort::QuickSort<T, C>(keys, index, index + length - 1, c, flag);
     }
 
     static void Copy(Array* sourceArray, int sourceIndex, Array* destArray, int destIndex, int length)
