@@ -54,6 +54,11 @@ void GifBox::OnUriPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
 
 void GifBox::OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
 {
+    GifBox* gifBox = suic::RTTICast<GifBox>(d);
+    if (NULL != gifBox)
+    {
+        gifBox->StartGif();
+    }
 }
 
 void GifBox::StaticInit()
@@ -161,15 +166,20 @@ void GifBox::OnInitialized(suic::EventArg* e)
     FrameworkElement::OnInitialized(e);
     _timer->SetTick(suic::EventHandler(this, &GifBox::OnTick));
 
-    if (IsPlay())
-    {
-        _timer->Start();
-    }
+    StartGif();
 }
 
 void GifBox::OnLoaded(suic::LoadedEventArg* e)
 {
     FrameworkElement::OnLoaded(e);    
+}
+
+void GifBox::StartGif()
+{
+    if (IsValid() && IsPlay())
+    {
+        _timer->Start();
+    }
 }
 
 }
