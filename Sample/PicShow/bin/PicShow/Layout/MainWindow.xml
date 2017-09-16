@@ -48,7 +48,7 @@
                 <GridSplitter Width="5" Grid.Column="1" ShowsPreview="False" Cursor="Splith" Background="Gray" />
                 <Grid Grid.Column="2" >
                     <Border BorderBrush="Gray" BorderThickness="0,1,1,1" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                        <Image Name="imgShow" Margin="2" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Image Name="imgShow" StretchDirection="DownOnly" Margin="2" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                 </Grid>
             </Grid >
