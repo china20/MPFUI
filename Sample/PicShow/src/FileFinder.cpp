@@ -19,10 +19,16 @@ bool FileFinder::Open(const suic::String& strDir, const suic::String& strFilter)
     _findDir = strDir;
     _filter = strFilter;
 
+    if (_findDir.Length() > 0 && 
+        (_findDir[_findDir.Length() - 1] != '\\' &&  
+        _findDir[_findDir.Length() - 1] != '/'))
+    {
+        _findDir += _U("\\");
+    }
+
     TCHAR PathToSearchInto [MAX_PATH] = {0};
 
-    _tcscpy(PathToSearchInto, strDir.c_str());
-    _tcscat(PathToSearchInto, _T("\\"));
+    _tcscpy(PathToSearchInto, _findDir.c_str());
     _tcscat(PathToSearchInto, strFilter.c_str());
 
     _fileHandle = FindFirstFile(PathToSearchInto,&_findFileData);
@@ -107,7 +113,7 @@ suic::String FileFinder::GetFilePath() const
     }
     else
     {
-        strPath.Format(_U("%s\\%s"), _findDir.c_str(), _findFileData.cFileName);
+        strPath.Format(_U("%s%s"), _findDir.c_str(), _findFileData.cFileName);
     }
 
     return strPath;

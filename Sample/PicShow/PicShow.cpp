@@ -5,6 +5,11 @@
 
 #include "./src/MainWindow.h"
 
+void ParseGif()
+{
+    //GIFParser
+}
+
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
                        LPTSTR    lpCmdLine,

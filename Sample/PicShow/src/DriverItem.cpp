@@ -105,6 +105,8 @@ void DriverItem::InitSubFolders()
                     }
                 }
 
+                ff.Close();
+
                 // 
                 // 如果有图像文件，通知绑定器更新显示
                 // 
