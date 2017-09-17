@@ -53,6 +53,8 @@ public:
     Element* GetVisibleChild(int index);
     void NotifyItemChanged();
 
+    int ComputeOffsetFromItem(suic::Object* item, eItemDirection id, int& offset, int& itemSize);
+
 protected:
 
     IScrollInfo* GetScrollInfo();

@@ -245,6 +245,8 @@ protected:
     void SetItemValuesOnContainer(DpObject* container, ItemEntry* item, int* dpIndices);
 
     void NavigateToEnd(ItemNavigateArg* e);
+
+    void NavigateToItem(Object* item, int offset, int itemLen, eItemDirection id, bool alwaysAtTopOfViewport);
     void NavigateToItem(Object* item, int offset, int itemLen, ItemNavigateArg* e, bool alwaysAtTopOfViewport);
 
     friend class Panel;
@@ -252,6 +254,7 @@ protected:
 private:
 
     void CreateItemCollectionAndGenerator();
+    int ComputeVirtualOffsetFromItem(Object* item, bool bHori, eItemDirection id, int& offset, int& itemSize);
 
 private:
 

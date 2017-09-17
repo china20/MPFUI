@@ -51,6 +51,8 @@ public:
     Orientation GetOrientation();
     void SetOrientation(Orientation val);
 
+    int GetLogicalOrientation();
+
 protected:
 
     void EnsureScrollingData(Size viewport, Size extent, Point offset);
@@ -59,6 +61,8 @@ protected:
 
     Size OnMeasure(const Size& size);
     void OnArrange(const Size& arrangeSize);
+
+    int ComputeOffsetFromItem(suic::Object* item, eItemDirection id, int& offset, int& itemSize);
 
 protected:
 
