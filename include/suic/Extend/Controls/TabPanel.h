@@ -80,10 +80,10 @@ private:
     int FindFirstVisibleTab();
     int FindLastVisibleTab();
 
-    int GetActiveRow(Array<int>& solution);
-    void GetHeadersSize(Array<Float>& numArray);
+    int GetActiveRow(Array<int, false>& solution);
+    void GetHeadersSize(Array<Float, false>& numArray);
     Size GetDesiredSizeWithoutMargin(Element* elem);
-    void CalculateHeaderDistribution(Float rowWidthLimit, Array<Float>& headerWidth, Array<int>& numArray);
+    void CalculateHeaderDistribution(Float rowWidthLimit, Array<Float, false>& headerWidth, Array<int, false>& numArray);
 
 private:
 

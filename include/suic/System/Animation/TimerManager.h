@@ -236,7 +236,7 @@ protected:
 
 protected:
 
-    Array<Timeline*> _timelines;
+    Array<Timeline*, false> _timelines;
 };
 
 class SUICORE_API Clock : public Object
@@ -418,8 +418,8 @@ public:
 
 private:
 
-    Array<WeakRef> _roots;
-    Array<Clock*> _clocks;
+    Array<WeakRef, true> _roots;
+    Array<Clock*, false> _clocks;
 
     friend class Clock;
 };
@@ -534,7 +534,7 @@ private:
     bool _nextTickTimeQueried;
 
     ClockGroup* _timeManaClock;
-    Array<WeakRef> _eventQueue;
+    Array<WeakRef, true> _eventQueue;
 };
 
 }

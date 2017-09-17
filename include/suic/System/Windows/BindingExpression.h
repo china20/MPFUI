@@ -85,7 +85,7 @@ private:
     BindingStatus _status;
     DpProperty* _pathCache;
 
-    Array<DpProperty*> _ppaths;
+    Array<DpProperty*, false> _ppaths;
 };
 
 inline Binding* BindingExpression::GetBinding() const

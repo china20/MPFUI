@@ -41,7 +41,7 @@ private:
 
     void ClearDeadWeakRefs(bool doAll);
 
-    Array<DpDependent*> _items;
+    Array<DpDependent*, false> _items;
     static int _skipper;
 };
 

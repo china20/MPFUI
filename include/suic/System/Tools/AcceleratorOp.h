@@ -22,7 +22,7 @@ class SUICORE_API AcceleratorOp
 {
 public:
 
-    typedef Array<WeakRef> ArrayElement;
+    typedef Array<WeakRef, true> ArrayElement;
 
     static void Register(Uint16 modifier, const String& key, Element* elem);
     static void Unregister(Uint16 modifier, const String& key, Element* elem);

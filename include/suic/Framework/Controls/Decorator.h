@@ -92,7 +92,7 @@ protected:
 
 private:
 
-    Array<AdornerInfo*> _adornerInfos;
+    Array<AdornerInfo*, false> _adornerInfos;
 };
 
 /// <summary>

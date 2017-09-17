@@ -24,10 +24,21 @@ struct LinearGradientInfo
     Float startX;
     Float startY;
 
-    Array<Float> posinfo;
-    Array<Uint32> colors;
+    Array<Float, false> posinfo;
+    Array<Uint32, false> colors;
 
     LinearGradientInfo();
+
+    ~LinearGradientInfo()
+    {
+        Clear();
+    }
+
+    void Clear()
+    {
+        colors.Clear();
+        posinfo.Clear();
+    }
 
     void AddGradientStop(Color clr, Float radio);
 };

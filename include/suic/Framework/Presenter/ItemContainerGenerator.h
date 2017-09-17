@@ -121,7 +121,7 @@ private:
     ItemContainerGenerator* _parent;
 
     ArrayList _emptyGroupItems;
-    Array<Element*> _recyclableContainers;
+    Array<Element*, false> _recyclableContainers;
 };
 
 inline int ItemContainerGenerator::GetLevel() const

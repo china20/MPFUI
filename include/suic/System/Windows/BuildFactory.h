@@ -59,7 +59,7 @@ private:
 
     static BuildFactory* _ins;
 
-    Array<IAddType*> _addTypes;
+    Array<IAddType*, false> _addTypes;
     StringDic<RTTIOfInfo*> _classes;
     StringDic<RTTIOfInfo*> _sysClasses;
 };

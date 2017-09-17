@@ -899,6 +899,8 @@ public:
     ImageSource();
     ImageSource(const String& uri);
 
+    virtual ~ImageSource();
+
     void SetUri(ResourceUri uri);
     ResourceUri GetUri() const;
 

@@ -41,7 +41,7 @@ class StoryBoard;
 
 struct TreeChangeInfo
 {
-    Array<DpObject*> dpStack;
+    Array<DpObject*, false> dpStack;
     DpObject* rootOfChange;
 };
 
@@ -50,8 +50,8 @@ struct ResourcesChangeInfo
     String key;
     DpObject* container;
 
-    Array<ResourceDictionary*> oldDictionaries;
-    Array<ResourceDictionary*> newDictionaries;
+    Array<ResourceDictionary*, false> oldDictionaries;
+    Array<ResourceDictionary*, false> newDictionaries;
 };
 
 class FrameworkInvoker : public AssignerInvoker

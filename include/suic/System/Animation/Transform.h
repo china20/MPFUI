@@ -120,7 +120,7 @@ public:
 private:
 
     Matrix* _matrixCache;
-    Array<Transform*> _transforms;
+    Array<Transform*, false> _transforms;
 };
 
 class SUICORE_API ScaleTransform : public Transform

@@ -55,7 +55,7 @@ struct SUICORE_API SelectionItems
 
 private:
 
-    Array<ItemEntry*> items;
+    Array<ItemEntry*, false> items;
     ObjectDic<Object*, int> indexes;
 };
 

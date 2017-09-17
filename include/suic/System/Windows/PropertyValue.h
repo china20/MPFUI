@@ -181,10 +181,10 @@ private:
     WeakRef expr;
 };
 
-typedef Array<PropValue*> PropValueArray;
-typedef Array<TriggerDep> TriggerDeps;
-typedef Array<ContainerDep> ContainerDeps;
-typedef Array<ChildPropDep> ChildPropDepList;
+typedef Array<PropValue*, false> PropValueArray;
+typedef Array<TriggerDep, false> TriggerDeps;
+typedef Array<ContainerDep, false> ContainerDeps;
+typedef Array<ChildPropDep, true> ChildPropDepList;
 
 typedef ValueDic<Uint32, TriggerDep> DicTriggerDependents;
 

@@ -75,7 +75,7 @@ private:
     Object* val;
 };
 
-typedef Array<Condition> ArrayCondition;
+typedef Array<Condition, true> ArrayCondition;
 typedef PointerDic<DpProperty*, Condition> DicCondition;
 
 class SUICORE_API Trigger : public TriggerBase

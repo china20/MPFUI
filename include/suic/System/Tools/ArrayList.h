@@ -143,7 +143,7 @@ public:
 protected:
 
     int _current;
-    Array<Object*> _items;
+    Array<Object*, false> _items;
 };
 
 }

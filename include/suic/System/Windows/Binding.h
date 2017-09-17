@@ -83,7 +83,7 @@ private:
 
 private:
 
-    suic::Array<WeakRef> _listeners;
+    suic::Array<WeakRef, true> _listeners;
 
     friend class Object;
     friend class FrameworkElement;

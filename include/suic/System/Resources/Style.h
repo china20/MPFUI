@@ -93,7 +93,7 @@ public:
     bool IsModified(int id);
     bool IsBasedOnModified();
 
-    static void AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep>& deps);
+    static void AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep, false>& deps);
 
 private:
     

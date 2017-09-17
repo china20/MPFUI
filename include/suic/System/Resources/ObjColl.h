@@ -21,7 +21,7 @@ class SUICORE_API ObjColl
 {
 private:
 
-    Array<Object*> _items;
+    Array<Object*, false> _items;
 
 public:
 

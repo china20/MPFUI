@@ -202,7 +202,7 @@ private:
 
     int _version;
 
-    Array<T> _items;
+    Array<T, !nc> _items;
     IComparer<T>* _comparer;    
 };
 
@@ -268,7 +268,7 @@ private:
     int _size;
     int _version;
 
-    Array<T> _items;
+    Array<T, !nc> _items;
 
 public:
 
@@ -377,7 +377,7 @@ class DicBase
 private:
 
     // ¼ÇÂ¼Í°¸öÊý
-    ArrayType<int> _buckets;
+    ArrayType<int, false> _buckets;
     ArrayType<Entry<TKey, TVal>, true> _entries;
 
     int _version;

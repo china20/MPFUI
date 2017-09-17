@@ -101,7 +101,7 @@ public:
 
 private:
 
-    Array<HookItem*> _hooks;
+    Array<HookItem*, false> _hooks;
 };
 
 class HwndAdapter : public Object

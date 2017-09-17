@@ -130,7 +130,7 @@ private:
 
     suic::AssignerTimer* _timer;
 
-    static Array<Toast*> _showToasts;
+    static Array<Toast*, false> _showToasts;
 };
 
 }

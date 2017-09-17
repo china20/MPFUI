@@ -158,7 +158,7 @@ struct ArraySort
     }
 };
 
-template<typename T, bool construct=false, typename Base=HoldObj>
+template<typename T, bool construct=true, typename Base=HoldObj>
 struct ArrayType : public Base
 {
 public:
@@ -293,7 +293,7 @@ private:
     }
 };
 
-template<typename T, bool construct=false>
+template<typename T, bool construct=true>
 class Array : public array_base
 {
 public:
@@ -565,16 +565,16 @@ private:
     T* _ptr;
 };
 
-typedef Array<Byte> ByteArray;
+typedef Array<Byte, false> ByteArray;
 
-class SUICORE_API StringArray : public Array<String>
+class SUICORE_API StringArray : public Array<String, true>
 {
 public:
 
     int SplitString(const String& str, const String& delims, Uint32 maxSplits = 0);
 };
 
-class FloatAutoArray : public Array<Float>
+class FloatAutoArray : public Array<Float, false>
                      , public Object
 {
 public:
@@ -586,7 +586,7 @@ public:
     String ToString();
 };
 
-class IntAutoArray : public Array<int>
+class IntAutoArray : public Array<int, false>
                    , public Object
 {
 public:

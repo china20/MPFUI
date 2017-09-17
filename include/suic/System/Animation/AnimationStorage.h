@@ -70,7 +70,7 @@ private:
     // “¿¿µ Ù–‘
     DpProperty* _dpProp;
 
-    Array<AnimationClock*> _animationClocks;
+    Array<AnimationClock*, false> _animationClocks;
 };
 
 }

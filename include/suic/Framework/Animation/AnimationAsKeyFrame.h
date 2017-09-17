@@ -112,7 +112,7 @@ private:
     IEasingFunction* _easingFunc;
 };
 
-typedef Array<Int32KeyFrame*> Int32KeyFrameArray;
+typedef Array<Int32KeyFrame*, false> Int32KeyFrameArray;
 
 class SUICORE_API Int32AnimationUsingKeyFrame : public AnimationTimeline, public IAddChild
 {
@@ -198,7 +198,7 @@ private:
     IEasingFunction* _easingFunc;
 };
 
-typedef Array<DoubleKeyFrame*> DoubleKeyFrameArray;
+typedef Array<DoubleKeyFrame*, false> DoubleKeyFrameArray;
 
 class SUICORE_API DoubleAnimationUsingKeyFrame : public AnimationTimeline, public IAddChild
 {

@@ -23,7 +23,7 @@ private:
 
     bool _sealed;
 
-    Array<Setter*> _setters;
+    Array<Setter*, false> _setters;
     ValueDic<int, Setter*> _cached;
 
 public:

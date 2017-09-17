@@ -82,7 +82,7 @@ struct HitTestCtx
     // 鼠标动作结果
     //
     ElementPtr hitRes;
-    Array<Point> trans;
+    Array<Point, false> trans;
 
     HitTestCtx(Point pt);
     ~HitTestCtx();

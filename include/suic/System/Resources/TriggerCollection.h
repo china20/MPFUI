@@ -26,7 +26,7 @@ private:
     bool _sealed;
     
     FrameworkElement* _owner;
-    Array<TriggerBase*> _triggers;
+    Array<TriggerBase*, false> _triggers;
 
 public:
 

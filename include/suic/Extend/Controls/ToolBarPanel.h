@@ -80,7 +80,7 @@ protected:
     IScrollInfo* GetScrollInfo();
     bool IsScrolling();
 
-    Array<Element*>& GetGeneratedItemsCollection();
+    Array<Element*, false>& GetGeneratedItemsCollection();
 
     friend class ToolBarOverflowPanel;
 
@@ -110,7 +110,7 @@ private:
 
     int _minLength;
     int _maxLength;
-    Array<Element*> _generatedItemsCollection;
+    Array<Element*, false> _generatedItemsCollection;
 
 };
 

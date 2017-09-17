@@ -73,7 +73,7 @@ public:
     // 行列都带*
     int CellGroup4;
 
-    ArrayType<CellCache> CellCaches;
+    ArrayType<CellCache, false> CellCaches;
 
     ExtendedData();
     ~ExtendedData();

@@ -44,7 +44,7 @@ public:
 protected:
 
     void ValidateTargetType(RTTIOfInfo* targetType, const String& argName);
-    void AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep>& deps);
+    void AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep, false>& deps);
 
     friend class FrameworkTemplate;
 

@@ -72,7 +72,7 @@ public:
 
 private:
 
-    suic::Array<TextDecoration*> _textDecorations;
+    suic::Array<TextDecoration*, false> _textDecorations;
 };
 
 class SUICORE_API TextDecorations
@@ -113,7 +113,7 @@ public:
 
 private:
 
-    Array<TextEffect*> _effects;
+    Array<TextEffect*, false> _effects;
 };
 
 class SUICORE_API TextElement : public FrameworkElement

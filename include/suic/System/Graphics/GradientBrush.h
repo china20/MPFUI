@@ -20,6 +20,11 @@ class SUICORE_API GradientStops : public Object
 {
 public:
 
+    virtual ~GradientStops()
+    {
+        Clear();
+    }
+
     void AddStops(Float p, Uint32 c)
     {
         colors.Add(c);
@@ -37,8 +42,8 @@ public:
         ratios.Clear();
     }
 
-    Array<Uint32> colors;
-    Array<Float> ratios;
+    Array<Uint32, false> colors;
+    Array<Float, false> ratios;
 };
 
 class SUICORE_API GradientBrush : public Brush

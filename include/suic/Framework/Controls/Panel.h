@@ -154,8 +154,8 @@ protected:
     ElementColl* _elemColl;
 
     // 计算后元素的Z顺序
-    Array<int> _zIndexs;
-    Array<int> _tIndexs;
+    Array<int, false> _zIndexs;
+    Array<int, false> _tIndexs;
 
     ItemContainerGenerator* _icGenerator;
 

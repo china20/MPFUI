@@ -66,7 +66,7 @@ public:
 
 private:
 
-    Array<ItemEntry*> _items;
+    Array<ItemEntry*, false> _items;
 };
 
 inline bool ObservableCollection::IsEmpty()

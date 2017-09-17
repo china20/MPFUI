@@ -26,7 +26,7 @@
 namespace suic
 {
 
-typedef Array<Size> SizeArray;
+typedef Array<Size, false> SizeArray;
 
 /// <summary>
 /// ItemsControl,所有项的基类。

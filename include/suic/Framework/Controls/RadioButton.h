@@ -17,7 +17,7 @@
 namespace suic
 {
 
-typedef suic::Array<WeakRef> RadioGroups;
+typedef suic::Array<WeakRef, true> RadioGroups;
 
 class RBGroupDic : public StringDic<RadioGroups*>
                  , public Object
@@ -63,7 +63,7 @@ protected:
 
     void PurgeChecked();
 
-    static void PurgeDead(Array<WeakRef>& elems, Object* elem);
+    static void PurgeDead(Array<WeakRef, true>& elems, Object* elem);
 };
 
 typedef shared<RadioButton> RadioButtonPtr;

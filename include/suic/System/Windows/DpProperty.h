@@ -236,7 +236,7 @@ public:
 
 protected:
 
-    static Array<DpProperty*> _uncommonDpPropertyList;
+    static Array<DpProperty*, false> _uncommonDpPropertyList;
     static ValueDic<int, DpProperty*> _propFromNames;
     static int _globalIndex;
 

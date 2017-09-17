@@ -27,7 +27,7 @@ private:
     int _size;
     int _version;
 
-    Array<Object*> _items;
+    Array<Object*, false> _items;
 
 public:
 
@@ -35,6 +35,11 @@ public:
 
     XStack();
     XStack(int initialCapacity);
+
+    ~XStack()
+    {
+        Clear();
+    }
 
     int GetCount() const;
     void Push(Object* val);
@@ -97,7 +102,7 @@ public:
 
 private:
 
-    Array<Object*> _items;
+    Array<Object*, false> _items;
 };
 
 typedef shared<XArray> XArrayPtr;
@@ -153,7 +158,7 @@ private:
     int _size;
     int _version;
     Float _growFactor;
-    Array<Object*> _items;
+    Array<Object*, false> _items;
 };
 
 class SUICORE_API XDictionary : public StringAutoDic<Object>

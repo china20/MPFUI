@@ -138,7 +138,7 @@ class SUICORE_API EffectiveValue
 {
 public:
 
-    ~EffectiveValue();
+    virtual ~EffectiveValue();
 
     EffectiveValue();
     EffectiveValue(const EffectiveValue& Other);

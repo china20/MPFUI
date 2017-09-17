@@ -25,7 +25,7 @@ class BandInfo
 private:
     
     int _thickness;
-    Array<ToolBar*> _band;
+    Array<ToolBar*, false> _band;
     
 public:
 
@@ -34,7 +34,7 @@ public:
         _thickness = 0;
     }
 
-    Array<ToolBar*>& GetBand()
+    Array<ToolBar*, false>& GetBand()
     {
         return _band;
     }
@@ -80,7 +80,7 @@ private:
 private:
 
     ToolBarTray* _parent;
-    Array<ToolBar*> _toolBars;
+    Array<ToolBar*, false> _toolBars;
 };
 
 class SUIWGX_API ToolBarTray : public FrameworkElement, public IAddChild
@@ -118,14 +118,14 @@ private:
     int GetBandFromOffset(int toolBarOffset);
 
     void InsertBand(ToolBar* toolBar, int toolBarIndex);
-    void InsertToolBar(ToolBar* toolBar, Array<ToolBar*>& band);
+    void InsertToolBar(ToolBar* toolBar, Array<ToolBar*, false>& band);
 
-    void ExpandToolBars(Array<ToolBar*>& band, int startIndex, int endIndex, int expandAmount);
+    void ExpandToolBars(Array<ToolBar*, false>& band, int startIndex, int endIndex, int expandAmount);
 
 private:
 
     bool _bandsDirty;
-    Array<BandInfo*> _bands;
+    Array<BandInfo*, false> _bands;
     ToolBarCollection* _toolBarsCollection;
 };
 

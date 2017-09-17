@@ -77,7 +77,7 @@ protected:
 
 protected:
 
-    Array<Element*> _items;
+    Array<Element*, false> _items;
     
     Element* _visualParent;
     FrameworkElement* _logicalParent;

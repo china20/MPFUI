@@ -84,7 +84,7 @@ private:
     int _currentFrame;
     suic::Size _playSize;
     suic::AssignerTimer* _timer; 
-    suic::Array<ImFrame> _aniFrames;
+    suic::Array<ImFrame, false> _aniFrames;
 };
 
 }

@@ -161,7 +161,7 @@ private:
 
 private:
 
-    suic::Array<Inline*> _inlines;
+    suic::Array<Inline*, false> _inlines;
     suic::Element* _parent;
 };
 
@@ -353,7 +353,7 @@ private:
     int _lineHeight;
     int _lineWidth;
     bool _hasUIContainer;
-    suic::Array<LinePart*> _lineParts;
+    suic::Array<LinePart*, false> _lineParts;
 };
 
 inline int LineTrim::GetLineWidth() const
@@ -479,8 +479,8 @@ private:
     InlineCollection* _inlines;
 
     // 缓存计算的行信息
-    suic::Array<LineTrim*> _seqLines;
-    suic::Array<suic::Element*> _complexChild;
+    suic::Array<LineTrim*, false> _seqLines;
+    suic::Array<suic::Element*, false> _complexChild;
 
     // 缓存上次测量限制大小
     suic::Size _referenceSize;

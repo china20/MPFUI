@@ -18,7 +18,7 @@
 namespace suic
 {
 
-typedef Array<AssignerInvoker*> AssignerInvokerArray;
+typedef Array<AssignerInvoker*, false> AssignerInvokerArray;
 
 class SUICORE_API InvokerPriorityQueue  : public Object
 {
@@ -43,8 +43,8 @@ protected:
 
 protected:
 
-    Array<AssignerInvoker*> _sendQueue;
-    Array<AssignerInvokerArray*> _queue;
+    Array<AssignerInvoker*, false> _sendQueue;
+    Array<AssignerInvokerArray*, false> _queue;
 
     int _maxPriority;
     Mutex _queueLock;

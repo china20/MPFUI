@@ -381,7 +381,7 @@ private:
 
 private:
 
-    suic::Array<invoker_type*> _invokers;
+    suic::Array<invoker_type*, false> _invokers;
 };
 
 // 取消宏的定义，下一次特化定义

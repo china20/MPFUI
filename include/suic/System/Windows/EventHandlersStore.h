@@ -36,7 +36,7 @@ class SUICORE_API RoutedEventHandlerInfoList
 {
 public:
 
-    Array<RoutedEventHandlerInfo*> RoutedEHIList;
+    Array<RoutedEventHandlerInfo*, false> RoutedEHIList;
 
     RoutedEventHandlerInfoList();
     ~RoutedEventHandlerInfoList();

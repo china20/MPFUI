@@ -102,44 +102,6 @@ private:
     ItemEntry* _newValue;
 };
 
-/*struct NotifyCollChangedEventHandler
-{
-    typedef void(*func_type)(Object*, NotifyCollChangedEventArg*);
-
-    union funcCall
-    {
-        struct func_func
-        {
-            func_type func;
-        } func;
-        struct member_func
-        {
-            func_type func;
-            WeakRef target;
-        }mfunc;
-    };
-
-    bool safe_bool() const 
-    {
-        return (_funcCall != NULL);
-    }
-
-    void operator()(Object* sender, NotifyCollChangedEventArg* e)
-    {
-        for (int i = 0; i < _funcs.GetCount(); ++i)
-        {
-            _funcs[i](sender, e);
-        }
-    }
-
-    void operator+=(const NotifyCollChangedEventHandler& Other)
-    {
-        _funcCall = Other._funcCall;
-    }
-
-    Array<mfunc> _funcs;
-};*/
-
 typedef delegate<void(Object*, NotifyCollChangedEventArg*)> NotifyCollChangedEventHandler;
 
 }
