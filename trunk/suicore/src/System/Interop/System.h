@@ -33,7 +33,7 @@ namespace suic
 
 struct HwndItems
 {
-    Array<HWND> hwnds;
+    Array<HWND, false> hwnds;
 };
 
 void InitializeSystemParameters();

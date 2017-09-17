@@ -29,7 +29,7 @@ struct RenderUnit
     FrameworkElement* root;
 };
 
-typedef Array<RenderUnit> RenderArray;
+typedef Array<RenderUnit, false> RenderArray;
 
 class RenderPools
 {
@@ -77,7 +77,7 @@ public:
 private:
 
     bool _exit;
-    static Array<Thread*> _threads;
+    static Array<Thread*, false> _threads;
 };
 
 class DefRender

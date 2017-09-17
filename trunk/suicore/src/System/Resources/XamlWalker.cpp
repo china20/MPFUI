@@ -154,7 +154,7 @@ void XamlWalker::CreateElement(IXamlNode* pNode, const String& name, ObjectPtr& 
 
 void XamlWalker::WalkXamlElement(suic::FrameworkElement* fe, ReadContext& rCtx, IXamlNode* pNode)
 {
-    Array<ExtItem> extProps;
+    Array<ExtItem, false> extProps;
 
     extProps.Resize(8);
     // 读取节点的属性
@@ -298,7 +298,7 @@ void XamlWalker::WalkXamlElement(suic::FrameworkElement* fe, ReadContext& rCtx, 
     }
 }
 
-void XamlWalker::ReadXamlProperties(ReadContext& rCtx, IXamlNode* pNode, Array<ExtItem>& extProps)
+void XamlWalker::ReadXamlProperties(ReadContext& rCtx, IXamlNode* pNode, Array<ExtItem, false>& extProps)
 {
 	IXamlAttris* pAttris = pNode->GetAttris();
     pAttris->Reset();

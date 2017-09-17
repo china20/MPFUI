@@ -885,8 +885,6 @@ WndProcHook(Handle hwnd, Int32 message, Uint32 wParam, Uint32 lParam, bool& hand
         {
             ::KillTimer(HANDLETOHWND(hwnd), 5);
             GetTimeManager()->Tick();
-            
-            //HwndSubclass::RenderHwnd(HANDLETOHWND(hwnd));
             ::SetTimer(HANDLETOHWND(hwnd), 5, 10, NULL);
         }
     }

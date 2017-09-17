@@ -81,7 +81,7 @@ void ControlTemplate::Seal()
     }
 }
 
-void ControlTemplate::AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep>& deps)
+void ControlTemplate::AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep, false>& deps)
 {
     if (dp != NULL)
     {

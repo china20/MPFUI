@@ -321,7 +321,7 @@ void PropMetadata::SetAffectsParentRender(bool val)
 //======================================================================
 //
 
-Array<DpProperty*> DpProperty::_uncommonDpPropertyList;
+Array<DpProperty*, false> DpProperty::_uncommonDpPropertyList;
 ValueDic<int, DpProperty*> DpProperty::_propFromNames;
 int DpProperty::_globalIndex = 0;
 Object* DpProperty::NullValue = new Object(false);

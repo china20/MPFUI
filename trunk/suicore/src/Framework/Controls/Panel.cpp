@@ -530,7 +530,7 @@ void Panel::MoveChildren(int fromPos, int toPos, int containerCount)
 {
     if (fromPos != toPos)
     {
-        Array<Element*> elemArr;
+        Array<Element*, false> elemArr;
         ItemContainerGenerator* generator = GetGenerator();
 
         for (int i = 0; i < containerCount; i++)

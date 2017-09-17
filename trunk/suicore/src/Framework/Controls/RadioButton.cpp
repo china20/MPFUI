@@ -62,7 +62,7 @@ void RadioButton::OnGroupNameChanged(DpObject* d, DpPropChangedEventArg* e)
     }
 }
 
-void RadioButton::PurgeDead(Array<WeakRef>& elems, Object* elem)
+void RadioButton::PurgeDead(Array<WeakRef, true>& elems, Object* elem)
 {
     int index = 0;
 

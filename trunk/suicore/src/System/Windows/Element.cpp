@@ -2486,7 +2486,7 @@ Element* Element::TransformAncestorPoint(fPoint& pt, Element* ancestor)
     Element* fe = this;
     Element* root = this;
     LayoutTransformInfo* layInfo = NULL;
-    Array<Element*> trans;
+    Array<Element*, false> trans;
 
     trans.Resize(4);
 

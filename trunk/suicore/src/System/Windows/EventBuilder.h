@@ -119,7 +119,7 @@ protected:
 protected:
 
     RoutedEvent* _routedEvent;
-    Array<RoutedItem*> _routedItemList;
+    Array<RoutedItem*, false> _routedItemList;
 };
 
 }

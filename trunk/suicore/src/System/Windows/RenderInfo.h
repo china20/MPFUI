@@ -80,7 +80,7 @@ public:
     bool _isRendering;
 
     StringAutoDic<Object> Context;
-    Array<WeakRef> _arrangs;
+    Array<WeakRef, true> _arrangs;
 
 protected:
 

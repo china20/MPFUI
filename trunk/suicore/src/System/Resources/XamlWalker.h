@@ -55,7 +55,7 @@ private:
     void CreateElement(IXamlNode* pNode, const String& name, ObjectPtr& child);
 	void WalkXamlElement(suic::FrameworkElement* fe, ReadContext& rCtx, IXamlNode* pNode);
 
-    void ReadXamlProperties(ReadContext& rCtx, IXamlNode* pNode, Array<ExtItem>& extProps);
+    void ReadXamlProperties(ReadContext& rCtx, IXamlNode* pNode, Array<ExtItem, false>& extProps);
 
     void ReadResourceDictionaryFromNode(IXamlNode* pNode);
 

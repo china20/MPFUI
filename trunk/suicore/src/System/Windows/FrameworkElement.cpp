@@ -1356,8 +1356,7 @@ void FrameworkElement::Render(Drawing* drawing)
     }
 
     // ´¦ÀíÆ«ÒÆºÍ²Ã¼ô
-    if (GetVisibility() == Visibility::Visible && 
-        !ReadFlag(CoreFlags::IsNotRender))
+    if (GetVisibility() == Visibility::Visible && !ReadFlag(CoreFlags::IsNotRender))
     {
         fRect elemClip;
 

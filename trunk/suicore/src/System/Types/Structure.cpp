@@ -992,7 +992,7 @@ String OFloat::ToString()
     return str;
 }
 
-ImageSource::ImageSource()
+ImageSource::~ImageSource()
 {
 
 }
@@ -1000,6 +1000,10 @@ ImageSource::ImageSource()
 ImageSource::ImageSource(const String& uri)
 {
     _uri = uri;
+}
+
+ImageSource::ImageSource()
+{
 }
 
 void ImageSource::SetUri(ResourceUri uri)

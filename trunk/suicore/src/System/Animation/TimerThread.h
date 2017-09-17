@@ -101,7 +101,7 @@ private:
     int _interval;
     bool _isTimerSet;
     bool _dueTimeFound;
-    Array<TimerEntry*> _timers;
+    Array<TimerEntry*, false> _timers;
 };
 
 }

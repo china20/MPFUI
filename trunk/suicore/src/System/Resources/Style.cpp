@@ -412,7 +412,7 @@ void Style::UpdatePropertyValueList(DpProperty* dp, PropValType valueType, Objec
     }
 }
 
-void Style::AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep>& deps)
+void Style::AddContainerDependent(DpProperty* dp, bool fromTrigger, Array<ContainerDep, false>& deps)
 {
     if (dp != NULL)
     {

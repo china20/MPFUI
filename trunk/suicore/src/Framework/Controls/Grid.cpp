@@ -1044,7 +1044,7 @@ void Grid::EnsureMinSizeInDefRange(GridDefinitions* defs, int start, int count, 
 {
     if (requestedSize > 0 && count > 0)
     {
-        ArrayType<DefinitionBase*> temp;
+        ArrayType<DefinitionBase*, false> temp;
         
         int num = start + count;
         int num2 = 0;
@@ -1182,7 +1182,7 @@ void Grid::CalcFinalRowSize()
 
 void Grid::ResolveStar(GridDefinitions* defs, float availableSize)
 {
-    Array<DefinitionBase*> temp;
+    Array<DefinitionBase*, false> temp;
 
     int count = defs->GetCount();
     int length = 0;
@@ -1293,7 +1293,7 @@ void Grid::SetFinalSize(GridDefinitions* defs, float finalSize, bool columns)
     int num2 = defs->GetCount();
     Float num3 = 0.0;
     Float dpiScale = 1.0;
-    Array<int> definitionIndices;
+    Array<int, false> definitionIndices;
     definitionIndices.Resize(UIMAX(_data->GetColumnDefs()->GetCount(), _data->GetRowDefs()->GetCount()));
 
     for (int i = 0; i < defs->GetCount(); i++)

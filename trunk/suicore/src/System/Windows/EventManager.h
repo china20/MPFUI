@@ -38,7 +38,7 @@ class ClassTypeMap
 {
 private:
     
-    ArrayType<EventHandlersInfo*> _entries;
+    ArrayType<EventHandlersInfo*, false> _entries;
     HashMap<IntegerType, EventHandlersInfo*> _overFlow;
 
 public:

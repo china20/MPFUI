@@ -325,7 +325,7 @@ Object* DpObject::GetValue(DpProperty* dp)
         throw ArgumentNullException(_U("dp is null"), __FILELINE__);
     }
     
-    PropMetadata* meta = NULL;//dp->GetMetadata(GetClassType());
+    PropMetadata* meta = NULL; // dp->GetMetadata(GetClassType());
     EntryIndex entryIndex = FindEntryIndex(dp->GetIndex());
     EffectiveValue entry;
     Object* val = DpProperty::UnsetValue();

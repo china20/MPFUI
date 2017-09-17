@@ -265,7 +265,7 @@ ArrayCondition* MultiTrigger::GetConditions()
 
 bool MultiTrigger::IsMatch(DpObject* d)
 {
-    Array<Condition>* arrCond = GetConditions();
+    Array<Condition, true>* arrCond = GetConditions();
 
     for (int i = 0; i < arrCond->Length(); ++i)
     {

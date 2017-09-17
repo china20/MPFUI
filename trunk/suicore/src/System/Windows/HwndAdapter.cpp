@@ -130,7 +130,7 @@ bool HookInfo::DoMessageHook(Object* root, MessageParam* mp, bool& interrupt)
     int i = 0;
     bool handled = false;
     int iCount = GetCount();
-    Array<HookItem*> hooks;
+    Array<HookItem*, false> hooks;
 
     for (i = 0; i < iCount; ++i)
     {
