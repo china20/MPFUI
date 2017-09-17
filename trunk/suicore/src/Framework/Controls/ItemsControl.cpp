@@ -1039,14 +1039,64 @@ void ItemsControl::DoAutoScroll(Object* startingItem)
 
 }
 
+int ItemsControl::ComputeVirtualOffsetFromItem(Object* item, bool bHori, eItemDirection id, int& offset, int& itemSize)
+{
+    Size size;
+    int index = -1;
+    ItemEntry* itemb = NULL;
+
+    for (int i = 0; i < GetCount(); ++i)
+    {
+        itemb = GetItemsSource()->GetItemEntry(i);
+        ReadItemSize(itemb, bHori, i, size);
+
+        if (item == itemb->GetItem())
+        {
+            index = i;
+            itemSize = (bHori ? size.cx : size.cy);
+
+            break;
+        }
+
+        offset += (bHori ? size.cx : size.cy);
+    }
+
+    switch (id)
+    {
+    case eItemDirection::idPrev:
+        if (index > 0)
+        {
+            index -= 1;
+            itemb = GetItemsSource()->GetItemEntry(index);
+            ReadItemSize(itemb, bHori, index, size);
+            offset -= (bHori ? size.cx : size.cy);
+            itemSize = (bHori ? size.cx : size.cy);
+        }
+        break;
+
+    case eItemDirection::idNext:
+        if (index < GetCount() - 1)
+        {
+            index += 1;
+            offset += itemSize;
+
+            itemb = GetItemsSource()->GetItemEntry(index);
+            ReadItemSize(itemb, bHori, index, size);
+            itemSize = (bHori ? size.cx : size.cy);
+        }
+        break;
+
+    default:
+        ;
+    }
+
+    return index;
+}
+
 int ItemsControl::ComputeOffsetFromItem(Object* item, eItemDirection id, int& offset, int& itemSize)
 {
-    int iOri = -1;
     bool bHori = false;
     int index = -1;
-
-    Size size;
-    ItemEntry* itemb = NULL;
 
     suic::Panel* pPanel = GetItemsHost();
 
@@ -1055,12 +1105,7 @@ int ItemsControl::ComputeOffsetFromItem(Object* item, eItemDirection id, int& of
 
     if (IsLogicalHorizontal())
     {
-        iOri = 0;
         bHori = true;
-    }
-    else if (IsLogicalVertical())
-    {
-        iOri = 1;
     }
 
     if (pPanel != NULL)
@@ -1070,49 +1115,52 @@ int ItemsControl::ComputeOffsetFromItem(Object* item, eItemDirection id, int& of
 
     if (index == -1)
     {
-        for (int i = 0; i < GetCount(); ++i)
+        if (IsVirtualizing())
         {
-            itemb = GetItemsSource()->GetItemEntry(i);
-            ReadItemSize(itemb, bHori, i, size);
+            index = ComputeVirtualOffsetFromItem(item, bHori, id, offset, itemSize);
+        }
+        else if (pPanel != NULL)
+        {
+            ElementColl* pColl = pPanel->GetChildren();
 
-            if (item == itemb->GetItem())
+            index = FindFromItem(item);
+
+            switch (id)
             {
-                index = i;
-                itemSize = (0 == iOri ? size.cx : size.cy);
+            case eItemDirection::idPrev:
+                if (index > 0)
+                {
+                    --index;
+                }
+                break;
+
+            case eItemDirection::idNext:
+                if (index >= 0 && index < pColl->GetCount() - 1)
+                {
+                    ++index;
+                }
 
                 break;
+
+            default:
+                ;
             }
 
-            offset += (0 == iOri ? size.cx : size.cy);
-        }
-
-        switch (id)
-        {
-        case eItemDirection::idPrev:
-            if (index > 0)
+            if (index >= 0 && index < pColl->GetCount())
             {
-                index -= 1;
-                itemb = GetItemsSource()->GetItemEntry(index);
-                ReadItemSize(itemb, bHori, index, size);
-                offset -= (0 == iOri ? size.cx : size.cy);
-                itemSize = (0 == iOri ? size.cx : size.cy);
-            }
-            break;
+                Element* pItemElem = pColl->GetAt(index);
 
-        case eItemDirection::idNext:
-            if (index < GetCount() - 1)
+                Size size = pItemElem->GetRenderSize();
+                itemSize = (bHori ? size.cx : size.cy);
+                Point ptOffset = pItemElem->GetCanvasOffset();
+
+                ptOffset -= pPanel->GetCanvasOffset();
+                offset = (bHori ? ptOffset.x : ptOffset.y);
+            }
+            else
             {
-                index += 1;
-                offset += itemSize;
-
-                itemb = GetItemsSource()->GetItemEntry(index);
-                ReadItemSize(itemb, bHori, index, size);
-                itemSize = (0 == iOri ? size.cx : size.cy);
+                index = -1;
             }
-            break;
-
-        default:
-            ;
         }
     }
 
@@ -1429,6 +1477,35 @@ void ItemsControl::NavigateToEnd(ItemNavigateArg* e)
     }
 }
 
+void ItemsControl::NavigateToItem(Object* item, int offset, int itemLen, eItemDirection id, bool alwaysAtTopOfViewport)
+{
+    int iLoop = 0;
+    ScrollViewer* scrollHost = GetScrollHost();
+
+    while (MakeVisible(item, offset, itemLen, alwaysAtTopOfViewport))
+    {
+        int extentWidth = scrollHost->GetExtentWidth();
+        int extentHeight = scrollHost->GetExtentHeight();
+
+        scrollHost->InvalidateMeasure();
+        scrollHost->UpdateArrange();
+
+        if (extentWidth == scrollHost->GetExtentWidth() && 
+            extentHeight == scrollHost->GetExtentHeight())
+        {
+            break;
+        }
+
+        if (iLoop >= 3)
+        {
+            break;
+        }
+
+        ++iLoop;
+        ComputeOffsetFromItem(item, id, offset, itemLen);
+    }
+}
+
 void ItemsControl::NavigateToItem(Object* item, int offset, int itemLen, ItemNavigateArg* e, bool alwaysAtTopOfViewport)
 {
     int index = 0;
@@ -1455,24 +1532,7 @@ void ItemsControl::NavigateToItem(Object* item, int offset, int itemLen, ItemNav
         return;
     }
 
-    ScrollViewer* scrollHost = GetScrollHost();
-
-    while (MakeVisible(item, offset, itemLen, alwaysAtTopOfViewport))
-    {
-        int extentWidth = scrollHost->GetExtentWidth();
-        int extentHeight = scrollHost->GetExtentHeight();
-
-        scrollHost->InvalidateMeasure();
-        scrollHost->UpdateArrange();
-
-        if (extentWidth == scrollHost->GetExtentWidth() && 
-            extentHeight == scrollHost->GetExtentHeight())
-        {
-            break;
-        }
-
-        ComputeOffsetFromItem(item, eItemDirection::idCurr, offset, itemLen);
-    }
+    NavigateToItem(item, offset, itemLen, eItemDirection::idCurr, alwaysAtTopOfViewport);
 
     UpdateFocusItem(GetItemsSource()->GetItemEntry(index));
     UpdateLayout();

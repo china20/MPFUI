@@ -173,6 +173,11 @@ void Panel::Dispose()
     }
 }
 
+bool Panel::IsVirtualizing()
+{
+    return (NULL != suic::DynamicCast<VirtualizingPanel>(this));
+}
+
 void Panel::OnRender(Drawing* drawing)
 {
     Brush* background(GetBackground());

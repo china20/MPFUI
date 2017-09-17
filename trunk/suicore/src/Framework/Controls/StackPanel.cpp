@@ -95,6 +95,67 @@ void StackPanel::NotifyItemChanged()
     _visibleCount = 0;
 }
 
+int StackPanel::ComputeOffsetFromItem(suic::Object* item, eItemDirection id, int& offset, int& itemSize)
+{
+    int index = -1;
+    bool bHori = GetOrientation() == Orientation::Horizontal;
+    ElementColl* children = GetChildren();
+
+    bool bNext = false;
+    int prevOffset = 0;
+
+    offset = 0;
+
+    for (int i = 0; i < children->GetCount(); ++i)
+    {
+        Element* child = children->GetAt(i);
+
+        if (child != NULL)
+        {
+            if (bHori)
+            {
+                itemSize = child->GetDesiredSize().Width();
+            }
+            else
+            {
+                itemSize = child->GetDesiredSize().Height();
+            }
+
+            if (bNext || child->GetContainerItem() == item || child == item)
+            {
+                index = i;
+
+                if (!bNext && eItemDirection::idNext == id)
+                {
+                    bNext = true;
+                }
+                else
+                {
+                    if (eItemDirection::idPrev == id && index > 0)
+                    {
+                        --index;
+                        itemSize = offset - prevOffset;
+                        offset = prevOffset;
+                    }
+
+                    break;
+                }
+            }
+
+            prevOffset = offset;
+            offset += itemSize;
+        }
+    }
+
+    if (-1 == index)
+    {
+        offset = 0;
+        itemSize = 0;
+    }
+
+    return index;
+}
+
 void StackPanel::EnsureScrollingData(Size viewport, Size extent, Point offset)
 {
     bool flag = true;
