@@ -332,6 +332,8 @@ void VisualHost::OnRender(Handle h, const Rect* lprc)
         rect.Union(lprc);
     }
 
+    GetRootElement()->GetAssigner()->GetTimeManager()->Tick();
+
     if (!rect.Empty())
     {
         rect.Offset(-_offset.x, -_offset.y);
