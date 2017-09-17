@@ -131,6 +131,8 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
         Element* focusElem = NULL;
         ItemEntry* itemb = GetFocusedItem();
 
+        eItemDirection eid = eItemDirection::idCurr;
+
         AxisDirection dAxis = (IsLogicalVertical() ? AxisDirection::yAxis : AxisDirection::xAxis);
 
         if (NULL == itemb)
@@ -147,6 +149,7 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
             // 往上滚动一个元素
             if (dAxis == AxisDirection::yAxis)
             {
+                eid = eItemDirection::idPrev;
                 index = ComputeOffsetFromItem(item, eItemDirection::idPrev, offset, itemSize);
             }
             else
@@ -160,6 +163,7 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
             // 往左滚动一个元素
             if (dAxis == AxisDirection::xAxis)
             {
+                eid = eItemDirection::idPrev;
                 index = ComputeOffsetFromItem(item, eItemDirection::idPrev, offset, itemSize);
             }
             else
@@ -173,6 +177,7 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
             // 往下滚动一个元素
             if (dAxis == AxisDirection::yAxis)
             {
+                eid = eItemDirection::idNext;
                 index = ComputeOffsetFromItem(item, eItemDirection::idNext, offset, itemSize);
             }
             else
@@ -186,6 +191,7 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
             // 往右滚动一个元素
             if (dAxis == AxisDirection::xAxis)
             {
+                eid = eItemDirection::idNext;
                 index = ComputeOffsetFromItem(item, eItemDirection::idNext, offset, itemSize);
             }
             else
@@ -205,7 +211,9 @@ void ListBox::OnKeyDown(KeyboardEventArg* e)
                 focusElem = GetContainerFromItem(item);
                 if (NULL == focusElem || !IsOnCurrentPage(focusElem, dAxis, true))
                 {
-                    MakeVisible(item, offset, itemSize, false);
+                    //MakeVisible(item, offset, itemSize, false);
+                    NavigateToItem(item, offset, itemSize, eItemDirection::idCurr, false);
+                    UpdateLayout();
                 }
                 UpdateFocusItem(itemb);
             }

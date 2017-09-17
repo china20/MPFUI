@@ -78,6 +78,109 @@ void WrapPanel::OnScrollChanged()
     }
 }
 
+int WrapPanel::GetLogicalOrientation()
+{
+    return ((GetOrientation() + 1) % 2);
+}
+
+int WrapPanel::ComputeOffsetFromItem(suic::Object* item, eItemDirection id, int& offset, int& itemSize)
+{
+    int index = -1;
+    int count = 0;
+    int prevOffset = 0;
+    int prevSize = 0;
+
+    bool bNext = false;
+    bool bHori = GetOrientation() == Orientation::Horizontal;
+    ElementColl* children = GetChildren();
+
+    int itemWidth = GetItemWidth();
+    int itemHeight = GetItemHeight();
+
+    bool itemWidthSet = itemWidth > 0;
+    bool itemHeightSet = itemHeight > 0;
+
+    UVSize curLineSize(GetOrientation()); 
+    UVSize uvFinalSize(GetOrientation(), GetActualWidth(), GetActualHeight()); 
+
+    offset = 0;
+
+    for(int i = 0, count = children->GetCount(); i < count; i++)
+    {
+        int iReturnLine = 0;
+
+        Element* child = children->GetAt(i);
+
+        if (child == NULL) 
+        {
+            continue;
+        }
+
+        UVSize sz(GetOrientation(),
+            (itemWidthSet ?  itemWidth  : child->GetDesiredSize().Width()),
+            (itemHeightSet ? itemHeight : child->GetDesiredSize().Height()));
+
+        // »»ÐÐ
+        if (curLineSize.U + sz.U > uvFinalSize.U)
+        {
+            prevOffset = offset;
+            offset += curLineSize.V;
+            curLineSize = sz;
+
+            if (sz.U > uvFinalSize.U)
+            {
+                prevOffset = offset;
+                offset += sz.V;
+                curLineSize = UVSize(GetOrientation()); 
+                iReturnLine = 2;
+            }
+            else
+            {
+                iReturnLine = 1;
+            }
+        }
+        else
+        { 
+            curLineSize.U += sz.U; 
+            curLineSize.V = max(sz.V, curLineSize.V);
+        }
+
+        prevSize = max(sz.V, curLineSize.V);
+
+        if (bNext || item == child || child->GetContainerItem() == item)
+        {
+            index = i;
+            itemSize = max(curLineSize.V, sz.V);
+
+            if (index > 0 && id == eItemDirection::idPrev)
+            {
+                index -= 1;
+                offset = prevOffset;
+                itemSize = offset - prevOffset;
+                break;
+            }
+            else 
+            {
+                if (!bNext && id == eItemDirection::idNext)
+                {
+                    bNext = true;
+                }
+                else
+                {
+                    if (iReturnLine == 2)
+                    {
+                        offset -= prevSize;
+                        itemSize = prevSize;
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    return index;
+}
+
 Size WrapPanel::OnMeasure(const Size& constraint)
 {
     UVSize curLineSize(GetOrientation());
