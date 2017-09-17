@@ -24,7 +24,7 @@ ToolBarPanel::~ToolBarPanel()
 {
 }
 
-Array<Element*>& ToolBarPanel::GetGeneratedItemsCollection()
+Array<Element*, false>& ToolBarPanel::GetGeneratedItemsCollection()
 {
     return _generatedItemsCollection;
 }
@@ -148,7 +148,7 @@ void ToolBarPanel::MoveChildren(int fromPos, int toPos, int containerCount)
 {
     if (fromPos != toPos)
     {
-        Array<Element*> elemArr;
+        Array<Element*, false> elemArr;
         ItemContainerGenerator* generator = GetGenerator();
 
         for (int i = 0; i < containerCount; i++)
@@ -522,7 +522,7 @@ Size ToolBarOverflowPanel::OnMeasure(const Size& constraint)
 
     if (toolBarPanel != NULL)
     {
-        Array<Element*>& generatedItemsCollection = toolBarPanel->GetGeneratedItemsCollection();
+        Array<Element*, false>& generatedItemsCollection = toolBarPanel->GetGeneratedItemsCollection();
         int num2 = generatedItemsCollection.Length();
         int index = 0;
 

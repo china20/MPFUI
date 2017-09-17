@@ -528,7 +528,7 @@ BandInfo* ToolBarTray::CreateBand(int startIndex)
     return info;
 }
 
-void ToolBarTray::ExpandToolBars(Array<ToolBar*>& band, int startIndex, int endIndex, int expandAmount)
+void ToolBarTray::ExpandToolBars(Array<ToolBar*, false>& band, int startIndex, int endIndex, int expandAmount)
 {
     if (GetOrientation() == Orientation::Horizontal)
     {
@@ -576,7 +576,7 @@ void ToolBarTray::GenerateBands()
 
         for (int j = 0; j < _bands.Length(); j++)
         {
-            Array<ToolBar*>& band = _bands[j]->GetBand();
+            Array<ToolBar*, false>& band = _bands[j]->GetBand();
             for (int k = 0; k < band.Length(); k++)
             {
                 ToolBar* bar = band[k];
@@ -631,7 +631,7 @@ void ToolBarTray::InsertBand(ToolBar* toolBar, int toolBarIndex)
     _bands.Add(CreateBand(toolBarIndex));
 }
 
-void ToolBarTray::InsertToolBar(ToolBar* toolBar, Array<ToolBar*>& band)
+void ToolBarTray::InsertToolBar(ToolBar* toolBar, Array<ToolBar*, false>& band)
 {
     for (int i = 0; i < band.Length(); i++)
     {
@@ -657,7 +657,7 @@ bool ToolBarTray::IsBandsDirty()
 
     for (int i = 0; i < _bands.Length(); i++)
     {
-        Array<ToolBar*>& band = _bands[i]->GetBand();
+        Array<ToolBar*, false>& band = _bands[i]->GetBand();
 
         for (int j = 0; j < band.Length(); j++)
         {
@@ -724,7 +724,7 @@ void ToolBarTray::OnArrange(const Size& arrangeSize)
 
     for (int i = 0; i < _bands.Length(); i++)
     {
-        Array<ToolBar*>& band = _bands[i]->GetBand();
+        Array<ToolBar*, false>& band = _bands[i]->GetBand();
         int thickness = _bands[i]->GetThickness();
 
         if (flag)
@@ -782,7 +782,7 @@ Size ToolBarTray::OnMeasure(const Size& constraint)
     for (int i = 0; i < _bands.Length(); i++)
     {
         int num3 = flag ? constraint.Width() : constraint.Height();
-        Array<ToolBar*>& band = _bands[i]->GetBand();
+        Array<ToolBar*, false>& band = _bands[i]->GetBand();
         int num4 = 0;
         int num5 = 0;
         int num2 = 0;

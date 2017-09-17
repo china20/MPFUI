@@ -228,7 +228,7 @@ void HyperPanel::UpdateTransforms(suic::Size availableSize)
         }
     }
 
-    suic::ArrayType<suic::Float> numArray;
+    suic::ArrayType<suic::Float, false> numArray;
     suic::Float sumScale = 0.0f;
     suic::Float fDistri = (2.0f * GetDistribution()) * GetDistribution();
     int index = 0;

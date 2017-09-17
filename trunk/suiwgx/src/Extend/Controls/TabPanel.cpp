@@ -442,8 +442,8 @@ void TabPanel::ArrangeMultiHorizontal(Size arrangeSize)
     int activeRow = 0;
     Point vector;
 
-    Array<int> solution;
-    Array<Float> headersSize;
+    Array<int, false> solution;
+    Array<Float, false> headersSize;
 
     GetHeadersSize(headersSize);
 
@@ -530,7 +530,7 @@ void TabPanel::ArrangeMultiVertical(Size arrangeSize)
     }
 }
 
-void TabPanel::CalculateHeaderDistribution(Float rowWidthLimit, Array<Float>& headerWidth, Array<int>& array)
+void TabPanel::CalculateHeaderDistribution(Float rowWidthLimit, Array<Float, false>& headerWidth, Array<int, false>& array)
 {
     Float num = 0.0;
     int length = headerWidth.GetCount();
@@ -541,12 +541,12 @@ void TabPanel::CalculateHeaderDistribution(Float rowWidthLimit, Array<Float>& he
 
     int index = 0;
 
-    Array<int> numArray;
-    Array<int> numArray3;
+    Array<int, false> numArray;
+    Array<int, false> numArray3;
 
-    Array<Float> numArray4;
-    Array<Float> numArray5;
-    Array<Float> numArray6;
+    Array<Float, false> numArray4;
+    Array<Float, false> numArray5;
+    Array<Float, false> numArray6;
 
     numArray.Relength(num3);
     array.Relength(num3);
@@ -667,7 +667,7 @@ void TabPanel::CalculateHeaderDistribution(Float rowWidthLimit, Array<Float>& he
     }
 }
 
-int TabPanel::GetActiveRow(Array<int>& solution)
+int TabPanel::GetActiveRow(Array<int, false>& solution)
 {
     int index = 0;
     int num2 = 0;
@@ -712,7 +712,7 @@ Size TabPanel::GetDesiredSizeWithoutMargin(Element* elem)
     return size;
 }
 
-void TabPanel::GetHeadersSize(Array<Float>& numArray)
+void TabPanel::GetHeadersSize(Array<Float, false>& numArray)
 {
     int index = 0;
     ElementColl* elemsColl = GetInternalChildren();

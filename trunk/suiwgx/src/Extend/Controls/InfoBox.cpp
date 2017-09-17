@@ -341,7 +341,7 @@ void InfoBox::OnButtonClick(Element* sender, RoutedEventArg* e)
     }
 }
 
-Array<Toast*> Toast::_showToasts;
+Array<Toast*, false> Toast::_showToasts;
 
 void Toast::Show(Object* info, suic::Uint32 iDelayClose)
 {
