@@ -2479,8 +2479,9 @@ void Window::CenterWindow(Handle hActive)
 
         if (::IsWindow(hwndOwner) && ::IsWindowVisible(hwndOwner) && hwndOwner != self)
         {
-            mi = Environment::GetMonitorBoundByWindow(hwndOwner);
-            rcOwner = mi.rcWork;
+            //mi = Environment::GetMonitorBoundByWindow(hwndOwner);
+            //rcOwner = mi.rcWork;
+            ::GetWindowRect(hwndOwner, rcOwner);
         }
 
         int x = rcOwner.left + (Float) (rcOwner.Width() - rcSelf.Width()) / 2.0f;
