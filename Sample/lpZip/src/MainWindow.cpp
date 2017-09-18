@@ -58,11 +58,17 @@ void ZipListView::RenderChildren(suic::Drawing* drawing)
 
 void MainWindow::OnLoaded(suic::LoadedEventArg* e)
 {
+    suic::VirtualizingWrapPanel* pPanel = NULL;
+
     suic::Window::OnLoaded(e);
 
     CenterWindow();
 
+    _zipInfo->GetDriverGrp()->InitRootItems();
+
     SetDataContext(_zipInfo);
+
+    //FindElem<suic::TreeView>("tvDrivers")->SetItemsSource(_zipInfo->GetDriverGrp());
 
     _timer->SetTick(suic::EventHandler(this, &MainWindow::OnRefleshTimer));
     _timer->SetInterval(1000);
@@ -74,7 +80,7 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     _zipListBox = FindElem<suic::ListBox>("lbElem");
     _zipListBox->SetItemsSource(_zipColl);
 
-    suic::VirtualizingWrapPanel* pPanel = suic::DynamicCast<suic::VirtualizingWrapPanel>(_zipListBox->GetItemsHost());
+    pPanel = suic::DynamicCast<suic::VirtualizingWrapPanel>(_zipListBox->GetItemsHost());
 
     pPanel->SetItemWidth(120);
 

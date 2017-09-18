@@ -216,9 +216,9 @@
             </DockPanel>
             
             <DockPanel>
-                <DockPanel Name="layLeft" Width="190" Background="#EEEFEFEF" >
-                    <TextBlock DockPanel.Dock="Top" Height="20" Margin="4,5,2,2" Foreground="Black" Text="文件信息" />
-                    <TreeView Margin="2" BorderThickness="0" />
+                <DockPanel Name="layLeft" Width="180" Background="#EEEFEFEF" >
+                    <TextBlock1 DockPanel.Dock="Top" Height="20" Margin="4,5,2,2" Foreground="Black" Text="文件信息" />
+                    <TreeView Name="tvDrivers" Foreground="#333333" Margin="2" BorderThickness="0" ItemsSource="{Binding Path=DriverItems}" />
                 </DockPanel>
                 <Grid>
                     <ZipListView Name="lvZip" BorderThickness="0" Foreground="Black" Visibility="Collapsed" >

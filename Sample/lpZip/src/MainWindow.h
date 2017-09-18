@@ -11,6 +11,8 @@
 #ifndef _MAINWINDOW_H_
 #define _MAINWINDOW_H_
 
+#include "ZipInfo.h"
+
 #include "ZipWindow.h"
 #include "UnzipWindow.h"
 
@@ -26,102 +28,6 @@ public:
     RTTIOfClass(ZipListView)
 
     void RenderChildren(suic::Drawing* drawing);
-};
-
-class ZipInfo : public  suic::NotifyPropChanged
-{
-public:
-
-    BeginMember(ZipInfo, suic::NotifyPropChanged)
-        MemberInt(FileCount)
-        MemberGetString(ZipSize)
-        MemberGetString(FileSize)
-        MemberGetString(ZipRate)
-        MemberString(ZipType)
-    EndMember()
-
-    RTTIOfClass(ZipInfo)
-
-    ZipInfo()
-    {
-        _zipSize = 0;
-        _fileSize = 0;
-        _zipRate = 0.1f;
-        SetFileCount(0);
-        SetZipSize(0);
-        SetZipType("RAR");
-    }
-
-    DefineInt(FileCount);
-    DefineString(ZipType);
-
-    suic::String GetZipSize()
-    {
-        suic::String strVal;
-        strVal.Format(_U("%.2f KB"), _zipSize / 1024.0f);
-        return strVal;
-    }
-
-    void SetZipSize(int size)
-    {
-        _zipSize = size;
-        NotifyChanged("ZipSize");
-    }
-
-    suic::String GetFileSize()
-    {
-        suic::String strVal;
-        strVal.Format(_U("（%.2f KB，%d 字节）"), _fileSize / 1024.0f, _fileSize);
-        return strVal;
-    }
-
-    void SetFileSize(int size)
-    {
-        _fileSize = size;
-        NotifyChanged("FileSize");
-    }
-
-    suic::String GetZipRate()
-    {
-        suic::String strVal;
-        strVal.Format(_U("%.2f"), _zipRate);
-        return strVal;
-    }
-
-    void SetZipRate(suic::Float val)
-    {
-        _zipRate = val;
-        NotifyChanged("ZipRate");
-    }
-
-private:
-
-    int _zipSize;
-    int _fileSize;
-    suic::Float _zipRate;
-};
-
-class ZipEntry : public  suic::NotifyPropChanged
-{
-public:
-
-    BeginMember(ZipEntry, suic::NotifyPropChanged)
-        MemberString(Name)
-        MemberString(ZipBefore)
-        MemberString(ZipAfter)
-        MemberString(ZipType)
-        MemberString(Date)
-        MemberObject(Icon)
-    EndMember()
-
-    RTTIOfClass(ZipEntry)
-
-    DefineString(Name);
-    DefineString(ZipBefore);
-    DefineString(ZipAfter);
-    DefineString(ZipType);
-    DefineString(Date);
-    DefineObject(Icon);
 };
 
 class CompareInfo : public suic::Object
@@ -236,8 +142,6 @@ private:
     suic::ListBox* _zipListBox;
 
     ZipInfo* _zipInfo;
-
-    // 定时器，用来刷新进程列表
     suic::AssignerTimer* _timer;
 };
 
