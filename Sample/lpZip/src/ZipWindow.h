@@ -29,6 +29,7 @@ public:
         MemberGetString(ZipRate)
         MemberGetString(ZipAfter)
         MemberString(ZipFile)
+        MemberString(CurrentZipFile)
         MemberString(ZipFileDir)
         MemberBool(MostSpeed)
         MemberBool(MinBulk)
@@ -39,6 +40,7 @@ public:
     DefineBool(MinBulk);
     DefineBool(MostSpeed);
     DefineString(ZipFile);
+    DefineString(CurrentZipFile);
     DefineString(ZipFileDir);
     DefineFloat(ZipProgress);
 
@@ -207,6 +209,9 @@ public:
             ++iLoopCount;
             _zipData->SetUseTime(iLoopCount * 0.2);
             _zipData->SetZipProgress(iLoopCount * 100 / (float)1000);
+            _zipData->SetCurrentZipFile(suic::String().Format(_U("%s/%d.txt"), 
+                _zipData->GetZipFileDir().c_str(), 
+                iLoopCount));
 
             _reflesh->PostInvoker(0, NULL);
         }

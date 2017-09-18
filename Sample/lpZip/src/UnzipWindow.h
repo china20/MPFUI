@@ -25,6 +25,7 @@ public:
         MemberGetInt(UnzippingVisible)
         MemberGetString(UnzipSpeed)
         MemberString(UnzipFile)
+        MemberString(CurrentUnzipFile)
         MemberString(UnzipDir)
     EndMember()
 
@@ -33,6 +34,7 @@ public:
     DefineInt(Second);
     DefineFloat(UnzipProgress);
     DefineString(UnzipFile);
+    DefineString(CurrentUnzipFile);
     DefineString(UnzipDir);
 
     UnzipData()

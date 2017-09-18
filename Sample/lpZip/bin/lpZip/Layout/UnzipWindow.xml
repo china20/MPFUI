@@ -41,7 +41,7 @@
             <StackPanel Visibility="{Binding Path=UnzippingVisible}" >
                 <DockPanel Margin="0,6,0,13">
                     <TextBlock Foreground="Black" Text="当前文件：" />
-                    <TextBlock Foreground="Black" Text="{Binding Path=UnzipFile}" />
+                    <TextBlock Foreground="Black" Text="{Binding Path=CurrentUnzipFile}" />
                 </DockPanel>
                 <ProgressBar Height="12" Background="#00FFFFFF" Foreground="#0393F4" BorderBrush="#BBBBBB" BorderThickness="1" Value="{Binding Path=UnzipProgress}" Margin="0,0,24,0" />
                 <DockPanel Margin="0,14,0,6">

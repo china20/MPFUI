@@ -106,16 +106,23 @@ void ZipWindow::OnClickZip(suic::DpObject* sender, suic::RoutedEventArg* e)
 
     e->SetHandled(true);
 
-    if (_zipData->GetMostSpeed())
+    suic::String strZipPath = _zipData->GetZipFile();
+
+    strZipPath.Trim();
+
+    if (strZipPath.Empty())
     {
-        _zipData->DoZip();
-
-        StopZip();
-
-        _zipThread = new ZipThread(_zipData, _reflesh);
-        _zipThread->ref();
-        _zipThread->Start();
+        suic::InfoBox::Show(_U("压缩目标文件路径为空，请重新输入！"), _U("提示"));
+        return ;
     }
+
+    _zipData->DoZip();
+
+    StopZip();
+
+    _zipThread = new ZipThread(_zipData, _reflesh);
+    _zipThread->ref();
+    _zipThread->Start();
 }
 
 void ZipWindow::OnClickPause(suic::DpObject* sender, suic::RoutedEventArg* e)

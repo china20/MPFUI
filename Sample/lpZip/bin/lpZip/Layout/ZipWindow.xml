@@ -26,7 +26,7 @@
                 <TextBlock Foreground="Gray" Text="压缩到" Margin="0,0,0,6" />
                 <DockPanel>
                     <Button Name="btnChangeDir" Click="OnClickChangeDir" Content="选择文件" Width="80" Margin="8,0,0,0" Pading="8" DockPanel.Dock="Right" />
-                    <TextBox IsReadOnly="True" Height="28" Text="{Binding Path=ZipFile}" />
+                    <TextBox IsReadOnly="False" UpdateSourceTrigger="PropertyChanged" Height="28" Text="{Binding Path=ZipFile}" />
                 </DockPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
                     <TextBlock Text="压缩配置" Margin="0,0,26,0" />
@@ -39,7 +39,7 @@
             <StackPanel Visibility="{Binding Path=ZippingVisible}" >
                 <DockPanel Margin="0,2,0,13" >
                     <TextBlock Foreground="Gray" Text="当前文件：" />
-                    <TextBlock Foreground="Gray" Text="{Binding Path=ZipFile}" />
+                    <TextBlock Foreground="Gray" Text="{Binding Path=CurrentZipFile}" />
                 </DockPanel>
                 
                 <ProgressBar Height="12" Margin="0,0,32,0" Background="#00FFFFFF" Foreground="#0393F4" BorderBrush="#BBBBBB" BorderThickness="1" Value="{Binding Path=ZipProgress}" />
