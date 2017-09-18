@@ -25,16 +25,8 @@
             <StackPanel Margin="0,0,14,0" Visibility="{Binding Path=ZipVisible}" >
                 <TextBlock Foreground="Gray" Text="压缩到" Margin="0,0,0,6" />
                 <DockPanel>
-                    <Button Name="btnChangeDir" Click="OnClickChangeDir" Content="更改目录" Width="80" Margin="8,0,0,0" Pading="8" DockPanel.Dock="Right" />
-                    <ComboBox1 Height="28" SelectionBoxItem="{Binding Path=ZipFile}" />
-                    <Border BorderBrush="{DynamicResource comboBoxBorderNormal}" BorderThickness="1">
-                        <DockPanel Margin="1">
-                            <Image Width="16" Height="16" Source="{DynamicResource MainIcon}" />
-                            <ToggleButton Name="btnDown" Width="16" Height="16" DockPanel.Dock="Right"
-                                          Checked="OnCheckedDown" Style="{StaticResource ComboBoxTransparentButtonStyle}" />
-                            <TextBox Height="20" BorderThickness="0" Margin="2,0,2,0" IsReadOnly="True" Text="{Binding Path=ZipFile}" />
-                        </DockPanel>
-                    </Border>
+                    <Button Name="btnChangeDir" Click="OnClickChangeDir" Content="选择文件" Width="80" Margin="8,0,0,0" Pading="8" DockPanel.Dock="Right" />
+                    <TextBox IsReadOnly="True" Height="28" Text="{Binding Path=ZipFile}" />
                 </DockPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
                     <TextBlock Text="压缩配置" Margin="0,0,26,0" />

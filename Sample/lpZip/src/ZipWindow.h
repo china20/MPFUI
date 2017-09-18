@@ -29,6 +29,7 @@ public:
         MemberGetString(ZipRate)
         MemberGetString(ZipAfter)
         MemberString(ZipFile)
+        MemberString(ZipFileDir)
         MemberBool(MostSpeed)
         MemberBool(MinBulk)
     EndMember()
@@ -38,6 +39,7 @@ public:
     DefineBool(MinBulk);
     DefineBool(MostSpeed);
     DefineString(ZipFile);
+    DefineString(ZipFileDir);
     DefineFloat(ZipProgress);
 
     ZipData()
@@ -226,7 +228,6 @@ public:
         MemberRouted(OnClickZip)
         MemberRouted(OnClickPause)
         MemberRouted(OnClickCancel)
-        MemberRouted(OnCheckedDown)
     EndRoutedEvent()
 
     ZipWindow();
@@ -263,9 +264,6 @@ private:
     ZipData* _zipData;
     ZipThread* _zipThread;
     suic::InvokeProxy* _reflesh;
-
-    suic::String _selectedDir;
-    DriverGroup* _driverGrp;
 };
 
 #endif

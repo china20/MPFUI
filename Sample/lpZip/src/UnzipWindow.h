@@ -11,6 +11,7 @@
 #ifndef _UNZIPWINDOW_H_
 #define _UNZIPWINDOW_H_
 
+#include "DriverItem.h"
 #include <Framework/Controls/Menu.h>
 
 class UnzipData : public  suic::NotifyPropChanged
@@ -24,6 +25,7 @@ public:
         MemberGetInt(UnzippingVisible)
         MemberGetString(UnzipSpeed)
         MemberString(UnzipFile)
+        MemberString(UnzipDir)
     EndMember()
 
     RTTIOfClass(UnzipData)
@@ -31,6 +33,7 @@ public:
     DefineInt(Second);
     DefineFloat(UnzipProgress);
     DefineString(UnzipFile);
+    DefineString(UnzipDir);
 
     UnzipData()
     {
@@ -93,6 +96,7 @@ public:
         MemberRouted(OnClickUnzip)
         MemberRouted(OnClickPause)
         MemberRouted(OnClickCancel)
+        MemberRouted(OnCheckedDown)
     EndRoutedEvent()
 
     UnzipWindow();
@@ -108,6 +112,7 @@ private:
     void OnClickUnzip(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickPause(suic::DpObject* sender, suic::RoutedEventArg* e);
     void OnClickCancel(suic::DpObject* sender, suic::RoutedEventArg* e);
+    void OnCheckedDown(suic::DpObject* sender, suic::RoutedEventArg* e);
 
 protected:
 
@@ -120,6 +125,9 @@ protected:
 private:
 
     UnzipData* _unzipData;
+
+    suic::String _selectedDir;
+    DriverGroup* _driverGrp;
 };
 
 #endif

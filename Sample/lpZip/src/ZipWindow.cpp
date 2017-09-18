@@ -11,8 +11,6 @@ ZipWindow::ZipWindow()
     _zipData = NULL;
     _zipThread = NULL;
     _reflesh = NULL;
-    _driverGrp = new DriverGroup();
-    _driverGrp->ref();
 }
 
 ZipWindow::~ZipWindow()
@@ -31,13 +29,11 @@ ZipWindow::~ZipWindow()
     {
         _reflesh->unref();
     }
-
-    _driverGrp->unref();
 }
 
 void ZipWindow::UpdateWindowTitle()
 {
-    SetTitle(suic::String().Format(_U("压缩文件：%s"), _zipData->GetZipFile().c_str()));
+    SetTitle(suic::String().Format(_U("压缩文件：%s"), _zipData->GetZipFileDir().c_str()));
 }
 
 void ZipWindow::OnInvoker(suic::Object* sender, suic::InvokerArg* e)
@@ -63,15 +59,13 @@ void ZipWindow::OnLoaded(suic::LoadedEventArg* e)
 
     CenterWindow();
 
-    _driverGrp->InitRootItems();
-
     _zipData = new ZipData();
     _zipData->ref();
 
     _zipData->SetMinBulk(false);
     _zipData->SetMostSpeed(true);
     _zipData->SetZipProgress(20);
-    _zipData->SetZipFile("c:/test.tar");
+    _zipData->SetZipFileDir("c:/test/unzip");
 
     UpdateWindowTitle();
 
@@ -97,14 +91,13 @@ void ZipWindow::OnClickChangeDir(suic::DpObject* sender, suic::RoutedEventArg* e
 
     e->SetHandled(true);
 
-    /*suic::DirBrowser db;
-    if (db.Open())
+    suic::FileBrowser fb;
+
+    if (fb.Open(NULL, _U("ZIP Files(*.*)\0*.*\0\0")))
     {
-        _zipData->SetZipFile(db.GetDir());
+        _zipData->SetZipFile(fb.GetFilePath());
         UpdateWindowTitle();
-    }*/
-    _zipData->SetZipFile(_selectedDir);
-    UpdateWindowTitle();
+    }
 }
 
 void ZipWindow::OnClickZip(suic::DpObject* sender, suic::RoutedEventArg* e)
@@ -138,45 +131,6 @@ void ZipWindow::OnClickCancel(suic::DpObject* sender, suic::RoutedEventArg* e)
 
     e->SetHandled(true);
     AsyncClose();
-}
-
-void ZipWindow::OnCheckedDown(suic::DpObject* sender, suic::RoutedEventArg* e)
-{
-    e->SetHandled(true);
-
-    DriverItem* pItem = NULL;
-    suic::TreeView* pTreeView = NULL;
-    suic::Popup* pPopup = NULL;
-    suic::ToggleButton* pTB = NULL;
-    
-    pPopup = new suic::Popup();
-    pPopup->ref();
-
-    pTB = suic::DynamicCast<suic::ToggleButton>(sender);
-
-    pTreeView = new suic::TreeView();
-    pTreeView->SetWidth(pTB->GetParent()->GetParent()->GetActualWidth());
-    pTreeView->SetHeight(160);
-
-    pTreeView->SetItemsSource(_driverGrp);
-  
-    //suic::InfoBox::Show(_U("正在压缩文件，是否确定退出 ？"), _U("提示"), suic::InfoBox::IB_YesNo);
-
-    pPopup->SetPlacementTarget(pTB->GetParent()->GetParent());
-    pPopup->SetPlacement(suic::PlacementMode::pmBottom);
-
-    pPopup->SetChild(pTreeView);
-    pPopup->TrackingPopup();
-
-    pItem = suic::DynamicCast<DriverItem>(pTreeView->GetSelectedItem());
-
-    if (NULL != pItem)
-    {
-        _selectedDir = pItem->GetFilePath();
-    }
-
-    pTB->SetChecked(suic::Boolean::False);
-    pPopup->unref();
 }
 
 void ZipWindow::OnClosing(suic::CancelEventArg* e)

@@ -26,7 +26,15 @@
                 <TextBlock Foreground="Gray" Text="目录路径（如果不存在将被创建）" Margin="0,5,0,12" />
                 <DockPanel>
                     <Button Name="btnChangeDir" Click="OnClickChangeDir" Content="更改目录" Width="80" Margin="8,0,0,0" Pading="8" DockPanel.Dock="Right" />
-                    <ComboBox Height="28" SelectionBoxItem="{Binding Path=UnzipFile}" />
+                    <ComboBox1 Height="28" SelectionBoxItem="{Binding Path=UnzipFile}" />
+                    <Border BorderBrush="{DynamicResource comboBoxBorderNormal}" BorderThickness="1">
+                        <DockPanel Margin="1">
+                            <Image Width="16" Height="16" Source="{DynamicResource MainIcon}" />
+                            <ToggleButton Name="btnDown" Width="16" Height="16" DockPanel.Dock="Right"
+                                          Checked="OnCheckedDown" Style="{StaticResource ComboBoxTransparentButtonStyle}" />
+                            <TextBox Height="20" BorderThickness="0" Margin="2,0,2,0" IsReadOnly="False" Text="{Binding Path=UnzipDir}" />
+                        </DockPanel>
+                    </Border>
                 </DockPanel>
                 <Button Name="btnUnzip" Click="OnClickUnzip" Content="立即解压" HorizontalAlignment="Center" Width="100" Height="34" Margin="0,18,0,0" />
             </StackPanel>
