@@ -175,7 +175,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>usp10.lib;drawlibsd.lib;windowscodecs.lib;freetype253_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;drawlibsd.lib;windowscodecs.lib;freetype253_D.lib;ResEncryptd.lib</AdditionalDependencies>
       <OutputFile>..\..\bin\$(ProjectName)ud.dll</OutputFile>
       <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -205,7 +205,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.Lib;usp10.lib;drawlibs.lib;windowscodecs.lib;freetype253.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.Lib;usp10.lib;drawlibs.lib;windowscodecs.lib;freetype253.lib;ResEncrypt.lib</AdditionalDependencies>
       <OutputFile>..\..\bin\$(ProjectName)u.dll</OutputFile>
       <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
