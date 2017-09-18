@@ -54,6 +54,8 @@ public:
 
     void Resize(int size);
 
+    void Detach(ByteStream* Other);
+
 private:
 
     Byte* AllocSize(int size);
