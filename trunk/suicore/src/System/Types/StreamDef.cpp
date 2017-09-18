@@ -138,6 +138,20 @@ void ByteStream::Clear()
     _currPos = 0;
 }
 
+void ByteStream::Detach(ByteStream* Other)
+{
+    Other->Clear();
+    Other->_bytes = _bytes;
+    Other->_size = _size;
+    Other->_capacity = _capacity;
+    Other->_currPos = 0;
+
+    _size = 0;
+    _currPos = 0;
+    _capacity = 0;
+    _bytes = NULL;
+}
+
 FileStream::FileStream()
     : _file(NULL)
 {

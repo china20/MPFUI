@@ -1,4 +1,6 @@
 
+#include "Decrypt.h"
+
 #include <stdio.h>
 #include <System/Tools/ThemeOp.h>
 #include <System/Tools/XRUnzip.h>
@@ -61,51 +63,8 @@ public:
 
     bool Decrypt(const String& pwd, EncryItem& encryItem)
     {
-        bool bSucc = false;
-        ResourceHeader* pRes = (ResourceHeader*)encryItem.input;
-
-        if (pRes->dwEncry == 0 
-            && pRes->dwSize == sizeof(ResourceHeader)
-            && pRes->dwLen == encryItem.inputSize - sizeof(ResourceHeader))
-        {
-            int i = 0;
-            int iSize = encryItem.inputSize - sizeof(ResourceHeader);
-
-            for (i = 0; i < sizeof(pRes->pwd); i++)
-            {
-                pRes->pwd[i] ^= iSize;
-            }
-
-            if (pwd.Equals(String(pRes->pwd, 0)))
-            {
-                __int64 pwdid = GetCryPwd(pRes->pwd);
-                encryItem.output.Resize(iSize);
-                suic::Byte* pBuff = encryItem.output.GetBuffer();
-                memcpy(pBuff, encryItem.input + sizeof(ResourceHeader), iSize);
-
-                for (i = 0; i < iSize; i++)
-                {
-                    pBuff[i] ^= pwdid;
-                    pBuff[i] ^= iSize;
-                }
-            }
-        }
-
-        return bSucc;
-    }
-
-private:
-
-    __int64 GetCryPwd(Mulstr pwd)
-    {
-        __int64 mc= 9757735233305;
-
-        for(int i = 0; i < (int)pwd.Length(); i++)
-        {
-            mc ^= pwd[i] | 128;
-        }
-
-        return mc;
+        int iSize = UIDecrypt::Decrypt(pwd, encryItem.input, encryItem.inputSize, &(encryItem.output));
+        return (iSize > 0 && iSize == encryItem.output.GetSize());
     }
 };
 
@@ -141,7 +100,7 @@ bool MemThemeInfo::ReadResData(const String& pwd)
 
         if (bSucc)
         {
-            _data = encryItem.output;
+            encryItem.output.Detach(&_data);
             iSize = _data.GetSize();
         }
 

@@ -68,7 +68,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="usp10.lib drawlibsd.lib windowscodecs.lib freetype253_D.lib"
+				AdditionalDependencies="usp10.lib drawlibsd.lib ResEncryptd.lib windowscodecs.lib freetype253_D.lib"
 				OutputFile="..\..\bin\$(ProjectName)ud.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../../lib;./../third_party/freetype/lib"
@@ -154,7 +154,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="opengl32.Lib usp10.lib drawlibs.lib windowscodecs.lib freetype253.lib"
+				AdditionalDependencies="opengl32.Lib usp10.lib drawlibs.lib ResEncrypt.lib windowscodecs.lib freetype253.lib"
 				OutputFile="..\..\bin\$(ProjectName)u.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="../../lib;./../third_party/freetype/lib"
@@ -2688,6 +2688,10 @@
 					</File>
 					<File
 						RelativePath=".\src\System\Tools\Debug.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\src\System\Tools\Decrypt.h"
 						>
 					</File>
 					<File
