@@ -1,0 +1,296 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="解压缩文件" ResizeMode="CanResize" WindowStyle="ThreeDBorderWindow" 
+        CaptionHeight="20" Width="835" Height="530" MinWidth="600" MinHeight="380" Foreground="White" Icon="{DynamicResource MainIcon}"
+        Background="{DynamicResource WindowBackground}" BorderThickness="12" BorderBrush="#00FFFFFF" >
+    
+    <Window.Resources>
+
+        <sys:RectF x:Key="comboBoxCornerRadius">0</sys:RectF>
+
+        <ImageBrush x:Key="UpArrow" ImageSource="lpZip/Images/arrow.png" Viewbox="0,0,21,21" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="DownArrow" ImageSource="lpZip/Images/arrow.png" Viewbox="21,0,21,21" ViewboxUnits="Absolute" />
+        
+        <!--定义菜单图标-->
+        <Bitmap x:Key="AboutIcon" Source="lpZip/Images/Menu/001.png" />
+        <Bitmap x:Key="ExitIcon" Source="lpZip/Images/Menu/002.png" />
+
+        <Bitmap x:Key="Icon003" Source="lpZip/Images/Menu/003.png" />
+        <Bitmap x:Key="Icon004" Source="lpZip/Images/Menu/004.png" />
+        <Bitmap x:Key="Icon005" Source="lpZip/Images/Menu/005.png" />
+        
+        <!--添加图标-->
+        <ImageBrush x:Key="AddToBrushNormal" ImageSource="lpZip/Images/addto.png" Viewbox="0,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="AddToBrushHot" ImageSource="lpZip/Images/addto.png" Viewbox="79,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="AddToBrushPress" ImageSource="lpZip/Images/addto.png" Viewbox="158,0,79,79" ViewboxUnits="Absolute" />
+
+        <!--解压到图标-->
+        <ImageBrush x:Key="ZipToBrushNormal" ImageSource="lpZip/Images/zipto.png" Viewbox="0,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="ZipToBrushHot" ImageSource="lpZip/Images/zipto.png" Viewbox="79,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="ZipToBrushPress" ImageSource="lpZip/Images/zipto.png" Viewbox="158,0,79,79" ViewboxUnits="Absolute" />
+
+        <!--一键解压到图标-->
+        <ImageBrush x:Key="OneZipToBrushNormal" ImageSource="lpZip/Images/onekeyzip.png" Viewbox="0,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="OneZipToBrushHot" ImageSource="lpZip/Images/onekeyzip.png" Viewbox="79,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="OneZipToBrushPress" ImageSource="lpZip/Images/onekeyzip.png" Viewbox="158,0,79,79" ViewboxUnits="Absolute" />
+
+        <!--删除图标-->
+        <ImageBrush x:Key="DeleteBrushNormal" ImageSource="lpZip/Images/delete.png" Viewbox="0,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="DeleteBrushHot" ImageSource="lpZip/Images/delete.png" Viewbox="79,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="DeleteBrushPress" ImageSource="lpZip/Images/delete.png" Viewbox="158,0,79,79" ViewboxUnits="Absolute" />
+
+        <!--密码图标-->
+        <ImageBrush x:Key="PasswordBrushNormal" ImageSource="lpZip/Images/password.png" Viewbox="0,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PasswordBrushHot" ImageSource="lpZip/Images/password.png" Viewbox="79,0,79,79" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="PasswordBrushPress" ImageSource="lpZip/Images/password.png" Viewbox="158,0,79,79" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="OneBrushNormal" ImageSource="lpZip/Images/01.png" Viewbox="0,0,16,16" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="OneBrushHot" ImageSource="lpZip/Images/01.png" Viewbox="16,0,16,16" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="OneBrushPress" ImageSource="lpZip/Images/01.png" Viewbox="32,0,16,16" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="TwoBrushNormal" ImageSource="lpZip/Images/02.png" Viewbox="0,0,16,16" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="TwoBrushHot" ImageSource="lpZip/Images/02.png" Viewbox="16,0,16,16" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="TwoBrushPress" ImageSource="lpZip/Images/02.png" Viewbox="32,0,16,16" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="ThreeBrushNormal" ImageSource="lpZip/Images/03.png" Viewbox="0,0,16,16" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="ThreeBrushHot" ImageSource="lpZip/Images/03.png" Viewbox="16,0,16,16" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="ThreeBrushPress" ImageSource="lpZip/Images/03.png" Viewbox="32,0,16,16" ViewboxUnits="Absolute" />
+
+        <ControlTemplate x:Key="ListBoxItemTemplate" TargetType="ListBoxItem">
+            <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" >
+                <ContentPresenter />
+            </Border>
+        </ControlTemplate>
+
+        <DataTemplate x:Key="lvColumnTemplate" TargetType="GridViewColumn">
+            <Grid Cursor="Hand">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Rectangle Name="imgIcon" Margin="0,0,0,0" Width="21" Height="21" Visibility="Collapsed" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        
+        <Style TargetType="Button" x:Key="ButtonStyle" >
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Name="btnCnt" Background="{TemplateBinding Tag1}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,4" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="btnCnt" Value="{TemplateBinding Tag3}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="btnCnt" Value="{TemplateBinding Tag2}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Name="RootGrid" Margin="0">
+        <DockPanel Height="112" Background="{DynamicResource TitleBackground}" VerticalAlignment="Top" >
+            <DockPanel Height="32" DockPanel.Dock="Top" Margin="4,0,0,0" VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal" >
+                    <Image Width="16" Height="16" Margin="0,0,4,0" Source="{DynamicResource TitleIcon}" />
+                    <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                           Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <CloseButton ToolTip="关闭" Width="29" Height="32" VerticalAlignment="Top" />
+                    <MaximizeButton Focusable="False" Width="29" Height="32" VerticalAlignment="Top" />
+                    <MinimizeButton ToolTip="最小化" Focusable="False" Width="29" Height="32" VerticalAlignment="Top" />
+
+                    <Menu Name="mainMenu" Margin="0,3,2,0" Height="25" VerticalAlignment="Center" Focusable="False" >
+                        <MenuItem Header="文件" MinWidth="60">
+                            <MenuItem Name="miUnzip" Header="解压" Icon="{DynamicResource AboutIcon}"  />
+                            <Separator />
+                            <MenuItem Name="miExit" Header="退出" Icon="{DynamicResource ExitIcon}"  />
+                        </MenuItem>
+                        <MenuItem Header="操作" MinWidth="60" >
+                            <MenuItem Header="解压到" Icon="{DynamicResource Icon004}" />
+                            <MenuItem Header="一键解压缩" Icon="{DynamicResource Icon003}" />
+                            <MenuItem Header="视图" >
+                                <MenuItem Header="小图标" />
+                                <MenuItem Header="大图标" />
+                                <MenuItem Header="详细列表" />
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="工具" MinWidth="60" >
+                            <MenuItem Header="打开记事本" Icon="{DynamicResource Icon005}" />
+                        </MenuItem>
+                        <MenuItem Header="帮助" MinWidth="60" >
+                            <MenuItem Header="关于" Icon="{DynamicResource AboutIcon}" />
+                        </MenuItem>
+                    </Menu>                    
+                </StackPanel>
+            </DockPanel>
+            <StackPanel Orientation="Horizontal" Margin="22,0,0,0" VerticalAlignment="Center" >
+                <Button Name="btnAddTo" Width="79" Height="79" Click="OnClickAddToButton" 
+                        ToolTip="添加"
+                        Content="添加" Margin="0,0,8,0"
+                        Tag1="{DynamicResource AddToBrushNormal}"
+                        Tag2="{DynamicResource AddToBrushHot}"
+                        Tag3="{DynamicResource AddToBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+
+                <Button Name="btnUnzipTo" Width="79" Height="79" Click="OnClickUnzipButton"
+                        Content="解压到" Margin="0,0,8,0"
+                        Tag1="{DynamicResource ZipToBrushNormal}"
+                        Tag2="{DynamicResource ZipToBrushHot}"
+                        Tag3="{DynamicResource ZipToBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+
+                <Button Name="btnOneUnzipTo" Width="79" Height="79" Click="OnClickOnOneUnzipButton"
+                        Content="一键解压" Margin="0,0,8,0"
+                        Tag1="{DynamicResource OneZipToBrushNormal}"
+                        Tag2="{DynamicResource OneZipToBrushHot}"
+                        Tag3="{DynamicResource OneZipToBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+
+                <Button Name="btnDelete" Width="79" Height="79" Click="OnClickDeleteButton"
+                        Content="删除" Margin="0,0,8,0"
+                        Tag1="{DynamicResource DeleteBrushNormal}"
+                        Tag2="{DynamicResource DeleteBrushHot}"
+                        Tag3="{DynamicResource DeleteBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+
+                <Button Name="btnPwd" Width="79" Height="79" Click="OnClickPwdButton"
+                        Content="密码" Margin="0,0,8,0"
+                        Tag1="{DynamicResource PasswordBrushNormal}"
+                        Tag2="{DynamicResource PasswordBrushHot}"
+                        Tag3="{DynamicResource PasswordBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+                
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Margin="0,112,0,0">
+            <DockPanel DockPanel.Dock="Top" Height="32">
+                <Button Name="btnUpLevel" Width="16" Height="16" Click="OnClickUpLevelButton"
+                        VerticalAlignment="Center" Margin="6,0,6,0"
+                        Tag1="{DynamicResource TwoBrushNormal}"
+                        Tag2="{DynamicResource TwoBrushHot}"
+                        Tag3="{DynamicResource TwoBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+                <Button Name="btnIconMode" Width="16" Height="16" Click="OnClickIconModeButton"
+                        ToolTip="图标模式"
+                        VerticalAlignment="Center" Margin="6,0,6,0"
+                        Tag1="{DynamicResource OneBrushNormal}"
+                        Tag2="{DynamicResource OneBrushHot}"
+                        Tag3="{DynamicResource OneBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+                <Button Name="btnListMode" Width="16" Height="16" Click="OnClickListModeButton"
+                        ToolTip="详细列表"
+                        VerticalAlignment="Center" Margin="6,0,6,0"
+                        Tag1="{DynamicResource ThreeBrushNormal}"
+                        Tag2="{DynamicResource ThreeBrushHot}"
+                        Tag3="{DynamicResource ThreeBrushPress}"
+                        Style="{DynamicResource ButtonStyle}" />
+                <ComboBox Name="cmbPath" Height="24" Margin="6,0,6,0" VerticalAlignment="Center" />
+            </DockPanel>
+            <Grid Background="#D5E3EF" DockPanel.Dock="Top" Height="1" />
+            
+            <DockPanel DockPanel.Dock="Bottom" Height="32" Background="{DynamicResource StatusBackground}">
+                <Grid Background="#D5E3EF" Height="1" DockPanel.Dock="Top" />
+                <StackPanel Orientation="Horizontal" Margin="8,0,0,0" VerticalAlignment="Center" >
+                    <TextBlock  Foreground="#000000" Text="类型：" />
+                    <TextBlock  Foreground="#000000" Text="{Binding Path=ZipType}" />
+                    <TextBlock  Foreground="#000000" Text="，解压后大小：" />
+                    <TextBlock  Foreground="#000000" Text="{Binding Path=ZipSize}" />
+                    <TextBlock  Foreground="#000000" Text="，压缩比：" />
+                    <TextBlock  Foreground="#000000" Text="{Binding Path=ZipRate}" />
+                    <TextBlock  Foreground="#000000" Text="%" />
+                </StackPanel>
+                <Grid Margin="0,0,8,0" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <TextBlock VerticalAlignment="Center" Foreground="#000000" Text="总计 " />
+                        <TextBlock VerticalAlignment="Center" Foreground="#000000" Text="{Binding Path=FileCount}" />
+                        <TextBlock VerticalAlignment="Center" Foreground="#000000" Text=" 个文件" />
+                        <TextBlock VerticalAlignment="Center" Foreground="#000000" Text="{Binding Path=FileSize}" />
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
+            
+            <DockPanel>
+                <DockPanel Name="layLeft" Width="190" Background="#EEEFEFEF" >
+                    <TextBlock DockPanel.Dock="Top" Height="20" Margin="4,5,2,2" Foreground="Black" Text="文件信息" />
+                    <TreeView Margin="2" BorderThickness="0" />
+                </DockPanel>
+                <Grid>
+                    <ZipListView Name="lvZip" BorderThickness="0" Foreground="Black" Visibility="Collapsed" >
+                        <ZipListView.View>
+                            <GridView>
+                                <GridViewColumn Width="220" HeaderTemplate="{DynamicResource lvColumnTemplate}" Header="名称" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DockPanel>
+                                                <Image Name="imgIcon" />
+                                                <TextBlock Text="{Binding Path=Name}" HorizontalAlignment="Center" Foreground="Red" />
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="80" Header="压缩前" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DockPanel>
+                                                <TextBlock Text="{Binding Path=ZipBefore}" HorizontalAlignment="Center" Foreground="Black" />
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="80" Header="压缩后" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DockPanel>
+                                                <TextBlock Text="{Binding Path=ZipAfter}" HorizontalAlignment="Center" Foreground="Black" />
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="160" HeaderTemplate="{DynamicResource lvColumnTemplate}" Header="类型" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DockPanel>
+                                               <TextBlock Text="{Binding Path=ZipType}" HorizontalAlignment="Center" Foreground="Black" />
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="150" Header="修改日期" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <DockPanel>
+                                                <TextBlock Text="{Binding Path=Date}" HorizontalAlignment="Center" Foreground="Black" />
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ZipListView.View>
+                    </ZipListView>
+                    <ListBox Name="lbElem" Foreground="Black" BorderThickness="0,0,0,0" >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate TargetType="ListView">
+                                <VirtualizingWrapPanel />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Margin="2">
+                                    <TextBlock Text="{Binding Path=Name}" Margin="2,6,2,2" HorizontalAlignment="Center" DockPanel.Dock="Bottom" />
+                                    <Image Source="{Binding Path=Icon}" Margin="5,4,5,8" />
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </DockPanel>
+        </DockPanel>
+        <ResizeGrip Width="16" Height="16" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+    </Grid>
+</Window>

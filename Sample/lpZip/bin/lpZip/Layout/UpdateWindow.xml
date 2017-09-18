@@ -1,0 +1,33 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="更新软件" ResizeMode="NoResize" WindowStyle="None" 
+        CaptionHeight="20" Width="560" Height="357" MinWidth="560" MinHeight="357" Foreground="White"
+        Background="{DynamicResource WindowBackground}" BorderThickness="12" BorderBrush="#00FFFFFF" >
+
+    <Window.Resources>
+        <ImageBrush x:Key="PanelBackground" ImageSource="lpZip/Images/update.png" Viewcorner="13" />
+    </Window.Resources>
+
+    <Grid Name="RootGrid" Background="{DynamicResource PanelBackground}" Margin="0">
+        <DockPanel Height="112" VerticalAlignment="Top" Background="{DynamicResource TitleBackground}">
+            <StackPanel Orientation="Horizontal" Margin="4,8,0,0" VerticalAlignment="Top" >
+                <Image Width="16" Height="16" Margin="10,0,6,0" Source="{DynamicResource TitleIcon}" />
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <CloseButton ToolTip="关闭" Width="29" Height="32" VerticalAlignment="Top" />
+                <MinimizeButton ToolTip="最小化" Focusable="False" Width="29" Height="32" VerticalAlignment="Top" />
+            </StackPanel>
+        </DockPanel>
+
+        <StackPanel Margin="26,210,16,16" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,12">
+                <TextBlock Foreground="Gray" FontSize="12" Text="检测到有最新版本" />
+                <TextBlock Foreground="Gray" FontSize="12" Text="{Binding Path=Version}" />
+                <TextBlock Foreground="Gray" FontSize="12" Text="，是否需要更新？" />
+            </StackPanel>
+            
+            <Button Name="btnUpdate" Click="OnClickUpdate" Content="立即更新" FontSize="12" HorizontalAlignment="Center" Width="150" Height="42" Margin="0,18,0,0" />
+        </StackPanel>        
+    </Grid>
+</Window>

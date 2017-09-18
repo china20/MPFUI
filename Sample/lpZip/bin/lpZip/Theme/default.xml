@@ -1,0 +1,400 @@
+<?xml encoding="utf-8" ?>
+<!--ListView模版-->
+<ResourceDictionary Author="汪荣(QQ:386666951)" >
+
+    <ImageSource x:Key="TitleIcon" Source="lpZip/Images/title.png" />
+    
+    <ImageBrush x:Key="WindowBackground" ImageSource="lpZip/Images/shadowing.png" Viewcorner="13" />
+    <ImageBrush x:Key="TitleImage" ImageSource="lpZip/Images/title.ico" Viewcorner="13" />
+
+    <SolidColorBrush x:Key="PopupMenuBackground" Color="#FFFFFF" />
+    
+    <!--系统关闭按钮-->
+    <ImageBrush x:Key="SysCloseNormal" ImageSource="lpZip/Images/close.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysCloseHot" ImageSource="lpZip/Images/close.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysClosePress" ImageSource="lpZip/Images/close.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
+
+    <!--系统最小化按钮-->
+    <ImageBrush x:Key="SysMinNormal" ImageSource="lpZip/Images/min.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysMinHot" ImageSource="lpZip/Images/min.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysMinPress" ImageSource="lpZip/Images/min.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
+
+    <!--系统最大化按钮-->
+    <ImageBrush x:Key="SysMaxNormal" ImageSource="lpZip/Images/max.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysMaxHot" ImageSource="lpZip/Images/max.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysMaxPress" ImageSource="lpZip/Images/max.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
+
+    <!--系统最大化恢复按钮-->
+    <ImageBrush x:Key="SysRestoreNormal" ImageSource="lpZip/Images/restore.png" Viewbox="0,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysRestoreHot" ImageSource="lpZip/Images/restore.png" Viewbox="29,0,29,32" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysRestorePress" ImageSource="lpZip/Images/restore.png" Viewbox="58,0,29,32" ViewboxUnits="Absolute" />
+
+    <Style TargetType="Separator">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Separator">
+                    <Rectangle Fill="#DBE0E3" Height="1" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="CloseButton" >
+        <Setter Property="Background" Value="{DynamicResource SysCloseNormal}" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="CloseButton">
+                    <Border Background="{TemplateBinding Background}" >
+                        <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource SysClosePress}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource SysCloseHot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="MinimizeButton">
+        <Setter Property="Background" Value="{DynamicResource SysMinNormal}" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="MinimizeButton">
+                    <Border Background="{TemplateBinding Background}" >
+                        <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource SysMinPress}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource SysMinHot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="MaximizeButton">
+        <Setter Property="Background" Value="{DynamicResource SysMaxNormal}" />
+        <Setter Property="ToolTip" Value="最大化" />
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="MaximizeButton">
+                    <Border Background="{TemplateBinding Background}" >
+                        <ContentPresenter ToolTip="{TemplateBinding ToolTip}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsPressed" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource SysRestorePress}" />
+            </MultiTrigger>
+            
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="WindowState" Value="Maximized" />
+                    <Condition Property="IsMouseOver" Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="ToolTip" Value="向下还原" />
+                <Setter Property="Background" Value="{DynamicResource SysRestoreHot}" />
+            </MultiTrigger>
+            
+            <Trigger Property="WindowState" Value="Maximized" >
+                <Setter Property="Background" Value="{DynamicResource SysRestoreNormal}" />
+            </Trigger>
+            
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource SysMaxPress}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="{DynamicResource SysMaxHot}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="GridViewHeaderRowPresenter">
+        <Setter Property="Background" Value="#EBF8FF" />
+    </Style>
+
+    <Style TargetType="GridViewColumnHeader" >
+        <Setter Property="Background" Value="#EBF8FF" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GridViewColumnHeader">
+                    <DockPanel Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Orientation="Horizontal">
+                        <Grid DockPanel.Dock="Right" Margin="0,0,0,0">
+                            <Border Width="1">
+                                <Border.Background>
+                                    <SolidColorBrush Color="#D5E3EF" />
+                                </Border.Background>
+                                <Thumb Cursor="Resize" Width="2" Name="PART_HeaderGripper" />
+                            </Border>
+                        </Grid>
+                        <ContentPresenter VerticalAlignment="Center" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{TemplateBinding Content}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True" >
+                <Setter Property="Background" Value="#EBF8FD" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True" >
+                <Setter Property="Background" Value="#EBF8FE" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="ListViewItem" >
+        <Setter Property="BorderThickness" Value="0,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            Padding="{TemplateBinding Padding}" >
+                        <GridViewRowPresenter MinHeight="24" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True" >
+                <Setter Property="Background" Value="#EBF8FF" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="GridViewScrollViewerStyle" TargetType="ScrollViewer">
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollViewer">
+                    <Grid Background="{TemplateBinding Background}" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Margin="{TemplateBinding Padding}" >
+                            <ScrollViewer Height="25" Background="#EBF8FF" DockPanel.Dock="Top" Focusable="False" HorizontalScrollBarVisibility="Collapsed" VerticalScrollBarVisibility="Collapsed">
+                                <GridViewHeaderRowPresenter Name="lvHeader" Columns="{Binding TemplatedParent.View.Columns, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ColumnHeaderContainerStyle="{Binding TemplatedParent.View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ColumnHeaderToolTip="{Binding TemplatedParent.View.ColumnHeaderToolTip, RelativeSource={RelativeSource TemplatedParent}}"
+                                    ColumnHeaderTemplate="{Binding TemplatedParent.View.ColumnHeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </ScrollViewer>
+                            
+                            <ScrollContentPresenter Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
+                        </DockPanel>
+                        <ScrollBar Name="PART_HorizontalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0.0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
+                        <ScrollBar Name="PART_VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0.0" Orientation="Vertical" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ListViewTemplate" TargetType="{x:Type ListView}">
+        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+            <ScrollViewer Padding="{TemplateBinding Padding}" Style="{DynamicResource GridViewScrollViewerStyle}">
+                <ItemsPresenter />
+            </ScrollViewer>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsGrouping" Value="true">
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Background" TargetName="Bd" Value="Gray"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="ListView">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="Template" Value="{DynamicResource ListViewTemplate}" />
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate TargetType="ListView">
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ContextMenu">
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="SubmenuOffset" Value="-2,-2"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <ItemsPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Menu">
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Menu">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <ItemsPresenter/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate TargetType="ItemsPresenter" >
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate >
+                    <TextBlock Name="nameTxt" VerticalAlignment="Center"  Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--菜单子项样式定义-->
+    <Style TargetType="MenuItem">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Grid>
+                        <Border Name="Bd" Margin="0" DockPanel.Dock="Top" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <DockPanel>
+                                <Grid Name="SubLeft" MinWidth="21" Margin="0,0,8,0" >
+                                    <Image Name="Icon" StretchDirection="DownOnly" Stretch="None" Source="{TemplateBinding Icon}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <Path Name="CheckFlag" Visibility="Collapsed" Margin="8,0,4,0" Fill="Black" VerticalAlignment="Center" Data="M0,2 L0,4.8 L2.5,7.4 L7.1,2.8 L7.1,0 L2.5,4.6 Z" />
+                                </Grid>
+                                <Path Name="SubArrow" DockPanel.Dock="Right" Margin="8,0,4,0" Fill="Black" VerticalAlignment="Center" Data="M 0,0 L 4,4 L 0,8 Z" />
+                                <ContentPresenter Name="PART_Header" MinHeight="1" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                            </DockPanel>
+                        </Border>
+                        <Popup Name="PART_Popup" AllowsTransparency="True" HorizontalOffset="-11" VerticalOffset="-10" Focusable="False" 
+                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
+                               PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                            <Border Name="DropDownBorder" BorderThickness="12" Padding="1" Background="{DynamicResource WindowBackground}" >
+                                <ScrollViewer Name="DropDownScrollViewer" >
+                                    <ItemsPresenter Name="ItemsPresenter" />
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSeparator" Value="True">
+                            <Setter Property="Padding" Value="0,4,0,4" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="SubLeft" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="Role" Value="SubmenuHeader" >
+                            <Setter Property="Padding" Value="3" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Visible" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Hidden" />
+                        </Trigger>
+                        <Trigger Property="Role" Value="SubmenuItem" >
+                            <Setter Property="Padding" Value="3" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Hidden" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="Role" Value="TopLevelHeader" >
+                            <Setter Property="Padding" Value="5" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="SubLeft" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Role" Value="TopLevelItem" >
+                            <Setter Property="Padding" Value="3" />
+                            <Setter Property="Visibility" TargetName="SubArrow" Value="Hidden" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
+                        </Trigger>
+                    
+                </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate TargetType="ItemsPresenter" >
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate >
+                    <TextBlock Name="nameTxt" VerticalAlignment="Center"  Text="{Binding}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False" >
+                <Setter Property="Foreground" Value="Gray" />
+            </Trigger>
+            <Trigger Property="IsSubmenuOpen" Value="True" >
+                <Setter Property="Background" Value="Green" />
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="True" >
+                <Setter Property="Background" Value="#99888888" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

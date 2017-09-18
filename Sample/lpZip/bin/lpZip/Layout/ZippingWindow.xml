@@ -1,0 +1,41 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="正在压缩文：爱心传递爱心公益海报" ResizeMode="NoResize" WindowStyle="None" 
+        CaptionHeight="20" Width="560" Height="300" MinWidth="560" MinHeight="300" Foreground="Black"
+        Background="{DynamicResource WindowBackground}" BorderThickness="12" BorderBrush="#00FFFFFF" >
+
+    <Window.Resources>
+        <sys:RectF x:Key="comboBoxCornerRadius">0</sys:RectF>
+        <ImageBrush x:Key="PanelBackground" ImageSource="lpZip/Images/zip.png" Viewcorner="13" />
+    </Window.Resources>
+
+    <Grid Name="RootGrid" Background="{DynamicResource PanelBackground}" Margin="0">
+        <DockPanel Height="112" VerticalAlignment="Top" Background="{DynamicResource TitleBackground}">
+            <StackPanel Orientation="Horizontal" Margin="4,8,0,0" VerticalAlignment="Top" >
+                <Image Width="16" Height="16" Margin="10,0,6,0" Source="{DynamicResource TitleIcon}" />
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <CloseButton ToolTip="关闭" Width="29" Height="32" VerticalAlignment="Top" />
+            </StackPanel>
+        </DockPanel>
+
+        <StackPanel Margin="26,113,2,16" >
+            <TextBlock Foreground="Gray" Text="当前文件：公益广告/5200.psd" Margin="0,2,0,13" />
+            <ProgressBar Height="12" Margin="0,0,32,0" />
+            <TextBlock Foreground="Gray" Text="压缩速度：99.9MB/s -剩余3秒" Margin="0,14,0,6" />
+            <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+                <TextBlock Foreground="Gray" Text="已用时间：00:25" Width="150"  />
+                <TextBlock Foreground="Gray" Text="压缩前：25.3 MB" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                <TextBlock Foreground="Gray" Text="压缩率：28.0%" Width="150" />
+                <TextBlock Foreground="Gray" Text="压缩后：25.3 MB" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,10,0">
+                <Button Name="btnPause" Click="OnClickPause" Content="暂停" Width="80" Height="30" Margin="0,0,8,0" />
+                <Button Name="btnCancel" Click="OnClickCancel" Content="取消" Width="80" Height="30" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

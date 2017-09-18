@@ -1,0 +1,54 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="解压文件" ResizeMode="NoResize" WindowStyle="None" 
+        CaptionHeight="20" Width="560" Height="260" MinWidth="560" MinHeight="260" Foreground="White"
+        Background="{DynamicResource WindowBackground}" BorderThickness="12" BorderBrush="#00FFFFFF" >
+
+    <Window.Resources>
+        <sys:RectF x:Key="comboBoxCornerRadius">0</sys:RectF>
+        <ImageBrush x:Key="PanelBackground" ImageSource="lpZip/Images/unzip.png" Viewcorner="13" />
+    </Window.Resources>
+
+    <Grid Name="RootGrid" Background="{DynamicResource PanelBackground}" Margin="0">
+        <DockPanel Height="112" VerticalAlignment="Top" >
+            <StackPanel Orientation="Horizontal" Margin="4,8,0,0" VerticalAlignment="Top" >
+                <Image Width="16" Height="16" Margin="10,0,6,0" Source="{DynamicResource TitleIcon}" />
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <CloseButton ToolTip="关闭" Width="29" Height="32" VerticalAlignment="Top" />
+                <MinimizeButton ToolTip="最小化" Focusable="False" Width="29" Height="32" VerticalAlignment="Top" />
+            </StackPanel>
+        </DockPanel>
+
+        <Grid Margin="26,113,16,16" >
+            <StackPanel Visibility="{Binding Path=UnzipVisible}" >
+                <TextBlock Foreground="Gray" Text="目录路径（如果不存在将被创建）" Margin="0,5,0,12" />
+                <DockPanel>
+                    <Button Name="btnChangeDir" Click="OnClickChangeDir" Content="更改目录" Width="80" Margin="8,0,0,0" Pading="8" DockPanel.Dock="Right" />
+                    <ComboBox Height="28" SelectionBoxItem="{Binding Path=UnzipFile}" />
+                </DockPanel>
+                <Button Name="btnUnzip" Click="OnClickUnzip" Content="立即解压" HorizontalAlignment="Center" Width="100" Height="34" Margin="0,18,0,0" />
+            </StackPanel>
+            <StackPanel Visibility="{Binding Path=UnzippingVisible}" >
+                <DockPanel Margin="0,6,0,13">
+                    <TextBlock Foreground="Black" Text="当前文件：" />
+                    <TextBlock Foreground="Black" Text="{Binding Path=UnzipFile}" />
+                </DockPanel>
+                <ProgressBar Height="12" Background="#00FFFFFF" Foreground="#0393F4" BorderBrush="#BBBBBB" BorderThickness="1" Value="{Binding Path=UnzipProgress}" Margin="0,0,24,0" />
+                <DockPanel Margin="0,14,0,6">
+                    <TextBlock Foreground="Black" Text="解压速度："  />
+                    <TextBlock Foreground="Black" Text="{Binding Path=UnzipSpeed}" />
+                    <TextBlock Foreground="Black" Text=" -剩余 "  />
+                    <TextBlock Foreground="Black" Text="{Binding Path=Second}" />
+                    <TextBlock Foreground="Black" Text=" 秒"  />
+                </DockPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,10,0">
+                    <Button Name="btnPause" Click="OnClickPause" Content="暂停" Width="80" Height="30" Margin="0,0,8,0" />
+                    <Button Name="btnCancel" Click="OnClickCancel" Content="取消" Width="80" Height="30" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</Window>

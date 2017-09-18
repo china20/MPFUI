@@ -1,0 +1,81 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="压缩文件" ResizeMode="NoResize" WindowStyle="None" 
+        CaptionHeight="20" Width="560" Height="300" MinWidth="560" MinHeight="300" Foreground="Black"
+        Background="{DynamicResource WindowBackground}" BorderThickness="12" BorderBrush="#00FFFFFF" >
+
+    <Window.Resources>
+        <sys:RectF x:Key="comboBoxCornerRadius">0</sys:RectF>
+        <ImageBrush x:Key="PanelBackground" ImageSource="lpZip/Images/zip.png" Viewcorner="13" />
+    </Window.Resources>
+
+    <Grid Name="RootGrid" Background="{DynamicResource PanelBackground}" Margin="0">
+        <DockPanel Height="112" VerticalAlignment="Top" >
+            <StackPanel Orientation="Horizontal" Margin="4,8,0,0" VerticalAlignment="Top" >
+                <Image Width="16" Height="16" Margin="10,0,6,0" Source="{DynamicResource TitleIcon}" />
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <CloseButton ToolTip="关闭" Width="29" Height="32" VerticalAlignment="Top" />
+                <MinimizeButton ToolTip="最小化" Focusable="False" Width="29" Height="32" VerticalAlignment="Top" />
+            </StackPanel>
+        </DockPanel>
+
+        <Grid Margin="26,113,2,16" >
+            <StackPanel Margin="0,0,14,0" Visibility="{Binding Path=ZipVisible}" >
+                <TextBlock Foreground="Gray" Text="压缩到" Margin="0,0,0,6" />
+                <DockPanel>
+                    <Button Name="btnChangeDir" Click="OnClickChangeDir" Content="更改目录" Width="80" Margin="8,0,0,0" Pading="8" DockPanel.Dock="Right" />
+                    <ComboBox1 Height="28" SelectionBoxItem="{Binding Path=ZipFile}" />
+                    <Border BorderBrush="{DynamicResource comboBoxBorderNormal}" BorderThickness="1">
+                        <DockPanel Margin="1">
+                            <Image Width="16" Height="16" Source="{DynamicResource MainIcon}" />
+                            <ToggleButton Name="btnDown" Width="16" Height="16" DockPanel.Dock="Right"
+                                          Checked="OnCheckedDown" Style="{StaticResource ComboBoxTransparentButtonStyle}" />
+                            <TextBox Height="20" BorderThickness="0" Margin="2,0,2,0" IsReadOnly="True" Text="{Binding Path=ZipFile}" />
+                        </DockPanel>
+                    </Border>
+                </DockPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
+                    <TextBlock Text="压缩配置" Margin="0,0,26,0" />
+                    <RadioButton Content="速度最快" IsChecked="{Binding Path=MostSpeed,Mode=TwoWay}" Margin="0,0,16,0"  />
+                    <RadioButton Content="体积最小" IsChecked="{Binding Path=MinBulk,Mode=TwoWay}" />
+                </StackPanel>
+                <TextBlock Foreground="Gray" Text="智能为图片、视频、文档等选择最优压缩方式，具有最佳压缩速度。" Margin="0,12,0,6" />
+                <Button Name="btnZip" Click="OnClickZip" Content="立即压缩" HorizontalAlignment="Center" Width="100" Height="32" Margin="0,10,0,0" />
+            </StackPanel>
+            <StackPanel Visibility="{Binding Path=ZippingVisible}" >
+                <DockPanel Margin="0,2,0,13" >
+                    <TextBlock Foreground="Gray" Text="当前文件：" />
+                    <TextBlock Foreground="Gray" Text="{Binding Path=ZipFile}" />
+                </DockPanel>
+                
+                <ProgressBar Height="12" Margin="0,0,32,0" Background="#00FFFFFF" Foreground="#0393F4" BorderBrush="#BBBBBB" BorderThickness="1" Value="{Binding Path=ZipProgress}" />
+
+                <DockPanel Margin="0,14,0,6" >
+                    <TextBlock Foreground="Black" Text="压缩速度："  />
+                    <TextBlock Foreground="Black" Text="{Binding Path=ZipSpeed}" />
+                    <TextBlock Foreground="Black" Text=" -剩余 "  />
+                    <TextBlock Foreground="Black" Text="{Binding Path=Second}" />
+                    <TextBlock Foreground="Black" Text=" 秒"  />
+                </DockPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+                    <TextBlock Foreground="Gray" Text="{Binding Path=UseTime}" Width="150"  />
+                    <TextBlock Foreground="Gray" Text="{Binding Path=ZipBefore}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                    <StackPanel Orientation="Horizontal" Width="150" >
+                        <TextBlock Foreground="Gray" Text="{Binding Path=ZipRate}" />
+                        <TextBlock Foreground="Gray" Text="%" />
+                    </StackPanel>
+                    <TextBlock Foreground="Gray" Text="{Binding Path=ZipAfter}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,10,0">
+                    <Button Name="btnPause" Click="OnClickPause" Content="暂停" Width="80" Height="30" Margin="0,0,8,0" />
+                    <Button Name="btnCancel" Click="OnClickCancel" Content="取消" Width="80" Height="30" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</Window>

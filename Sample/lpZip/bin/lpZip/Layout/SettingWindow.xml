@@ -1,0 +1,39 @@
+<?xml encoding="utf-8" ?>
+<Window Name="window" AllowsTransparency="True" Title="设置" ResizeMode="NoResize" WindowStyle="None" 
+        CaptionHeight="20" Width="496" Height="450" MinWidth="496" MinHeight="450" Foreground="White"
+        Background="{DynamicResource WindowBackground}" BorderThickness="12" BorderBrush="#00FFFFFF" >
+
+    <Window.Resources>
+        <sys:RectF x:Key="comboBoxCornerRadius">0</sys:RectF>
+        <SolidColorBrush x:Key="TitleBackground" Color="#0393F4" />
+    </Window.Resources>
+
+    <Grid Name="RootGrid" Margin="0">
+        <DockPanel Height="32" VerticalAlignment="Top" Background="{DynamicResource TitleBackground}">
+            <StackPanel Orientation="Horizontal" Margin="4,8,0,0" VerticalAlignment="Top" >
+                <Image Width="16" Height="16" Margin="10,0,6,0" Source="{DynamicResource TitleIcon}" />
+                <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}"
+                       Foreground="White" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <CloseButton ToolTip="关闭" Width="29" Height="32" VerticalAlignment="Top" />
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel Margin="12,40,12,12" >
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft" >
+                <Button Name="btnApply" Click="OnClickApply" Content="应用" Width="70" Height="28" Margin="0,10,0,0" />
+                <Button Name="btnCancel" Click="OnClickCancel" Content="取消" Width="70" Height="28" Margin="0,10,10,0" />
+                <Button Name="btnOk" Click="OnClickOk" Content="确定" Width="70" Height="28" Margin="0,10,10,0" />
+            </StackPanel>
+            <TabControl>
+                <TabItem Header="常规" IsSelected="True">
+                    
+                </TabItem>
+                <TabItem Header="设置">
+
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Window>
