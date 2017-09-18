@@ -1444,6 +1444,7 @@ void Window::Activate()
     if (::IsWindow(selfhwnd))
     {
         ::SetForegroundWindow(selfhwnd);
+        InvalidateVisual();
     }
 }
 
@@ -2082,6 +2083,8 @@ bool Window::CreateWindowDuringShow(suic::Handle hParent)
                     , 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_FRAMECHANGED);
             }
 
+            InvalidateVisual();
+
             RegisterWindowFilter(this, MessageHook(this, &Window::OnFilterMessage));
             return true;
         }
@@ -2440,15 +2443,13 @@ void Window::CenterWindow(Handle hActive)
 {
     if (!GetUIParent())
     {
-        bool bDesk = true;
-
         Rect rcSelf;
         Rect rcOwner;
 
         HWND self = __HwndFromElement(this);
         HWND hwnd = ::GetDesktopWindow();
         HWND hwndOwner = HANDLETOHWND(hActive);
-        MonitorInfo mi = Environment::GetMonitorBoundByWindow(self);
+        MonitorInfo mi = Environment::GetMonitorBoundByPoint(NULL);
 
         rcOwner = mi.rcWork;
         ::GetWindowRect(self, &rcSelf);
@@ -2471,11 +2472,15 @@ void Window::CenterWindow(Handle hActive)
             }
         }
 
+        if (NULL == hwndOwner)
+        {
+            hwndOwner = HANDLETOHWND(HwndSubclass::GetTopActiveHwnd());
+        }
+
         if (::IsWindow(hwndOwner) && ::IsWindowVisible(hwndOwner) && hwndOwner != self)
         {
-            bDesk = false;
-            hwnd = hwndOwner;
-            ::GetWindowRect(hwnd, &rcOwner);
+            mi = Environment::GetMonitorBoundByWindow(hwndOwner);
+            rcOwner = mi.rcWork;
         }
 
         int x = rcOwner.left + (Float) (rcOwner.Width() - rcSelf.Width()) / 2.0f;

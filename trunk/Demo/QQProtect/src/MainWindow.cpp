@@ -101,11 +101,6 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
     InitBusiness();
     UpdateArrange();
 
-    // 
-    // 窗口居中显示
-    //
-    CenterWindow();
-
     suic::TextBlock* pTxt = FindElem<suic::TextBlock>("txtBlock");
     if (NULL != pTxt)
     {
@@ -132,12 +127,18 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
             //
             // 如果登录不成功，关闭窗口，第二个参数传true表示采用异步方式关闭
             //
-            HwndHelper::CloseWindow(this, true);
+            //HwndHelper::CloseWindow(this, true);
+            _login->AsyncClose();
             return;
         }
         //::ShowWindow(hwnd, SW_SHOW);
         //InvalidateVisual();
     }
+
+    // 
+    // 窗口居中显示
+    //
+    CenterWindow(HwndHelper::GetHostHwnd(_login.get()));
 }
 
 void MainWindow::InitBusiness()

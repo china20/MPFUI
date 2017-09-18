@@ -944,18 +944,18 @@ static void HandleMouseOverScreen(PositionInfo* posInfo, const Size& offset, con
     {
         posInfo->x = rect.right - desiredSize.cx - offset.cx;
     }
-    if (posInfo->x < 0)
+    if (posInfo->x < rect.left)
     {
-        posInfo->x = 0;
+        posInfo->x = rect.left;
     }
     // ´óÓÚÏÂ±ßÆÁÄ»
     if (posInfo->y + desiredSize.cy > rect.bottom)
     {
         posInfo->y = rect.bottom - desiredSize.cy - offset.cy;
     }
-    if (posInfo->y < 0)
+    if (posInfo->y < rect.top)
     {
-        posInfo->y = 0;
+        posInfo->y = rect.top;
     }
 }
 
@@ -1159,6 +1159,8 @@ void Popup::InvalidatePopupRoot()
         _popupRoot->Arrange(finalRect);
 
         ::SetWindowPos(hwnd, HWND_TOPMOST, posInfo->x, posInfo->y, desiredSize.Width(), desiredSize.Height(), flags);
+
+        _popupRoot->InvalidateVisual();
     }
 }
 
@@ -1292,7 +1294,7 @@ int Popup::InternalCreate(int wid, int hei)
         ::SetWindowPos(hwnd, HWND_TOPMOST,  hp.x, hp.y, hp.width, hp.height, flags);
         OnShowWindow();
         OnOpened(&EventArg::Empty);
-        InvalidateVisual();
+        _popupRoot->InvalidateVisual();
     }
     else
     {

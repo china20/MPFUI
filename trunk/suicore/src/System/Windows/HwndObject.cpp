@@ -400,7 +400,7 @@ bool HwndObject::Process_WM_CREATE(Element* rootElement, MessageParam* mp)
             Keyboard::Focus(focused.get());
         }
 
-        ::SetTimer(HANDLETOHWND(HANDLETOHWND(mp->hwnd)), WM_INVALIDATERENDER, 10, NULL);
+        // ::SetTimer(HANDLETOHWND(HANDLETOHWND(mp->hwnd)), WM_INVALIDATERENDER, 10, NULL);
 
         return true;
     }
@@ -642,10 +642,10 @@ bool HwndObject::Process_WM_TIMER(Element* rootElement, MessageParam* mp)
 
     if (WM_INVALIDATERENDER == (int)mp->wp)
     {
-        VisualHost* pHost = VisualHost::GetVisualHost(rootElement);
-        pHost->Invalidate(NULL, false);
-        ::KillTimer(hwnd, 5);
-        return true;
+        //VisualHost* pHost = VisualHost::GetVisualHost(rootElement);
+        //::KillTimer(hwnd, 5);
+        //Debug::Trace(_U("kill WM_INVALIDATERENDER timer\n"));
+        //return true;
     }
 
     return false;
