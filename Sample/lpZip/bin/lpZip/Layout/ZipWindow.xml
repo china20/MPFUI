@@ -26,7 +26,7 @@
                 <TextBlock Foreground="Gray" Text="压缩到" Margin="0,0,0,6" />
                 <DockPanel>
                     <Button Name="btnChangeDir" Click="OnClickChangeDir" Content="选择文件" Width="80" Margin="8,0,0,0" Pading="8" DockPanel.Dock="Right" />
-                    <TextBox IsReadOnly="False" UpdateSourceTrigger="PropertyChanged" Height="28" Text="{Binding Path=ZipFile}" />
+                    <TextBox IsReadOnly="False" Height="28" Text="{Binding Path=ZipFile,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
                 </DockPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
                     <TextBlock Text="压缩配置" Margin="0,0,26,0" />

@@ -32,7 +32,7 @@
                             <Image Width="16" Height="16" Source="{DynamicResource MainIcon}" />
                             <ToggleButton Name="btnDown" Width="16" Height="16" DockPanel.Dock="Right"
                                           Checked="OnCheckedDown" Style="{StaticResource ComboBoxTransparentButtonStyle}" />
-                            <TextBox Height="20" BorderThickness="0" Margin="2,0,2,0" IsReadOnly="False" Text="{Binding Path=UnzipDir}" />
+                            <TextBox Height="20" BorderThickness="0" Margin="2,0,2,0" IsReadOnly="False" Text="{Binding Path=UnzipDir,Mode=TwoWay}" />
                         </DockPanel>
                     </Border>
                 </DockPanel>
