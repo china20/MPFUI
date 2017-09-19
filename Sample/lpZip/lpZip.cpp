@@ -11,7 +11,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                        int       nCmdShow)
 {
     suic::InitUIWgxs(true);
-    suic::InitUILogLevel(suic::LogLevel::Trace);
+    //suic::InitUILogLevel(suic::LogLevel::Trace);
 
     suic::BuildFactory::Ins()->Add(ZipListView::RTTIType());
 
@@ -20,7 +20,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     try
     {
         // 加载资源文件
-        suic::ThemeOp::SetSystemTheme("default.sres", "wr");
+        suic::ThemeOp::SetSystemTheme("lpTheme.sres", "wr121");
         suic::String strApp = _T("lpZip/Layout/Application.xml");
 
         // 载入布局资源并运行系统
