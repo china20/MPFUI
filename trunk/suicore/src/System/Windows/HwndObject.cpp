@@ -196,13 +196,15 @@ void HwndObject::DisableSizeToContent()
         _rootElement->Measure(sizeHwnd); 
         _rootElement->Arrange(rect);
 
-        RefleshUIShow(false);
+        RefleshUIShow(NULL, false);
 
         /*if (SizeToContentChanged != null)
         { 
             SizeToContentChanged(this, EventArgs.Empty);
         }*/
-    } 
+    }
+
+    _rootElement->InvalidateVisual();
 }
 
 bool HwndObject::EnableSizeToContent()
@@ -311,9 +313,14 @@ void HwndObject::SetLayoutSize()
     }
 }
 
-void HwndObject::RefleshUIShow(bool bForce)
+void HwndObject::RefleshUIShow(Rect* lpRect, bool bForce)
 {
     Rect rect(Point(), GetSizeFromHwnd());
+
+    if (NULL != lpRect)
+    {
+        rect.Union(lpRect);
+    }
     
     // 
     // 刷新界面显示
@@ -472,10 +479,10 @@ bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
         measureData->SetViewPort(finalRect);
 
         main->ResetCanvasOffset();
-        main->InvalidateArrange(finalRect);
+        main->Arrange(finalRect);
     }
 
-    RefleshUIShow(false);
+    RefleshUIShow(finalRect, false);
 
     return true;
 }

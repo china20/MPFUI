@@ -56,7 +56,7 @@ public:
     bool NeedCreateBmp();
     void SetNeedRender(bool value);
 
-    void RefleshUIShow(bool bForce);
+    void RefleshUIShow(Rect* lpRect, bool bForce);
     void DisableSizeToContent();
     bool EnableSizeToContent();
 
