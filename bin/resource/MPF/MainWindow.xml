@@ -339,5 +339,6 @@
                 </DockPanel>
             </Grid>
         </Grid>
+		<ResizeGrip Width="16" Height="16" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
     </Grid>
 </Window>
