@@ -50,15 +50,16 @@ struct CanvasLayer
         : bmp(NULL)
         , cv(NULL) 
         , alpha(255)
-        , layered(false)
-    {
-    }
+        , layered(false) {}
 
-    ~CanvasLayer()
+    ~CanvasLayer() {}
+
+    void Clear()
     {
         if (NULL != cv)
         {
             delete cv;
+            cv = NULL;
         }
     }
 };
@@ -320,7 +321,7 @@ protected:
     fRect _topClip;
     DrawStack _drawStack;
     CanvasLayer _canvas;
-    static PointerDic<RTTIOfInfo*, lpfnDrawBrush> _drawBrushes;
+    static Array<lpfnDrawBrush> _drawBrushes;
 };
 
 inline fPoint SkiaDrawing::GetOffset()

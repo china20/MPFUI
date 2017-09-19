@@ -28,7 +28,7 @@ public:
     Bitmap* RenderToMemory(VisualHost* pHost);
     Bitmap* RenderLayerToMemory(VisualHost* pHost);
 
-    void RenderToScreen(VisualHost* visualHost, HDC hdc, Point offset);
+    void RenderToScreen(VisualHost* visualHost, HDC hdc);
 
     static fPoint RenderShot(Element* elem, Bitmap& bmp, Rect clip);
     static void RenderToImage(FrameworkElement* element, Bitmap* dib);
@@ -42,7 +42,7 @@ public:
 protected:
    
     bool CheckRender();
-    void RenderNormalWindow(Point offset, suic::Bitmap* bmp, HDC hdc);
+    void RenderNormalWindow(suic::Bitmap* bmp, HDC hdc);
     
 protected:
 

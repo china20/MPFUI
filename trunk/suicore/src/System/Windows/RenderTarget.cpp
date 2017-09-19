@@ -123,16 +123,6 @@ FrameworkElement* VisualHost::GetRootElement()
     return _rootElement;
 }
 
-void VisualHost::SetOffset(Point offset)
-{
-    _offset = offset;
-}
-
-Point VisualHost::GetOffset()
-{
-    return _offset;
-}
-
 Point VisualHost::GetScreenPoint()
 {
     Rect rect;
@@ -143,7 +133,7 @@ Point VisualHost::GetScreenPoint()
     ClientToScreen(hwnd, (LPPOINT)&rect);
     ClientToScreen(hwnd, (LPPOINT)&rect + 1);
 
-    return Point(rect.left + GetOffset().x, rect.top + GetOffset().y);
+    return Point(rect.left, rect.top);
 }
 
 void VisualHost::SetSize(Size size)
@@ -201,8 +191,6 @@ void VisualHost::Invalidate(const Rect* lprc, bool force)
             rect.SetXYWH(0, 0, _rootElement->GetWidth(), _rootElement->GetHeight());
         }
 
-        rect.Offset(GetOffset());
-
         pInfo->AddClip(&rect);
 
         if (force)
@@ -211,7 +199,6 @@ void VisualHost::Invalidate(const Rect* lprc, bool force)
         }
         else
         {
-            //pInfo->AddClip(&rect);
             HWND hwnd = HANDLETOHWND(GetHandle());
             if (::IsWindow(hwnd))
             {
@@ -248,9 +235,6 @@ bool VisualHost::HandleEvent(MessageParam* mp)
     HWND hwnd = NULL;
     RenderInfo* pInfo(GetRenderInfo());
     FrameworkElement* rootElem = GetRootElement();
-
-    mp->point.x -= GetOffset().x;
-    mp->point.y -= GetOffset().y;
 
     switch (mp->message)
     {
@@ -327,23 +311,20 @@ void VisualHost::OnRender(Handle h, const Rect* lprc)
 
     pInfo->PopClip(rect);
 
-    if (lprc != NULL)
+    if (NULL == lprc)
     {
-        rect.Union(lprc);
-    }
-
-    GetRootElement()->GetAssigner()->GetTimeManager()->Tick();
-
-    if (!rect.Empty())
-    {
-        rect.Offset(-_offset.x, -_offset.y);
-        RenderEngine render(_rootElement, rect.TofRect());
-        render.RenderToScreen(this, (HDC)(DWORD_PTR)h, _offset);
+        GetRootElement()->GetAssigner()->GetTimeManager()->Tick();
+        RenderEngine render(_rootElement, NULL);
+        render.RenderToScreen(this, (HDC)(DWORD_PTR)h);
     }
     else
     {
-        RenderEngine render(_rootElement, NULL);
-        render.RenderToScreen(this, (HDC)(DWORD_PTR)h, _offset);
+        rect.Union(lprc);
+        if (!rect.Empty())
+        {
+            RenderEngine render(_rootElement, rect.TofRect());
+            render.RenderToScreen(this, (HDC)(DWORD_PTR)h);
+        }
     }
 }
 

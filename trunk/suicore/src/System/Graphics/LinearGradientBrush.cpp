@@ -92,6 +92,7 @@ LinearGradientBrush::LinearGradientBrush()
 {
     _endPoint.x = 1;
     _endPoint.y = 1;
+    _index = Brush::eBrushIndex::biLinearBrush;
 }
 
 LinearGradientBrush::~LinearGradientBrush()

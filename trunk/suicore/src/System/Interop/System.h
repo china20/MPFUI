@@ -45,6 +45,10 @@ struct BitmapInfo
     BitmapInfo()
     {
     }
+
+    ~BitmapInfo()
+    {
+    }
 };
 
 struct PathInfo

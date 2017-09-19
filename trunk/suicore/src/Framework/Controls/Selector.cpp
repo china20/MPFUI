@@ -105,6 +105,11 @@ SelectionChanger::SelectionChanger(Selector* o)
     active = false;
 }
 
+SelectionChanger::~SelectionChanger()
+{
+    Clear();
+}
+
 bool SelectionChanger::Begin()
 {
     if (active)

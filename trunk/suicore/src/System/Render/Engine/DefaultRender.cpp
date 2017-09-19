@@ -45,7 +45,6 @@ void DefRender::RenderCanvas(FrameworkElement* root, Bitmap* canvas, fRect clip,
 {
     DWORD dwBegin = Environment::GetSystemTick();
 
-    VisualHost* visualHost = VisualHost::GetVisualHost(root);
     SkiaDrawing drawing(HwndHelper::IsAllowsTransparency(root), canvas, clip);
 
     drawing.Save();

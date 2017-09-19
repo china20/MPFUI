@@ -234,7 +234,7 @@ Bitmap* RenderEngine::RenderToMemory(VisualHost* pHost)
     return bmp;
 }
 
-void RenderEngine::RenderToScreen(VisualHost* visualHost, HDC hdc, Point offset)
+void RenderEngine::RenderToScreen(VisualHost* visualHost, HDC hdc)
 {
     suic::Bitmap* bmp = NULL;
 
@@ -251,13 +251,13 @@ void RenderEngine::RenderToScreen(VisualHost* visualHost, HDC hdc, Point offset)
         }
         else
         {
-            RenderNormalWindow(offset, bmp, hdc);
+            RenderNormalWindow(bmp, hdc);
             bmp->Clear();
         }
     }
 }
 
-void RenderEngine::RenderNormalWindow(Point offset, suic::Bitmap* bmp, HDC hdc)
+void RenderEngine::RenderNormalWindow(suic::Bitmap* bmp, HDC hdc)
 {
     HDC mdc = CreateCompatibleDC(hdc);
     int w = _clip.Width();

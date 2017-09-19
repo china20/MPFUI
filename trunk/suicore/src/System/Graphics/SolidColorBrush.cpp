@@ -19,13 +19,13 @@ ImplementRTTIOfClass(SolidColorBrush, Brush)
 SolidColorBrush::SolidColorBrush(Color color)
     : _color(color)
 {
-
+    _index = Brush::eBrushIndex::biSolidBrush;
 }
 
 SolidColorBrush::SolidColorBrush()
     : _color(ARGB(255,255,255,255))
 {
-
+    _index = Brush::eBrushIndex::biSolidBrush;
 }
 
 SolidColorBrush::~SolidColorBrush()

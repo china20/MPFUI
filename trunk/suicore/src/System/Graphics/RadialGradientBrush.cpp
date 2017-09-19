@@ -28,6 +28,7 @@ RadialGradientBrush::RadialGradientBrush()
 {
     _origin.x = 0.5f;
     _origin.y = 0.5f;
+    _index = Brush::eBrushIndex::biRadialBrush;
 }
 
 RadialGradientBrush::~RadialGradientBrush()

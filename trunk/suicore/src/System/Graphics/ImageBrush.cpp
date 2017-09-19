@@ -150,6 +150,7 @@ ImageBrush::ImageBrush(String path)
     , _source(NULL)
 {
     InitImageSource(path);
+    _index = Brush::eBrushIndex::biImage;
 }
 
 ImageBrush::ImageBrush()
@@ -159,7 +160,7 @@ ImageBrush::ImageBrush()
     , _grey(0)
     , _source(NULL)
 {
-
+    _index = Brush::eBrushIndex::biImage;
 }
 
 ImageBrush::~ImageBrush()

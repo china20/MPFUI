@@ -17,7 +17,7 @@
 namespace suic
 {
 
-PointerDic<RTTIOfInfo*, lpfnDrawBrush> SkiaDrawing::_drawBrushes;
+Array<lpfnDrawBrush> SkiaDrawing::_drawBrushes;
 void DrawImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const fRect* lprc);
 
 void SkiaDrawing::DrawImageBrush(DrawCtx* drawCtx, SkiaDrawing* drawing, Brush* brush, const SkRect* lprc, const fRect* frc)
@@ -121,10 +121,37 @@ void SkiaDrawing::DrawRadialGradientBrush(DrawCtx* drawCtx, SkiaDrawing* drawing
 
 void SkiaDrawing::InitDrawBrushes()
 {
-    _drawBrushes.Add(SolidColorBrush::RTTIType(), SkiaDrawing::DrawSolidColorBrush);
-    _drawBrushes.Add(ImageBrush::RTTIType(), SkiaDrawing::DrawImageBrush);
-    _drawBrushes.Add(LinearGradientBrush::RTTIType(), SkiaDrawing::DrawLinearGradientBrush);
-    _drawBrushes.Add(RadialGradientBrush::RTTIType(), SkiaDrawing::DrawRadialGradientBrush);
+    _drawBrushes.Add(SkiaDrawing::DrawImageBrush);
+    _drawBrushes.Add(SkiaDrawing::DrawSolidColorBrush);    
+    _drawBrushes.Add(SkiaDrawing::DrawLinearGradientBrush);
+    _drawBrushes.Add(SkiaDrawing::DrawRadialGradientBrush);
+}
+
+static bool __findDrawBrush(Brush* brush, lpfnDrawBrush& fnDraw)
+{
+    switch (brush->GetIndex())
+    {
+    case Brush::eBrushIndex::biImage:
+        fnDraw = &SkiaDrawing::DrawImageBrush;
+        break;
+
+    case Brush::eBrushIndex::biSolidBrush:
+        fnDraw = &SkiaDrawing::DrawSolidColorBrush;
+        break;
+
+    case Brush::eBrushIndex::biLinearBrush:
+        fnDraw = &SkiaDrawing::DrawLinearGradientBrush;
+        break;
+
+    case Brush::eBrushIndex::biRadialBrush:
+        fnDraw = &SkiaDrawing::DrawRadialGradientBrush;
+        break;
+
+    default:
+        fnDraw = NULL;
+    }
+
+    return (NULL != fnDraw);
 }
 
 SkiaDrawing::SkiaDrawing(bool layeredMode, Bitmap* dib, fRect topClip)
@@ -141,6 +168,7 @@ SkiaDrawing::SkiaDrawing(bool layeredMode, Bitmap* dib, fRect topClip)
 
 SkiaDrawing::~SkiaDrawing()
 {
+    _canvas.Clear();
 }
 
 //Handle SkiaDrawing::GetHandle()
@@ -445,7 +473,7 @@ void SkiaDrawing::DrawRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRect
     {
         lpfnDrawBrush fnDraw = NULL;
 
-        if (_drawBrushes.TryGetValue(brush->GetRTTIType(), fnDraw))
+        if (__findDrawBrush(brush, fnDraw))
         {
             _canvas.p.setStyle(SkPaint::Style::kStrokeAndFill_Style);
             fnDraw(drawCtx, this, brush, &rect, rc);
@@ -495,7 +523,7 @@ void SkiaDrawing::DrawRRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const fRRe
 
         lpfnDrawBrush fnDraw = NULL;
 
-        if (_drawBrushes.TryGetValue(brush->GetRTTIType(), fnDraw))
+        if (__findDrawBrush(brush, fnDraw))
         {
             Save();
             _canvas.cv->clipRRect(rrect, SkRegion::Op::kIntersect_Op, true);
@@ -550,7 +578,7 @@ void SkiaDrawing::DrawRoundRect(DrawCtx* drawCtx, Brush* brush, Pen* pen, const 
 
         _canvas.p.setStyle(SkPaint::Style::kFill_Style);
 
-        if (_drawBrushes.TryGetValue(brush->GetRTTIType(), fnDraw))
+        if (__findDrawBrush(brush, fnDraw))
         {
             SkRRect rrect;
   
