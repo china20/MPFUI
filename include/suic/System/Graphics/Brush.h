@@ -23,12 +23,22 @@ class SUICORE_API Brush : public Resource
 {
 public:
 
+    enum eBrushIndex
+    {
+        biImage,
+        biSolidBrush,
+        biLinearBrush,
+        biRadialBrush,
+    };
+
     RTTIOfAbstractClass(Brush)
 
-    Brush() : _opacity(1.0) {}
+    Brush() : _opacity(1.0), _index(0) {}
     virtual ~Brush() {}
 
     Brush* Clone() const;
+
+    int GetIndex();
 
     Float GetOpacity() const;
     void SetOpacity(Float val);
@@ -39,6 +49,7 @@ public:
 
 protected:
 
+    int _index;
     Float _opacity;
 };
 
@@ -52,6 +63,11 @@ inline Float Brush::GetOpacity() const
 inline void Brush::SetOpacity(Float val)
 {
     _opacity = val;
+}
+
+inline int Brush::GetIndex()
+{
+    return _index;
 }
 
 class SUICORE_API TileBrush : public Brush

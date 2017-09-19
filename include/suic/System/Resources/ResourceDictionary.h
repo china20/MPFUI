@@ -27,6 +27,10 @@ struct ChildBindDep
     String Name;
     Object* Value;
     DpProperty* Prop;
+
+    ~ChildBindDep()
+    {
+    }
 };
 
 struct DepRecord
@@ -64,6 +68,9 @@ struct TriggerDepRecords
 struct BindDepRecord
 {
     DeleteColl<ChildBindDep> bindRecords;
+    ~BindDepRecord()
+    {
+    }
 };
 
 class SUICORE_API RDCollection : public AutoColl<ResourceDictionary>

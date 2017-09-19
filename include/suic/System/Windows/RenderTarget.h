@@ -58,20 +58,6 @@ public:
     virtual FrameworkElement* GetRootElement();
 
     /// <summary>
-    ///     设置和获取宿主画布的偏移
-    /// </summary>
-    /// <remarks>
-    ///     我们容纳跟元素的区域称为画布，根元素在画布中的
-    ///     位置由SetOffset设置，大小参考SetSize方法定义。
-    /// </remarks>
-    /// <param name="offset">
-    ///     根元素偏移
-    /// </param>
-    /// <returns>无</returns>
-    void SetOffset(Point offset);
-    Point GetOffset();
-
-    /// <summary>
     ///     获取根元素在屏幕中的位置
     /// </summary>
     /// <remarks>
@@ -121,9 +107,6 @@ private:
     
     Handle _handle;
     Size _size;
-
-    Point _offset;
-    Point _screenOffset;
 
     WeakRef _mainMenu;
 

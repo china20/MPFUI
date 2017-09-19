@@ -143,6 +143,10 @@ struct Entry
         next = 0;
         hashCode = 0;
     }
+
+    ~Entry()
+    {
+    }
 };
 
 }

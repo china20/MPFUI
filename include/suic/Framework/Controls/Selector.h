@@ -67,6 +67,7 @@ struct SUICORE_API SelectionChanger
     SelectionItems unselItems;
 
     SelectionChanger(Selector* o);
+    ~SelectionChanger();
 
     bool Begin();
     void Commit();

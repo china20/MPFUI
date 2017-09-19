@@ -52,6 +52,10 @@ struct ResourcesChangeInfo
 
     Array<ResourceDictionary*, false> oldDictionaries;
     Array<ResourceDictionary*, false> newDictionaries;
+
+    ~ResourcesChangeInfo()
+    {
+    }
 };
 
 class FrameworkInvoker : public AssignerInvoker
