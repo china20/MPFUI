@@ -372,6 +372,9 @@
     <ClCompile Include="src\richedit\src\wsprintf.cpp">
       <Filter>src\richedit\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Extend\Controls\VisualizeWrapPanel.cpp">
+      <Filter>src\Extend\Controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -525,6 +528,9 @@
       <Filter>include\Extend\Controls</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\suic\Extend\Controls\WrapPanel.h">
+      <Filter>include\Extend\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\suic\Extend\Controls\VisualizeWrapPanel.h">
       <Filter>include\Extend\Controls</Filter>
     </ClInclude>
   </ItemGroup>
