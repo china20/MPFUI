@@ -201,7 +201,7 @@
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>.;./src;../../include/suic;../../include/suic/Skia/core;../../include/suic/Skia/ports;../../include/suic/Skia/utils;../../include/suic/Skia/pathops;../../include/suic/Skia/images;../../include/suic/Skia/effects;../../include/suic/Skia/config;./src/System/Render/Skia/src/core;./src/System/Render/Skia/src/ports;./src/System/Render/Skia/src/image;./src/System/Render/Skia/src/images;./src/System/Render/Skia/src/utils;./src/System/Render/Skia/src/opts;./src/System/Render/Skia/src/sfnt;./src/System/Render/Skia/src/pathops;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32_WINNT=0x0500;WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SUICORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -211,7 +211,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>usp10.lib;drawlib14sd.lib;windowscodecs.lib;freetype253_D.lib;ResEncryptd.lib</AdditionalDependencies>
+      <AdditionalDependencies>usp10.lib;drawlib14sd.lib;windowscodecs.lib;freetype253_D.lib;ResEncryptd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\..\bin\$(ProjectName)ud.dll</OutputFile>
       <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -241,7 +241,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.Lib;usp10.lib;drawlib14s.lib;windowscodecs.lib;freetype253.lib;ResEncrypt.lib</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.Lib;usp10.lib;drawlib14s.lib;windowscodecs.lib;freetype253.lib;ResEncrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\..\bin\$(ProjectName)u.dll</OutputFile>
       <AdditionalLibraryDirectories>../../lib;./../third_party/freetype/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
