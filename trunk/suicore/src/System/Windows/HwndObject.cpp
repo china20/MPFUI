@@ -461,7 +461,6 @@ bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
         measureData->SetViewPort(Rect(Point(), measureData->GetAvailableSize()));
 
         main->InvalidateMeasure(realSize);
-        //main->Measure(realSize);
 
         if (GetSizeToContent() == SizeToContent::stcWidth)
         {
@@ -479,7 +478,7 @@ bool HwndObject::Process_WM_SIZE(Element* rootElement, MessageParam* mp)
         measureData->SetViewPort(finalRect);
 
         main->ResetCanvasOffset();
-        main->Arrange(finalRect);
+        main->InvalidateArrange(finalRect);
     }
 
     RefleshUIShow(finalRect, false);
@@ -978,6 +977,16 @@ bool HwndObject::OnPublicFilterMessage(Element* rootElement, MessageParam* mp)
 
     case WM_SIZE:
         handled = Process_WM_SIZE(rootElement, mp);
+        break;
+
+    case WM_WINDOWPOSCHANGED:
+        {
+            LPWINDOWPOS lpwndpos = (LPWINDOWPOS)(ULONG_PTR)mp->lp;
+            if (lpwndpos != NULL)
+            {
+                lpwndpos = NULL;
+            }
+        }
         break;
 
     case WM_WINDOWPOSCHANGING:

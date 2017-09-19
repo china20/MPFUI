@@ -29,9 +29,20 @@ namespace suic
 class CaretProxy;
 CaretProxy* GetCaretProxy();
 
-RenderEngine::RenderEngine(Element* root, const fRect* lprc)
+RenderEngine::RenderEngine()
+    : _root(NULL)
 {
-    _root = dynamic_cast<FrameworkElement*>(root);
+}
+
+void RenderEngine::UpdateDrawRect(VisualHost* pHost, const fRect* lprc)
+{
+    _root = pHost->GetRootElement();
+
+    if (_root->ReadFlag(CoreFlags::IsArrangeDirty))
+    {
+        _root->UpdateArrange();
+    }
+
     _clip.SetLTRB(0, 0, _root->GetActualWidth(), _root->GetActualHeight());
 
     if (lprc != NULL)
@@ -234,11 +245,13 @@ Bitmap* RenderEngine::RenderToMemory(VisualHost* pHost)
     return bmp;
 }
 
-void RenderEngine::RenderToScreen(VisualHost* visualHost, HDC hdc)
+void RenderEngine::RenderToScreen(VisualHost* visualHost, const fRect* lprc, HDC hdc)
 {
     suic::Bitmap* bmp = NULL;
 
-    _root->GetAssigner()->GetTimeManager()->Tick();
+    UpdateDrawRect(visualHost, lprc);
+
+    _root->GetAssigner()->GetTimeManager()->Tick();    
 
     // 先绘制到内存
     bmp = RenderToMemory(visualHost);

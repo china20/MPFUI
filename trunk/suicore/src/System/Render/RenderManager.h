@@ -23,12 +23,12 @@ class RenderEngine
 {
 public:
 
-    RenderEngine(Element* root, const fRect* lprc);
+    RenderEngine();
     
     Bitmap* RenderToMemory(VisualHost* pHost);
     Bitmap* RenderLayerToMemory(VisualHost* pHost);
 
-    void RenderToScreen(VisualHost* visualHost, HDC hdc);
+    void RenderToScreen(VisualHost* visualHost, const fRect* lprc, HDC hdc);
 
     static fPoint RenderShot(Element* elem, Bitmap& bmp, Rect clip);
     static void RenderToImage(FrameworkElement* element, Bitmap* dib);
@@ -42,6 +42,7 @@ public:
 protected:
    
     bool CheckRender();
+    void UpdateDrawRect(VisualHost* pHost, const fRect* lprc);
     void RenderNormalWindow(suic::Bitmap* bmp, HDC hdc);
     
 protected:

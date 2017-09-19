@@ -233,9 +233,9 @@ ElementInvoker::ElementInvoker(Element* sender, Object* data, int type)
     , _data(data)
     , _type(type)
 {
-    if (_data)
+    if (data)
     {
-        _data->ref();
+        data->ref();
     }
 }
 
@@ -1669,12 +1669,26 @@ void Element::InvalidateForce()
 
 void Element::UpdateArrange()
 {
-    ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateArrange);
+    if (GetAssigner()->GetThreadId() != Thread::CurrentThreadId())
+    {
+        ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateArrange);
+    }
+    else
+    {
+        Arrange(_finalArrange);
+    }
 }
 
 void Element::UpdateMeasure()
 {
-    ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateMeasure);
+    if (GetAssigner()->GetThreadId() != Thread::CurrentThreadId())
+    {
+        ElementInvoker::CallInvoke(this, NULL, ElemInvokeType::eiUpdateMeasure);
+    }
+    else
+    {
+        Measure(_measureSize);
+    }
 }
 
 /*Element* Element::FindFixedAncestor()

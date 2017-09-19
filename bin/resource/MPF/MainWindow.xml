@@ -1,6 +1,6 @@
 <?xml encoding="utf-8" ?>
 <Window Name="window" AllowsTransparency="True" Title="MPF控件库演示中心" Round="5" ResizeMode="CanResize"
-        WindowStyle="CanMaximize" Width="800" Height="450" MinWidth="800" MinHeight="450" Opacity1="0.8" >
+        WindowStyle1="CanMaximize" CaptionHeight="30" Width="800" Height="450" MinWidth="800" MinHeight="450" Opacity1="0.8" >
     <Window.Resources>
         <Bitmap x:Key="button_off_24x24" Source="resource/MPF/Images/button_off_24x24.png" />
         <Bitmap x:Key="listBox_off_24x24" Source="resource/MPF/Images/listBox_off_24x24.png" />
@@ -70,6 +70,7 @@
     <Grid >
         <DockPanel Height="50" VerticalAlignment="Top"  >
             <CloseButton DockPanel.Dock="Right" ToolTip="" VerticalAlignment="Top" Width="30" Height="27" />
+			<MaximizeButton DockPanel.Dock="Right" VerticalAlignment="Top" Width="30" Height="27" />
             <MinimizeButton DockPanel.Dock="Right" ToolTip="" VerticalAlignment="Top"  Width="30" Height="27" />
             <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}, AncestorLevel=1}}" 
                        Foreground="White" FontSize="18" Margin="6,6,0,0"/>

@@ -188,7 +188,7 @@ void VisualHost::Invalidate(const Rect* lprc, bool force)
         }
         else
         {
-            rect.SetXYWH(0, 0, _rootElement->GetWidth(), _rootElement->GetHeight());
+            rect.SetXYWH(0, 0, _rootElement->GetActualWidth(), _rootElement->GetActualHeight());
         }
 
         pInfo->AddClip(&rect);
@@ -202,7 +202,7 @@ void VisualHost::Invalidate(const Rect* lprc, bool force)
             HWND hwnd = HANDLETOHWND(GetHandle());
             if (::IsWindow(hwnd))
             {
-                ::InvalidateRect(hwnd, lprc, FALSE);
+                ::InvalidateRect(hwnd, rect, FALSE);
             }
         }
     }
@@ -313,16 +313,16 @@ void VisualHost::OnRender(Handle h, const Rect* lprc)
 
     if (NULL == lprc)
     {
-        RenderEngine render(_rootElement, NULL);
-        render.RenderToScreen(this, (HDC)(DWORD_PTR)h);
+        RenderEngine render;
+        render.RenderToScreen(this, NULL, (HDC)(DWORD_PTR)h);
     }
     else
     {
         rect.Union(lprc);
         if (!rect.Empty())
         {
-            RenderEngine render(_rootElement, rect.TofRect());
-            render.RenderToScreen(this, (HDC)(DWORD_PTR)h);
+            RenderEngine render;
+            render.RenderToScreen(this, rect.TofRect(), (HDC)(DWORD_PTR)h);
         }
     }
 }
