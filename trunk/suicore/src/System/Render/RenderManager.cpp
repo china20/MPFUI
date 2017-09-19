@@ -238,6 +238,8 @@ void RenderEngine::RenderToScreen(VisualHost* visualHost, HDC hdc)
 {
     suic::Bitmap* bmp = NULL;
 
+    _root->GetAssigner()->GetTimeManager()->Tick();
+
     // 先绘制到内存
     bmp = RenderToMemory(visualHost);
 

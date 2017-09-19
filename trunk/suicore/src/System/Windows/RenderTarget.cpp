@@ -313,7 +313,6 @@ void VisualHost::OnRender(Handle h, const Rect* lprc)
 
     if (NULL == lprc)
     {
-        GetRootElement()->GetAssigner()->GetTimeManager()->Tick();
         RenderEngine render(_rootElement, NULL);
         render.RenderToScreen(this, (HDC)(DWORD_PTR)h);
     }
