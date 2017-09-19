@@ -75,6 +75,7 @@ void EncryResource::OnOpenFile(suic::Element* pItem, suic::RoutedEventArg* e)
 
 void EncryResource::OnEncry(suic::Element* pItem, suic::RoutedEventArg* e)
 {
+    suic::CheckBox* onlyEncry(FindElem<suic::CheckBox>(_T("onlyEncry")));
     suic::TextBox* pathPtr(FindElem<suic::TextBox>(_T("EncryFile")));
     suic::PasswordBox* pwdPtr(FindElem<suic::PasswordBox>(_T("Pwd")));
 
@@ -87,13 +88,30 @@ void EncryResource::OnEncry(suic::Element* pItem, suic::RoutedEventArg* e)
         return;
     }
 
+    // 仅仅加密
+    if (onlyEncry->IsChecked())
+    {
+        if (strPwd.Empty())
+        {
+            suic::InfoBox::Show(_T("请输入资源加密密码!"), _T("提示"));
+            return;
+        }
+
+        if (UIEncrypt::Encrypt(strPwd, strFile) == 0)
+        {
+            suic::InfoBox::Show(_U("加密资源成功!"), _T("提示"));  
+            AsyncClose();
+        }
+        return;
+    }
+
     if (!_project->Zip(strFile, strPwd))
     {
         suic::InfoBox::Show(_T("导出失败!"), _T("提示"));
         return ;
     }
 
-    Close();
+    AsyncClose();
     suic::InfoBox::Show(__T("导出成功!"), _T("提示"));  
 
     /*if (0 != UIEncrypt::Encrypt(strPwd, strFile))
