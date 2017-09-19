@@ -537,17 +537,16 @@ void Window::OnWindowStatePropChanged(DpObject* d, DpPropChangedEventArg* e)
 void Window::OnAllowDropPropChanged(DpObject* d, DpPropChangedEventArg* e)
 {
     Window* pWnd = RTTICast<Window>(d);
-    if (pWnd)
+    if (NULL != pWnd)
     {
-        pWnd->OnAllowDropChanged(e->GetOldValue()->ToBool(), 
-            e->GetNewValue()->ToBool());
+        pWnd->OnAllowDropChanged(e->GetOldValue()->ToBool(), e->GetNewValue()->ToBool());
     }
 }
 
 void Window::OnVisibilityPropChanged(DpObject* d, DpPropChangedEventArg* e)
 {
     Window* pWnd = RTTICast<Window>(d);
-    if (pWnd)
+    if (NULL != pWnd)
     {
         pWnd->OnVisibilityChanged((Visibility)e->GetOldValue()->ToInt(), 
             (Visibility)e->GetNewValue()->ToInt());
@@ -558,7 +557,7 @@ void Window::OnVisibilityPropChanged(DpObject* d, DpPropChangedEventArg* e)
 void Window::OnWindowStylePropChanged(DpObject* d, DpPropChangedEventArg* e)
 {
     Window* pWnd = RTTICast<Window>(d);
-    if (pWnd)
+    if (NULL != pWnd)
     {
         Uint32 uStyle = e->GetNewValue()->ToInt();
         pWnd->OnWindowStyleChanged(e->GetOldValue()->ToInt(), uStyle);
@@ -571,7 +570,7 @@ void Window::OnLocationPropChanged(DpObject* d, DpPropChangedEventArg* e)
     Point oldVal = OPoint::FromObj(e->GetOldValue());
     Point newVal = OPoint::FromObj(e->GetNewValue());
 
-    if (pWnd)
+    if (NULL != pWnd)
     {
         pWnd->OnLocationChanged(oldVal, newVal);
     }
@@ -1529,11 +1528,20 @@ void Window::SetAllowsFullScreen(bool val)
 
             if (val)
             {
-                MonitorInfo mi = Environment::GetMonitorBoundByWindow(hwnd);
-                ::GetWindowRect(hwnd, _prevPos);
-                //::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, szFull.Width(), szFull.Height(), flag);
                 WINDOWPLACEMENT wndpl; 
                 wndpl.length = sizeof(WINDOWPLACEMENT); 
+                MonitorInfo mi = Environment::GetMonitorBoundByWindow(hwnd);
+
+                GetWindowPlacement(hwnd, &wndpl);
+                _prevPos = wndpl.rcNormalPosition;
+
+                if (_prevPos.Empty())
+                {
+                    ::GetWindowRect(hwnd, _prevPos);
+                }
+
+                //::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, szFull.Width(), szFull.Height(), flag);
+                
                 wndpl.flags = 0; 
                 wndpl.showCmd = SW_SHOWNORMAL; 
                 wndpl.rcNormalPosition = mi.rcMonitor; 

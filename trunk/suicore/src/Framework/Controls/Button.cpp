@@ -167,7 +167,7 @@ void MaximizeButton::OnInitialized(EventArg* e)
 void MaximizeButton::OnClick()
 {
     Window* pWnd = RTTICast<Window>(VisualTreeOp::GetVisualRoot(this));
-    if (pWnd && pWnd->GetWindowStyle() != WindowStyle::wsNone && !pWnd->AllowsFullScreen())
+    if (NULL != pWnd && pWnd->GetWindowStyle() != WindowStyle::wsNone && !pWnd->AllowsFullScreen())
     {
         if (HwndHelper::IsWindowMaximize(pWnd))
         {
