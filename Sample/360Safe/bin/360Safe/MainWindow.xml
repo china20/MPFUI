@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window Name="window" Title="Window" Width="900" Height="560" RoundSize="0,0" BorderThickness="12" 
+    AllowsTransparency="True" CaptionHeight="0" ResizeMode="NoResize" BorderBrush="#00FFFFFF" Background="{DynamicResource WindowShadowing}" >
+
+    <Window.Resources>
+
+        <ImageBrush x:Key="WindowShadowing" ImageSource="/360Safe;/images/MainFrame/Image/shadowing.png" Viewcorner="13" />
+        
+        <ImageBrush x:Key="tj_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_Examine.png" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_dsmain.png" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_pccleaner.png" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_systemrepair.png" Stretch="Uniform" />
+        
+        <ImageBrush x:Key="yh_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_SpeedupOpt.png" Stretch="Uniform" />
+        <ImageBrush x:Key="gndq_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_AdvTools.png" Stretch="Uniform" />
+        <ImageBrush x:Key="xjk_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_store.png" Stretch="Uniform" />
+        <ImageBrush x:Key="rjgj_1" ImageSource="/360Safe;/images/MainFrame/Image/ico_softmgr.png" Stretch="Uniform" />
+
+        <ImageBrush x:Key="SkinNormal" ImageSource="/360Safe;/images/MainFrame/Image/Skin.png" Viewbox="0,0,27,27" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="SkinHot" ImageSource="/360Safe;/images/MainFrame/Image/Skin.png" Viewbox="27,0,27,27" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="SkinPress" ImageSource="/360Safe;/images/MainFrame/Image/Skin.png" Viewbox="54,0,27,27" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="MenuNormal" ImageSource="/360Safe;/images/MainFrame/Image/Menu_v11.png" Viewbox="0,0,27,27" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="MenuHot" ImageSource="/360Safe;/images/MainFrame/Image/Menu_v11.png" Viewbox="27,0,27,27" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="MenuPress" ImageSource="/360Safe;/images/MainFrame/Image/Menu_v11.png" Viewbox="54,0,27,27" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="Medal2Normal" ImageSource="/360Safe;/images/MainFrame/Image/MedalUnLight2.png" Viewbox="0,24,30" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="Medal2Hot" ImageSource="/360Safe;/images/MainFrame/Image/MedalUnLight2.png" Viewbox="24,0,24,30" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="Medal2Press" ImageSource="/360Safe;/images/MainFrame/Image/MedalUnLight2.png" Viewbox="48,0,24,30" ViewboxUnits="Absolute" />
+
+        <ImageBrush x:Key="cb_normal" ImageSource="/360Safe;/images/MainFrame/Image/tab_hover.png" Viewbox="0,0.000000,0.333333,1.000000" />
+        
+    </Window.Resources>
+    
+    <Grid Margin="0" Width="Auto" Height="Auto" >
+        <StackPanel Background="#00BB00">
+            <DockPanel Width="Auto" Height="31" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="2" >
+                <CloseButton Name="PART_Close" HorizontalAlignment="Left" VerticalAlignment="Center" DockPanel.Dock="Right" Cursor="Hand" />
+                <MinimizeButton Name="PART_Min" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" DockPanel.Dock="Right" />
+                <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Margin="0" DockPanel.Dock="Right" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0"
+                                            Fill="{TemplateBinding Background}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.666667,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Margin="0" DockPanel.Dock="Right" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0"
+                                            Fill="{TemplateBinding Background}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.666667,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Margin="0" DockPanel.Dock="Right" Cursor="Hand" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0"
+                                            Fill="{TemplateBinding Background}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.679012,0.000000,0.308642,1.000000" Stretch="Uniform" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <TextBlock Text="360安全卫士" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Margin="4,0,0,0" Foreground="White" FontWeight="ExtraBold" FontSize="10" />
+            </DockPanel>
+            <StackPanel Rows="1" Width="800" Height="68" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,5,0,0"
+                Orientation="Horizontal" >
+                <StackPanel.Resources>
+                    
+                    <Style TargetType="RadioButton">
+                        <Setter Property="Width" Value="90" />
+                        <Setter Property="Height" Value="80" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="GroupName" Value="titleGrp" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Border Name="Bd" Background="{TemplateBinding Background}" >
+                                        <DockPanel>
+                                            <Border Width="42" Height="42" DockPanel.Dock="Top" Background="{TemplateBinding Tag}" HorizontalAlignment="Center" />
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,4,0,6" Width="Auto" />
+                                        </DockPanel>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource cb_normal}" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource cb_normal}" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Cursor" Value="Hand" />
+
+                    </Style>
+                </StackPanel.Resources>
+
+                <RadioButton IsChecked="True" Margin="0,0" Tag="{StaticResource tj_1}" Content="电脑体检" Cursor="Hand" />
+                <RadioButton Margin="0,0" Tag="{StaticResource mm_1}" Content="木马查杀" Cursor="Hand" />
+                <RadioButton Margin="0,0" Tag="{StaticResource ql_1}" Content="电脑清理" Cursor="Hand" />
+                <RadioButton Margin="0,0" Tag="{StaticResource xfie_1}" Content="系统修复" Cursor="Hand" />
+
+                <RadioButton Margin="0,0" Tag="{StaticResource yh_1}" Content="优化加速" Cursor="Hand" />
+                <RadioButton Margin="0,0" Tag="{StaticResource gndq_1}" Content="功能大全" Cursor="Hand" />
+                <RadioButton Margin="0,0" Tag="{StaticResource xjk_1}" Content="小金库" Cursor="Hand" />
+                <RadioButton Margin="0,0" Tag="{StaticResource rjgj_1}" Content="软件管家" Cursor="Hand" />
+
+                <Grid Width="141" Height="92" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,0,0,0" >
+                    <PlayBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Play="True" >
+                        <PlayBox.Resources>
+                            <Style TargetType="Rectangle">
+                                <Setter Property="PlayBox.PlayDelay" Value="150" />
+                            </Style>
+                        </PlayBox.Resources>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="0.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="141.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="282.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="423.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="564.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="705.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="846.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="987.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1128.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1269.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1410.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1551.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle PlayBox.PlayDelay="3000" >
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1692.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </PlayBox>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Width="Auto" Height="Auto" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,120,0,0" >
+            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,14,0,0" Width="146" Height="118" 
+                Source="/360Safe;/image/skin_error.png" StretchDirection="UpOnly" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window Name="window" Title="Window" Width="809" Height="471" RoundSize="0,0" BorderThickness="0" 
+    AllowsTransparency="True" ResizeMode="CanResize" >
+    <Window.Background>
+        <ImageBrush ImageSource="/360Safe;/image/bg.png" />
+    </Window.Background>
+    <Window.Resources>
+        <ImageBrush x:Key="tj_1" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.000000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_2" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.100000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_3" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.202083,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_4" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.300000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_5" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.400000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_6" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.500000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_7" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.600000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_8" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.700000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_9" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.800000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="tj_10" ImageSource="/360Safe;/image/tj_hover.png" Viewbox="0.900000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_1" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.000000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_2" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.100000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_3" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.202083,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_4" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.300000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_5" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.400000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_6" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.500000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_7" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.600000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_8" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.700000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_9" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.800000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="mm_10" ImageSource="/360Safe;/image/mm_hover.png" Viewbox="0.900000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_1" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.000000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_2" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.100000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_3" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.202083,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_4" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.300000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_5" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.400000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_6" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.500000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_7" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.600000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_8" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.700000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_9" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.800000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="xfie_10" ImageSource="/360Safe;/image/xfie_hover.png" Viewbox="0.900000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_1" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.000000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_2" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.100000,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_3" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.202083,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_4" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.300000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_5" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.400000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_6" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.500000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_7" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.600000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_8" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.700000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_9" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.800000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="ql_10" ImageSource="/360Safe;/image/ql_hover.png" Viewbox="0.900000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_1" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.000000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_2" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.100000,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_3" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.202083,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_4" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.300000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_5" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.400000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_6" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.500000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_7" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.600000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_8" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.700000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_9" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.800000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yh_10" ImageSource="/360Safe;/image/yh_hover.png" Viewbox="0.900000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_1" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.000000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_2" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.100000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_3" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.202083,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_4" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.300000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_5" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.400000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_6" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.500000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_7" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.600000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_8" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.700000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_9" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.800000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="yy_10" ImageSource="/360Safe;/image/yy_hover.png" Viewbox="0.900000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_1" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.000000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_2" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.100000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_3" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.200000,0.000000,0.097917,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_4" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.300000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_5" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.400000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_6" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.500000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_7" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.600000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_8" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.700000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_9" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.800000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+        <ImageBrush x:Key="sj_10" ImageSource="/360Safe;/image/sj_hover.png" Viewbox="0.900000,0.000000,0.100000,1.000000" Stretch="Uniform" />
+    </Window.Resources>
+    <Grid Margin="0" Width="Auto" Height="Auto" >
+        <StackPanel Rows="1" Width="800" Height="68" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,39,0,0" 
+            Orientation="Horizontal" >
+            <StackPanel.Resources>
+                <ImageBrush x:Key="cb_normal" ImageSource="/360Safe;/image/skin_tab_main.png" Viewbox="0.666667,0.000000,0.333333,1.000000" />
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="70" />
+                    <Setter Property="Height" Value="76" />
+                    <Setter Property="PlayBox.PlayDelay" Value="30" />
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <StackPanel>
+                                    <Border Width="48" Height="48" Background="{TemplateBinding Tag}" HorizontalAlignment="Center" />
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4,0,0" Width="Auto" />
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="RadioButton">
+                    <Setter Property="Width" Value="70" />
+                    <Setter Property="Height" Value="76" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="GroupName" Value="titleGrp" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="RadioButton">
+                                <Border Background="{TemplateBinding Background}" >
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{StaticResource cb_normal}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource cb_normal}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Resources>
+            <RadioButton IsChecked="True" Margin="8,0" Cursor="Hand" >
+                <PlayBox HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnterPlay="True" Play="True" >
+                    <Button Content="电脑体检" Tag="{StaticResource tj_1}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_2}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_3}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_4}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_5}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_6}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_7}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_8}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_9}" />
+                    <Button Content="电脑体检" Tag="{StaticResource tj_10}" />
+                </PlayBox>
+            </RadioButton>
+            <RadioButton Margin="8,0" >
+                <PlayBox HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnterPlay="True" Play="False" >
+                    <Button Content="木马查杀" Tag="{StaticResource mm_1}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_2}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_3}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_4}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_5}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_6}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_7}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_8}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_9}" />
+                    <Button Content="木马查杀" Tag="{StaticResource mm_10}" />
+                </PlayBox>
+            </RadioButton>
+            <RadioButton Margin="8,0" >
+                <PlayBox HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnterPlay="True" Play="False" >
+                    <Button Content="系统修复" Tag="{StaticResource xfie_1}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_2}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_3}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_4}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_5}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_6}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_7}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_8}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_9}" />
+                    <Button Content="系统修复" Tag="{StaticResource xfie_10}" />
+                </PlayBox>
+            </RadioButton>
+            <RadioButton Margin="8,0" >
+                <PlayBox HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnterPlay="True" Play="False" >
+                    <Button Content="电脑清理" Tag="{StaticResource ql_1}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_2}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_3}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_4}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_5}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_6}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_7}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_8}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_9}" />
+                    <Button Content="电脑清理" Tag="{StaticResource ql_10}" />
+                </PlayBox>
+            </RadioButton>
+            <RadioButton Margin="8,0" >
+                <PlayBox HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnterPlay="True" Play="False" >
+                    <Button Content="优化加速" Tag="{StaticResource yh_1}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_2}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_3}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_4}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_5}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_6}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_7}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_8}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_9}" />
+                    <Button Content="优化加速" Tag="{StaticResource yh_10}" />
+                </PlayBox>
+            </RadioButton>
+            <RadioButton Margin="8,0" >
+                <PlayBox HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnterPlay="True" Play="False" >
+                    <Button Content="人工服务" Tag="{StaticResource yy_1}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_2}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_3}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_4}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_5}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_6}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_7}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_8}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_9}" />
+                    <Button Content="人工服务" Tag="{StaticResource yy_10}" />
+                </PlayBox>
+            </RadioButton>
+            <RadioButton Margin="8,0" >
+                <PlayBox HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnterPlay="True" Play="False" Margin="0" >
+                    <Button Content="手机助手" Tag="{StaticResource sj_1}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_2}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_3}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_4}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_5}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_6}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_7}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_8}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_9}" />
+                    <Button Content="手机助手" Tag="{StaticResource sj_10}" />
+                </PlayBox>
+            </RadioButton>
+            <Grid Width="141" Height="92" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,0,0,0" >
+                <PlayBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Play="True" >
+                    <PlayBox.Resources>
+                        <Style TargetType="Rectangle">
+                            <Setter Property="PlayBox.PlayDelay" Value="150" />
+                        </Style>
+                    </PlayBox.Resources>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="0.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="141.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="282.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="423.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="564.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="705.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="846.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="987.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1128.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1269.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1410.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1551.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Rectangle PlayBox.PlayDelay="3000" >
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1692.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </PlayBox>
+            </Grid>
+        </StackPanel>
+        <DockPanel Width="Auto" Height="31" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="2" >
+            <CloseButton Name="PART_Close" HorizontalAlignment="Left" VerticalAlignment="Center" Width="27" Height="22" 
+                Margin="0" DockPanel.Dock="Right" Cursor="Hand" />
+            <MaximizeButton Name="PART_Max" HorizontalAlignment="Left" VerticalAlignment="Center" Width="27" Height="22" 
+                Margin="0" DockPanel.Dock="Right" />
+            <MinimizeButton Name="PART_Min" HorizontalAlignment="Left" VerticalAlignment="Center" Width="27" Height="22" 
+                Margin="0" DockPanel.Dock="Right" />
+            <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                Margin="0" DockPanel.Dock="Right" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0" 
+                                        Fill="{TemplateBinding Background}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.666667,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                Margin="0" DockPanel.Dock="Right" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0" 
+                                        Fill="{TemplateBinding Background}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.666667,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                Margin="0" DockPanel.Dock="Right" Cursor="Hand" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0" 
+                                        Fill="{TemplateBinding Background}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.679012,0.000000,0.308642,1.000000" Stretch="Uniform" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBlock Text="360安全卫士" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                Margin="4,0,0,0" Foreground="White" FontWeight="ExtraBold" FontSize="10" />
+        </DockPanel>
+        <Grid Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="16,124,16,16" >
+            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,14,0,0" Width="146" Height="118" 
+                Source="/360Safe;/image/skin_error.png" StretchDirection="UpOnly" />
+        </Grid>
+    </Grid>
+</Window>

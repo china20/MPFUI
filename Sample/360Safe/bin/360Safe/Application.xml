@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application StartupUri="/360Safe;/mainwindow.xml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/360Safe;/theme/default.xml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
