@@ -52,7 +52,7 @@
                     </Border>
                 </Grid>
             </Grid >
-
         </DockPanel>
+		<ResizeGrip VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="8" Height="8" />
     </Grid>
 </Window>
