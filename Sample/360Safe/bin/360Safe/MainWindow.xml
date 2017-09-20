@@ -38,7 +38,7 @@
     </Window.Resources>
     
     <Grid Margin="0" Width="Auto" Height="Auto" >
-        <StackPanel Background="#00BB00">
+        <StackPanel Background="#FF22CB64">
             <DockPanel Width="Auto" Height="31" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="2" >
                 <CloseButton Name="PART_Close" HorizontalAlignment="Left" VerticalAlignment="Center" DockPanel.Dock="Right" Cursor="Hand" />
                 <MinimizeButton Name="PART_Min" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" DockPanel.Dock="Right" />
@@ -130,33 +130,37 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="RadioButton">
-                                    <Grid >
-                                        <Grid>
-                                            <PlayBox Name="Pb" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Play="False" >
-                                                <PlayBox.Resources>
-                                                    <Style TargetType="Rectangle">
-                                                        <Setter Property="PlayBox.PlayDelay" Value="150" />
-                                                    </Style>
-                                                </PlayBox.Resources>
-                                                <Rectangle Fill="{DynamicResource TabAnimate01}" />
-                                                <Rectangle Fill="{DynamicResource TabAnimate02}" />
-                                                <Rectangle Fill="{DynamicResource TabAnimate03}" />
-                                                <Rectangle Fill="{DynamicResource TabAnimate04}" />
-                                            </PlayBox>>
-                                        </Grid>
-                                        <DockPanel>
+                                    <Grid Name="Bd" Background="{TemplateBinding Background}">
+                                        <PlayBox Name="Pb" Visibility="Collapsed" MousePlay="True" Play="False" PlayBehavior="0" >
+                                            <PlayBox.Resources>
+                                                <Style TargetType="Rectangle">
+                                                    <Setter Property="PlayBox.PlayDelay" Value="1500" />
+                                                </Style>
+                                            </PlayBox.Resources>
+                                            <Rectangle Fill="{DynamicResource TabAnimate01}" />
+                                            <Rectangle Fill="{DynamicResource TabAnimate02}" />
+                                            <Rectangle Fill="{DynamicResource TabAnimate03}" />
+                                            <Rectangle Fill="{DynamicResource TabAnimate04}" />
+                                        </PlayBox>
+                                        <DockPanel IsHitTestVisible="False">
                                             <Border Width="42" Height="42" DockPanel.Dock="Top" Background="{TemplateBinding Tag}" HorizontalAlignment="Center" />
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,4,0,6" Width="Auto" />
                                         </DockPanel>
                                     </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked" Value="True">
-                                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource cb_normal}" />
+                                            <Setter Property="Visibility" TargetName="Pb" Value="Collapsed" />
+                                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource TabAnimate04}" />
                                         </Trigger>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource cb_normal}" />
-                                            <Setter Property="Play" TargetName="Pb" Value="True" />
-                                        </Trigger>
+                                        
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsChecked" Value="False"/>
+                                                <Condition Property="IsMouseOver" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Visibility" TargetName="Pb" Value="Visible" />
+                                        </MultiTrigger>
+                                        
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
