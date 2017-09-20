@@ -24,11 +24,16 @@
         <ImageBrush x:Key="MenuHot" ImageSource="/360Safe;/images/MainFrame/Image/Menu_v11.png" Viewbox="27,0,27,27" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="MenuPress" ImageSource="/360Safe;/images/MainFrame/Image/Menu_v11.png" Viewbox="54,0,27,27" ViewboxUnits="Absolute" />
 
-        <ImageBrush x:Key="Medal2Normal" ImageSource="/360Safe;/images/MainFrame/Image/MedalUnLight2.png" Viewbox="0,24,30" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="Medal2Normal" ImageSource="/360Safe;/images/MainFrame/Image/MedalUnLight2.png" Viewbox="0,0,24,30" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="Medal2Hot" ImageSource="/360Safe;/images/MainFrame/Image/MedalUnLight2.png" Viewbox="24,0,24,30" ViewboxUnits="Absolute" />
         <ImageBrush x:Key="Medal2Press" ImageSource="/360Safe;/images/MainFrame/Image/MedalUnLight2.png" Viewbox="48,0,24,30" ViewboxUnits="Absolute" />
 
         <ImageBrush x:Key="cb_normal" ImageSource="/360Safe;/images/MainFrame/Image/tab_hover.png" Viewbox="0,0.000000,0.333333,1.000000" />
+
+        <ImageBrush x:Key="TabAnimate01" ImageSource="/360Safe;/images/MainFrame/Image/tab_hover_animate.png" Viewbox="0,0,92,94" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="TabAnimate02" ImageSource="/360Safe;/images/MainFrame/Image/tab_hover_animate.png" Viewbox="92,0,92,94" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="TabAnimate03" ImageSource="/360Safe;/images/MainFrame/Image/tab_hover_animate.png" Viewbox="184,0,92,94" ViewboxUnits="Absolute" />
+        <ImageBrush x:Key="TabAnimate04" ImageSource="/360Safe;/images/MainFrame/Image/tab_hover_animate.png" Viewbox="276,0,92,94" ViewboxUnits="Absolute" />
         
     </Window.Resources>
     
@@ -37,15 +42,11 @@
             <DockPanel Width="Auto" Height="31" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="2" >
                 <CloseButton Name="PART_Close" HorizontalAlignment="Left" VerticalAlignment="Center" DockPanel.Dock="Right" Cursor="Hand" />
                 <MinimizeButton Name="PART_Min" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0" DockPanel.Dock="Right" />
-                <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center"
+                <Button Content="Button" Width="27" Height="27" HorizontalAlignment="Left" VerticalAlignment="Center"
                     Margin="0" DockPanel.Dock="Right" >
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Background" Value="{DynamicResource SkinNormal}" />
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
@@ -55,69 +56,21 @@
                                 </Setter.Value>
                             </Setter>
                             <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="/360Safe;/image/skin_menu.png" Viewbox="0.666667,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                        </Setter.Value>
-                                    </Setter>
+                                    <Setter Property="Background" Value="{DynamicResource SkinPress}" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource SkinHot}" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center"
-                    Margin="0" DockPanel.Dock="Right" >
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0"
-                                            Fill="{TemplateBinding Background}" />
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="/360Safe;/image/skin_feedback.png" Viewbox="0.666667,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <Button Content="Button" Width="27" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center"
+                <Button Content="Button" Width="27" Height="27" HorizontalAlignment="Left" VerticalAlignment="Center"
                     Margin="0" DockPanel.Dock="Right" Cursor="Hand" >
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.000000,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Background" Value="{DynamicResource MenuNormal}" />
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
@@ -127,24 +80,41 @@
                                 </Setter.Value>
                             </Setter>
                             <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.333333,0.000000,0.333333,1.000000" Stretch="Uniform" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="/360Safe;/image/skin_skin.png" Viewbox="0.679012,0.000000,0.308642,1.000000" Stretch="Uniform" />
-                                        </Setter.Value>
-                                    </Setter>
+                                    <Setter Property="Background" Value="{DynamicResource MenuPress}" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource MenuHot}" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
                 </Button>
+                <Button Content="Button" Width="24" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Margin="0" DockPanel.Dock="Right" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="{DynamicResource Medal2Normal}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Margin="0"
+                                            Fill="{TemplateBinding Background}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource Medal2Press}" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource Medal2Hot}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                
                 <TextBlock Text="360安全卫士" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     Margin="4,0,0,0" Foreground="White" FontWeight="ExtraBold" FontSize="10" />
             </DockPanel>
@@ -160,18 +130,32 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="RadioButton">
-                                    <Border Name="Bd" Background="{TemplateBinding Background}" >
+                                    <Grid >
+                                        <Grid>
+                                            <PlayBox Name="Pb" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Play="False" >
+                                                <PlayBox.Resources>
+                                                    <Style TargetType="Rectangle">
+                                                        <Setter Property="PlayBox.PlayDelay" Value="150" />
+                                                    </Style>
+                                                </PlayBox.Resources>
+                                                <Rectangle Fill="{DynamicResource TabAnimate01}" />
+                                                <Rectangle Fill="{DynamicResource TabAnimate02}" />
+                                                <Rectangle Fill="{DynamicResource TabAnimate03}" />
+                                                <Rectangle Fill="{DynamicResource TabAnimate04}" />
+                                            </PlayBox>>
+                                        </Grid>
                                         <DockPanel>
                                             <Border Width="42" Height="42" DockPanel.Dock="Top" Background="{TemplateBinding Tag}" HorizontalAlignment="Center" />
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,4,0,6" Width="Auto" />
                                         </DockPanel>
-                                    </Border>
+                                    </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked" Value="True">
                                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource cb_normal}" />
                                         </Trigger>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource cb_normal}" />
+                                            <Setter Property="Play" TargetName="Pb" Value="True" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>

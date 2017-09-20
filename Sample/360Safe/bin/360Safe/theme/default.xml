@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary>
 
-    <ImageBrush x:Key="SysMinNormal" ImageSource="/360Safe;/images/MainFrame/Image/sys_button_min.png" Viewbox="0,0,27,22" ViewboxUnits="Absolute" />
-    <ImageBrush x:Key="SysMinHot" ImageSource="/360Safe;/images/MainFrame/Image/sys_button_min.png" Viewbox="27,0,27,22" ViewboxUnits="Absolute" />
-    <ImageBrush x:Key="SysMinPress" ImageSource="/360Safe;/images/MainFrame/Image/sys_button_min.png" Viewbox="54,0,27,22" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysMinNormal" ImageSource="/360Safe;/images/MainFrame/min.png" Viewbox="0,0,27,27" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysMinHot" ImageSource="/360Safe;/images/MainFrame/min.png" Viewbox="27,0,27,27" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysMinPress" ImageSource="/360Safe;/images/MainFrame/min.png" Viewbox="54,0,27,27" ViewboxUnits="Absolute" />
 
-    <ImageBrush x:Key="SysCloseNormal" ImageSource="/360Safe;/images/MainFrame/Image/sys_button_close.png" Viewbox="0,0,32,25" ViewboxUnits="Absolute" />
-    <ImageBrush x:Key="SysCloseHot" ImageSource="/360Safe;/images/MainFrame/Image/sys_button_close.png" Viewbox="32,0,32,25" ViewboxUnits="Absolute" />
-    <ImageBrush x:Key="SysClosePress" ImageSource="/360Safe;/images/MainFrame/Image/sys_button_close.png" Viewbox="64,0,32,25" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysCloseNormal" ImageSource="/360Safe;/images/MainFrame/close.png" Viewbox="0,0,27,27" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysCloseHot" ImageSource="/360Safe;/images/MainFrame/close.png" Viewbox="27,0,27,27" ViewboxUnits="Absolute" />
+    <ImageBrush x:Key="SysClosePress" ImageSource="/360Safe;/images/MainFrame/close.png" Viewbox="54,0,27,27" ViewboxUnits="Absolute" />
     
     <ImageBrush x:Key="calendar_button" ImageSource="/360Safe;/images/control/Calendar/calendar.png" Stretch="Uniform" />
     
@@ -68,8 +68,8 @@
     </Style>
     <Style TargetType="CloseButton">
         <Setter Property="Background" Value="{StaticResource SysCloseNormal}" />
-        <Setter Property="Width" Value="32" />
-        <Setter Property="Height" Value="25" />
+        <Setter Property="Width" Value="27" />
+        <Setter Property="Height" Value="27" />
         <Setter Property="Template" Value="{StaticResource CloseButtonTemplate}" />
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True">
@@ -83,7 +83,7 @@
     <Style TargetType="MinimizeButton">
         <Setter Property="Background" Value="{StaticResource SysMinNormal}" />
         <Setter Property="Width" Value="27" />
-        <Setter Property="Height" Value="22" />
+        <Setter Property="Height" Value="27" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MinimizeButton">
