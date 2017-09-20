@@ -355,7 +355,7 @@ bool OCursor::LoadFromMemory(ByteStream* strm)
     FileStream fStrm;
     bool bSucc = false;
 
-    if (fStrm.Open(tempFileName, false))
+    if (fStrm.Open(tempFileName, true))
     {
         fStrm.Write((Byte*)strm->GetBuffer(), strm->GetSize());
         fStrm.Close();

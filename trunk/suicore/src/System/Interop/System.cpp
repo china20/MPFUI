@@ -120,7 +120,7 @@ int CoreSystem::ReadFileData(const String& strPath, suic::ISStream* data)
     int iSize = 0;
     FileStream fStrm;
 
-    if (fStrm.Open(strFile, false))
+    if (fStrm.Open(strFile, true))
     {
         StreamOp::WriteToStream(data, &fStrm);
         iSize = data->GetSize();
