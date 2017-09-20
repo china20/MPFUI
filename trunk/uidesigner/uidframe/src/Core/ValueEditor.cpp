@@ -2476,7 +2476,7 @@ void BrushEditorPanel::OnBrushChanged(DpObject* sender, RoutedEventArg* e)
     }
 }
 
-void BrushEditorPanel::OnRadioChecked(Element* sender, RoutedEventArg* e)
+void BrushEditorPanel::OnRadioChecked(DpObject* sender, RoutedEventArg* e)
 {
     e->SetHandled(true);
 }
@@ -2499,7 +2499,7 @@ void BrushEditorPanel::OnInitialized(EventArg* e)
     }
 
     AddHandler(BrushEditor::BrushChangedEvent, new RoutedEventHandler(this, &BrushEditorPanel::OnBrushChanged));
-    AddHandler(ToggleButton::CheckedEvent, new ClickEventHandler(this, &BrushEditorPanel::OnRadioChecked));
+    AddHandler(ToggleButton::CheckedEvent, new RoutedEventHandler(this, &BrushEditorPanel::OnRadioChecked));
 }
 
 void BrushEditorPanel::OnApplyTemplate()

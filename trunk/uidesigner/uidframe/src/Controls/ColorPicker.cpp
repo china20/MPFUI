@@ -383,7 +383,7 @@ suic::OCursor* ColorPickerBox::GetCursor()
 void ColorPickerBox::OnSetCursor(suic::CursorEventArg* e)
 {
     e->SetHandled(true);
-    e->SetCursor(_cursor);
+    e->SetCursor(GetCursor());
     suic::Control::OnSetCursor(e);
 }
 
@@ -392,7 +392,7 @@ void ColorPickerBox::OnMouseMove(suic::MouseButtonEventArg* e)
     e->SetHandled(true);
     if (IsMouseCaptured())
     {
-        _cursor->SetCursor();
+        GetCursor()->SetCursor();
         //::SetCursor(LoadCursor(NULL, MAKEINTRESOURCE(IDC_PICKER)));
         ColorPicker* clrPicker = RTTICast<ColorPicker>(GetTemplatedParent());
         if (NULL != clrPicker)

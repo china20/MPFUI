@@ -643,7 +643,7 @@ public:
     void ResetBrushEditorPanel();
 
     void OnBrushChanged(DpObject* sender, RoutedEventArg* e);
-    void OnRadioChecked(Element* sender, RoutedEventArg* e);
+    void OnRadioChecked(DpObject* sender, RoutedEventArg* e);
 
 protected:
 
