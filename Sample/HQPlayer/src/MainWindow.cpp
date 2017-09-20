@@ -57,6 +57,8 @@ void MainWindow::OnLoaded(suic::LoadedEventArg* e)
 
     playView->unref();
 
+    SetAllowDrop(true);
+
     // 
     // ¥∞ø⁄æ”÷–œ‘ æ
     //
@@ -199,6 +201,26 @@ void MainWindow::OnCheckMouseMove(suic::Object* sender, suic::EventArg* e)
     }
 }
 
+void MainWindow::OnPreviewDrop(suic::DragEventArg* e)
+{
+    suic::FileDragInfo* fi = NULL;
+    suic::IDataStore* ds = suic::DynamicCast<suic::IDataStore>(e->GetData());
+    if (NULL != ds)
+    {
+        e->SetHandled(true);
+        fi = suic::DynamicCast<suic::FileDragInfo>(ds->GetData("Object"));
+        if (NULL != fi && fi->GetCount() > 0)
+        {
+            PlayFile(fi->GetFilePath(0));
+
+            for (int i = 1; i < fi->GetCount(); ++i)
+            {
+                _playManager->AddVideo(fi->GetFilePath(i));
+            }
+        }
+    }
+}
+
 void MainWindow::ShowBottomStatus(bool bShow)
 {
     suic::RectAnimation* mgrAni = NULL;
@@ -304,6 +326,16 @@ void MainWindow::PlayCallback(bool start, int index)
     _playListBox->SetSelectedIndex(index);
 }
 
+void MainWindow::PlayFile(suic::String strFile)
+{
+    _playManager->PlayVideo(strFile);
+
+    SetTitle(strFile);
+
+    FindName("btnPause")->SetVisibility(suic::Visibility::Visible);
+    FindName("btnPlay")->SetVisibility(suic::Visibility::Hidden);
+}
+
 void MainWindow::OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg* e)
 {
     e->SetHandled(true);
@@ -313,12 +345,7 @@ void MainWindow::OnClickOpenButton(suic::DpObject* sender, suic::RoutedEventArg*
     {
         suic::String strPath = fb.GetFilePath();
 
-        _playManager->PlayVideo(strPath);
-
-        SetTitle(strPath);
-
-        FindName("btnPause")->SetVisibility(suic::Visibility::Visible);
-        FindName("btnPlay")->SetVisibility(suic::Visibility::Hidden);
+        PlayFile(strPath);
     }
 }
 

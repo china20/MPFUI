@@ -65,6 +65,8 @@ protected:
 
     void OnCheckMouseMove(suic::Object* sender, suic::EventArg* e);
 
+    virtual void OnPreviewDrop(suic::DragEventArg* e);
+
     void Dispose();
     
     void PlayCallback(bool start, int index);
@@ -73,6 +75,7 @@ protected:
     void ShowRightPlayPanel(bool bShow);
 
     void UpdateVolumeStatus(bool bOpen);
+    void PlayFile(suic::String strFile);
 
 protected:
 

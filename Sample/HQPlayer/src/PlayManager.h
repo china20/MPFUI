@@ -53,6 +53,8 @@ public:
 
     void PlayCurrentVideo();
     void PlayVideo(suic::String filename);
+    void AddVideo(suic::String filename);
+
     void PauseVideo(bool bPause);
     void StopVideo();
     bool IsPlaying() const;
