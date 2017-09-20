@@ -451,6 +451,12 @@ enum WindowStyle
     wsToolWindow,
 };
 
+enum eDropType : suic::Byte
+{
+    dtDefault,
+    dtFiles,
+};
+
 }
 
 #ifdef __NOBMPDEF

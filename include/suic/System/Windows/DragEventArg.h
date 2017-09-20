@@ -147,7 +147,7 @@ public:
 class SUICORE_API DragEventArg : public RoutedEventArg
 {
 private:
-
+    
     suic::Point _dropPoint;
     suic::DpObject* _target;
     IDataStore* _data;
@@ -155,11 +155,18 @@ private:
     DragDropEffects _allowedEffects;
     DragDropKeyStates _dragDropKeyStates;
 
+    suic::eDropType _dropType;
+
 public:
 
-    DragEventArg(IDataStore* data, DragDropKeyStates dragDropKeyStates, DragDropEffects allowedEffects, DpObject* target, Point point);
+    DragEventArg(IDataStore* data, DragDropKeyStates dragDropKeyStates, 
+        DragDropEffects allowedEffects, DpObject* target, Point point);
+    DragEventArg(IDataStore* data, DragDropKeyStates dragDropKeyStates, 
+        DragDropEffects allowedEffects, DpObject* target, Point point, suic::eDropType t);
+
     ~DragEventArg();
 
+    suic::eDropType GetDropType() const;
     suic::Point GetPosition(suic::Element* relativeTo);
     DragDropEffects GetAllowedEffects() const;
     IDataStore* GetData() const;
@@ -167,6 +174,11 @@ public:
     void SetEffects(DragDropEffects val);
     DragDropKeyStates GetKeyStates() const;
 };
+
+inline suic::eDropType DragEventArg::GetDropType() const
+{
+    return _dropType;
+}
 
 }
 
