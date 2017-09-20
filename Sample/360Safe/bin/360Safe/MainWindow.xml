@@ -131,7 +131,7 @@
                             <Setter.Value>
                                 <ControlTemplate TargetType="RadioButton">
                                     <Grid Name="Bd" Background="{TemplateBinding Background}">
-                                        <PlayBox Name="Pb" Visibility="Collapsed" MousePlay="True" Play="False" PlayBehavior="0" >
+                                        <PlayBox Name="Pb" Visibility="{Binding TemplatedParent.IsMouseOver,Converter=BToV,ConverterParam=}" Width="90" Height="80" MousePlay="False" Play="{TemplateBinding PlayBox.Play}" PlayBehavior="0" >
                                             <PlayBox.Resources>
                                                 <Style TargetType="Rectangle">
                                                     <Setter Property="PlayBox.PlayDelay" Value="1500" />
@@ -152,21 +152,20 @@
                                             <Setter Property="Visibility" TargetName="Pb" Value="Collapsed" />
                                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource TabAnimate04}" />
                                         </Trigger>
-                                        
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
-                                                <Condition Property="IsChecked" Value="False"/>
-                                                <Condition Property="IsMouseOver" Value="True"/>
-                                            </MultiTrigger.Conditions>
-                                            <Setter Property="Visibility" TargetName="Pb" Value="Visible" />
-                                        </MultiTrigger>
-                                        
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                         <Setter Property="Cursor" Value="Hand" />
-
+                        <Style.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter1 Property="PlayBox.Play" Value="True" />
+                            </MultiTrigger>
+                        </Style.Triggers>
                     </Style>
                 </StackPanel.Resources>
 
