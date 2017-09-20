@@ -57,31 +57,6 @@ DataStoreEntry* DataStore::FindDataStoreEntry(suic::String format, DVASPECT aspe
     }
 
     return NULL;
-
-    /*DataStoreEntry[] entryArray = (DataStoreEntry[]) _data[format];
-    DataStoreEntry entry2 = null;
-    DataStoreEntry entry3 = null;
-    if (entryArray != null)
-    {
-        for (int i = 0; i < entryArray.Length; i++)
-        {
-            DataStoreEntry entry = entryArray[i];
-            if ((entry.Aspect == aspect) && ((index == -1) || (entry.Index == index)))
-            {
-                entry2 = entry;
-                break;
-            }
-            if ((entry.Aspect == DVASPECT::DVASPECT_CONTENT) && (entry.Index == 0))
-            {
-                entry3 = entry;
-            }
-        }
-    }
-    if ((entry2 == NULL) && (entry3 != NULL))
-    {
-        entry2 = entry3;
-    }
-    return entry2;*/
 }
 
 suic::Object* DataStore::GetData(suic::String format)
@@ -115,39 +90,6 @@ suic::Object* DataStore::GetData(suic::String format, bool autoConvert, DVASPECT
     {
         return NULL;
     }
-
-    /*DataStoreEntry* dataStoreEntry = FindDataStoreEntry(format, aspect, index);
-    suic::Object* dataFromDataStoreEntry = GetDataFromDataStoreEntry(dataStoreEntry, format);
-    suic::Object* obj3 = dataFromDataStoreEntry;
-    if ((autoConvert && ((dataStoreEntry == NULL) || dataStoreEntry->GetAutoConvert)) && ((dataFromDataStoreEntry == null) || (dataFromDataStoreEntry is MemoryStream)))
-    {
-        string[] mappedFormats = DataObject.GetMappedFormats(format);
-        if (mappedFormats != null)
-        {
-            for (int i = 0; i < mappedFormats.Length; i++)
-            {
-                if (!DataObject.IsFormatEqual(format, mappedFormats[i]))
-                {
-                    DataStoreEntry entry2 = this.FindDataStoreEntry(mappedFormats[i], aspect, index);
-                    dataFromDataStoreEntry = this.GetDataFromDataStoreEntry(entry2, mappedFormats[i]);
-                    if ((dataFromDataStoreEntry != null) && !(dataFromDataStoreEntry is MemoryStream))
-                    {
-                        if (DataObject.IsDataSystemBitmapSource(dataFromDataStoreEntry) || AssemblyHelper.IsBitmap(dataFromDataStoreEntry))
-                        {
-                            dataFromDataStoreEntry = DataObject.EnsureBitmapDataFromFormat(format, autoConvert, dataFromDataStoreEntry);
-                        }
-                        obj3 = null;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    if (obj3 != null)
-    {
-        return obj3;
-    }
-    return dataFromDataStoreEntry;*/
 }
 
 suic::Object* DataStore::GetDataFromDataStoreEntry(DataStoreEntry* dataStoreEntry, suic::String format)
@@ -173,51 +115,10 @@ bool DataStore::GetDataPresent(suic::String format, bool autoConvert)
 bool DataStore::GetDataPresent(suic::String format, bool autoConvert, DVASPECT aspect, int index)
 {
     return false;
-    /*if (autoConvert)
-    {
-        string[] formats = this.GetFormats(autoConvert);
-        for (int j = 0; j < formats.Length; j++)
-        {
-            if (DataObject.IsFormatEqual(format, formats[j]))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    if (!this._data.ContainsKey(format))
-    {
-        return false;
-    }
-    DataStoreEntry[] entryArray = (DataStoreEntry[]) this._data[format];
-    DataStoreEntry entry2 = null;
-    DataStoreEntry entry3 = null;
-    for (int i = 0; i < entryArray.Length; i++)
-    {
-        DataStoreEntry entry = entryArray[i];
-        if ((entry.Aspect == aspect) && ((index == -1) || (entry.Index == index)))
-        {
-            entry2 = entry;
-            break;
-        }
-        if ((entry.Aspect == DVASPECT.DVASPECT_CONTENT) && (entry.Index == 0))
-        {
-            entry3 = entry;
-        }
-    }
-    if ((entry2 == null) && (entry3 != null))
-    {
-        entry2 = entry3;
-    }
-    return (entry2 != null);*/
 }
 
 void DataStore::SetData(suic::Object* data)
 {
-    /*if ((data is ISerializable))
-    {
-        SetData(DataFormats.Serializable, data);
-    }*/
     SetData("Object", data);
 }
 
@@ -228,10 +129,6 @@ void DataStore::SetData(suic::String format, suic::Object* data)
 
 void DataStore::SetData(suic::String format, suic::Object* data, bool autoConvert)
 {
-    /*if ((DataObject.IsFormatEqual(format, DataFormats.Dib) && autoConvert) && (AssemblyHelper.IsBitmap(data) || DataObject.IsDataSystemBitmapSource(data)))
-    {
-        format = DataFormats.Bitmap;
-    }*/
     SetData(format, data, autoConvert, DVASPECT::DVASPECT_CONTENT, 0);
 }
 
@@ -242,21 +139,6 @@ void DataStore::SetData(suic::String format, suic::Object* data, bool autoConver
     {
         dataStoreEntry->SetData(data);
     }
-
-    /*DataStoreEntry entry = new DataStoreEntry(data, autoConvert, aspect, index);
-    DataStoreEntry[] entryArray = (DataStoreEntry[]) this._data[format];
-    if (entryArray == null)
-    {
-        entryArray = (DataStoreEntry[]) Array.CreateInstance(typeof(DataStoreEntry), 1);
-    }
-    else
-    {
-        DataStoreEntry[] array = (DataStoreEntry[]) Array.CreateInstance(typeof(DataStoreEntry), (int) (entryArray.Length + 1));
-        entryArray.CopyTo(array, 1);
-        entryArray = array;
-    }
-    entryArray[0] = entry;
-    _data[format] = entryArray;*/
 }
 
 //==========================================================
@@ -272,15 +154,6 @@ DataObject::~DataObject(void)
 {  
     _refCount = 0;  
   
-    /*int nSize = (int)m_dataStorageCL.size();  
-    for (int i = 0; i < nSize; ++i)  
-    {  
-        DATASTORAGE_t dataEntry = m_dataStorageCL.at(i);  
-        ReleaseStgMedium(dataEntry.m_stgMedium);  
-        SAFE_DELETE(dataEntry.m_stgMedium);  
-        SAFE_DELETE(dataEntry.m_formatEtc);  
-    }*/ 
-
     if (_dataStore != NULL)
     {
         _dataStore->unref();
@@ -341,77 +214,6 @@ STDMETHODIMP DataObject::GetData(FORMATETC *pformatetcIn, STGMEDIUM *pmedium)
 
     pmedium->hGlobal = NULL;  
 
-    /*int nSize = (int)m_dataStorageCL.size();
-
-    for (int i = 0; i < nSize; ++i)  
-    {
-        DATASTORAGE_t dataEntry = m_dataStorageCL.at(i);  
-        if ((pformatetcIn->tymed & dataEntry.m_formatEtc->tymed) &&  
-            (pformatetcIn->dwAspect == dataEntry.m_formatEtc->dwAspect) &&  
-            (pformatetcIn->cfFormat == dataEntry.m_formatEtc->cfFormat))  
-        {
-            return CopyMedium(pmedium, dataEntry.m_stgMedium, dataEntry.m_formatEtc);  
-        }
-    }*/
-
-    /*
-    if (this._innerData is OleConverter)
-    {
-    ((OleConverter) this._innerData).OleDataObject.GetData(ref formatetc, out medium);
-    }
-    else
-    {
-    int hr = -2147221399;
-    medium = new STGMEDIUM();
-    if (this.GetTymedUseable(formatetc.tymed))
-    {
-    if ((formatetc.tymed & TYMED.TYMED_HGLOBAL) != TYMED.TYMED_NULL)
-    {
-    medium.tymed = TYMED.TYMED_HGLOBAL;
-    medium.unionmember = Win32GlobalAlloc(0x2042, (IntPtr) 1);
-    hr = this.OleGetDataUnrestricted(ref formatetc, ref medium, false);
-    if (NativeMethods.Failed(hr))
-    {
-    Win32GlobalFree(new HandleRef(this, medium.unionmember));
-    }
-    }
-    else if ((formatetc.tymed & TYMED.TYMED_ISTREAM) != TYMED.TYMED_NULL)
-    {
-    if (SecurityHelper.CheckUnmanagedCodePermission())
-    {
-    medium.tymed = TYMED.TYMED_ISTREAM;
-    IStream istream = null;
-    hr = Win32CreateStreamOnHGlobal(IntPtr.Zero, true, ref istream);
-    if (NativeMethods.Succeeded(hr))
-    {
-    medium.unionmember = Marshal.GetComInterfaceForObject(istream, typeof(IStream));
-    Marshal.ReleaseComObject(istream);
-    hr = this.OleGetDataUnrestricted(ref formatetc, ref medium, false);
-    if (NativeMethods.Failed(hr))
-    {
-    Marshal.Release(medium.unionmember);
-    }
-    }
-    }
-    else
-    {
-    hr = -2147467259;
-    }
-    }
-    else
-    {
-    medium.tymed = formatetc.tymed;
-    hr = this.OleGetDataUnrestricted(ref formatetc, ref medium, false);
-    }
-    }
-    if (NativeMethods.Failed(hr))
-    {
-    medium.unionmember = IntPtr.Zero;
-    Marshal.ThrowExceptionForHR(hr);
-    }
-    }
-    */
-
     return DV_E_FORMATETC;  
 }
 
@@ -443,22 +245,6 @@ STDMETHODIMP DataObject::SetData(FORMATETC *pformatetc, STGMEDIUM *pmedium, BOOL
         CopyMedium(pStgMed, pmedium, pformatetc);  
     }
   
-    //DATASTORAGE_t dataEntry = { fetc, pStgMed };  
-    //m_dataStorageCL.push_back(dataEntry);  
-
-    /*
-    SecurityHelper.DemandAllClipboardPermission();
-    if (this._innerData is OleConverter)
-    {
-    ((OleConverter) this._innerData).OleDataObject.SetData(ref pFormatetcIn, ref pmedium, fRelease);
-    }
-    else
-    {
-    Marshal.ThrowExceptionForHR(-2147467263);
-    }
-
-    */
-  
     return S_OK;  
 }
 
@@ -480,53 +266,6 @@ STDMETHODIMP DataObject::QueryGetData(FORMATETC *pformatetc)
     }
 
     HRESULT hr = DV_E_TYMED;  
-    /*int nSize = m_dataStorageCL.size();
-
-    for (int i = 0; i < nSize; ++i)  
-    {  
-        DATASTORAGE_t dataEnrty = m_dataStorageCL.at(i);
-
-        if (dataEnrty.m_formatEtc->tymed & pformatetc->tymed)  
-        {  
-            if (dataEnrty.m_formatEtc->cfFormat == pformatetc->cfFormat)  
-            {  
-                return S_OK;  
-            }  
-            else  
-            {  
-                hr = DV_E_CLIPFORMAT;  
-            }  
-        }  
-        else  
-        {  
-            hr = DV_E_TYMED;  
-        }  
-    }  */
-
-    /*
-    if (this._innerData is OleConverter)
-    {
-    return ((OleConverter) this._innerData).OleDataObject.QueryGetData(ref formatetc);
-    }
-    if (formatetc.dwAspect != DVASPECT.DVASPECT_CONTENT)
-    {
-    return -2147221397;
-    }
-    if (!this.GetTymedUseable(formatetc.tymed))
-    {
-    return -2147221399;
-    }
-    if (formatetc.cfFormat == 0)
-    {
-    return 1;
-    }
-    if (this.GetDataPresent(DataFormats.GetDataFormat(formatetc.cfFormat).Name))
-    {
-    return 0;
-    }
-    return -2147221404;
-
-    */
     return hr;
 }
 

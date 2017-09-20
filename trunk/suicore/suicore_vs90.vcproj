@@ -2628,46 +2628,6 @@
 					</File>
 				</Filter>
 				<Filter
-					Name="Markup"
-					>
-					<File
-						RelativePath=".\src\System\Markup\DictionaryXamlParser.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\StyleXamlParser.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\TemplateXamlParser.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\XamlContextStack.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\XamlFrame.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\XamlParser.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\XamlReader.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\XamlStream.cpp"
-						>
-					</File>
-					<File
-						RelativePath=".\src\System\Markup\XamlWriter.cpp"
-						>
-					</File>
-				</Filter>
-				<Filter
 					Name="Tools"
 					>
 					<File

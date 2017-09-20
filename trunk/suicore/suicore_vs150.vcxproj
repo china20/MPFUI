@@ -654,15 +654,6 @@
     <ClCompile Include="src\System\Interop\InternalWindowOper.cpp" />
     <ClCompile Include="src\System\Interop\PlugManager.cpp" />
     <ClCompile Include="src\System\Interop\System.cpp" />
-    <ClCompile Include="src\System\Markup\DictionaryXamlParser.cpp" />
-    <ClCompile Include="src\System\Markup\StyleXamlParser.cpp" />
-    <ClCompile Include="src\System\Markup\TemplateXamlParser.cpp" />
-    <ClCompile Include="src\System\Markup\XamlContextStack.cpp" />
-    <ClCompile Include="src\System\Markup\XamlFrame.cpp" />
-    <ClCompile Include="src\System\Markup\XamlParser.cpp" />
-    <ClCompile Include="src\System\Markup\XamlReader.cpp" />
-    <ClCompile Include="src\System\Markup\XamlStream.cpp" />
-    <ClCompile Include="src\System\Markup\XamlWriter.cpp" />
     <ClCompile Include="src\System\Tools\AcceleratorOp.cpp" />
     <ClCompile Include="src\System\Tools\AlphaHelper.cpp" />
     <ClCompile Include="src\System\Tools\CollectionX.cpp" />

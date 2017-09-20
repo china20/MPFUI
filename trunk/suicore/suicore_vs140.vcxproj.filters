@@ -88,9 +88,6 @@
     <Filter Include="src\System\Interop">
       <UniqueIdentifier>{fa593522-f61d-4521-a04b-6fd9f9ae8e59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\System\Markup">
-      <UniqueIdentifier>{14f36abb-98b9-4185-b237-845a9be54597}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\System\Tools">
       <UniqueIdentifier>{3d145f8f-113e-4fda-bd25-fffbb4fe4625}</UniqueIdentifier>
     </Filter>
@@ -575,33 +572,6 @@
     </ClCompile>
     <ClCompile Include="src\System\Interop\System.cpp">
       <Filter>src\System\Interop</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\DictionaryXamlParser.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\StyleXamlParser.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\TemplateXamlParser.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\XamlContextStack.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\XamlFrame.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\XamlParser.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\XamlReader.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\XamlStream.cpp">
-      <Filter>src\System\Markup</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\Markup\XamlWriter.cpp">
-      <Filter>src\System\Markup</Filter>
     </ClCompile>
     <ClCompile Include="src\System\Tools\AcceleratorOp.cpp">
       <Filter>src\System\Tools</Filter>
