@@ -154,9 +154,12 @@ int PlayManager::CheckPlayFile(suic::String filename)
 
 void PlayManager::AddVideo(suic::String filename)
 {
-    VideoItem* pItem = new VideoItem();
-    _playList->AddItem(pItem);
-    pItem->SetFilePath(filename);
+    if (-1 == CheckPlayFile(filename))
+    {
+        VideoItem* pItem = new VideoItem();
+        _playList->AddItem(pItem);
+        pItem->SetFilePath(filename);
+    }
 }
 
 void PlayManager::PlayVideo(suic::String filename)
