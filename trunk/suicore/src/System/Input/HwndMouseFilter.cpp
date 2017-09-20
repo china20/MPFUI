@@ -290,7 +290,9 @@ bool HwndMouseFilter::Process_WM_DROPFILES(Element* rootElement, MessageParam* m
         DataStore* dataStore = new DataStore(new FileDragInfo(fileDrag, iFileCount));
         HitTestCtx hitRes(mp->point);
         rootElement->HitTest(&hitRes);
-        suic::DragEventArg e(dataStore, suic::DragDropKeyStates::eDragKeyNone, suic::DragDropEffects::eDragNone, hitRes.hitRes.get(), mp->point);
+        suic::DragEventArg e(dataStore, suic::DragDropKeyStates::eDragKeyNone, 
+            suic::DragDropEffects::eDragNone, hitRes.hitRes.get(), 
+            mp->point, suic::eDropType::dtFiles);
 
         e.SetRoutedEvent(suic::DragDrop::PreviewDropEvent);
         hitRes.hitRes->RaiseEvent(&e);

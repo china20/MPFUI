@@ -41,7 +41,26 @@ String FileDragInfo::GetFilePath(int index) const
     return _files[index];
 }
 
-DragEventArg::DragEventArg(IDataStore* data, DragDropKeyStates dragDropKeyStates, DragDropEffects allowedEffects, DpObject* target, Point point)
+DragEventArg::DragEventArg(IDataStore* data, DragDropKeyStates dragDropKeyStates, 
+                           DragDropEffects allowedEffects, DpObject* target, Point point)
+    : _dropType(suic::eDropType::dtDefault)
+{
+    _data = data;
+    if (_data != NULL)
+    {
+        _data->ref();
+    }
+
+    _dragDropKeyStates = dragDropKeyStates;
+    _allowedEffects = allowedEffects;
+    _effects = allowedEffects;
+    _dropPoint = point;
+}
+
+DragEventArg::DragEventArg(IDataStore* data, DragDropKeyStates dragDropKeyStates, 
+                           DragDropEffects allowedEffects, DpObject* target, 
+                           Point point, suic::eDropType t)
+    : _dropType(t)
 {
     _data = data;
     if (_data != NULL)
