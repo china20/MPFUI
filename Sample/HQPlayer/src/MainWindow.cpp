@@ -205,7 +205,7 @@ void MainWindow::OnPreviewDrop(suic::DragEventArg* e)
 {
     suic::FileDragInfo* fi = NULL;
     suic::IDataStore* ds = suic::DynamicCast<suic::IDataStore>(e->GetData());
-    if (NULL != ds)
+    if (NULL != ds && suic::eDropType::dtFiles == e->GetDropType())
     {
         e->SetHandled(true);
         fi = suic::DynamicCast<suic::FileDragInfo>(ds->GetData("Object"));
