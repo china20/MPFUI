@@ -121,7 +121,17 @@
             <StackPanel Rows="1" Width="800" Height="68" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,5,0,0"
                 Orientation="Horizontal" >
                 <StackPanel.Resources>
-                    
+                    <Style TargetType="PlayBox">
+                        <Style.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Play" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="ShowFrame" Value="False" />
+                            </MultiTrigger>
+                        </Style.Triggers>
+                    </Style>
                     <Style TargetType="RadioButton">
                         <Setter Property="Width" Value="90" />
                         <Setter Property="Height" Value="80" />
@@ -131,127 +141,64 @@
                             <Setter.Value>
                                 <ControlTemplate TargetType="RadioButton">
                                     <Grid Name="Bd" Background="{TemplateBinding Background}">
-                                        <PlayBox Name="Pb" Visibility="{Binding TemplatedParent.IsMouseOver,Converter=BToV,ConverterParam=}" Width="90" Height="80" MousePlay="False" Play="{TemplateBinding PlayBox.Play}" PlayBehavior="0" >
-                                            <PlayBox.Resources>
-                                                <Style TargetType="Rectangle">
-                                                    <Setter Property="PlayBox.PlayDelay" Value="1500" />
-                                                </Style>
-                                            </PlayBox.Resources>
-                                            <Rectangle Fill="{DynamicResource TabAnimate01}" />
-                                            <Rectangle Fill="{DynamicResource TabAnimate02}" />
-                                            <Rectangle Fill="{DynamicResource TabAnimate03}" />
-                                            <Rectangle Fill="{DynamicResource TabAnimate04}" />
+                                        <PlayBox Name="Pb" Visibility="Visible" AllowReverse="False" 
+                                                 Width="90" Height="80" MousePlay="True" 
+                                                 Play="False" PlayBehavior="1" ShowFrame="False" >
+                                            <Rectangle Fill="{DynamicResource TabAnimate01}" PlayBox.PlayDelay="100" />
+                                            <Rectangle Fill="{DynamicResource TabAnimate02}" PlayBox.PlayDelay="150" />
+                                            <Rectangle Fill="{DynamicResource TabAnimate03}" PlayBox.PlayDelay="100" />
+                                            <Rectangle Fill="{DynamicResource TabAnimate04}" PlayBox.PlayDelay="100" />
                                         </PlayBox>
-                                        <DockPanel IsHitTestVisible="False">
+                                        <DockPanel HitTestFilterAction="ContinueSkipSelfAndChildren" >
                                             <Border Width="42" Height="42" DockPanel.Dock="Top" Background="{TemplateBinding Tag}" HorizontalAlignment="Center" />
                                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,4,0,6" Width="Auto" />
                                         </DockPanel>
                                     </Grid>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked" Value="True">
-                                            <Setter Property="Visibility" TargetName="Pb" Value="Collapsed" />
+                                            <Setter Property="ShowFrame" TargetName="Pb" Value="False" />
                                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource TabAnimate04}" />
                                         </Trigger>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsChecked" Value="False"/>
+                                                <Condition Property="IsMouseOver" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="ShowFrame" TargetName="Pb" Value="True" />
+                                        </MultiTrigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                         <Setter Property="Cursor" Value="Hand" />
-                        <Style.Triggers>
+                        <Style.Triggers1>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsChecked" Value="False"/>
                                     <Condition Property="IsMouseOver" Value="True"/>
                                 </MultiTrigger.Conditions>
-                                <Setter1 Property="PlayBox.Play" Value="True" />
+                                <Setter Property="PlayBox.Play" Value="True" />
                             </MultiTrigger>
-                        </Style.Triggers>
+                            <Trigger>
+                                <Trigger Property="IsMouseOver" Value="False">
+                                    <Setter Property="PlayBox.Play" Value="False" />
+                                </Trigger>
+                            </Trigger>
+                        </Style.Triggers1>
                     </Style>
                 </StackPanel.Resources>
 
-                <RadioButton IsChecked="True" Margin="0,0" Tag="{StaticResource tj_1}" Content="电脑体检" Cursor="Hand" />
-                <RadioButton Margin="0,0" Tag="{StaticResource mm_1}" Content="木马查杀" Cursor="Hand" />
-                <RadioButton Margin="0,0" Tag="{StaticResource ql_1}" Content="电脑清理" Cursor="Hand" />
-                <RadioButton Margin="0,0" Tag="{StaticResource xfie_1}" Content="系统修复" Cursor="Hand" />
-
-                <RadioButton Margin="0,0" Tag="{StaticResource yh_1}" Content="优化加速" Cursor="Hand" />
-                <RadioButton Margin="0,0" Tag="{StaticResource gndq_1}" Content="功能大全" Cursor="Hand" />
-                <RadioButton Margin="0,0" Tag="{StaticResource xjk_1}" Content="小金库" Cursor="Hand" />
-                <RadioButton Margin="0,0" Tag="{StaticResource rjgj_1}" Content="软件管家" Cursor="Hand" />
+                <RadioButton Name="tj_1_0" IsChecked="True" Margin="0,0" Tag="{StaticResource tj_1}" Content="电脑体检" Cursor="Hand" />
+                <RadioButton Margin="1,0,0,0" Tag="{StaticResource mm_1}" Content="木马查杀" Cursor="Hand" />
+                <RadioButton Margin="1,0,0,0" Tag="{StaticResource ql_1}" Content="电脑清理" Cursor="Hand" />
+                <RadioButton Margin="1,0,0,0" Tag="{StaticResource xfie_1}" Content="系统修复" Cursor="Hand" />
+                <RadioButton Margin="1,0,0,0" Tag="{StaticResource yh_1}" Content="优化加速" Cursor="Hand" />
+                <RadioButton Margin="1,0,0,0" Tag="{StaticResource gndq_1}" Content="功能大全" Cursor="Hand" />
+                <RadioButton Margin="1,0,0,0" Tag="{StaticResource xjk_1}" Content="小金库" Cursor="Hand" />
+                <RadioButton Margin="1,0,0,0" Tag="{StaticResource rjgj_1}" Content="软件管家" Cursor="Hand" />
 
                 <Grid Width="141" Height="92" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,0,0,0" >
-                    <PlayBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Play="True" >
-                        <PlayBox.Resources>
-                            <Style TargetType="Rectangle">
-                                <Setter Property="PlayBox.PlayDelay" Value="150" />
-                            </Style>
-                        </PlayBox.Resources>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="0.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="141.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="282.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="423.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="564.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="705.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="846.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="987.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1128.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1269.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1410.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1551.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Rectangle PlayBox.PlayDelay="3000" >
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="/360Safe;/image/anim_logo1.png" Viewbox="1692.000000,0.000000,141.000000,92.000000" ViewboxUnits="Absolute" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                    </PlayBox>
+                    
                 </Grid>
             </StackPanel>
         </StackPanel>

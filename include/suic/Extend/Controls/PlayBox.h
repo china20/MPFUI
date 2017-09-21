@@ -39,6 +39,7 @@ public:
     static suic::DpProperty* PlayBehaviorProperty;
     static suic::DpProperty* MousePlayProperty;
     static suic::DpProperty* ShowFrameProperty;
+    static suic::DpProperty* AllowReverseProperty;
 
     static suic::DpProperty* PlayDelayProperty;
 
@@ -60,6 +61,9 @@ public:
 
     bool GetShowFrame();
     void SetShowFrame(bool val);
+
+    bool GetAllowReverse();
+    void SetAllowReverse(bool val);
 
     bool GetPlay();
     void SetPlay(bool val);
@@ -90,6 +94,8 @@ protected:
     void Play();
     int GetCurrentIndex();
 
+    void OnPlayComplete(suic::Object* sender, suic::EventArg* e);
+
     void OnInitialized(suic::EventArg* e);
     void OnLoaded(suic::LoadedEventArg* e);
 
@@ -97,6 +103,7 @@ protected:
     void OnArrange(const suic::Size& arrangeSize);
 
     void OnRender(suic::Drawing* drawing);
+    void RenderChildren(suic::Drawing* drawing);
 
     void OnMouseEnter(suic::MouseButtonEventArg* e);
     void OnMouseLeave(suic::MouseButtonEventArg* e);

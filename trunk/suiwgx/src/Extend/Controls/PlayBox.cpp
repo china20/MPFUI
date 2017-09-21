@@ -26,6 +26,7 @@ suic::DpProperty* PlayBox::PlayIndexProperty;
 suic::DpProperty* PlayBox::PlayBehaviorProperty;
 suic::DpProperty* PlayBox::MousePlayProperty;
 suic::DpProperty* PlayBox::ShowFrameProperty;
+suic::DpProperty* PlayBox::AllowReverseProperty;
 
 suic::DpProperty* PlayBox::PlayDelayProperty;
 
@@ -47,7 +48,8 @@ PlayBox::~PlayBox()
 
 void PlayBox::OnPlayIndexPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
 {
-
+    PlayBox* playBox = suic::RTTICast<PlayBox>(d);
+    playBox->InvalidateArrange();
 }
 
 void PlayBox::OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* e)
@@ -60,6 +62,7 @@ void PlayBox::OnPlayPropChanged(suic::DpObject* d, suic::DpPropChangedEventArg* 
     else
     {
         playBox->BeginAnimation(PlayIndexProperty, NULL);
+        playBox->InvalidateVisual();
     }
 }
 
@@ -81,6 +84,9 @@ void PlayBox::StaticInit()
         ShowFrameProperty = suic::DpProperty::Register(_U("ShowFrame"), RTTIType(), suic::Boolean::RTTIType(), 
             suic::DpPropMemory::GetPropMeta(suic::Boolean::True, suic::PropMetadataOptions::AffectsRender));
 
+        AllowReverseProperty = suic::DpProperty::Register(_U("AllowReverse"), RTTIType(), suic::Boolean::RTTIType(), 
+            suic::DpPropMemory::GetPropMeta(suic::Boolean::False, suic::PropMetadataOptions::AffectsNone));
+        
         PlayDelayProperty = suic::DpProperty::RegisterAttached(_U("PlayDelay"), RTTIType(), suic::Integer::RTTIType(), 
             suic::DpPropMemory::GetPropMeta(new suic::Integer(100), suic::PropMetadataOptions::AffectsRender));
     }
@@ -114,6 +120,16 @@ bool PlayBox::GetShowFrame()
 void PlayBox::SetShowFrame(bool val)
 {
     SetValue(ShowFrameProperty, BOOLTOBOOLEAN(val));
+}
+
+bool PlayBox::GetAllowReverse()
+{
+    return GetValue(AllowReverseProperty)->ToBool();
+}
+
+void PlayBox::SetAllowReverse(bool val)
+{
+    SetValue(AllowReverseProperty, BOOLTOBOOLEAN(val));
 }
 
 bool PlayBox::GetPlay()
@@ -192,8 +208,7 @@ void PlayBox::RemoveChild(Object* child)
 
 int PlayBox::GetVisualChildrenCount()
 {
-    if (GetShowFrame() && _elemColl && 
-        _elemColl->GetCount() > 0)
+    if (_elemColl && _elemColl->GetCount() > 0)
     {
         return 1;
     }
@@ -206,6 +221,7 @@ int PlayBox::GetVisualChildrenCount()
 suic::Element* PlayBox::GetVisualChild(int i)
 {
     int index = GetCurrentIndex();
+
     if (index >= 0)
     {
         return _elemColl->GetAt(index);
@@ -230,7 +246,7 @@ suic::Size PlayBox::OnMeasure(const suic::Size& constraint)
 {
     suic::Size measureSize;
 
-    if (GetShowFrame() && _elemColl != NULL)
+    if (_elemColl != NULL)
     {
         for (int i = 0; i < _elemColl->GetCount(); ++i)
         {
@@ -251,7 +267,7 @@ suic::Size PlayBox::OnMeasure(const suic::Size& constraint)
 
 void PlayBox::OnArrange(const suic::Size& arrangeSize)
 {
-    if (GetShowFrame() && NULL != _elemColl && _elemColl->GetCount() > 0)
+    if (NULL != _elemColl && _elemColl->GetCount() > 0)
     {
         for (int i = 0; i < _elemColl->GetCount(); ++i)
         {
@@ -263,6 +279,14 @@ void PlayBox::OnArrange(const suic::Size& arrangeSize)
                 child->Arrange(rect);
             }
         }
+    }
+}
+
+void PlayBox::RenderChildren(suic::Drawing* drawing)
+{
+    if (GetShowFrame())
+    {
+        suic::FrameworkElement::RenderChildren(drawing);
     }
 }
 
@@ -283,9 +307,9 @@ void PlayBox::OnMouseEnter(suic::MouseButtonEventArg* e)
     suic::FrameworkElement::OnMouseEnter(e);
     if (GetMousePlay())
     {
-        BeginAnimation(PlayIndexProperty, NULL);
+        SetPlay(false);
         _isReverse = false;
-        Play();
+        SetPlay(true);
     }
 }
 
@@ -294,10 +318,20 @@ void PlayBox::OnMouseLeave(suic::MouseButtonEventArg* e)
     suic::FrameworkElement::OnMouseLeave(e);
     if (GetMousePlay())
     {
-        BeginAnimation(PlayIndexProperty, NULL);
-        _isReverse = true;
-        Play();
+        if (GetAllowReverse())
+        {
+            SetPlay(false);
+            _isReverse = true;
+            SetPlay(true);
+        }
+
+        InvalidateVisual();
     }
+}
+
+void PlayBox::OnPlayComplete(suic::Object* sender, suic::EventArg* e)
+{
+    SetPlay(false);
 }
 
 void PlayBox::OnInitialized(suic::EventArg* e)
@@ -333,7 +367,7 @@ int PlayBox::GetCurrentIndex()
 
         if (index < 0 || index >= _elemColl->GetCount())
         {
-            index = 0;
+            index = _elemColl->GetCount() - 1;
         }
     }
 
@@ -350,40 +384,56 @@ void PlayBox::Play()
         suic::Int32AnimationUsingKeyFrame* aniFrame = NULL;
 
         SetPlayIndex(0);
-        aniFrame = new suic::Int32AnimationUsingKeyFrame();
-
-        for (i = 0; i < iCount; ++i)
+        
+        if (_isReverse)
         {
-            int index = _isReverse ? iCount - i - 1 : i;
-            Element* child = GetVisualChild(index);
-
-            if (child != NULL)
-            {
-                iDuration += GetPlayDelay(child);
-                suic::KeyTime kt(iDuration, suic::KeyTimeType::TimeSpan);
-                suic::LinearInt32KeyFrame* keyItem = new suic::LinearInt32KeyFrame(kt, i);
-                aniFrame->AddChild(keyItem);
-            }
+            iCount = suic::Math::Min(GetPlayIndex(), iCount);
         }
 
-        suic::Duration duration(iDuration);
-        aniFrame->SetDuration(duration);
-
-        suic::RepeatBehavior rb;
-
-        if (!GetMousePlay())
+        if (iCount > 0)
         {
-            int iBehavior = GetPlayBehavior();
-            rb.type = suic::RepeatBehavior::Type::Forever;
-            if (iBehavior >= 0 && iBehavior <= 2)
-            {
-                rb.type = (suic::RepeatBehavior::Type)(iBehavior);
-            }
-        }
+            aniFrame = new suic::Int32AnimationUsingKeyFrame();
 
-        rb.duration = iDuration;
-        aniFrame->SetRepeatBehavior(rb);
-        BeginAnimation(PlayIndexProperty, aniFrame);
+            for (i = 0; i < iCount; ++i)
+            {
+                int index = _isReverse ? iCount - i - 1 : i;
+                Element* child = GetVisualChild(index);
+
+                if (child != NULL)
+                {
+                    iDuration += GetPlayDelay(child);
+                    suic::KeyTime kt(iDuration, suic::KeyTimeType::TimeSpan);
+                    suic::LinearInt32KeyFrame* keyItem = new suic::LinearInt32KeyFrame(kt, i);
+                    aniFrame->AddChild(keyItem);
+                }
+            }
+
+            suic::Duration duration(iDuration);
+            aniFrame->SetDuration(duration);
+
+            suic::RepeatBehavior rb;
+
+            if (!GetMousePlay())
+            {
+                int iBehavior = GetPlayBehavior();
+                rb.type = suic::RepeatBehavior::Type::Forever;
+                if (iBehavior >= 0 && iBehavior <= 2)
+                {
+                    rb.type = (suic::RepeatBehavior::Type)(iBehavior);
+                }
+            }
+
+            rb.count = 1;
+            rb.duration = iDuration;
+            aniFrame->SetRepeatBehavior(rb);
+
+            // 
+            // 设置动画播放结束回调
+            // 
+            aniFrame->Completed += EventHandler(this, &PlayBox::OnPlayComplete);
+
+            BeginAnimation(PlayIndexProperty, aniFrame);
+        }
     }
 }
 

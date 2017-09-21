@@ -250,16 +250,16 @@ void AnimationStorage::OnTimeInvalidated(Object* sender, EventArg* e)
 
         EntryIndex eIndex;
         PropMetadata* metadata = NULL;
-        ObjectPtr obj5 = NULL;
+        ObjectPtr newVal = NULL;
 
         metadata = MemberVisitor::FindMetadata(d, eIndex, _dpProp);
-        GetCurrentPropertyValue(this, d, _dpProp, metadata, baseValue, obj5);
+        GetCurrentPropertyValue(this, d, _dpProp, metadata, baseValue, newVal);
 
-        if (_dpProp->IsValidValueInternal(d, obj5.get()))
+        if (_dpProp->IsValidValueInternal(d, newVal.get()))
         {
             MemberVisitor::SetMetadata(&oldEntry, metadata);
             oriEntry.SetPropertyAndIndex(_dpProp, _dpProp->GetIndex());
-            MemberVisitor::SetAnimatedValue(&oriEntry, obj5.get(), baseValue);
+            MemberVisitor::SetAnimatedValue(&oriEntry, newVal.get(), baseValue);
             MemberVisitor::UpdateEV(d, eIndex, _dpProp, oldEntry, oriEntry, false, false, OperationType::otUnknown);
         }
 
