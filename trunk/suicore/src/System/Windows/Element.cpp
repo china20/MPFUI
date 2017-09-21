@@ -442,11 +442,6 @@ RoutedEvent* Element::PreExecutedEvent;
 RoutedEvent* Element::CanExecuteEvent;
 RoutedEvent* Element::PreCanExecuteEvent;
 
-//RoutedEvent* Element::DropEvent;
-//RoutedEvent* Element::DragEnterEvent;
-//RoutedEvent* Element::DragLeaveEvent;
-//RoutedEvent* Element::DragOverEvent;
-
 RoutedEvent* Element::ThemeChangedEvent;
 RoutedEvent* Element::LoadedEvent;
 RoutedEvent* Element::UnloadedEvent;
@@ -831,15 +826,6 @@ void Element::StaticInit()
         PreKeyUpEvent = EventControl::RegisterRoutedEvent(_U("PreKeyUp"), RoutingStrategy::Tunnel, KeyboardEventHandler::RTTIType(), RTTIType());
 
         InvokerEvent = EventControl::RegisterRoutedEvent(_U("Invoker"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-
-        /*DropEvent = DragDrop::DropEvent->AddOwner();(_U("Drop"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-        DragEnterEvent = EventControl::RegisterRoutedEvent(_U("DragEnter"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-        DragLeaveEvent = EventControl::RegisterRoutedEvent(_U("DragLeave"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-        DragOverEvent = EventControl::RegisterRoutedEvent(_U("DragOver"), RoutingStrategy::Bubble, RTTIType(), RTTIType());
-        PreDropEvent = EventControl::RegisterRoutedEvent(_U("PreDrop"), RoutingStrategy::Tunnel, RTTIType(), RTTIType());
-        PreDragEnterEvent = EventControl::RegisterRoutedEvent(_U("PreDragEnter"), RoutingStrategy::Tunnel, RTTIType(), RTTIType());
-        PreDragLeaveEvent = EventControl::RegisterRoutedEvent(_U("PreDragLeave"), RoutingStrategy::Tunnel, RTTIType(), RTTIType());
-        PreDragOverEvent = EventControl::RegisterRoutedEvent(_U("PreDragOver"), RoutingStrategy::Tunnel, RTTIType(), RTTIType());*/
 
         ThemeChangedEvent = EventControl::RegisterRoutedEvent(_U("ThemeChanged"), RoutingStrategy::Direct, RTTIType(), RTTIType());
         LoadedEvent = EventControl::RegisterRoutedEvent(_U("Loaded"), RoutingStrategy::Direct, RTTIType(), RTTIType());
@@ -2418,11 +2404,6 @@ bool Element::IsFocused()
     return GetValue(IsFocusedProperty)->ToBool();
 }
 
-//bool Element::IsKeyboardFocused() const
-//{
-//    return (Keyboard::GetFocused() == this);
-//}
-
 bool Element::IsKeyboardFocused() const
 {
     return (Keyboard::GetFocusedElement() == this);
@@ -2759,15 +2740,18 @@ void Element::SetItemEntry(ItemEntry* item)
 }
 
 int Element::HitTestFilter()
-{ 
-    if (!IsHitTestVisible())
+{
+    int iFilter = GetHitTestFilterAction();
+
+    if (HitTestFilterAction::ContinueSkipSelf != iFilter)
     {
-        return HitTestFilterAction::ContinueSkipSelf;
+        if (!IsHitTestVisible())
+        {
+            iFilter = HitTestFilterAction::ContinueSkipSelf;
+        }
     }
-    else
-    {
-        return GetHitTestFilterAction();
-    }
+    
+    return iFilter;
 }
 
 void Element::RenderOpen(RenderContext* renderCtx)
