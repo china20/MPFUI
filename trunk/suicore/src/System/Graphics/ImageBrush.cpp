@@ -148,6 +148,7 @@ ImageBrush::ImageBrush(String path)
     , _maskColor(ARGB(255,0xF0,0xF0,0xF0))
     , _grey(0)
     , _source(NULL)
+    , _drawLevel(DrawCtx::eDrawLevel::flLow)
 {
     InitImageSource(path);
     _index = Brush::eBrushIndex::biImage;
@@ -159,6 +160,7 @@ ImageBrush::ImageBrush()
     , _maskColor(ARGB(255,0xF0,0xF0,0xF0))
     , _grey(0)
     , _source(NULL)
+    , _drawLevel(DrawCtx::eDrawLevel::flLow)
 {
     _index = Brush::eBrushIndex::biImage;
 }
@@ -190,6 +192,16 @@ Byte ImageBrush::GetOpacity() const
 void ImageBrush::SetOpacity(Byte val)
 {
     _opacity = val;
+}
+
+Byte ImageBrush::GetDrawLevel() const
+{
+    return _drawLevel;
+}
+
+void ImageBrush::SetDrawLevel(Byte val)
+{
+    _drawLevel = val;
 }
 
 Rect ImageBrush::GetViewCorner() const
@@ -320,6 +332,28 @@ void ImageBrush::SetValue(const String& key, const String& value)
             else
             {
                 _tileMode = TileMode::tmNone;
+            }
+        }
+        break;
+
+    case 9:
+        if (key.Equals(_T("DrawLevel")))
+        {
+            if (value.Equals(_T("Low")))
+            {
+                _drawLevel = DrawCtx::eDrawLevel::flLow;
+            }
+            else if (value.Equals(_T("Medium")))
+            {
+                _drawLevel = DrawCtx::eDrawLevel::flMedium;
+            }
+            else if (value.Equals(_T("High")))
+            {
+                _drawLevel = DrawCtx::eDrawLevel::flHigh;
+            }
+            else
+            {
+                _drawLevel = DrawCtx::eDrawLevel::flNone;
             }
         }
         break;
@@ -835,6 +869,7 @@ void DrawImageBrush(DrawCtx* drawCtx, Drawing* drawing, ImageBrush* brImg, const
         bmp->EraseGray();
     }
 
+    drawCtx->SetDrawLevel((DrawCtx::eDrawLevel)brImg->GetDrawLevel());
     drawCtx->SetAlpha(brImg->GetOpacity());
 
     switch (bStretch)

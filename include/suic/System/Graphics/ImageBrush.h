@@ -48,6 +48,9 @@ public:
     Byte GetOpacity() const;
     void SetOpacity(Byte val);
 
+    Byte GetDrawLevel() const;
+    void SetDrawLevel(Byte val);
+
     Rect GetViewCorner() const;
     void SetViewcorner(Rect val);
 
@@ -66,6 +69,7 @@ protected:
     Byte _grey;
     Byte _flag;
     Byte _opacity;
+    Byte _drawLevel;
 
     Color _maskColor;
     Rect _viewCorner;

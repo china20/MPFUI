@@ -36,14 +36,14 @@ void Typeface::SetTextStyle(Uint16 key, bool val)
 
 DrawCtx::DrawCtx()
     : _alpha(255)
-    , _antiAlias(false)
-    , _level(DrawCtx::eDrawLevel::flNone)
+    , _antiAlias(true)
+    , _level(DrawCtx::eDrawLevel::flLow)
 {
 }
 
 DrawCtx::DrawCtx(eDrawLevel l, bool alias)
     : _alpha(255)
-    , _antiAlias(false)
+    , _antiAlias(true)
     , _level(l)
 {
 }
